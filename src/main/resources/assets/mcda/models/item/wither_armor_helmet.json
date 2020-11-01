@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mcda:item/wither_armor_helmet"
+  }
+}

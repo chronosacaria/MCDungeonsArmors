@@ -29,16 +29,19 @@ public class EvocationRobeArmorItem extends ArmorItem {
             UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"),
             UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
 
+    private final boolean base;
     private final boolean unique;
     private final boolean unique2;
     private final int protection;
     private final float toughness;
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
-    public EvocationRobeArmorItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings, boolean unique,
+    public EvocationRobeArmorItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings,
+                                  boolean base, boolean unique,
                                   boolean unique2,
                                   String id){
         super(armorMaterial, slot, settings);
+        this.base = base;
         this.unique = unique;
         this.unique2 = unique2;
 
@@ -80,6 +83,13 @@ public class EvocationRobeArmorItem extends ArmorItem {
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext){
         super.appendTooltip(itemStack, world, tooltip, tooltipContext);
 
+        if(this.base){
+            tooltip.add(new TranslatableText("item.mcda.evocation_robe.tooltip_1"));
+            tooltip.add(new TranslatableText("item.mcda.evocation_robe.tooltip_2"));
+            tooltip.add(new TranslatableText("item.mcda.evocation_robe.tooltip_3"));
+            tooltip.add(new TranslatableText("item.mcda.evocation_robe.tooltip_4"));
+            tooltip.add(new TranslatableText("item.mcda.evocation_robe.tooltip_5"));
+        }
         if(this.unique) {
             tooltip.add(new TranslatableText("item.mcda.ember_robe.tooltip_1"));
             tooltip.add(new TranslatableText("item.mcda.ember_robe.tooltip_2"));
@@ -90,13 +100,7 @@ public class EvocationRobeArmorItem extends ArmorItem {
             tooltip.add(new TranslatableText("item.mcda.verdant_robe.tooltip_2"));
             tooltip.add(new TranslatableText("item.mcda.verdant_robe.tooltip_3"));
         }
-        else {
-            tooltip.add(new TranslatableText("item.mcda.evocation_robe.tooltip_1"));
-            tooltip.add(new TranslatableText("item.mcda.evocation_robe.tooltip_2"));
-            tooltip.add(new TranslatableText("item.mcda.evocation_robe.tooltip_3"));
-            tooltip.add(new TranslatableText("item.mcda.evocation_robe.tooltip_4"));
-            tooltip.add(new TranslatableText("item.mcda.evocation_robe.tooltip_5"));
-        }
+
 
 
 

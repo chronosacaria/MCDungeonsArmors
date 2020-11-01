@@ -75,6 +75,10 @@ public enum ArmorBases implements ArmorMaterial {
             () -> {return Ingredient.ofItems(Items.BONE);}),
     LIGHT_PLATE("light_plate", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    GUARDS("guards", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    CURIOUS("curious", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
     MEDIUM_PLATE("medium_plate", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
     CHAMPION("champions", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
@@ -86,7 +90,17 @@ public enum ArmorBases implements ArmorMaterial {
     DARK("dark", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
     TITAN("titans", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);});
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    MERCENARY("mercenary", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    RENEGADE("renegade", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    HUNGRY_HORROR("hungryhorror", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    GRIM("grim", 14, new int[]{2,5,6,2},9,SoundEvents.ENTITY_SKELETON_AMBIENT, 0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.BONE);}),
+    WITHER("wither", 14, new int[]{2,5,6,2},9,SoundEvents.ENTITY_SKELETON_AMBIENT, 0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.BONE);});
 
     private static final int[] baseDurability = new int[]{12,14,15,10};
     private final String name;
