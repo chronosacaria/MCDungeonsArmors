@@ -25,5 +25,6 @@ public class Mcda implements ModInitializer {
         GrimArmors.init();
         GuardsArmors.init();
         MercenaryArmors.init();
+        OcelotArmors.init();
     }
 }
