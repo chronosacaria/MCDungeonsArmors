@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mcda:item/shadow_walker_helmet"
+  }
+}

@@ -75,6 +75,18 @@ public enum ArmorBases implements ArmorMaterial {
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
     SHADOW_WALKER("shadowwalker", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    PHANTOM("phantom", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    FROST_BITE("frostbite", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    PLATE("plate", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    FULL_METAL("full_metal", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    REINFORCED_MAIL("reinforced", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    STALWART_MAIL("stalwart", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
     BONE("bone", 14, new int[]{2,5,6,2},9,SoundEvents.ENTITY_SKELETON_AMBIENT, 0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.BONE);}),
     LIGHT_PLATE("light_plate", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0f,0.0f,
@@ -105,6 +117,7 @@ public enum ArmorBases implements ArmorMaterial {
             () -> {return Ingredient.ofItems(Items.BONE);}),
     WITHER("wither", 14, new int[]{2,5,6,2},9,SoundEvents.ENTITY_SKELETON_AMBIENT, 0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.BONE);});
+
 
     private static final int[] baseDurability = new int[]{12,14,15,10};
     private final String name;

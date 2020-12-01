@@ -146,13 +146,86 @@
   "item.mcda.renegade_armor.tooltip_2":           "for mercenaries hired to protect",
   "item.mcda.renegade_armor.tooltip_3":           "the villages against Illagers.",
 
-  "item.mcda.hungry_horror_armor_helmet":         "Hungry Horror Helmet",
-  "item.mcda.hungry_horror_armor_chestplate":     "Hungry Horror Chestplate",
-  "item.mcda.hungry_horror_armor_leggings":       "Hungry Horror Leggings",
-  "item.mcda.hungry_horror_armor_boots":          "Hungry Horror Boots",
+  "item.mcda.hungry_horror_helmet":               "Hungry Horror Helmet",
+  "item.mcda.hungry_horror_chestplate":           "Hungry Horror Chestplate",
+  "item.mcda.hungry_horror_leggings":             "Hungry Horror Leggings",
+  "item.mcda.hungry_horror_boots":                "Hungry Horror Boots",
 
   "item.mcda.hungry_horror.tooltip_1":            "When you wear this armor,",
   "item.mcda.hungry_horror.tooltip_2":            "the sounds of screams fill",
   "item.mcda.hungry_horror.tooltip_3":            "the air. But are the screams",
-  "item.mcda.hungry_horror.tooltip_4":            "yours, or your enemies?"
+  "item.mcda.hungry_horror.tooltip_4":            "yours, or your enemies?",
+
+  "item.mcda.ocelot_armor_helmet":                "Ocelot Helmet",
+  "item.mcda.ocelot_armor_chestplate":            "Ocelot Chestplate",
+  "item.mcda.ocelot_armor_leggings":              "Ocelot Leggings",
+  "item.mcda.ocelot_armor_boots":                 "Ocelot Boots",
+
+  "item.mcda.ocelot_armor.tooltip_1":             "You feel a rush of pure",
+  "item.mcda.ocelot_armor.tooltip_2":             "adrenaline surge through your",
+  "item.mcda.ocelot_armor.tooltip_3":             "body when you wear this",
+  "item.mcda.ocelot_armor.tooltip_4":             "Ocelot's pelt.",
+
+  "item.mcda.shadow_walker_armor_helmet":         "Shadow Walker Helmet",
+  "item.mcda.shadow_walker_armor_chestplate":     "Shadow Walker Chestplate",
+  "item.mcda.shadow_walker_armor_leggings":       "Shadow Walker Leggings",
+  "item.mcda.shadow_walker_armor_boots":          "Shadow Walker Boots",
+
+  "item.mcda.shadow_walker_armor.tooltip_1":      "The legendary black Ocelot was",
+  "item.mcda.shadow_walker_armor.tooltip_2":      "as graceful as it was deadly.",
+  "item.mcda.shadow_walker_armor.tooltip_3":      "When you wear its pelt, you feel",
+  "item.mcda.shadow_walker_armor.tooltip_4":      "like your enemies are left chasing",
+  "item.mcda.shadow_walker_armor.tooltip_5":      "your shadow.",
+
+  "item.mcda.phantom_armor_helmet":               "Phantom Helmet",
+  "item.mcda.phantom_armor_chestplate":           "Phantom Chestplate",
+  "item.mcda.phantom_armor_leggings":             "Phantom Leggings",
+  "item.mcda.phantom_armor_boots":                "Phantom Boots",
+
+  "item.mcda.phantom_armor.tooltip_1":            "This armor, crafted from the bones",
+  "item.mcda.phantom_armor.tooltip_2":            "of Phantoms, is a terrifying sight",
+  "item.mcda.phantom_armor.tooltip_3":            "on the battlefield.",
+
+  "item.mcda.frost_bite_armor_helmet":            "Frost Bite Helmet",
+  "item.mcda.frost_bite_armor_chestplate":        "Frost Bite Chestplate",
+  "item.mcda.frost_bite_armor_leggings":          "Frost Bite Leggings",
+  "item.mcda.frost_bite_armor_boots":             "Frost Bite Boots",
+
+  "item.mcda.frost_bite_armor.tooltip_1":         "Frost Bite remembers the icy winds",
+  "item.mcda.frost_bite_armor.tooltip_2":         "which once flowed beneath the wings",
+  "item.mcda.frost_bite_armor.tooltip_3":         "of the night Phantoms.",
+
+  "item.mcda.plate_armor_helmet":                 "Plate Helmet",
+  "item.mcda.plate_armor_chestplate":             "Plate Chestplate",
+  "item.mcda.plate_armor_leggings":               "Plate Leggings",
+  "item.mcda.plate_armor_boots":                  "Plate Boots",
+
+  "item.mcda.plate_armor.tooltip_1":              "Plate Armor turns the average soldier",
+  "item.mcda.plate_armor.tooltip_2":              "into a fortress but comes with reduced",
+  "item.mcda.plate_armor.tooltip_3":              "mobility.",
+
+  "item.mcda.full_metal_armor_helmet":            "Full Metal Helmet",
+  "item.mcda.full_metal_armor_chestplate":        "Full Metal Chestplate",
+  "item.mcda.full_metal_armor_leggings":          "Full Metal Leggings",
+  "item.mcda.full_metal_armor_boots":             "Full Metal Boots",
+
+  "item.mcda.full_metal_armor.tooltip_1":         "Full Metal Armor is destined for the",
+  "item.mcda.full_metal_armor.tooltip_2":         "great defenders of the Overworld.",
+
+  "item.mcda.reinforced_mail_helmet":             "Reinforced Mail Helmet",
+  "item.mcda.reinforced_mail_chestplate":         "Reinforced Mail Chestplate",
+  "item.mcda.reinforced_mail_leggings":           "Reinforced Mail Leggings",
+  "item.mcda.reinforced_mail_boots":              "Reinforced Mail Boots",
+
+  "item.mcda.reinforced_mail.tooltip_1":          "Mostly worn by casual adventurers,",
+  "item.mcda.reinforced_mail.tooltip_2":          "Reinforced Mail is a common sight",
+  "item.mcda.reinforced_mail.tooltip_3":          "throughout the land.",
+
+  "item.mcda.stalwart_armor_helmet":              "Stalwart Helmet",
+  "item.mcda.stalwart_armor_chestplate":          "Stalwart Chestplate",
+  "item.mcda.stalwart_armor_leggings":            "Stalwart Leggings",
+  "item.mcda.stalwart_armor_boots":               "Stalwart Boots",
+
+  "item.mcda.stalwart_armor.tooltip_1":           "This reliable armor is sturdy enough",
+  "item.mcda.stalwart_armor.tooltip_2":           "to be passed down for generations."
 }

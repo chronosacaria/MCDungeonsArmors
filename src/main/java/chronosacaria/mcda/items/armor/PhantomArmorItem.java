@@ -4,9 +4,7 @@ import chronosacaria.mcda.Mcda;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -23,7 +21,7 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.UUID;
 
-public class OcelotArmorItem extends ArmorItem {
+public class PhantomArmorItem extends ArmorItem {
 
     private static final UUID[] ARMOR_MODIFIERS = new UUID[]{
             UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"),
@@ -36,8 +34,8 @@ public class OcelotArmorItem extends ArmorItem {
     private final float toughness;
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
-    public OcelotArmorItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings, boolean unique,
-                               String id){
+    public PhantomArmorItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings, boolean unique,
+                            String id){
         super(armorMaterial, slot, settings);
         this.unique = unique;
 
@@ -79,17 +77,14 @@ public class OcelotArmorItem extends ArmorItem {
         super.appendTooltip(itemStack, world, tooltip, tooltipContext);
 
         if(this.unique) {
-            tooltip.add(new TranslatableText("item.mcda.shadow_walker_armor.tooltip_1"));
-            tooltip.add(new TranslatableText("item.mcda.shadow_walker_armor.tooltip_2"));
-            tooltip.add(new TranslatableText("item.mcda.shadow_walker_armor.tooltip_3"));
-            tooltip.add(new TranslatableText("item.mcda.shadow_walker_armor.tooltip_4"));
-            tooltip.add(new TranslatableText("item.mcda.shadow_walker_armor.tooltip_5"));
+            tooltip.add(new TranslatableText("item.mcda.frost_bite_armor.tooltip_1"));
+            tooltip.add(new TranslatableText("item.mcda.frost_bite_armor.tooltip_2"));
+            tooltip.add(new TranslatableText("item.mcda.frost_bite_armor.tooltip_3"));
         }
         else {
-            tooltip.add(new TranslatableText("item.mcda.ocelot_armor.tooltip_1"));
-            tooltip.add(new TranslatableText("item.mcda.ocelot_armor.tooltip_2"));
-            tooltip.add(new TranslatableText("item.mcda.ocelot_armor.tooltip_3"));
-            tooltip.add(new TranslatableText("item.mcda.ocelot_armor.tooltip_4"));
+            tooltip.add(new TranslatableText("item.mcda.phantom_armor.tooltip_1"));
+            tooltip.add(new TranslatableText("item.mcda.phantom_armor.tooltip_2"));
+            tooltip.add(new TranslatableText("item.mcda.phantom_armor.tooltip_3"));
         }
     }
 

@@ -19,22 +19,22 @@ public class OcelotArmors {
     public static Item OCELOT_BOOTS;
 
     public static void init(){
-        OCELOT_HELMET = new OcelotArmorItem(ArmorBases.HERO, EquipmentSlot.HEAD,
+        OCELOT_HELMET = new OcelotArmorItem(ArmorBases.OCELOT, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), false, "ocelot_armor_helmet");
-        OCELOT_CHESTPLATE = new OcelotArmorItem(ArmorBases.HERO, EquipmentSlot.CHEST,
+        OCELOT_CHESTPLATE = new OcelotArmorItem(ArmorBases.OCELOT, EquipmentSlot.CHEST,
                 new Item.Settings().group(Mcda.ARMORS), false, "ocelot_armor_chestplate");
-        OCELOT_LEGGINGS = new OcelotArmorItem(ArmorBases.HERO, EquipmentSlot.LEGS,
+        OCELOT_LEGGINGS = new OcelotArmorItem(ArmorBases.OCELOT, EquipmentSlot.LEGS,
                 new Item.Settings().group(Mcda.ARMORS), false, "ocelot_armor_leggings");
-        OCELOT_BOOTS = new OcelotArmorItem(ArmorBases.HERO, EquipmentSlot.FEET,
+        OCELOT_BOOTS = new OcelotArmorItem(ArmorBases.OCELOT, EquipmentSlot.FEET,
                 new Item.Settings().group(Mcda.ARMORS), false, "ocelot_armor_boots");
 
-        SHADOW_WALKER_HELMET = new OcelotArmorItem(ArmorBases.CHAMPION, EquipmentSlot.HEAD,
+        SHADOW_WALKER_HELMET = new OcelotArmorItem(ArmorBases.SHADOW_WALKER, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), true, "shadow_walker_armor_helmet");
-        SHADOW_WALKER_CHESTPLATE = new OcelotArmorItem(ArmorBases.CHAMPION, EquipmentSlot.CHEST,
+        SHADOW_WALKER_CHESTPLATE = new OcelotArmorItem(ArmorBases.SHADOW_WALKER, EquipmentSlot.CHEST,
                 new Item.Settings().group(Mcda.ARMORS), true, "shadow_walker_armor_chestplate");
-        SHADOW_WALKER_LEGGINGS = new OcelotArmorItem(ArmorBases.CHAMPION, EquipmentSlot.LEGS,
+        SHADOW_WALKER_LEGGINGS = new OcelotArmorItem(ArmorBases.SHADOW_WALKER, EquipmentSlot.LEGS,
                 new Item.Settings().group(Mcda.ARMORS), true, "shadow_walker_armor_leggings");
-        SHADOW_WALKER_BOOTS = new OcelotArmorItem(ArmorBases.CHAMPION, EquipmentSlot.FEET,
+        SHADOW_WALKER_BOOTS = new OcelotArmorItem(ArmorBases.SHADOW_WALKER, EquipmentSlot.FEET,
                 new Item.Settings().group(Mcda.ARMORS), true, "shadow_walker_armor_boots");
     }
 
