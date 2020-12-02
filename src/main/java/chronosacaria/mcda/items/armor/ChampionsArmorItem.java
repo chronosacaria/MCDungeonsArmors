@@ -1,13 +1,13 @@
 package chronosacaria.mcda.items.armor;
 
 import chronosacaria.mcda.Mcda;
-//import com.google.common.collect.ImmutableMultimap;
-//import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
-//import net.minecraft.entity.attribute.EntityAttribute;
-//import net.minecraft.entity.attribute.EntityAttributeModifier;
-//import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
@@ -30,16 +30,16 @@ public class ChampionsArmorItem extends ArmorItem {
             UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
 
     private final boolean unique;
-    //private final int protection;
-    //private final float toughness;
-    //private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
+    private final int protection;
+    private final float toughness;
+    private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
     public ChampionsArmorItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings, boolean unique,
                               String id){
         super(armorMaterial, slot, settings);
         this.unique = unique;
 
-        /*this.protection = armorMaterial.getProtectionAmount(slot);
+        this.protection = armorMaterial.getProtectionAmount(slot);
         this.toughness = armorMaterial.getToughness();
 
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
@@ -52,19 +52,24 @@ public class ChampionsArmorItem extends ArmorItem {
             builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uuid, "Armor knockback resistance",
                     (double) this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
-        //if(this.unique){
+        if(this.unique){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
                     0.075D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
-        //}
-        this.attributeModifiers = builder.build();*/
+        }
+        if(this.unique){
+            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack speed boost",
+                    0.0375D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        }
+        this.attributeModifiers = builder.build();
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, id), this);
     }
 
-    /*@Override
+    @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot){
         return slot == this.slot ? this.attributeModifiers : super.getAttributeModifiers(slot);
-    }*/
+    }
 
     @Override
     public Rarity getRarity(ItemStack itemStack){

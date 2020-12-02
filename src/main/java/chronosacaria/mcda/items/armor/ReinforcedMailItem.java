@@ -55,11 +55,7 @@ public class ReinforcedMailItem extends ArmorItem {
             builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uuid, "Armor knockback resistance",
                     (double) this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
-        if(this.unique){
-            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
-                    "Armor attack damage boost",
-                    0.30D * 0.5D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
-        }
+
 
         this.attributeModifiers = builder.build();
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, id), this);

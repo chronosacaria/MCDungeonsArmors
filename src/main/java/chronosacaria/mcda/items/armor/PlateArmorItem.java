@@ -47,18 +47,31 @@ public class PlateArmorItem extends ArmorItem {
 
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         UUID uuid = ARMOR_MODIFIERS[slot.getEntitySlotId()];
-        builder.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uuid, "Armor modifier",
+        builder.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uuid,
+                "Armor modifier",
                 (double)this.protection, EntityAttributeModifier.Operation.ADDITION));
-        builder.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(uuid, "Armor toughness",
+        builder.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(uuid,
+                "Armor toughness",
                 (double)this.toughness, EntityAttributeModifier.Operation.ADDITION));
         if(this.knockbackResistance > 0) {
-            builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uuid, "Armor knockback resistance",
+            builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uuid,
+                    "Armor knockback resistance",
                     (double) this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
         if(this.unique){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
                     0.30D * 0.5D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        }
+        if(this.unique){
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor movement speed detriment",
+                    0.01875D * (-1.0D), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        }
+        if(this.base){
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor movement speed detriment",
+                    0.0375D * (-1.0D), EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
 
         this.attributeModifiers = builder.build();

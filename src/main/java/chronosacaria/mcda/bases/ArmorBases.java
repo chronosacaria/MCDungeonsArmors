@@ -55,68 +55,131 @@ public enum ArmorBases implements ArmorMaterial {
      *
      */
 
-    ARCHER("archer",14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+    /* * * * *|
+    | LEATHER |
+    |* * * * */
+    ARCHER("archer",7, new int[]{1,2,3,1},15,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    HUNTER("hunter",14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+    HUNTER("hunter",7, new int[]{2,4,6,2},15,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    BATTLE("battle", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
+    OCELOT("ocelot", 7, new int[]{2,4,6,2},15,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    SPLENDID("splendid", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
+    SHADOW_WALKER("shadowwalker", 7, new int[]{3,5,6,2},15,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    EVOCATION("evocation", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
+    SPELUNKER("spelunker", 7, new int[]{2,4,6,2},15,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    EMBER("ember", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
+    CAVE_CRAWLER("cave", 7, new int[]{2,5,6,2},15,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    VERDANT("verdant", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
+    WOLF("wolf", 7, new int[]{2,4,6,3},15,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    PELT("pelt", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+    BLACK_WOLF("blackwolf", 7, new int[]{2,5,6,2},15,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    OCELOT("ocelot", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+    FOX("fox", 7, new int[]{2,5,6,2},15,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    SHADOW_WALKER("shadowwalker", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+
+    /* * * * |
+    | FABRIC |
+    | * * * */
+    BATTLE("battle", 5, new int[]{1,4,5,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    PHANTOM("phantom", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+    SPLENDID("splendid", 5, new int[]{1,5,6,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    FROST_BITE("frostbite", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+    EVOCATION("evocation", 5, new int[]{1,4,5,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    PLATE("plate", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+    EMBER("ember", 5, new int[]{1,5,6,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    FULL_METAL("full_metal", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+    VERDANT("verdant", 5, new int[]{1,5,6,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    REINFORCED_MAIL("reinforced", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+    THIEF("thief", 5, new int[]{2,4,5,2},15,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    STALWART_MAIL("stalwart", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0f,0.0f,
+    SPIDER("spider", 5, new int[]{2,4,5,2},15,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    BONE("bone", 14, new int[]{2,5,6,2},9,SoundEvents.ENTITY_SKELETON_AMBIENT, 0.0f,0.0f,
+    SOUL_ROBE("soulrobe", 5, new int[]{1,5,6,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    SOULDANCER("souldancer", 5, new int[]{2,5,6,2},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+
+    /* * * |
+    | BONE |
+    | * * */
+    PHANTOM("phantom", 25, new int[]{3,5,6,2},9,SoundEvents.ENTITY_SKELETON_AMBIENT,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    FROST_BITE("frostbite", 25, new int[]{3,6,7,3},9,SoundEvents.ENTITY_SKELETON_AMBIENT,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    GRIM("grim", 25, new int[]{3,5,6,2},9,SoundEvents.ENTITY_SKELETON_AMBIENT, 0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.BONE);}),
-    LIGHT_PLATE("light_plate", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0f,0.0f,
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    GUARDS("guards", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0f,0.0f,
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    CURIOUS("curious", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0f,0.0f,
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    MEDIUM_PLATE("medium_plate", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    CHAMPION("champions", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    HERO("heros", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    HEAVY_PLATE("heavy_plate", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    DARK("dark", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    TITAN("titans", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    MERCENARY("mercenary", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    RENEGADE("renegade", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    HUNGRY_HORROR("hungryhorror", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0f,0.0f,
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    GRIM("grim", 14, new int[]{2,5,6,2},9,SoundEvents.ENTITY_SKELETON_AMBIENT, 0.0f,0.0f,
+    WITHER("wither", 25, new int[]{3,6,7,3},9,SoundEvents.ENTITY_SKELETON_AMBIENT, 0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.BONE);}),
-    WITHER("wither", 14, new int[]{2,5,6,2},9,SoundEvents.ENTITY_SKELETON_AMBIENT, 0.0f,0.0f,
-            () -> {return Ingredient.ofItems(Items.BONE);});
+
+    /* * * * * * *|
+    | LIGHT PLATE |
+    |* * * * * * */
+    SCALE_MAIL("scale", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    HIGHLAND("highland", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    BEEHIVE("beehive", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    BEENEST("beenest", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    GHOSTLY("ghostly", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    GHOST_KINDLER("ghostkindler", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+
+
+
+
+    /* * * * * * * |
+    | MEDIUM PLATE |
+    | * * * * * * */
+    REINFORCED_MAIL("reinforced", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    STALWART_MAIL("stalwart", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    GUARDS("guards", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    CURIOUS("curious", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    SNOW("snow", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    FROST("frost", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    MERCENARY("mercenary", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    RENEGADE("renegade", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    HUNGRY_HORROR("hungryhorror", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+
+    /* * * * * * *|
+    | HEAVY PLATE |
+    |* * * * * * */
+    DARK("dark", 36, new int[]{3,6,8,3},15,SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    TITAN("titans", 36, new int[]{3,6,8,3},15,SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    ROYAL("royalguard", 36, new int[]{3,6,8,3},15,SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    PLATE("plate", 36, new int[]{3,6,8,3},15,SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    FULL_METAL("fullmetal", 36, new int[]{4,6,8,4},15,SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    MYSTERY("whitemystery", 36, new int[]{3,6,8,3},15,SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    BLUE_MYSTERY("bluemystery", 36, new int[]{3,6,8,3},15,SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    GREEN_MYSTERY("greenmystery", 36, new int[]{3,6,8,3},15,SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    PURPLE_MYSTERY("purplemystery", 36, new int[]{3,6,8,3},15,SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    RED_MYSTERY("redmystery", 36, new int[]{3,6,8,3},15,SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,0.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    CHAMPION("champions", 36, new int[]{3,6,8,3},15,SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    HERO("heros", 40, new int[]{4,7,9,4},25,SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0f,0.0f,
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);});
+
 
 
     private static final int[] baseDurability = new int[]{12,14,15,10};

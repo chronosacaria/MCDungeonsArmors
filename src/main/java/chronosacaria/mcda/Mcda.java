@@ -1,6 +1,7 @@
 package chronosacaria.mcda;
 
-import chronosacaria.mcda.init.*;
+import chronosacaria.mcda.init.ArmorsInit;
+import chronosacaria.mcda.init.ItemsInit;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
@@ -13,21 +14,12 @@ public class Mcda implements ModInitializer {
 
     public static final ItemGroup ARMORS = FabricItemGroupBuilder.build(
             new Identifier(MOD_ID, "armor"),
-            () -> new ItemStack(BattleRobeArmors.SPLENDID_ROBE_CHESTPLATE));
+            () -> new ItemStack(ArmorsInit.SPLENDID_ROBE_CHESTPLATE));
     @Override
     public void onInitialize() {
 
-        HuntersArmors.init();
-        BattleRobeArmors.init();
-        ChampionsArmors.init();
-        DarkArmors.init();
-        EvocationRobeArmors.init();
-        GrimArmors.init();
-        GuardsArmors.init();
-        MercenaryArmors.init();
-        OcelotArmors.init();
-        PhantomArmors.init();
-        PlateArmors.init();
-        ReinforcedMailArmors.init();
+
+        ArmorsInit.init();
+        ItemsInit.doRegister();
     }
 }

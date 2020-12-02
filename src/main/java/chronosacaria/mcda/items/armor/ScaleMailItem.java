@@ -4,9 +4,7 @@ import chronosacaria.mcda.Mcda;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -23,7 +21,7 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.UUID;
 
-public class OcelotArmorItem extends ArmorItem {
+public class ScaleMailItem extends ArmorItem {
 
     private static final UUID[] ARMOR_MODIFIERS = new UUID[]{
             UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"),
@@ -31,14 +29,17 @@ public class OcelotArmorItem extends ArmorItem {
             UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"),
             UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
 
+    private final boolean base;
     private final boolean unique;
     private final int protection;
     private final float toughness;
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
-    public OcelotArmorItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings, boolean unique,
-                               String id){
+    public ScaleMailItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings,
+                         boolean base, boolean unique,
+                         String id){
         super(armorMaterial, slot, settings);
+        this.base = base;
         this.unique = unique;
 
         this.protection = armorMaterial.getProtectionAmount(slot);
@@ -54,16 +55,12 @@ public class OcelotArmorItem extends ArmorItem {
             builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uuid, "Armor knockback resistance",
                     (double) this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
-        //if(this.unique){
-        builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
-                "Armor movement speed boost",
-                0.075D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
-        //}
         if(this.unique){
-            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
-                    "Armor movement speed boost",
-                    0.075D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    0.0375D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
+
         this.attributeModifiers = builder.build();
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, id), this);
     }
@@ -79,26 +76,25 @@ public class OcelotArmorItem extends ArmorItem {
         return Rarity.UNCOMMON;
     }
 
+
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext){
         super.appendTooltip(itemStack, world, tooltip, tooltipContext);
 
+        if(this.base){
+            tooltip.add(new TranslatableText("item.mcda.scale_mail.tooltip_1"));
+            tooltip.add(new TranslatableText("item.mcda.scale_mail.tooltip_2"));
+            tooltip.add(new TranslatableText("item.mcda.scale_mail.tooltip_3"));
+        }
         if(this.unique) {
-            tooltip.add(new TranslatableText("item.mcda.shadow_walker_armor.tooltip_1"));
-            tooltip.add(new TranslatableText("item.mcda.shadow_walker_armor.tooltip_2"));
-            tooltip.add(new TranslatableText("item.mcda.shadow_walker_armor.tooltip_3"));
-            tooltip.add(new TranslatableText("item.mcda.shadow_walker_armor.tooltip_4"));
-            tooltip.add(new TranslatableText("item.mcda.shadow_walker_armor.tooltip_5"));
+            tooltip.add(new TranslatableText("item.mcda.highland_armor.tooltip_1"));
+            tooltip.add(new TranslatableText("item.mcda.highland_armor.tooltip_2"));
         }
-        else {
-            tooltip.add(new TranslatableText("item.mcda.ocelot_armor.tooltip_1"));
-            tooltip.add(new TranslatableText("item.mcda.ocelot_armor.tooltip_2"));
-            tooltip.add(new TranslatableText("item.mcda.ocelot_armor.tooltip_3"));
-            tooltip.add(new TranslatableText("item.mcda.ocelot_armor.tooltip_4"));
-        }
+
+
+
+
     }
-
-
 
     /*@Override
     public int getMagicDamage(){

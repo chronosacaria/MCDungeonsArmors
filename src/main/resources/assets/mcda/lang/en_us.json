@@ -10,6 +10,23 @@
   "item.mcda.archers_armor.tooltip_2":            "to make and still stops a blade.",
   "item.mcda.archers_armor.tooltip_3":            "stops a blade.",
 
+  "item.mcda.beehive_armor_helmet":               "Beehive Helmet",
+  "item.mcda.beehive_armor_chestplate":           "Beehive Chestplate",
+  "item.mcda.beehive_armor_leggings":             "Beehive Leggings",
+  "item.mcda.beehive_armor_boots":                "Beehive Boots",
+
+  "item.mcda.beehive_armor.tooltip_1":            "The Beehive Armor hums with the",
+  "item.mcda.beehive_armor.tooltip_2":            "focused power of countless bees.",
+
+  "item.mcda.beenest_armor_helmet":               "Beenest Helmet",
+  "item.mcda.beenest_armor_chestplate":           "Beenest Chestplate",
+  "item.mcda.beenest_armor_leggings":             "Beenest Leggings",
+  "item.mcda.beenest_armor_boots":                "Beenest Boots",
+
+  "item.mcda.beenest_armor.tooltip_1":            "There always seems to be a slight",
+  "item.mcda.beenest_armor.tooltip_2":            "buzz around the Beenest Armor. Or",
+  "item.mcda.beenest_armor.tooltip_3":            "maybe the buzz is coming from within?",
+
   "item.mcda.hunters_chestplate":                 "Hunter's Vest",
 
   "item.mcda.hunters_armor.tooltip_1":            "It may not be fit for a knight,",
@@ -73,8 +90,8 @@
   "item.mcda.evocation_robe.tooltip_1":           "Potent magical runes are",
   "item.mcda.evocation_robe.tooltip_2":           "woven into the fabric of",
   "item.mcda.evocation_robe.tooltip_3":           "these robes, their origins",
-  "item.mcda.evocation_robe.tooltip_4":           "and powers are shrowded in",
-  "item.mcda.evocation_robe.tooltip_5":           "mystery.",
+  "item.mcda.evocation_robe.tooltip_4":           "and powers are shrouded",
+  "item.mcda.evocation_robe.tooltip_5":           "in mystery.",
 
   "item.mcda.ember_robe_helmet":                  "Ember Hat",
   "item.mcda.ember_robe_chestplate":              "Ember Robe",
@@ -227,5 +244,169 @@
   "item.mcda.stalwart_armor_boots":               "Stalwart Boots",
 
   "item.mcda.stalwart_armor.tooltip_1":           "This reliable armor is sturdy enough",
-  "item.mcda.stalwart_armor.tooltip_2":           "to be passed down for generations."
+  "item.mcda.stalwart_armor.tooltip_2":           "to be passed down for generations.",
+
+  "item.mcda.ghostly_armor_helmet":               "Ghostly Helmet",
+  "item.mcda.ghostly_armor_chestplate":           "Ghostly Gambison",
+  "item.mcda.ghostly_armor_leggings":             "Ghostly Leggings",
+  "item.mcda.ghostly_armor_boots":                "Ghostly Boots",
+
+  "item.mcda.ghostly_armor.tooltip_1":            "Those who wear the Ghostly Armor may",
+  "item.mcda.ghostly_armor.tooltip_2":            "feel their bodies briefly disconnect",
+  "item.mcda.ghostly_armor.tooltip_3":            "from the physical world, but are",
+  "item.mcda.ghostly_armor.tooltip_4":            "quickly snapped back to reality.",
+
+  "item.mcda.ghost_kindler_helmet":               "Ghost Kindler Helmet",
+  "item.mcda.ghost_kindler_chestplate":           "Ghost Kindler Gambison",
+  "item.mcda.ghost_kindler_leggings":             "Ghost Kindler Leggings",
+  "item.mcda.ghost_kindler_boots":                "Ghost Kindler Boots",
+
+  "item.mcda.ghost_kindler.tooltip_1":            "Strange flames follow the shifting",
+  "item.mcda.ghost_kindler.tooltip_2":            "form of those who wear the Ghost",
+  "item.mcda.ghost_kindler.tooltip_3":            "Kindler armor.",
+
+  "item.mcda.white_mystery_armor_helmet":         "White Mystery Helmet",
+  "item.mcda.white_mystery_armor_chestplate":     "White Mystery Chestplate",
+  "item.mcda.white_mystery_armor_leggings":       "White Mystery Leggings",
+  "item.mcda.white_mystery_armor_boots":          "White Mystery Boots",
+
+  "item.mcda.mystery_armor.tooltip_1":            "Some blacksmiths see the design",
+  "item.mcda.mystery_armor.tooltip_2":            "influence of Iron Golems in this",
+  "item.mcda.mystery_armor.tooltip_3":            "property-shifting armor.",
+
+  "item.mcda.blue_mystery_armor_helmet":          "Blue Mystery Helmet",
+  "item.mcda.blue_mystery_armor_chestplate":      "Blue Mystery Chestplate",
+  "item.mcda.blue_mystery_armor_leggings":        "Blue Mystery Leggings",
+  "item.mcda.blue_mystery_armor_boots":           "Blue Mystery Boots",
+
+  "item.mcda.green_mystery_armor_helmet":         "Green Mystery Helmet",
+  "item.mcda.green_mystery_armor_chestplate":     "Green Mystery Chestplate",
+  "item.mcda.green_mystery_armor_leggings":       "Green Mystery Leggings",
+  "item.mcda.green_mystery_armor_boots":          "Green Mystery Boots",
+
+  "item.mcda.purple_mystery_armor_helmet":        "Purple Mystery Helmet",
+  "item.mcda.purple_mystery_armor_chestplate":    "Purple Mystery Chestplate",
+  "item.mcda.purple_mystery_armor_leggings":      "Purple Mystery Leggings",
+  "item.mcda.purple_mystery_armor_boots":         "Purple Mystery Boots",
+
+  "item.mcda.red_mystery_armor_helmet":           "Red Mystery Helmet",
+  "item.mcda.red_mystery_armor_chestplate":       "Red Mystery Chestplate",
+  "item.mcda.red_mystery_armor_leggings":         "Red Mystery Leggings",
+  "item.mcda.red_mystery_armor_boots":            "Red Mystery Boots",
+
+  "item.mcda.scale_mail_chestplate":              "Scale Mail Chestplate",
+  "item.mcda.scale_mail_leggings":                "Scale Mail Leggings",
+  "item.mcda.scale_mail_boots":                   "Scale Mail Boots",
+
+  "item.mcda.scale_mail.tooltip_1":               "This armor, crafted near the shores",
+  "item.mcda.scale_mail.tooltip_2":               "of a great sea, was inspired by the",
+  "item.mcda.scale_mail.tooltip_3":               "scales of fish.",
+
+  "item.mcda.highland_armor_helmet":              "Highland Helmet",
+  "item.mcda.highland_armor_chestplate":          "Highland Chestplate",
+  "item.mcda.highland_armor_leggings":            "Highland Leggings",
+  "item.mcda.highland_armor_boots":               "Highland Boots",
+
+  "item.mcda.highland_armor.tooltip_1":           "A wise armorer made this armor with care,",
+  "item.mcda.highland_armor.tooltip_2":           "it has elements of the mountain Villagers.",
+
+  "item.mcda.snow_armor_helmet":                  "Snow Helmet",
+  "item.mcda.snow_armor_chestplate":              "Snow Chestplate",
+  "item.mcda.snow_armor_leggings":                "Snow Leggings",
+  "item.mcda.snow_armor_boots":                   "Snow Boots",
+
+  "item.mcda.snow_armor.tooltip_1":               "A suit of armor that was tempered in",
+  "item.mcda.snow_armor.tooltip_2":               "snowmelt, protecting the wearer from",
+  "item.mcda.snow_armor.tooltip_3":               "the harsh cold of the tundra.",
+
+  "item.mcda.frost_armor_helmet":                 "Frost Helmet",
+  "item.mcda.frost_armor_chestplate":             "Frost Chestplate",
+  "item.mcda.frost_armor_leggings":               "Frost Leggings",
+  "item.mcda.frost_armor_boots":                  "Frost Boots",
+
+  "item.mcda.frost_armor.tooltip_1":              "This legendary armor, forged from ice",
+  "item.mcda.frost_armor.tooltip_2":              "that never melts, makes the wearer",
+  "item.mcda.frost_armor.tooltip_3":              "feel as if they are one with winter.",
+
+  "item.mcda.soul_robe_helmet":                   "Soul Hood",
+  "item.mcda.soul_robe_chestplate":               "Soul Robe",
+  "item.mcda.soul_robe_leggings":                 "Soul Leggings",
+  "item.mcda.soul_robe_boots":                    "Soul Boots",
+
+  "item.mcda.soul_robe.tooltip_1":                "In a particular light, the souls",
+  "item.mcda.soul_robe.tooltip_2":                "woven into the cloth of the Soul",
+  "item.mcda.soul_robe.tooltip_3":                "Robe shimmer with power.",
+
+  "item.mcda.souldancer_robe_helmet":             "Souldancer's Hood",
+  "item.mcda.souldancer_robe_chestplate":         "Souldancer's Robe",
+  "item.mcda.souldancer_robe_leggings":           "Souldancer's Leggings",
+  "item.mcda.souldancer_robe_boots":              "Souldancer's Boots",
+
+  "item.mcda.souldancer_robe.tooltip_1":          "The Souldancer Robe comes alive",
+  "item.mcda.souldancer_robe.tooltip_2":          "in the light, as if the souls",
+  "item.mcda.souldancer_robe.tooltip_3":          "within are dancing for all eternity.",
+
+  "item.mcda.spelunker_armor_helmet":             "Spelunker Helmet",
+  "item.mcda.spelunker_armor_chestplate":         "Spelunker Vest",
+  "item.mcda.spelunker_armor_leggings":           "Spelunker Leggings",
+  "item.mcda.spelunker_armor_boots":              "Spelunker Boots",
+
+  "item.mcda.spelunker_armor.tooltip_1":          "The Spelunker Armor is worn by those",
+  "item.mcda.spelunker_armor.tooltip_2":          "who brave the darkest depths of the",
+  "item.mcda.spelunker_armor.tooltip_3":          "Overworld.",
+
+  "item.mcda.cave_crawler_helmet":                "Cave Crawler Helmet",
+  "item.mcda.cave_crawler_chestplate":            "Cave Crawler Vest",
+  "item.mcda.cave_crawler_leggings":              "Cave Crawler Leggings",
+  "item.mcda.cave_crawler_boots":                 "Cave Crawler Boots",
+
+  "item.mcda.cave_crawler.tooltip_1":             "The Cave Crawler armor has been passed",
+  "item.mcda.cave_crawler.tooltip_2":             "down through generations of brave",
+  "item.mcda.cave_crawler.tooltip_3":             "spelunkers and miners.",
+
+  "item.mcda.thief_armor_helmet":                 "Thief's Mask",
+  "item.mcda.thief_armor_chestplate":             "Thief's Vest",
+  "item.mcda.thief_armor_leggings":               "Thief's Leggings",
+  "item.mcda.thief_armor_boots":                  "Thief's Boots",
+
+  "item.mcda.thief_armor.tooltip_1":              "This armor is light, nimble, and",
+  "item.mcda.thief_armor.tooltip_2":              "smells faintly of sulfur.",
+
+  "item.mcda.spider_armor_helmet":                "Spider Mask",
+  "item.mcda.spider_armor_chestplate":            "Spider Vest",
+  "item.mcda.spider_armor_leggings":              "Spider Leggings",
+  "item.mcda.spider_armor_boots":                 "Spider Boots",
+
+  "item.mcda.spider_armor.tooltip_1":             "Spider Armor, created by master",
+  "item.mcda.spider_armor.tooltip_2":             "thieves, is inspired by the agile",
+  "item.mcda.spider_armor.tooltip_3":             "talents of the Spider.",
+
+  "item.mcda.wolf_armor_helmet":                  "Wolf Hood",
+  "item.mcda.wolf_armor_chestplate":              "Wolf Vest",
+  "item.mcda.wolf_armor_leggings":                "Wolf Leggings",
+  "item.mcda.wolf_armor_boots":                   "Wolf Boots",
+
+  "item.mcda.wolf_armor.tooltip_1":               "Many warriors wear the heads of",
+  "item.mcda.wolf_armor.tooltip_2":               "wolves into battle to strike fear",
+  "item.mcda.wolf_armor.tooltip_3":               "into the hearts of their enemies.",
+
+  "item.mcda.fox_armor_helmet":                   "Fox Hood",
+  "item.mcda.fox_armor_chestplate":               "Fox Vest",
+  "item.mcda.fox_armor_leggings":                 "Fox Leggings",
+  "item.mcda.fox_armor_boots":                    "Fox Boots",
+
+  "item.mcda.fox_armor.tooltip_1":                "Ancient Villager tribes created this",
+  "item.mcda.fox_armor.tooltip_2":                "armore to honor the fox, who is a great",
+  "item.mcda.fox_armor.tooltip_3":                "and agile warrior. This piece strikes",
+  "item.mcda.fox_armor.tooltip_4":                "terror into the hearts of many enemies",
+  "item.mcda.fox_armor.tooltip_5":                "as it has a reputation for being quite",
+  "item.mcda.fox_armor.tooltip_6":                "difficult to pierce.",
+
+  "item.mcda.black_wolf_armor_helmet":            "Black Wolf Hood",
+  "item.mcda.black_wolf_armor_chestplate":        "Black Wolf Vest",
+  "item.mcda.black_wolf_armor_leggings":          "Black Wolf Leggings",
+  "item.mcda.black_wolf_armor_boots":             "Black Wolf Boots",
+
+  "item.mcda.black_wolf_armor.tooltip_1":         "The wolf who strikes from the",
+  "item.mcda.black_wolf_armor.tooltip_2":         "shadows lives to tell the tale."
 }

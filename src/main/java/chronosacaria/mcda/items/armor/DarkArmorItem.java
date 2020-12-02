@@ -29,15 +29,21 @@ public class DarkArmorItem extends ArmorItem {
             UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"),
             UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
 
+    private final boolean base;
     private final boolean unique;
+    private final boolean unique2;
     private final int protection;
     private final float toughness;
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
-    public DarkArmorItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings, boolean unique,
+    public DarkArmorItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings, boolean base,
+                         boolean unique,
+                         boolean unique2,
                             String id){
         super(armorMaterial, slot, settings);
+        this.base = base;
         this.unique = unique;
+        this.unique2 = unique2;
 
         this.protection = armorMaterial.getProtectionAmount(slot);
         this.toughness = armorMaterial.getToughness();
@@ -52,20 +58,14 @@ public class DarkArmorItem extends ArmorItem {
             builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uuid, "Armor knockback resistance",
                     (double) this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
-        if(this.unique){
+        if(this.unique || this.unique2){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid, "Armor attack " +
                     "damage boost",
-                    0.2D * 0.5D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    0.025D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
         this.attributeModifiers = builder.build();
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, id), this);
     }
-
-    /*@Override
-    public String getArmourTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type){
-        if (this.unique) return Mcda.MOD_ID + ":textures/models/armor/archers_armor.png";
-        return Mcda.MOD_ID + ":textures/models/armor/hunters_armor.png";
-    }*/
 
     @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot){
@@ -82,14 +82,19 @@ public class DarkArmorItem extends ArmorItem {
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext){
         super.appendTooltip(itemStack, world, tooltip, tooltipContext);
 
+        if (this.base){
+            tooltip.add(new TranslatableText("item.mcda.dark_armor.tooltip_1"));
+            tooltip.add(new TranslatableText("item.mcda.dark_armor.tooltip_2"));
+            tooltip.add(new TranslatableText("item.mcda.dark_armor.tooltip_3"));
+        }
         if(this.unique) {
             tooltip.add(new TranslatableText("item.mcda.titans_shroud.tooltip_1"));
             tooltip.add(new TranslatableText("item.mcda.titans_shroud.tooltip_2"));
         }
-        else {
-            tooltip.add(new TranslatableText("item.mcda.dark_armor.tooltip_1"));
-            tooltip.add(new TranslatableText("item.mcda.dark_armor.tooltip_2"));
-            tooltip.add(new TranslatableText("item.mcda.dark_armor.tooltip_3"));
+        if (this.unique2){
+            tooltip.add(new TranslatableText("item.mcda.royal_guard_armor.tooltip_1"));
+            tooltip.add(new TranslatableText("item.mcda.royal_guard_armor.tooltip_2"));
+            tooltip.add(new TranslatableText("item.mcda.royal_guard_armor.tooltip_3"));
 
         }
     }
