@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BGB",
+    "BGB",
+    "B B"
+  ],
+  "key": {
+    "B": {
+      "item": "mcda:fabric_bolt_blue"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "item": "mcda:evocation_robe_leggings",
+    "count": 1
+  }
+}

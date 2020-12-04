@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "L L",
+    "LAL",
+    "LLL"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:arrow"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "mcda:hunters_chestplate",
+    "count": 1
+  }
+}

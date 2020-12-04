@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "H H",
+    "HCH",
+    "HHH"
+  ],
+  "key": {
+    "H": {
+      "item": "minecraft:honey_block"
+    },
+    "C": {
+      "item": "minecraft:bee_nest"
+    }
+  },
+  "result": {
+    "item": "mcda:beenest_armor_chestplate",
+    "count": 1
+  }
+}

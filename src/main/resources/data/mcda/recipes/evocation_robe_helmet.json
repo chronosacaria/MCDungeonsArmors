@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "BBB",
+    "LGL"
+  ],
+  "key": {
+    "B": {
+      "item": "mcda:fabric_bolt_blue"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "item": "mcda:evocation_robe_helmet",
+    "count": 1
+  }
+}

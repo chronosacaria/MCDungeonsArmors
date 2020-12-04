@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OOO",
+    "O O",
+    "   "
+  ],
+  "key": {
+    "O": {
+      "item": "mcda:ocelot_pelt"
+    }
+  },
+  "result": {
+    "item": "mcda:ocelot_armor_helmet",
+    "count": 1
+  }
+}

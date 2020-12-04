@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "mcda",
   "version": "${version}",
-  "name": "Mcda",
+  "name": "MC Dungeons Armors",
   "description": "Bringing the armour of Minecraft Dungeons to Minecraft",
   "authors": [
     "chronosacaria"
@@ -25,6 +25,6 @@
   "depends": {
     "fabricloader": ">=0.10.5+build.213",
     "fabric": "*",
-    "minecraft": "1.16.3"
+    "minecraft": "1.16.*"
   }
 }

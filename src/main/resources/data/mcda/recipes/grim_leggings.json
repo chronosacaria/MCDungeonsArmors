@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BRB",
+    "BLB",
+    "B B"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:bone"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "R": {
+      "item": "mcda:bone_rib_cage"
+    }
+  },
+  "result": {
+    "item": "mcda:grim_armor_leggings",
+    "count": 1
+  }
+}

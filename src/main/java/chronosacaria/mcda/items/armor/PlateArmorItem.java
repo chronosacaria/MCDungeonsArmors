@@ -66,7 +66,7 @@ public class PlateArmorItem extends ArmorItem {
         if(this.unique){
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
                     "Armor movement speed detriment",
-                    0.01875D * (-1.0D), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    0.025D * (-1.0D), EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
         if(this.base){
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,

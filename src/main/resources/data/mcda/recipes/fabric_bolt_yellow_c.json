@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "WWW",
+    "WWW"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "minecraft:yellow_wool"
+    }
+  },
+  "result": {
+    "item": "mcda:fabric_bolt_yellow",
+    "count": 3
+  }
+}
