@@ -92,6 +92,7 @@ public class ArmorsInit {
     public static Item CURIOUS_BOOTS;
 
     public static Item HUNTERS_CHESTPLATE;
+
     public static Item ARCHERS_HELMET;
     public static Item ARCHERS_CHESTPLATE;
     public static Item ARCHERS_LEGGINGS;
@@ -137,25 +138,25 @@ public class ArmorsInit {
     public static Item RED_MYSTERY_ARMOR_LEGGINGS;
     public static Item RED_MYSTERY_ARMOR_BOOTS;
 
-    public static Item SHADOW_WALKER_HELMET;
-    public static Item SHADOW_WALKER_CHESTPLATE;
-    public static Item SHADOW_WALKER_LEGGINGS;
-    public static Item SHADOW_WALKER_BOOTS;
-
     public static Item OCELOT_HELMET;
     public static Item OCELOT_CHESTPLATE;
     public static Item OCELOT_LEGGINGS;
     public static Item OCELOT_BOOTS;
 
-    public static Item FROST_BITE_HELMET;
-    public static Item FROST_BITE_CHESTPLATE;
-    public static Item FROST_BITE_LEGGINGS;
-    public static Item FROST_BITE_BOOTS;
+    public static Item SHADOW_WALKER_HELMET;
+    public static Item SHADOW_WALKER_CHESTPLATE;
+    public static Item SHADOW_WALKER_LEGGINGS;
+    public static Item SHADOW_WALKER_BOOTS;
 
     public static Item PHANTOM_HELMET;
     public static Item PHANTOM_CHESTPLATE;
     public static Item PHANTOM_LEGGINGS;
     public static Item PHANTOM_BOOTS;
+
+    public static Item FROST_BITE_HELMET;
+    public static Item FROST_BITE_CHESTPLATE;
+    public static Item FROST_BITE_LEGGINGS;
+    public static Item FROST_BITE_BOOTS;
 
     public static Item PLATE_HELMET;
     public static Item PLATE_CHESTPLATE;
@@ -241,10 +242,12 @@ public class ArmorsInit {
                 new Item.Settings().group(Mcda.ARMORS), false, "battle_robe_chestplate");
         BATTLE_ROBE_LEGGINGS = new BattleRobeArmorItem(ArmorBases.BATTLE, EquipmentSlot.LEGS,
                 new Item.Settings().group(Mcda.ARMORS), false, "battle_robe_leggings");
+
         SPLENDID_ROBE_CHESTPLATE = new BattleRobeArmorItem(ArmorBases.SPLENDID, EquipmentSlot.CHEST,
                 new Item.Settings().group(Mcda.ARMORS), true, "splendid_robe_chestplate");
         SPLENDID_ROBE_LEGGINGS = new BattleRobeArmorItem(ArmorBases.SPLENDID, EquipmentSlot.LEGS,
                 new Item.Settings().group(Mcda.ARMORS), true, "splendid_robe_leggings");
+
         BEEHIVE_ARMOR_HELMET = new BeehiveArmorItem(ArmorBases.BEEHIVE, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), true, false, "beehive_armor_helmet");
         BEEHIVE_ARMOR_CHESTPLATE = new BeehiveArmorItem(ArmorBases.BEEHIVE, EquipmentSlot.CHEST,
@@ -253,6 +256,7 @@ public class ArmorsInit {
                 new Item.Settings().group(Mcda.ARMORS), true, false, "beehive_armor_leggings");
         BEEHIVE_ARMOR_BOOTS = new BeehiveArmorItem(ArmorBases.BEEHIVE, EquipmentSlot.FEET,
                 new Item.Settings().group(Mcda.ARMORS), true, false, "beehive_armor_boots");
+
         BEENEST_ARMOR_HELMET = new BeehiveArmorItem(ArmorBases.BEENEST, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), false, true, "beenest_armor_helmet");
         BEENEST_ARMOR_CHESTPLATE = new BeehiveArmorItem(ArmorBases.BEENEST, EquipmentSlot.CHEST,

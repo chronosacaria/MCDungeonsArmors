@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "P P",
+    "P P"
+  ],
+  "key": {
+    "P": {
+      "item": "mcda:phantom_skin"
+    }
+  },
+  "result": {
+    "item": "mcda:phantom_armor_leggings",
+    "count": 1
+  }
+}

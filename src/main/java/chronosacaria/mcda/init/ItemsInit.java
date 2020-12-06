@@ -13,6 +13,7 @@ public class ItemsInit {
     public static final Item OCELOT_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item BLACK_OCELOT_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item IRON_PLATE = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item IRON_SCALE = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item WOLF_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item BLACK_WOLF_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item FOX_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
@@ -50,6 +51,7 @@ public class ItemsInit {
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "frost_crystal"), FROST_CRYSTAL);
 
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "iron_plate"), IRON_PLATE);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "iron_scale"), IRON_SCALE);
 
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fabric_bolt_white"), BOLT_OF_FABRIC_WHITE);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fabric_bolt_orange"), BOLT_OF_FABRIC_ORANGE);

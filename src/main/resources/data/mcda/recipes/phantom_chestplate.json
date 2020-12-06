@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  L",
+    " L ",
+    "LPP"
+  ],
+  "key": {
+    "P": {
+      "item": "mcda:phantom_bones"
+    },
+    "L": {
+      "item": "mcda:phantom_skin"
+    }
+  },
+  "result": {
+    "item": "mcda:phantom_armor_chestplate",
+    "count": 1
+  }
+}

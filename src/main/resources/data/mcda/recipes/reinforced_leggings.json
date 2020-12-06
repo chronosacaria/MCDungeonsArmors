@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PIP",
+    " P ",
+    "   "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_leggings"
+    },
+    "P": {
+      "item": "mcda:iron_plate"
+    }
+  },
+  "result": {
+    "item": "mcda:reinforced_mail_leggings",
+    "count": 1
+  }
+}

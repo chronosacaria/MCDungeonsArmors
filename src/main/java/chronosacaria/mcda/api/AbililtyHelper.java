@@ -1,4 +1,4 @@
-package chronosacaria.mcda.util;
+package chronosacaria.mcda.api;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.LivingEntity;

@@ -141,6 +141,18 @@ public class LootInit {
                 supplier.pool(poolBuilder);
             }
 
+            /* * * * * * * * * *|
+            | EVOKER LOOT TABLE |
+            |* * * * * * * * * */
+            if ("minecraft:entities/evoker".equals(id.toString())){
+                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
+                        .rolls(BinomialLootTableRange.create(1,0.10F))
+                        .with(ItemEntry.builder(ArmorsInit.EVOCATION_ROBE_CHESTPLATE))
+                        .rolls(BinomialLootTableRange.create(1,0.10F))
+                        .with(ItemEntry.builder(ArmorsInit.EVOCATION_ROBE_LEGGINGS));
+                supplier.pool(poolBuilder);
+            }
+
             /* * * * * * * * * * *|
             | BLUE ICE LOOT TABLE |
             |* * * * * * * * * * */
@@ -228,6 +240,16 @@ public class LootInit {
                         .with(ItemEntry.builder(ArmorsInit.PLATE_CHESTPLATE))
                         .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.PLATE_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .with(ItemEntry.builder(ArmorsInit.FULL_METAL_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .with(ItemEntry.builder(ArmorsInit.FULL_METAL_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .with(ItemEntry.builder(ArmorsInit.FULL_METAL_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .with(ItemEntry.builder(ArmorsInit.FULL_METAL_HELMET))
+
                         .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.WOLF_ARMOR_BOOTS))
                         .rolls(new BinomialLootTableRange(1, 0.05F))
@@ -236,6 +258,16 @@ public class LootInit {
                         .with(ItemEntry.builder(ArmorsInit.WOLF_ARMOR_CHESTPLATE))
                         .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.WOLF_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .with(ItemEntry.builder(ArmorsInit.FOX_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .with(ItemEntry.builder(ArmorsInit.FOX_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .with(ItemEntry.builder(ArmorsInit.FOX_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .with(ItemEntry.builder(ArmorsInit.FOX_ARMOR_HELMET))
+
                         .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.REINFORCED_MAIL_BOOTS))
                         .rolls(new BinomialLootTableRange(1, 0.05F))
@@ -244,7 +276,15 @@ public class LootInit {
                         .with(ItemEntry.builder(ArmorsInit.REINFORCED_MAIL_CHESTPLATE))
                         .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.REINFORCED_MAIL_HELMET))
-                        .rolls(new BinomialLootTableRange(1, 0.05F));
+
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .with(ItemEntry.builder(ArmorsInit.STALWART_MAIL_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .with(ItemEntry.builder(ArmorsInit.STALWART_MAIL_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .with(ItemEntry.builder(ArmorsInit.STALWART_MAIL_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .with(ItemEntry.builder(ArmorsInit.STALWART_MAIL_HELMET));
                 supplier.pool(poolBuilder);
             }
 

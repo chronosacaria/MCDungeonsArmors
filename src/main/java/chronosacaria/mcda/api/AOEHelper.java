@@ -1,5 +1,6 @@
-package chronosacaria.mcda.util;
+package chronosacaria.mcda.api;
 
+import chronosacaria.mcda.api.AbililtyHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;

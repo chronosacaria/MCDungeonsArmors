@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "PIP",
+    "   "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_boots"
+    },
+    "P": {
+      "item": "mcda:iron_plate"
+    }
+  },
+  "result": {
+    "item": "mcda:reinforced_mail_boots",
+    "count": 1
+  }
+}

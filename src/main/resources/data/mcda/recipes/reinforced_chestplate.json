@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "PIP",
+    " P "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_chestplate"
+    },
+    "P": {
+      "item": "mcda:iron_plate"
+    }
+  },
+  "result": {
+    "item": "mcda:reinforced_mail_chestplate",
+    "count": 1
+  }
+}

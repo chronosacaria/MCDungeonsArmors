@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OOO",
+    "O O",
+    "O O"
+  ],
+  "key": {
+    "O": {
+      "item": "mcda:wolf_pelt"
+    }
+  },
+  "result": {
+    "item": "mcda:wolf_armor_boots",
+    "count": 1
+  }
+}

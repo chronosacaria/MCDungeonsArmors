@@ -80,15 +80,15 @@ public enum ArmorBases implements ArmorMaterial {
     /* * * * |
     | FABRIC |
     | * * * */
-    BATTLE("battle", 5, new int[]{1,4,5,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
+    BATTLE("battle", 5, new int[]{1,2,3,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    SPLENDID("splendid", 5, new int[]{1,5,6,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
+    SPLENDID("splendid", 5, new int[]{2,3,3,2},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    EVOCATION("evocation", 5, new int[]{1,4,5,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
+    EVOCATION("evocation", 5, new int[]{1,3,3,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    EMBER("ember", 5, new int[]{1,5,6,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
+    EMBER("ember", 5, new int[]{1,3,3,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    VERDANT("verdant", 5, new int[]{1,5,6,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
+    VERDANT("verdant", 5, new int[]{1,3,3,1},25,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
     THIEF("thief", 5, new int[]{2,4,5,2},15,SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
@@ -114,7 +114,7 @@ public enum ArmorBases implements ArmorMaterial {
     /* * * * * * *|
     | LIGHT PLATE |
     |* * * * * * */
-    SCALE_MAIL("scale", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0.0f,0.0f,
+    SCALE_MAIL("scale", 14, new int[]{2,3,3,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
     HIGHLAND("highland", 14, new int[]{2,5,6,2},9,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
@@ -133,23 +133,23 @@ public enum ArmorBases implements ArmorMaterial {
     /* * * * * * * |
     | MEDIUM PLATE |
     | * * * * * * */
-    REINFORCED_MAIL("reinforced", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,0.0f,0.0f,
+    REINFORCED_MAIL("reinforced", 30, new int[]{3,4,6,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    STALWART_MAIL("stalwart", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,0.0f,0.0f,
+    STALWART_MAIL("stalwart", 30, new int[]{3,5,7,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    GUARDS("guards", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0f,0.0f,
+    GUARDS("guards", 30, new int[]{3,5,7,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    CURIOUS("curious", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0f,0.0f,
+    CURIOUS("curious", 30, new int[]{3,5,7,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    SNOW("snow", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
+    SNOW("snow", 30, new int[]{3,5,7,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    FROST("frost", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
+    FROST("frost", 30, new int[]{3,5,7,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    MERCENARY("mercenary", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
+    MERCENARY("mercenary", 30, new int[]{3,5,7,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    RENEGADE("renegade", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
+    RENEGADE("renegade", 30, new int[]{3,5,7,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    HUNGRY_HORROR("hungryhorror", 30, new int[]{3,6,8,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
+    HUNGRY_HORROR("hungryhorror", 30, new int[]{3,5,7,3},9,SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f,0.0f,
             () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
 
     /* * * * * * *|

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "P P",
+    "PLP",
+    "   "
+  ],
+  "key": {
+    "P": {
+      "item": "mcda:phantom_bones"
+    },
+    "L": {
+      "item": "mcda:phantom_skin"
+    }
+  },
+  "result": {
+    "item": "mcda:phantom_armor_helmet",
+    "count": 1
+  }
+}

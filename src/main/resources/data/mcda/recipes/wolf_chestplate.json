@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "O O",
+    "OOO",
+    "OOO"
+  ],
+  "key": {
+    "O": {
+      "item": "mcda:wolf_pelt"
+    }
+  },
+  "result": {
+    "item": "mcda:wolf_armor_chestplate",
+    "count": 1
+  }
+}
