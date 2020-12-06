@@ -168,21 +168,22 @@ public class LootInit {
             |* * * * * * * * * * */
             if (bastionLootTable(id)){
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
                         .with(ItemEntry.builder(ArmorsInit.GHOST_KINDLER_BOOTS))
-                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
                         .with(ItemEntry.builder(ArmorsInit.GHOST_KINDLER_LEGGINGS))
-                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
                         .with(ItemEntry.builder(ArmorsInit.GHOST_KINDLER_CHESTPLATE))
-                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .rolls(new BinomialLootTableRange(1, 0.01F))
                         .with(ItemEntry.builder(ArmorsInit.GHOST_KINDLER_HELMET))
-                        .rolls(new BinomialLootTableRange(1, 0.01F))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.GHOSTLY_ARMOR_BOOTS))
-                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.GHOSTLY_ARMOR_LEGGINGS))
-                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.GHOSTLY_ARMOR_CHESTPLATE))
-                        .rolls(new BinomialLootTableRange(1, 0.01F))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.GHOSTLY_ARMOR_HELMET));
                 supplier.pool(poolBuilder);
             }
@@ -216,6 +217,7 @@ public class LootInit {
                         .with(ItemEntry.builder(ArmorsInit.DARK_CHESTPLATE))
                         .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.DARK_HELMET))
+
                         .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.THIEF_ARMOR_BOOTS))
                         .rolls(new BinomialLootTableRange(1, 0.05F))
@@ -249,6 +251,15 @@ public class LootInit {
                         .with(ItemEntry.builder(ArmorsInit.FULL_METAL_CHESTPLATE))
                         .rolls(new BinomialLootTableRange(1, 0.01F))
                         .with(ItemEntry.builder(ArmorsInit.FULL_METAL_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.03F))
+                        .with(ItemEntry.builder(ArmorsInit.SNOW_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.03F))
+                        .with(ItemEntry.builder(ArmorsInit.SNOW_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.03F))
+                        .with(ItemEntry.builder(ArmorsInit.SNOW_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.03F))
+                        .with(ItemEntry.builder(ArmorsInit.SNOW_ARMOR_HELMET))
 
                         .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.WOLF_ARMOR_BOOTS))
@@ -299,6 +310,7 @@ public class LootInit {
                         .with(ItemEntry.builder(ArmorsInit.SCALE_MAIL_LEGGINGS))
                         .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.SCALE_MAIL_CHESTPLATE))
+
                         .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.MERCENARY_BOOTS))
                         .rolls(new BinomialLootTableRange(1, 0.05F))
@@ -323,6 +335,7 @@ public class LootInit {
                         .with(ItemEntry.builder(ArmorsInit.SPELUNKER_ARMOR_CHESTPLATE))
                         .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.SPELUNKER_ARMOR_HELMET))
+
                         .rolls(new BinomialLootTableRange(1, 0.01F))
                         .with(ItemEntry.builder(ArmorsInit.CAVE_CRAWLER_BOOTS))
                         .rolls(new BinomialLootTableRange(1, 0.01F))

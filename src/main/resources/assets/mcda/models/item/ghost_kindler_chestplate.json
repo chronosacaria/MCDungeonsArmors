@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mcda:item/ghostly_armor_chestplate"
+    "layer0": "mcda:item/ghost_kindler_chestplate"
   }
 }

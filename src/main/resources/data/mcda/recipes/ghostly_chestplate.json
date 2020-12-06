@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I I",
+    "UUU",
+    "LIL"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "U": {
+      "item": "mcda:fabric_bolt_blue"
+    }
+  },
+  "result": {
+    "item": "mcda:ghostly_armor_chestplate",
+    "count": 1
+  }
+}

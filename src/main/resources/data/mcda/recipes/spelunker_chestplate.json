@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I I",
+    "OBO",
+    "BOB"
+  ],
+  "key": {
+    "B": {
+      "item": "mcda:fabric_bolt_blue"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "O": {
+      "item": "mcda:fabric_bolt_orange"
+    }
+  },
+  "result": {
+    "item": "mcda:spelunker_armor_chestplate",
+    "count": 1
+  }
+}

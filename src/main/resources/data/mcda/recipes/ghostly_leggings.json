@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "UUU",
+    "BLB",
+    "I I"
+  ],
+  "key": {
+    "B": {
+      "item": "mcda:fabric_bolt_black"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "U": {
+      "item": "mcda:fabric_bolt_blue"
+    }
+  },
+  "result": {
+    "item": "mcda:ghostly_armor_boots",
+    "count": 1
+  }
+}

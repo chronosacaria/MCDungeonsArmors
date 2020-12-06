@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " T ",
+    "LLL",
+    "L L"
+  ],
+  "key": {
+    "T": {
+      "item": "minecraft:torch"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "mcda:spelunker_armor_helmet",
+    "count": 1
+  }
+}

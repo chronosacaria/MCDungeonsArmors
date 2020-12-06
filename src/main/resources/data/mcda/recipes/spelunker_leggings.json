@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "BLB",
+    "I I"
+  ],
+  "key": {
+    "B": {
+      "item": "mcda:fabric_bolt_blue"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "mcda:spelunker_armor_leggings",
+    "count": 1
+  }
+}

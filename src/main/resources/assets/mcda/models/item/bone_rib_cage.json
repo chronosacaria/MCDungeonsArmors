@@ -1,0 +1,6 @@
+{
+  "parent": "builtin/generated",
+  "textures": {
+    "layer0": "mcda:item/bone_rib_cage"
+  }
+}
