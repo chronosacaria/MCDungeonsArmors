@@ -20,7 +20,7 @@
     ]
   },
   "mixins": [
-    "mixins.mcda.json"
+
   ],
   "depends": {
     "fabricloader": ">=0.10.5+build.213",
