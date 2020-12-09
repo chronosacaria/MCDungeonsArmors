@@ -12,12 +12,15 @@ public class ItemsInit {
     public static final Item PHANTOM_SKIN = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item OCELOT_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item BLACK_OCELOT_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
-    public static final Item IRON_PLATE = new Item(new Item.Settings().group(ItemGroup.MISC));
-    public static final Item IRON_SCALE = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item WOLF_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item BLACK_WOLF_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item FOX_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
+
     public static final Item FROST_CRYSTAL = new Item(new Item.Settings().group(ItemGroup.MISC));
+
+    public static final Item GLUT_CHARM = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item IRON_PLATE = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item IRON_SCALE = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item BOLT_OF_FABRIC_WHITE = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item BOLT_OF_FABRIC_BLACK = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item BOLT_OF_FABRIC_RED = new Item(new Item.Settings().group(ItemGroup.MISC));
@@ -35,10 +38,27 @@ public class ItemsInit {
     public static final Item BOLT_OF_FABRIC_MAGENTA = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item BOLT_OF_FABRIC_ORANGE = new Item(new Item.Settings().group(ItemGroup.MISC));
 
+    public static final Item UPGRADE_CORE = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_ARCHER = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_DEPTH = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_EMBER = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_FROST = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_GLUT = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_HIGHLAND = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_HIVE = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_METAL = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_SHADOWS = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_SOUL = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_VERDANT = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_WITHER = new Item(new Item.Settings().group(ItemGroup.MISC));
+
+
+
 
 
 
     public static void doRegister() {
+        //MOB DROPS
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "bone_rib_cage"), BONE_RIB_CAGE);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "phantom_bones"), PHANTOM_BONES);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "phantom_skin"), PHANTOM_SKIN);
@@ -48,11 +68,13 @@ public class ItemsInit {
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "wolf_pelt_black"), BLACK_WOLF_PELT);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fox_pelt"), FOX_PELT);
 
+        //BLOCK DROPS
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "frost_crystal"), FROST_CRYSTAL);
 
+        //CRAFTING
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "glut_charm"), GLUT_CHARM);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "iron_plate"), IRON_PLATE);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "iron_scale"), IRON_SCALE);
-
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fabric_bolt_white"), BOLT_OF_FABRIC_WHITE);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fabric_bolt_orange"), BOLT_OF_FABRIC_ORANGE);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fabric_bolt_magenta"), BOLT_OF_FABRIC_MAGENTA);
@@ -69,5 +91,22 @@ public class ItemsInit {
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fabric_bolt_green"), BOLT_OF_FABRIC_GREEN);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fabric_bolt_red"), BOLT_OF_FABRIC_RED);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fabric_bolt_black"), BOLT_OF_FABRIC_BLACK);
+
+        //UPGRADES
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core"), UPGRADE_CORE);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_archer"), UPGRADE_CORE_ARCHER);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_depth"), UPGRADE_CORE_DEPTH);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_ember"), UPGRADE_CORE_EMBER);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_frost"), UPGRADE_CORE_FROST);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_glut"), UPGRADE_CORE_GLUT);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_highland"), UPGRADE_CORE_HIGHLAND);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_hive"), UPGRADE_CORE_HIVE);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_metal"), UPGRADE_CORE_METAL);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_shadows"), UPGRADE_CORE_SHADOWS);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_soul"), UPGRADE_CORE_SOUL);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_verdant"), UPGRADE_CORE_VERDANT);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_wither"), UPGRADE_CORE_WITHER);
+
+
     }
 }

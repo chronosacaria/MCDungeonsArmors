@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ROY",
+    "WNG",
+    "PLB"
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "R": {
+      "item": "mcda:fabric_bolt_red"
+    },
+    "O": {
+      "item": "mcda:fabric_bolt_orange"
+    },
+    "Y": {
+      "item": "mcda:fabric_bolt_yellow"
+    },
+    "G": {
+      "item": "mcda:fabric_bolt_green"
+    },
+    "B": {
+      "item": "mcda:fabric_bolt_blue"
+    },
+    "L": {
+      "item": "mcda:fabric_bolt_cyan"
+    },
+    "P": {
+      "item": "mcda:fabric_bolt_purple"
+    },
+    "W": {
+      "item": "mcda:fabric_bolt_white"
+    }
+  },
+  "result": {
+    "item": "mcda:upgrade_core",
+    "count": 1
+  }
+}

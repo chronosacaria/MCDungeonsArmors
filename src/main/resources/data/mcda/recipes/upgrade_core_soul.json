@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:upgrade_core"
+  },
+  "addition": {
+    "item": "minecraft:soul_sand"
+  },
+  "result": {
+    "item": "mcda:upgrade_core_soul"
+  }
+}

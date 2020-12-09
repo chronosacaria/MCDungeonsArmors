@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:hunters_chestplate"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_archer"
+  },
+  "result": {
+    "item": "mcda:archers_chestplate"
+  }
+}

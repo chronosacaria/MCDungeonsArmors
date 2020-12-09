@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:evocation_robe_chestplate"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_ember"
+  },
+  "result": {
+    "item": "mcda:ember_robe_chestplate"
+  }
+}

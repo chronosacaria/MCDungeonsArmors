@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:upgrade_core"
+  },
+  "addition": {
+    "item": "mcda:iron_scale"
+  },
+  "result": {
+    "item": "mcda:upgrade_core_metal"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:guards_armor_boots"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_curious"
+  },
+  "result": {
+    "item": "mcda:curious_armor_boots"
+  }
+}

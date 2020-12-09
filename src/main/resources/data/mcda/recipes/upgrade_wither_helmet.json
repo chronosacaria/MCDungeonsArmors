@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:grim_armor_helmet"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_wither"
+  },
+  "result": {
+    "item": "mcda:wither_armor_helmet"
+  }
+}

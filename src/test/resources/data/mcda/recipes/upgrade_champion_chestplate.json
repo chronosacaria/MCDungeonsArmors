@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:heroes_armor_chestplate"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_champion"
+  },
+  "result": {
+    "item": "mcda:champions_armor_chestplate"
+  }
+}

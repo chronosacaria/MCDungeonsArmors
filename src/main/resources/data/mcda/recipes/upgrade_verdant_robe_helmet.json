@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:evocation_robe_helmet"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_verdant"
+  },
+  "result": {
+    "item": "mcda:verdant_robe_helmet"
+  }
+}

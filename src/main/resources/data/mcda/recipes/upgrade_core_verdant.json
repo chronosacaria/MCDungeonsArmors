@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:upgrade_core"
+  },
+  "addition": {
+    "tag": "minecraft:saplings"
+  },
+  "result": {
+    "item": "mcda:upgrade_core_verdant"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:beehive_armor_leggings"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_hive"
+  },
+  "result": {
+    "item": "mcda:beenest_armor_leggings"
+  }
+}

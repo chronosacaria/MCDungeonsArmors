@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:mercenary_armor_boots"
+  },
+  "addition": {
+    "item": "mcda:upgrade_glut_core"
+  },
+  "result": {
+    "item": "mcda:hungry_horror_boots"
+  }
+}

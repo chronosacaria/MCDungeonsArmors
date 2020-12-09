@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:ghostly_armor_helmet"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_soul"
+  },
+  "result": {
+    "item": "mcda:ghost_dancer_armor_helmet"
+  }
+}

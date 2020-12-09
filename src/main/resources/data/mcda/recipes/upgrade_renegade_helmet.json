@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:mercenary_armor_helmet"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_metal"
+  },
+  "result": {
+    "item": "mcda:renegade_armor_helmet"
+  }
+}

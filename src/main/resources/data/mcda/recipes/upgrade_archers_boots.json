@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:leather_boots"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_archer"
+  },
+  "result": {
+    "item": "mcda:archers_boots"
+  }
+}
