@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:plate_armor_boots"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_metal"
+  },
+  "result": {
+    "item": "mcda:full_metal_armor_boots"
+  }
+}

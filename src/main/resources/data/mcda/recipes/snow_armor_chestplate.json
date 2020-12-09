@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "BIB",
+    "BBB"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_chestplate"
+    },
+    "B": {
+      "item": "minecraft:snow_block"
+    }
+  },
+  "result": {
+    "item": "mcda:snow_armor_chestplate",
+    "count": 1
+  }
+}

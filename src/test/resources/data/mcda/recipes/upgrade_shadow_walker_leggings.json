@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:ocelot_armor_leggings"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_shadows"
+  },
+  "result": {
+    "item": "mcda:shadow_walker_armor_leggings"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:wolf_armor_boots"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_fox"
+  },
+  "result": {
+    "item": "mcda:fox_armor_boots"
+  }
+}

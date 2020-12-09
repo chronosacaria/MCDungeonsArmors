@@ -81,11 +81,11 @@ public class BeehiveArmorItem extends ArmorItem {
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext){
         super.appendTooltip(itemStack, world, tooltip, tooltipContext);
 
-        if(this.base){
+        if(this.unique){
             tooltip.add(new TranslatableText("item.mcda.beehive_armor.tooltip_1"));
             tooltip.add(new TranslatableText("item.mcda.beehive_armor.tooltip_2"));
         }
-        if(this.unique) {
+        if(this.base) {
             tooltip.add(new TranslatableText("item.mcda.beenest_armor.tooltip_1"));
             tooltip.add(new TranslatableText("item.mcda.beenest_armor.tooltip_2"));
             tooltip.add(new TranslatableText("item.mcda.beenest_armor.tooltip_3"));

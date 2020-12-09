@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:battle_robe_leggings"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_magicked"
+  },
+  "result": {
+    "item": "mcda:splendid_robe_leggings"
+  }
+}

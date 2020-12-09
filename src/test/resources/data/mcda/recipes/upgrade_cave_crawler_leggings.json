@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:spelunker_armor_leggings"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_depth"
+  },
+  "result": {
+    "item": "mcda:cave_crawler_leggings"
+  }
+}

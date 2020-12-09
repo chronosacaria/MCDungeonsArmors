@@ -248,23 +248,24 @@ public class ArmorsInit {
         SPLENDID_ROBE_LEGGINGS = new BattleRobeArmorItem(ArmorBases.SPLENDID, EquipmentSlot.LEGS,
                 new Item.Settings().group(Mcda.ARMORS), true, "splendid_robe_leggings");
 
-        BEEHIVE_ARMOR_HELMET = new BeehiveArmorItem(ArmorBases.BEEHIVE, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, false, "beehive_armor_helmet");
-        BEEHIVE_ARMOR_CHESTPLATE = new BeehiveArmorItem(ArmorBases.BEEHIVE, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), true, false, "beehive_armor_chestplate");
-        BEEHIVE_ARMOR_LEGGINGS = new BeehiveArmorItem(ArmorBases.BEEHIVE, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), true, false, "beehive_armor_leggings");
-        BEEHIVE_ARMOR_BOOTS = new BeehiveArmorItem(ArmorBases.BEEHIVE, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), true, false, "beehive_armor_boots");
-
         BEENEST_ARMOR_HELMET = new BeehiveArmorItem(ArmorBases.BEENEST, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), false, true, "beenest_armor_helmet");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "beenest_armor_helmet");
         BEENEST_ARMOR_CHESTPLATE = new BeehiveArmorItem(ArmorBases.BEENEST, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), false, true, "beenest_armor_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "beenest_armor_chestplate");
         BEENEST_ARMOR_LEGGINGS = new BeehiveArmorItem(ArmorBases.BEENEST, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), false, true, "beenest_armor_leggings");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "beenest_armor_leggings");
         BEENEST_ARMOR_BOOTS = new BeehiveArmorItem(ArmorBases.BEENEST, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), false, true, "beenest_armor_boots");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "beenest_armor_boots");
+
+        BEEHIVE_ARMOR_HELMET = new BeehiveArmorItem(ArmorBases.BEEHIVE, EquipmentSlot.HEAD,
+                new Item.Settings().group(Mcda.ARMORS), false, true, "beehive_armor_helmet");
+        BEEHIVE_ARMOR_CHESTPLATE = new BeehiveArmorItem(ArmorBases.BEEHIVE, EquipmentSlot.CHEST,
+                new Item.Settings().group(Mcda.ARMORS), false, true, "beehive_armor_chestplate");
+        BEEHIVE_ARMOR_LEGGINGS = new BeehiveArmorItem(ArmorBases.BEEHIVE, EquipmentSlot.LEGS,
+                new Item.Settings().group(Mcda.ARMORS), false, true, "beehive_armor_leggings");
+        BEEHIVE_ARMOR_BOOTS = new BeehiveArmorItem(ArmorBases.BEEHIVE, EquipmentSlot.FEET,
+                new Item.Settings().group(Mcda.ARMORS), false, true, "beehive_armor_boots");
+
 
         HEROS_HELMET = new ChampionsArmorItem(ArmorBases.HERO, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), false, "heros_armor_helmet");

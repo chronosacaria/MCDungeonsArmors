@@ -1,12 +1,12 @@
 {
   "type": "minecraft:smithing",
   "base": {
-    "item": "mcda:ghostly_armor_leggings"
+    "item": "mcda:ghostly_armor_chestplate"
   },
   "addition": {
     "item": "mcda:upgrade_core_soul"
   },
   "result": {
-    "item": "mcda:ghost_dancer_armor_leggings"
+    "item": "mcda:ghost_kindler_chestplate"
   }
 }

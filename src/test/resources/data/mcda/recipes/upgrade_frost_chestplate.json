@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:snow_armor_chestplate"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_frost"
+  },
+  "result": {
+    "item": "mcda:frost_armor_chestplate"
+  }
+}

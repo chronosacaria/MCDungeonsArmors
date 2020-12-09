@@ -4,9 +4,9 @@
     "item": "mcda:upgrade_core"
   },
   "addition": {
-    "item": "minecraft:snow_block"
+    "item": "minecraft:glowstone"
   },
   "result": {
-    "item": "mcda:upgrade_core_highland"
+    "item": "mcda:upgrade_core_magicked"
   }
 }

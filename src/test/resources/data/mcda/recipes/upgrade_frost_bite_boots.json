@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:phantom_armor_boots"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_frost"
+  },
+  "result": {
+    "item": "mcda:frost_bite_armor_boots"
+  }
+}

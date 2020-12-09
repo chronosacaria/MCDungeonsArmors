@@ -42,12 +42,15 @@ public class ItemsInit {
     public static final Item UPGRADE_CORE_ARCHER = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item UPGRADE_CORE_DEPTH = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item UPGRADE_CORE_EMBER = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_FOX = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item UPGRADE_CORE_FROST = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item UPGRADE_CORE_GLUT = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item UPGRADE_CORE_HIGHLAND = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item UPGRADE_CORE_HIVE = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_MAGICKED = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item UPGRADE_CORE_METAL = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item UPGRADE_CORE_SHADOWS = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_SPIDER = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item UPGRADE_CORE_SOUL = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item UPGRADE_CORE_VERDANT = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item UPGRADE_CORE_WITHER = new Item(new Item.Settings().group(ItemGroup.MISC));
@@ -97,12 +100,16 @@ public class ItemsInit {
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_archer"), UPGRADE_CORE_ARCHER);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_depth"), UPGRADE_CORE_DEPTH);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_ember"), UPGRADE_CORE_EMBER);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_fox"), UPGRADE_CORE_FOX);
+
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_frost"), UPGRADE_CORE_FROST);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_glut"), UPGRADE_CORE_GLUT);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_highland"), UPGRADE_CORE_HIGHLAND);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_hive"), UPGRADE_CORE_HIVE);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_magicked"), UPGRADE_CORE_MAGICKED);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_metal"), UPGRADE_CORE_METAL);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_shadows"), UPGRADE_CORE_SHADOWS);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_spider"), UPGRADE_CORE_SPIDER);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_soul"), UPGRADE_CORE_SOUL);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_verdant"), UPGRADE_CORE_VERDANT);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_wither"), UPGRADE_CORE_WITHER);

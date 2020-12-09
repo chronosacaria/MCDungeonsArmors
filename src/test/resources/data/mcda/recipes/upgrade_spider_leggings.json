@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:thief_armor_leggings"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_spider"
+  },
+  "result": {
+    "item": "mcda:spider_armor_leggings"
+  }
+}
