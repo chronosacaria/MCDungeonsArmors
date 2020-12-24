@@ -4,7 +4,6 @@ import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.config.McdaBoostsConfig;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
