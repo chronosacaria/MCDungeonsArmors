@@ -19,8 +19,7 @@
       "chronosacaria.mcda.Mcda"
     ]
   },
-  "mixins": [
-
+  "mixin": [
   ],
   "depends": {
     "fabricloader": ">=0.10.5+build.213",

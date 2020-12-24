@@ -57,7 +57,7 @@ public class SpelunkerArmorItem extends ArmorItem {
         }
         if(this.unique){
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
-                    "Armor attack damage boost",
+                    "Armor movement speed boost",
                     0.025D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
 

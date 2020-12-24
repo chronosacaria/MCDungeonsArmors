@@ -1,6 +1,7 @@
 package chronosacaria.mcda.items.armor;
 
 import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.config.McdaBoostsConfig;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
@@ -58,11 +59,39 @@ public class EvocationRobeArmorItem extends ArmorItem {
             builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uuid, "Armor knockback resistance",
                     (double) this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
-        //if(this.unique){
+        if(this.base){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    0.05D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
-        //}
+                    McdaBoostsConfig.config.getEvocationRobeSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getEvocationRobeSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getEvocationRobeSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        }
+        if(this.unique){
+            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getEmberRobeSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getEmberRobeSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getEmberRobeSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        }
+        if(this.unique2){
+            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getVerdantRobeSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getVerdantRobeSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getVerdantRobeSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        }
         this.attributeModifiers = builder.build();
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, id), this);
     }

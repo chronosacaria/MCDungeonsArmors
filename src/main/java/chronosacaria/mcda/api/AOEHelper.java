@@ -2,6 +2,7 @@ package chronosacaria.mcda.api;
 
 import chronosacaria.mcda.api.AbililtyHelper;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleEffect;
@@ -96,6 +97,17 @@ public class AOEHelper {
 
             }
         }
+    }
 
+    public static void burnNearbyEnemies(LivingEntity attacker, float damage, float distance){
+        World world = attacker.getEntityWorld();
+
+        List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class,
+                new Box(attacker.getBlockPos()).expand(distance),
+                (nearbyEntity) -> AbililtyHelper.canApplyToEnemy(attacker, nearbyEntity));
+        if (nearbyEntities.isEmpty()) return;
+        for (LivingEntity nearbyEntity : nearbyEntities){
+            nearbyEntity.damage(DamageSource.ON_FIRE, damage);
+        }
     }
 }

@@ -5,7 +5,6 @@ import chronosacaria.mcda.bases.ArmorBases;
 import chronosacaria.mcda.items.armor.*;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 
 public class ArmorsInit {
     public static Item BATTLE_ROBE_CHESTPLATE;
@@ -44,10 +43,10 @@ public class ArmorsInit {
     public static Item TITANS_LEGGINGS;
     public static Item TITANS_BOOTS;
 
-    //public static Item ROYAL_GUARD_HELMET;
-    //public static Item ROYAL_GUARD_CHESTPLATE;
-    //public static Item ROYAL_GUARD_LEGGINGS;
-    //public static Item ROYAL_GUARD_BOOTS;
+    public static Item ROYAL_GUARD_HELMET;
+    public static Item ROYAL_GUARD_CHESTPLATE;
+    public static Item ROYAL_GUARD_LEGGINGS;
+    public static Item ROYAL_GUARD_BOOTS;
 
     public static Item EVOCATION_ROBE_HELMET;
     public static Item EVOCATION_ROBE_CHESTPLATE;
@@ -232,21 +231,31 @@ public class ArmorsInit {
     public static Item WOLF_ARMOR_LEGGINGS;
     public static Item WOLF_ARMOR_BOOTS;
 
+    public static Item BLACK_WOLF_ARMOR_HELMET;
+    public static Item BLACK_WOLF_ARMOR_CHESTPLATE;
+    public static Item BLACK_WOLF_ARMOR_LEGGINGS;
+    public static Item BLACK_WOLF_ARMOR_BOOTS;
+
     public static Item FOX_ARMOR_HELMET;
     public static Item FOX_ARMOR_CHESTPLATE;
     public static Item FOX_ARMOR_LEGGINGS;
     public static Item FOX_ARMOR_BOOTS;
 
+    public static Item ARCTIC_FOX_ARMOR_HELMET;
+    public static Item ARCTIC_FOX_ARMOR_CHESTPLATE;
+    public static Item ARCTIC_FOX_ARMOR_LEGGINGS;
+    public static Item ARCTIC_FOX_ARMOR_BOOTS;
+
     public static void init() {
         BATTLE_ROBE_CHESTPLATE = new BattleRobeArmorItem(ArmorBases.BATTLE, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), false, "battle_robe_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "battle_robe_chestplate");
         BATTLE_ROBE_LEGGINGS = new BattleRobeArmorItem(ArmorBases.BATTLE, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), false, "battle_robe_leggings");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "battle_robe_leggings");
 
         SPLENDID_ROBE_CHESTPLATE = new BattleRobeArmorItem(ArmorBases.SPLENDID, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), true, "splendid_robe_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "splendid_robe_chestplate");
         SPLENDID_ROBE_LEGGINGS = new BattleRobeArmorItem(ArmorBases.SPLENDID, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), true, "splendid_robe_leggings");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "splendid_robe_leggings");
 
         BEENEST_ARMOR_HELMET = new BeehiveArmorItem(ArmorBases.BEENEST, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), true, false, "beenest_armor_helmet");
@@ -266,24 +275,23 @@ public class ArmorsInit {
         BEEHIVE_ARMOR_BOOTS = new BeehiveArmorItem(ArmorBases.BEEHIVE, EquipmentSlot.FEET,
                 new Item.Settings().group(Mcda.ARMORS), false, true, "beehive_armor_boots");
 
+        CHAMPIONS_HELMET = new ChampionsArmorItem(ArmorBases.CHAMPION, EquipmentSlot.HEAD,
+                new Item.Settings().group(Mcda.ARMORS), true, false, "champions_armor_helmet");
+        CHAMPIONS_CHESTPLATE = new ChampionsArmorItem(ArmorBases.CHAMPION, EquipmentSlot.CHEST,
+                new Item.Settings().group(Mcda.ARMORS), true, false, "champions_armor_chestplate");
+        CHAMPIONS_LEGGINGS = new ChampionsArmorItem(ArmorBases.CHAMPION, EquipmentSlot.LEGS,
+                new Item.Settings().group(Mcda.ARMORS), true, false, "champions_armor_leggings");
+        CHAMPIONS_BOOTS = new ChampionsArmorItem(ArmorBases.CHAMPION, EquipmentSlot.FEET,
+                new Item.Settings().group(Mcda.ARMORS), true, false, "champions_armor_boots");
 
         HEROS_HELMET = new ChampionsArmorItem(ArmorBases.HERO, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), false, "heros_armor_helmet");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "heros_armor_helmet");
         HEROS_CHESTPLATE = new ChampionsArmorItem(ArmorBases.HERO, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), false, "heros_armor_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "heros_armor_chestplate");
         HEROS_LEGGINGS = new ChampionsArmorItem(ArmorBases.HERO, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), false, "heros_armor_leggings");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "heros_armor_leggings");
         HEROS_BOOTS = new ChampionsArmorItem(ArmorBases.HERO, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), false, "heros_armor_boots");
-
-        CHAMPIONS_HELMET = new ChampionsArmorItem(ArmorBases.CHAMPION, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, "champions_armor_helmet");
-        CHAMPIONS_CHESTPLATE = new ChampionsArmorItem(ArmorBases.CHAMPION, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), true, "champions_armor_chestplate");
-        CHAMPIONS_LEGGINGS = new ChampionsArmorItem(ArmorBases.CHAMPION, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), true, "champions_armor_leggings");
-        CHAMPIONS_BOOTS = new ChampionsArmorItem(ArmorBases.CHAMPION, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), true, "champions_armor_boots");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "heros_armor_boots");
 
         DARK_HELMET = new DarkArmorItem(ArmorBases.DARK, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), true, false,false, "dark_armor_helmet");
@@ -304,13 +312,13 @@ public class ArmorsInit {
                 new Item.Settings().group(Mcda.ARMORS), false, true, false, "titans_shroud_boots");
 
         /*ROYAL_GUARD_HELMET = new DarkArmorItem(ArmorBases.ROYAL, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), false, true, false, "royal_guard_helmet");
+                new Item.Settings().group(Mcda.ARMORS), false, false, true, "royal_guard_helmet");
         ROYAL_GUARD_CHESTPLATE = new DarkArmorItem(ArmorBases.ROYAL, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), false, true, false, "royal_guard_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), false, false, true, "royal_guard_chestplate");
         ROYAL_GUARD_LEGGINGS = new DarkArmorItem(ArmorBases.ROYAL, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), false, true, false, "royal_guard_leggings");
+                new Item.Settings().group(Mcda.ARMORS), false, false, true, "royal_guard_leggings");
         ROYAL_GUARD_BOOTS = new DarkArmorItem(ArmorBases.ROYAL, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), false, true, false, "royal_guard_boots");
+                new Item.Settings().group(Mcda.ARMORS), false, false, true, "royal_guard_boots");
         */
 
         EVOCATION_ROBE_HELMET = new EvocationRobeArmorItem(ArmorBases.EVOCATION, EquipmentSlot.HEAD,
@@ -353,52 +361,52 @@ public class ArmorsInit {
                 new Item.Settings().group(Mcda.ARMORS), false, true, "ghost_kindler_boots");
 
         GRIM_HELMET = new GrimArmorItem(ArmorBases.GRIM, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), false, "grim_armor_helmet");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "grim_armor_helmet");
         GRIM_CHESTPLATE = new GrimArmorItem(ArmorBases.GRIM, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), false, "grim_armor_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "grim_armor_chestplate");
         GRIM_LEGGINGS = new GrimArmorItem(ArmorBases.GRIM, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), false, "grim_armor_leggings");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "grim_armor_leggings");
         GRIM_BOOTS = new GrimArmorItem(ArmorBases.GRIM, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), false, "grim_armor_boots");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "grim_armor_boots");
 
         WITHER_HELMET = new GrimArmorItem(ArmorBases.WITHER, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, "wither_armor_helmet");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "wither_armor_helmet");
         WITHER_CHESTPLATE = new GrimArmorItem(ArmorBases.WITHER, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), true, "wither_armor_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "wither_armor_chestplate");
         WITHER_LEGGINGS = new GrimArmorItem(ArmorBases.WITHER, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), true, "wither_armor_leggings");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "wither_armor_leggings");
         WITHER_BOOTS = new GrimArmorItem(ArmorBases.WITHER, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), true, "wither_armor_boots");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "wither_armor_boots");
 
         GUARDS_HELMET = new GuardsArmorItem(ArmorBases.GUARDS, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), false, "guards_armor_helmet");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "guards_armor_helmet");
         GUARDS_CHESTPLATE = new GuardsArmorItem(ArmorBases.GUARDS, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), false, "guards_armor_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "guards_armor_chestplate");
         GUARDS_LEGGINGS = new GuardsArmorItem(ArmorBases.GUARDS, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), false, "guards_armor_leggings");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "guards_armor_leggings");
         GUARDS_BOOTS = new GuardsArmorItem(ArmorBases.GUARDS, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), false, "guards_armor_boots");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "guards_armor_boots");
 
         CURIOUS_HELMET = new GuardsArmorItem(ArmorBases.CURIOUS, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, "curious_armor_helmet");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "curious_armor_helmet");
         CURIOUS_CHESTPLATE = new GuardsArmorItem(ArmorBases.CURIOUS, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), true, "curious_armor_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "curious_armor_chestplate");
         CURIOUS_LEGGINGS = new GuardsArmorItem(ArmorBases.CURIOUS, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), true, "curious_armor_leggings");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "curious_armor_leggings");
         CURIOUS_BOOTS = new GuardsArmorItem(ArmorBases.CURIOUS, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), true, "curious_armor_boots");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "curious_armor_boots");
 
         HUNTERS_CHESTPLATE = new HuntersArmorItem(ArmorBases.HUNTER, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), false, "hunters_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "hunters_chestplate");
 
         ARCHERS_HELMET = new HuntersArmorItem(ArmorBases.ARCHER, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, "archers_helmet");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "archers_helmet");
         ARCHERS_CHESTPLATE = new HuntersArmorItem(ArmorBases.ARCHER, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), true, "archers_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "archers_chestplate");
         ARCHERS_LEGGINGS = new HuntersArmorItem(ArmorBases.ARCHER, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), true, "archers_leggings");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "archers_leggings");
         ARCHERS_BOOTS = new HuntersArmorItem(ArmorBases.ARCHER, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), true, "archers_boots");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "archers_boots");
 
         MERCENARY_HELMET = new MercenaryArmorItem(ArmorBases.MERCENARY, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), true, false, false, "mercenary_armor_helmet");
@@ -473,40 +481,40 @@ public class ArmorsInit {
                 new Item.Settings().group(Mcda.ARMORS), false, false,false,false,true,"red_mystery_armor_boots");
 
         OCELOT_HELMET = new OcelotArmorItem(ArmorBases.OCELOT, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), false, "ocelot_armor_helmet");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "ocelot_armor_helmet");
         OCELOT_CHESTPLATE = new OcelotArmorItem(ArmorBases.OCELOT, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), false, "ocelot_armor_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "ocelot_armor_chestplate");
         OCELOT_LEGGINGS = new OcelotArmorItem(ArmorBases.OCELOT, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), false, "ocelot_armor_leggings");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "ocelot_armor_leggings");
         OCELOT_BOOTS = new OcelotArmorItem(ArmorBases.OCELOT, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), false, "ocelot_armor_boots");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "ocelot_armor_boots");
 
         SHADOW_WALKER_HELMET = new OcelotArmorItem(ArmorBases.SHADOW_WALKER, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, "shadow_walker_armor_helmet");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "shadow_walker_armor_helmet");
         SHADOW_WALKER_CHESTPLATE = new OcelotArmorItem(ArmorBases.SHADOW_WALKER, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), true, "shadow_walker_armor_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "shadow_walker_armor_chestplate");
         SHADOW_WALKER_LEGGINGS = new OcelotArmorItem(ArmorBases.SHADOW_WALKER, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), true, "shadow_walker_armor_leggings");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "shadow_walker_armor_leggings");
         SHADOW_WALKER_BOOTS = new OcelotArmorItem(ArmorBases.SHADOW_WALKER, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), true, "shadow_walker_armor_boots");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "shadow_walker_armor_boots");
 
         PHANTOM_HELMET = new PhantomArmorItem(ArmorBases.PHANTOM, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), false, "phantom_armor_helmet");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "phantom_armor_helmet");
         PHANTOM_CHESTPLATE = new PhantomArmorItem(ArmorBases.PHANTOM, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), false, "phantom_armor_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "phantom_armor_chestplate");
         PHANTOM_LEGGINGS = new PhantomArmorItem(ArmorBases.PHANTOM, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), false, "phantom_armor_leggings");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "phantom_armor_leggings");
         PHANTOM_BOOTS = new PhantomArmorItem(ArmorBases.PHANTOM, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), false, "phantom_armor_boots");
+                new Item.Settings().group(Mcda.ARMORS), true, false, "phantom_armor_boots");
 
         FROST_BITE_HELMET = new PhantomArmorItem(ArmorBases.FROST_BITE, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, "frost_bite_armor_helmet");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "frost_bite_armor_helmet");
         FROST_BITE_CHESTPLATE = new PhantomArmorItem(ArmorBases.FROST_BITE, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), true, "frost_bite_armor_chestplate");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "frost_bite_armor_chestplate");
         FROST_BITE_LEGGINGS = new PhantomArmorItem(ArmorBases.FROST_BITE, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), true, "frost_bite_armor_leggings");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "frost_bite_armor_leggings");
         FROST_BITE_BOOTS = new PhantomArmorItem(ArmorBases.FROST_BITE, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), true, "frost_bite_armor_boots");
+                new Item.Settings().group(Mcda.ARMORS), false, true, "frost_bite_armor_boots");
 
         PLATE_HELMET = new PlateArmorItem(ArmorBases.PLATE, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), true, false, "plate_armor_helmet");
@@ -641,14 +649,37 @@ public class ArmorsInit {
         WOLF_ARMOR_BOOTS = new WolfArmorItem(ArmorBases.WOLF, EquipmentSlot.FEET,
                 new Item.Settings().group(Mcda.ARMORS), true, false, "wolf_armor_boots");
 
-        FOX_ARMOR_HELMET = new WolfArmorItem(ArmorBases.FOX, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), false, true, "fox_armor_helmet");
-        FOX_ARMOR_CHESTPLATE = new WolfArmorItem(ArmorBases.FOX, EquipmentSlot.CHEST,
-                new Item.Settings().group(Mcda.ARMORS), false, true,"fox_armor_chestplate");
-        FOX_ARMOR_LEGGINGS = new WolfArmorItem(ArmorBases.FOX, EquipmentSlot.LEGS,
-                new Item.Settings().group(Mcda.ARMORS), false, true, "fox_armor_leggings");
-        FOX_ARMOR_BOOTS = new WolfArmorItem(ArmorBases.FOX, EquipmentSlot.FEET,
-                new Item.Settings().group(Mcda.ARMORS), false, true, "fox_armor_boots");
+        /*
+        BLACK_WOLF_ARMOR_HELMET = new WolfArmorItem(ArmorBases.WOLF, EquipmentSlot.HEAD,
+                new Item.Settings().group(Mcda.ARMORS), false, true, "black_wolf_armor_helmet");
+        BLACK_WOLF_ARMOR_CHESTPLATE = new WolfArmorItem(ArmorBases.WOLF, EquipmentSlot.CHEST,
+                new Item.Settings().group(Mcda.ARMORS), false, true,"black_wolf_armor_chestplate");
+        BLACK_WOLF_ARMOR_LEGGINGS = new WolfArmorItem(ArmorBases.WOLF, EquipmentSlot.LEGS,
+                new Item.Settings().group(Mcda.ARMORS), false, true, "black_wolf_armor_leggings");
+        BLACK_WOLF_ARMOR_BOOTS = new WolfArmorItem(ArmorBases.WOLF, EquipmentSlot.FEET,
+                new Item.Settings().group(Mcda.ARMORS), false, true, "black_wolf_armor_boots");
+        */
+
+        FOX_ARMOR_HELMET = new FoxArmorItem(ArmorBases.FOX, EquipmentSlot.HEAD,
+                new Item.Settings().group(Mcda.ARMORS), true, false, "fox_armor_helmet");
+        FOX_ARMOR_CHESTPLATE = new FoxArmorItem(ArmorBases.FOX, EquipmentSlot.CHEST,
+                new Item.Settings().group(Mcda.ARMORS), true, false,"fox_armor_chestplate");
+        FOX_ARMOR_LEGGINGS = new FoxArmorItem(ArmorBases.FOX, EquipmentSlot.LEGS,
+                new Item.Settings().group(Mcda.ARMORS), true, false, "fox_armor_leggings");
+        FOX_ARMOR_BOOTS = new FoxArmorItem(ArmorBases.FOX, EquipmentSlot.FEET,
+                new Item.Settings().group(Mcda.ARMORS), true, false, "fox_armor_boots");
+
+        /*
+        ARCTIC_FOX_ARMOR_HELMET = new FoxArmorItem(ArmorBases.ARCTIC_FOX, EquipmentSlot.HEAD,
+                new Item.Settings().group(Mcda.ARMORS), false, true, "arctic_fox_armor_helmet");
+        ARCTIC_FOX_ARMOR_CHESTPLATE = new FoxArmorItem(ArmorBases.ARCTIC_FOX, EquipmentSlot.CHEST,
+                new Item.Settings().group(Mcda.ARMORS), false, true,"arctic_fox_armor_chestplate");
+        ARCTIC_FOX_ARMOR_LEGGINGS = new FoxArmorItem(ArmorBases.ARCTIC_FOX, EquipmentSlot.LEGS,
+                new Item.Settings().group(Mcda.ARMORS), false, true, "arctic_fox_armor_leggings");
+        ARCTIC_FOX_ARMOR_BOOTS = new FoxArmorItem(ArmorBases.ARCTIC_FOX, EquipmentSlot.FEET,
+                new Item.Settings().group(Mcda.ARMORS), false, true, "arctic_fox_armor_boots");
+        */
     }
+
 
 }

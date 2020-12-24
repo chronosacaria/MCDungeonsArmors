@@ -1,6 +1,7 @@
 package chronosacaria.mcda.items.armor;
 
 import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.config.McdaBoostsConfig;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
@@ -29,14 +30,17 @@ public class PhantomArmorItem extends ArmorItem {
             UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"),
             UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
 
+    private final boolean base;
     private final boolean unique;
     private final int protection;
     private final float toughness;
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
-    public PhantomArmorItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings, boolean unique,
+    public PhantomArmorItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings,
+                            boolean base, boolean unique,
                             String id){
         super(armorMaterial, slot, settings);
+        this.base = base;
         this.unique = unique;
 
         this.protection = armorMaterial.getProtectionAmount(slot);
@@ -52,11 +56,28 @@ public class PhantomArmorItem extends ArmorItem {
             builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uuid, "Armor knockback resistance",
                     (double) this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
-        //if(this.unique){
-        builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
-                "Armor attack damage boost",
-                0.075D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
-        //}
+        if(this.base){
+            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getPhantomArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack speed boost",
+                    McdaBoostsConfig.config.getPhantomArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor movement speed boost",
+                    McdaBoostsConfig.config.getPhantomArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        }
+        if(this.unique){
+            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getFrostBiteArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack speed boost",
+                    McdaBoostsConfig.config.getFrostBiteArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor movement speed boost",
+                    McdaBoostsConfig.config.getFrostBiteArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        }
         this.attributeModifiers = builder.build();
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, id), this);
     }

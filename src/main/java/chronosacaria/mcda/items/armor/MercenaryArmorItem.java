@@ -1,6 +1,7 @@
 package chronosacaria.mcda.items.armor;
 
 import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.config.McdaBoostsConfig;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
@@ -58,18 +59,38 @@ public class MercenaryArmorItem extends ArmorItem {
             builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uuid, "Armor knockback resistance",
                     (double) this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
+        if(this.base){
+            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getMercenaryArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack speed boost",
+                    McdaBoostsConfig.config.getMercenaryArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getMercenaryArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        }
         if(this.unique){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    0.05D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.getRenegadeArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack speed boost",
+                    McdaBoostsConfig.config.getRenegadeArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getRenegadeArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
         if (this.unique2){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    0.05D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.getHungryHorrorArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                     "Armor attack speed boost",
-                    0.0625D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.getHungryHorrorArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor movement speed boost",
+                    McdaBoostsConfig.config.getHungryHorrorArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
 
         this.attributeModifiers = builder.build();

@@ -26,4 +26,5 @@ public class Mcda implements ModInitializer {
         ItemsInit.doRegister();
         LootInit.init();
     }
+
 }

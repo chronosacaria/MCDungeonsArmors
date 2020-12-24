@@ -1,6 +1,7 @@
 package chronosacaria.mcda.items.armor;
 
 import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.config.McdaBoostsConfig;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
@@ -29,17 +30,20 @@ public class GuardsArmorItem extends ArmorItem {
             UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"),
             UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
 
+    private final boolean base;
     private final boolean unique;
-    //private final int protection;
-    //private final float toughness;
-    //private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
+    private final int protection;
+    private final float toughness;
+    private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
-    public GuardsArmorItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings, boolean unique,
-                           String id){
+    public GuardsArmorItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings,
+                         boolean base, boolean unique,
+                         String id){
         super(armorMaterial, slot, settings);
+        this.base = base;
         this.unique = unique;
 
-        /*this.protection = armorMaterial.getProtectionAmount(slot);
+        this.protection = armorMaterial.getProtectionAmount(slot);
         this.toughness = this.unique ? armorMaterial.getToughness() + 2.0F : armorMaterial.getToughness();
 
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
@@ -52,14 +56,36 @@ public class GuardsArmorItem extends ArmorItem {
             builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uuid, "Armor knockback resistance",
                     (double) this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
-        this.attributeModifiers = builder.build();*/
+        if(this.base){
+            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getGuardsArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack speed boost",
+                    McdaBoostsConfig.config.getGuardsArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor movement speed boost",
+                    McdaBoostsConfig.config.getGuardsArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        }
+        if(this.unique){
+            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getCuriousArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack speed boost",
+                    McdaBoostsConfig.config.getCuriousArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor movement speed boost",
+                    McdaBoostsConfig.config.getCuriousArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        }
+        this.attributeModifiers = builder.build();
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, id), this);
     }
 
-    /*@Override
+    @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot){
         return slot == this.slot ? this.attributeModifiers : super.getAttributeModifiers(slot);
-    }*/
+    }
 
     @Override
     public Rarity getRarity(ItemStack itemStack){

@@ -1,6 +1,7 @@
 package chronosacaria.mcda.items.armor;
 
 import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.config.McdaBoostsConfig;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
@@ -55,10 +56,28 @@ public class GhostlyArmorItem extends ArmorItem {
             builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uuid, "Armor knockback resistance",
                     (double) this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
+        if(this.base){
+            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getGhostlyArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack speed boost",
+                    McdaBoostsConfig.config.getGhostlyArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor movement speed boost",
+                    McdaBoostsConfig.config.getGhostlyArmourSetMovementBoost(),
+                    EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        }
         if(this.unique){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    0.0375D, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.getGhostKindlerArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack speed boost",
+                    McdaBoostsConfig.config.getGhostKindlerArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor movement speed boost",
+                    McdaBoostsConfig.config.getGhostKindlerArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
 
         this.attributeModifiers = builder.build();
@@ -85,10 +104,12 @@ public class GhostlyArmorItem extends ArmorItem {
             tooltip.add(new TranslatableText("item.mcda.ghostly_armor.tooltip_1"));
             tooltip.add(new TranslatableText("item.mcda.ghostly_armor.tooltip_2"));
             tooltip.add(new TranslatableText("item.mcda.ghostly_armor.tooltip_3"));
+            tooltip.add(new TranslatableText("item.mcda.ghostly_armor.tooltip_4"));
         }
         if(this.unique) {
             tooltip.add(new TranslatableText("item.mcda.ghost_kindler.tooltip_1"));
             tooltip.add(new TranslatableText("item.mcda.ghost_kindler.tooltip_2"));
+            tooltip.add(new TranslatableText("item.mcda.ghost_kindler.tooltip_3"));
         }
 
 
