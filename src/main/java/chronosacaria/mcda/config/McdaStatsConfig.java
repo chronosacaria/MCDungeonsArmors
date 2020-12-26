@@ -98,6 +98,10 @@ public class McdaStatsConfig implements ConfigData {
     public int[] RenegadeArmor = {3,5,7,3};
     @Comment ("Hungry Horror Armor: Feet, Legs, Body, Head")
     public int[] HungryHorrorArmor = {3,5,7,3};
+    @Comment ("Emerald Gear: Feet, Legs, Body, Head")
+    public int[] EmeraldGearArmor = {3,5,7,3};
+    @Comment ("Opulent Armor: Feet, Legs, Body, Head")
+    public int[] OpulentArmor = {3,5,7,3};
 
     //Heavy Plate Armor
     @Comment ("Dark Armor: Feet, Legs, Body, Head")
@@ -116,6 +120,8 @@ public class McdaStatsConfig implements ConfigData {
     public int[] ChampionArmor = {3,6,8,3};
     @Comment ("Hero's Armor: Feet, Legs, Body, Head")
     public int[] HerosArmor = {4,7,9,4};
+    @Comment ("Gilded Glory: Feet, Legs, Body, Head")
+    public int[] GildedGloryArmor = {3,6,8,3};
 
     public int[] getArcherArmor() {return ArcherArmor;}
     public int[] getHunterArmor() {return HunterArmor;}
@@ -158,6 +164,8 @@ public class McdaStatsConfig implements ConfigData {
     public int[] getMercenaryArmor() {return MercenaryArmor;}
     public int[] getRenegadeArmor() {return RenegadeArmor;}
     public int[] getHungryHorrorArmor() {return HungryHorrorArmor;}
+    public int[] getEmeraldGearArmor() {return EmeraldGearArmor;}
+    public int[] getOpulentArmor() {return OpulentArmor;}
 
     public int[] getDarkArmor() {return DarkArmor;}
     public int[] getTitanSroud() {return TitanSroud;}
@@ -167,5 +175,6 @@ public class McdaStatsConfig implements ConfigData {
     public int[] getMysteryArmor() {return MysteryArmor;}
     public int[] getChampionArmor() {return ChampionArmor;}
     public int[] getHerosArmor() {return HerosArmor;}
+    public int[] getGildedGloryArmor() {return GildedGloryArmor;}
 }
 

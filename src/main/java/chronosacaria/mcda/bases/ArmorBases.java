@@ -384,6 +384,22 @@ public enum ArmorBases implements ArmorMaterial {
             2.0f,
             0.0f,
             () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    EMERALD("emeraldgear",
+            30,
+            McdaStatsConfig.config.getEmeraldGearArmor(),
+            10,
+            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
+            2.0f,
+            0.0f,
+            () -> {return Ingredient.ofItems(Items.EMERALD);}),
+    OPULENT("opulentarmor",
+            30,
+            McdaStatsConfig.config.getOpulentArmor(),
+            10,
+            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
+            2.0f,
+            0.0f,
+            () -> {return Ingredient.ofItems(Items.EMERALD);}),
 
     /* * * * * * *|
     | HEAVY PLATE |
@@ -483,7 +499,15 @@ public enum ArmorBases implements ArmorMaterial {
             SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
             2.0f,
             0.0f,
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);});
+            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+    GILDED("gildedglory",
+            30,
+            McdaStatsConfig.config.getGildedGloryArmor(),
+            10,
+            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
+            2.0f,
+            0.0f,
+            () -> {return Ingredient.ofItems(Items.EMERALD);}),;
 
 
 

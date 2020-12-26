@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.UUID;
 
-public class SpelunkerArmorItem extends ArmorItem {
+public class EmeraldArmorItem extends ArmorItem {
 
     private static final UUID[] ARMOR_MODIFIERS = new UUID[]{
             UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"),
@@ -32,16 +32,19 @@ public class SpelunkerArmorItem extends ArmorItem {
 
     private final boolean base;
     private final boolean unique;
+    private final boolean unique2;
     private final int protection;
     private final float toughness;
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
-    public SpelunkerArmorItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings,
-                              boolean base, boolean unique,
-                              String id){
+    public EmeraldArmorItem(ArmorMaterial armorMaterial, EquipmentSlot slot, Settings settings,
+                            boolean base, boolean unique,
+                            boolean unique2,
+                            String id){
         super(armorMaterial, slot, settings);
         this.base = base;
         this.unique = unique;
+        this.unique2 = unique2;
 
         this.protection = armorMaterial.getProtectionAmount(slot);
         this.toughness = armorMaterial.getToughness();
@@ -59,26 +62,35 @@ public class SpelunkerArmorItem extends ArmorItem {
         if(this.base){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    McdaBoostsConfig.config.getSpelunkerArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.getEmeraldArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                     "Armor attack speed boost",
-                    McdaBoostsConfig.config.getSpelunkerArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.getEmeraldArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
-                    "Armor movement speed boost",
-                    McdaBoostsConfig.config.getSpelunkerArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getEmeraldArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
         if(this.unique){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    McdaBoostsConfig.config.getCaveCrawlerArmourSetAttackDamageBoost(),
-                    EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.getOpulentArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                     "Armor attack speed boost",
-                    McdaBoostsConfig.config.getCaveCrawlerArmourSetAttackSpeedBoost(),
-                    EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.getOpulentArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
-                    "Armor movement speed detriment",
-                    McdaBoostsConfig.config.getCaveCrawlerArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getOpulentArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        }
+        if (this.unique2){
+            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getGildedGloryArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack speed boost",
+                    McdaBoostsConfig.config.getGildedGloryArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor movement speed boost",
+                    McdaBoostsConfig.config.getGildedGloryArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
 
         this.attributeModifiers = builder.build();
@@ -92,7 +104,7 @@ public class SpelunkerArmorItem extends ArmorItem {
 
     @Override
     public Rarity getRarity(ItemStack itemStack){
-        if(this.unique) return Rarity.RARE;
+        if(this.unique || unique2) return Rarity.RARE;
         return Rarity.UNCOMMON;
     }
 
@@ -102,14 +114,20 @@ public class SpelunkerArmorItem extends ArmorItem {
         super.appendTooltip(itemStack, world, tooltip, tooltipContext);
 
         if(this.base){
-            tooltip.add(new TranslatableText("item.mcda.spelunker_armor.tooltip_1"));
-            tooltip.add(new TranslatableText("item.mcda.spelunker_armor.tooltip_2"));
-            tooltip.add(new TranslatableText("item.mcda.spelunker_armor.tooltip_3"));
+            tooltip.add(new TranslatableText("item.mcda.emerald_armor.tooltip_1"));
+            tooltip.add(new TranslatableText("item.mcda.emerald_armor.tooltip_2"));
+            tooltip.add(new TranslatableText("item.mcda.emerald_armor.tooltip_3"));
         }
         if(this.unique) {
-            tooltip.add(new TranslatableText("item.mcda.cave_crawler.tooltip_1"));
-            tooltip.add(new TranslatableText("item.mcda.cave_crawler.tooltip_2"));
-            tooltip.add(new TranslatableText("item.mcda.cave_crawler.tooltip_3"));
+            tooltip.add(new TranslatableText("item.mcda.opulent_armor.tooltip_1"));
+            tooltip.add(new TranslatableText("item.mcda.opulent_armor.tooltip_2"));
+            tooltip.add(new TranslatableText("item.mcda.opulent_armor.tooltip_3"));
+        }
+        if(this.unique2) {
+            tooltip.add(new TranslatableText("item.mcda.gilded_glory.tooltip_1"));
+            tooltip.add(new TranslatableText("item.mcda.gilded_glory.tooltip_2"));
+            tooltip.add(new TranslatableText("item.mcda.gilded_glory.tooltip_3"));
+            tooltip.add(new TranslatableText("item.mcda.gilded_glory.tooltip_4"));
         }
 
 

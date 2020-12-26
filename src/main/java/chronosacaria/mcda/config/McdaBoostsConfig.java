@@ -263,6 +263,20 @@ public class McdaBoostsConfig implements ConfigData {
     public double BlackWolfArmourSetAttackSpeedBoost = 0.025D;
     public double BlackWolfArmourSetMovementBoost = 0.0D;
 
+    @Comment("Emerald Gear Boosts")
+    public double EmeraldArmourSetAttackDamageBoost = 0.0D;
+    public double EmeraldArmourSetAttackSpeedBoost = 0.05D;
+    public double EmeraldArmourSetMovementBoost = 0.0D;
+
+    @Comment("Opulent Armour Boosts")
+    public double OpulentArmourSetAttackDamageBoost = 0.0D;
+    public double OpulentArmourSetAttackSpeedBoost = 0.05D;
+    public double OpulentArmourSetMovementBoost = 0.0D;
+
+    @Comment("Gilded Glory Armour Boosts")
+    public double GildedGloryArmourSetAttackDamageBoost = 0.0D;
+    public double GildedGloryArmourSetAttackSpeedBoost = 0.05D;
+    public double GildedGloryArmourSetMovementBoost = 0.0D;
 
     public double getBattleRobeSetAttackBoost(){return BattleRobeSetAttackDamageBoost;}
     public double getBattleRobeSetAttackSpeedBoost(){return BattleRobeSetAttackSpeedBoost;}
@@ -323,11 +337,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getGhostlyArmourSetAttackDamageBoost() {
         return GhostlyArmourSetAttackDamageBoost;
     }
-
     public double getGhostlyArmourSetAttackSpeedBoost() {
         return GhostlyArmourSetAttackSpeedBoost;
     }
-
     public double getGhostlyArmourSetMovementBoost() {
         return GhostlyArmourSetMovementBoost;
     }
@@ -335,11 +347,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getGhostKindlerArmourSetAttackDamageBoost() {
         return GhostKindlerArmourSetAttackDamageBoost;
     }
-
     public double getGhostKindlerArmourSetAttackSpeedBoost() {
         return GhostKindlerArmourSetAttackSpeedBoost;
     }
-
     public double getGhostKindlerArmourSetMovementBoost() {
         return GhostKindlerArmourSetMovementBoost;
     }
@@ -347,11 +357,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getGrimArmourSetAttackDamageBoost() {
         return GrimArmourSetAttackDamageBoost;
     }
-
     public double getGrimArmourSetAttackSpeedBoost() {
         return GrimArmourSetAttackSpeedBoost;
     }
-
     public double getGrimArmourSetMovementBoost() {
         return GrimArmourSetMovementBoost;
     }
@@ -359,11 +367,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getWitherArmourSetAttackDamageBoost() {
         return WitherArmourSetAttackDamageBoost;
     }
-
     public double getWitherArmourSetAttackSpeedBoost() {
         return WitherArmourSetAttackSpeedBoost;
     }
-
     public double getWitherArmourSetMovementBoost() {
         return WitherArmourSetMovementBoost;
     }
@@ -371,11 +377,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getGuardsArmourSetAttackDamageBoost() {
         return GuardsArmourSetAttackDamageBoost;
     }
-
     public double getGuardsArmourSetAttackSpeedBoost() {
         return GuardsArmourSetAttackSpeedBoost;
     }
-
     public double getGuardsArmourSetMovementBoost() {
         return GuardsArmourSetMovementBoost;
     }
@@ -383,11 +387,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getCuriousArmourSetAttackDamageBoost() {
         return CuriousArmourSetAttackDamageBoost;
     }
-
     public double getCuriousArmourSetAttackSpeedBoost() {
         return CuriousArmourSetAttackSpeedBoost;
     }
-
     public double getCuriousArmourSetMovementBoost() {
         return CuriousArmourSetMovementBoost;
     }
@@ -395,11 +397,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getHuntersArmourSetAttackDamageBoost() {
         return HuntersArmourSetAttackDamageBoost;
     }
-
     public double getHuntersArmourSetAttackSpeedBoost() {
         return HuntersArmourSetAttackSpeedBoost;
     }
-
     public double getHuntersArmourSetMovementBoost() {
         return HuntersArmourSetMovementBoost;
     }
@@ -407,11 +407,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getArchersArmourSetAttackDamageBoost() {
         return ArchersArmourSetAttackDamageBoost;
     }
-
     public double getArchersArmourSetAttackSpeedBoost() {
         return ArchersArmourSetAttackSpeedBoost;
     }
-
     public double getArchersArmourSetMovementBoost() {
         return ArchersArmourSetMovementBoost;
     }
@@ -419,11 +417,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getMercenaryArmourSetAttackDamageBoost() {
         return MercenaryArmourSetAttackDamageBoost;
     }
-
     public double getMercenaryArmourSetAttackSpeedBoost() {
         return MercenaryArmourSetAttackSpeedBoost;
     }
-
     public double getMercenaryArmourSetMovementBoost() {
         return MercenaryArmourSetMovementBoost;
     }
@@ -431,11 +427,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getRenegadeArmourSetAttackDamageBoost() {
         return RenegadeArmourSetAttackDamageBoost;
     }
-
     public double getRenegadeArmourSetAttackSpeedBoost() {
         return RenegadeArmourSetAttackSpeedBoost;
     }
-
     public double getRenegadeArmourSetMovementBoost() {
         return RenegadeArmourSetMovementBoost;
     }
@@ -443,11 +437,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getHungryHorrorArmourSetAttackDamageBoost() {
         return HungryHorrorArmourSetAttackDamageBoost;
     }
-
     public double getHungryHorrorArmourSetAttackSpeedBoost() {
         return HungryHorrorArmourSetAttackSpeedBoost;
     }
-
     public double getHungryHorrorArmourSetMovementBoost() {
         return HungryHorrorArmourSetMovementBoost;
     }
@@ -455,11 +447,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getBlueMysteryArmourSetAttackDamageBoost() {
         return BlueMysteryArmourSetAttackDamageBoost;
     }
-
     public double getBlueMysteryArmourSetAttackSpeedBoost() {
         return BlueMysteryArmourSetAttackSpeedBoost;
     }
-
     public double getBlueMysteryArmourSetMovementBoost() {
         return BlueMysteryArmourSetMovementBoost;
     }
@@ -467,11 +457,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getGreenMysteryArmourSetAttackDamageBoost() {
         return GreenMysteryArmourSetAttackDamageBoost;
     }
-
     public double getGreenMysteryArmourSetAttackSpeedBoost() {
         return GreenMysteryArmourSetAttackSpeedBoost;
     }
-
     public double getGreenMysteryArmourSetMovementBoost() {
         return GreenMysteryArmourSetMovementBoost;
     }
@@ -479,11 +467,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getPurpleMysteryArmourSetAttackDamageBoost() {
         return PurpleMysteryArmourSetAttackDamageBoost;
     }
-
     public double getPurpleMysteryArmourSetAttackSpeedBoost() {
         return PurpleMysteryArmourSetAttackSpeedBoost;
     }
-
     public double getPurpleMysteryArmourSetMovementBoost() {
         return PurpleMysteryArmourSetMovementBoost;
     }
@@ -491,11 +477,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getRedMysteryArmourSetAttackDamageBoost() {
         return RedMysteryArmourSetAttackDamageBoost;
     }
-
     public double getRedMysteryArmourSetAttackSpeedBoost() {
         return RedMysteryArmourSetAttackSpeedBoost;
     }
-
     public double getRedMysteryArmourSetMovementBoost() {
         return RedMysteryArmourSetMovementBoost;
     }
@@ -503,11 +487,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getWhiteMysteryArmourSetAttackDamageBoost() {
         return WhiteMysteryArmourSetAttackDamageBoost;
     }
-
     public double getWhiteMysteryArmourSetAttackSpeedBoost() {
         return WhiteMysteryArmourSetAttackSpeedBoost;
     }
-
     public double getWhiteMysteryArmourSetMovementBoost() {
         return WhiteMysteryArmourSetMovementBoost;
     }
@@ -515,11 +497,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getOcelotArmourSetAttackDamageBoost() {
         return OcelotArmourSetAttackDamageBoost;
     }
-
     public double getOcelotArmourSetAttackSpeedBoost() {
         return OcelotArmourSetAttackSpeedBoost;
     }
-
     public double getOcelotArmourSetMovementBoost() {
         return OcelotArmourSetMovementBoost;
     }
@@ -527,11 +507,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getShadowWalkerArmourSetAttackDamageBoost() {
         return ShadowWalkerArmourSetAttackDamageBoost;
     }
-
     public double getShadowWalkerArmourSetAttackSpeedBoost() {
         return ShadowWalkerArmourSetAttackSpeedBoost;
     }
-
     public double getShadowWalkerArmourSetMovementBoost() {
         return ShadowWalkerArmourSetMovementBoost;
     }
@@ -539,11 +517,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getPhantomArmourSetAttackDamageBoost() {
         return PhantomArmourSetAttackDamageBoost;
     }
-
     public double getPhantomArmourSetAttackSpeedBoost() {
         return PhantomArmourSetAttackSpeedBoost;
     }
-
     public double getPhantomArmourSetMovementBoost() {
         return PhantomArmourSetMovementBoost;
     }
@@ -551,11 +527,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getFrostBiteArmourSetAttackDamageBoost() {
         return FrostBiteArmourSetAttackDamageBoost;
     }
-
     public double getFrostBiteArmourSetAttackSpeedBoost(){
         return FrostBiteArmourSetAttackSpeedBoost;
     }
-
     public double getFrostBiteArmourSetMovementBoost(){
         return FrostBiteArmourSetMovementBoost;
     }
@@ -563,7 +537,6 @@ public class McdaBoostsConfig implements ConfigData {
     public double getPlateArmourSetAttackDamageBoost(){
         return PlateArmourSetAttackDamageBoost;
     }
-
     public double getPlateArmourSetAttackSpeedBoost() {
         return PlateArmourSetAttackSpeedBoost;
     }
@@ -571,7 +544,6 @@ public class McdaBoostsConfig implements ConfigData {
     public double getFullMetalArmourSetAttackDamageBoost(){
         return FullMetalArmourSetAttackDamageBoost;
     }
-
     public double getFullMetalArmourSetAttackSpeedBoost() {
         return FullMetalArmourSetAttackSpeedBoost;
     }
@@ -579,11 +551,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getReinforcedMailSetAttackDamageBoost(){
         return ReinforcedMailSetAttackDamageBoost;
     }
-
     public double getReinforcedMailSetAttackSpeedBoost(){
         return ReinforcedMailSetAttackSpeedBoost;
     }
-
     public double getReinforcedMailSetMovementBoost(){
         return ReinforcedMailSetMovementBoost;
     }
@@ -591,7 +561,6 @@ public class McdaBoostsConfig implements ConfigData {
     public double getStalwartArmourSetAttackDamageBoost(){
         return StalwartArmourSetAttackDamageBoost;
     }
-
     public double getStalwartArmourSetAttackSpeedBoost(){
         return StalwartArmourSetAttackSpeedBoost;
     }
@@ -602,23 +571,17 @@ public class McdaBoostsConfig implements ConfigData {
     public double getScaleMailArmourSetAttackDamageBoost() {
         return ScaleMailArmourSetAttackDamageBoost;
     }
-
     public double getScaleMailArmourSetAttackSpeedBoost() {
         return ScaleMailArmourSetAttackSpeedBoost;
     }
-
     public double getScaleMailArmourSetMovementBoost() {
         return ScaleMailArmourSetMovementBoost;
     }
 
-    public double getHighlandArmourSetAttackDamageBoost() {
-        return HighlandArmourSetAttackDamageBoost;
-    }
-
+    public double getHighlandArmourSetAttackDamageBoost() {return HighlandArmourSetAttackDamageBoost; }
     public double getHighlandArmourSetAttackSpeedBoost() {
         return HighlandArmourSetAttackSpeedBoost;
     }
-
     public double getHighlandArmourSetMovementBoost() {
         return HighlandArmourSetMovementBoost;
     }
@@ -626,11 +589,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getSnowArmourSetAttackDamageBoost() {
         return SnowArmourSetAttackDamageBoost;
     }
-
     public double getSnowArmourSetAttackSpeedBoost() {
         return SnowArmourSetAttackSpeedBoost;
     }
-
     public double getSnowArmourSetMovementBoost() {
         return SnowArmourSetMovementBoost;
     }
@@ -638,11 +599,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getFrostArmourSetAttackDamageBoost() {
         return FrostArmourSetAttackDamageBoost;
     }
-
     public double getFrostArmourSetAttackSpeedBoost() {
         return FrostArmourSetAttackSpeedBoost;
     }
-
     public double getFrostArmourSetMovementBoost() {
         return FrostArmourSetMovementBoost;
     }
@@ -650,11 +609,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getSoulRobeSetAttackDamageBoost() {
         return SoulRobeSetAttackDamageBoost;
     }
-
     public double getSoulRobeSetAttackSpeedBoost() {
         return SoulRobeSetAttackSpeedBoost;
     }
-
     public double getSoulRobeSetMovementBoost() {
         return SoulRobeSetMovementBoost;
     }
@@ -662,11 +619,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getSoulDancerRobeSetAttackDamageBoost() {
         return SoulDancerRobeSetAttackDamageBoost;
     }
-
     public double getSoulDancerRobeSetAttackSpeedBoost() {
         return SoulDancerRobeSetAttackSpeedBoost;
     }
-
     public double getSoulDancerRobeSetMovementBoost() {
         return SoulDancerRobeSetMovementBoost;
     }
@@ -674,11 +629,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getSpelunkerArmourSetAttackDamageBoost() {
         return SpelunkerArmourSetAttackDamageBoost;
     }
-
     public double getSpelunkerArmourSetAttackSpeedBoost() {
         return SpelunkerArmourSetAttackSpeedBoost;
     }
-
     public double getSpelunkerArmourSetMovementBoost() {
         return SpelunkerArmourSetMovementBoost;
     }
@@ -686,11 +639,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getCaveCrawlerArmourSetAttackDamageBoost() {
         return CaveCrawlerArmourSetAttackDamageBoost;
     }
-
     public double getCaveCrawlerArmourSetAttackSpeedBoost() {
         return CaveCrawlerArmourSetAttackSpeedBoost;
     }
-
     public double getCaveCrawlerArmourSetMovementBoost() {
         return CaveCrawlerArmourSetMovementBoost;
     }
@@ -698,11 +649,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getThiefArmourSetAttackDamageBoost() {
         return ThiefArmourSetAttackDamageBoost;
     }
-
     public double getThiefArmourSetAttackSpeedBoost() {
         return ThiefArmourSetAttackSpeedBoost;
     }
-
     public double getThiefArmourSetMovementBoost() {
         return ThiefArmourSetMovementBoost;
     }
@@ -710,11 +659,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getSpiderArmourSetAttackDamageBoost() {
         return SpiderArmourSetAttackDamageBoost;
     }
-
     public double getSpiderArmourSetAttackSpeedBoost() {
         return SpiderArmourSetAttackSpeedBoost;
     }
-
     public double getSpiderArmourSetMovementBoost() {
         return SpiderArmourSetMovementBoost;
     }
@@ -722,11 +669,9 @@ public class McdaBoostsConfig implements ConfigData {
     public double getWolfArmourSetAttackDamageBoost() {
         return WolfArmourSetAttackDamageBoost;
     }
-
     public double getWolfArmourSetAttackSpeedBoost() {
         return WolfArmourSetAttackSpeedBoost;
     }
-
     public double getWolfArmourSetMovementBoost() {
         return WolfArmourSetMovementBoost;
     }
@@ -734,13 +679,23 @@ public class McdaBoostsConfig implements ConfigData {
     public double getBlackWolfArmourSetAttackDamageBoost() {
         return BlackWolfArmourSetAttackDamageBoost;
     }
-
     public double getBlackWolfArmourSetAttackSpeedBoost() {
         return BlackWolfArmourSetAttackSpeedBoost;
     }
-
     public double getBlackWolfArmourSetMovementBoost() {
         return BlackWolfArmourSetMovementBoost;
     }
+
+    public double getEmeraldArmourSetAttackDamageBoost() {return EmeraldArmourSetAttackDamageBoost;}
+    public double getEmeraldArmourSetAttackSpeedBoost() {return EmeraldArmourSetAttackSpeedBoost;}
+    public double getEmeraldArmourSetMovementBoost() {return EmeraldArmourSetMovementBoost;}
+
+    public double getOpulentArmourSetAttackDamageBoost()    {return OpulentArmourSetAttackDamageBoost;}
+    public double getOpulentArmourSetAttackSpeedBoost()     {return OpulentArmourSetAttackSpeedBoost;}
+    public double getOpulentArmourSetMovementBoost()        {return OpulentArmourSetMovementBoost;}
+
+    public double getGildedGloryArmourSetAttackDamageBoost()    {return GildedGloryArmourSetAttackDamageBoost;}
+    public double getGildedGloryArmourSetAttackSpeedBoost()     {return GildedGloryArmourSetAttackSpeedBoost;}
+    public double getGildedGloryArmourSetMovementBoost()        {return GildedGloryArmourSetMovementBoost;}
 }
 

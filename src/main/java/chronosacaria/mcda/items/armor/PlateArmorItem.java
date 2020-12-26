@@ -73,10 +73,12 @@ public class PlateArmorItem extends ArmorItem {
         if(this.unique){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    McdaBoostsConfig.config.FullMetalArmourSetAttackDamageBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.getFullMetalArmourSetAttackDamageBoost(),
+                    EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                     "Armor attack speed boost",
-                    McdaBoostsConfig.config.FullMetalArmourSetAttackSpeedBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.getFullMetalArmourSetAttackSpeedBoost(),
+                    EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
                     "Armor movement speed detriment",
                     0.025D * (-1.0D), EntityAttributeModifier.Operation.MULTIPLY_BASE));
