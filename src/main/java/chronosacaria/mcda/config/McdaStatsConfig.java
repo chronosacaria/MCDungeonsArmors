@@ -67,15 +67,15 @@ public class McdaStatsConfig implements ConfigData {
 
     //Light Plate Armor
     @Comment ("Scale Mail: Feet, Legs, Body, Head")
-    public int[] ScaleMail = {2,3,3,2};
+    public int[] ScaleMail = {2,4,5,2};
     @Comment ("Highland Armor: Feet, Legs, Body, Head")
     public int[] HighlandArmor = {2,5,6,2};
     @Comment ("Beehive Armor: Feet, Legs, Body, Head")
     public int[] BeehiveArmor = {2,5,6,2};
     @Comment ("Beenest Armor: Feet, Legs, Body, Head")
-    public int[] BeenestArmor = {2,5,6,2};
+    public int[] BeenestArmor = {2,4,5,2};
     @Comment ("Ghostly Armor: Feet, Legs, Body, Head")
-    public int[] GhostlyArmor = {2,5,6,2};
+    public int[] GhostlyArmor = {2,4,5,2};
     @Comment ("Ghost Kindler Armor: Feet, Legs, Body, Head")
     public int[] GhostKindlerArmor = {2,5,6,2};
 
@@ -93,7 +93,7 @@ public class McdaStatsConfig implements ConfigData {
     @Comment ("Frost Armor: Feet, Legs, Body, Head")
     public int[] FrostArmor = {3,5,7,3};
     @Comment ("Mercenary Armor: Feet, Legs, Body, Head")
-    public int[] MercenaryArmor = {3,5,7,3};
+    public int[] MercenaryArmor = {3,4,5,3};
     @Comment ("Renegade Armor: Feet, Legs, Body, Head")
     public int[] RenegadeArmor = {3,5,7,3};
     @Comment ("Hungry Horror Armor: Feet, Legs, Body, Head")
