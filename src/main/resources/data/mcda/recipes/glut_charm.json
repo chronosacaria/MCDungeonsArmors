@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "SPC",
-    "ROE",
+    "R E",
     "MFH"
   ],
   "key": {
@@ -17,9 +17,6 @@
     },
     "R": {
       "item": "minecraft:rotten_flesh"
-    },
-    "O": {
-      "item": "mcda:upgrade_core"
     },
     "E": {
       "item": "minecraft:spider_eye"

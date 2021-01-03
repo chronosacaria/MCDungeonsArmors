@@ -1,10 +1,10 @@
 {
   "type": "minecraft:smithing",
   "base": {
-    "item": "mcda:heroes_armor_boots"
+    "item": "mcda:heros_armor_boots"
   },
   "addition": {
-    "item": "mcda:upgrade_core_champion"
+    "item": "mcda:upgrade_core_metal"
   },
   "result": {
     "item": "mcda:champions_armor_boots"

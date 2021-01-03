@@ -75,7 +75,7 @@ public class ItemsInit {
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "frost_crystal"), FROST_CRYSTAL);
 
         //CRAFTING
-        //Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "glut_charm"), GLUT_CHARM);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "glut_charm"), GLUT_CHARM);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "iron_plate"), IRON_PLATE);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "iron_scale"), IRON_SCALE);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fabric_bolt_white"), BOLT_OF_FABRIC_WHITE);
@@ -96,12 +96,11 @@ public class ItemsInit {
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fabric_bolt_black"), BOLT_OF_FABRIC_BLACK);
 
         //UPGRADES
-        /*Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core"), UPGRADE_CORE);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core"), UPGRADE_CORE);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_archer"), UPGRADE_CORE_ARCHER);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_depth"), UPGRADE_CORE_DEPTH);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_ember"), UPGRADE_CORE_EMBER);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_fox"), UPGRADE_CORE_FOX);
-
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_frost"), UPGRADE_CORE_FROST);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_glut"), UPGRADE_CORE_GLUT);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_highland"), UPGRADE_CORE_HIGHLAND);
@@ -112,7 +111,7 @@ public class ItemsInit {
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_spider"), UPGRADE_CORE_SPIDER);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_soul"), UPGRADE_CORE_SOUL);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_verdant"), UPGRADE_CORE_VERDANT);
-        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_wither"), UPGRADE_CORE_WITHER);*/
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_wither"), UPGRADE_CORE_WITHER);
 
 
     }

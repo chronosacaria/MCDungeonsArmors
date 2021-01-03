@@ -4,7 +4,7 @@
     "item": "mcda:guards_armor_chestplate"
   },
   "addition": {
-    "item": "mcda:upgrade_core_curious"
+    "item": "mcda:upgrade_core_metal"
   },
   "result": {
     "item": "mcda:curious_armor_chestplate"

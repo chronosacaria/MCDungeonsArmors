@@ -419,7 +419,7 @@
   "item.mcda.wolf_pelt_black":                    "Black Wolf Pelt",
   "item.mcda.fox_pelt":                           "Fox Pelt",
   "item.mcda.frost_crystal":                      "Frost Crystal",
-  "item.mcda.":                                   "Bone Rib Cage",
+  "item.mcda.glut_charm":                         "Glut Charm",
   "item.mcda.iron_plate":                         "Iron Plate",
   "item.mcda.iron_scale":                         "Iron Scale",
   "item.mcda.fabric_bolt_white":                  "White Bolt of Fabric",
@@ -437,5 +437,23 @@
   "item.mcda.fabric_bolt_brown":                  "Brown Bolt of Fabric",
   "item.mcda.fabric_bolt_green":                  "Green Bolt of Fabric",
   "item.mcda.fabric_bolt_red":                    "Red Bolt of Fabric",
-  "item.mcda.fabric_bolt_black":                  "Black Bolt of Fabric"
+  "item.mcda.fabric_bolt_black":                  "Black Bolt of Fabric",
+
+  "item.mcda.upgrade_core":                       "Upgrade Core - Base",
+  "item.mcda.upgrade_core_archer":                "Upgrade Core - Archer",
+  "item.mcda.upgrade_core_depth":                 "Upgrade Core - Depth",
+  "item.mcda.upgrade_core_ember":                 "Upgrade Core - Ember",
+  "item.mcda.upgrade_core_fox":                   "Upgrade Core - Fox",
+  "item.mcda.upgrade_core_frost":                 "Upgrade Core - Frost",
+  "item.mcda.upgrade_core_glut":                  "Upgrade Core - Glut",
+  "item.mcda.upgrade_core_highland":              "Upgrade Core - Highland",
+  "item.mcda.upgrade_core_hive":                  "Upgrade Core - Hive",
+  "item.mcda.upgrade_core_magicked":              "Upgrade Core - Magicked",
+  "item.mcda.upgrade_core_metal":                 "Upgrade Core - Metal",
+  "item.mcda.upgrade_core_shadows":               "Upgrade Core - Shadows",
+  "item.mcda.upgrade_core_spider":                "Upgrade Core - Spider",
+  "item.mcda.upgrade_core_soul":                  "Upgrade Core - Soul",
+  "item.mcda.upgrade_core_verdant":               "Upgrade Core - Verdant",
+  "item.mcda.upgrade_core_wither":                "Upgrade Core - Wither"
+
 }
