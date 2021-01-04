@@ -1,8 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "HHH",
     "HCH",
+    "H H",
     "   "
   ],
   "key": {
@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "mcda:beenest_armor_helmet",
+    "item": "mcda:beenest_armor_boots",
     "count": 1
   }
 }
