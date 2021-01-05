@@ -54,6 +54,7 @@ public class ItemsInit {
     public static final Item UPGRADE_CORE_SOUL = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item UPGRADE_CORE_VERDANT = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item UPGRADE_CORE_WITHER = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item UPGRADE_CORE_WOLF = new Item(new Item.Settings().group(ItemGroup.MISC));
 
 
 
@@ -112,6 +113,7 @@ public class ItemsInit {
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_soul"), UPGRADE_CORE_SOUL);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_verdant"), UPGRADE_CORE_VERDANT);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_wither"), UPGRADE_CORE_WITHER);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_wolf"), UPGRADE_CORE_WOLF);
 
 
     }

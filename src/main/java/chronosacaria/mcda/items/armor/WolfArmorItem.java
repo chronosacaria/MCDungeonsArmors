@@ -107,10 +107,6 @@ public class WolfArmorItem extends ArmorItem {
         if(this.unique) {
             tooltip.add(new TranslatableText("item.mcda.black_wolf_armor.tooltip_1"));
             tooltip.add(new TranslatableText("item.mcda.black_wolf_armor.tooltip_2"));
-            tooltip.add(new TranslatableText("item.mcda.black_wolf_armor.tooltip_3"));
-            tooltip.add(new TranslatableText("item.mcda.black_wolf_armor.tooltip_4"));
-            tooltip.add(new TranslatableText("item.mcda.black_wolf_armor.tooltip_5"));
-            tooltip.add(new TranslatableText("item.mcda.black_wolf_armor.tooltip_6"));
         }
 
 

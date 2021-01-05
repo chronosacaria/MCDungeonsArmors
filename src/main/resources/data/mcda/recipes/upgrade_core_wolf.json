@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:upgrade_core"
+  },
+  "addition": {
+    "item": "mcda:wolf_pelt_black"
+  },
+  "result": {
+    "item": "mcda:upgrade_core_wolf"
+  }
+}

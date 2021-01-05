@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:wolf_armor_boots"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_wolf"
+  },
+  "result": {
+    "item": "mcda:black_wolf_armor_boots"
+  }
+}
