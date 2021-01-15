@@ -13,6 +13,10 @@ public class Mcda implements ModInitializer {
 
     public static final String MOD_ID = "mcda";
 
+    public static Identifier ID(String path) {
+        return new Identifier(MOD_ID, path);
+    }
+
     public static final ItemGroup ARMORS = FabricItemGroupBuilder.build(
             new Identifier(MOD_ID, "armor"),
             () -> new ItemStack(ArmorsInit.SPLENDID_ROBE_CHESTPLATE));

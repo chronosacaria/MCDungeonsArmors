@@ -15,6 +15,8 @@ public class ItemsInit {
     public static final Item WOLF_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item BLACK_WOLF_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item FOX_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item FOX_PELT_ARCTIC = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item GOAT_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
 
     public static final Item FROST_CRYSTAL = new Item(new Item.Settings().group(ItemGroup.MISC));
 
@@ -56,11 +58,6 @@ public class ItemsInit {
     public static final Item UPGRADE_CORE_WITHER = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item UPGRADE_CORE_WOLF = new Item(new Item.Settings().group(ItemGroup.MISC));
 
-
-
-
-
-
     public static void doRegister() {
         //MOB DROPS
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "bone_rib_cage"), BONE_RIB_CAGE);
@@ -71,6 +68,8 @@ public class ItemsInit {
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "wolf_pelt"), WOLF_PELT);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "wolf_pelt_black"), BLACK_WOLF_PELT);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fox_pelt"), FOX_PELT);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fox_pelt_arctic"), FOX_PELT);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "goat_pelt"), GOAT_PELT);
 
         //BLOCK DROPS
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "frost_crystal"), FROST_CRYSTAL);
@@ -114,7 +113,5 @@ public class ItemsInit {
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_verdant"), UPGRADE_CORE_VERDANT);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_wither"), UPGRADE_CORE_WITHER);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "upgrade_core_wolf"), UPGRADE_CORE_WOLF);
-
-
     }
 }

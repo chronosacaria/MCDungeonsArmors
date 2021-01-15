@@ -278,6 +278,21 @@ public class McdaBoostsConfig implements ConfigData {
     public double GildedGloryArmourSetAttackSpeedBoost = 0.05D;
     public double GildedGloryArmourSetMovementBoost = 0.0D;
 
+    @Comment("Climbing Gear Armour Boosts")
+    public double ClimbingGearArmourSetAttackDamageBoost = 0.0D;
+    public double ClimbingGearArmourSetAttackSpeedBoost = 0.00D;
+    public double ClimbingGearArmourSetMovementBoost = 0.0D;
+
+    @Comment("Rugged Climbing Gear Armour Boosts")
+    public double RuggedClimbingGearArmourSetAttackDamageBoost = 0.0D;
+    public double RuggedClimbingGearArmourSetAttackSpeedBoost = 0.00D;
+    public double RuggedClimbingGearArmourSetMovementBoost = 0.0D;
+
+    @Comment("Goat Armour Boosts")
+    public double GoatArmourSetAttackDamageBoost = 0.0D;
+    public double GoatArmourSetAttackSpeedBoost = 0.00D;
+    public double GoatArmourSetMovementBoost = 0.0D;
+
     public double getBattleRobeSetAttackBoost(){return BattleRobeSetAttackDamageBoost;}
     public double getBattleRobeSetAttackSpeedBoost(){return BattleRobeSetAttackSpeedBoost;}
     public double getBattleRobeSetMovementBoost(){return BattleRobeSetMovementBoost;}
@@ -697,5 +712,17 @@ public class McdaBoostsConfig implements ConfigData {
     public double getGildedGloryArmourSetAttackDamageBoost()    {return GildedGloryArmourSetAttackDamageBoost;}
     public double getGildedGloryArmourSetAttackSpeedBoost()     {return GildedGloryArmourSetAttackSpeedBoost;}
     public double getGildedGloryArmourSetMovementBoost()        {return GildedGloryArmourSetMovementBoost;}
+
+    public double getClimbingGearArmourSetAttackDamageBoost()   {return  ClimbingGearArmourSetAttackDamageBoost;}
+    public double getClimbingGearArmourSetAttackSpeedBoost()    {return  ClimbingGearArmourSetAttackSpeedBoost;}
+    public double getClimbingGearArmourSetMovementBoost()       {return  ClimbingGearArmourSetMovementBoost;}
+
+    public double getRuggedClimbingGearArmourSetAttackDamageBoost()     {return RuggedClimbingGearArmourSetAttackDamageBoost;}
+    public double getRuggedClimbingGearArmourSetAttackSpeedBoost()      {return RuggedClimbingGearArmourSetAttackSpeedBoost;}
+    public double getRuggedClimbingGearArmourSetMovementBoost()         {return RuggedClimbingGearArmourSetMovementBoost;}
+
+    public double getGoatArmourSetAttackDamageBoost()     {return GoatArmourSetAttackDamageBoost;}
+    public double getGoatArmourSetAttackSpeedBoost()      {return GoatArmourSetAttackSpeedBoost;}
+    public double getGoatArmourSetMovementBoost()         {return GoatArmourSetMovementBoost;}
 }
 

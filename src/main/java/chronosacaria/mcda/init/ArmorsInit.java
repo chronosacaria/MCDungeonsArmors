@@ -261,6 +261,21 @@ public class ArmorsInit {
     public static Item GILDED_GLORY_LEGGINGS;
     public static Item GILDED_GLORY_BOOTS;
 
+    public static Item CLIMBING_GEAR_HELMET;
+    public static Item CLIMBING_GEAR_CHESTPLATE;
+    public static Item CLIMBING_GEAR_LEGGINGS;
+    public static Item CLIMBING_GEAR_BOOTS;
+
+    public static Item RUGGED_CLIMBING_GEAR_HELMET;
+    public static Item RUGGED_CLIMBING_GEAR_CHESTPLATE;
+    public static Item RUGGED_CLIMBING_GEAR_LEGGINGS;
+    public static Item RUGGED_CLIMBING_GEAR_BOOTS;
+
+    public static Item GOAT_HELMET;
+    public static Item GOAT_CHESTPLATE;
+    public static Item GOAT_LEGGINGS;
+    public static Item GOAT_BOOTS;
+
     public static void init() {
         BATTLE_ROBE_CHESTPLATE = new BattleRobeArmorItem(ArmorBases.BATTLE, EquipmentSlot.CHEST,
                 new Item.Settings().group(Mcda.ARMORS), true, false, "battle_robe_chestplate");
@@ -326,7 +341,8 @@ public class ArmorsInit {
         TITANS_BOOTS = new DarkArmorItem(ArmorBases.TITAN, EquipmentSlot.FEET,
                 new Item.Settings().group(Mcda.ARMORS), false, true, false, "titans_shroud_boots");
 
-        /*ROYAL_GUARD_HELMET = new DarkArmorItem(ArmorBases.ROYAL, EquipmentSlot.HEAD,
+        /*
+        ROYAL_GUARD_HELMET = new DarkArmorItem(ArmorBases.ROYAL, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), false, false, true, "royal_guard_helmet");
         ROYAL_GUARD_CHESTPLATE = new DarkArmorItem(ArmorBases.ROYAL, EquipmentSlot.CHEST,
                 new Item.Settings().group(Mcda.ARMORS), false, false, true, "royal_guard_chestplate");
@@ -335,7 +351,6 @@ public class ArmorsInit {
         ROYAL_GUARD_BOOTS = new DarkArmorItem(ArmorBases.ROYAL, EquipmentSlot.FEET,
                 new Item.Settings().group(Mcda.ARMORS), false, false, true, "royal_guard_boots");
         */
-
         EVOCATION_ROBE_HELMET = new EvocationRobeArmorItem(ArmorBases.EVOCATION, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), true, false, false, "evocation_robe_helmet");
         EVOCATION_ROBE_CHESTPLATE = new EvocationRobeArmorItem(ArmorBases.EVOCATION, EquipmentSlot.CHEST,
@@ -682,7 +697,7 @@ public class ArmorsInit {
         FOX_ARMOR_BOOTS = new FoxArmorItem(ArmorBases.FOX, EquipmentSlot.FEET,
                 new Item.Settings().group(Mcda.ARMORS), true, false, "fox_armor_boots");
 
-        /*
+
         ARCTIC_FOX_ARMOR_HELMET = new FoxArmorItem(ArmorBases.ARCTIC_FOX, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), false, true, "arctic_fox_armor_helmet");
         ARCTIC_FOX_ARMOR_CHESTPLATE = new FoxArmorItem(ArmorBases.ARCTIC_FOX, EquipmentSlot.CHEST,
@@ -694,31 +709,57 @@ public class ArmorsInit {
 
         EMERALD_GEAR_HELMET = new EmeraldArmorItem(ArmorBases.EMERALD, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), true, false, false, "emerald_gear_helmet");
-        EMERALD_GEAR_CHESTPLATE = new EmeraldArmorItem(ArmorBases.EMERALD, EquipmentSlot.HEAD,
+        EMERALD_GEAR_CHESTPLATE = new EmeraldArmorItem(ArmorBases.EMERALD, EquipmentSlot.CHEST,
                 new Item.Settings().group(Mcda.ARMORS), true, false, false, "emerald_gear_chestplate");
-        EMERALD_GEAR_LEGGINGS = new EmeraldArmorItem(ArmorBases.EMERALD, EquipmentSlot.HEAD,
+        EMERALD_GEAR_LEGGINGS = new EmeraldArmorItem(ArmorBases.EMERALD, EquipmentSlot.LEGS,
                 new Item.Settings().group(Mcda.ARMORS), true, false, false, "emerald_gear_leggings");
-        EMERALD_GEAR_BOOTS = new EmeraldArmorItem(ArmorBases.EMERALD, EquipmentSlot.HEAD,
+        EMERALD_GEAR_BOOTS = new EmeraldArmorItem(ArmorBases.EMERALD, EquipmentSlot.FEET,
                 new Item.Settings().group(Mcda.ARMORS), true, false, false, "emerald_gear_boots");
 
         OPULENT_ARMOR_HELMET = new EmeraldArmorItem(ArmorBases.OPULENT, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, false, false, "opulent_armor_helmet");
-        OPULENT_ARMOR_CHESTPLATE = new EmeraldArmorItem(ArmorBases.OPULENT, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, false, false, "opulent_armor_chestplate");
-        OPULENT_ARMOR_LEGGINGS = new EmeraldArmorItem(ArmorBases.OPULENT, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, false, false, "opulent_armor_leggings");
-        OPULENT_ARMOR_BOOTS = new EmeraldArmorItem(ArmorBases.OPULENT, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, false, false, "opulent_armor_boots");
+                new Item.Settings().group(Mcda.ARMORS), false, true, false, "opulent_armor_helmet");
+        OPULENT_ARMOR_CHESTPLATE = new EmeraldArmorItem(ArmorBases.OPULENT, EquipmentSlot.CHEST,
+                new Item.Settings().group(Mcda.ARMORS), false, true, false, "opulent_armor_chestplate");
+        OPULENT_ARMOR_LEGGINGS = new EmeraldArmorItem(ArmorBases.OPULENT, EquipmentSlot.LEGS,
+                new Item.Settings().group(Mcda.ARMORS), false, true, false, "opulent_armor_leggings");
+        OPULENT_ARMOR_BOOTS = new EmeraldArmorItem(ArmorBases.OPULENT, EquipmentSlot.FEET,
+                new Item.Settings().group(Mcda.ARMORS), false, true, false, "opulent_armor_boots");
 
         GILDED_GLORY_HELMET = new EmeraldArmorItem(ArmorBases.GILDED, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, false, false, "gilded_glory_helmet");
-        GILDED_GLORY_CHESTPLATE = new EmeraldArmorItem(ArmorBases.GILDED, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, false, false, "gilded_glory_chestplate");
-        GILDED_GLORY_LEGGINGS = new EmeraldArmorItem(ArmorBases.GILDED, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, false, false, "gilded_glory_leggings");
-        GILDED_GLORY_BOOTS = new EmeraldArmorItem(ArmorBases.GILDED, EquipmentSlot.HEAD,
-                new Item.Settings().group(Mcda.ARMORS), true, false, false, "gilded_glory_boots");
-        */
+                new Item.Settings().group(Mcda.ARMORS), false, false, true, "gilded_glory_helmet");
+        GILDED_GLORY_CHESTPLATE = new EmeraldArmorItem(ArmorBases.GILDED, EquipmentSlot.CHEST,
+                new Item.Settings().group(Mcda.ARMORS), false, false, true, "gilded_glory_chestplate");
+        GILDED_GLORY_LEGGINGS = new EmeraldArmorItem(ArmorBases.GILDED, EquipmentSlot.LEGS,
+                new Item.Settings().group(Mcda.ARMORS), false, false, true, "gilded_glory_leggings");
+        GILDED_GLORY_BOOTS = new EmeraldArmorItem(ArmorBases.GILDED, EquipmentSlot.FEET,
+                new Item.Settings().group(Mcda.ARMORS), false, false, true, "gilded_glory_boots");
+
+        CLIMBING_GEAR_HELMET = new ClimbingGearArmorItem(ArmorBases.CLIMBING_GEAR, EquipmentSlot.HEAD,
+                new Item.Settings().group(Mcda.ARMORS), true, false,false, "climbing_gear_helmet");
+        CLIMBING_GEAR_CHESTPLATE = new ClimbingGearArmorItem(ArmorBases.CLIMBING_GEAR, EquipmentSlot.CHEST,
+                new Item.Settings().group(Mcda.ARMORS), true, false,false, "climbing_gear_chestplate");
+        CLIMBING_GEAR_LEGGINGS = new ClimbingGearArmorItem(ArmorBases.CLIMBING_GEAR, EquipmentSlot.LEGS,
+                new Item.Settings().group(Mcda.ARMORS), true, false, false,"climbing_gear_leggings");
+        CLIMBING_GEAR_BOOTS = new ClimbingGearArmorItem(ArmorBases.CLIMBING_GEAR, EquipmentSlot.FEET,
+                new Item.Settings().group(Mcda.ARMORS), true, false, false,"climbing_gear_boots");
+
+        RUGGED_CLIMBING_GEAR_HELMET = new ClimbingGearArmorItem(ArmorBases.RUGGED_CLIMBING_GEAR, EquipmentSlot.HEAD,
+                new Item.Settings().group(Mcda.ARMORS), false, true,false, "rugged_climbing_gear_helmet");
+        RUGGED_CLIMBING_GEAR_CHESTPLATE = new ClimbingGearArmorItem(ArmorBases.RUGGED_CLIMBING_GEAR, EquipmentSlot.CHEST,
+                new Item.Settings().group(Mcda.ARMORS), false, true,false, "rugged_climbing_gear_chestplate");
+        RUGGED_CLIMBING_GEAR_LEGGINGS = new ClimbingGearArmorItem(ArmorBases.RUGGED_CLIMBING_GEAR, EquipmentSlot.LEGS,
+                new Item.Settings().group(Mcda.ARMORS), false, true,false, "rugged_climbing_gear_leggings");
+        RUGGED_CLIMBING_GEAR_BOOTS = new ClimbingGearArmorItem(ArmorBases.RUGGED_CLIMBING_GEAR, EquipmentSlot.FEET,
+                new Item.Settings().group(Mcda.ARMORS), false, true,false, "rugged_climbing_gear_boots");
+
+        GOAT_HELMET = new ClimbingGearArmorItem(ArmorBases.GOAT, EquipmentSlot.HEAD,
+                new Item.Settings().group(Mcda.ARMORS), false, true,false, "goat_gear_helmet");
+        GOAT_CHESTPLATE = new ClimbingGearArmorItem(ArmorBases.GOAT, EquipmentSlot.CHEST,
+                new Item.Settings().group(Mcda.ARMORS), false, true,false, "goat_gear_chestplate");
+        GOAT_LEGGINGS = new ClimbingGearArmorItem(ArmorBases.GOAT, EquipmentSlot.LEGS,
+                new Item.Settings().group(Mcda.ARMORS), false, true,false, "goat_gear_leggings");
+        GOAT_BOOTS = new ClimbingGearArmorItem(ArmorBases.GOAT, EquipmentSlot.FEET,
+                new Item.Settings().group(Mcda.ARMORS), false, true,false, "goat_gear_boots");
     }
 
 

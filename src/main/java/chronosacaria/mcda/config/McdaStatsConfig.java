@@ -54,6 +54,12 @@ public class McdaStatsConfig implements ConfigData {
     public int[] SoulRobe = {1,5,6,1,};
     @Comment ("Soul Dancer Robe: Feet, Legs, Body, Head")
     public int[] SoulDancerRobe = {2,5,6,2};
+    @Comment ("Climbing Gear: Feet, Legs, Body, Head")
+    public int[] ClimbingGear = {1,5,6,1,};
+    @Comment ("Rugged Climbing Gear: Feet, Legs, Body, Head")
+    public int[] RuggedClimbingGear = {2,5,6,2};
+    @Comment ("Goat Armor: Feet, Legs, Body, Head")
+    public int[] GoatArmor = {2,5,6,2};
 
     //Bone Armours
     @Comment ("Phantom Armor: Feet, Legs, Body, Head")
@@ -142,6 +148,9 @@ public class McdaStatsConfig implements ConfigData {
     public int[] getSpiderArmor() {return SpiderArmor;}
     public int[] getSoulRobe() {return SoulRobe;}
     public int[] getSoulDancerRobe() {return SoulDancerRobe;}
+    public int[] getClimbingGearArmor() {return ClimbingGear;}
+    public int[] getRuggedClimbingGearArmor() {return RuggedClimbingGear;}
+    public int[] getGoatArmor() {return GoatArmor;}
 
     public int[] getPhantomArmor() {return PhantomArmor;}
     public int[] getFrostBiteArmor() {return FrostBiteArmor;}

@@ -127,7 +127,6 @@ public class EmeraldArmorItem extends ArmorItem {
             tooltip.add(new TranslatableText("item.mcda.gilded_glory.tooltip_1"));
             tooltip.add(new TranslatableText("item.mcda.gilded_glory.tooltip_2"));
             tooltip.add(new TranslatableText("item.mcda.gilded_glory.tooltip_3"));
-            tooltip.add(new TranslatableText("item.mcda.gilded_glory.tooltip_4"));
         }
 
 

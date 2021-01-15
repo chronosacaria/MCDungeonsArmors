@@ -133,7 +133,7 @@ public enum ArmorBases implements ArmorMaterial {
             0.0f,
             0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    /*ARCTIC_FOX("arctic_fox",
+    ARCTIC_FOX("arctic",
             7,
             McdaStatsConfig.config.getFoxArmor(),
             15,
@@ -141,7 +141,7 @@ public enum ArmorBases implements ArmorMaterial {
             0.0f,
             0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    CLIMBING_GEAR("climbing_gear",
+    CLIMBING_GEAR("climbing",
             7,
             McdaStatsConfig.config.getClimbingGearArmor(),
             15,
@@ -149,7 +149,7 @@ public enum ArmorBases implements ArmorMaterial {
             0.0f,
             0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    RUGGED_CLIMBING_GEAR("rugged_climbing_gear",
+    RUGGED_CLIMBING_GEAR("rugged",
             7,
             McdaStatsConfig.config.getRuggedClimbingGearArmor(),
             15,
@@ -165,7 +165,7 @@ public enum ArmorBases implements ArmorMaterial {
             0.0f,
             2.0f,
             () -> {return Ingredient.ofItems(ItemsInit.GOAT_PELT);}),
-     */
+
 
     /* * * * |
     | FABRIC |
@@ -236,7 +236,7 @@ public enum ArmorBases implements ArmorMaterial {
             () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
     SOULDANCER("souldancer",
             5,
-            McdaStatsConfig.config.SoulDancerRobe,
+            McdaStatsConfig.config.getSoulDancerRobe(),
             25,
             SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,
             2.0f,

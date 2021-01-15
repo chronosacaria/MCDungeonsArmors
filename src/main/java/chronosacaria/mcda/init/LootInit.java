@@ -137,7 +137,9 @@ public class LootInit {
             if ("minecraft:entities/fox".equals(id.toString())){
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(BinomialLootTableRange.create(1,0.25F))
-                        .with(ItemEntry.builder(ItemsInit.FOX_PELT));
+                        .with(ItemEntry.builder(ItemsInit.FOX_PELT))
+                        .rolls(BinomialLootTableRange.create(1,0.05F))
+                        .with(ItemEntry.builder(ItemsInit.FOX_PELT_ARCTIC));
                 supplier.pool(poolBuilder);
             }
 

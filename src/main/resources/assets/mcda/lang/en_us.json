@@ -390,6 +390,14 @@
   "item.mcda.wolf_armor.tooltip_2":               "wolves into battle to strike fear",
   "item.mcda.wolf_armor.tooltip_3":               "into the hearts of their enemies.",
 
+  "item.mcda.black_wolf_armor_helmet":            "Black Wolf Hood",
+  "item.mcda.black_wolf_armor_chestplate":        "Black Wolf Vest",
+  "item.mcda.black_wolf_armor_leggings":          "Black Wolf Leggings",
+  "item.mcda.black_wolf_armor_boots":             "Black Wolf Boots",
+
+  "item.mcda.black_wolf_armor.tooltip_1":         "The wolf who strikes from the",
+  "item.mcda.black_wolf_armor.tooltip_2":         "shadows lives to tell the tale.",
+
   "item.mcda.fox_armor_helmet":                   "Fox Hood",
   "item.mcda.fox_armor_chestplate":               "Fox Vest",
   "item.mcda.fox_armor_leggings":                 "Fox Leggings",
@@ -402,13 +410,68 @@
   "item.mcda.fox_armor.tooltip_5":                "as it has a reputation for being quite",
   "item.mcda.fox_armor.tooltip_6":                "difficult to pierce.",
 
-  "item.mcda.black_wolf_armor_helmet":            "Black Wolf Hood",
-  "item.mcda.black_wolf_armor_chestplate":        "Black Wolf Vest",
-  "item.mcda.black_wolf_armor_leggings":          "Black Wolf Leggings",
-  "item.mcda.black_wolf_armor_boots":             "Black Wolf Boots",
+  "item.mcda.arctic_fox_armor_helmet":            "Arctic Fox Hood",
+  "item.mcda.arctic_fox_armor_chestplate":        "Arctic Fox Vest",
+  "item.mcda.arctic_fox_armor_leggings":          "Arctic Fox Leggings",
+  "item.mcda.arctic_fox_armor_boots":             "Arctic Fox Boots",
 
-  "item.mcda.black_wolf_armor.tooltip_1":         "The wolf who strikes from the",
-  "item.mcda.black_wolf_armor.tooltip_2":         "shadows lives to tell the tale.",
+  "item.mcda.arctic_fox_armor.tooltip_1":         "If you want to survive in the icy",
+  "item.mcda.arctic_fox_armor.tooltip_2":         "tundra in style, the Arctic Fox Armor",
+  "item.mcda.arctic_fox_armor.tooltip_3":         "is the best choice this season.",
+
+  "item.mcda.emerald_gear_helmet":                "Emerald Gear Helmet",
+  "item.mcda.emerald_gear_chestplate":            "Emerald Gear Chestplate",
+  "item.mcda.emerald_gear_leggings":              "Emerald Gear Leggings",
+  "item.mcda.emerald_gear_boots":                 "Emerald Gear Boots",
+
+  "item.mcda.emerald_armor.tooltip_1":            "As you wear the Emerald Armor during",
+  "item.mcda.emerald_armor.tooltip_2":            "your adventures, it calls other",
+  "item.mcda.emerald_armor.tooltip_3":            "emeralds to you as if by chance.",
+
+  "item.mcda.opulent_armor_helmet":                "Opulent Armor Helmet",
+  "item.mcda.opulent_armor_chestplate":            "Opulent Armor Chestplate",
+  "item.mcda.opulent_armor_leggings":              "Opulent Armor Leggings",
+  "item.mcda.opulent_armor_boots":                 "Opulent Armor Boots",
+
+  "item.mcda.opulent_armor.tooltip_1":             "Opulent Armor, originally designed more",
+  "item.mcda.opulent_armor.tooltip_2":             "for show than combat, thrives in the",
+  "item.mcda.opulent_armor.tooltip_3":             "presence of emeralds.",
+
+  "item.mcda.gilded_glory_helmet":                 "Gilded Glory Helmet",
+  "item.mcda.gilded_glory_chestplate":             "Gilded Glory Chestplate",
+  "item.mcda.gilded_glory_leggings":               "Gilded Glory Leggings",
+  "item.mcda.gilded_glory_boots":                  "Gilded Glory Boots",
+
+  "item.mcda.gilded_glory.tooltip_1":              "Even death itself has to pause and",
+  "item.mcda.gilded_glory.tooltip_2":              "admire the charms of the legendary",
+  "item.mcda.gilded_glory.tooltip_3":              "Gilded Glory armor.",
+
+  "item.mcda.climbing_gear_helmet":                 "Climbing Gear Hood",
+  "item.mcda.climbing_gear_chestplate":             "Climbing Gear Jacket",
+  "item.mcda.climbing_gear_leggings":               "Climbing Gear Leggings",
+  "item.mcda.climbing_gear_boots":                  "Climbing Gear Boots",
+
+  "item.mcda.climbing_gear.tooltip_1":             "This study Climbing Gear is perfect",
+  "item.mcda.climbing_gear.tooltip_2":             "for braving the blistering cold of",
+  "item.mcda.climbing_gear.tooltip_3":             "the icy mountain face.",
+
+  "item.mcda.rugged_climbing_gear_helmet":         "Rugged Climbing Gear Hood",
+  "item.mcda.rugged_climbing_gear_chestplate":     "Rugged Climbing Gear Jacket",
+  "item.mcda.rugged_climbing_gear_leggings":       "Rugged Climbing Gear Leggings",
+  "item.mcda.rugged_climbing_gear_boots":          "Rugged Climbing Gear Boots",
+
+  "item.mcda.rugged_climbing_gear.tooltip_1":      "Take on the worst that nature can",
+  "item.mcda.rugged_climbing_gear.tooltip_2":      "throw at you in this rugged armor.",
+
+  "item.mcda.goat_gear_helmet":                    "Goat Gear Hood",
+  "item.mcda.goat_gear_chestplate":                "Goat Gear Jacket",
+  "item.mcda.goat_gear_leggings":                  "Goat Gear Leggings",
+  "item.mcda.goat_gear_boots":                     "Goat Gear Boots",
+
+  "item.mcda.goat_gear.tooltip_1":                 "Made from the pelts of Mountain",
+  "item.mcda.goat_gear.tooltip_2":                 "Goats, you'll feel like skipping",
+  "item.mcda.goat_gear.tooltip_3":                 "from peak to peak in this Goat Gear.",
+
 
   "item.mcda.bone_rib_cage":                      "Bone Rib Cage",
   "item.mcda.phantom_bones":                      "Phantom Bones",
@@ -418,6 +481,8 @@
   "item.mcda.wolf_pelt":                          "Wolf Pelt",
   "item.mcda.wolf_pelt_black":                    "Black Wolf Pelt",
   "item.mcda.fox_pelt":                           "Fox Pelt",
+  "item.mcda.fox_pelt_arctic":                    "Arctic Fox Pelt",
+  "item.mcda.goat_pelt":                          "Goat Pelt",
   "item.mcda.frost_crystal":                      "Frost Crystal",
   "item.mcda.glut_charm":                         "Glut Charm",
   "item.mcda.iron_plate":                         "Iron Plate",
