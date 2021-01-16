@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "BLB",
+    "gbg"
+  ],
+  "key": {
+    "G": {
+      "item": "mcda:fabric_bolt_green"
+    },
+    "L": {
+      "item": "minecraft:leather_chestplate"
+    },
+    "B": {
+      "item": "mcda:fabric_bolt_brown"
+    },
+    "b": {
+      "item": "mcda:fabric_bolt_blue"
+    },
+    "g": {
+      "item": "mcda:fabric_bolt_gray"
+    }
+  },
+  "result": {
+    "item": "mcda:climbing_gear_chestplate",
+    "count": 1
+  }
+}

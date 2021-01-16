@@ -133,6 +133,7 @@ public enum ArmorBases implements ArmorMaterial {
             0.0f,
             0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    /*
     ARCTIC_FOX("arctic",
             7,
             McdaStatsConfig.config.getFoxArmor(),
@@ -141,6 +142,7 @@ public enum ArmorBases implements ArmorMaterial {
             0.0f,
             0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
+     */
     CLIMBING_GEAR("climbing",
             7,
             McdaStatsConfig.config.getClimbingGearArmor(),
@@ -157,6 +159,7 @@ public enum ArmorBases implements ArmorMaterial {
             0.0f,
             0.0f,
             () -> {return Ingredient.ofItems(Items.LEATHER);}),
+    /*
     GOAT("goat",
             7,
             McdaStatsConfig.config.getGoatArmor(),
@@ -165,7 +168,7 @@ public enum ArmorBases implements ArmorMaterial {
             0.0f,
             2.0f,
             () -> {return Ingredient.ofItems(ItemsInit.GOAT_PELT);}),
-
+    */
 
     /* * * * |
     | FABRIC |

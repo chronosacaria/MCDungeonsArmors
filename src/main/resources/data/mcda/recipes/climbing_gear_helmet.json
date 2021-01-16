@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "gLg",
+    "BBB"
+  ],
+  "key": {
+    "G": {
+      "item": "mcda:fabric_bolt_green"
+    },
+    "g": {
+      "item": "minecraft:gray_stained_glass_pane"
+    },
+    "L": {
+      "item": "minecraft:leather_helmet"
+    },
+    "B": {
+      "item": "mcda:fabric_bolt_brown"
+    }
+  },
+  "result": {
+    "item": "mcda:climbing_gear_helmet",
+    "count": 1
+  }
+}

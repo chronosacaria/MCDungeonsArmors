@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "glg",
+    "gLg",
+    "   "
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:leather_boots"
+    },
+    "l": {
+      "item": "mcda:fabric_bolt_light_gray"
+    },
+    "g": {
+      "item": "mcda:fabric_bolt_gray"
+    }
+  },
+  "result": {
+    "item": "mcda:climbing_gear_boots",
+    "count": 1
+  }
+}

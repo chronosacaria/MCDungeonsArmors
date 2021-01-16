@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "bgb",
+    "gLg",
+    "b b"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:leather_leggings"
+    },
+    "b": {
+      "item": "mcda:fabric_bolt_blue"
+    },
+    "g": {
+      "item": "mcda:fabric_bolt_gray"
+    }
+  },
+  "result": {
+    "item": "mcda:climbing_gear_leggings",
+    "count": 1
+  }
+}

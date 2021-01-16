@@ -16,7 +16,7 @@ public class ItemsInit {
     public static final Item BLACK_WOLF_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item FOX_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
     public static final Item FOX_PELT_ARCTIC = new Item(new Item.Settings().group(ItemGroup.MISC));
-    public static final Item GOAT_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
+    //public static final Item GOAT_PELT = new Item(new Item.Settings().group(ItemGroup.MISC));
 
     public static final Item FROST_CRYSTAL = new Item(new Item.Settings().group(ItemGroup.MISC));
 
@@ -68,8 +68,8 @@ public class ItemsInit {
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "wolf_pelt"), WOLF_PELT);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "wolf_pelt_black"), BLACK_WOLF_PELT);
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fox_pelt"), FOX_PELT);
-        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fox_pelt_arctic"), FOX_PELT);
-        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "goat_pelt"), GOAT_PELT);
+        Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "fox_pelt_arctic"), FOX_PELT_ARCTIC);
+        //Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "goat_pelt"), GOAT_PELT);
 
         //BLOCK DROPS
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, "frost_crystal"), FROST_CRYSTAL);
