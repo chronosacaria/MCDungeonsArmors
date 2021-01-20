@@ -1,5 +1,6 @@
 package chronosacaria.mcda;
 
+import chronosacaria.mcda.enchants.EnchantsRegistry;
 import chronosacaria.mcda.init.LootInit;
 import chronosacaria.mcda.init.ArmorsInit;
 import chronosacaria.mcda.init.ItemsInit;
@@ -27,6 +28,7 @@ public class Mcda implements ModInitializer {
 
 
         ArmorsInit.init();
+        EnchantsRegistry.init();
         ItemsInit.doRegister();
         LootInit.init();
     }
