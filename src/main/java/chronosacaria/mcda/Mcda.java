@@ -25,8 +25,6 @@ public class Mcda implements ModInitializer {
 
     @Override
     public void onInitialize() {
-
-
         ArmorsInit.init();
         EnchantsRegistry.init();
         ItemsInit.doRegister();

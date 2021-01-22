@@ -697,7 +697,6 @@ public class ArmorsInit {
         FOX_ARMOR_BOOTS = new FoxArmorItem(ArmorBases.FOX, EquipmentSlot.FEET,
                 new Item.Settings().group(Mcda.ARMORS), true, false, "fox_armor_boots");
 
-        /*
         ARCTIC_FOX_ARMOR_HELMET = new FoxArmorItem(ArmorBases.ARCTIC_FOX, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), false, true, "arctic_fox_armor_helmet");
         ARCTIC_FOX_ARMOR_CHESTPLATE = new FoxArmorItem(ArmorBases.ARCTIC_FOX, EquipmentSlot.CHEST,
@@ -706,7 +705,6 @@ public class ArmorsInit {
                 new Item.Settings().group(Mcda.ARMORS), false, true, "arctic_fox_armor_leggings");
         ARCTIC_FOX_ARMOR_BOOTS = new FoxArmorItem(ArmorBases.ARCTIC_FOX, EquipmentSlot.FEET,
                 new Item.Settings().group(Mcda.ARMORS), false, true, "arctic_fox_armor_boots");
-        */
 
         EMERALD_GEAR_HELMET = new EmeraldArmorItem(ArmorBases.EMERALD, EquipmentSlot.HEAD,
                 new Item.Settings().group(Mcda.ARMORS), true, false, false, "emerald_gear_helmet");

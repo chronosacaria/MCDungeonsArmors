@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:fox_armor_chestplate"
+  },
+  "addition": {
+    "item": "mcda:fox_pelt_arctic"
+  },
+  "result": {
+    "item": "mcda:arctic_fox_armor_chestplate"
+  }
+}
