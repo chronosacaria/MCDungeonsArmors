@@ -8,8 +8,8 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.registry.Registry;
 
-public class BurningEnchantment extends Enchantment {
-    public BurningEnchantment(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
+public class BurningAuraEnchantment extends Enchantment {
+    public BurningAuraEnchantment(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
         super(weight, type, slotTypes);
         Registry.register(Registry.ENCHANTMENT, Mcda.ID("burning"), this);
     }

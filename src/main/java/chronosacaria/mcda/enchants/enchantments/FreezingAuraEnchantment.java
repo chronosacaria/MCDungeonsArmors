@@ -8,13 +8,15 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.registry.Registry;
 
-public class GoatsLeapEnchantment extends Enchantment {
-    public GoatsLeapEnchantment(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
+public class FreezingAuraEnchantment extends Enchantment {
+    public FreezingAuraEnchantment(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
         super(weight, type, slotTypes);
-        Registry.register(Registry.ENCHANTMENT, Mcda.ID("goats_leap"), this);
+        Registry.register(Registry.ENCHANTMENT, Mcda.ID("freezing"), this);
     }
 
     public int getMaxLevel(){
         return 3;
     }
+
+
 }
