@@ -18,7 +18,7 @@ public class AOEHelper {
         PlayerEntity playerEntity = healer instanceof PlayerEntity ? (PlayerEntity)healer : null;
         List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class,
                 new Box(healer.getBlockPos()).expand(distance),
-                (nearbyEntity) -> AbililtyHelper.canHealEntity(healer, nearbyEntity));
+                (nearbyEntity) -> AbilityHelper.canHealEntity(healer, nearbyEntity));
         for (LivingEntity nearbyEntity : nearbyEntities){
             if (nearbyEntity.getHealth() < nearbyEntity.getMaxHealth()){
                 if (effectInstance.getEffectType().isInstant()){
@@ -63,7 +63,7 @@ public class AOEHelper {
         PlayerEntity playerEntity = healer instanceof PlayerEntity ? (PlayerEntity)healer : null;
         List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class,
                 new Box(healer.getBlockPos()).expand(distance),
-                (nearbyEntity) -> AbililtyHelper.canHealEntity(healer, nearbyEntity));
+                (nearbyEntity) -> AbilityHelper.canHealEntity(healer, nearbyEntity));
         for (LivingEntity nearbyEntity : nearbyEntities){
             if (nearbyEntity.getHealth() < nearbyEntity.getMaxHealth()){
                 nearbyEntity.heal(amount);
@@ -103,7 +103,7 @@ public class AOEHelper {
 
         List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class,
                 new Box(attacker.getBlockPos()).expand(distance),
-                (nearbyEntity) -> AbililtyHelper.canApplyToEnemy(attacker, nearbyEntity));
+                (nearbyEntity) -> AbilityHelper.canApplyToEnemy(attacker, nearbyEntity));
         if (nearbyEntities.isEmpty()) return;
         for (LivingEntity nearbyEntity : nearbyEntities){
             nearbyEntity.damage(DamageSource.ON_FIRE, damage);

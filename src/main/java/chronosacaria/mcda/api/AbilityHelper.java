@@ -9,7 +9,7 @@ import net.minecraft.util.math.Box;
 
 import java.util.List;
 
-public class AbililtyHelper {
+public class AbilityHelper {
 
     public static void stealSpeedFromTarget(LivingEntity attacker, LivingEntity target, int amplifer){
         StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 80, amplifer);
