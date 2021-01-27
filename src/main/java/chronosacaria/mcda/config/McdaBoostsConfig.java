@@ -35,12 +35,12 @@ public class McdaBoostsConfig implements ConfigData {
     public double BeenestArmourSetAttackSpeedBoost = 0.0D;
     public double BeenestArmourSetMovementBoost = 0.0D;
 
-    @Comment ("Hero Armour Boosts")
+    @Comment ("Champion Armour Boosts")
     public double ChampionArmourSetAttackDamageBoost = 0.0375D;
     public double ChampionArmourSetAttackSpeedBoost = 0.0D;
     public double ChampionArmourSetMovementBoost = 0.0D;
 
-    @Comment ("Champion Armour Boosts")
+    @Comment ("Hero Armour Boosts")
     public double HeroArmourSetAttackDamageBoost = 0.075D;
     public double HeroArmourSetAttackSpeedBoost = 0.0375D;
     public double HeroArmourSetMovementBoost = 0.0D;

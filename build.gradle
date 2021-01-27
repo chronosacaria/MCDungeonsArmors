@@ -19,6 +19,12 @@ repositories{
         name = "Siphalor's Maven"
         url = "https://maven.siphalor.de"
     }
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
     repositories {
         jcenter()
     }
@@ -33,20 +39,15 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
+    // EnchantGiver
+    modImplementation "curse.maven:enchantgiver-434579:3166443"
+    include "curse.maven:enchantgiver-434579:3166443"
+
     modApi("me.sargunvohra.mcmods:autoconfig1u:${autoconfig1u_version}") {
         exclude(group: "net.fabricmc.fabric-api")
         include "me.sargunvohra.mcmods:autoconfig1u:${autoconfig1u_version}"
     }
 
-    // Base
-    //modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.cc_version}"
-    //include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.cc_version}"
-    // Entity
-    //modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.cc_version}"
-    //include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.cc_version}"
-    // Level
-    //modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-level:${project.cc_version}"
-    //include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-level:${project.cc_version}"
 }
 
 processResources {

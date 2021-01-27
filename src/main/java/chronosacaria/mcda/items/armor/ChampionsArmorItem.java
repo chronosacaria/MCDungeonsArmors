@@ -59,29 +59,32 @@ public class ChampionsArmorItem extends ArmorItem {
         if(this.base){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    McdaBoostsConfig.config.getHeroArmourSetAttackDamageBoost(),
+                    McdaBoostsConfig.config.getChampionArmourSetAttackDamageBoost(),
                     EntityAttributeModifier.Operation.MULTIPLY_BASE));
 
             builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                     "Armor attack speed boost",
-                    McdaBoostsConfig.config.getHeroArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
-
-            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
-                    "Armor movement speed boost",
-                    McdaBoostsConfig.config.getHeroArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
-        }
-        if(this.unique){
-            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
-                    "Armor attack damage boost",
-                    McdaBoostsConfig.config.getChampionArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
-
-            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
-                    "Armor attack speed boost",
-                    McdaBoostsConfig.config.getChampionArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.getChampionArmourSetAttackDamageBoost(),
+                    EntityAttributeModifier.Operation.MULTIPLY_BASE));
 
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
                     "Armor movement speed boost",
                     McdaBoostsConfig.config.getChampionArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        }
+        if(this.unique){
+            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
+                    "Armor attack damage boost",
+                    McdaBoostsConfig.config.getHeroArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+
+            builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor attack speed boost",
+                    McdaBoostsConfig.config.getHeroArmourSetAttackSpeedBoost(),
+                    EntityAttributeModifier.Operation.MULTIPLY_BASE));
+
+            builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
+                    "Armor movement speed boost",
+                    McdaBoostsConfig.config.getHeroArmourSetMovementBoost(),
+                    EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
         this.attributeModifiers = builder.build();
         Registry.register(Registry.ITEM, new Identifier(Mcda.MOD_ID, id), this);

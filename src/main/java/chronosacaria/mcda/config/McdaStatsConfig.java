@@ -16,10 +16,10 @@ public class McdaStatsConfig implements ConfigData {
     public static final McdaStatsConfig config = AutoConfig.getConfigHolder(McdaStatsConfig.class).getConfig();
 
     //Leather Armours
-    @Comment ("Archer's Armor: Feet, Legs, Body, Head")
-    public int[] ArcherArmor = {1,2,3,1};
     @Comment ("Hunter's Armor: Feet, Legs, Body, Head")
-    public int[] HunterArmor = {2,4,6,2};
+    public int[] HunterArmor = {1,2,3,1};
+    @Comment ("Archer's Armor: Feet, Legs, Body, Head")
+    public int[] ArcherArmor = {2,4,6,2};
     @Comment ("Ocelot Armor: Feet, Legs, Body, Head")
     public int[] OcelotArmor = {2,4,6,2};
     @Comment ("Shadow Walker Armor: Feet, Legs, Body, Head")
