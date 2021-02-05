@@ -18,48 +18,90 @@ public class McdaStatsConfig implements ConfigData {
     //Leather Armours
     @Comment ("Hunter's Armor: Feet, Legs, Body, Head")
     public int[] HunterArmor = {1,2,3,1};
+    public float HunterArmorToughness = 0F;
+    public float HunterArmorKnockback = 0F;
     @Comment ("Archer's Armor: Feet, Legs, Body, Head")
     public int[] ArcherArmor = {2,4,6,2};
+    public float ArcherArmorToughness = 0F;
+    public float ArcherArmorKnockback = 0F;
     @Comment ("Ocelot Armor: Feet, Legs, Body, Head")
     public int[] OcelotArmor = {2,4,6,2};
+    public float OcelotArmorToughness = 0F;
+    public float OcelotArmorKnockback = 0F;
     @Comment ("Shadow Walker Armor: Feet, Legs, Body, Head")
     public int[] ShadowWalkerArmor = {2,4,6,2};
+    public float ShadowWalkerArmorToughness = 0F;
+    public float ShadowWalkerArmorKnockback = 0F;
     @Comment ("Spelunker's Armor: Feet, Legs, Body, Head")
     public int[] SpelunkerArmor = {2,4,6,2};
+    public float SpelunkerArmorToughness = 0F;
+    public float SpelunkerArmorKnockback = 0F;
     @Comment ("Cave Crawler's Armor: Feet, Legs, Body, Head")
     public int[] CaveCrawlerArmor = {2,5,6,2};
+    public float CaveCrawlerArmorToughness = 0F;
+    public float CaveCrawlerArmorKnockback = 0F;
     @Comment ("Wolf Armor: Feet, Legs, Body, Head")
     public int[] WolfArmor = {2,4,6,2};
+    public float WolfArmorToughness = 0F;
+    public float WolfArmorKnockback = 0F;
     @Comment ("Black Wolf Armor: Feet, Legs, Body, Head")
     public int[] BlackWolfArmor = {2,5,6,2};
+    public float BlackWolfArmorToughness = 0F;
+    public float BlackWolfArmorKnockback = 0F;
     @Comment ("Fox Armor: Feet, Legs, Body, Head")
     public int[] FoxArmor = {2,4,6,2};
+    public float FoxArmorToughness = 0F;
+    public float FoxArmorKnockback = 0F;
+    @Comment ("Climbing Gear: Feet, Legs, Body, Head")
+    public int[] ClimbingGear = {1,5,6,1,};
+    public float ClimbingGearToughness = 0F;
+    public float ClimbingGearKnockback = 0F;
+    @Comment ("Rugged Climbing Gear: Feet, Legs, Body, Head")
+    public int[] RuggedClimbingGear = {2,5,6,2};
+    public float RuggedClimbingGearToughness = 0F;
+    public float RuggedClimbingGearKnockback = 0F;
+    @Comment ("Goat Armor: Feet, Legs, Body, Head")
+    public int[] GoatArmor = {2,5,6,2};
+    public float GoatArmorToughness = 0F;
+    public float GoatArmorKnockback = 0.2F;
 
     //Fabric Armours
     @Comment ("Battle Robe: Feet, Legs, Body, Head")
     public int[] BattleRobe = {1,2,3,1};
+    public float BattleRobeToughness = 0F;
+    public float BattleRobeKnockback = 0F;
     @Comment ("Spendid Robe: Feet, Legs, Body, Head")
     public int[] SpendidRobe = {2,3,3,2};
+    public float SplendidRobeToughness = 0F;
+    public float SplendidRobeKnockback = 0F;
     @Comment ("Evocation Robe: Feet, Legs, Body, Head")
     public int[] EvocationRobe = {1,3,3,1};
+    public float EvocationRobeToughness = 0F;
+    public float EvocationRobeKnockback = 0F;
     @Comment ("Ember Robe: Feet, Legs, Body, Head")
     public int[] EmberRobe = {1,3,3,1};
+    public float EmberRobeToughness = 0F;
+    public float EmberRobeKnockback = 0F;
     @Comment ("Verdant Robe: Feet, Legs, Body, Head")
     public int[] VerdantRobe = {1,3,3,1};
+    public float VerdantRobeToughness = 0F;
+    public float VerdantRobeKnockback = 0F;
     @Comment ("Thief Armor: Feet, Legs, Body, Head")
     public int[] ThiefArmor = {2,4,5,2};
+    public float ThiefArmorToughness = 0F;
+    public float ThiefArmorKnockback = 0F;
     @Comment ("Spider Armor: Feet, Legs, Body, Head")
     public int[] SpiderArmor = {2,4,5,2};
+    public float SpiderArmorToughness = 0F;
+    public float SpiderArmorKnockback = 0F;
     @Comment ("Soul Robe: Feet, Legs, Body, Head")
     public int[] SoulRobe = {1,5,6,1,};
+    public float SoulRobeToughness = 0F;
+    public float SoulRobeKnockback = 0F;
     @Comment ("Soul Dancer Robe: Feet, Legs, Body, Head")
     public int[] SoulDancerRobe = {2,5,6,2};
-    @Comment ("Climbing Gear: Feet, Legs, Body, Head")
-    public int[] ClimbingGear = {1,5,6,1,};
-    @Comment ("Rugged Climbing Gear: Feet, Legs, Body, Head")
-    public int[] RuggedClimbingGear = {2,5,6,2};
-    @Comment ("Goat Armor: Feet, Legs, Body, Head")
-    public int[] GoatArmor = {2,5,6,2};
+    public float SouldancerRobeToughness = 0F;
+    public float SouldancerRobeKnockback = 0F;
 
     //Bone Armours
     @Comment ("Phantom Armor: Feet, Legs, Body, Head")
@@ -130,14 +172,41 @@ public class McdaStatsConfig implements ConfigData {
     public int[] GildedGloryArmor = {3,6,8,3};
 
     public int[] getArcherArmor() {return ArcherArmor;}
+    public float getArcherArmorToughness() { return ArcherArmorToughness; }
+    public float getArcherArmorKnockback() { return ArcherArmorKnockback; }
     public int[] getHunterArmor() {return HunterArmor;}
+    public float getHunterArmorToughness() { return HunterArmorToughness; }
+    public float getHunterArmorKnockback() { return HunterArmorKnockback; }
     public int[] getOcelotArmor() {return OcelotArmor;}
+    public float getOcelotArmorToughness() { return OcelotArmorToughness; }
+    public float getOcelotArmorKnockback() { return OcelotArmorKnockback; }
     public int[] getShadowWalkerArmor() {return ShadowWalkerArmor;}
+    public float getShadowWalkerArmorToughness() { return ShadowWalkerArmorToughness; }
+    public float getShadowWalkerArmorKnockback() { return ShadowWalkerArmorKnockback; }
     public int[] getSpelunkerArmor() {return SpelunkerArmor;}
+    public float getSpelunkerArmorToughness() { return SpelunkerArmorToughness; }
+    public float getSpelunkerArmorKnockback() { return SpelunkerArmorKnockback; }
     public int[] getCaveCrawlerArmor() {return CaveCrawlerArmor;}
+    public float getCaveCrawlerArmorToughness() { return CaveCrawlerArmorToughness; }
+    public float getCaveCrawlerArmorKnockback() { return CaveCrawlerArmorKnockback; }
     public int[] getWolfArmor() {return WolfArmor;}
+    public float getWolfArmorToughness() { return WolfArmorToughness; }
+    public float getWolfArmorKnockback() { return WolfArmorKnockback; }
     public int[] getBlackWolfArmor() {return BlackWolfArmor;}
+    public float getBlackWolfArmorToughness() { return BlackWolfArmorToughness; }
+    public float getBlackWolfArmorKnockback() { return BlackWolfArmorKnockback; }
     public int[] getFoxArmor() {return FoxArmor;}
+    public float getFoxArmorToughness() { return FoxArmorToughness; }
+    public float getFoxArmorKnockback() { return FoxArmorKnockback; }
+    public int[] getClimbingGearArmor() {return ClimbingGear;}
+    public float getClimbingGearKnockback() { return ClimbingGearKnockback; }
+    public float getClimbingGearToughness() { return ClimbingGearToughness; }
+    public int[] getRuggedClimbingGearArmor() {return RuggedClimbingGear;}
+    public float getRuggedClimbingGearToughness() { return RuggedClimbingGearToughness; }
+    public float getRuggedClimbingGearKnockback() { return RuggedClimbingGearKnockback; }
+    public int[] getGoatArmor() {return GoatArmor;}
+    public float getGoatArmorToughness() { return GoatArmorToughness; }
+    public float getGoatArmorKnockback() { return GoatArmorKnockback; }
 
     public int[] getBattleRobe() {return BattleRobe;}
     public int[] getSpendidRobe() {return SpendidRobe;}
@@ -148,9 +217,7 @@ public class McdaStatsConfig implements ConfigData {
     public int[] getSpiderArmor() {return SpiderArmor;}
     public int[] getSoulRobe() {return SoulRobe;}
     public int[] getSoulDancerRobe() {return SoulDancerRobe;}
-    public int[] getClimbingGearArmor() {return ClimbingGear;}
-    public int[] getRuggedClimbingGearArmor() {return RuggedClimbingGear;}
-    public int[] getGoatArmor() {return GoatArmor;}
+
 
     public int[] getPhantomArmor() {return PhantomArmor;}
     public int[] getFrostBiteArmor() {return FrostBiteArmor;}

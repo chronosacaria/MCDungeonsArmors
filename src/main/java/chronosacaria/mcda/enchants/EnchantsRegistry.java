@@ -8,6 +8,7 @@ import net.minecraft.entity.EquipmentSlot;
 public class EnchantsRegistry {
     public static Enchantment BURNING;
     public static Enchantment CHILLING;
+    public static Enchantment DEFLECT;
     public static Enchantment SNOWBALL;
 
     public static void init(){
@@ -15,6 +16,8 @@ public class EnchantsRegistry {
                 new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
         CHILLING = new ChillingEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR,
                 new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
+        //DEFLECT = new DeflectEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR,
+        //        new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
         SNOWBALL = new SnowballEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR,
                 new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
     }
