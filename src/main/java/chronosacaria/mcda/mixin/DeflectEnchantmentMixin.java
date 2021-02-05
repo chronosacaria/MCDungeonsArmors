@@ -1,3 +1,4 @@
+/*
 package chronosacaria.mcda.mixin;
 
 import chronosacaria.mcda.api.EnchantHelper;
@@ -32,5 +33,6 @@ public abstract class DeflectEnchantmentMixin {
             }
         }
     }
-
 }
+
+ */

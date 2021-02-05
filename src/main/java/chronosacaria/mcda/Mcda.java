@@ -1,9 +1,9 @@
 package chronosacaria.mcda;
 
 import chronosacaria.mcda.enchants.EnchantsRegistry;
-import chronosacaria.mcda.init.LootInit;
 import chronosacaria.mcda.init.ArmorsInit;
 import chronosacaria.mcda.init.ItemsInit;
+import chronosacaria.mcda.init.LootInit;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
@@ -11,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 public class Mcda implements ModInitializer {
-
     public static final String MOD_ID = "mcda";
 
     public static Identifier ID(String path) {

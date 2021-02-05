@@ -12,7 +12,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.registry.Registry;
 
 public class SnowballEnchantment extends Enchantment{
-    public SnowballEnchantment(Enchantment.Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
+    public SnowballEnchantment(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
         super(weight, type, slotTypes);
         Registry.register(Registry.ENCHANTMENT, Mcda.ID("snowball"), this);
     }

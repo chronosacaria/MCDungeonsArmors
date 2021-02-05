@@ -2,13 +2,10 @@
   "schemaVersion": 1,
   "id": "mcda",
   "version": "${version}",
-  "name": "MC Dungeons Armors",
+  "name": "Mcda",
   "description": "Bringing the armour of Minecraft Dungeons to Minecraft",
   "authors": [
-    "Chronosacaria",
-    "SeaOfPixels (Art)",
-    "SattesKrokodil (Art)",
-    "Patreons (Support)"
+    "Chronosacaria"
   ],
   "contact": {},
   "license": "MIT",
@@ -22,12 +19,12 @@
       "chronosacaria.mcda.Mcda"
     ]
   },
-  "mixin": [
+  "mixins": [
     "mcda.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.10.5+build.213",
+    "fabricloader": ">=0.11.1",
     "fabric": "*",
-    "minecraft": "1.16.*"
+    "minecraft": "1.16.5"
   }
 }

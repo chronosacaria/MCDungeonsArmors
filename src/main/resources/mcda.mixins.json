@@ -1,9 +1,9 @@
 {
   "required": true,
+  "minVersion": "0.8",
   "package": "chronosacaria.mcda.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-  "TestMixin"
   ],
   "client": [
   ],
