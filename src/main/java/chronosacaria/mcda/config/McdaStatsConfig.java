@@ -70,8 +70,8 @@ public class McdaStatsConfig implements ConfigData {
     public int[] BattleRobe = {1,2,3,1};
     public float BattleRobeToughness = 0F;
     public float BattleRobeKnockback = 0F;
-    @Comment ("Spendid Robe: Feet, Legs, Body, Head")
-    public int[] SpendidRobe = {2,3,3,2};
+    @Comment ("Splendid Robe: Feet, Legs, Body, Head")
+    public int[] SplendidRobe = {2,3,3,2};
     public float SplendidRobeToughness = 0F;
     public float SplendidRobeKnockback = 0F;
     @Comment ("Evocation Robe: Feet, Legs, Body, Head")
@@ -96,22 +96,30 @@ public class McdaStatsConfig implements ConfigData {
     public float SpiderArmorKnockback = 0F;
     @Comment ("Soul Robe: Feet, Legs, Body, Head")
     public int[] SoulRobe = {1,5,6,1,};
-    public float SoulRobeToughness = 0F;
+    public float SoulRobeToughness = 2.0F;
     public float SoulRobeKnockback = 0F;
     @Comment ("Soul Dancer Robe: Feet, Legs, Body, Head")
     public int[] SoulDancerRobe = {2,5,6,2};
-    public float SouldancerRobeToughness = 0F;
+    public float SouldancerRobeToughness = 2.0F;
     public float SouldancerRobeKnockback = 0F;
 
     //Bone Armours
     @Comment ("Phantom Armor: Feet, Legs, Body, Head")
     public int[] PhantomArmor = {3,5,6,2};
-    @Comment ("Forst Bite: Feet, Legs, Body, Head")
+    public float PhantomArmorToughness = 0F;
+    public float PhantomArmorKnockback = 0F;
+    @Comment ("Frost Bite: Feet, Legs, Body, Head")
     public int[] FrostBiteArmor = {3,5,7,3};
+    public float FrostBiteArmorToughness = 0F;
+    public float FrostBiteArmorKnockback = 0F;
     @Comment ("Grim Armor: Feet, Legs, Body, Head")
     public int[] GrimArmor = {3,5,6,2};
+    public float GrimArmorToughness = 0F;
+    public float GrimArmorKnockback = 0F;
     @Comment ("Wither Armor: Feet, Legs, Body, Head")
     public int[] WitherArmor = {3,5,7,3};
+    public float WitherArmorToughness = 2.0F;
+    public float WitherArmorKnockback = 0F;
 
     //Light Plate Armor
     @Comment ("Scale Mail: Feet, Legs, Body, Head")
@@ -155,7 +163,7 @@ public class McdaStatsConfig implements ConfigData {
     @Comment ("Dark Armor: Feet, Legs, Body, Head")
     public int[] DarkArmor = {3,6,8,3};
     @Comment ("Titan's Shroud: Feet, Legs, Body, Head")
-    public int[] TitanSroud = {3,6,8,3};
+    public int[] TitanShroud = {3,6,8,3};
     @Comment ("Royal Guard: Feet, Legs, Body, Head")
     public int[] RoyalGuard = {3,6,8,3};
     @Comment ("Plate Armor: Feet, Legs, Body, Head")
@@ -209,20 +217,45 @@ public class McdaStatsConfig implements ConfigData {
     public float getGoatArmorKnockback() { return GoatArmorKnockback; }
 
     public int[] getBattleRobe() {return BattleRobe;}
-    public int[] getSpendidRobe() {return SpendidRobe;}
+    public float getBattleRobeToughness() { return BattleRobeToughness; }
+    public float getBattleRobeKnockback() { return BattleRobeKnockback; }
+    public int[] getSplendidRobe() {return SplendidRobe;}
+    public float getSplendidRobeToughness() { return SplendidRobeToughness; }
+    public float getSplendidRobeKnockback() { return SplendidRobeKnockback; }
     public int[] getEvocationRobe(){return EvocationRobe;}
+    public float getEvocationRobeToughness() { return EvocationRobeToughness; }
+    public float getEvocationRobeKnockback() { return EvocationRobeKnockback; }
     public int[] getEmberRobe() {return EmberRobe;}
+    public float getEmberRobeToughness() { return EmberRobeToughness; }
+    public float getEmberRobeKnockback() { return EmberRobeKnockback; }
     public int[] getVerdantRobe() {return VerdantRobe;}
+    public float getVerdantRobeToughness() { return VerdantRobeToughness; }
+    public float getVerdantRobeKnockback() { return VerdantRobeKnockback; }
     public int[] getThiefArmor() {return ThiefArmor;}
+    public float getThiefArmorToughness() { return ThiefArmorToughness; }
+    public float getThiefArmorKnockback() { return ThiefArmorKnockback; }
     public int[] getSpiderArmor() {return SpiderArmor;}
+    public float getSpiderArmorToughness() { return SpiderArmorToughness; }
+    public float getSpiderArmorKnockback() { return SpiderArmorKnockback; }
     public int[] getSoulRobe() {return SoulRobe;}
+    public float getSoulRobeToughness() { return SoulRobeToughness; }
+    public float getSoulRobeKnockback() { return SoulRobeKnockback; }
     public int[] getSoulDancerRobe() {return SoulDancerRobe;}
-
+    public float getSouldancerRobeToughness() { return SouldancerRobeToughness; }
+    public float getSouldancerRobeKnockback() { return SouldancerRobeKnockback; }
 
     public int[] getPhantomArmor() {return PhantomArmor;}
+    public float getPhantomArmorToughness() { return PhantomArmorToughness; }
+    public float getPhantomArmorKnockback() { return PhantomArmorKnockback; }
     public int[] getFrostBiteArmor() {return FrostBiteArmor;}
+    public float getFrostBiteArmorToughness() { return FrostBiteArmorToughness; }
+    public float getFrostBiteArmorKnockback() { return FrostBiteArmorKnockback; }
     public int[] getGrimArmor() {return GrimArmor;}
+    public float getGrimArmorToughness() { return GrimArmorToughness; }
+    public float getGrimArmorKnockback() { return GrimArmorKnockback; }
     public int[] getWitherArmor() {return WitherArmor;}
+    public float getWitherArmorToughness() { return WitherArmorToughness; }
+    public float getWitherArmorKnockback() { return WitherArmorKnockback; }
 
     public int[] getScaleMail() {return ScaleMail;}
     public int[] getHighlandArmor() {return HighlandArmor;}
@@ -244,7 +277,7 @@ public class McdaStatsConfig implements ConfigData {
     public int[] getOpulentArmor() {return OpulentArmor;}
 
     public int[] getDarkArmor() {return DarkArmor;}
-    public int[] getTitanSroud() {return TitanSroud;}
+    public int[] getTitanShroud() {return TitanShroud;}
     public int[] getRoyalGuard() {return RoyalGuard;}
     public int[] getPlateArmor() {return PlateArmor;}
     public int[] getFullMetalArmor() {return FullMetalArmor;}
