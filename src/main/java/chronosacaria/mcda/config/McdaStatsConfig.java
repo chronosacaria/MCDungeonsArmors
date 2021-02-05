@@ -124,60 +124,112 @@ public class McdaStatsConfig implements ConfigData {
     //Light Plate Armor
     @Comment ("Scale Mail: Feet, Legs, Body, Head")
     public int[] ScaleMail = {2,4,5,2};
+    public float ScaleMailToughness = 0F;
+    public float ScaleMailKnockback = 0F;
     @Comment ("Highland Armor: Feet, Legs, Body, Head")
     public int[] HighlandArmor = {2,5,6,2};
+    public float HighlandArmorToughness = 0F;
+    public float HighlandArmorKnockback = 0F;
     @Comment ("Beehive Armor: Feet, Legs, Body, Head")
     public int[] BeehiveArmor = {2,5,6,2};
+    public float BeehiveArmorToughness = 0F;
+    public float BeehiveArmorKnockback = 0F;
     @Comment ("Beenest Armor: Feet, Legs, Body, Head")
     public int[] BeenestArmor = {2,4,5,2};
+    public float BeenestArmorToughness = 0F;
+    public float BeenestArmorKnockback = 0F;
     @Comment ("Ghostly Armor: Feet, Legs, Body, Head")
     public int[] GhostlyArmor = {2,4,5,2};
+    public float GhostlyArmorToughness = 0F;
+    public float GhostlyArmorKnockback = 0F;
     @Comment ("Ghost Kindler Armor: Feet, Legs, Body, Head")
     public int[] GhostKindlerArmor = {2,5,6,2};
+    public float GhostKindlerArmorToughness = 0F;
+    public float GhostKindlerArmorKnockback = 0F;
 
     //Medium Plate Armor
     @Comment ("Reinforced Mail: Feet, Legs, Body, Head")
     public int[] ReinforcedMail = {3,4,6,3};
+    public float ReinforcedMailToughness = 1.0F;
+    public float ReinforcedMailKnockback = 0F;
     @Comment ("Stalwart Mail: Feet, Legs, Body, Head")
     public int[] StalwartMail = {3,5,7,3};
+    public float StalwartToughness = 1.0F;
+    public float StalwartKnockback = 0F;
     @Comment ("Guard's Armor: Feet, Legs, Body, Head")
     public int[] GuardsArmor = {3,5,7,3};
+    public float GuardsArmorToughness = 0F;
+    public float GuardsArmorKnockback = 0F;
     @Comment ("Curious Armor: Feet, Legs, Body, Head")
     public int[] CuriousArmor = {3,5,7,3};
+    public float CuriousArmorToughness = 2.0F;
+    public float CuriousArmorKnockback = 0F;
     @Comment ("Snow Armor: Feet, Legs, Body, Head")
     public int[] SnowArmor = {3,5,7,3};
+    public float SnowArmorToughness = 2.0F;
+    public float SnowArmorKnockback = 0F;
     @Comment ("Frost Armor: Feet, Legs, Body, Head")
     public int[] FrostArmor = {3,5,7,3};
+    public float FrostArmorToughness = 2.0F;
+    public float FrostArmorKnockback = 0F;
     @Comment ("Mercenary Armor: Feet, Legs, Body, Head")
     public int[] MercenaryArmor = {3,4,5,3};
+    public float MercenaryArmorToughness = 1.5F;
+    public float MercenaryArmorKnockback = 0F;
     @Comment ("Renegade Armor: Feet, Legs, Body, Head")
     public int[] RenegadeArmor = {3,5,7,3};
+    public float RenegadeArmorToughness = 2.0F;
+    public float RenegadeArmorKnockback = 0F;
     @Comment ("Hungry Horror Armor: Feet, Legs, Body, Head")
     public int[] HungryHorrorArmor = {3,5,7,3};
+    public float HungryHorrorArmorToughness = 2.0F;
+    public float HungryHorrorArmorKnockback = 0F;
     @Comment ("Emerald Gear: Feet, Legs, Body, Head")
     public int[] EmeraldGearArmor = {3,5,7,3};
+    public float EmeraldGearArmorToughness = 2.0F;
+    public float EmeraldGearArmorKnockback = 0F;
     @Comment ("Opulent Armor: Feet, Legs, Body, Head")
     public int[] OpulentArmor = {3,5,7,3};
+    public float OpulentArmorToughness = 2.0F;
+    public float OpulentArmorKnockback = 0F;
 
     //Heavy Plate Armor
     @Comment ("Dark Armor: Feet, Legs, Body, Head")
     public int[] DarkArmor = {3,6,8,3};
+    public float DarkArmorToughness = 0F;
+    public float DarkArmorKnockback = 0F;
     @Comment ("Titan's Shroud: Feet, Legs, Body, Head")
     public int[] TitanShroud = {3,6,8,3};
+    public float TitanShroudToughness = 0F;
+    public float TitanShroudKnockback = 0F;
     @Comment ("Royal Guard: Feet, Legs, Body, Head")
     public int[] RoyalGuard = {3,6,8,3};
+    public float RoyalGuardToughness = 0F;
+    public float RoyalGuardKnockback = 0F;
     @Comment ("Plate Armor: Feet, Legs, Body, Head")
     public int[] PlateArmor = {3,6,8,3};
+    public float PlateArmorToughness = 0F;
+    public float PlateArmorKnockback = 0F;
     @Comment ("Full Metal Armor: Feet, Legs, Body, Head")
     public int[] FullMetalArmor = {4,6,8,4};
+    public float FullMetalArmorToughness = 0F;
+    public float FullMetalArmorKnockback = 0F;
     @Comment ("Mystery Armor: Feet, Legs, Body, Head")
     public int[] MysteryArmor = {3,6,8,3};
+    public float MysteryArmorToughness = 0F;
+    public float MysteryArmorKnockback = 0F;
     @Comment ("Champion Armor: Feet, Legs, Body, Head")
     public int[] ChampionArmor = {3,6,8,3};
+    public float ChampionArmorToughness = 0F;
+    public float ChampionArmorKnockback = 0F;
     @Comment ("Hero's Armor: Feet, Legs, Body, Head")
     public int[] HerosArmor = {4,7,9,4};
+    public float HerosArmorToughness = 2.0F;
+    public float HerosArmorKnockback = 0F;
     @Comment ("Gilded Glory: Feet, Legs, Body, Head")
     public int[] GildedGloryArmor = {3,6,8,3};
+    public float GildedGloryArmorToughness = 2.0F;
+    public float GildedGloryArmorKnockback = 0F;
 
     public int[] getArcherArmor() {return ArcherArmor;}
     public float getArcherArmorToughness() { return ArcherArmorToughness; }
@@ -258,32 +310,84 @@ public class McdaStatsConfig implements ConfigData {
     public float getWitherArmorKnockback() { return WitherArmorKnockback; }
 
     public int[] getScaleMail() {return ScaleMail;}
+    public float getScaleMailToughness() { return ScaleMailToughness; }
+    public float getScaleMailKnockback() { return ScaleMailKnockback; }
     public int[] getHighlandArmor() {return HighlandArmor;}
+    public float getHighlandArmorToughness() { return HighlandArmorToughness; }
+    public float getHighlandArmorKnockback() { return HighlandArmorKnockback; }
     public int[] getBeehiveArmor() {return BeehiveArmor;}
+    public float getBeehiveArmorToughness() { return BeehiveArmorToughness; }
+    public float getBeehiveArmorKnockback() { return BeehiveArmorKnockback; }
     public int[] getBeenestArmor() {return BeenestArmor;}
+    public float getBeenestArmorToughness() { return BeenestArmorToughness; }
+    public float getBeenestArmorKnockback() { return BeenestArmorKnockback; }
     public int[] getGhostlyArmor() {return GhostlyArmor;}
+    public float getGhostlyArmorToughness() { return GhostlyArmorToughness; }
+    public float getGhostlyArmorKnockback() { return GhostlyArmorKnockback; }
     public int[] getGhostKindlerArmor() {return GhostKindlerArmor;}
+    public float getGhostKindlerArmorToughness() { return GhostKindlerArmorToughness; }
+    public float getGhostKindlerArmorKnockback() { return GhostKindlerArmorKnockback; }
 
     public int[] getReinforcedMail() {return ReinforcedMail;}
+    public float getReinforcedMailToughness() { return ReinforcedMailToughness; }
+    public float getReinforcedMailKnockback() { return ReinforcedMailKnockback; }
     public int[] getStalwartMail() {return StalwartMail;}
+    public float getStalwartToughness() { return StalwartToughness; }
+    public float getStalwartKnockback() { return StalwartKnockback; }
     public int[] getGuardsArmor() {return GuardsArmor;}
+    public float getGuardsArmorToughness(){ return GuardsArmorToughness; }
+    public float getGuardsArmorKnockback(){ return GuardsArmorKnockback; }
     public int[] getCuriousArmor() {return CuriousArmor;}
+    public float getCuriousArmorToughness(){ return CuriousArmorToughness; }
+    public float getCuriousArmorKnockback(){ return CuriousArmorKnockback; }
     public int[] getSnowArmor() {return SnowArmor;}
+    public float getSnowArmorToughness(){ return SnowArmorToughness; }
+    public float getSnowArmorKnockback(){ return SnowArmorKnockback; }
     public int[] getFrostArmor() {return FrostArmor;}
+    public float getFrostArmorToughness(){ return FrostArmorToughness; }
+    public float getFrostArmorKnockback(){ return FrostArmorKnockback; }
     public int[] getMercenaryArmor() {return MercenaryArmor;}
+    public float getMercenaryArmorToughness(){ return MercenaryArmorToughness; }
+    public float getMercenaryArmorKnockback(){ return MercenaryArmorKnockback; }
     public int[] getRenegadeArmor() {return RenegadeArmor;}
+    public float getRenegadeArmorToughness(){ return RenegadeArmorToughness; }
+    public float getRenegadeArmorKnockback(){ return RenegadeArmorKnockback; }
     public int[] getHungryHorrorArmor() {return HungryHorrorArmor;}
+    public float getHungryHorrorArmorToughness(){ return HungryHorrorArmorToughness; }
+    public float getHungryHorrorArmorKnockback(){ return HungryHorrorArmorKnockback; }
     public int[] getEmeraldGearArmor() {return EmeraldGearArmor;}
+    public float getEmeraldGearArmorToughness(){ return EmeraldGearArmorToughness; }
+    public float getEmeraldGearArmorKnockback(){ return EmeraldGearArmorKnockback; }
     public int[] getOpulentArmor() {return OpulentArmor;}
+    public float getOpulentArmorToughness(){ return OpulentArmorToughness; }
+    public float getOpulentArmorKnockback(){ return OpulentArmorKnockback; }
 
     public int[] getDarkArmor() {return DarkArmor;}
+    public float getDarkArmorToughness(){ return DarkArmorToughness; }
+    public float getDarkArmorKnockback(){ return DarkArmorKnockback; }
     public int[] getTitanShroud() {return TitanShroud;}
+    public float getTitanShroudToughness(){ return TitanShroudToughness; }
+    public float getTitanShroudKnockback(){ return TitanShroudKnockback; }
     public int[] getRoyalGuard() {return RoyalGuard;}
+    public float getRoyalGuardToughness(){ return RoyalGuardToughness; }
+    public float getRoyalGuardKnockback(){ return RoyalGuardKnockback; }
     public int[] getPlateArmor() {return PlateArmor;}
+    public float getPlateArmorToughness(){ return PlateArmorToughness; }
+    public float getPlateArmorKnockback(){ return PlateArmorKnockback; }
     public int[] getFullMetalArmor() {return FullMetalArmor;}
+    public float getFullMetalArmorToughness(){ return FullMetalArmorToughness; }
+    public float getFullMetalArmorKnockback(){ return FullMetalArmorKnockback; }
     public int[] getMysteryArmor() {return MysteryArmor;}
+    public float getMysteryArmorToughness(){ return MysteryArmorToughness; }
+    public float getMysteryArmorKnockback(){ return MysteryArmorKnockback; }
     public int[] getChampionArmor() {return ChampionArmor;}
+    public float getChampionArmorToughness(){ return ChampionArmorToughness; }
+    public float getChampionArmorKnockback(){ return ChampionArmorKnockback; }
     public int[] getHerosArmor() {return HerosArmor;}
+    public float getHerosArmorToughness(){ return HerosArmorToughness; }
+    public float getHerosArmorKnockback(){ return HerosArmorKnockback; }
     public int[] getGildedGloryArmor() {return GildedGloryArmor;}
+    public float getGildedGloryArmorToughness(){ return GildedGloryArmorToughness; }
+    public float getGildedGloryArmorKnockback(){ return GildedGloryArmorKnockback; }
 }
 
