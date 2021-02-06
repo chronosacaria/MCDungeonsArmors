@@ -23,7 +23,6 @@ import java.util.List;
 
 @Mixin(LivingEntity.class)
 public abstract class FoodReservesEnchantmentMixin {
-    @Shadow protected ItemStack activeItemStack;
 
     @Shadow public abstract ItemStack getMainHandStack();
 
