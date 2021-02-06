@@ -1,4 +1,4 @@
-package chronosacaria.mcda.mixin;
+package chronosacaria.mcda.mixin.enchantments;
 
 import chronosacaria.mcda.api.EnchantHelper;
 import chronosacaria.mcda.enchants.EnchantsRegistry;

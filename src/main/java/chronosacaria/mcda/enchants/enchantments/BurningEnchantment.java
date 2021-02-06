@@ -25,5 +25,4 @@ public class BurningEnchantment extends Enchantment {
             }
         }
     }
-
 }

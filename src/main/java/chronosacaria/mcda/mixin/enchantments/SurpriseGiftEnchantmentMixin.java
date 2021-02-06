@@ -1,9 +1,7 @@
-/*
-package chronosacaria.mcda.mixin;
+package chronosacaria.mcda.mixin.enchantments;
 
 import chronosacaria.mcda.api.EnchantHelper;
 import chronosacaria.mcda.enchants.EnchantsRegistry;
-import chronosacaria.mcda.items.itemlists.McdaPotionsList;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
@@ -13,6 +11,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.PotionUtil;
+import net.minecraft.potion.Potions;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,7 +23,6 @@ import java.util.List;
 
 @Mixin(LivingEntity.class)
 public abstract class SurpriseGiftEnchantmentMixin {
-    @Shadow protected ItemStack activeItemStack;
 
     @Shadow public abstract ItemStack getMainHandStack();
 
@@ -41,14 +39,12 @@ public abstract class SurpriseGiftEnchantmentMixin {
                     float surpriseGiftChance = 0.5F * surpriseGiftLevel;
 
                     ItemStack strengthPotion = PotionUtil.setPotion(new ItemStack(Items.POTION),
-                            McdaPotionsList.SHORT_STRENGTH);
+                            Potions.STRENGTH);
                     ItemStack speedPotion = PotionUtil.setPotion(new ItemStack(Items.POTION),
-                            McdaPotionsList.SHORT_SWIFTNESS);
-                    ItemStack shadowBrew = PotionUtil.setPotion(new ItemStack(Items.POTION),
-                            McdaPotionsList.SHADOW_BREW);
-                    ItemStack oakwoodBrew = PotionUtil.setPotion(new ItemStack(Items.POTION),
-                            McdaPotionsList.OAKWOOD_BREW);
-                    List<ItemStack> giftList = Arrays.asList(strengthPotion, speedPotion, shadowBrew, oakwoodBrew);
+                            Potions.SWIFTNESS);
+                    ItemStack invisPotion = PotionUtil.setPotion(new ItemStack(Items.POTION),
+                            Potions.INVISIBILITY);
+                    List<ItemStack> giftList = Arrays.asList(strengthPotion, speedPotion, invisPotion);
 
                     while (surpriseGiftChance > 0){
                         float surpriseGiftRand = playerEntity.getRandom().nextFloat();
@@ -65,4 +61,3 @@ public abstract class SurpriseGiftEnchantmentMixin {
         }
     }
 }
- */

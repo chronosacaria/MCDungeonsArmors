@@ -1,5 +1,5 @@
 
-package chronosacaria.mcda.mixin;
+package chronosacaria.mcda.mixin.enchantments;
 
 import chronosacaria.mcda.api.EnchantHelper;
 import chronosacaria.mcda.enchants.EnchantsRegistry;
@@ -13,23 +13,22 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ServerPlayerEntity.class)
-public class CowardiceEnchantmentMixin {
+public class FrenziedEnchantmentMixin {
     @Inject(method = "tick", at = @At("HEAD"))
-    public void onCowadiceTick(CallbackInfo ci){
+    public void onFrenziedTick(CallbackInfo ci){
         ServerPlayerEntity playerEntity = (ServerPlayerEntity) (Object) this;
         if (playerEntity == null) return;
         if (playerEntity.isAlive()){
             float maxHealth = playerEntity.getMaxHealth();
             float currentHeath = playerEntity.getHealth();
-            if (currentHeath == maxHealth){
-                if (EnchantHelper.hasEnchantment(playerEntity, EnchantsRegistry.COWARDICE)){
-                    int cowardiceLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.COWARDICE, playerEntity);
-                    StatusEffectInstance strengthBoost = new StatusEffectInstance(StatusEffects.STRENGTH, 40,
-                            cowardiceLevel + 1);
-                    playerEntity.addStatusEffect(strengthBoost);
+            if (currentHeath <= (0.5F * maxHealth)){
+                if (EnchantHelper.hasEnchantment(playerEntity, EnchantsRegistry.FRENZIED)){
+                    int cowardiceLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.FRENZIED, playerEntity);
+                    StatusEffectInstance frenzied = new StatusEffectInstance(StatusEffects.HASTE, 40,
+                            cowardiceLevel);
+                    playerEntity.addStatusEffect(frenzied);
                 }
             }
         }
-
     }
 }
