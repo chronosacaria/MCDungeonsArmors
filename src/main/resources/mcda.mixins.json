@@ -4,6 +4,10 @@
   "package": "chronosacaria.mcda.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "CowardiceEnchantmentMixin",
+    "DeflectEnchantmentMixin",
+    "FoodReservesEnchantmentMixin",
+    "FrenziedEnchantmentMixin"
   ],
   "client": [
   ],

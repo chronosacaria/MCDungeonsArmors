@@ -1,4 +1,4 @@
-/*
+
 package chronosacaria.mcda.mixin;
 
 import chronosacaria.mcda.api.EnchantHelper;
@@ -30,7 +30,6 @@ public class CowardiceEnchantmentMixin {
                 }
             }
         }
+
     }
 }
-
- */
