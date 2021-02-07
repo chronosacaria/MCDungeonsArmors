@@ -27,7 +27,7 @@ public abstract class SurpriseGiftEnchantmentMixin {
     @Shadow public abstract ItemStack getMainHandStack();
 
     @Inject(method = "stopUsingItem", at = @At("TAIL"))
-    public void onPotionUsed(CallbackInfo ci){
+    public void onSurpriseGiftPotionUsed(CallbackInfo ci){
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
         if (playerEntity.isAlive()){
             List<StatusEffectInstance> potionEffects = PotionUtil.getPotionEffects(getMainHandStack());

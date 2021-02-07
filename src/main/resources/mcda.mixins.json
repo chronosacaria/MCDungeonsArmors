@@ -8,6 +8,7 @@
     "enchantments.DeflectEnchantmentMixin",
     "enchantments.FoodReservesEnchantmentMixin",
     "enchantments.FrenziedEnchantmentMixin",
+    "enchantments.PotionBarrierEnchantmentMixin",
     "enchantments.SurpriseGiftEnchantmentMixin"
   ],
   "client": [
