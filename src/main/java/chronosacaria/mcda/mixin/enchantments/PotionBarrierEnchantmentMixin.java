@@ -23,7 +23,7 @@ public abstract class PotionBarrierEnchantmentMixin {
     @Shadow
     public abstract ItemStack getMainHandStack();
 
-    @Inject(method = "stopUsingItem", at = @At("TAIL"))
+    @Inject(method = "consumeItem", at = @At("TAIL"))
     public void onPotionBarrierPotionUsed(CallbackInfo ci) {
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
         if (playerEntity.isAlive()) {
