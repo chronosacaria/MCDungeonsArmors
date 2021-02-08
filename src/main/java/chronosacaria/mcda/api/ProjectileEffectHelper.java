@@ -1,5 +1,6 @@
 package chronosacaria.mcda.api;
 
+import chronosacaria.mcda.Mcda;
 import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,13 +20,16 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import static chronosacaria.mcda.Mcda.RANDOM;
+
 public class ProjectileEffectHelper {
 
     public static void fireSnowballAtNearbyEnemy(LivingEntity attacker, int distance){
         World world = attacker.getEntityWorld();
         List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class,
                 new Box(attacker.getX() - distance, attacker.getY() - distance, attacker.getZ() - distance,
-                attacker.getX() + distance, attacker.getY() + distance, attacker.getZ() + distance), (nearbyEntity) -> AbilityHelper.canApplyToEnemy(attacker, nearbyEntity));
+                        attacker.getX() + distance, attacker.getY() + distance, attacker.getZ() + distance),
+                (nearbyEntity) -> AbilityHelper.canApplyToEnemy(attacker, nearbyEntity));
         if(nearbyEntities.size() < 2) return;
         nearbyEntities.sort(Comparator.comparingDouble(livingEntity -> livingEntity.squaredDistanceTo(attacker)));
         LivingEntity target =  nearbyEntities.get(0);
@@ -34,7 +38,7 @@ public class ProjectileEffectHelper {
             // borrowed from AbstractSkeletonEntity
             double towardsX = target.getX() - attacker.getX();
             double towardsZ = target.getZ() - attacker.getZ();
-            double euclideanDist = (double)MathHelper.sqrt(towardsX * towardsX + towardsZ * towardsZ);
+            double euclideanDist = MathHelper.sqrt(towardsX * towardsX + towardsZ * towardsZ);
             double towardsY =
                     target.getBodyY(0.3333333333333333D) - snowballEntity.getY() + euclideanDist * (double)0.2F;
             snowballEntity.setProperties(attacker, attacker.pitch, attacker.yaw, 0.0F, 1.5F, 1.0F);
@@ -46,13 +50,12 @@ public class ProjectileEffectHelper {
 
     public static void setProjectileTowards(ProjectileEntity projectileEntity, double x, double y
             , double z, float inaccuracy){
-        Random random = new Random();
         Vec3d vec3d = (new Vec3d(x, y, z))
                 .normalize()
                 .add(
-                        random.nextGaussian() * (double)0.0075f * (double)inaccuracy,
-                        random.nextGaussian() * (double)0.0075f * (double)inaccuracy,
-                        random.nextGaussian() * (double)0.0075f * (double)inaccuracy);
+                        RANDOM.nextGaussian() * (double)0.0075f * (double)inaccuracy,
+                        RANDOM.nextGaussian() * (double)0.0075f * (double)inaccuracy,
+                        RANDOM.nextGaussian() * (double)0.0075f * (double)inaccuracy);
         projectileEntity.setVelocity(vec3d);
         float f = MathHelper.sqrt(projectileEntity.squaredDistanceTo(vec3d));
         projectileEntity.yaw = (float)(MathHelper.atan2(vec3d.x, vec3d.z) * (double)(180f / (float)Math.PI));

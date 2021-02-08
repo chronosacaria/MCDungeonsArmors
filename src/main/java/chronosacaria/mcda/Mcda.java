@@ -10,8 +10,12 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
+import java.util.Random;
+
 public class Mcda implements ModInitializer {
     public static final String MOD_ID = "mcda";
+
+    public static final Random RANDOM = new Random();
 
     public static Identifier ID(String path) {
         return new Identifier(MOD_ID, path);

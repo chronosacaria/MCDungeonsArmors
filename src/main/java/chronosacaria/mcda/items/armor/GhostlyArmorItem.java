@@ -49,35 +49,35 @@ public class GhostlyArmorItem extends ArmorItem {
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         UUID uuid = ARMOR_MODIFIERS[slot.getEntitySlotId()];
         builder.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uuid, "Armor modifier",
-                (double)this.protection, EntityAttributeModifier.Operation.ADDITION));
+                this.protection, EntityAttributeModifier.Operation.ADDITION));
         builder.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(uuid, "Armor toughness",
-                (double)this.toughness, EntityAttributeModifier.Operation.ADDITION));
+                this.toughness, EntityAttributeModifier.Operation.ADDITION));
         if(this.knockbackResistance > 0) {
             builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uuid, "Armor knockback resistance",
-                    (double) this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
+                    this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
         if(this.base){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    McdaBoostsConfig.config.getGhostlyArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.GhostlyArmourSetAttackDamageBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                     "Armor attack speed boost",
-                    McdaBoostsConfig.config.getGhostlyArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.GhostlyArmourSetAttackSpeedBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
                     "Armor movement speed boost",
-                    McdaBoostsConfig.config.getGhostlyArmourSetMovementBoost(),
+                    McdaBoostsConfig.config.GhostlyArmourSetMovementBoost,
                     EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
         if(this.unique){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    McdaBoostsConfig.config.getGhostKindlerArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.GhostKindlerArmourSetAttackDamageBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                     "Armor attack speed boost",
-                    McdaBoostsConfig.config.getGhostKindlerArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.GhostKindlerArmourSetAttackSpeedBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
                     "Armor movement speed boost",
-                    McdaBoostsConfig.config.getGhostKindlerArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.GhostKindlerArmourSetMovementBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
 
         this.attributeModifiers = builder.build();

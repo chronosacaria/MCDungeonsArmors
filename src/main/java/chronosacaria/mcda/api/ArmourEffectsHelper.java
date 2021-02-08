@@ -9,6 +9,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
+// TODO: currently unused
 public class ArmourEffectsHelper {
 
     public static void teleportOnHit(LivingEntity livingEntity){
@@ -22,7 +23,7 @@ public class ArmourEffectsHelper {
                 double teleportX = livingEntity.getX() + (livingEntity.getRandom().nextDouble() - 0.5D) * 16.0D;
                 double teleportY =
                         MathHelper.clamp(livingEntity.getY() + (double) (livingEntity.getRandom().nextInt(16) - 8),
-                                0.0D, (double)(world.getHeight() - 1));
+                                0.0D, world.getHeight() - 1);
                 double teleportZ = livingEntity.getZ() + (livingEntity.getRandom().nextDouble() - 0.5D) * 16.0D;
                 if (livingEntity.hasVehicle()){
                     livingEntity.stopRiding();

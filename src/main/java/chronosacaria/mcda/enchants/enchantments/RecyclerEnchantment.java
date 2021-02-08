@@ -24,7 +24,9 @@ public class RecyclerEnchantment extends Enchantment {
     }
 
     public void onUserDamaged(LivingEntity user, Entity attacker, int level){
-        if (user.getRecentDamageSource().isProjectile()){
+        DamageSource damageSource = user.getRecentDamageSource();
+
+        if (damageSource != null && damageSource.isProjectile()){
             float recyclerRand = user.getRandom().nextFloat();
             float recyclerChance = level * 0.1F;
             if (recyclerRand <= recyclerChance){

@@ -49,35 +49,35 @@ public class BeehiveArmorItem extends ArmorItem {
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         UUID uuid = ARMOR_MODIFIERS[slot.getEntitySlotId()];
         builder.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uuid, "Armor modifier",
-                (double)this.protection, EntityAttributeModifier.Operation.ADDITION));
+                this.protection, EntityAttributeModifier.Operation.ADDITION));
         builder.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(uuid, "Armor toughness",
-                (double)this.toughness, EntityAttributeModifier.Operation.ADDITION));
+                this.toughness, EntityAttributeModifier.Operation.ADDITION));
         if(this.knockbackResistance > 0) {
             builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uuid, "Armor knockback resistance",
-                    (double) this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
+                    this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
         if(this.base){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    McdaBoostsConfig.config.getBeehiveArmourSetAttackBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.BeehiveArmourSetAttackDamageBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                     "Armor attack speed boost",
-                    McdaBoostsConfig.config.getBeehiveArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.BeehiveArmourSetAttackSpeedBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
                     "Armor movement speed boost",
-                    McdaBoostsConfig.config.getBeehiveArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.BeehiveArmourSetMovementBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
 
         if(this.unique){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    McdaBoostsConfig.config.getBeenestArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.BeenestArmourSetAttackDamageBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                     "Armor attack speed boost",
-                    McdaBoostsConfig.config.getBeenestArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.BeenestArmourSetAttackSpeedBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
                     "Armor movement speed boost",
-                    McdaBoostsConfig.config.getBeenestArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.BeenestArmourSetMovementBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
 
         this.attributeModifiers = builder.build();

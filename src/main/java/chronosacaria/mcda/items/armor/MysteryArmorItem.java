@@ -55,67 +55,67 @@ public class MysteryArmorItem extends ArmorItem {
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         UUID uuid = ARMOR_MODIFIERS[slot.getEntitySlotId()];
         builder.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uuid, "Armor modifier",
-                (double)this.protection, EntityAttributeModifier.Operation.ADDITION));
+                this.protection, EntityAttributeModifier.Operation.ADDITION));
         builder.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(uuid, "Armor toughness",
-                (double)this.toughness, EntityAttributeModifier.Operation.ADDITION));
+                this.toughness, EntityAttributeModifier.Operation.ADDITION));
         if(this.knockbackResistance > 0) {
             builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uuid, "Armor knockback resistance",
-                    (double) this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
+                    this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
         if(this.white){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    McdaBoostsConfig.config.getWhiteMysteryArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.WhiteMysteryArmourSetAttackDamageBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                     "Armor attack speed boost",
-                    McdaBoostsConfig.config.getWhiteMysteryArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.WhiteMysteryArmourSetAttackSpeedBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
                     "Armor movement speed boost",
-                    McdaBoostsConfig.config.getWhiteMysteryArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.WhiteMysteryArmourSetMovementBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
         if(this.blue){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    McdaBoostsConfig.config.getBlueMysteryArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.BlueMysteryArmourSetAttackDamageBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                     "Armor attack speed boost",
-                    McdaBoostsConfig.config.getBlueMysteryArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.BlueMysteryArmourSetAttackSpeedBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
                     "Armor movement speed boost",
-                    McdaBoostsConfig.config.getBlueMysteryArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.BlueMysteryArmourSetMovementBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
         if(this.green){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    McdaBoostsConfig.config.getGreenMysteryArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.GreenMysteryArmourSetAttackDamageBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                     "Armor attack speed boost",
-                    McdaBoostsConfig.config.getGreenMysteryArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.GreenMysteryArmourSetAttackSpeedBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
                     "Armor movement speed boost",
-                    McdaBoostsConfig.config.getGreenMysteryArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.GreenMysteryArmourSetMovementBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
         if(this.purple){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    McdaBoostsConfig.config.getPurpleMysteryArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.PurpleMysteryArmourSetAttackDamageBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                     "Armor attack speed boost",
-                    McdaBoostsConfig.config.getPurpleMysteryArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.PurpleMysteryArmourSetAttackSpeedBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
                     "Armor movement speed boost",
-                    McdaBoostsConfig.config.getPurpleMysteryArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.PurpleMysteryArmourSetMovementBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
         if(this.red){
             builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                     "Armor attack damage boost",
-                    McdaBoostsConfig.config.getRedMysteryArmourSetAttackDamageBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.RedMysteryArmourSetAttackDamageBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                     "Armor attack speed boost",
-                    McdaBoostsConfig.config.getRedMysteryArmourSetAttackSpeedBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.RedMysteryArmourSetAttackSpeedBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
             builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
                     "Armor movement speed boost",
-                    McdaBoostsConfig.config.getRedMysteryArmourSetMovementBoost(), EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                    McdaBoostsConfig.config.RedMysteryArmourSetMovementBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
         }
 
         this.attributeModifiers = builder.build();

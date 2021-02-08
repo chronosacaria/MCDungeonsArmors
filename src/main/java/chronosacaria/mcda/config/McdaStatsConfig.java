@@ -15,6 +15,8 @@ public class McdaStatsConfig implements ConfigData {
 
     public static final McdaStatsConfig config = AutoConfig.getConfigHolder(McdaStatsConfig.class).getConfig();
 
+    // TODO: same as with McdaBoostConfig
+
     //Leather Armours
     @Comment ("Hunter's Armor: Feet, Legs, Body, Head")
     public int[] HunterArmor = {1,2,3,1};

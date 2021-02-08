@@ -24,11 +24,7 @@ public class EnchantHelper {
     public static boolean arrowHitLivingentity(HitResult hitResult){
         if (hitResult instanceof EntityHitResult){
             EntityHitResult entityHitResult = (EntityHitResult) hitResult;
-            if (entityHitResult.getEntity() instanceof LivingEntity){
-                return true;
-            } else {
-                return false;
-            }
+            return entityHitResult.getEntity() instanceof LivingEntity;
         } else {
             return false;
         }
