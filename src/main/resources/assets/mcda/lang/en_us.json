@@ -524,6 +524,13 @@
 
   "enchantment.mcda.burning":                     "Burning",
   "enchantment.mcda.chilling":                    "Chilling",
-  "enchantment.mcda.snowball":                    "Snowball"
+  "enchantment.mcda.cowardice":                   "Cowardice",
+  "enchantment.mcda.deflect":                     "Deflect",
+  "enchantment.mcda.food_reserves":               "Food Reserves",
+  "enchantment.mcda.frenzied":                    "Frenzied",
+  "enchantment.mcda.potion_barrier":              "Potion Barrier",
+  "enchantment.mcda.recycler":                    "Recycler",
+  "enchantment.mcda.snowball":                    "Snowball",
+  "enchantment.mcda.surprise_gift":               "Surprise Gift"
 
 }

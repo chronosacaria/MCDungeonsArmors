@@ -30,7 +30,6 @@ public abstract class FoodReservesEnchantmentMixin {
     public void onPotionUsed(CallbackInfo ci){
         if (!((Object)this instanceof PlayerEntity))
             return;
-
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
         if (playerEntity.isAlive()){
             List<StatusEffectInstance> potionEffects = PotionUtil.getPotionEffects(getMainHandStack());
