@@ -3,6 +3,7 @@ package chronosacaria.mcda.api;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Box;
@@ -11,114 +12,81 @@ import java.util.List;
 
 public class AbilityHelper {
 
-    public static void stealSpeedFromTarget(LivingEntity attacker, LivingEntity target, int amplifer){
-        StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 80, amplifer);
-        StatusEffectInstance slowness = new StatusEffectInstance(StatusEffects.SLOWNESS, 80, amplifer);
+    // TODO: unused
+    public static void stealSpeedFromTarget(LivingEntity attacker, LivingEntity target, int amplifier) {
+        StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 80, amplifier);
+        StatusEffectInstance slowness = new StatusEffectInstance(StatusEffects.SLOWNESS, 80, amplifier);
         attacker.addStatusEffect(speed);
         target.addStatusEffect(slowness);
     }
 
-    public static void makeNearbyPetsAttackTarget(LivingEntity target, LivingEntity owner){
-
-        List<LivingEntity> nearbyEntities = owner.getEntityWorld().getEntitiesByClass(LivingEntity.class,
+    // TODO: unused
+    public static void makeNearbyPetsAttackTarget(LivingEntity target, LivingEntity owner) {
+        List<MobEntity> nearbyPets = owner.getEntityWorld().getEntitiesByClass(MobEntity.class,
                 new Box(owner.getX() - 12, owner.getY() - 12, owner.getZ() - 12,
-                owner.getX() + 12, owner.getY() + 12, owner.getZ() + 12), (nearbyEntity) -> {
-            return canPetAttackEntity(owner, nearbyEntity);
-        });
+                        owner.getX() + 12, owner.getY() + 12, owner.getZ() + 12),
+                (nearbyEntity) -> nearbyEntity != owner && isPetOf(nearbyEntity, owner) && nearbyEntity.isAlive());
 
-        for(LivingEntity nearbyEntity : nearbyEntities){
-            if(nearbyEntity instanceof TameableEntity){
-                TameableEntity tameableEntity = (TameableEntity) nearbyEntity;
-                tameableEntity.setTarget(target);
-            }
-            if(nearbyEntity instanceof LlamaEntity){
-                LlamaEntity llamaEntity = (LlamaEntity) nearbyEntity;
-                llamaEntity.setTarget(target);
-            }
-            if(nearbyEntity instanceof IronGolemEntity){
-                IronGolemEntity ironGolemEntity = (IronGolemEntity) nearbyEntity;
-                ironGolemEntity.setTarget(target);
-            }
+        for (MobEntity nearbyPet : nearbyPets) {
+            nearbyPet.setTarget(target);
         }
     }
 
-    private static boolean canPetAttackEntity(LivingEntity owner, LivingEntity nearbyEntity) {
-        return nearbyEntity != owner && isPetOfAttacker(owner, nearbyEntity) && nearbyEntity.isAlive();
-    }
-
-    public static boolean isPetOfAttacker(LivingEntity possibleOwner, LivingEntity possiblePet){
-        if(possiblePet instanceof TameableEntity){
-            TameableEntity pet = (TameableEntity) possiblePet;
-            return pet.getOwner() == possibleOwner;
+    public static boolean isPetOf(LivingEntity self, LivingEntity owner) {
+        if (self instanceof TameableEntity) {
+            TameableEntity pet = (TameableEntity) self;
+            return pet.getOwner() == owner;
         }
-        /*if(possiblePet instanceof HorseBaseEntity){
-            HorseBaseEntity abstractHorse = (HorseBaseEntity) possiblePet;
-            //return GoalUtils.getOwner(abstractHorse) == possibleOwner;
+        /*if (self instanceof HorseBaseEntity) {
+            HorseBaseEntity abstractHorse = (HorseBaseEntity) self;
+            //return GoalUtils.getOwner(abstractHorse) == owner;
         }
-        if(possiblePet instanceof IronGolemEntity){
-            IronGolemEntity ironGolem = (IronGolemEntity) possiblePet;
-            //return GoalUtils.getOwner(ironGolem) == possibleOwner;
+        if (self instanceof IronGolemEntity) {
+            IronGolemEntity ironGolem = (IronGolemEntity) self;
+            //return GoalUtils.getOwner(ironGolem) == owner;
         }
-        if(possiblePet instanceof BatEntity){
-            BatEntity batEntity = (BatEntity) possiblePet;
-            //return GoalUtils.getOwner(batEntity) == possibleOwner;
+        if (self instanceof BatEntity) {
+            BatEntity batEntity = (BatEntity) self;
+            //return GoalUtils.getOwner(batEntity) == owner;
         }
-        if(possiblePet instanceof BeeEntity){
-            BeeEntity beeEntity = (BeeEntity) possiblePet;
-            //return GoalUtils.getOwner(beeEntity) == possibleOwner;
+        if (self instanceof BeeEntity) {
+            BeeEntity beeEntity = (BeeEntity) self;
+            //return GoalUtils.getOwner(beeEntity) == owner;
         }
-        if(possiblePet instanceof SheepEntity){
-            SheepEntity sheepEntity = (SheepEntity) possiblePet;
-            //return GoalUtils.getOwner(sheepEntity) == possibleOwner;
+        if (self instanceof SheepEntity) {
+            SheepEntity sheepEntity = (SheepEntity) self;
+            //return GoalUtils.getOwner(sheepEntity) == owner;
         }*/
         return false;
     }
 
-
-    private static boolean isAVillagerOrIronGolem(LivingEntity nearbyEntity) {
-        return (nearbyEntity instanceof VillagerEntity) || (nearbyEntity instanceof IronGolemEntity);
+    private static boolean isAVillagerOrIronGolem(LivingEntity entity) {
+        return (entity instanceof VillagerEntity) || (entity instanceof IronGolemEntity);
     }
 
-    private static boolean isNotTheTargetOrAttacker(LivingEntity attacker, LivingEntity target, LivingEntity nearbyEntity) {
-        return nearbyEntity != target
-                && nearbyEntity != attacker;
+    private static boolean isNotAPlayer(LivingEntity entity) {
+        return !(entity instanceof PlayerEntity);
     }
 
-    private static boolean isNotAPlayerOrCanApplyToPlayers(LivingEntity nearbyEntity) {
-        if(!(nearbyEntity instanceof PlayerEntity)){
-            return true;}
-        else {
-            return true;
-        }
+    private static boolean isAllyOf(LivingEntity self, LivingEntity other) {
+        return isPetOf(other, self)
+                || isAVillagerOrIronGolem(other)
+                || self.isTeammate(other);
     }
 
-    public static boolean canHealEntity(LivingEntity healer, LivingEntity nearbyEntity){
-        return nearbyEntity != healer
-                && isAlly(healer, nearbyEntity)
-                && isAliveAndCanBeSeen(nearbyEntity, healer);
+    public static boolean canHealEntity(LivingEntity self, LivingEntity other) {
+        if (!self.isAlive() || !other.isAlive())
+            return false;
+
+        return isAllyOf(self, other) && self.canSee(other);
     }
 
-    private static boolean isAlly(LivingEntity healer, LivingEntity nearbyEntity){
-        return isPetOfAttacker(healer, nearbyEntity)
-                || isAVillagerOrIronGolem(nearbyEntity)
-                || healer.isTeammate(nearbyEntity);
-    }
+    public static boolean canFireAtEnemy(LivingEntity self, LivingEntity enemy) {
+        if (!self.isAlive() || !enemy.isAlive())
+            return false;
 
-    private static boolean isAliveAndCanBeSeen(LivingEntity nearbyEntity, LivingEntity attacker){
-        return nearbyEntity.isAlive() && attacker.canSee(nearbyEntity);
-    }
-
-    public static boolean canApplyToEnemy(LivingEntity attacker, LivingEntity target, LivingEntity nearbyEntity) {
-        return isNotTheTargetOrAttacker(attacker, target, nearbyEntity)
-                && isAliveAndCanBeSeen(nearbyEntity, attacker)
-                && !isAlly(attacker, nearbyEntity)
-                && isNotAPlayerOrCanApplyToPlayers(nearbyEntity);
-    }
-
-    public static boolean canApplyToEnemy(LivingEntity attacker, LivingEntity nearbyEntity) {
-        return nearbyEntity != attacker
-                && isAliveAndCanBeSeen(nearbyEntity, attacker)
-                && !isAlly(attacker, nearbyEntity)
-                && isNotAPlayerOrCanApplyToPlayers(nearbyEntity);
+        return self.canSee(enemy)
+                && !isAllyOf(self, enemy)
+                && isNotAPlayer(enemy);
     }
 }

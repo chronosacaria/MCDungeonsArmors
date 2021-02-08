@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class PersistentProjectileEntityMixin {
 
     @Inject(method = "onEntityHit", at = @At("HEAD"))
-    public void onEntityHit(EntityHitResult entityHitResult, CallbackInfo ci){
+    public void onEntityHit(EntityHitResult entityHitResult, CallbackInfo ci) {
         EnchantmentEffects.applyDeflect(entityHitResult, (PersistentProjectileEntity) (Object) this);
     }
 }

@@ -10,22 +10,23 @@ import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 
 import java.util.List;
-import java.util.Random;
 
-import static chronosacaria.mcda.Mcda.RANDOM;
+import static chronosacaria.mcda.Mcda.random;
 
-// TODO: currently unused
+// TODO: unused
 public class AOEHelper {
-    public static void healNearbyAllies(LivingEntity healer, StatusEffectInstance effectInstance, float distance){
+    public static void healNearbyAllies(LivingEntity healer, StatusEffectInstance effectInstance, float distance) {
+        if (!(healer instanceof PlayerEntity)) return;
+        PlayerEntity playerEntity = (PlayerEntity) healer;
+
         World world = healer.getEntityWorld();
-        PlayerEntity playerEntity = healer instanceof PlayerEntity ? (PlayerEntity)healer : null;
         List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class,
                 new Box(healer.getBlockPos()).expand(distance),
-                (nearbyEntity) -> AbilityHelper.canHealEntity(healer, nearbyEntity));
+                (nearbyEntity) -> nearbyEntity != healer && AbilityHelper.canHealEntity(healer, nearbyEntity));
 
-        for (LivingEntity nearbyEntity : nearbyEntities){
-            if (nearbyEntity.getHealth() < nearbyEntity.getMaxHealth()){
-                if (effectInstance.getEffectType().isInstant()){
+        for (LivingEntity nearbyEntity : nearbyEntities) {
+            if (nearbyEntity.getHealth() < nearbyEntity.getMaxHealth()) {
+                if (effectInstance.getEffectType().isInstant()) {
                     effectInstance.getEffectType().applyInstantEffect(playerEntity, playerEntity, nearbyEntity,
                             effectInstance.getAmplifier(), 1.0D);
                 } else {
@@ -38,15 +39,16 @@ public class AOEHelper {
 
     }
 
-    public static void healNearbyAllies(LivingEntity healer, float amount, float distance){
+    public static void healNearbyAllies(LivingEntity healer, float amount, float distance) {
+        if (!(healer instanceof PlayerEntity)) return;
+
         World world = healer.getEntityWorld();
-        PlayerEntity playerEntity = healer instanceof PlayerEntity ? (PlayerEntity)healer : null;
         List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class,
                 new Box(healer.getBlockPos()).expand(distance),
-                (nearbyEntity) -> AbilityHelper.canHealEntity(healer, nearbyEntity));
+                (nearbyEntity) -> nearbyEntity != healer && AbilityHelper.canHealEntity(healer, nearbyEntity));
 
-        for (LivingEntity nearbyEntity : nearbyEntities){
-            if (nearbyEntity.getHealth() < nearbyEntity.getMaxHealth()){
+        for (LivingEntity nearbyEntity : nearbyEntities) {
+            if (nearbyEntity.getHealth() < nearbyEntity.getMaxHealth()) {
                 nearbyEntity.heal(amount);
 
                 addHealParticles(world, nearbyEntity);
@@ -66,29 +68,29 @@ public class AOEHelper {
         double startZ = nearbyEntity.getZ() - .275f;
 
         for (int i = 0; i < 10; i++) {
-            double frontX = .5f * RANDOM.nextDouble();
-            world.addParticle(particle, startX + frontX, startY + RANDOM.nextDouble() * .5, startZ + .5f,
+            double frontX = .5f * random.nextDouble();
+            world.addParticle(particle, startX + frontX, startY + random.nextDouble() * .5, startZ + .5f,
                     velX, velY, velZ);
 
-            double backX = .5f * RANDOM.nextDouble();
-            world.addParticle(particle, startX + backX, startY + RANDOM.nextDouble() * .5, startZ, velX, velY, velZ);
+            double backX = .5f * random.nextDouble();
+            world.addParticle(particle, startX + backX, startY + random.nextDouble() * .5, startZ, velX, velY, velZ);
 
-            double leftZ = .5f * RANDOM.nextDouble();
-            world.addParticle(particle, startX, startY + RANDOM.nextDouble() * .5, startZ + leftZ, velX, velY, velZ);
+            double leftZ = .5f * random.nextDouble();
+            world.addParticle(particle, startX, startY + random.nextDouble() * .5, startZ + leftZ, velX, velY, velZ);
 
-            double rightZ = .5f * RANDOM.nextDouble();
-            world.addParticle(particle, startX + .5f, startY + RANDOM.nextDouble() * .5, startZ + rightZ, velX, velY, velZ);
+            double rightZ = .5f * random.nextDouble();
+            world.addParticle(particle, startX + .5f, startY + random.nextDouble() * .5, startZ + rightZ, velX, velY, velZ);
         }
     }
 
-    public static void burnNearbyEnemies(LivingEntity attacker, float damage, float distance){
+    public static void burnNearbyEnemies(LivingEntity attacker, float damage, float distance) {
         World world = attacker.getEntityWorld();
 
         List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class,
                 new Box(attacker.getBlockPos()).expand(distance),
-                (nearbyEntity) -> AbilityHelper.canApplyToEnemy(attacker, nearbyEntity));
-        if (nearbyEntities.isEmpty()) return;
-        for (LivingEntity nearbyEntity : nearbyEntities){
+                (nearbyEntity) -> AbilityHelper.canFireAtEnemy(attacker, nearbyEntity));
+
+        for (LivingEntity nearbyEntity : nearbyEntities) {
             nearbyEntity.damage(DamageSource.ON_FIRE, damage);
         }
     }

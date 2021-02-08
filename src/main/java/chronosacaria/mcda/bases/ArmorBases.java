@@ -1,7 +1,6 @@
 package chronosacaria.mcda.bases;
 
 import chronosacaria.mcda.config.McdaStatsConfig;
-import chronosacaria.mcda.init.ItemsInit;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.EquipmentSlot;
@@ -9,13 +8,16 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Lazy;
+import net.minecraft.util.Rarity;
 
+import java.util.EnumMap;
 import java.util.function.Supplier;
 
-public enum ArmorBases implements ArmorMaterial {
+import static chronosacaria.mcda.config.McdaStatsConfig.config;
+import static net.minecraft.sound.SoundEvents.*;
 
+public enum ArmorBases implements ArmorMaterial {
 
     //Armor order: boots, leggings, chestplate, helmet
 
@@ -61,277 +63,181 @@ public enum ArmorBases implements ArmorMaterial {
     /* * * * *|
     | LEATHER |
     |* * * * */
-    ARCHER("archer",
+    ARCHER("archer", "archers",
             7,
-            McdaStatsConfig.config.getArcherArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-            McdaStatsConfig.config.getArcherArmorToughness(),
-            McdaStatsConfig.config.getArcherArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    HUNTER("hunter",
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    HUNTER("hunter", "hunters",
             7,
-            McdaStatsConfig.config.getHunterArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-            McdaStatsConfig.config.getHunterArmorToughness(),
-            McdaStatsConfig.config.getHunterArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    OCELOT("ocelot",
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    OCELOT("ocelot", "ocelot_armor",
             7,
-            McdaStatsConfig.config.getOcelotArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-            McdaStatsConfig.config.getOcelotArmorToughness(),
-            McdaStatsConfig.config.getOcelotArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    SHADOW_WALKER("shadowwalker",
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    SHADOW_WALKER("shadowwalker", "shadow_walker_armor",
             7,
-            McdaStatsConfig.config.getShadowWalkerArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-            McdaStatsConfig.config.getShadowWalkerArmorToughness(),
-            McdaStatsConfig.config.getShadowWalkerArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    SPELUNKER("spelunker",
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    SPELUNKER("spelunker", "spelunker_armor",
             7,
-            McdaStatsConfig.config.getSpelunkerArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-            McdaStatsConfig.config.getSpelunkerArmorToughness(),
-            McdaStatsConfig.config.getSpelunkerArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    CAVE_CRAWLER("cave",
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    CAVE_CRAWLER("cave", "cave_crawler",
             7,
-            McdaStatsConfig.config.getCaveCrawlerArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-            McdaStatsConfig.config.getCaveCrawlerArmorToughness(),
-            McdaStatsConfig.config.getCaveCrawlerArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    WOLF("wolf",
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    WOLF("wolf", "wolf_armor",
             7,
-            McdaStatsConfig.config.getWolfArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-            McdaStatsConfig.config.getWolfArmorToughness(),
-            McdaStatsConfig.config.getWolfArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    BLACK_WOLF("blackwolf",
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    BLACK_WOLF("blackwolf", "black_wolf_armor",
             7,
-            McdaStatsConfig.config.getBlackWolfArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-            McdaStatsConfig.config.getBlackWolfArmorToughness(),
-            McdaStatsConfig.config.getBlackWolfArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    FOX("fox",
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    FOX("fox", "fox_armor",
             7,
-            McdaStatsConfig.config.getFoxArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-            McdaStatsConfig.config.getFoxArmorToughness(),
-            McdaStatsConfig.config.getFoxArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    ARCTIC_FOX("arctic",
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    ARCTIC_FOX("arctic", "arctic_fox_armor",
             7,
-            McdaStatsConfig.config.getFoxArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-            McdaStatsConfig.config.getFoxArmorToughness(),
-            McdaStatsConfig.config.getFoxArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(Items.LEATHER)),
 
-    CLIMBING_GEAR("climbing",
+    CLIMBING_GEAR("climbing", "climbing_gear",
             7,
-            McdaStatsConfig.config.getClimbingGearArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-            McdaStatsConfig.config.getClimbingGearToughness(),
-            McdaStatsConfig.config.getClimbingGearKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    RUGGED_CLIMBING_GEAR("rugged",
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    RUGGED_CLIMBING_GEAR("rugged", "rugged_climbing_gear",
             7,
-            McdaStatsConfig.config.getRuggedClimbingGearArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-            McdaStatsConfig.config.getRuggedClimbingGearToughness(),
-            McdaStatsConfig.config.getRuggedClimbingGearKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(Items.LEATHER)),
     /*
-    GOAT("goat",
+    GOAT("goat", "goat_gear",
             7,
-            McdaStatsConfig.config.getGoatArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-            McdaStatsConfig.config.getGoatArmorToughness(),
-            McdaStatsConfig.config.getGoatArmorKnockback(),
-            () -> {return Ingredient.ofItems(ItemsInit.GOAT_PELT);}),
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(ItemsInit.GOAT_PELT)),
     */
 
     /* * * * |
     | FABRIC |
     | * * * */
-    BATTLE("battle",
+    BATTLE("battle", "battle_robe",
             5,
-            McdaStatsConfig.config.getBattleRobe(),
             25,
-            SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,
-            McdaStatsConfig.config.getBattleRobeToughness(),
-            McdaStatsConfig.config.getBattleRobeKnockback(),
-            () -> {return Ingredient.ofItems(ItemsInit.BOLT_OF_FABRIC_BLACK);}),
-    SPLENDID("splendid",
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_BLACK)),
+    SPLENDID("splendid", "splendid_robe",
             5,
-            McdaStatsConfig.config.getSplendidRobe(),
             25,
-            SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,
-            McdaStatsConfig.config.getSplendidRobeToughness(),
-            McdaStatsConfig.config.getSplendidRobeKnockback(),
-            () -> {return Ingredient.ofItems(ItemsInit.BOLT_OF_FABRIC_PURPLE);}),
-    EVOCATION("evocation",
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_PURPLE)),
+    EVOCATION("evocation", "evocation_robe",
             5,
-            McdaStatsConfig.config.getEvocationRobe(),
             25,
-            SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,
-            McdaStatsConfig.config.getEvocationRobeToughness(),
-            McdaStatsConfig.config.getEvocationRobeKnockback(),
-            () -> {return Ingredient.ofItems(ItemsInit.BOLT_OF_FABRIC_BLUE);}),
-    EMBER("ember",
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_BLUE)),
+    EMBER("ember", "ember_robe",
             5,
-            McdaStatsConfig.config.getEmberRobe(),
             25,
-            SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,
-            McdaStatsConfig.config.getEmberRobeToughness(),
-            McdaStatsConfig.config.getEmberRobeKnockback(),
-            () -> {return Ingredient.ofItems(ItemsInit.BOLT_OF_FABRIC_RED);}),
-    VERDANT("verdant",
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_RED)),
+    VERDANT("verdant", "verdant_robe",
             5,
-            McdaStatsConfig.config.getVerdantRobe(),
             25,
-            SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,
-            McdaStatsConfig.config.getVerdantRobeToughness(),
-            McdaStatsConfig.config.getVerdantRobeKnockback(),
-            () -> {return Ingredient.ofItems(ItemsInit.BOLT_OF_FABRIC_GREEN);}),
-    THIEF("thief",
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_GREEN)),
+    THIEF("thief", "thief_armor",
             5,
-            McdaStatsConfig.config.getThiefArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,
-            McdaStatsConfig.config.getThiefArmorToughness(),
-            McdaStatsConfig.config.getThiefArmorKnockback(),
-            () -> {return Ingredient.ofItems(ItemsInit.BOLT_OF_FABRIC_BLACK);}),
-    SPIDER("spider",
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_BLACK)),
+    SPIDER("spider", "spider_armor",
             5,
-            McdaStatsConfig.config.getSpiderArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,
-            McdaStatsConfig.config.getSpiderArmorToughness(),
-            McdaStatsConfig.config.getSpiderArmorKnockback(),
-            () -> {return Ingredient.ofItems(ItemsInit.BOLT_OF_FABRIC_BLACK);}),
-    SOUL_ROBE("soulrobe",
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_BLACK)),
+    SOUL_ROBE("soulrobe", "soul_robe",
             5,
-            McdaStatsConfig.config.getSoulRobe(),
             25,
-            SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,
-            McdaStatsConfig.config.getSoulRobeToughness(),
-            McdaStatsConfig.config.getSoulRobeKnockback(),
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    SOULDANCER("souldancer",
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    SOULDANCER("souldancer", "souldancer_robe",
             5,
-            McdaStatsConfig.config.getSoulDancerRobe(),
             25,
-            SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,
-            McdaStatsConfig.config.getSouldancerRobeToughness(),
-            McdaStatsConfig.config.getSouldancerRobeKnockback(),
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(Items.IRON_INGOT)),
 
     /* * * |
     | BONE |
     | * * */
-    PHANTOM("phantom",
+    PHANTOM("phantom", "phantom_armor",
             25,
-            McdaStatsConfig.config.getPhantomArmor(),
             9,
-            SoundEvents.ENTITY_SKELETON_AMBIENT,
-            McdaStatsConfig.config.getPhantomArmorToughness(),
-            McdaStatsConfig.config.getPhantomArmorKnockback(),
-            () -> {return Ingredient.ofItems(ItemsInit.PHANTOM_BONES);}),
-    FROST_BITE("frostbite",
+            ENTITY_SKELETON_AMBIENT,
+            () -> Ingredient.ofItems(ItemID.PHANTOM_BONES)),
+    FROST_BITE("frostbite", "frost_bite_armor",
             25,
-            McdaStatsConfig.config.getFrostBiteArmor(),
             9,
-            SoundEvents.ENTITY_SKELETON_AMBIENT,
-            McdaStatsConfig.config.getFrostBiteArmorToughness(),
-            McdaStatsConfig.config.getFrostBiteArmorKnockback(),
-            () -> {return Ingredient.ofItems(ItemsInit.FROST_CRYSTAL);}),
-    GRIM("grim",
+            ENTITY_SKELETON_AMBIENT,
+            () -> Ingredient.ofItems(ItemID.FROST_CRYSTAL)),
+    GRIM("grim", "grim_armor",
             25,
-            McdaStatsConfig.config.getGrimArmor(),
             9,
-            SoundEvents.ENTITY_SKELETON_AMBIENT,
-            McdaStatsConfig.config.getGrimArmorToughness(),
-            McdaStatsConfig.config.getGrimArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.BONE);}),
-    WITHER("wither",
+            ENTITY_SKELETON_AMBIENT,
+            () -> Ingredient.ofItems(Items.BONE)),
+    WITHER("wither", "wither_armor",
             25,
-            McdaStatsConfig.config.getWitherArmor(),
             9,
-            SoundEvents.ENTITY_SKELETON_AMBIENT,
-            McdaStatsConfig.config.getWitherArmorToughness(),
-            McdaStatsConfig.config.getWitherArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.BONE);}),
+            ENTITY_SKELETON_AMBIENT,
+            () -> Ingredient.ofItems(Items.BONE)),
 
     /* * * * * * *|
     | LIGHT PLATE |
     |* * * * * * */
-    SCALE_MAIL("scale",
+    SCALE_MAIL("scale", "scale_mail",
             14,
-            McdaStatsConfig.config.getScaleMail(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-            McdaStatsConfig.config.getScaleMailToughness(),
-            McdaStatsConfig.config.getScaleMailKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    HIGHLAND("highland",
+            ITEM_ARMOR_EQUIP_IRON,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    HIGHLAND("highland", "highland_armor",
             14,
-            McdaStatsConfig.config.getHighlandArmor(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-            McdaStatsConfig.config.getHighlandArmorToughness(),
-            McdaStatsConfig.config.getHighlandArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    BEEHIVE("beehive",
+            ITEM_ARMOR_EQUIP_IRON,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    BEEHIVE("beehive", "beehive_armor",
             14,
-            McdaStatsConfig.config.getBeehiveArmor(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-            McdaStatsConfig.config.getBeehiveArmorToughness(),
-            McdaStatsConfig.config.getBeehiveArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    BEENEST("beenest",
+            ITEM_ARMOR_EQUIP_IRON,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    BEENEST("beenest", "beenest_armor",
             14,
-            McdaStatsConfig.config.getBeenestArmor(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-            McdaStatsConfig.config.getBeenestArmorToughness(),
-            McdaStatsConfig.config.getBeenestArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    GHOSTLY("ghostly",
+            ITEM_ARMOR_EQUIP_IRON,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    GHOSTLY("ghostly", "ghostly_armor",
             14,
-            McdaStatsConfig.config.getGhostlyArmor(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-            McdaStatsConfig.config.getGhostlyArmorToughness(),
-            McdaStatsConfig.config.getGhostlyArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    GHOST_KINDLER("ghostkindler",
+            ITEM_ARMOR_EQUIP_IRON,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    GHOST_KINDLER("ghostkindler", "ghost_kindler",
             14,
-            McdaStatsConfig.config.getGhostKindlerArmor(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-            McdaStatsConfig.config.getGhostKindlerArmorToughness(),
-            McdaStatsConfig.config.getGhostKindlerArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
+            ITEM_ARMOR_EQUIP_IRON,
+            () -> Ingredient.ofItems(Items.LEATHER)),
 
 
 
@@ -339,258 +245,233 @@ public enum ArmorBases implements ArmorMaterial {
     /* * * * * * * |
     | MEDIUM PLATE |
     | * * * * * * */
-    REINFORCED_MAIL("reinforced",
+    REINFORCED_MAIL("reinforced", "reinforced_mail",
             30,
-            McdaStatsConfig.config.getReinforcedMail(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            McdaStatsConfig.config.getReinforcedMailToughness(),
-            McdaStatsConfig.config.getReinforcedMailKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    STALWART_MAIL("stalwart",
+            ITEM_ARMOR_EQUIP_DIAMOND,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    STALWART_MAIL("stalwart", "stalwart_armor",
             30,
-            McdaStatsConfig.config.getStalwartMail(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            McdaStatsConfig.config.getStalwartToughness(),
-            McdaStatsConfig.config.getStalwartKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    GUARDS("guards",
+            ITEM_ARMOR_EQUIP_DIAMOND,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    GUARDS("guards", "guards_armor",
             30,
-            McdaStatsConfig.config.getGuardsArmor(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            McdaStatsConfig.config.getGuardsArmorToughness(),
-            McdaStatsConfig.config.getGuardsArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    CURIOUS("curious",
+            ITEM_ARMOR_EQUIP_DIAMOND,
+            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    CURIOUS("curious", "curious_armor",
             30,
-            McdaStatsConfig.config.getCuriousArmor(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            McdaStatsConfig.config.getCuriousArmorToughness(),
-            McdaStatsConfig.config.getCuriousArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    SNOW("snow",
+            ITEM_ARMOR_EQUIP_DIAMOND,
+            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    SNOW("snow", "snow_armor",
             30,
-            McdaStatsConfig.config.getSnowArmor(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            McdaStatsConfig.config.getSnowArmorToughness(),
-            McdaStatsConfig.config.getSnowArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    FROST("frost",
+            ITEM_ARMOR_EQUIP_DIAMOND,
+            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    FROST("frost", "frost_armor",
             30,
-            McdaStatsConfig.config.getFrostArmor(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            McdaStatsConfig.config.getFrostArmorToughness(),
-            McdaStatsConfig.config.getFrostArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    MERCENARY("mercenary",
+            ITEM_ARMOR_EQUIP_DIAMOND,
+            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    MERCENARY("mercenary", "mercenary_armor",
             30,
-            McdaStatsConfig.config.getMercenaryArmor(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            McdaStatsConfig.config.getMercenaryArmorToughness(),
-            McdaStatsConfig.config.getMercenaryArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    RENEGADE("renegade",
+            ITEM_ARMOR_EQUIP_DIAMOND,
+            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    RENEGADE("renegade", "renegade_armor",
             30,
-            McdaStatsConfig.config.getRenegadeArmor(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            McdaStatsConfig.config.getRenegadeArmorToughness(),
-            McdaStatsConfig.config.getRenegadeArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    HUNGRY_HORROR("hungryhorror",
+            ITEM_ARMOR_EQUIP_DIAMOND,
+            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    HUNGRY_HORROR("hungryhorror", "hungry_horror",
             30,
-            McdaStatsConfig.config.getHungryHorrorArmor(),
             9,
-            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            McdaStatsConfig.config.getHungryHorrorArmorToughness(),
-            McdaStatsConfig.config.getHungryHorrorArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    EMERALD("emeraldgear",
+            ITEM_ARMOR_EQUIP_DIAMOND,
+            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    EMERALD("emeraldgear", "emerald_gear",
             30,
-            McdaStatsConfig.config.getEmeraldGearArmor(),
             10,
-            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            McdaStatsConfig.config.getEmeraldGearArmorToughness(),
-            McdaStatsConfig.config.getEmeraldGearArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.EMERALD);}),
-    OPULENT("opulentarmor",
+            ITEM_ARMOR_EQUIP_DIAMOND,
+            () -> Ingredient.ofItems(Items.EMERALD)),
+    OPULENT("opulentarmor", "opulent_armor",
             30,
-            McdaStatsConfig.config.getOpulentArmor(),
             10,
-            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            McdaStatsConfig.config.getOpulentArmorToughness(),
-            McdaStatsConfig.config.getOpulentArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.EMERALD);}),
+            ITEM_ARMOR_EQUIP_DIAMOND,
+            () -> Ingredient.ofItems(Items.EMERALD)),
 
     /* * * * * * *|
     | HEAVY PLATE |
     |* * * * * * */
-    DARK("dark",
+    DARK("dark", "dark_armor",
             36,
-            McdaStatsConfig.config.getDarkArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            McdaStatsConfig.config.getDarkArmorToughness(),
-            McdaStatsConfig.config.getDarkArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    TITAN("titans",
+            ITEM_ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    TITAN("titans", "titans_shroud",
             36,
-            McdaStatsConfig.config.getTitanShroud(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            McdaStatsConfig.config.getTitanShroudToughness(),
-            McdaStatsConfig.config.getTitanShroudKnockback(),
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    ROYAL("royalguard",
+            ITEM_ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    ROYAL("royalguard", "royal_guard", // TODO: unused
             36,
-            McdaStatsConfig.config.getRoyalGuard(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            McdaStatsConfig.config.getRoyalGuardToughness(),
-            McdaStatsConfig.config.getRoyalGuardKnockback(),
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    PLATE("plate",
+            ITEM_ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    PLATE("plate", "plate_armor",
             36,
-            McdaStatsConfig.config.getPlateArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            McdaStatsConfig.config.getPlateArmorToughness(),
-            McdaStatsConfig.config.getPlateArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    FULL_METAL("fullmetal",
+            ITEM_ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    FULL_METAL("fullmetal", "full_metal_armor",
             36,
-            McdaStatsConfig.config.getFullMetalArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            McdaStatsConfig.config.getFullMetalArmorToughness(),
-            McdaStatsConfig.config.getFullMetalArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    MYSTERY("whitemystery",
+            ITEM_ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    MYSTERY("whitemystery", "white_mystery_armor",
             36,
-            McdaStatsConfig.config.getMysteryArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            McdaStatsConfig.config.getMysteryArmorToughness(),
-            McdaStatsConfig.config.getMysteryArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    BLUE_MYSTERY("bluemystery",
+            ITEM_ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    BLUE_MYSTERY("bluemystery", "blue_mystery_armor",
             36,
-            McdaStatsConfig.config.getMysteryArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            McdaStatsConfig.config.getMysteryArmorToughness(),
-            McdaStatsConfig.config.getMysteryArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    GREEN_MYSTERY("greenmystery",
+            ITEM_ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    GREEN_MYSTERY("greenmystery", "green_mystery_armor",
             36,
-            McdaStatsConfig.config.getMysteryArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            McdaStatsConfig.config.getMysteryArmorToughness(),
-            McdaStatsConfig.config.getMysteryArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    PURPLE_MYSTERY("purplemystery",
+            ITEM_ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    PURPLE_MYSTERY("purplemystery", "purple_mystery_armor",
             36,
-            McdaStatsConfig.config.getMysteryArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            McdaStatsConfig.config.getMysteryArmorToughness(),
-            McdaStatsConfig.config.getMysteryArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    RED_MYSTERY("redmystery",
+            ITEM_ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    RED_MYSTERY("redmystery", "red_mystery_armor",
             36,
-            McdaStatsConfig.config.getMysteryArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            McdaStatsConfig.config.getMysteryArmorToughness(),
-            McdaStatsConfig.config.getMysteryArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.LEATHER);}),
-    CHAMPION("champions",
+            ITEM_ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    CHAMPION("champions", "champions_armor",
             36,
-            McdaStatsConfig.config.getChampionArmor(),
             15,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            McdaStatsConfig.config.getChampionArmorToughness(),
-            McdaStatsConfig.config.getChampionArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    HERO("heros",
+            ITEM_ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    HERO("heros", "heros_armor",
             40,
-            McdaStatsConfig.config.getHerosArmor(),
             25,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            McdaStatsConfig.config.getHerosArmorToughness(),
-            McdaStatsConfig.config.getHerosArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.IRON_INGOT);}),
-    GILDED("gildedglory",
+            ITEM_ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    GILDED("gildedglory", "gilded_glory",
             30,
-            McdaStatsConfig.config.getGildedGloryArmor(),
             10,
-            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            McdaStatsConfig.config.getGildedGloryArmorToughness(),
-            McdaStatsConfig.config.getGildedGloryArmorKnockback(),
-            () -> {return Ingredient.ofItems(Items.EMERALD);}),;
+            ITEM_ARMOR_EQUIP_DIAMOND,
+            () -> Ingredient.ofItems(Items.EMERALD));
 
-
-
-    private static final int[] baseDurability = new int[]{12,14,15,10};
-    private final String name;
+    private static final int[] baseDurability = new int[]{12, 14, 15, 10};
+    private final String textureName;
+    private final String setName;
     private final int durabilityMultiplier;
-    private final int[] armorValues;
     private final int enchantability;
     private final SoundEvent equipSound;
-    private final float toughness;
-    private final float knockbackResistance;
     private final Lazy<Ingredient> repairIngredient;
 
-    ArmorBases(String name, int durabilityMultiplier, int[] armorValueArray, int enchantability,
-               SoundEvent soundEvent, float toughness, float knockbackResistance,
-               Supplier<Ingredient> repairIngredient){
-        this.name = name;
+    EnumMap<EquipmentSlot, Integer> armorMap;
+
+    ArmorBases(String textureName, String setName, int durabilityMultiplier, int enchantability,
+               SoundEvent soundEvent, Supplier<Ingredient> repairIngredient) {
+        this.textureName = textureName;
+        this.setName = setName;
         this.durabilityMultiplier = durabilityMultiplier;
-        this.armorValues = armorValueArray;
         this.enchantability = enchantability;
         this.equipSound = soundEvent;
-        this.toughness = toughness;
-        this.knockbackResistance = knockbackResistance;
         this.repairIngredient = new Lazy<>(repairIngredient);
     }
 
-    public int getDurability(EquipmentSlot equipmentSlot_1){
-        return baseDurability[equipmentSlot_1.getEntitySlotId()] * this.durabilityMultiplier;
+    public String getSetName() {
+        return setName;
     }
 
-    public int getProtectionAmount(EquipmentSlot equipmentSlot_1) {
-        return this.armorValues[equipmentSlot_1.getEntitySlotId()];
+    public Rarity getRarity() {
+        switch (this) {
+            case SPLENDID:
+            case BEEHIVE:
+            case HERO:
+            case TITAN:
+            case ROYAL:
+            case EMBER:
+            case VERDANT:
+            case GHOST_KINDLER:
+            case WITHER:
+            case CURIOUS:
+            case ARCHER:
+            case RENEGADE:
+            case HUNGRY_HORROR:
+            case MYSTERY:
+            case BLUE_MYSTERY:
+            case GREEN_MYSTERY:
+            case PURPLE_MYSTERY:
+            case RED_MYSTERY:
+            case FROST_BITE:
+            case FULL_METAL:
+            case STALWART_MAIL:
+            case HIGHLAND:
+            case FROST:
+            case SOULDANCER:
+            case CAVE_CRAWLER:
+            case SPIDER:
+            case BLACK_WOLF:
+            case ARCTIC_FOX:
+            case OPULENT:
+            case GILDED:
+            case RUGGED_CLIMBING_GEAR:
+            //case GOAT: // TODO
+                return Rarity.RARE;
+            default:
+                return Rarity.UNCOMMON;
+        }
     }
 
-    public int getEnchantability(){
+    @Override
+    public int getDurability(EquipmentSlot slot) {
+        return baseDurability[slot.getEntitySlotId()] * this.durabilityMultiplier;
+    }
+
+    @Override
+    public int getProtectionAmount(EquipmentSlot slot) {
+        return config.stats.get(this).armorMap.get(slot);
+    }
+
+    @Override
+    public int getEnchantability() {
         return this.enchantability;
     }
 
-    public SoundEvent getEquipSound(){
+    @Override
+    public SoundEvent getEquipSound() {
         return this.equipSound;
     }
 
-    public Ingredient getRepairIngredient(){
+    @Override
+    public Ingredient getRepairIngredient() {
         return this.repairIngredient.get();
     }
 
     @Environment(EnvType.CLIENT)
-    public String getName(){
-        return this.name;
+    @Override
+    public String getName() {
+        return this.textureName;
     }
 
-    public float getToughness(){
-        return this.toughness;
+    @Override
+    public float getToughness() {
+        return  config.stats.get(this).toughness;
     }
 
-    public float getKnockbackResistance(){
-        return this.knockbackResistance;
+    @Override
+    public float getKnockbackResistance() {
+        return  config.stats.get(this).knockbackRes;
     }
 }

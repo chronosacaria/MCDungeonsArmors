@@ -1,9 +1,9 @@
 package chronosacaria.mcda.enchants;
 
+import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.enchants.enchantments.*;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.util.registry.Registry;
 
 public class EnchantsRegistry {
     public static Enchantment BURNING;
@@ -17,17 +17,20 @@ public class EnchantsRegistry {
     public static Enchantment SNOWBALL;
     public static Enchantment SURPRISE_GIFT;
 
-    public static void init(){
-        BURNING = new BurningEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR,new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
-        CHILLING = new ChillingEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR,new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
-        COWARDICE = new CowardiceEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR,new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
-        DEFLECT = new DeflectEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR,new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
-        FOOD_RESERVES = new FoodReservesEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR, new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
-        FRENZIED = new FrenziedEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR,new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
-        POTION_BARRIER = new PotionBarrierEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR, new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
-        RECYCLER = new RecyclerEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR,
-                new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
-        SNOWBALL = new SnowballEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR,new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
-        SURPRISE_GIFT = new SurpriseGiftEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR,new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
+    public static void init() {
+        BURNING        = registerEnchant("burning",        new BurningEnchantment());
+        CHILLING       = registerEnchant("chilling",       new ChillingEnchantment());
+        COWARDICE      = registerEnchant("cowardice",      new CowardiceEnchantment());
+        DEFLECT        = registerEnchant("deflect",        new DeflectEnchantment());
+        FOOD_RESERVES  = registerEnchant("food_reserves",  new FoodReservesEnchantment());
+        FRENZIED       = registerEnchant("frenzied",       new FrenziedEnchantment());
+        POTION_BARRIER = registerEnchant("potion_barrier", new PotionBarrierEnchantment());
+        RECYCLER       = registerEnchant("recycler",       new RecyclerEnchantment());
+        SNOWBALL       = registerEnchant("snowball",       new SnowballEnchantment());
+        SURPRISE_GIFT  = registerEnchant("surprise_gift",  new SurpriseGiftEnchantment());
+    }
+
+    protected static Enchantment registerEnchant(String id, Enchantment enchant) {
+        return Registry.register(Registry.ENCHANTMENT, Mcda.ID(id), enchant);
     }
 }
