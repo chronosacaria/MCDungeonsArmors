@@ -28,6 +28,9 @@ public abstract class SurpriseGiftEnchantmentMixin {
 
     @Inject(method = "consumeItem", at = @At("TAIL"))
     public void onSurpriseGiftPotionUsed(CallbackInfo ci){
+        if (!((Object)this instanceof PlayerEntity))
+            return;
+
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
         if (playerEntity.isAlive()){
             List<StatusEffectInstance> potionEffects = PotionUtil.getPotionEffects(getMainHandStack());

@@ -25,6 +25,9 @@ public abstract class PotionBarrierEnchantmentMixin {
 
     @Inject(method = "consumeItem", at = @At("TAIL"))
     public void onPotionBarrierPotionUsed(CallbackInfo ci) {
+        if (!((Object)this instanceof PlayerEntity))
+            return;
+
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
         if (playerEntity.isAlive()) {
             List<StatusEffectInstance> potionEffects = PotionUtil.getPotionEffects(getMainHandStack());
