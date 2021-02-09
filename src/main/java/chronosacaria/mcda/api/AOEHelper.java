@@ -36,7 +36,6 @@ public class AOEHelper {
                 addHealParticles(world, nearbyEntity);
             }
         }
-
     }
 
     public static void healNearbyAllies(LivingEntity healer, float amount, float distance) {

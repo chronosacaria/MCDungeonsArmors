@@ -13,12 +13,12 @@ import net.minecraft.util.Rarity;
 import java.util.EnumMap;
 import java.util.function.Supplier;
 
-import static chronosacaria.mcda.config.McdaStatsConfig.config;
+import static chronosacaria.mcda.config.McdaConfig.config;
 import static net.minecraft.sound.SoundEvents.*;
 
 public enum ArmorSets implements ArmorMaterial {
 
-    //Armor order: boots, leggings, chestplate, helmet
+    // Armor order: boots, leggings, chestplate, helmet
 
     /*
      * Durability:
@@ -238,9 +238,6 @@ public enum ArmorSets implements ArmorMaterial {
             ITEM_ARMOR_EQUIP_IRON,
             () -> Ingredient.ofItems(Items.LEATHER)),
 
-
-
-
     /* * * * * * * |
     | MEDIUM PLATE |
     | * * * * * * */
@@ -440,7 +437,7 @@ public enum ArmorSets implements ArmorMaterial {
 
     @Override
     public int getProtectionAmount(EquipmentSlot slot) {
-        return config.stats.get(this).armorMap.get(slot);
+        return config.stats.get(this).armor.get(slot);
     }
 
     @Override
