@@ -1,4 +1,4 @@
-package chronosacaria.mcda.enchants;
+package chronosacaria.mcda.registry;
 
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.enchants.enchantments.*;

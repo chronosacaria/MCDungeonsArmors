@@ -1,14 +1,14 @@
-package chronosacaria.mcda.init;
+package chronosacaria.mcda.registry;
 
 import chronosacaria.mcda.Mcda;
-import chronosacaria.mcda.bases.ItemID;
+import chronosacaria.mcda.items.ItemID;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
 
 import java.util.EnumMap;
 
-public class ItemsInit {
+public class ItemsRegistry {
 
     public static EnumMap<ItemID, Item> items = new EnumMap<>(ItemID.class);
 

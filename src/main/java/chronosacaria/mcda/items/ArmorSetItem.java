@@ -1,7 +1,6 @@
 package chronosacaria.mcda.items;
 
 import chronosacaria.mcda.Mcda;
-import chronosacaria.mcda.bases.ArmorBases;
 import chronosacaria.mcda.config.McdaBoostsConfig.StatBoosts;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
@@ -39,9 +38,9 @@ public class ArmorSetItem extends ArmorItem {
             UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
 
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
-    private final ArmorBases set;
+    private final ArmorSets set;
 
-    public ArmorSetItem(ArmorBases set, EquipmentSlot slot) {
+    public ArmorSetItem(ArmorSets set, EquipmentSlot slot) {
         super(set, slot, new Item.Settings().group(Mcda.ARMORS_GROUP));
         this.set = set;
 

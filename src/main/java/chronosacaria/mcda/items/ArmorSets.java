@@ -1,6 +1,5 @@
-package chronosacaria.mcda.bases;
+package chronosacaria.mcda.items;
 
-import chronosacaria.mcda.config.McdaStatsConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.EquipmentSlot;
@@ -17,7 +16,7 @@ import java.util.function.Supplier;
 import static chronosacaria.mcda.config.McdaStatsConfig.config;
 import static net.minecraft.sound.SoundEvents.*;
 
-public enum ArmorBases implements ArmorMaterial {
+public enum ArmorSets implements ArmorMaterial {
 
     //Armor order: boots, leggings, chestplate, helmet
 
@@ -380,8 +379,8 @@ public enum ArmorBases implements ArmorMaterial {
 
     EnumMap<EquipmentSlot, Integer> armorMap;
 
-    ArmorBases(String textureName, String setName, int durabilityMultiplier, int enchantability,
-               SoundEvent soundEvent, Supplier<Ingredient> repairIngredient) {
+    ArmorSets(String textureName, String setName, int durabilityMultiplier, int enchantability,
+              SoundEvent soundEvent, Supplier<Ingredient> repairIngredient) {
         this.textureName = textureName;
         this.setName = setName;
         this.durabilityMultiplier = durabilityMultiplier;

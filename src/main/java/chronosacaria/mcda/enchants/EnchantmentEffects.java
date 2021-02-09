@@ -1,5 +1,6 @@
 package chronosacaria.mcda.enchants;
 
+import chronosacaria.mcda.registry.EnchantsRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;

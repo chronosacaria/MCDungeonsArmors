@@ -1,6 +1,6 @@
 package chronosacaria.mcda.config;
 
-import chronosacaria.mcda.bases.ArmorBases;
+import chronosacaria.mcda.items.ArmorSets;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
@@ -8,7 +8,7 @@ import me.sargunvohra.mcmods.autoconfig1u.serializer.JanksonConfigSerializer;
 
 import java.util.EnumMap;
 
-import static chronosacaria.mcda.bases.ArmorBases.*;
+import static chronosacaria.mcda.items.ArmorSets.*;
 
 @Config(name = "mcda_boosts")
 public class McdaBoostsConfig implements ConfigData {
@@ -41,22 +41,22 @@ public class McdaBoostsConfig implements ConfigData {
         config = AutoConfig.getConfigHolder(McdaBoostsConfig.class).getConfig();
     }
 
-    public EnumMap<ArmorBases, StatBoosts> statBoosts = new EnumMap<>(ArmorBases.class);
+    public EnumMap<ArmorSets, StatBoosts> statBoosts = new EnumMap<>(ArmorSets.class);
 
-    protected StatBoosts setAttackDamageBoost(double value, ArmorBases set) {
+    protected StatBoosts setAttackDamageBoost(double value, ArmorSets set) {
         return statBoosts.get(set).setAttackDamageBoost(value);
     }
 
-    protected StatBoosts setAttackSpeedBoost(double value, ArmorBases set) {
+    protected StatBoosts setAttackSpeedBoost(double value, ArmorSets set) {
         return statBoosts.get(set).setAttackSpeedBoost(value);
     }
 
-    protected StatBoosts setMovementSpeedBoost(double value, ArmorBases set) {
+    protected StatBoosts setMovementSpeedBoost(double value, ArmorSets set) {
         return statBoosts.get(set).setMovementSpeedBoost(value);
     }
 
     public McdaBoostsConfig() {
-        for (ArmorBases armorSet : ArmorBases.values()) {
+        for (ArmorSets armorSet : ArmorSets.values()) {
             statBoosts.put(armorSet, new StatBoosts());
         }
 

@@ -1,10 +1,10 @@
 package chronosacaria.mcda;
 
-import chronosacaria.mcda.bases.ArmorBases;
-import chronosacaria.mcda.enchants.EnchantsRegistry;
-import chronosacaria.mcda.init.ArmorsInit;
-import chronosacaria.mcda.init.ItemsInit;
-import chronosacaria.mcda.init.LootInit;
+import chronosacaria.mcda.items.ArmorSets;
+import chronosacaria.mcda.registry.EnchantsRegistry;
+import chronosacaria.mcda.registry.ArmorsRegistry;
+import chronosacaria.mcda.registry.ItemsRegistry;
+import chronosacaria.mcda.registry.LootRegistry;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.entity.EquipmentSlot;
@@ -24,13 +24,13 @@ public class Mcda implements ModInitializer {
     }
 
     public static final ItemGroup ARMORS_GROUP = FabricItemGroupBuilder.build(ID( "armor"),
-            () -> new ItemStack(ArmorsInit.armorItems.get(ArmorBases.SPLENDID).get(EquipmentSlot.CHEST)));
+            () -> new ItemStack(ArmorsRegistry.armorItems.get(ArmorSets.SPLENDID).get(EquipmentSlot.CHEST)));
 
     @Override
     public void onInitialize() {
-        ArmorsInit.init();
+        ArmorsRegistry.init();
         EnchantsRegistry.init();
-        ItemsInit.init();
-        LootInit.init();
+        ItemsRegistry.init();
+        LootRegistry.init();
     }
 }

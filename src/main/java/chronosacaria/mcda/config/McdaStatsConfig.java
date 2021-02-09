@@ -1,6 +1,6 @@
 package chronosacaria.mcda.config;
 
-import chronosacaria.mcda.bases.ArmorBases;
+import chronosacaria.mcda.items.ArmorSets;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
@@ -10,7 +10,7 @@ import net.minecraft.entity.EquipmentSlot;
 import java.util.EnumMap;
 import java.util.EnumSet;
 
-import static chronosacaria.mcda.bases.ArmorBases.*;
+import static chronosacaria.mcda.items.ArmorSets.*;
 import static net.minecraft.entity.EquipmentSlot.*;
 
 @Config(name = "mcda_stats")
@@ -47,14 +47,14 @@ public class McdaStatsConfig implements ConfigData {
     }
 
     // (set, slot) -> stats
-    public EnumMap<ArmorBases, Stats> stats = new EnumMap<>(ArmorBases.class);
+    public EnumMap<ArmorSets, Stats> stats = new EnumMap<>(ArmorSets.class);
 
-    protected Stats setProtection(int head, int chest, int legs, int feet, ArmorBases set) {
+    protected Stats setProtection(int head, int chest, int legs, int feet, ArmorSets set) {
         return stats.get(set).setProtection(head, chest, legs, feet);
     }
 
     public McdaStatsConfig() {
-        for (ArmorBases armorSet : ArmorBases.values()) {
+        for (ArmorSets armorSet : ArmorSets.values()) {
             Stats s = new Stats();
             s.armorMap = new EnumMap<>(EquipmentSlot.class);
             for (EquipmentSlot slot : EnumSet.of(HEAD, CHEST, LEGS, FEET)) {

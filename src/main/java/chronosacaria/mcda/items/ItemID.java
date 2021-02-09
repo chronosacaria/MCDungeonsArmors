@@ -1,6 +1,6 @@
-package chronosacaria.mcda.bases;
+package chronosacaria.mcda.items;
 
-import chronosacaria.mcda.init.ItemsInit;
+import chronosacaria.mcda.registry.ItemsRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 
@@ -62,6 +62,6 @@ public enum ItemID implements ItemConvertible {
     UPGRADE_CORE_WOLF;
 
     public Item asItem() {
-        return ItemsInit.items.get(this);
+        return ItemsRegistry.items.get(this);
     }
 }
