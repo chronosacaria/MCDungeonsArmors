@@ -5,7 +5,6 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "enchantments.CowardiceEnchantmentMixin",
-    "enchantments.DeflectEnchantmentMixin",
     "enchantments.FoodReservesEnchantmentMixin",
     "enchantments.FrenziedEnchantmentMixin",
     "enchantments.PotionBarrierEnchantmentMixin",
