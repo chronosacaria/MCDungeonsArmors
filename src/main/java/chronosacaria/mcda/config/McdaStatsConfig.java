@@ -189,7 +189,7 @@ public class McdaStatsConfig implements ConfigData {
     public float EmeraldGearArmorToughness = 2.0F;
     public float EmeraldGearArmorKnockback = 0F;
     @Comment ("Opulent Armor: Feet, Legs, Body, Head")
-    public int[] OpulentArmor = {3,5,7,3};
+    public int[] OpulentArmor = {4,5,7,4};
     public float OpulentArmorToughness = 2.0F;
     public float OpulentArmorKnockback = 0F;
 

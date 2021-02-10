@@ -186,7 +186,52 @@ public class LootInit {
                         .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.GHOSTLY_ARMOR_CHESTPLATE))
                         .rolls(new BinomialLootTableRange(1, 0.05F))
-                        .with(ItemEntry.builder(ArmorsInit.GHOSTLY_ARMOR_HELMET));
+                        .with(ItemEntry.builder(ArmorsInit.GHOSTLY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_HELMET));
                 supplier.pool(poolBuilder);
             }
 
@@ -202,7 +247,52 @@ public class LootInit {
                         .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.GRIM_CHESTPLATE))
                         .rolls(new BinomialLootTableRange(1, 0.05F))
-                        .with(ItemEntry.builder(ArmorsInit.GRIM_HELMET));
+                        .with(ItemEntry.builder(ArmorsInit.GRIM_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_HELMET));
                 supplier.pool(poolBuilder);
             }
 
@@ -320,7 +410,52 @@ public class LootInit {
                         .rolls(new BinomialLootTableRange(1, 0.05F))
                         .with(ItemEntry.builder(ArmorsInit.MERCENARY_CHESTPLATE))
                         .rolls(new BinomialLootTableRange(1, 0.05F))
-                        .with(ItemEntry.builder(ArmorsInit.MERCENARY_HELMET));
+                        .with(ItemEntry.builder(ArmorsInit.MERCENARY_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_HELMET));
                 supplier.pool(poolBuilder);
             }
 
@@ -345,7 +480,52 @@ public class LootInit {
                         .rolls(new BinomialLootTableRange(1, 0.01F))
                         .with(ItemEntry.builder(ArmorsInit.CAVE_CRAWLER_CHESTPLATE))
                         .rolls(new BinomialLootTableRange(1, 0.01F))
-                        .with(ItemEntry.builder(ArmorsInit.CAVE_CRAWLER_HELMET));
+                        .with(ItemEntry.builder(ArmorsInit.CAVE_CRAWLER_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.BLUE_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.RED_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.WHITE_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.GREEN_MYSTERY_ARMOR_HELMET))
+
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_BOOTS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_LEGGINGS))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_CHESTPLATE))
+                        .rolls(new BinomialLootTableRange(1, 0.05F))
+                        .with(ItemEntry.builder(ArmorsInit.PURPLE_MYSTERY_ARMOR_HELMET));
                 supplier.pool(poolBuilder);
             }
         })));
