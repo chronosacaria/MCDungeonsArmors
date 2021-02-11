@@ -1,5 +1,6 @@
 package chronosacaria.mcda.enchants;
 
+import chronosacaria.mcda.config.McdaConfig;
 import chronosacaria.mcda.registry.EnchantsRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.ItemEntity;
@@ -20,21 +21,27 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static chronosacaria.mcda.config.McdaConfig.config;
+import static chronosacaria.mcda.enchants.EnchantID.*;
+
 public class EnchantmentEffects {
 
-    public static final List<Item> FOOD_RESERVES = Collections.unmodifiableList(Arrays.asList(
+    public static final List<Item> FOOD_RESERVE_LIST = Collections.unmodifiableList(Arrays.asList(
             Items.APPLE, Items.BREAD, Items.COOKED_SALMON, Items.COOKED_PORKCHOP, Items.COOKED_MUTTON,
             Items.COOKED_COD, Items.COOKED_COD, Items.COOKED_RABBIT, Items.COOKED_CHICKEN, Items.COOKED_BEEF,
             Items.MELON_SLICE, Items.CARROT, Items.GOLDEN_CARROT, Items.GOLDEN_APPLE, Items.BAKED_POTATO));
 
-    public static final List<ItemStack> SURPRISE_GIFTS = Collections.unmodifiableList(Arrays.asList(
+    public static final List<ItemStack> SURPRISE_GIFT_LIST = Collections.unmodifiableList(Arrays.asList(
             PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.STRENGTH),
             PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.SWIFTNESS),
             PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.INVISIBILITY)));
 
     public static void applyCowardice(ServerPlayerEntity player) {
+        if (!config.enableEnchantment.get(COWARDICE))
+            return;
+
         if (player.getHealth() == player.getMaxHealth()) {
-            int cowardiceLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.COWARDICE, player);
+            int cowardiceLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(COWARDICE), player);
             if (cowardiceLevel == 0) return;
             StatusEffectInstance strengthBoost = new StatusEffectInstance(StatusEffects.STRENGTH, 40, cowardiceLevel + 1);
             player.addStatusEffect(strengthBoost);
@@ -42,13 +49,16 @@ public class EnchantmentEffects {
     }
 
     public static void applyFoodReserves(PlayerEntity playerEntity) {
+        if (!config.enableEnchantment.get(FOOD_RESERVES))
+            return;
+
         List<StatusEffectInstance> potionEffects = PotionUtil.getPotionEffects(playerEntity.getMainHandStack());
         if (potionEffects.isEmpty()) return;
         if (potionEffects.get(0).getEffectType() == StatusEffects.INSTANT_HEALTH) {
-            int foodReserveLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.FOOD_RESERVES, playerEntity);
+            int foodReserveLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FOOD_RESERVES), playerEntity);
 
             while (foodReserveLevel > 0) {
-                Item foodToDrop = FOOD_RESERVES.get(playerEntity.getRandom().nextInt(FOOD_RESERVES.size()));
+                Item foodToDrop = FOOD_RESERVE_LIST.get(playerEntity.getRandom().nextInt(FOOD_RESERVE_LIST.size()));
                 ItemEntity foodDrop = new ItemEntity(playerEntity.world, playerEntity.getX(),
                         playerEntity.getY(), playerEntity.getZ(), new ItemStack(foodToDrop));
                 playerEntity.world.spawnEntity(foodDrop);
@@ -58,10 +68,13 @@ public class EnchantmentEffects {
     }
 
     public static void applyPotionBarrier(PlayerEntity playerEntity) {
+        if (!config.enableEnchantment.get(FOOD_RESERVES))
+            return;
+
         List<StatusEffectInstance> potionEffects = PotionUtil.getPotionEffects(playerEntity.getMainHandStack());
         if (potionEffects.isEmpty()) return;
         if (potionEffects.get(0).getEffectType() == StatusEffects.INSTANT_HEALTH) {
-            int potionBarrierLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.POTION_BARRIER, playerEntity);
+            int potionBarrierLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POTION_BARRIER), playerEntity);
             if (potionBarrierLevel == 0) return;
             int duration = 60 + (20 * potionBarrierLevel);
             StatusEffectInstance resistance = new StatusEffectInstance(StatusEffects.RESISTANCE, duration, 3);
@@ -70,17 +83,20 @@ public class EnchantmentEffects {
     }
 
     public static void applySurpriseGift(PlayerEntity playerEntity) {
+        if (!config.enableEnchantment.get(SURPRISE_GIFT))
+            return;
+
         List<StatusEffectInstance> potionEffects = PotionUtil.getPotionEffects(playerEntity.getMainHandStack());
         if (potionEffects.isEmpty()) return;
         if (potionEffects.get(0).getEffectType() == StatusEffects.INSTANT_HEALTH) {
-            int surpriseGiftLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.SURPRISE_GIFT, playerEntity);
+            int surpriseGiftLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SURPRISE_GIFT), playerEntity);
             if (surpriseGiftLevel == 0) return;
             float surpriseGiftChance = 0.5F * surpriseGiftLevel;
 
             while (surpriseGiftChance > 0) {
                 float surpriseGiftRand = playerEntity.getRandom().nextFloat();
                 if (surpriseGiftRand <= surpriseGiftChance) {
-                    ItemStack potionToDrop = SURPRISE_GIFTS.get(playerEntity.getRandom().nextInt(SURPRISE_GIFTS.size()));
+                    ItemStack potionToDrop = SURPRISE_GIFT_LIST.get(playerEntity.getRandom().nextInt(SURPRISE_GIFT_LIST.size()));
                     ItemEntity surpriseGift = new ItemEntity(playerEntity.world, playerEntity.getX(),
                             playerEntity.getY(), playerEntity.getZ(), potionToDrop);
                     playerEntity.world.spawnEntity(surpriseGift);
@@ -91,8 +107,11 @@ public class EnchantmentEffects {
     }
 
     public static void applyFrenzied(ServerPlayerEntity player) {
+        if (!config.enableEnchantment.get(FRENZIED))
+            return;
+
         if (player.getHealth() <= (0.5F * player.getMaxHealth())) {
-            int frenziedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.FRENZIED, player);
+            int frenziedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FRENZIED), player);
             if (frenziedLevel == 0) return;
             StatusEffectInstance frenzied = new StatusEffectInstance(StatusEffects.HASTE, 40, frenziedLevel);
             player.addStatusEffect(frenzied);
@@ -100,11 +119,14 @@ public class EnchantmentEffects {
     }
 
     public static void applyDeflect(EntityHitResult hitResult, PersistentProjectileEntity projectile) {
+        if (!config.enableEnchantment.get(DEFLECT))
+            return;
+
         if (!(projectile.getOwner() instanceof LivingEntity)) return;
         if (!(hitResult.getEntity() instanceof LivingEntity)) return;
 
         LivingEntity victim = (LivingEntity) hitResult.getEntity();
-        int deflectLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.DEFLECT, victim);
+        int deflectLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(DEFLECT), victim);
         if (deflectLevel == 0) return;
         double originalDamage = projectile.getDamage();
         double deflectChance = deflectLevel * 0.2F;

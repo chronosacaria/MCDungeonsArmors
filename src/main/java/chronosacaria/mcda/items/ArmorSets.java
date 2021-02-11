@@ -437,7 +437,7 @@ public enum ArmorSets implements ArmorMaterial {
 
     @Override
     public int getProtectionAmount(EquipmentSlot slot) {
-        return config.stats.get(this).armor.get(slot);
+        return config.armorStats.get(this).protection.get(slot);
     }
 
     @Override
@@ -463,11 +463,11 @@ public enum ArmorSets implements ArmorMaterial {
 
     @Override
     public float getToughness() {
-        return  config.stats.get(this).toughness;
+        return  config.armorStats.get(this).toughness;
     }
 
     @Override
     public float getKnockbackResistance() {
-        return  config.stats.get(this).knockbackRes;
+        return  config.armorStats.get(this).knockbackRes;
     }
 }

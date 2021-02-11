@@ -1,15 +1,14 @@
 package chronosacaria.mcda.enchants.enchantments;
 
 import chronosacaria.mcda.api.ProjectileEffectHelper;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
+import chronosacaria.mcda.enchants.ArmorEnchantment;
+import chronosacaria.mcda.enchants.EnchantID;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 
-public class SnowballEnchantment extends Enchantment {
-    public SnowballEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.ARMOR, new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
+public class SnowballEnchantment extends ArmorEnchantment {
+    public SnowballEnchantment(EnchantID enchantID) {
+        super(enchantID);
     }
 
     @Override

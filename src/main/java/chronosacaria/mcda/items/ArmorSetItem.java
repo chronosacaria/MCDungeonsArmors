@@ -1,7 +1,7 @@
 package chronosacaria.mcda.items;
 
 import chronosacaria.mcda.Mcda;
-import chronosacaria.mcda.config.McdaConfig.Stats;
+import chronosacaria.mcda.config.ArmorStats;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
@@ -54,18 +54,18 @@ public class ArmorSetItem extends ArmorItem {
                     this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
 
-        Stats stats = config.stats.get(set);
+        ArmorStats armorStats = config.armorStats.get(set);
 
         builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                 "Armor attack damage boost",
-                stats.attackDamageBoost,
+                armorStats.attackDamageBoost,
                 EntityAttributeModifier.Operation.MULTIPLY_BASE));
         builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(uuid,
                 "Armor attack speed boost",
-                stats.attackSpeedBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                armorStats.attackSpeedBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
         builder.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(uuid,
                 "Armor movement speed boost",
-                stats.movementSpeedBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                armorStats.movementSpeedBoost, EntityAttributeModifier.Operation.MULTIPLY_BASE));
 
         this.attributeModifiers = builder.build();
     }

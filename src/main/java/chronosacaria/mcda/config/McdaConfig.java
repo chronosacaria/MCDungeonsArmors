@@ -1,6 +1,7 @@
 package chronosacaria.mcda.config;
 
 import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.enchants.EnchantID;
 import chronosacaria.mcda.items.ArmorSets;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
@@ -25,81 +26,45 @@ public class McdaConfig implements ConfigData {
         config = AutoConfig.getConfigHolder(McdaConfig.class).getConfig();
     }
 
-    @ConfigEntry.Gui.Excluded
-    public EnumMap<ArmorSets, Stats> stats = new EnumMap<>(ArmorSets.class);
+    // config contents:
+    public EnumMap<EnchantID, Boolean> enableEnchantment = new EnumMap<>(EnchantID.class);
+    public EnumMap<ArmorSets, ArmorStats> armorStats = new EnumMap<>(ArmorSets.class);
 
-    public static class Stats {
-        public EnumMap<EquipmentSlot, Integer> armor = new EnumMap<>(EquipmentSlot.class);
-        public float toughness;
-        public float knockbackRes;
-
-        public double attackDamageBoost;
-        public double attackSpeedBoost;
-        public double movementSpeedBoost;
-
-        protected Stats setProtection(int head, int chest, int legs, int feet) {
-            this.armor.put(HEAD, head);
-            this.armor.put(CHEST, chest);
-            this.armor.put(LEGS, legs);
-            this.armor.put(FEET, feet);
-            return this;
-        }
-
-        protected Stats setToughness(float toughness) {
-            this.toughness = toughness;
-            return this;
-        }
-
-        protected Stats setKnockbackRes(float knockbackRes) {
-            this.knockbackRes = knockbackRes;
-            return this;
-        }
-
-        public Stats setAttackDamageBoost(double attackDamage) {
-            this.attackDamageBoost = attackDamage;
-            return this;
-        }
-
-        public Stats setAttackSpeedBoost(double attackSpeed) {
-            this.attackSpeedBoost = attackSpeed;
-            return this;
-        }
-
-        public Stats setMovementSpeedBoost(double movement) {
-            this.movementSpeedBoost = movement;
-            return this;
-        }
+    // convenience methods:
+    protected ArmorStats setProtection(int head, int chest, int legs, int feet, ArmorSets set) {
+        return armorStats.get(set).setProtection(head, chest, legs, feet);
     }
 
-    protected Stats setProtection(int head, int chest, int legs, int feet, ArmorSets set) {
-        return stats.get(set).setProtection(head, chest, legs, feet);
+    protected ArmorStats setAttackDamageBoost(double value, ArmorSets set) {
+        return armorStats.get(set).setAttackDamageBoost(value);
     }
 
-    protected Stats setAttackDamageBoost(double value, ArmorSets set) {
-        return stats.get(set).setAttackDamageBoost(value);
+    protected ArmorStats setAttackSpeedBoost(double value, ArmorSets set) {
+        return armorStats.get(set).setAttackSpeedBoost(value);
     }
 
-    protected Stats setAttackSpeedBoost(double value, ArmorSets set) {
-        return stats.get(set).setAttackSpeedBoost(value);
+    protected ArmorStats setMovementSpeedBoost(double value, ArmorSets set) {
+        return armorStats.get(set).setMovementSpeedBoost(value);
     }
 
-    protected Stats setMovementSpeedBoost(double value, ArmorSets set) {
-        return stats.get(set).setMovementSpeedBoost(value);
-    }
-
+    // set config defaults
     public McdaConfig() {
-        for (ArmorSets armorSet : ArmorSets.values()) {
-            stats.put(armorSet, new Stats());
+        for (EnchantID enchantID : EnchantID.values()) {
+            enableEnchantment.put(enchantID, true);
         }
 
         for (ArmorSets armorSet : ArmorSets.values()) {
-            Stats s = new Stats();
-            s.armor = new EnumMap<>(EquipmentSlot.class);
+            armorStats.put(armorSet, new ArmorStats());
+        }
+
+        for (ArmorSets armorSet : ArmorSets.values()) {
+            ArmorStats s = new ArmorStats();
+            s.protection = new EnumMap<>(EquipmentSlot.class);
             for (EquipmentSlot slot : EnumSet.of(HEAD, CHEST, LEGS, FEET)) {
-                s.armor.put(slot, 0);
+                s.protection.put(slot, 0);
             }
 
-            this.stats.put(armorSet, s);
+            this.armorStats.put(armorSet, s);
         }
 
         // Leather Armors
