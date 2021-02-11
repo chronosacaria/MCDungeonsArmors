@@ -124,7 +124,7 @@ public class McdaStatsConfig implements ConfigData {
                 .setToughness(2.0F);
         setProtection(3, 7, 5, 3, EMERALD)
                 .setToughness(2.0F);
-        setProtection(3, 7, 5, 3, OPULENT)
+        setProtection(4, 7, 5, 4, OPULENT)
                 .setToughness(2.0F);
 
         // Heavy Plate Armor

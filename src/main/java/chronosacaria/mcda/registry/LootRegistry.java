@@ -99,10 +99,12 @@ public class LootRegistry {
                 poolBuilder = FabricLootPoolBuilder.builder();
                 addArmorSet(poolBuilder, ArmorSets.GHOSTLY,       0.05F);
                 addArmorSet(poolBuilder, ArmorSets.GHOST_KINDLER, 0.01F);
+                addMysteryArmorSets(poolBuilder, 0.05F);
                 supplier.pool(poolBuilder);
             } else if (NETHER_FORTRESS_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
                 addArmorSet(poolBuilder, ArmorSets.GRIM, 0.05F);
+                addMysteryArmorSets(poolBuilder, 0.05F);
                 supplier.pool(poolBuilder);
             } else if (PILLAGER_TOWER_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
@@ -123,15 +125,25 @@ public class LootRegistry {
                 poolBuilder = FabricLootPoolBuilder.builder();
                 addArmorSet(poolBuilder, ArmorSets.SCALE_MAIL, 0.05F);
                 addArmorSet(poolBuilder, ArmorSets.MERCENARY,  0.05F);
+                addMysteryArmorSets(poolBuilder, 0.05F);
                 supplier.pool(poolBuilder);
             } else if (MINESHAFT_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
                 addArmorSet(poolBuilder, ArmorSets.SPELUNKER,    0.05F);
                 addArmorSet(poolBuilder, ArmorSets.CAVE_CRAWLER, 0.01F);
+                addMysteryArmorSets(poolBuilder, 0.05F);
                 supplier.pool(poolBuilder);
             }
         });
 
+    }
+
+    public static void addMysteryArmorSets(FabricLootPoolBuilder poolBuilder, float p) {
+        addArmorSet(poolBuilder, ArmorSets.MYSTERY, p);
+        addArmorSet(poolBuilder, ArmorSets.BLUE_MYSTERY, p);
+        addArmorSet(poolBuilder, ArmorSets.GREEN_MYSTERY, p);
+        addArmorSet(poolBuilder, ArmorSets.PURPLE_MYSTERY, p);
+        addArmorSet(poolBuilder, ArmorSets.RED_MYSTERY, p);
     }
 
     public static void addArmorSet(FabricLootPoolBuilder poolBuilder, ArmorSets set, float p) {
