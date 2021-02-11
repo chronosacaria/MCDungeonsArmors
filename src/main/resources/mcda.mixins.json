@@ -4,11 +4,9 @@
   "package": "chronosacaria.mcda.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "enchantments.CowardiceEnchantmentMixin",
-    "enchantments.FoodReservesEnchantmentMixin",
-    "enchantments.FrenziedEnchantmentMixin",
-    "enchantments.PotionBarrierEnchantmentMixin",
-    "enchantments.SurpriseGiftEnchantmentMixin"
+    "PersistentProjectileEntityMixin",
+    "ServerPlayerEntityMixin",
+    "LivingEntityMixin"
   ],
   "client": [
   ],

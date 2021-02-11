@@ -6,9 +6,9 @@
   "item.mcda.archers_leggings":                   "Archer's Pants",
   "item.mcda.archers_boots":                      "Archer's Boots",
 
-  "item.mcda.archers_armor.tooltip_1":            "Favored by humble warriors, it's cheap",
-  "item.mcda.archers_armor.tooltip_2":            "to make and still stops a blade.",
-  "item.mcda.archers_armor.tooltip_3":            "stops a blade.",
+  "item.mcda.archers.tooltip_1":                  "Favored by humble warriors, it's cheap",
+  "item.mcda.archers.tooltip_2":                  "to make and still stops a blade.",
+  "item.mcda.archers.tooltip_3":                  "stops a blade.",
 
   "item.mcda.beehive_armor_helmet":               "Beehive Helmet",
   "item.mcda.beehive_armor_chestplate":           "Beehive Chestplate",
@@ -29,8 +29,8 @@
 
   "item.mcda.hunters_chestplate":                 "Hunter's Vest",
 
-  "item.mcda.hunters_armor.tooltip_1":            "It may not be fit for a knight,",
-  "item.mcda.hunters_armor.tooltip_2":            "but it will stop a blade.",
+  "item.mcda.hunters.tooltip_1":                  "It may not be fit for a knight,",
+  "item.mcda.hunters.tooltip_2":                  "but it will stop a blade.",
 
   "item.mcda.splendid_robe_chestplate":           "Splendid Robe",
   "item.mcda.splendid_robe_leggings":             "Splendid Pants",
@@ -424,9 +424,9 @@
   "item.mcda.emerald_gear_leggings":              "Emerald Gear Leggings",
   "item.mcda.emerald_gear_boots":                 "Emerald Gear Boots",
 
-  "item.mcda.emerald_armor.tooltip_1":            "As you wear the Emerald Armor during",
-  "item.mcda.emerald_armor.tooltip_2":            "your adventures, it calls other",
-  "item.mcda.emerald_armor.tooltip_3":            "emeralds to you as if by chance.",
+  "item.mcda.emerald_gear.tooltip_1":             "As you wear the Emerald Armor during",
+  "item.mcda.emerald_gear.tooltip_2":             "your adventures, it calls other",
+  "item.mcda.emerald_gear.tooltip_3":             "emeralds to you as if by chance.",
 
   "item.mcda.opulent_armor_helmet":                "Opulent Armor Helmet",
   "item.mcda.opulent_armor_chestplate":            "Opulent Armor Chestplate",

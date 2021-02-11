@@ -1,31 +1,36 @@
 package chronosacaria.mcda;
 
-import chronosacaria.mcda.enchants.EnchantsRegistry;
-import chronosacaria.mcda.init.ArmorsInit;
-import chronosacaria.mcda.init.ItemsInit;
-import chronosacaria.mcda.init.LootInit;
+import chronosacaria.mcda.items.ArmorSets;
+import chronosacaria.mcda.registry.EnchantsRegistry;
+import chronosacaria.mcda.registry.ArmorsRegistry;
+import chronosacaria.mcda.registry.ItemsRegistry;
+import chronosacaria.mcda.registry.LootRegistry;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
+import java.util.Random;
+
 public class Mcda implements ModInitializer {
     public static final String MOD_ID = "mcda";
+
+    public static final Random random = new Random();
 
     public static Identifier ID(String path) {
         return new Identifier(MOD_ID, path);
     }
 
-    public static final ItemGroup ARMORS = FabricItemGroupBuilder.build(
-            new Identifier(MOD_ID, "armor"),
-            () -> new ItemStack(ArmorsInit.SPLENDID_ROBE_CHESTPLATE));
+    public static final ItemGroup ARMORS_GROUP = FabricItemGroupBuilder.build(ID( "armor"),
+            () -> new ItemStack(ArmorsRegistry.armorItems.get(ArmorSets.SPLENDID).get(EquipmentSlot.CHEST)));
 
     @Override
     public void onInitialize() {
-        ArmorsInit.init();
+        ArmorsRegistry.init();
         EnchantsRegistry.init();
-        ItemsInit.doRegister();
-        LootInit.init();
+        ItemsRegistry.init();
+        LootRegistry.init();
     }
 }
