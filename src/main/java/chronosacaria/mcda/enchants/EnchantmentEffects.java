@@ -68,7 +68,7 @@ public class EnchantmentEffects {
     }
 
     public static void applyPotionBarrier(PlayerEntity playerEntity) {
-        if (!config.enableEnchantment.get(FOOD_RESERVES))
+        if (!config.enableEnchantment.get(POTION_BARRIER))
             return;
 
         List<StatusEffectInstance> potionEffects = PotionUtil.getPotionEffects(playerEntity.getMainHandStack());
