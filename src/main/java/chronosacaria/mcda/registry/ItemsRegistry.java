@@ -9,13 +9,13 @@ import net.minecraft.util.registry.Registry;
 import java.util.EnumMap;
 
 public class ItemsRegistry {
+    // use ItemID's asItem() as a shorthand for ItemsRegistry.items.get(ItemID)
+    public static final EnumMap<ItemID, Item> items = new EnumMap<>(ItemID.class);
 
-    public static EnumMap<ItemID, Item> items = new EnumMap<>(ItemID.class);
-
-    protected static Item registerItem(ItemID itemID) {
+    protected static void registerItem(ItemID itemID) {
         Item item = new Item(new Item.Settings().group(ItemGroup.MISC));
         items.put(itemID, item);
-        return Registry.register(Registry.ITEM, Mcda.ID(itemID.toString().toLowerCase()), item);
+        Registry.register(Registry.ITEM, Mcda.ID(itemID.toString().toLowerCase()), item);
     }
 
     public static void init() {

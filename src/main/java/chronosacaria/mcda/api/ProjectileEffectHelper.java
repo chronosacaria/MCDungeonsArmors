@@ -30,26 +30,24 @@ public class ProjectileEffectHelper {
         double towardsX = target.getX() - user.getX();
         double towardsZ = target.getZ() - user.getZ();
         double euclideanDist = MathHelper.sqrt(towardsX * towardsX + towardsZ * towardsZ);
-        double towardsY =
-                target.getBodyY(0.3333333333333333D) - snowballEntity.getY() + euclideanDist * (double)0.2F;
+        double towardsY = target.getBodyY(0.3333333333333333) - snowballEntity.getY() + euclideanDist * 0.2;
         snowballEntity.setProperties(user, user.pitch, user.yaw, 0.0F, 1.5F, 1.0F);
         setProjectileTowards(snowballEntity, towardsX, towardsY, towardsZ, 0);
         //
         user.world.spawnEntity(snowballEntity);
     }
 
-    public static void setProjectileTowards(ProjectileEntity projectileEntity, double x, double y
-            , double z, float inaccuracy) {
+    public static void setProjectileTowards(ProjectileEntity projectileEntity, double x, double y, double z, float inaccuracy) {
         Vec3d vec3d = (new Vec3d(x, y, z))
                 .normalize()
                 .add(
-                        random.nextGaussian() * (double)0.0075f * (double)inaccuracy,
-                        random.nextGaussian() * (double)0.0075f * (double)inaccuracy,
-                        random.nextGaussian() * (double)0.0075f * (double)inaccuracy);
+                        random.nextGaussian() * 0.0075 * inaccuracy,
+                        random.nextGaussian() * 0.0075 * inaccuracy,
+                        random.nextGaussian() * 0.0075 * inaccuracy);
         projectileEntity.setVelocity(vec3d);
         float f = MathHelper.sqrt(projectileEntity.squaredDistanceTo(vec3d));
-        projectileEntity.yaw = (float)(MathHelper.atan2(vec3d.x, vec3d.z) * (double)(180f / (float)Math.PI));
-        projectileEntity.pitch = (float)(MathHelper.atan2(vec3d.y, f) * (double)(180f / (float)Math.PI));
+        projectileEntity.yaw = (float)(MathHelper.atan2(vec3d.x, vec3d.z) * (180.0 / Math.PI));
+        projectileEntity.pitch = (float)(MathHelper.atan2(vec3d.y, f) * (180.0 / Math.PI));
         projectileEntity.prevYaw = projectileEntity.yaw;
         projectileEntity.prevPitch = projectileEntity.pitch;
     }

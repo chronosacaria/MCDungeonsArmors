@@ -1,5 +1,7 @@
 package chronosacaria.mcda.config;
 
+import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.enchants.EnchantID;
 import chronosacaria.mcda.items.ArmorSets;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
@@ -13,55 +15,55 @@ import java.util.EnumSet;
 import static chronosacaria.mcda.items.ArmorSets.*;
 import static net.minecraft.entity.EquipmentSlot.*;
 
-@Config(name = "mcda_stats")
-public class McdaStatsConfig implements ConfigData {
-    public static class Stats {
-        public EnumMap<EquipmentSlot, Integer> armorMap = new EnumMap<>(EquipmentSlot.class);
-        public float toughness;
-        public float knockbackRes;
+@Config(name = Mcda.MOD_ID)
+public class McdaConfig implements ConfigData {
 
-        protected Stats setProtection(int head, int chest, int legs, int feet) {
-            this.armorMap.put(HEAD, head);
-            this.armorMap.put(CHEST, chest);
-            this.armorMap.put(LEGS, legs);
-            this.armorMap.put(FEET, feet);
-            return this;
-        }
-
-        protected Stats setToughness(float toughness) {
-            this.toughness = toughness;
-            return this;
-        }
-
-        protected Stats setKnockbackRes(float knockbackRes) {
-            this.knockbackRes = knockbackRes;
-            return this;
-        }
-    }
-
-    public static final McdaStatsConfig config;
+    public static final McdaConfig config;
 
     static {
-        AutoConfig.register(McdaStatsConfig.class, JanksonConfigSerializer::new);
-        config = AutoConfig.getConfigHolder(McdaStatsConfig.class).getConfig();
+        AutoConfig.register(McdaConfig.class, JanksonConfigSerializer::new);
+        config = AutoConfig.getConfigHolder(McdaConfig.class).getConfig();
     }
 
-    // (set, slot) -> stats
-    public EnumMap<ArmorSets, Stats> stats = new EnumMap<>(ArmorSets.class);
+    // config contents:
+    public EnumMap<EnchantID, Boolean> enableEnchantment = new EnumMap<>(EnchantID.class);
+    public EnumMap<ArmorSets, ArmorStats> armorStats = new EnumMap<>(ArmorSets.class);
 
-    protected Stats setProtection(int head, int chest, int legs, int feet, ArmorSets set) {
-        return stats.get(set).setProtection(head, chest, legs, feet);
+    // convenience methods:
+    protected ArmorStats setProtection(int head, int chest, int legs, int feet, ArmorSets set) {
+        return armorStats.get(set).setProtection(head, chest, legs, feet);
     }
 
-    public McdaStatsConfig() {
+    protected ArmorStats setAttackDamageBoost(double value, ArmorSets set) {
+        return armorStats.get(set).setAttackDamageBoost(value);
+    }
+
+    protected ArmorStats setAttackSpeedBoost(double value, ArmorSets set) {
+        return armorStats.get(set).setAttackSpeedBoost(value);
+    }
+
+    protected ArmorStats setMovementSpeedBoost(double value, ArmorSets set) {
+        return armorStats.get(set).setMovementSpeedBoost(value);
+    }
+
+    // set config defaults
+    public McdaConfig() {
+        for (EnchantID enchantID : EnchantID.values()) {
+            enableEnchantment.put(enchantID, true);
+        }
+
         for (ArmorSets armorSet : ArmorSets.values()) {
-            Stats s = new Stats();
-            s.armorMap = new EnumMap<>(EquipmentSlot.class);
+            armorStats.put(armorSet, new ArmorStats());
+        }
+
+        for (ArmorSets armorSet : ArmorSets.values()) {
+            ArmorStats s = new ArmorStats();
+            s.protection = new EnumMap<>(EquipmentSlot.class);
             for (EquipmentSlot slot : EnumSet.of(HEAD, CHEST, LEGS, FEET)) {
-                s.armorMap.put(slot, 0);
+                s.protection.put(slot, 0);
             }
 
-            this.stats.put(armorSet, s);
+            this.armorStats.put(armorSet, s);
         }
 
         // Leather Armors
@@ -143,7 +145,41 @@ public class McdaStatsConfig implements ConfigData {
                 .setToughness(2.0F);
         setProtection(3, 8, 6, 3, GILDED)
                 .setToughness(2.0F);
-    }
 
+        // Stat Boosts
+        setAttackDamageBoost(0.075, SPLENDID);
+        setAttackDamageBoost(0.0375, BEENEST);
+        setAttackDamageBoost(0.0375, CHAMPION);
+        setAttackDamageBoost(0.075, HERO).setAttackSpeedBoost(0.0375);
+        setAttackDamageBoost(0.0375, DARK);
+        setAttackDamageBoost(0.075, TITAN).setAttackSpeedBoost(0.0375);
+        setAttackDamageBoost(0.075, ROYAL);
+        setAttackDamageBoost(0.05, EVOCATION);
+        setAttackDamageBoost(0.05, EMBER);
+        setAttackDamageBoost(0.05, VERDANT);
+        setAttackDamageBoost(0.025, FOX);
+        setAttackDamageBoost(0.025, ARCTIC_FOX);
+        setAttackDamageBoost(0.0375, GHOSTLY);
+        setAttackDamageBoost(0.0375, GHOST_KINDLER);
+        setAttackDamageBoost(0.0375, GRIM);
+        setAttackDamageBoost(0.0375, WITHER);
+        setAttackDamageBoost(0.05, RENEGADE);
+        setAttackDamageBoost(0.05, HUNGRY_HORROR).setMovementSpeedBoost(0.0625);
+        setMovementSpeedBoost(0.075, OCELOT);
+        setMovementSpeedBoost(0.075, SHADOW_WALKER);
+        setMovementSpeedBoost(0.075, PHANTOM);
+        setMovementSpeedBoost(0.075, FROST_BITE);
+        setAttackDamageBoost(0.05, PLATE).setMovementSpeedBoost(-0.0375);
+        setAttackDamageBoost(0.05, FULL_METAL).setMovementSpeedBoost(-0.0375);
+        setAttackDamageBoost(0.0375, SCALE_MAIL);
+        setAttackDamageBoost(0.0375, HIGHLAND);
+        setMovementSpeedBoost(0.025, CAVE_CRAWLER);
+        setAttackSpeedBoost(0.0375, SPIDER);
+        setAttackDamageBoost(0.025, WOLF).setAttackSpeedBoost(0.025);
+        setAttackDamageBoost(0.025, BLACK_WOLF).setAttackSpeedBoost(0.025);
+        setAttackSpeedBoost(0.05, EMERALD);
+        setAttackSpeedBoost(0.05, OPULENT);
+        setAttackSpeedBoost(0.05, GILDED);
+    }
 }
 

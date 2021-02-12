@@ -1,20 +1,14 @@
 package chronosacaria.mcda.enchants.enchantments;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
+import chronosacaria.mcda.enchants.ArmorEnchantment;
+import chronosacaria.mcda.enchants.EnchantID;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 
-public class BurningEnchantment extends Enchantment {
+public class BurningEnchantment extends ArmorEnchantment {
 
-    public BurningEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.ARMOR, new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return 3;
+    public BurningEnchantment(EnchantID enchantID) {
+        super(enchantID);
     }
 
     @Override

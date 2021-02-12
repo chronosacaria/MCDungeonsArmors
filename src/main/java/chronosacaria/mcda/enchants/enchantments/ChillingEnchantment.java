@@ -1,21 +1,15 @@
 package chronosacaria.mcda.enchants.enchantments;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
+import chronosacaria.mcda.enchants.ArmorEnchantment;
+import chronosacaria.mcda.enchants.EnchantID;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 
-public class ChillingEnchantment extends Enchantment {
-    public ChillingEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.ARMOR, new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return 3;
+public class ChillingEnchantment extends ArmorEnchantment {
+    public ChillingEnchantment(EnchantID enchantID) {
+        super(enchantID);
     }
 
     @Override

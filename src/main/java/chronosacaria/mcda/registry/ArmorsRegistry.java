@@ -13,28 +13,28 @@ import static net.minecraft.entity.EquipmentSlot.*;
 
 public class ArmorsRegistry {
     // (set, slot) -> item
-    public static EnumMap<ArmorSets, EnumMap<EquipmentSlot, Item>> armorItems = new EnumMap<>(ArmorSets.class);
+    public static final EnumMap<ArmorSets, EnumMap<EquipmentSlot, Item>> armorItems = new EnumMap<>(ArmorSets.class);
 
     protected static String armorID(ArmorSets set, EquipmentSlot slot) {
-        String slotId;
+        String slotID;
         switch (slot) {
             case HEAD:
-                slotId = "helmet";
+                slotID = "helmet";
                 break;
             case CHEST:
-                slotId = "chestplate";
+                slotID = "chestplate";
                 break;
             case LEGS:
-                slotId = "leggings";
+                slotID = "leggings";
                 break;
             case FEET:
-                slotId = "boots";
+                slotID = "boots";
                 break;
             default:
                 throw new IllegalArgumentException("armor with non-armor equipment slot");
         }
 
-        return set.getSetName() + "_" + slotId;
+        return set.getSetName() + "_" + slotID;
     }
 
     protected static void registerArmor(ArmorSets set, EnumSet<EquipmentSlot> slots) {
@@ -50,87 +50,32 @@ public class ArmorsRegistry {
     }
 
     public static void init() {
-        registerArmor(ArmorSets.BATTLE,   EnumSet.of(CHEST, LEGS));
-        registerArmor(ArmorSets.SPLENDID, EnumSet.of(CHEST, LEGS));
+        for (ArmorSets set : ArmorSets.values()) {
+            EnumSet<EquipmentSlot> slots;
 
-        registerArmor(ArmorSets.BEENEST, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.BEEHIVE, EnumSet.of(HEAD, CHEST, LEGS, FEET));
+            switch (set) {
+                case BATTLE:
+                case SPLENDID:
+                    slots = EnumSet.of(CHEST, LEGS);
+                    break;
+                case EVOCATION:
+                case EMBER:
+                case VERDANT:
+                    slots = EnumSet.of(HEAD, CHEST, LEGS);
+                    break;
+                case SCALE_MAIL:
+                    slots = EnumSet.of(CHEST, LEGS, FEET);
+                    break;
+                case HUNTER:
+                    slots = EnumSet.of(CHEST);
+                    break;
+                case ROYAL: continue; // TODO: remove when implementing royal armor
+                default:
+                    slots = EnumSet.of(HEAD, CHEST, LEGS, FEET);
+                    break;
+            }
 
-        registerArmor(ArmorSets.CHAMPION, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.HERO,     EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.DARK,  EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.TITAN, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        // registerArmor(ArmorSets.ROYAL, EnumSet.of(HEAD, CHEST, LEGS, FEET)); // TODO
-
-        registerArmor(ArmorSets.EVOCATION, EnumSet.of(HEAD, CHEST, LEGS));
-        registerArmor(ArmorSets.EMBER,     EnumSet.of(HEAD, CHEST, LEGS));
-        registerArmor(ArmorSets.VERDANT,   EnumSet.of(HEAD, CHEST, LEGS));
-
-        registerArmor(ArmorSets.GHOSTLY,       EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.GHOST_KINDLER, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.GRIM,   EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.WITHER, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.GUARDS,  EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.CURIOUS, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.HUNTER, EnumSet.of(CHEST));
-
-        registerArmor(ArmorSets.ARCHER, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.MERCENARY,     EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.RENEGADE,      EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.HUNGRY_HORROR, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.MYSTERY,        EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.BLUE_MYSTERY,   EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.GREEN_MYSTERY,  EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.PURPLE_MYSTERY, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.RED_MYSTERY,    EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.OCELOT,        EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.SHADOW_WALKER, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.PHANTOM,    EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.FROST_BITE, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.PLATE,      EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.FULL_METAL, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.REINFORCED_MAIL, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.STALWART_MAIL,   EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.SCALE_MAIL, EnumSet.of(CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.HIGHLAND,   EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.SNOW,  EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.FROST, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.SOUL_ROBE,  EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.SOULDANCER, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.SPELUNKER,    EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.CAVE_CRAWLER, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.THIEF,  EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.SPIDER, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.WOLF,       EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.BLACK_WOLF, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.FOX,        EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.ARCTIC_FOX, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.EMERALD, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.OPULENT, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.GILDED,  EnumSet.of(HEAD, CHEST, LEGS, FEET));
-
-        registerArmor(ArmorSets.CLIMBING_GEAR,        EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        registerArmor(ArmorSets.RUGGED_CLIMBING_GEAR, EnumSet.of(HEAD, CHEST, LEGS, FEET));
-        // registerArmor(ArmorSets.GOAT,                 EnumSet.of(HEAD, CHEST, LEGS, FEET)); // TODO
+            registerArmor(set, slots);
+        }
     }
-
-
 }
