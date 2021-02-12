@@ -43,18 +43,28 @@ public class EnchantmentEffects {
         if (player.getHealth() == player.getMaxHealth()) {
             int cowardiceLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(COWARDICE), player);
             if (cowardiceLevel == 0) return;
-            StatusEffectInstance strengthBoost = new StatusEffectInstance(StatusEffects.STRENGTH, 40, cowardiceLevel + 1);
+            StatusEffectInstance strengthBoost = new StatusEffectInstance(StatusEffects.STRENGTH, 42, cowardiceLevel + 1);
             player.addStatusEffect(strengthBoost);
         }
+    }
+
+    protected static boolean isInstantHealthPotion(ItemStack itemStack) {
+        boolean isInstantHealth = false;
+        for (StatusEffectInstance potionEffect : PotionUtil.getPotionEffects(itemStack)) {
+            if (potionEffect.getEffectType() == StatusEffects.INSTANT_HEALTH) {
+                isInstantHealth = true;
+                break;
+            }
+        }
+
+        return isInstantHealth;
     }
 
     public static void applyFoodReserves(PlayerEntity playerEntity) {
         if (!config.enableEnchantment.get(FOOD_RESERVES))
             return;
 
-        List<StatusEffectInstance> potionEffects = PotionUtil.getPotionEffects(playerEntity.getMainHandStack());
-        if (potionEffects.isEmpty()) return;
-        if (potionEffects.get(0).getEffectType() == StatusEffects.INSTANT_HEALTH) {
+        if (isInstantHealthPotion(playerEntity.getMainHandStack())) {
             int foodReserveLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FOOD_RESERVES), playerEntity);
 
             while (foodReserveLevel > 0) {
@@ -71,9 +81,7 @@ public class EnchantmentEffects {
         if (!config.enableEnchantment.get(POTION_BARRIER))
             return;
 
-        List<StatusEffectInstance> potionEffects = PotionUtil.getPotionEffects(playerEntity.getMainHandStack());
-        if (potionEffects.isEmpty()) return;
-        if (potionEffects.get(0).getEffectType() == StatusEffects.INSTANT_HEALTH) {
+        if (isInstantHealthPotion(playerEntity.getMainHandStack())) {
             int potionBarrierLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POTION_BARRIER), playerEntity);
             if (potionBarrierLevel == 0) return;
             int duration = 60 + (20 * potionBarrierLevel);
@@ -86,9 +94,7 @@ public class EnchantmentEffects {
         if (!config.enableEnchantment.get(SURPRISE_GIFT))
             return;
 
-        List<StatusEffectInstance> potionEffects = PotionUtil.getPotionEffects(playerEntity.getMainHandStack());
-        if (potionEffects.isEmpty()) return;
-        if (potionEffects.get(0).getEffectType() == StatusEffects.INSTANT_HEALTH) {
+        if (isInstantHealthPotion(playerEntity.getMainHandStack())) {
             int surpriseGiftLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SURPRISE_GIFT), playerEntity);
             if (surpriseGiftLevel == 0) return;
             float surpriseGiftChance = 0.5F * surpriseGiftLevel;

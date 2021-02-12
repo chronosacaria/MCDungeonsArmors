@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
 
-    @Inject(method = "consumeItem", at = @At("TAIL"))
+    @Inject(method = "consumeItem", at = @At("HEAD"))
     public void consumeItem(CallbackInfo ci) {
         if (!((Object)this instanceof PlayerEntity))
             return;
