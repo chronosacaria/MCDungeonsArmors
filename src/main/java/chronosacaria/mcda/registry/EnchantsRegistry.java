@@ -1,7 +1,6 @@
 package chronosacaria.mcda.registry;
 
 import chronosacaria.mcda.Mcda;
-import chronosacaria.mcda.config.McdaConfig;
 import chronosacaria.mcda.enchants.ArmorEnchantment;
 import chronosacaria.mcda.enchants.EnchantID;
 import chronosacaria.mcda.enchants.enchantments.*;

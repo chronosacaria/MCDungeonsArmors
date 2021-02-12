@@ -1,6 +1,5 @@
 package chronosacaria.mcda.enchants;
 
-import chronosacaria.mcda.config.McdaConfig;
 import chronosacaria.mcda.registry.EnchantsRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.ItemEntity;
@@ -49,15 +48,16 @@ public class EnchantmentEffects {
     }
 
     protected static boolean isInstantHealthPotion(ItemStack itemStack) {
-        boolean isInstantHealth = false;
+        boolean hasInstantHealth = false;
+
         for (StatusEffectInstance potionEffect : PotionUtil.getPotionEffects(itemStack)) {
             if (potionEffect.getEffectType() == StatusEffects.INSTANT_HEALTH) {
-                isInstantHealth = true;
+                hasInstantHealth = true;
                 break;
             }
         }
 
-        return isInstantHealth;
+        return hasInstantHealth;
     }
 
     public static void applyFoodReserves(PlayerEntity playerEntity) {
@@ -97,6 +97,7 @@ public class EnchantmentEffects {
         if (isInstantHealthPotion(playerEntity.getMainHandStack())) {
             int surpriseGiftLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SURPRISE_GIFT), playerEntity);
             if (surpriseGiftLevel == 0) return;
+
             float surpriseGiftChance = 0.5F * surpriseGiftLevel;
 
             while (surpriseGiftChance > 0) {
@@ -119,6 +120,7 @@ public class EnchantmentEffects {
         if (player.getHealth() <= (0.5F * player.getMaxHealth())) {
             int frenziedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FRENZIED), player);
             if (frenziedLevel == 0) return;
+
             StatusEffectInstance frenzied = new StatusEffectInstance(StatusEffects.HASTE, 40, frenziedLevel);
             player.addStatusEffect(frenzied);
         }
@@ -134,6 +136,7 @@ public class EnchantmentEffects {
         LivingEntity victim = (LivingEntity) hitResult.getEntity();
         int deflectLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(DEFLECT), victim);
         if (deflectLevel == 0) return;
+
         double originalDamage = projectile.getDamage();
         double deflectChance = deflectLevel * 0.2F;
         float deflectRand = victim.getRandom().nextFloat();
