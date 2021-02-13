@@ -36,6 +36,9 @@ public class LootRegistry {
     public static final Collection<Identifier> MINESHAFT_LOOT_TABLES = Collections.singletonList(
             LootTables.ABANDONED_MINESHAFT_CHEST);
 
+    public static final Collection<Identifier> HERO_OF_THE_VILLAGE_LOOT_TABLES = Collections.singletonList(
+            LootTables.HERO_OF_THE_VILLAGE_ARMORER_GIFT_GAMEPLAY);
+
     public static void init() {
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (!id.getNamespace().equals("minecraft"))
@@ -132,6 +135,10 @@ public class LootRegistry {
                 addArmorSet(poolBuilder, ArmorSets.SPELUNKER,    0.05F);
                 addArmorSet(poolBuilder, ArmorSets.CAVE_CRAWLER, 0.01F);
                 addMysteryArmorSets(poolBuilder, 0.05F);
+                supplier.pool(poolBuilder);
+            } else if (HERO_OF_THE_VILLAGE_LOOT_TABLES.contains(id)){
+                poolBuilder = FabricLootPoolBuilder.builder();
+                addArmorSet(poolBuilder, ArmorSets.HERO, 0.10F);
                 supplier.pool(poolBuilder);
             }
         });
