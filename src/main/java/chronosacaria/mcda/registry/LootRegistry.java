@@ -139,6 +139,7 @@ public class LootRegistry {
             } else if (HERO_OF_THE_VILLAGE_LOOT_TABLES.contains(id)){
                 poolBuilder = FabricLootPoolBuilder.builder();
                 addArmorSet(poolBuilder, ArmorSets.HERO, 0.10F);
+                addArmorSet(poolBuilder, ArmorSets.GILDED, 0.10F);
                 supplier.pool(poolBuilder);
             }
         });
