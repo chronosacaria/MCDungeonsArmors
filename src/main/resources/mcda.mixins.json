@@ -4,9 +4,10 @@
   "package": "chronosacaria.mcda.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "ArmorFeatureRendererMixin",
+    "LivingEntityMixin",
     "PersistentProjectileEntityMixin",
-    "ServerPlayerEntityMixin",
-    "LivingEntityMixin"
+    "ServerPlayerEntityMixin"
   ],
   "client": [
   ],
