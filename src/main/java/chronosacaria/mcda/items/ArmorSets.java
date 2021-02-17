@@ -179,6 +179,16 @@ public enum ArmorSets implements ArmorMaterial {
             25,
             ITEM_ARMOR_EQUIP_ELYTRA,
             () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    //SPROUT("sprout", "sproud_armor",
+    //        5,
+    //        25,
+    //        ITEM_ARMOR_EQUIP_ELYTRA,
+    //        () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_CYAN)),
+    //LIVING_VINES("livingvines", "living_vines_armor",
+    //        5,
+    //        25,
+    //        ITEM_ARMOR_EQUIP_ELYTRA,
+    //        () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_RED)),
 
     /* * * |
     | BONE |
@@ -237,6 +247,16 @@ public enum ArmorSets implements ArmorMaterial {
             9,
             ITEM_ARMOR_EQUIP_IRON,
             () -> Ingredient.ofItems(Items.LEATHER)),
+    //PIGLIN("piglin", "piglin_armor",
+    //        14,
+    //        9,
+    //        ITEM_ARMOR_EQUIP_IRON,
+    //        () -> Ingredient.ofItems(Items.LEATHER)),
+    //GOLDEN_PIGLIN("goldenpiglin", "golden_piglin_armor",
+    //        14,
+    //        25,
+    //        ITEM_ARMOR_EQUIP_GOLD,
+    //        () -> Ingredient.ofItems(Items.GOLD_INGOT)),
 
     /* * * * * * * |
     | MEDIUM PLATE |

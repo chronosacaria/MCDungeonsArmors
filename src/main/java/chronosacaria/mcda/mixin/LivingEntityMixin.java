@@ -43,6 +43,7 @@ public abstract class LivingEntityMixin extends Entity {
         EnchantmentEffects.applySurpriseGift(playerEntity);
     }
 
+    // Mixins for enchants related to damage reception
     @Inject(method = "damage", at = @At("HEAD"))
     public void healAlliesDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
         if (!((Object)this instanceof PlayerEntity))
