@@ -8,6 +8,7 @@ public enum EnchantID {
     DEFLECT,
     FOOD_RESERVES,
     FRENZIED,
+    HEAL_ALLIES,
     POTION_BARRIER,
     RECYCLER,
     SNOWBALL,

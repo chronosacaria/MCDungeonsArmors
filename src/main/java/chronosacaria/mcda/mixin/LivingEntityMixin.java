@@ -1,5 +1,6 @@
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.enchants.EnchantmentEffects;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
@@ -7,6 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -39,6 +41,17 @@ public abstract class LivingEntityMixin extends Entity {
         EnchantmentEffects.applyFoodReserves(playerEntity);
         EnchantmentEffects.applyPotionBarrier(playerEntity);
         EnchantmentEffects.applySurpriseGift(playerEntity);
+    }
+
+    @Inject(method = "damage", at = @At("HEAD"))
+    public void healAlliesDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+        if (!((Object)this instanceof PlayerEntity))
+            return;
+
+        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+
+        EnchantmentEffects.applyHealAllies(playerEntity);
+
     }
 
     // Thief Armour Sneaking Player Invisibility

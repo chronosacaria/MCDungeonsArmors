@@ -1,5 +1,6 @@
 package chronosacaria.mcda.enchants;
 
+import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.registry.EnchantsRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.ItemEntity;
@@ -60,6 +61,7 @@ public class EnchantmentEffects {
         return hasInstantHealth;
     }
 
+
     public static void applyFoodReserves(PlayerEntity playerEntity) {
         if (!config.enableEnchantment.get(FOOD_RESERVES))
             return;
@@ -74,6 +76,20 @@ public class EnchantmentEffects {
                 playerEntity.world.spawnEntity(foodDrop);
                 foodReserveLevel--;
             }
+        }
+    }
+
+    // TODO: Figure out how to properly determine the amount of damage taken by the player
+    // TODO: Figure out how to display hearts on healed target
+    public static void applyHealAllies(PlayerEntity player){
+        if (!config.enableEnchantment.get(HEAL_ALLIES))
+            return;
+
+        if (player.getHealth() < player.getMaxHealth()){
+            int healAlliesLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(HEAL_ALLIES), player);
+            float damageToHealingMultiplier = ((player.getMaxHealth() - player.getHealth()) * 0.25F) * healAlliesLevel;
+
+            AOEHelper.healNearbyAllies(player, damageToHealingMultiplier, 12);
         }
     }
 

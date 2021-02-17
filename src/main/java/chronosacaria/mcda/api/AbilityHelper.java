@@ -13,14 +13,6 @@ import java.util.List;
 public class AbilityHelper {
 
     // TODO: unused
-    public static void stealSpeedFromTarget(LivingEntity attacker, LivingEntity target, int amplifier) {
-        StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 80, amplifier);
-        StatusEffectInstance slowness = new StatusEffectInstance(StatusEffects.SLOWNESS, 80, amplifier);
-        attacker.addStatusEffect(speed);
-        target.addStatusEffect(slowness);
-    }
-
-    // TODO: unused
     public static void makeNearbyPetsAttackTarget(LivingEntity target, LivingEntity owner) {
         List<MobEntity> nearbyPets = owner.getEntityWorld().getEntitiesByClass(MobEntity.class,
                 new Box(owner.getX() - 12, owner.getY() - 12, owner.getZ() - 12,
