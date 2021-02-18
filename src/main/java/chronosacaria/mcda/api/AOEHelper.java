@@ -17,6 +17,8 @@ import static chronosacaria.mcda.Mcda.random;
 
 // TODO: unused
 public class AOEHelper {
+
+
     public static void healNearbyAllies(LivingEntity healer, StatusEffectInstance effectInstance, float distance) {
         if (!(healer instanceof PlayerEntity)) return;
         PlayerEntity playerEntity = (PlayerEntity) healer;
@@ -35,7 +37,7 @@ public class AOEHelper {
                     nearbyEntity.addStatusEffect(new StatusEffectInstance(effectInstance));
                 }
 
-                addHealParticles((ServerWorld)world, nearbyEntity);
+                addParticles((ServerWorld) world, nearbyEntity, ParticleTypes.HEART);
             }
         }
     }
@@ -52,38 +54,8 @@ public class AOEHelper {
             if (nearbyEntity.getHealth() < nearbyEntity.getMaxHealth()) {
                 nearbyEntity.heal(amount);
 
-                addHealParticles((ServerWorld) world, nearbyEntity);
+                addParticles((ServerWorld) world, nearbyEntity, ParticleTypes.HEART);
             }
-        }
-    }
-
-    private static void addHealParticles(ServerWorld world, LivingEntity nearbyEntity) {
-        ParticleEffect particle = ParticleTypes.HEART;
-
-        double velX = 0;
-        double velY = 1;
-        double velZ = 0;
-
-        double startX = nearbyEntity.getX() - .275f;
-        double startY = nearbyEntity.getY();
-        double startZ = nearbyEntity.getZ() - .275f;
-
-        for (int i = 0; i < 10; i++) {
-            double frontX = .5f * random.nextDouble();
-            world.spawnParticles(particle, startX + frontX, startY + random.nextDouble() * .5, startZ + .5f,
-                    1,velX, velY, velZ, 0);
-
-            double backX = .5f * random.nextDouble();
-            world.spawnParticles(particle, startX + backX, startY + random.nextDouble() * .5, startZ,1, velX, velY,
-                    velZ,0);
-
-            double leftZ = .5f * random.nextDouble();
-            world.spawnParticles(particle, startX, startY + random.nextDouble() * .5, startZ + leftZ,1, velX, velY,
-                    velZ,0);
-
-            double rightZ = .5f * random.nextDouble();
-            world.spawnParticles(particle, startX + .5f, startY + random.nextDouble() * .5, startZ + rightZ,1, velX,
-                    velY, velZ,0);
         }
     }
 
@@ -98,4 +70,34 @@ public class AOEHelper {
             nearbyEntity.damage(DamageSource.ON_FIRE, damage);
         }
     }
+
+    private static void addParticles(ServerWorld world, LivingEntity nearbyEntity, ParticleEffect particleEffect) {
+
+        double velX = 0;
+        double velY = 1;
+        double velZ = 0;
+
+        double startX = nearbyEntity.getX() - .275f;
+        double startY = nearbyEntity.getY();
+        double startZ = nearbyEntity.getZ() - .275f;
+
+        for (int i = 0; i < 10; i++) {
+            double frontX = .5f * random.nextDouble();
+            world.spawnParticles(particleEffect, startX + frontX, startY + random.nextDouble() * .5, startZ + .5f,
+                    1,velX, velY, velZ, 0);
+
+            double backX = .5f * random.nextDouble();
+            world.spawnParticles(particleEffect, startX + backX, startY + random.nextDouble() * .5, startZ,1, velX, velY,
+                    velZ,0);
+
+            double leftZ = .5f * random.nextDouble();
+            world.spawnParticles(particleEffect, startX, startY + random.nextDouble() * .5, startZ + leftZ,1, velX, velY,
+                    velZ,0);
+
+            double rightZ = .5f * random.nextDouble();
+            world.spawnParticles(particleEffect, startX + .5f, startY + random.nextDouble() * .5, startZ + rightZ,1, velX,
+                    velY, velZ,0);
+        }
+    }
+
 }
