@@ -6,8 +6,10 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
+import org.apache.logging.log4j.core.jmx.Server;
 
 import java.util.List;
 
@@ -33,7 +35,7 @@ public class AOEHelper {
                     nearbyEntity.addStatusEffect(new StatusEffectInstance(effectInstance));
                 }
 
-                addHealParticles(world, nearbyEntity);
+                addHealParticles((ServerWorld)world, nearbyEntity);
             }
         }
     }
@@ -50,12 +52,12 @@ public class AOEHelper {
             if (nearbyEntity.getHealth() < nearbyEntity.getMaxHealth()) {
                 nearbyEntity.heal(amount);
 
-                addHealParticles(world, nearbyEntity);
+                addHealParticles((ServerWorld) world, nearbyEntity);
             }
         }
     }
 
-    private static void addHealParticles(World world, LivingEntity nearbyEntity) {
+    private static void addHealParticles(ServerWorld world, LivingEntity nearbyEntity) {
         ParticleEffect particle = ParticleTypes.HEART;
 
         double velX = 0;
@@ -68,17 +70,20 @@ public class AOEHelper {
 
         for (int i = 0; i < 10; i++) {
             double frontX = .5f * random.nextDouble();
-            world.addParticle(particle, startX + frontX, startY + random.nextDouble() * .5, startZ + .5f,
-                    velX, velY, velZ);
+            world.spawnParticles(particle, startX + frontX, startY + random.nextDouble() * .5, startZ + .5f,
+                    1,velX, velY, velZ, 0);
 
             double backX = .5f * random.nextDouble();
-            world.addParticle(particle, startX + backX, startY + random.nextDouble() * .5, startZ, velX, velY, velZ);
+            world.spawnParticles(particle, startX + backX, startY + random.nextDouble() * .5, startZ,1, velX, velY,
+                    velZ,0);
 
             double leftZ = .5f * random.nextDouble();
-            world.addParticle(particle, startX, startY + random.nextDouble() * .5, startZ + leftZ, velX, velY, velZ);
+            world.spawnParticles(particle, startX, startY + random.nextDouble() * .5, startZ + leftZ,1, velX, velY,
+                    velZ,0);
 
             double rightZ = .5f * random.nextDouble();
-            world.addParticle(particle, startX + .5f, startY + random.nextDouble() * .5, startZ + rightZ, velX, velY, velZ);
+            world.spawnParticles(particle, startX + .5f, startY + random.nextDouble() * .5, startZ + rightZ,1, velX,
+                    velY, velZ,0);
         }
     }
 
