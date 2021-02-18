@@ -4,6 +4,8 @@ import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.enchants.EnchantmentEffects;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
+import chronosacaria.mcda.registry.EnchantsRegistry;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -11,6 +13,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,6 +22,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import static chronosacaria.mcda.enchants.EnchantID.HEAL_ALLIES;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
@@ -50,8 +56,9 @@ public abstract class LivingEntityMixin extends Entity {
             return;
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+        int healAlliesLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(HEAL_ALLIES), playerEntity);
 
-        EnchantmentEffects.applyHealAllies(playerEntity);
+        EnchantmentEffects.applyHealAllies(playerEntity, (0.25f * amount) * healAlliesLevel);
 
     }
 

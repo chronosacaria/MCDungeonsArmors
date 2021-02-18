@@ -79,15 +79,13 @@ public class EnchantmentEffects {
         }
     }
 
-    // TODO: Figure out how to properly determine the amount of damage taken by the player
-    // TODO: Figure out how to display hearts on healed target
-    public static void applyHealAllies(PlayerEntity playerEntity){
+    public static void applyHealAllies(PlayerEntity playerEntity, float amount){
         if (!config.enableEnchantment.get(HEAL_ALLIES))
             return;
 
         if (playerEntity.getHealth() < playerEntity.getMaxHealth()){
             int healAlliesLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(HEAL_ALLIES), playerEntity);
-            float damageToHealingMultiplier = ((playerEntity.getMaxHealth() - playerEntity.getHealth()) * 0.25F) * healAlliesLevel;
+            float damageToHealingMultiplier = (amount * (0.25F * healAlliesLevel));
 
             AOEHelper.healNearbyAllies(playerEntity, damageToHealingMultiplier, 12);
         }
