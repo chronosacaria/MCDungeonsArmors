@@ -11,11 +11,14 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -29,6 +32,14 @@ import static chronosacaria.mcda.enchants.EnchantID.HEAL_ALLIES;
 public abstract class LivingEntityMixin extends Entity {
 
     @Shadow public abstract boolean isAlive();
+
+    @Shadow @Nullable public abstract LivingEntity getAttacker();
+
+    @Shadow @Nullable private LivingEntity attacker;
+
+    @Shadow @Nullable protected PlayerEntity attackingPlayer;
+
+    @Shadow private LivingEntity attacking;
 
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
@@ -57,9 +68,35 @@ public abstract class LivingEntityMixin extends Entity {
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
         int healAlliesLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(HEAL_ALLIES), playerEntity);
+        if (EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(HEAL_ALLIES), playerEntity) > 0) {
+            EnchantmentEffects.applyHealAllies(playerEntity, (0.25f * amount) * healAlliesLevel);
+        }
 
-        EnchantmentEffects.applyHealAllies(playerEntity, (0.25f * amount) * healAlliesLevel);
+    }
 
+    @Inject(method = "damage", at = @At("RETURN"), cancellable = true)
+    public void applyWithering(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+        if (!((Object)this instanceof PlayerEntity))
+            return;
+
+        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+        Entity attacker = source.getAttacker();
+
+        if (attacker != null){
+            if (playerEntity.isAlive()) {
+                ItemStack helmetStack = playerEntity.inventory.armor.get(3);
+                ItemStack chestStack = playerEntity.inventory.armor.get(2);
+                ItemStack legsStack = playerEntity.inventory.armor.get(1);
+                ItemStack feetStack = playerEntity.inventory.armor.get(0);
+
+                if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.WITHER).get(EquipmentSlot.HEAD).asItem()
+                        && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.WITHER).get(EquipmentSlot.CHEST).asItem()
+                        && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.WITHER).get(EquipmentSlot.LEGS).asItem()
+                        && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.WITHER).get(EquipmentSlot.FEET).asItem()) {
+                    ((LivingEntity) attacker).addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 120, 0));
+                }
+            }
+        }
     }
 
     // Thief Armour Sneaking Player Invisibility

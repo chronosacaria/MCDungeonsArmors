@@ -12,5 +12,5 @@ public enum EnchantID {
     POTION_BARRIER,
     RECYCLER,
     SNOWBALL,
-    SURPRISE_GIFT;
+    SURPRISE_GIFT
 }
