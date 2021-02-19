@@ -1,6 +1,6 @@
 package chronosacaria.mcda.mixin;
 
-import chronosacaria.mcda.api.AOEHelper;
+import chronosacaria.mcda.api.ArmorEffectsHelper;
 import chronosacaria.mcda.enchants.EnchantmentEffects;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
@@ -11,12 +11,8 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -41,9 +37,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow private LivingEntity attacking;
 
-    public LivingEntityMixin(EntityType<?> type, World world) {
-        super(type, world);
-    }
+    public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
     // Mixins for enchants related to consuming a potion
     @Inject(method = "consumeItem", at = @At("HEAD"))
@@ -74,49 +68,22 @@ public abstract class LivingEntityMixin extends Entity {
 
     }
 
-    @Inject(method = "damage", at = @At("RETURN"), cancellable = true)
-    public void applyWithering(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+    @Inject(method = "damage", at = @At("HEAD"))
+    public void applyEffectsFromPlayerDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
         if (!((Object)this instanceof PlayerEntity))
             return;
-
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
-        Entity attacker = source.getAttacker();
-
-        if (attacker != null){
-            if (playerEntity.isAlive()) {
-                ItemStack helmetStack = playerEntity.inventory.armor.get(3);
-                ItemStack chestStack = playerEntity.inventory.armor.get(2);
-                ItemStack legsStack = playerEntity.inventory.armor.get(1);
-                ItemStack feetStack = playerEntity.inventory.armor.get(0);
-
-                if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.WITHER).get(EquipmentSlot.HEAD).asItem()
-                        && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.WITHER).get(EquipmentSlot.CHEST).asItem()
-                        && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.WITHER).get(EquipmentSlot.LEGS).asItem()
-                        && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.WITHER).get(EquipmentSlot.FEET).asItem()) {
-                    ((LivingEntity) attacker).addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 120, 0));
-                }
-            }
-        }
+        ArmorEffectsHelper.applyWithered(playerEntity, (LivingEntity) source.getAttacker());
     }
 
     // Thief Armour Sneaking Player Invisibility
     @Inject(method = "tick", at = @At("HEAD"))
-    private void thiefInvisibilityTick(CallbackInfo ci){
+    private void tickEffects(CallbackInfo ci){
         if(!((Object)this instanceof PlayerEntity)) return;
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
-        if (playerEntity.isAlive()){
-            ItemStack helmetStack = playerEntity.inventory.armor.get(3);
-            ItemStack chestStack = playerEntity.inventory.armor.get(2);
-            ItemStack legsStack = playerEntity.inventory.armor.get(1);
-            ItemStack feetStack = playerEntity.inventory.armor.get(0);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.HEAD).asItem()
-                && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.CHEST).asItem()
-                && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.LEGS).asItem()
-                && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.FEET).asItem())
-                    setInvisible(isSneaking());
-        }
+        ArmorEffectsHelper.applyThiefInvisibilityTick(playerEntity);
     }
 
     // Spider Armour Climbing
