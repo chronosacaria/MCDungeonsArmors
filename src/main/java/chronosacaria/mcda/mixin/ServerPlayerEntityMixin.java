@@ -27,5 +27,6 @@ public class ServerPlayerEntityMixin {
         EnchantmentEffects.applyCowardice(playerEntity);
         EnchantmentEffects.applyFrenzied(playerEntity);
         ArmorEffectsHelper.applyHaste(playerEntity);
+        ArmorEffectsHelper.applyHeroOfTheVillage(playerEntity);
     }
 }
