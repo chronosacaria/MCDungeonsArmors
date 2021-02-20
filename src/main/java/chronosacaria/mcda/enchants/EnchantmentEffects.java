@@ -134,7 +134,7 @@ public class EnchantmentEffects {
             int frenziedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FRENZIED), player);
             if (frenziedLevel == 0) return;
 
-            StatusEffectInstance frenzied = new StatusEffectInstance(StatusEffects.HASTE, 40, frenziedLevel);
+            StatusEffectInstance frenzied = new StatusEffectInstance(StatusEffects.HASTE, 40, frenziedLevel, false, false);
             player.addStatusEffect(frenzied);
         }
     }

@@ -53,6 +53,21 @@ public class ArmorEffectsHelper {
         }
     }
 
+    public static void applyThiefInvisibilityTick(PlayerEntity playerEntity){
+        if (playerEntity.isAlive()){
+            ItemStack helmetStack = playerEntity.inventory.armor.get(3);
+            ItemStack chestStack = playerEntity.inventory.armor.get(2);
+            ItemStack legsStack = playerEntity.inventory.armor.get(1);
+            ItemStack feetStack = playerEntity.inventory.armor.get(0);
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.FEET).asItem())
+                playerEntity.setInvisible(playerEntity.isSneaking());
+        }
+    }
+
     public static void applyWithered(PlayerEntity playerEntity, LivingEntity attacker){
 
         if (attacker != null) {
@@ -69,21 +84,6 @@ public class ArmorEffectsHelper {
                     attacker.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 120, 0));
                 }
             }
-        }
-    }
-
-    public static void applyThiefInvisibilityTick(PlayerEntity playerEntity){
-        if (playerEntity.isAlive()){
-            ItemStack helmetStack = playerEntity.inventory.armor.get(3);
-            ItemStack chestStack = playerEntity.inventory.armor.get(2);
-            ItemStack legsStack = playerEntity.inventory.armor.get(1);
-            ItemStack feetStack = playerEntity.inventory.armor.get(0);
-
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.FEET).asItem())
-                playerEntity.setInvisible(playerEntity.isSneaking());
         }
     }
 
@@ -118,6 +118,24 @@ public class ArmorEffectsHelper {
                 StatusEffectInstance heroOfTheVillage = new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 42, 0, false,
                         false);
                 playerEntity.addStatusEffect(heroOfTheVillage);
+            }
+        }
+    }
+
+    public static void applyLuck(ServerPlayerEntity playerEntity){
+        if (playerEntity.isAlive()) {
+            ItemStack helmetStack = playerEntity.inventory.armor.get(3);
+            ItemStack chestStack = playerEntity.inventory.armor.get(2);
+            ItemStack legsStack = playerEntity.inventory.armor.get(1);
+            ItemStack feetStack = playerEntity.inventory.armor.get(0);
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.OPULENT).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.OPULENT).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.OPULENT).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.OPULENT).get(EquipmentSlot.FEET).asItem()) {
+                StatusEffectInstance luck = new StatusEffectInstance(StatusEffects.LUCK, 42, 0, false,
+                        false);
+                playerEntity.addStatusEffect(luck);
             }
         }
     }

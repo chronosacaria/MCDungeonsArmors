@@ -24,9 +24,13 @@ public class ServerPlayerEntityMixin {
         if (!playerEntity.isAlive())
             return;
 
+        // Effects from Enchantments
         EnchantmentEffects.applyCowardice(playerEntity);
         EnchantmentEffects.applyFrenzied(playerEntity);
-        ArmorEffectsHelper.applyHaste(playerEntity);
-        ArmorEffectsHelper.applyHeroOfTheVillage(playerEntity);
+
+        // Effects from Armour Sets
+        ArmorEffectsHelper.applyHaste(playerEntity); // Cave Dweller (below Y level 32)
+        ArmorEffectsHelper.applyHeroOfTheVillage(playerEntity); // Hero's Armour
+        ArmorEffectsHelper.applyLuck(playerEntity); // Opulent Armour
     }
 }
