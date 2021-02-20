@@ -49,17 +49,17 @@ public class LootRegistry {
             switch (id.getPath()) {
                 case "entities/phantom":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootTableRange.create(1,0.25F))
-                            .with(ItemEntry.builder(ItemID.PHANTOM_BONES))
                             .rolls(BinomialLootTableRange.create(1,0.10F))
+                            .with(ItemEntry.builder(ItemID.PHANTOM_BONES))
+                            .rolls(BinomialLootTableRange.create(1,0.25F))
                             .with(ItemEntry.builder(ItemID.PHANTOM_SKIN));
                     supplier.pool(poolBuilder);
                     break;
                 case "entities/ocelot":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootTableRange.create(1,0.25F))
+                            .rolls(BinomialLootTableRange.create(1,0.10F))
                             .with(ItemEntry.builder(ItemID.OCELOT_PELT))
-                            .rolls(BinomialLootTableRange.create(1,0.05F))
+                            .rolls(BinomialLootTableRange.create(1,0.25F))
                             .with(ItemEntry.builder(ItemID.OCELOT_PELT_BLACK));
                     supplier.pool(poolBuilder);
                     break;
@@ -71,17 +71,17 @@ public class LootRegistry {
                     break;
                 case "entities/wolf":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootTableRange.create(1,0.25F))
+                            .rolls(BinomialLootTableRange.create(1,0.10F))
                             .with(ItemEntry.builder(ItemID.WOLF_PELT))
-                            .rolls(BinomialLootTableRange.create(1,0.05F))
+                            .rolls(BinomialLootTableRange.create(1,0.25F))
                             .with(ItemEntry.builder(ItemID.WOLF_PELT_BLACK));
                     supplier.pool(poolBuilder);
                     break;
                 case "entities/fox":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootTableRange.create(1,0.25F))
+                            .rolls(BinomialLootTableRange.create(1,0.10F))
                             .with(ItemEntry.builder(ItemID.FOX_PELT))
-                            .rolls(BinomialLootTableRange.create(1,0.05F))
+                            .rolls(BinomialLootTableRange.create(1,0.25F))
                             .with(ItemEntry.builder(ItemID.FOX_PELT_ARCTIC));
                     supplier.pool(poolBuilder);
                     break;
