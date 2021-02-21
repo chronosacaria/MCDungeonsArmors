@@ -12,6 +12,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -72,6 +73,10 @@ public abstract class LivingEntityMixin extends Entity {
     public void applyEffectsFromPlayerDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
         if (!((Object)this instanceof PlayerEntity))
             return;
+        if (!(source.getAttacker() instanceof LivingEntity)){
+            return;
+        }
+
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
         ArmorEffectsHelper.applyWithered(playerEntity, (LivingEntity) source.getAttacker());
     }
