@@ -2,6 +2,7 @@ package chronosacaria.mcda.api;
 
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
+import net.minecraft.block.*;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -13,8 +14,11 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+
+import java.util.Iterator;
 
 // TODO: unused
 public class ArmorEffectsHelper {
@@ -136,6 +140,68 @@ public class ArmorEffectsHelper {
                 StatusEffectInstance luck = new StatusEffectInstance(StatusEffects.LUCK, 42, 0, false,
                         false);
                 playerEntity.addStatusEffect(luck);
+            }
+        }
+    }
+
+    public static void applyFluidFreezing(PlayerEntity playerEntity){
+        World world = playerEntity.getEntityWorld();
+        BlockPos blockPos = playerEntity.getBlockPos();
+
+        if (playerEntity.isAlive()) {
+            ItemStack helmetStack = playerEntity.inventory.armor.get(3);
+            ItemStack chestStack = playerEntity.inventory.armor.get(2);
+            ItemStack legsStack = playerEntity.inventory.armor.get(1);
+            ItemStack feetStack = playerEntity.inventory.armor.get(0);
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.FEET).asItem()) {
+                // From FrostWalkerEnchantment
+                if (playerEntity.isOnGround()) {
+                    BlockState blockState = Blocks.FROSTED_ICE.getDefaultState();
+                    float f = (float) Math.min(16, 2 + 1);
+                    BlockPos.Mutable mutable = new BlockPos.Mutable();
+                    Iterator var7 = BlockPos.iterate(blockPos.add(-f, -1.0D, -f), blockPos.add(f, -1.0D, f)).iterator();
+
+                    while (var7.hasNext()) {
+                        BlockPos blockPos2 = (BlockPos) var7.next();
+                        if (blockPos2.isWithinDistance(playerEntity.getPos(), f)) {
+                            mutable.set(blockPos2.getX(), blockPos2.getY() + 1, blockPos2.getZ());
+                            BlockState blockState2 = world.getBlockState(mutable);
+                            if (blockState2.isAir()) {
+                                BlockState blockState3 = world.getBlockState(blockPos2);
+                                if (blockState3.getMaterial() == Material.WATER && blockState3.get(FluidBlock.LEVEL) == 0 && blockState.canPlaceAt(world, blockPos2) && world.canPlace(blockState, blockPos2, ShapeContext.absent())) {
+                                    world.setBlockState(blockPos2, blockState);
+                                    world.getBlockTickScheduler().schedule(blockPos2, Blocks.FROSTED_ICE, MathHelper.nextInt(playerEntity.getRandom(), 60, 120));
+                                }
+                            }
+                        }
+                    }
+                }
+                if (playerEntity.isOnGround()) {
+                    BlockState blockState = Blocks.CRYING_OBSIDIAN.getDefaultState();
+                    float f = (float) Math.min(16, 2 + 1);
+                    BlockPos.Mutable mutable = new BlockPos.Mutable();
+                    Iterator var7 = BlockPos.iterate(blockPos.add(-f, -1.0D, -f), blockPos.add(f, -1.0D, f)).iterator();
+
+                    while (var7.hasNext()) {
+                        BlockPos blockPos2 = (BlockPos) var7.next();
+                        if (blockPos2.isWithinDistance(playerEntity.getPos(), f)) {
+                            mutable.set(blockPos2.getX(), blockPos2.getY() + 1, blockPos2.getZ());
+                            BlockState blockState2 = world.getBlockState(mutable);
+                            if (blockState2.isAir()) {
+                                BlockState blockState3 = world.getBlockState(blockPos2);
+                                if (blockState3.getMaterial() == Material.LAVA && blockState3.get(FluidBlock.LEVEL) == 0 && blockState.canPlaceAt(world, blockPos2) && world.canPlace(blockState, blockPos2, ShapeContext.absent())) {
+                                    world.setBlockState(blockPos2, blockState);
+                                    world.getBlockTickScheduler().schedule(blockPos2, Blocks.CRYING_OBSIDIAN,
+                                            MathHelper.nextInt(playerEntity.getRandom(), 60, 120));
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

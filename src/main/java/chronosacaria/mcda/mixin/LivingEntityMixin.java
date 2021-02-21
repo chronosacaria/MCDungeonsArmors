@@ -84,6 +84,7 @@ public abstract class LivingEntityMixin extends Entity {
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
 
         ArmorEffectsHelper.applyThiefInvisibilityTick(playerEntity);
+        ArmorEffectsHelper.applyFluidFreezing(playerEntity);
     }
 
     // Spider Armour Climbing
