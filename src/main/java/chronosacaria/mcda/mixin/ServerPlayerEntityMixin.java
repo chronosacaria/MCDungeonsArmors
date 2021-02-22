@@ -29,8 +29,8 @@ public class ServerPlayerEntityMixin {
         EnchantmentEffects.applyFrenzied(playerEntity);
 
         // Effects from Armour Sets
-        ArmorEffectsHelper.applyHaste(playerEntity); // Cave Dweller (below Y level 32)
-        ArmorEffectsHelper.applyHeroOfTheVillage(playerEntity); // Hero's Armour
+        ArmorEffectsHelper.applyHaste(playerEntity); // Cave Crawler (below Y level 32) & Highland (above Y level 100)
+        ArmorEffectsHelper.applyHeroOfTheVillage(playerEntity); // Hero's Armour & Gilded Glory
         ArmorEffectsHelper.applyLuck(playerEntity); // Opulent Armour
     }
 }
