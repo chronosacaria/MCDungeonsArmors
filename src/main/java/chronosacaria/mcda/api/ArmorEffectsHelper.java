@@ -57,6 +57,12 @@ public class ArmorEffectsHelper {
         }
     }
 
+    public static void applyFireproof(PlayerEntity playerEntity){
+        if (playerEntity.isOnFire()){
+            playerEntity.setFireTicks(0);
+        }
+    }
+
     public static void applyFluidFreezing(PlayerEntity playerEntity){
         World world = playerEntity.getEntityWorld();
         BlockPos blockPos = playerEntity.getBlockPos();

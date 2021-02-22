@@ -30,14 +30,6 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow public abstract boolean isAlive();
 
-    @Shadow @Nullable public abstract LivingEntity getAttacker();
-
-    @Shadow @Nullable private LivingEntity attacker;
-
-    @Shadow @Nullable protected PlayerEntity attackingPlayer;
-
-    @Shadow private LivingEntity attacking;
-
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
     // Mixins for enchants related to consuming a potion
@@ -81,6 +73,49 @@ public abstract class LivingEntityMixin extends Entity {
         ArmorEffectsHelper.applyWithered(playerEntity, (LivingEntity) source.getAttacker());
     }
 
+    /* Fireproof Armour Mixin */
+    //@Inject(method = "damage", at = @At("HEAD"), cancellable = true)
+    //public void isWearingFireproofArmour(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+    //    if (!(source.isFire())) {
+    //        return;
+    //    }
+    //    PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+    //    if (playerEntity.isAlive()) {
+    //        ItemStack helmetStack = playerEntity.inventory.armor.get(3);
+    //        ItemStack chestStack = playerEntity.inventory.armor.get(2);
+    //        ItemStack legsStack = playerEntity.inventory.armor.get(1);
+    //        ItemStack feetStack = playerEntity.inventory.armor.get(0);
+//
+    //        if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.HEAD)
+    //        .asItem()
+    //                && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot
+    //                .CHEST).asItem()
+    //                && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot
+    //                .LEGS).asItem()
+    //                && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot
+    //                .FEET).asItem()) {
+//
+    //            if (source.isFire()) {
+    //                cir.setReturnValue(false);
+    //            }
+    //        }
+//
+    //        if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get(EquipmentSlot
+    //        .HEAD).asItem()
+    //                && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get
+    //                (EquipmentSlot.CHEST).asItem()
+    //                && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get
+    //                (EquipmentSlot.LEGS).asItem()
+    //                && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get
+    //                (EquipmentSlot.FEET).asItem()) {
+//
+    //            if (source.isFire()) {
+    //                cir.setReturnValue(false);
+    //            }
+    //        }
+    //    }
+    //}
+
     // Thief Armour Sneaking Player Invisibility
     @Inject(method = "tick", at = @At("HEAD"))
     private void tickEffects(CallbackInfo ci){
@@ -113,4 +148,5 @@ public abstract class LivingEntityMixin extends Entity {
                 }
         }
     }
+
 }
