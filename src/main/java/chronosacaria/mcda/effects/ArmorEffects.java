@@ -1,4 +1,4 @@
-package chronosacaria.mcda.api;
+package chronosacaria.mcda.effects;
 
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
@@ -21,8 +21,9 @@ import net.minecraft.world.World;
 import java.util.Iterator;
 
 // TODO: unused
-public class ArmorEffectsHelper {
+public class ArmorEffects {
 
+    // Effects for LivingEntityMixin
     public static void teleportOnHit(LivingEntity livingEntity) {
         World world = livingEntity.getEntityWorld();
         if (!world.isClient) {
@@ -54,12 +55,6 @@ public class ArmorEffectsHelper {
                             1.0F);
                 }
             }
-        }
-    }
-
-    public static void applyFireproof(PlayerEntity playerEntity){
-        if (playerEntity.isOnFire()){
-            playerEntity.setFireTicks(0);
         }
     }
 
@@ -159,6 +154,7 @@ public class ArmorEffectsHelper {
         }
     }
 
+    // Effects for ServerPlayerEntityMixin
     public static void applyHaste(ServerPlayerEntity playerEntity){
         if (playerEntity.getY() < 32.0F) {
             ItemStack helmetStack = playerEntity.inventory.armor.get(3);
@@ -217,6 +213,24 @@ public class ArmorEffectsHelper {
         }
     }
 
+    public static void applyHunger(ServerPlayerEntity playerEntity){
+        if (playerEntity.isAlive()) {
+            ItemStack helmetStack = playerEntity.inventory.armor.get(3);
+            ItemStack chestStack = playerEntity.inventory.armor.get(2);
+            ItemStack legsStack = playerEntity.inventory.armor.get(1);
+            ItemStack feetStack = playerEntity.inventory.armor.get(0);
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HUNGRY_HORROR).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HUNGRY_HORROR).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HUNGRY_HORROR).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HUNGRY_HORROR).get(EquipmentSlot.FEET).asItem()) {
+                StatusEffectInstance hunger = new StatusEffectInstance(StatusEffects.HUNGER, 42, 1, false,
+                        false);
+                playerEntity.addStatusEffect(hunger);
+            }
+        }
+    }
+
     public static void applyLuck(ServerPlayerEntity playerEntity){
         if (playerEntity.isAlive()) {
             ItemStack helmetStack = playerEntity.inventory.armor.get(3);
@@ -234,5 +248,27 @@ public class ArmorEffectsHelper {
             }
         }
     }
+
+    public static void applySprintingSpeed(ServerPlayerEntity playerEntity){
+        if (playerEntity.isAlive()) {
+            ItemStack helmetStack = playerEntity.inventory.armor.get(3);
+            ItemStack chestStack = playerEntity.inventory.armor.get(2);
+            ItemStack legsStack = playerEntity.inventory.armor.get(1);
+            ItemStack feetStack = playerEntity.inventory.armor.get(0);
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.FEET).asItem()) {
+                if (playerEntity.isSprinting()) {
+                    StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
+                            false);
+                    playerEntity.addStatusEffect(speed);
+                }
+            }
+        }
+    }
+
+
 
 }

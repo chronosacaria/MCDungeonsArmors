@@ -1,7 +1,7 @@
 
 package chronosacaria.mcda.mixin;
 
-import chronosacaria.mcda.enchants.EnchantmentEffects;
+import chronosacaria.mcda.effects.EnchantmentEffects;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.util.hit.EntityHitResult;
 import org.spongepowered.asm.mixin.Mixin;

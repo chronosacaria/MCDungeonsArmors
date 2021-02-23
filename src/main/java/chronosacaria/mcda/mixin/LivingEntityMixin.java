@@ -1,7 +1,7 @@
 package chronosacaria.mcda.mixin;
 
-import chronosacaria.mcda.api.ArmorEffectsHelper;
-import chronosacaria.mcda.enchants.EnchantmentEffects;
+import chronosacaria.mcda.effects.ArmorEffects;
+import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
 import chronosacaria.mcda.registry.EnchantsRegistry;
@@ -12,10 +12,8 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -70,7 +68,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
-        ArmorEffectsHelper.applyWithered(playerEntity, (LivingEntity) source.getAttacker());
+        ArmorEffects.applyWithered(playerEntity, (LivingEntity) source.getAttacker());
     }
 
     /* Fireproof Armour Mixin */
@@ -123,8 +121,8 @@ public abstract class LivingEntityMixin extends Entity {
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
 
-        ArmorEffectsHelper.applyThiefInvisibilityTick(playerEntity);
-        ArmorEffectsHelper.applyFluidFreezing(playerEntity);
+        ArmorEffects.applyThiefInvisibilityTick(playerEntity);
+        ArmorEffects.applyFluidFreezing(playerEntity);
     }
 
     // Spider Armour Climbing

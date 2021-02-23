@@ -1,4 +1,4 @@
-package chronosacaria.mcda.enchants;
+package chronosacaria.mcda.effects;
 
 import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.registry.EnchantsRegistry;
