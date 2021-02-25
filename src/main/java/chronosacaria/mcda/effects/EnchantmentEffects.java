@@ -2,6 +2,8 @@ package chronosacaria.mcda.effects;
 
 import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.registry.EnchantsRegistry;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
@@ -16,6 +18,8 @@ import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.hit.EntityHitResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -50,6 +54,19 @@ public class EnchantmentEffects {
     }
 
     // Effects for LivingEntityMixin
+    public static void applyFireTrail(LivingEntity livingEntity){
+        BlockState blockState = Blocks.FIRE.getDefaultState();
+        for (int k = 0; k < 1; ++k){
+            int x = MathHelper.floor(livingEntity.getX());
+            int y = MathHelper.floor(livingEntity.getY());
+            int z = MathHelper.floor(livingEntity.getZ());
+            BlockPos blockPos = new BlockPos(x, y, z);
+            if (livingEntity.world.getBlockState(blockPos).isAir() && livingEntity.isOnGround()){
+                livingEntity.world.setBlockState(blockPos, blockState);
+            }
+        }
+    }
+
     public static void applyFoodReserves(PlayerEntity playerEntity) {
         if (!config.enableEnchantment.get(FOOD_RESERVES))
             return;

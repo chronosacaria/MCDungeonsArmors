@@ -114,15 +114,16 @@ public abstract class LivingEntityMixin extends Entity {
     //    }
     //}
 
-    // Thief Armour Sneaking Player Invisibility
+    // Mixins for Armour and Enchantment Effects on Tick
     @Inject(method = "tick", at = @At("HEAD"))
     private void tickEffects(CallbackInfo ci){
         if(!((Object)this instanceof PlayerEntity)) return;
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
 
-        ArmorEffects.applyThiefInvisibilityTick(playerEntity);
         ArmorEffects.applyFluidFreezing(playerEntity);
+        ArmorEffects.applyThiefInvisibilityTick(playerEntity);
+        EnchantmentEffects.applyFireTrail(playerEntity);
     }
 
     // Spider Armour Climbing
