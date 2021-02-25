@@ -20,7 +20,6 @@ import net.minecraft.world.World;
 
 import java.util.Iterator;
 
-// TODO: unused
 public class ArmorEffects {
 
     // Effects for LivingEntityMixin

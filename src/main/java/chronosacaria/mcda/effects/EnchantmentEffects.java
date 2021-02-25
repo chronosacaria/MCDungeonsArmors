@@ -36,18 +36,6 @@ public class EnchantmentEffects {
             PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.SWIFTNESS),
             PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.INVISIBILITY)));
 
-    public static void applyCowardice(ServerPlayerEntity player) {
-        if (!config.enableEnchantment.get(COWARDICE))
-            return;
-
-        if (player.getHealth() == player.getMaxHealth()) {
-            int cowardiceLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(COWARDICE), player);
-            if (cowardiceLevel == 0) return;
-            StatusEffectInstance strengthBoost = new StatusEffectInstance(StatusEffects.STRENGTH, 42, cowardiceLevel + 1, false, false);
-            player.addStatusEffect(strengthBoost);
-        }
-    }
-
     protected static boolean isInstantHealthPotion(ItemStack itemStack) {
         boolean hasInstantHealth = false;
 
@@ -61,6 +49,7 @@ public class EnchantmentEffects {
         return hasInstantHealth;
     }
 
+    // Effects for LivingEntityMixin
     public static void applyFoodReserves(PlayerEntity playerEntity) {
         if (!config.enableEnchantment.get(FOOD_RESERVES))
             return;
@@ -123,6 +112,19 @@ public class EnchantmentEffects {
                 }
                 surpriseGiftChance -= 1.0F;
             }
+        }
+    }
+
+    // Effects for ServerPlayerEntityMixin
+    public static void applyCowardice(ServerPlayerEntity player) {
+        if (!config.enableEnchantment.get(COWARDICE))
+            return;
+
+        if (player.getHealth() == player.getMaxHealth()) {
+            int cowardiceLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(COWARDICE), player);
+            if (cowardiceLevel == 0) return;
+            StatusEffectInstance strengthBoost = new StatusEffectInstance(StatusEffects.STRENGTH, 42, cowardiceLevel + 1, false, false);
+            player.addStatusEffect(strengthBoost);
         }
     }
 
