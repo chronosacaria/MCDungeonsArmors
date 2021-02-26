@@ -13,6 +13,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -123,7 +124,15 @@ public abstract class LivingEntityMixin extends Entity {
 
         ArmorEffects.applyFluidFreezing(playerEntity);
         ArmorEffects.applyThiefInvisibilityTick(playerEntity);
-        EnchantmentEffects.applyFireTrail(playerEntity);
+        //EnchantmentEffects.applyFireTrail(playerEntity);
+    }
+
+    @Inject(method = "applyMovementEffects", at = @At("HEAD"))
+    protected void applyFireTrailEffects(BlockPos blockPos, CallbackInfo ci){
+        if(!((Object)this instanceof PlayerEntity)) return;
+        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+
+        EnchantmentEffects.applyFireTrail(playerEntity, blockPos);
     }
 
     // Spider Armour Climbing

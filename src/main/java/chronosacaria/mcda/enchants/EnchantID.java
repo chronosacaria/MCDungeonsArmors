@@ -6,6 +6,7 @@ public enum EnchantID {
     CHILLING,
     COWARDICE,
     DEFLECT,
+    FIRE_TRAIL,
     FOOD_RESERVES,
     FRENZIED,
     HEAL_ALLIES,

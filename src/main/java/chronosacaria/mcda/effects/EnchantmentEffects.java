@@ -54,17 +54,20 @@ public class EnchantmentEffects {
     }
 
     // Effects for LivingEntityMixin
-    public static void applyFireTrail(LivingEntity livingEntity){
+    public static void applyFireTrail(PlayerEntity player, BlockPos blockPos){
+        if (!config.enableEnchantment.get(FIRE_TRAIL))
+            return;
+
+        int fireTrailLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FIRE_TRAIL), player);
+        if (fireTrailLevel == 0) return;
+
         BlockState blockState = Blocks.FIRE.getDefaultState();
-        for (int k = 0; k < 1; ++k){
-            int x = MathHelper.floor(livingEntity.getX());
-            int y = MathHelper.floor(livingEntity.getY());
-            int z = MathHelper.floor(livingEntity.getZ());
-            BlockPos blockPos = new BlockPos(x, y, z);
-            if (livingEntity.world.getBlockState(blockPos).isAir() && livingEntity.isOnGround()){
-                livingEntity.world.setBlockState(blockPos, blockState);
+
+            BlockPos placeFireTrail = blockPos.offset(player.getMovementDirection().getOpposite(), 2);
+            if (player.world.getBlockState(placeFireTrail).isAir() && player.isOnGround()){
+                player.world.setBlockState(placeFireTrail, blockState);
             }
-        }
+
     }
 
     public static void applyFoodReserves(PlayerEntity playerEntity) {

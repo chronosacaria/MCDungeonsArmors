@@ -29,6 +29,9 @@ public class EnchantsRegistry {
                 case CHILLING:
                     enchantment = new ChillingEnchantment(enchantID);
                     break;
+                case FIRE_TRAIL:
+                    enchantment = new FireTrailEnchantment(enchantID);
+                    break;
                 case RECYCLER:
                     enchantment = new RecyclerEnchantment(enchantID);
                     break;
