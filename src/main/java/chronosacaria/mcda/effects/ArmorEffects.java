@@ -230,6 +230,33 @@ public class ArmorEffects {
         }
     }
 
+    public static void applyFireResistance(ServerPlayerEntity playerEntity){
+        if (playerEntity.isAlive()) {
+            ItemStack helmetStack = playerEntity.inventory.armor.get(3);
+            ItemStack chestStack = playerEntity.inventory.armor.get(2);
+            ItemStack legsStack = playerEntity.inventory.armor.get(1);
+            ItemStack feetStack = playerEntity.inventory.armor.get(0);
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.FEET).asItem()) {
+                StatusEffectInstance fireResistance = new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 42, 1,
+                        false,false);
+                playerEntity.addStatusEffect(fireResistance);
+            }
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get(EquipmentSlot.FEET).asItem()) {
+                StatusEffectInstance fireResistance = new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 42, 1,
+                        false,false);
+                playerEntity.addStatusEffect(fireResistance);
+            }
+        }
+    }
+
     public static void applyLuck(ServerPlayerEntity playerEntity){
         if (playerEntity.isAlive()) {
             ItemStack helmetStack = playerEntity.inventory.armor.get(3);

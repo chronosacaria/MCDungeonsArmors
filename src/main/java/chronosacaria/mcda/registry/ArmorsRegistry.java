@@ -69,7 +69,6 @@ public class ArmorsRegistry {
                 case HUNTER:
                     slots = EnumSet.of(CHEST);
                     break;
-                case ROYAL: continue; // TODO: remove when implementing royal armor
                 default:
                     slots = EnumSet.of(HEAD, CHEST, LEGS, FEET);
                     break;

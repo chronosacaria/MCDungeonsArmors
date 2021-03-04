@@ -1,4 +1,4 @@
-/*
+
 package chronosacaria.mcda.mixin;
 
 import chronosacaria.mcda.items.ArmorSets;
@@ -34,4 +34,3 @@ public abstract class PiglinBrainMixin {
     }
 }
 
- */

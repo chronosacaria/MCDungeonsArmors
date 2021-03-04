@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "W W",
+    "WWW",
+    "SSS"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:twisting_vines"
+    },
+    "S": {
+      "item": "minecraft:nether_sprouts"
+    }
+  },
+  "result": {
+    "item": "mcda:sprout_armor_chestplate",
+    "count": 1
+  }
+}

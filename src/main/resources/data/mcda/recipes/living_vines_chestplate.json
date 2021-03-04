@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "W W",
+    "WWW",
+    "SSS"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:weeping_vines"
+    },
+    "S": {
+      "item": "minecraft:nether_wart"
+    }
+  },
+  "result": {
+    "item": "mcda:living_vines_armor_chestplate",
+    "count": 1
+  }
+}

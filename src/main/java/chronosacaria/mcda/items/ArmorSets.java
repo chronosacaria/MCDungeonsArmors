@@ -179,16 +179,16 @@ public enum ArmorSets implements ArmorMaterial {
             25,
             ITEM_ARMOR_EQUIP_ELYTRA,
             () -> Ingredient.ofItems(Items.IRON_INGOT)),
-    //SPROUT("sprout", "sproud_armor",
-    //        5,
-    //        25,
-    //        ITEM_ARMOR_EQUIP_ELYTRA,
-    //        () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_CYAN)),
-    //LIVING_VINES("livingvines", "living_vines_armor",
-    //        5,
-    //        25,
-    //        ITEM_ARMOR_EQUIP_ELYTRA,
-    //        () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_RED)),
+    SPROUT("sprout", "sprout_armor",
+            5,
+            25,
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_CYAN)),
+    LIVING_VINES("livingvines", "living_vines_armor",
+            5,
+            25,
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_RED)),
 
     /* * * |
     | BONE |
@@ -247,16 +247,16 @@ public enum ArmorSets implements ArmorMaterial {
             9,
             ITEM_ARMOR_EQUIP_IRON,
             () -> Ingredient.ofItems(Items.LEATHER)),
-    //PIGLIN("piglin", "piglin_armor",
-    //        14,
-    //        9,
-    //        ITEM_ARMOR_EQUIP_IRON,
-    //        () -> Ingredient.ofItems(Items.LEATHER)),
-    //GOLDEN_PIGLIN("goldenpiglin", "golden_piglin_armor",
-    //        14,
-    //        25,
-    //        ITEM_ARMOR_EQUIP_GOLD,
-    //        () -> Ingredient.ofItems(Items.GOLD_INGOT)),
+    PIGLIN("piglin", "piglin_armor",
+            14,
+            9,
+            ITEM_ARMOR_EQUIP_IRON,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    GOLDEN_PIGLIN("goldenpiglin", "golden_piglin_armor",
+            14,
+            25,
+            ITEM_ARMOR_EQUIP_GOLD,
+            () -> Ingredient.ofItems(Items.GOLD_INGOT)),
 
     /* * * * * * * |
     | MEDIUM PLATE |
@@ -330,7 +330,7 @@ public enum ArmorSets implements ArmorMaterial {
             15,
             ITEM_ARMOR_EQUIP_NETHERITE,
             () -> Ingredient.ofItems(Items.IRON_INGOT)),
-    ROYAL("royalguard", "royal_guard", // TODO: unused
+    ROYAL("royalguard", "royal_guard_armor",
             36,
             15,
             ITEM_ARMOR_EQUIP_NETHERITE,
@@ -443,6 +443,7 @@ public enum ArmorSets implements ArmorMaterial {
             case OPULENT:
             case GILDED:
             case RUGGED_CLIMBING_GEAR:
+            case GOLDEN_PIGLIN:
             //case GOAT: // TODO
                 return Rarity.RARE;
             default:

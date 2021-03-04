@@ -72,49 +72,6 @@ public abstract class LivingEntityMixin extends Entity {
         ArmorEffects.applyWithered(playerEntity, (LivingEntity) source.getAttacker());
     }
 
-    /* Fireproof Armour Mixin */
-    //@Inject(method = "damage", at = @At("HEAD"), cancellable = true)
-    //public void isWearingFireproofArmour(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
-    //    if (!(source.isFire())) {
-    //        return;
-    //    }
-    //    PlayerEntity playerEntity = (PlayerEntity) (Object) this;
-    //    if (playerEntity.isAlive()) {
-    //        ItemStack helmetStack = playerEntity.inventory.armor.get(3);
-    //        ItemStack chestStack = playerEntity.inventory.armor.get(2);
-    //        ItemStack legsStack = playerEntity.inventory.armor.get(1);
-    //        ItemStack feetStack = playerEntity.inventory.armor.get(0);
-//
-    //        if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.HEAD)
-    //        .asItem()
-    //                && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot
-    //                .CHEST).asItem()
-    //                && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot
-    //                .LEGS).asItem()
-    //                && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot
-    //                .FEET).asItem()) {
-//
-    //            if (source.isFire()) {
-    //                cir.setReturnValue(false);
-    //            }
-    //        }
-//
-    //        if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get(EquipmentSlot
-    //        .HEAD).asItem()
-    //                && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get
-    //                (EquipmentSlot.CHEST).asItem()
-    //                && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get
-    //                (EquipmentSlot.LEGS).asItem()
-    //                && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get
-    //                (EquipmentSlot.FEET).asItem()) {
-//
-    //            if (source.isFire()) {
-    //                cir.setReturnValue(false);
-    //            }
-    //        }
-    //    }
-    //}
-
     // Mixins for Armour and Enchantment Effects on Tick
     @Inject(method = "tick", at = @At("HEAD"))
     private void tickEffects(CallbackInfo ci){

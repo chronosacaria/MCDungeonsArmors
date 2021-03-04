@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:dark_armor_leggings"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_metal"
+  },
+  "result": {
+    "item": "mcda:titans_shroud_leggings"
+  }
+}

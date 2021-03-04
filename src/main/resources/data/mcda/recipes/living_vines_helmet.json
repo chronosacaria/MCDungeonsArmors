@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WWW",
+    "SBS",
+    "   "
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:weeping_vines"
+    },
+    "S": {
+      "item": "minecraft:nether_wart"
+    },
+    "B": {
+      "item": "mcda:fabric_bolt_black"
+    }
+  },
+  "result": {
+    "item": "mcda:living_vines_armor_helmet",
+    "count": 1
+  }
+}

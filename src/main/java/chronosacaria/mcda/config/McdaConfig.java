@@ -93,6 +93,8 @@ public class McdaConfig implements ConfigData {
                 .setToughness(2.0F);
         setProtection(2, 6, 5, 2, SOULDANCER)
                 .setToughness(2.0F);
+        setProtection(1, 3, 2, 1, SPROUT);
+        setProtection(2, 3, 2, 2, LIVING_VINES);
 
         // Bone Armours
         setProtection(2, 6, 5, 3, PHANTOM);
@@ -107,6 +109,8 @@ public class McdaConfig implements ConfigData {
         setProtection(2, 6, 5, 2, BEEHIVE);
         setProtection(2, 5, 4, 2, GHOSTLY);
         setProtection(2, 6, 5, 2, GHOST_KINDLER);
+        setProtection(2, 5, 4, 2, PIGLIN);
+        setProtection(2, 6, 5, 2, GOLDEN_PIGLIN);
 
         // Medium Plate Armor
         setProtection(3, 6, 4, 3, REINFORCED_MAIL)
