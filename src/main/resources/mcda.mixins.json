@@ -11,6 +11,8 @@
     "ServerPlayerEntityMixin"
   ],
   "client": [
+    "InGameOverlayRendererMixin"
+
   ],
   "injectors": {
     "defaultRequire": 1

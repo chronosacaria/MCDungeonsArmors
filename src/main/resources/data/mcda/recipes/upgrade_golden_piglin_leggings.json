@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:piglin_armor_leggings"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_golden"
+  },
+  "result": {
+    "item": "mcda:golden_piglin_armor_leggings"
+  }
+}

@@ -53,6 +53,7 @@ public abstract class LivingEntityMixin extends Entity {
             return;
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+
         int healAlliesLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(HEAL_ALLIES), playerEntity);
         if (EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(HEAL_ALLIES), playerEntity) > 0) {
             EnchantmentEffects.applyHealAllies(playerEntity, (0.25f * amount) * healAlliesLevel);
@@ -99,6 +100,9 @@ public abstract class LivingEntityMixin extends Entity {
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
         if (playerEntity.isAlive()){
+
+            if (playerEntity == null) return;
+
             ItemStack helmetStack = playerEntity.inventory.armor.get(3);
             ItemStack chestStack = playerEntity.inventory.armor.get(2);
             ItemStack legsStack = playerEntity.inventory.armor.get(1);

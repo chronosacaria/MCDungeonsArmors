@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B B",
+    "b b",
+    "   "
+  ],
+  "key": {
+    "B": {
+      "item": "mcda:fabric_bolt_brown"
+    },
+    "b": {
+      "item": "minecraft:bone"
+    }
+  },
+  "result": {
+    "item": "mcda:piglin_armor_boots",
+    "count": 1
+  }
+}

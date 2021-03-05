@@ -20,7 +20,8 @@ public class ArmorFeatureRendererMixin {
 
     // Hide Thief Armour on Sneak
     @Inject(method = "renderArmor", at = @At("HEAD"), cancellable = true)
-    public void renderArmor(MatrixStack matrices, VertexConsumerProvider vertexConsumers, LivingEntity livingEntity, EquipmentSlot equipmentSlot, int i, BipedEntityModel<LivingEntity> bipedEntityModel, CallbackInfo info) {
+    public void renderArmorOverride(MatrixStack matrices, VertexConsumerProvider vertexConsumers,
+                                 LivingEntity livingEntity, EquipmentSlot equipmentSlot, int i, BipedEntityModel<LivingEntity> bipedEntityModel, CallbackInfo info) {
         if (livingEntity instanceof PlayerEntity && livingEntity.isSneaking()){
             ItemStack helmetStack = ((PlayerEntity) livingEntity).inventory.armor.get(3);
             ItemStack chestStack = ((PlayerEntity) livingEntity).inventory.armor.get(2);

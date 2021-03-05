@@ -14,8 +14,8 @@ public class ServerPlayerEntityMixin {
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick(CallbackInfo ci) {
         ServerPlayerEntity playerEntity = (ServerPlayerEntity) (Object) this;
-        if (!playerEntity.isAlive())
-            return;
+        if (playerEntity == null) return;
+
 
         // Effects from Enchantments
         EnchantmentEffects.applyCowardice(playerEntity);

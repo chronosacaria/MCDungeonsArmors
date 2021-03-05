@@ -189,7 +189,11 @@ public enum ArmorSets implements ArmorMaterial {
             25,
             ITEM_ARMOR_EQUIP_ELYTRA,
             () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_RED)),
-
+    PIGLIN("piglin", "piglin_armor",
+            5,
+            9,
+            ITEM_ARMOR_EQUIP_IRON,
+            () -> Ingredient.ofItems(Items.LEATHER)),
     /* * * |
     | BONE |
     | * * */
@@ -243,11 +247,6 @@ public enum ArmorSets implements ArmorMaterial {
             ITEM_ARMOR_EQUIP_IRON,
             () -> Ingredient.ofItems(Items.LEATHER)),
     GHOST_KINDLER("ghostkindler", "ghost_kindler",
-            14,
-            9,
-            ITEM_ARMOR_EQUIP_IRON,
-            () -> Ingredient.ofItems(Items.LEATHER)),
-    PIGLIN("piglin", "piglin_armor",
             14,
             9,
             ITEM_ARMOR_EQUIP_IRON,

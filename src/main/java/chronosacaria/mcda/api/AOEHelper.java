@@ -29,6 +29,7 @@ public class AOEHelper {
                 (nearbyEntity) -> nearbyEntity != healer && AbilityHelper.canHealEntity(healer, nearbyEntity));
 
         for (LivingEntity nearbyEntity : nearbyEntities) {
+            if (nearbyEntity == null) return;
             if (nearbyEntity.getHealth() < nearbyEntity.getMaxHealth()) {
                 if (effectInstance.getEffectType().isInstant()) {
                     effectInstance.getEffectType().applyInstantEffect(playerEntity, playerEntity, nearbyEntity,
@@ -51,6 +52,7 @@ public class AOEHelper {
                 (nearbyEntity) -> nearbyEntity != healer && AbilityHelper.canHealEntity(healer, nearbyEntity));
 
         for (LivingEntity nearbyEntity : nearbyEntities) {
+            if (nearbyEntity == null) return;
             if (nearbyEntity.getHealth() < nearbyEntity.getMaxHealth()) {
                 nearbyEntity.heal(amount);
 
@@ -67,6 +69,7 @@ public class AOEHelper {
                 (nearbyEntity) -> AbilityHelper.canFireAtEnemy(attacker, nearbyEntity));
 
         for (LivingEntity nearbyEntity : nearbyEntities) {
+            if (nearbyEntity == null) return;
             nearbyEntity.damage(DamageSource.ON_FIRE, damage);
         }
     }
