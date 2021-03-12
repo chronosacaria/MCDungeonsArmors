@@ -103,10 +103,10 @@ public abstract class LivingEntityMixin extends Entity {
 
             if (playerEntity == null) return;
 
-            ItemStack helmetStack = playerEntity.inventory.armor.get(3);
-            ItemStack chestStack = playerEntity.inventory.armor.get(2);
-            ItemStack legsStack = playerEntity.inventory.armor.get(1);
-            ItemStack feetStack = playerEntity.inventory.armor.get(0);
+            ItemStack helmetStack = playerEntity.getInventory().armor.get(3);
+            ItemStack chestStack = playerEntity.getInventory().armor.get(2);
+            ItemStack legsStack = playerEntity.getInventory().armor.get(1);
+            ItemStack feetStack = playerEntity.getInventory().armor.get(0);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPIDER).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPIDER).get(EquipmentSlot.CHEST).asItem()

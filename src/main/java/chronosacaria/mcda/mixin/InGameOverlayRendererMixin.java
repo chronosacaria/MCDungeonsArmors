@@ -21,10 +21,10 @@ public class InGameOverlayRendererMixin {
     private static void renderFireOverlayOverride(MinecraftClient minecraftClient, MatrixStack matrixStack,
                                                  CallbackInfo ci) {
         if (MinecraftClient.getInstance().player.isAlive()) {
-            ItemStack helmetStack = MinecraftClient.getInstance().player.inventory.armor.get(3);
-            ItemStack chestStack = MinecraftClient.getInstance().player.inventory.armor.get(2);
-            ItemStack legsStack = MinecraftClient.getInstance().player.inventory.armor.get(1);
-            ItemStack feetStack = MinecraftClient.getInstance().player.inventory.armor.get(0);
+            ItemStack helmetStack = MinecraftClient.getInstance().player.getInventory().armor.get(3);
+            ItemStack chestStack = MinecraftClient.getInstance().player.getInventory().armor.get(2);
+            ItemStack legsStack = MinecraftClient.getInstance().player.getInventory().armor.get(1);
+            ItemStack feetStack = MinecraftClient.getInstance().player.getInventory().armor.get(0);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.CHEST).asItem()

@@ -21,10 +21,10 @@ public abstract class PiglinBrainMixin {
 
         boolean shouldAttack = cir.getReturnValue();
         if (shouldAttack && target instanceof PlayerEntity) {
-            ItemStack helmetStack = ((PlayerEntity) target).inventory.armor.get(3);
-            ItemStack chestStack = ((PlayerEntity) target).inventory.armor.get(2);
-            ItemStack legsStack = ((PlayerEntity) target).inventory.armor.get(1);
-            ItemStack feetStack = ((PlayerEntity) target).inventory.armor.get(0);
+            ItemStack helmetStack = ((PlayerEntity) target).getInventory().armor.get(3);
+            ItemStack chestStack = ((PlayerEntity) target).getInventory().armor.get(2);
+            ItemStack legsStack = ((PlayerEntity) target).getInventory().armor.get(1);
+            ItemStack feetStack = ((PlayerEntity) target).getInventory().armor.get(0);
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOLDEN_PIGLIN).get(EquipmentSlot.HEAD).asItem() &&
                     chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOLDEN_PIGLIN).get(EquipmentSlot.CHEST).asItem() &&
                     legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOLDEN_PIGLIN).get(EquipmentSlot.LEGS).asItem() &&
