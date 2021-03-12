@@ -20,11 +20,12 @@ public class InGameOverlayRendererMixin {
     @Inject(method = "renderFireOverlay", at = @At("HEAD"), cancellable = true)
     private static void renderFireOverlayOverride(MinecraftClient minecraftClient, MatrixStack matrixStack,
                                                  CallbackInfo ci) {
-        if (MinecraftClient.getInstance().player.isAlive()) {
-            ItemStack helmetStack = MinecraftClient.getInstance().player.getInventory().armor.get(3);
-            ItemStack chestStack = MinecraftClient.getInstance().player.getInventory().armor.get(2);
-            ItemStack legsStack = MinecraftClient.getInstance().player.getInventory().armor.get(1);
-            ItemStack feetStack = MinecraftClient.getInstance().player.getInventory().armor.get(0);
+        if (MinecraftClient.getInstance().player != null && MinecraftClient.getInstance().player.isAlive()) {
+
+            ItemStack helmetStack = MinecraftClient.getInstance().player.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = MinecraftClient.getInstance().player.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = MinecraftClient.getInstance().player.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = MinecraftClient.getInstance().player.getEquippedStack(EquipmentSlot.FEET);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.CHEST).asItem()

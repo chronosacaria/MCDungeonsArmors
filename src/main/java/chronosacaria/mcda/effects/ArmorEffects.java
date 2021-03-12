@@ -62,10 +62,10 @@ public class ArmorEffects {
         BlockPos blockPos = playerEntity.getBlockPos();
 
         if (playerEntity.isAlive()) {
-            ItemStack helmetStack = playerEntity.getInventory().armor.get(3);
-            ItemStack chestStack = playerEntity.getInventory().armor.get(2);
-            ItemStack legsStack = playerEntity.getInventory().armor.get(1);
-            ItemStack feetStack = playerEntity.getInventory().armor.get(0);
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.CHEST).asItem()
@@ -121,10 +121,10 @@ public class ArmorEffects {
 
     public static void applyThiefInvisibilityTick(PlayerEntity playerEntity){
         if (playerEntity.isAlive()){
-            ItemStack helmetStack = playerEntity.getInventory().armor.get(3);
-            ItemStack chestStack = playerEntity.getInventory().armor.get(2);
-            ItemStack legsStack = playerEntity.getInventory().armor.get(1);
-            ItemStack feetStack = playerEntity.getInventory().armor.get(0);
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.CHEST).asItem()
@@ -138,10 +138,10 @@ public class ArmorEffects {
 
         if (attacker != null) {
             if (playerEntity.isAlive()) {
-                ItemStack helmetStack = playerEntity.getInventory().armor.get(3);
-                ItemStack chestStack = playerEntity.getInventory().armor.get(2);
-                ItemStack legsStack = playerEntity.getInventory().armor.get(1);
-                ItemStack feetStack = playerEntity.getInventory().armor.get(0);
+                ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+                ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+                ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+                ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
                 if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.WITHER).get(EquipmentSlot.HEAD).asItem()
                         && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.WITHER).get(EquipmentSlot.CHEST).asItem()
@@ -156,10 +156,10 @@ public class ArmorEffects {
     // Effects for ServerPlayerEntityMixin
     public static void applyHaste(ServerPlayerEntity playerEntity){
         if (playerEntity.getY() < 32.0F) {
-            ItemStack helmetStack = playerEntity.getInventory().armor.get(3);
-            ItemStack chestStack = playerEntity.getInventory().armor.get(2);
-            ItemStack legsStack = playerEntity.getInventory().armor.get(1);
-            ItemStack feetStack = playerEntity.getInventory().armor.get(0);
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.CAVE_CRAWLER).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.CAVE_CRAWLER).get(EquipmentSlot.CHEST).asItem()
@@ -170,10 +170,10 @@ public class ArmorEffects {
             }
         }
         if (playerEntity.getY() > 100.0F) {
-            ItemStack helmetStack = playerEntity.getInventory().armor.get(3);
-            ItemStack chestStack = playerEntity.getInventory().armor.get(2);
-            ItemStack legsStack = playerEntity.getInventory().armor.get(1);
-            ItemStack feetStack = playerEntity.getInventory().armor.get(0);
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HIGHLAND).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HIGHLAND).get(EquipmentSlot.CHEST).asItem()
@@ -187,10 +187,10 @@ public class ArmorEffects {
 
     public static void applyHeroOfTheVillage(ServerPlayerEntity playerEntity){
         if (playerEntity.isAlive()) {
-            ItemStack helmetStack = playerEntity.getInventory().armor.get(3);
-            ItemStack chestStack = playerEntity.getInventory().armor.get(2);
-            ItemStack legsStack = playerEntity.getInventory().armor.get(1);
-            ItemStack feetStack = playerEntity.getInventory().armor.get(0);
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HERO).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HERO).get(EquipmentSlot.CHEST).asItem()
@@ -214,10 +214,10 @@ public class ArmorEffects {
 
     public static void applyHunger(ServerPlayerEntity playerEntity){
         if (playerEntity.isAlive()) {
-            ItemStack helmetStack = playerEntity.getInventory().armor.get(3);
-            ItemStack chestStack = playerEntity.getInventory().armor.get(2);
-            ItemStack legsStack = playerEntity.getInventory().armor.get(1);
-            ItemStack feetStack = playerEntity.getInventory().armor.get(0);
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HUNGRY_HORROR).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HUNGRY_HORROR).get(EquipmentSlot.CHEST).asItem()
@@ -232,10 +232,10 @@ public class ArmorEffects {
 
     public static void applyFireResistance(ServerPlayerEntity playerEntity){
         if (playerEntity.isAlive()) {
-            ItemStack helmetStack = playerEntity.getInventory().armor.get(3);
-            ItemStack chestStack = playerEntity.getInventory().armor.get(2);
-            ItemStack legsStack = playerEntity.getInventory().armor.get(1);
-            ItemStack feetStack = playerEntity.getInventory().armor.get(0);
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.CHEST).asItem()
@@ -259,10 +259,10 @@ public class ArmorEffects {
 
     public static void applyLuck(ServerPlayerEntity playerEntity){
         if (playerEntity.isAlive()) {
-            ItemStack helmetStack = playerEntity.getInventory().armor.get(3);
-            ItemStack chestStack = playerEntity.getInventory().armor.get(2);
-            ItemStack legsStack = playerEntity.getInventory().armor.get(1);
-            ItemStack feetStack = playerEntity.getInventory().armor.get(0);
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.OPULENT).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.OPULENT).get(EquipmentSlot.CHEST).asItem()
@@ -277,10 +277,10 @@ public class ArmorEffects {
 
     public static void applySprintingSpeed(ServerPlayerEntity playerEntity){
         if (playerEntity.isAlive()) {
-            ItemStack helmetStack = playerEntity.getInventory().armor.get(3);
-            ItemStack chestStack = playerEntity.getInventory().armor.get(2);
-            ItemStack legsStack = playerEntity.getInventory().armor.get(1);
-            ItemStack feetStack = playerEntity.getInventory().armor.get(0);
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.CHEST).asItem()
