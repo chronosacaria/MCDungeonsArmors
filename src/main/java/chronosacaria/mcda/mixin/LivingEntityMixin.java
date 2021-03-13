@@ -29,6 +29,8 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow public abstract boolean isAlive();
 
+    @Shadow protected abstract int computeFallDamage(float fallDistance, float damageMultiplier);
+
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
     // Mixins for enchants related to consuming a potion
@@ -118,4 +120,31 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
+    // Shadow Walker Armour Negate Fall Damage
+    @Inject(method = "handleFallDamage", at = @At("HEAD"), cancellable = true)
+    public void shadowWalkerArmorNoFallDamage(float fallDistance, float damageMultiplier,
+                                              CallbackInfoReturnable<Boolean> cir){
+        if(!((Object)this instanceof PlayerEntity)) return;
+
+        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+        if (playerEntity.isAlive()) {
+
+            if (playerEntity == null) return;
+
+            ItemStack helmetStack = playerEntity.inventory.armor.get(3);
+            ItemStack chestStack = playerEntity.inventory.armor.get(2);
+            ItemStack legsStack = playerEntity.inventory.armor.get(1);
+            ItemStack feetStack = playerEntity.inventory.armor.get(0);
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.FEET).asItem()) {
+                int i = this.computeFallDamage(fallDistance, damageMultiplier);
+                if (i > 0) {
+                    cir.setReturnValue(true);
+                }
+            }
+        }
+    }
 }

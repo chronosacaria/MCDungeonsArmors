@@ -69,13 +69,14 @@ public class McdaConfig implements ConfigData {
         // Leather Armors
         setProtection(1, 3, 2, 1, HUNTER);
         setProtection(2, 6, 4, 2, ARCHER);
-        setProtection(2, 6, 4, 2, OCELOT);
+        setProtection(1, 5, 3, 1, OCELOT);
         setProtection(2, 6, 4, 2, SHADOW_WALKER);
         setProtection(2, 6, 4, 2, SPELUNKER);
         setProtection(2, 6, 5, 2, CAVE_CRAWLER);
         setProtection(2, 6, 4, 2, WOLF);
         setProtection(2, 6, 5, 2, BLACK_WOLF);
         setProtection(2, 6, 4, 2, FOX);
+        setProtection(2, 6, 4, 2, ARCTIC_FOX);
         setProtection(1, 6, 5, 1, CLIMBING_GEAR);
         setProtection(2, 6, 5, 2, RUGGED_CLIMBING_GEAR);
         // setProtection(2, 6, 5, 2, GOAT); // TODO
@@ -126,6 +127,8 @@ public class McdaConfig implements ConfigData {
                 .setToughness(2.0F);
         setProtection(3, 5, 4, 3, MERCENARY)
                 .setToughness(1.5F);
+        setProtection(3, 6, 5, 3, RENEGADE)
+                .setToughness(1.75F);
         setProtection(3, 7, 5, 3, HUNGRY_HORROR)
                 .setToughness(2.0F);
         setProtection(3, 7, 5, 3, EMERALD)
@@ -153,6 +156,7 @@ public class McdaConfig implements ConfigData {
         // Stat Boosts
         setAttackDamageBoost(0.075, SPLENDID);
         setAttackDamageBoost(0.0375, BEENEST);
+        setAttackDamageBoost(0.0375, BEEHIVE);
         setAttackDamageBoost(0.0375, CHAMPION);
         setAttackDamageBoost(0.075, HERO).setAttackSpeedBoost(0.0375);
         setAttackDamageBoost(0.0375, DARK);
@@ -169,8 +173,8 @@ public class McdaConfig implements ConfigData {
         setAttackDamageBoost(0.0375, WITHER);
         setAttackDamageBoost(0.05, RENEGADE);
         setAttackDamageBoost(0.05, HUNGRY_HORROR).setMovementSpeedBoost(0.0625);
-        setMovementSpeedBoost(0.075, OCELOT);
-        setMovementSpeedBoost(0.075, SHADOW_WALKER);
+        setMovementSpeedBoost(0.05, OCELOT);
+        setMovementSpeedBoost(0.08, SHADOW_WALKER).setAttackSpeedBoost(0.025);
         setMovementSpeedBoost(0.075, PHANTOM);
         setMovementSpeedBoost(0.075, FROST_BITE);
         setAttackDamageBoost(0.05, PLATE).setMovementSpeedBoost(-0.0375);

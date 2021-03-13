@@ -1,10 +1,7 @@
 package chronosacaria.mcda;
 
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.registry.EnchantsRegistry;
-import chronosacaria.mcda.registry.ArmorsRegistry;
-import chronosacaria.mcda.registry.ItemsRegistry;
-import chronosacaria.mcda.registry.LootRegistry;
+import chronosacaria.mcda.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.entity.EquipmentSlot;
@@ -32,5 +29,6 @@ public class Mcda implements ModInitializer {
         EnchantsRegistry.init();
         ItemsRegistry.init();
         LootRegistry.init();
+        TradesRegistry.registerVillagerOffers();
     }
 }
