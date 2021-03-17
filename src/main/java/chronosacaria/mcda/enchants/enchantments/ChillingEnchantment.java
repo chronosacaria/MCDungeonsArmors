@@ -16,8 +16,8 @@ public class ChillingEnchantment extends ArmorEnchantment {
     public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
         if (attacker instanceof LivingEntity) {
             LivingEntity e = (LivingEntity) attacker;
-            e.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20, level * 2 - 1));
-            e.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 20, level * 2 - 1));
+            e.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20 * level, level * 2 - 1));
+            e.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 20 * level, level * 2 - 1));
         }
     }
 }

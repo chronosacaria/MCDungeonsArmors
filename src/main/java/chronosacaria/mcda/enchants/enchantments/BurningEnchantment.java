@@ -2,6 +2,7 @@ package chronosacaria.mcda.enchants.enchantments;
 
 import chronosacaria.mcda.enchants.ArmorEnchantment;
 import chronosacaria.mcda.enchants.EnchantID;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -36,5 +37,10 @@ public class BurningEnchantment extends ArmorEnchantment {
         } else {
             return random.nextFloat() < 0.15F * (float) level;
         }
+    }
+
+    @Override
+    protected boolean canAccept(Enchantment other){
+        return !(other instanceof ChillingEnchantment);
     }
 }

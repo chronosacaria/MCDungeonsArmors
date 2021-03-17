@@ -63,6 +63,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     }
 
+    // Mixin for Wither Effect
     @Inject(method = "damage", at = @At("HEAD"))
     public void applyEffectsFromPlayerDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
         if (!((Object)this instanceof PlayerEntity))
@@ -87,6 +88,7 @@ public abstract class LivingEntityMixin extends Entity {
         //EnchantmentEffects.applyFireTrail(playerEntity);
     }
 
+    // Mixin for Fire Trail
     @Inject(method = "applyMovementEffects", at = @At("HEAD"))
     protected void applyFireTrailEffects(BlockPos blockPos, CallbackInfo ci){
         if(!((Object)this instanceof PlayerEntity)) return;
