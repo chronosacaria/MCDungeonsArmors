@@ -15,6 +15,8 @@ public class ArmorStats {
     public double attackSpeedBoost;
     public double movementSpeedBoost;
 
+    public int durabilityMultiplier;
+
     public ArmorStats setProtection(int head, int chest, int legs, int feet) {
         this.protection.put(HEAD, head);
         this.protection.put(CHEST, chest);
@@ -46,6 +48,11 @@ public class ArmorStats {
 
     public ArmorStats setMovementSpeedBoost(double movement) {
         this.movementSpeedBoost = movement;
+        return this;
+    }
+
+    public ArmorStats setDurabilityMultiplier(int durabilityMultiplier){
+        this.durabilityMultiplier = durabilityMultiplier;
         return this;
     }
 }

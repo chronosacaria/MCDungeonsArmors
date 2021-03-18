@@ -43,6 +43,8 @@ public class ArmorSetItem extends ArmorItem {
         int protection = set.getProtectionAmount(slot);
         float toughness = set.getToughness();
 
+        int durabilityMultiplier = set.getDurability(slot);
+
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         UUID uuid = ARMOR_MODIFIERS[slot.getEntitySlotId()];
         builder.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uuid, "Armor modifier",

@@ -34,6 +34,10 @@ public class McdaConfig implements ConfigData {
         return armorStats.get(set).setProtection(head, chest, legs, feet);
     }
 
+    protected ArmorStats setDurabilityMultiplierLeather(int value, ArmorSets set){
+        return armorStats.get(set).setDurabilityMultiplier(value);
+    }
+
     protected ArmorStats setAttackDamageBoost(double value, ArmorSets set) {
         return armorStats.get(set).setAttackDamageBoost(value);
     }
@@ -67,90 +71,90 @@ public class McdaConfig implements ConfigData {
         }
 
         // Leather Armors
-        setProtection(1, 3, 2, 1, HUNTER);
-        setProtection(2, 6, 4, 2, ARCHER);
-        setProtection(1, 5, 3, 1, OCELOT);
-        setProtection(2, 6, 4, 2, SHADOW_WALKER);
-        setProtection(2, 6, 4, 2, SPELUNKER);
-        setProtection(2, 6, 5, 2, CAVE_CRAWLER);
-        setProtection(2, 6, 4, 2, WOLF);
-        setProtection(2, 6, 5, 2, BLACK_WOLF);
-        setProtection(2, 6, 4, 2, FOX);
-        setProtection(2, 6, 4, 2, ARCTIC_FOX);
-        setProtection(1, 6, 5, 1, CLIMBING_GEAR);
-        setProtection(2, 6, 5, 2, RUGGED_CLIMBING_GEAR);
-        // setProtection(2, 6, 5, 2, GOAT); // TODO
+        setProtection(1, 3, 2, 1, HUNTER).setDurabilityMultiplier(15);
+        setProtection(2, 6, 4, 2, ARCHER).setDurabilityMultiplier(15);
+        setProtection(1, 5, 3, 1, OCELOT).setDurabilityMultiplier(15);
+        setProtection(2, 6, 4, 2, SHADOW_WALKER).setDurabilityMultiplier(15);
+        setProtection(2, 6, 4, 2, SPELUNKER).setDurabilityMultiplier(15);
+        setProtection(2, 6, 5, 2, CAVE_CRAWLER).setDurabilityMultiplier(15);
+        setProtection(2, 6, 4, 2, WOLF).setDurabilityMultiplier(15);
+        setProtection(2, 6, 5, 2, BLACK_WOLF).setDurabilityMultiplier(15);
+        setProtection(2, 6, 4, 2, FOX).setDurabilityMultiplier(15);
+        setProtection(2, 6, 4, 2, ARCTIC_FOX).setDurabilityMultiplier(15);
+        setProtection(1, 6, 5, 1, CLIMBING_GEAR).setDurabilityMultiplier(15);
+        setProtection(2, 6, 5, 2, RUGGED_CLIMBING_GEAR).setDurabilityMultiplier(15);
+        // setProtection(2, 6, 5, 2, GOAT).setDurabilityMultiplier(15); // TODO
         // setKnockbackRes(0.2F, GOAT);
 
         // Fabric Armours
-        setProtection(1, 3, 2, 1, BATTLE);
-        setProtection(2, 3, 2, 2, SPLENDID);
-        setProtection(1, 3, 3, 1, EVOCATION);
-        setProtection(1, 3, 3, 1, EMBER);
-        setProtection(1, 3, 3, 1, VERDANT);
-        setProtection(2, 5, 4, 2, THIEF);
-        setProtection(2, 5, 4, 2, SPIDER);
-        setProtection(1, 6, 5, 1, SOUL_ROBE)
+        setProtection(1, 3, 2, 1, BATTLE).setDurabilityMultiplier(5);
+        setProtection(2, 3, 2, 2, SPLENDID).setDurabilityMultiplier(5);
+        setProtection(1, 3, 3, 1, EVOCATION).setDurabilityMultiplier(5);
+        setProtection(1, 3, 3, 1, EMBER).setDurabilityMultiplier(5);
+        setProtection(1, 3, 3, 1, VERDANT).setDurabilityMultiplier(5);
+        setProtection(2, 5, 4, 2, THIEF).setDurabilityMultiplier(5);
+        setProtection(2, 5, 4, 2, SPIDER).setDurabilityMultiplier(5);
+        setProtection(1, 6, 5, 1, SOUL_ROBE).setDurabilityMultiplier(5)
                 .setToughness(2.0F);
-        setProtection(2, 6, 5, 2, SOULDANCER)
+        setProtection(2, 6, 5, 2, SOULDANCER).setDurabilityMultiplier(5)
                 .setToughness(2.0F);
-        setProtection(2, 3, 2, 2, SPROUT);
-        setProtection(2, 3, 2, 2, LIVING_VINES);
-        setProtection(2, 4, 2, 2, PIGLIN);
+        setProtection(2, 3, 2, 2, SPROUT).setDurabilityMultiplier(5);
+        setProtection(2, 3, 2, 2, LIVING_VINES).setDurabilityMultiplier(5);
+        setProtection(2, 4, 2, 2, PIGLIN).setDurabilityMultiplier(5);
 
         // Bone Armours
-        setProtection(2, 6, 5, 3, PHANTOM);
-        setProtection(3, 7, 5, 3, FROST_BITE);
-        setProtection(2, 6, 5, 3, GRIM);
-        setProtection(3, 7, 5, 3, WITHER);
+        setProtection(2, 6, 5, 3, PHANTOM).setDurabilityMultiplier(25);
+        setProtection(3, 7, 5, 3, FROST_BITE).setDurabilityMultiplier(25);
+        setProtection(2, 6, 5, 3, GRIM).setDurabilityMultiplier(25);
+        setProtection(3, 7, 5, 3, WITHER).setDurabilityMultiplier(25);
 
         // Light Plate Armor
-        setProtection(2, 5, 4, 2, SCALE_MAIL);
-        setProtection(2, 6, 5, 2, HIGHLAND);
-        setProtection(2, 5, 4, 2, BEENEST);
-        setProtection(2, 6, 5, 2, BEEHIVE);
-        setProtection(2, 5, 4, 2, GHOSTLY);
-        setProtection(2, 6, 5, 2, GHOST_KINDLER);
-        setProtection(2, 6, 5, 2, GOLDEN_PIGLIN);
+        setProtection(2, 5, 4, 2, SCALE_MAIL).setDurabilityMultiplier(14);
+        setProtection(2, 6, 5, 2, HIGHLAND).setDurabilityMultiplier(14);
+        setProtection(2, 5, 4, 2, BEENEST).setDurabilityMultiplier(14);
+        setProtection(2, 6, 5, 2, BEEHIVE).setDurabilityMultiplier(14);
+        setProtection(2, 5, 4, 2, GHOSTLY).setDurabilityMultiplier(14);
+        setProtection(2, 6, 5, 2, GHOST_KINDLER).setDurabilityMultiplier(14);
+        setProtection(2, 6, 5, 2, GOLDEN_PIGLIN).setDurabilityMultiplier(14);
 
         // Medium Plate Armor
-        setProtection(3, 6, 4, 3, REINFORCED_MAIL)
+        setProtection(3, 6, 4, 3, REINFORCED_MAIL).setDurabilityMultiplier(30)
                 .setToughness(1.0F);
-        setProtection(3, 7, 5, 3, STALWART_MAIL)
+        setProtection(3, 7, 5, 3, STALWART_MAIL).setDurabilityMultiplier(30)
                 .setToughness(1.0F);
-        setProtection(3, 7, 5, 3, GUARDS);
-        setProtection(3, 7, 5, 3, CURIOUS)
+        setProtection(3, 7, 5, 3, GUARDS).setDurabilityMultiplier(30);
+        setProtection(3, 7, 5, 3, CURIOUS).setDurabilityMultiplier(30)
                 .setToughness(2.0F);
-        setProtection(3, 7, 5, 3, SNOW)
+        setProtection(3, 7, 5, 3, SNOW).setDurabilityMultiplier(30)
                 .setToughness(2.0F);
-        setProtection(3, 7, 5, 3, FROST)
+        setProtection(3, 7, 5, 3, FROST).setDurabilityMultiplier(30)
                 .setToughness(2.0F);
-        setProtection(3, 5, 4, 3, MERCENARY)
+        setProtection(3, 5, 4, 3, MERCENARY).setDurabilityMultiplier(30)
                 .setToughness(1.5F);
-        setProtection(3, 6, 5, 3, RENEGADE)
+        setProtection(3, 6, 5, 3, RENEGADE).setDurabilityMultiplier(30)
                 .setToughness(1.75F);
-        setProtection(3, 7, 5, 3, HUNGRY_HORROR)
+        setProtection(3, 7, 5, 3, HUNGRY_HORROR).setDurabilityMultiplier(30)
                 .setToughness(2.0F);
-        setProtection(3, 7, 5, 3, EMERALD)
+        setProtection(3, 7, 5, 3, EMERALD).setDurabilityMultiplier(30)
                 .setToughness(2.0F);
-        setProtection(4, 7, 5, 4, OPULENT)
+        setProtection(4, 7, 5, 4, OPULENT).setDurabilityMultiplier(30)
                 .setToughness(2.0F);
 
         // Heavy Plate Armor
-        setProtection(3, 8, 6, 3, DARK);
-        setProtection(3, 8, 6, 3, TITAN);
-        setProtection(3, 8, 6, 3, ROYAL);
-        setProtection(3, 8, 6, 3, PLATE);
-        setProtection(4, 8, 6, 4, FULL_METAL);
-        setProtection(3, 8, 6, 3, MYSTERY);
-        setProtection(3, 8, 6, 3, BLUE_MYSTERY);
-        setProtection(3, 8, 6, 3, GREEN_MYSTERY);
-        setProtection(3, 8, 6, 3, PURPLE_MYSTERY);
-        setProtection(3, 8, 6, 3, RED_MYSTERY);
-        setProtection(3, 8, 6, 3, CHAMPION);
-        setProtection(4, 9, 7, 4, HERO)
+        setProtection(3, 8, 6, 3, DARK).setDurabilityMultiplier(36);
+        setProtection(3, 8, 6, 3, TITAN).setDurabilityMultiplier(36);
+        setProtection(3, 8, 6, 3, ROYAL).setDurabilityMultiplier(36);
+        setProtection(3, 8, 6, 3, PLATE).setDurabilityMultiplier(36);
+        setProtection(4, 8, 6, 4, FULL_METAL).setDurabilityMultiplier(36);
+        setProtection(3, 8, 6, 3, MYSTERY).setDurabilityMultiplier(36);
+        setProtection(3, 8, 6, 3, BLUE_MYSTERY).setDurabilityMultiplier(36);
+        setProtection(3, 8, 6, 3, GREEN_MYSTERY).setDurabilityMultiplier(36);
+        setProtection(3, 8, 6, 3, PURPLE_MYSTERY).setDurabilityMultiplier(36);
+        setProtection(3, 8, 6, 3, RED_MYSTERY).setDurabilityMultiplier(36);
+        setProtection(3, 8, 6, 3, CHAMPION).setDurabilityMultiplier(36);
+        setProtection(4, 9, 7, 4, HERO).setDurabilityMultiplier(36)
                 .setToughness(2.0F);
-        setProtection(3, 8, 6, 3, GILDED)
+        setProtection(3, 8, 6, 3, GILDED).setDurabilityMultiplier(36)
                 .setToughness(2.0F);
 
         // Stat Boosts
