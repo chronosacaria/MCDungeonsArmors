@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "ArmorFeatureRendererMixin",
+    "ExperienceOrbEntityMixin",
     "LivingEntityMixin",
     "PersistentProjectileEntityMixin",
     "PiglinBrainMixin",
@@ -12,7 +13,6 @@
   ],
   "client": [
     "InGameOverlayRendererMixin"
-
   ],
   "injectors": {
     "defaultRequire": 1

@@ -2,6 +2,7 @@ package chronosacaria.mcda.enchants;
 
 // Careful: Names directly correspond to enchantment ids and should therefore never change
 public enum EnchantID {
+    BAG_OF_SOULS,
     BURNING,
     CHILLING,
     COWARDICE,
