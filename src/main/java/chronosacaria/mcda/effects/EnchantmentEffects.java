@@ -181,4 +181,18 @@ public class EnchantmentEffects {
             projectile.prevYaw += 180.0F;
         }
     }
+
+    public static void applySwiftfooted(ServerPlayerEntity player){
+        if (!config.enableEnchantment.get(SWIFTFOOTED))
+            return;
+
+        if (!(player.isOnGround())){
+            int swiftfootedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SWIFTFOOTED),player);
+            if (swiftfootedLevel == 0) return;
+
+            StatusEffectInstance swiftfooted = new StatusEffectInstance(StatusEffects.SPEED, 60, swiftfootedLevel - 1,
+                    false, false);
+            player.addStatusEffect(swiftfooted);
+        }
+    }
 }
