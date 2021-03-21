@@ -64,7 +64,7 @@ public class EnchantmentEffects {
         BlockState blockState = Blocks.FIRE.getDefaultState();
 
             BlockPos placeFireTrail = blockPos.offset(player.getMovementDirection().getOpposite(), 2);
-            if (player.world.getBlockState(placeFireTrail).isAir() && player.isOnGround()){
+            if (player.world.getBlockState(placeFireTrail).isAir() && player.isOnGround() && !(player.isSneaking())){
                 player.world.setBlockState(placeFireTrail, blockState);
             }
 
