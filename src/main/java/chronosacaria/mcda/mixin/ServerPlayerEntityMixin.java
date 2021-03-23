@@ -20,6 +20,7 @@ public class ServerPlayerEntityMixin {
         // Effects from Enchantments
         EnchantmentEffects.applyCowardice(playerEntity);
         EnchantmentEffects.applyFrenzied(playerEntity);
+        EnchantmentEffects.applyReckless(playerEntity);
         EnchantmentEffects.applySwiftfooted(playerEntity);
 
         // Effects from Armour Sets

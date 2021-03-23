@@ -19,7 +19,6 @@ import net.minecraft.potion.Potions;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -180,6 +179,24 @@ public class EnchantmentEffects {
             projectile.yaw += 180.0F;
             projectile.prevYaw += 180.0F;
         }
+    }
+
+    public static void applyReckless(ServerPlayerEntity player){
+        if (!config.enableEnchantment.get(RECKLESS))
+            return;
+
+        int recklessLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(RECKLESS), player);
+        if (recklessLevel == 0) return;
+
+        if (player.getHealth() >= 8) {
+            player.setHealth(8f);
+        }
+
+        if (player.getHealth() <= 8){
+            StatusEffectInstance reckless = new StatusEffectInstance(StatusEffects.STRENGTH, 40, recklessLevel - 1,false, false);
+            player.addStatusEffect(reckless);
+        }
+
     }
 
     public static void applySwiftfooted(ServerPlayerEntity player){

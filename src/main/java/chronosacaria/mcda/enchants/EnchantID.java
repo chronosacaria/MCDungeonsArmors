@@ -12,6 +12,7 @@ public enum EnchantID {
     FRENZIED,
     HEAL_ALLIES,
     POTION_BARRIER,
+    RECKLESS,
     RECYCLER,
     SNOWBALL,
     SURPRISE_GIFT,
