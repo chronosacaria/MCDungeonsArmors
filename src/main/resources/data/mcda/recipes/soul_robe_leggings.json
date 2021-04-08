@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "SBS",
+    "   "
+  ],
+  "key": {
+    "G": {
+      "item": "mcda:fabric_bolt_gray"
+    },
+    "S": {
+      "item": "minecraft:soul_sand"
+    },
+    "B": {
+      "item": "mcda:fabric_bolt_black"
+    }
+  },
+  "result": {
+    "item": "mcda:soul_robe_helmet",
+    "count": 1
+  }
+}

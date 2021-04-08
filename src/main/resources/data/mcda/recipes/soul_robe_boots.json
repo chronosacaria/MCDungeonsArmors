@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "G G",
+    "S S",
+    "   "
+  ],
+  "key": {
+    "G": {
+      "item": "mcda:fabric_bolt_gray"
+    },
+    "S": {
+      "item": "minecraft:soul_sand"
+    }
+  },
+  "result": {
+    "item": "mcda:soul_robe_boots",
+    "count": 1
+  }
+}
