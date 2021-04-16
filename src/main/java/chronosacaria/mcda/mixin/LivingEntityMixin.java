@@ -53,6 +53,8 @@ public abstract class LivingEntityMixin extends Entity {
     public void healAlliesDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
         if (!((Object)this instanceof PlayerEntity))
             return;
+        if (!(source.getAttacker() instanceof LivingEntity))
+            return;
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
 
