@@ -20,6 +20,9 @@ import net.minecraft.world.World;
 
 import java.util.Iterator;
 
+import static chronosacaria.mcda.config.McdaConfig.config;
+import static chronosacaria.mcda.effects.ArmorEffectID.*;
+
 public class ArmorEffects {
 
     // Effects for LivingEntityMixin
@@ -58,6 +61,8 @@ public class ArmorEffects {
     }
 
     public static void applyFluidFreezing(PlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(FLUID_FREEZING))
+            return;
         World world = playerEntity.getEntityWorld();
         BlockPos blockPos = playerEntity.getBlockPos();
 
@@ -120,6 +125,8 @@ public class ArmorEffects {
     }
 
     public static void applyThiefInvisibilityTick(PlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(INVISIBILITY))
+            return;
         if (playerEntity.isAlive()){
             ItemStack helmetStack = playerEntity.inventory.armor.get(3);
             ItemStack chestStack = playerEntity.inventory.armor.get(2);
@@ -135,7 +142,8 @@ public class ArmorEffects {
     }
 
     public static void applyWithered(PlayerEntity playerEntity, LivingEntity attacker){
-
+        if (!config.enableArmorEffect.get(WITHERED))
+            return;
         if (attacker != null) {
             if (playerEntity.isAlive()) {
                 ItemStack helmetStack = playerEntity.inventory.armor.get(3);
@@ -155,6 +163,8 @@ public class ArmorEffects {
 
     // Effects for ServerPlayerEntityMixin
     public static void applyHaste(ServerPlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(HASTE))
+            return;
         if (playerEntity.getY() < 32.0F) {
             ItemStack helmetStack = playerEntity.inventory.armor.get(3);
             ItemStack chestStack = playerEntity.inventory.armor.get(2);
@@ -186,6 +196,8 @@ public class ArmorEffects {
     }
 
     public static void applyHeroOfTheVillage(ServerPlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(HERO_OF_THE_VILLAGE))
+            return;
         if (playerEntity.isAlive()) {
             ItemStack helmetStack = playerEntity.inventory.armor.get(3);
             ItemStack chestStack = playerEntity.inventory.armor.get(2);
@@ -213,6 +225,8 @@ public class ArmorEffects {
     }
 
     public static void applyHunger(ServerPlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(HUNGER))
+            return;
         if (playerEntity.isAlive()) {
             ItemStack helmetStack = playerEntity.inventory.armor.get(3);
             ItemStack chestStack = playerEntity.inventory.armor.get(2);
@@ -231,6 +245,8 @@ public class ArmorEffects {
     }
 
     public static void applyFireResistance(ServerPlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(FIRE_RESISTANCE))
+            return;
         if (playerEntity.isAlive()) {
             ItemStack helmetStack = playerEntity.inventory.armor.get(3);
             ItemStack chestStack = playerEntity.inventory.armor.get(2);
@@ -258,6 +274,8 @@ public class ArmorEffects {
     }
 
     public static void applyLuck(ServerPlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(LUCK))
+            return;
         if (playerEntity.isAlive()) {
             ItemStack helmetStack = playerEntity.inventory.armor.get(3);
             ItemStack chestStack = playerEntity.inventory.armor.get(2);
@@ -276,6 +294,8 @@ public class ArmorEffects {
     }
 
     public static void applySprintingSpeed(ServerPlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(SPRINTING))
+            return;
         if (playerEntity.isAlive()) {
             ItemStack helmetStack = playerEntity.inventory.armor.get(3);
             ItemStack chestStack = playerEntity.inventory.armor.get(2);

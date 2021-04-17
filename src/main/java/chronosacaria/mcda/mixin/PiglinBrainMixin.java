@@ -13,12 +13,16 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import static chronosacaria.mcda.config.McdaConfig.config;
+import static chronosacaria.mcda.effects.ArmorEffectID.PIGLIN_FOOLING;
+
 @Mixin(PiglinBrain.class)
 public abstract class PiglinBrainMixin {
 
     @Inject(method = "shouldAttack", at = @At(value = "RETURN"), cancellable = true)
     private static void onPiglinSelectPlayerToAttack(LivingEntity target, CallbackInfoReturnable<Boolean> cir){
-
+        if (!config.enableArmorEffect.get(PIGLIN_FOOLING))
+            return;
         boolean shouldAttack = cir.getReturnValue();
         if (shouldAttack && target instanceof PlayerEntity) {
             ItemStack helmetStack = ((PlayerEntity) target).inventory.armor.get(3);

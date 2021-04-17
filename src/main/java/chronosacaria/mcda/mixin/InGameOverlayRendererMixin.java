@@ -6,20 +6,22 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.InGameOverlayRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import static chronosacaria.mcda.config.McdaConfig.config;
+import static chronosacaria.mcda.effects.ArmorEffectID.FIRE_RESISTANCE;
+
 @Mixin(InGameOverlayRenderer.class)
 public class InGameOverlayRendererMixin {
     @Inject(method = "renderFireOverlay", at = @At("HEAD"), cancellable = true)
     private static void renderFireOverlayOverride(MinecraftClient minecraftClient, MatrixStack matrixStack,
                                                  CallbackInfo ci) {
+        if (!config.enableArmorEffect.get(FIRE_RESISTANCE))
+            return;
         if (MinecraftClient.getInstance().player.isAlive()) {
             ItemStack helmetStack = MinecraftClient.getInstance().player.inventory.armor.get(3);
             ItemStack chestStack = MinecraftClient.getInstance().player.inventory.armor.get(2);

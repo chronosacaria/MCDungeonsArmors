@@ -22,6 +22,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import static chronosacaria.mcda.config.McdaConfig.config;
+import static chronosacaria.mcda.effects.ArmorEffectID.*;
 import static chronosacaria.mcda.enchants.EnchantID.HEAL_ALLIES;
 
 @Mixin(LivingEntity.class)
@@ -102,6 +104,8 @@ public abstract class LivingEntityMixin extends Entity {
     // Spider Armour Climbing
     @Inject(method = "isClimbing", at = @At("HEAD"), cancellable = true)
     private void spiderArmourClimbing(CallbackInfoReturnable<Boolean> cir){
+        if (!config.enableArmorEffect.get(SPIDER_CLIMBING))
+            return;
         if(!((Object)this instanceof PlayerEntity)) return;
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
@@ -128,6 +132,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(method = "handleFallDamage", at = @At("HEAD"), cancellable = true)
     public void shadowWalkerArmorNoFallDamage(float fallDistance, float damageMultiplier,
                                               CallbackInfoReturnable<Boolean> cir){
+        if (!config.enableArmorEffect.get(NO_FALL_DAMAGE))
+            return;
         if(!((Object)this instanceof PlayerEntity)) return;
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;

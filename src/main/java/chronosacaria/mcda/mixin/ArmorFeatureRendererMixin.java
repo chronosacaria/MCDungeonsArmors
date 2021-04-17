@@ -1,5 +1,6 @@
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -15,6 +16,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import static chronosacaria.mcda.config.McdaConfig.config;
+import static chronosacaria.mcda.effects.ArmorEffectID.*;
+
 @Mixin(ArmorFeatureRenderer.class)
 public class ArmorFeatureRendererMixin {
 
@@ -22,6 +26,9 @@ public class ArmorFeatureRendererMixin {
     @Inject(method = "renderArmor", at = @At("HEAD"), cancellable = true)
     public void renderArmorOverride(MatrixStack matrices, VertexConsumerProvider vertexConsumers,
                                  LivingEntity livingEntity, EquipmentSlot equipmentSlot, int i, BipedEntityModel<LivingEntity> bipedEntityModel, CallbackInfo info) {
+        if (!config.enableArmorEffect.get(FIRE_RESISTANCE))
+            return;
+
         if (livingEntity instanceof PlayerEntity && livingEntity.isSneaking()){
             ItemStack helmetStack = ((PlayerEntity) livingEntity).inventory.armor.get(3);
             ItemStack chestStack = ((PlayerEntity) livingEntity).inventory.armor.get(2);

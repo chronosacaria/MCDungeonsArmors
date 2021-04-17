@@ -1,6 +1,7 @@
 package chronosacaria.mcda.config;
 
 import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.enchants.EnchantID;
 import chronosacaria.mcda.items.ArmorSets;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
@@ -27,6 +28,7 @@ public class McdaConfig implements ConfigData {
 
     // config contents:
     public EnumMap<EnchantID, Boolean> enableEnchantment = new EnumMap<>(EnchantID.class);
+    public EnumMap<ArmorEffectID, Boolean> enableArmorEffect = new EnumMap<>(ArmorEffectID.class);
     public EnumMap<ArmorSets, ArmorStats> armorStats = new EnumMap<>(ArmorSets.class);
 
     // convenience methods:
@@ -54,6 +56,10 @@ public class McdaConfig implements ConfigData {
     public McdaConfig() {
         for (EnchantID enchantID : EnchantID.values()) {
             enableEnchantment.put(enchantID, true);
+        }
+
+        for (ArmorEffectID armorEffectID : ArmorEffectID.values()){
+            enableArmorEffect.put(armorEffectID, true);
         }
 
         for (ArmorSets armorSet : ArmorSets.values()) {
