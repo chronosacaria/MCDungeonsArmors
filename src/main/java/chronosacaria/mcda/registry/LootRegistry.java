@@ -22,8 +22,9 @@ public class LootRegistry {
     public static final Collection<Identifier> NETHER_FORTRESS_LOOT_TABLES = Collections.singletonList(
             LootTables.NETHER_BRIDGE_CHEST);
 
-    public static final Collection<Identifier> PILLAGER_TOWER_LOOT_TABLES = Collections.singletonList(
-            LootTables.PILLAGER_OUTPOST_CHEST);
+    public static final Collection<Identifier> PILLAGER_TOWER_LOOT_TABLES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
+            LootTables.PILLAGER_OUTPOST_CHEST, LootTables.WOODLAND_MANSION_CHEST)));
+
 
     public static final Collection<Identifier> VILLAGE_SMITH_LOOT_TABLES = Collections.unmodifiableList(Arrays.asList(
             LootTables.VILLAGE_TOOLSMITH_CHEST,
