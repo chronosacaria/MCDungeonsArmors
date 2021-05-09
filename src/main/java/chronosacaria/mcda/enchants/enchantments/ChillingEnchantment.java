@@ -2,6 +2,7 @@ package chronosacaria.mcda.enchants.enchantments;
 
 import chronosacaria.mcda.enchants.ArmorEnchantment;
 import chronosacaria.mcda.enchants.EnchantID;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -19,5 +20,9 @@ public class ChillingEnchantment extends ArmorEnchantment {
             e.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20 * level, level * 2 - 1));
             e.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 20 * level, level * 2 - 1));
         }
+    }
+    @Override
+    protected boolean canAccept(Enchantment other){
+        return !(other instanceof BurningEnchantment);
     }
 }
