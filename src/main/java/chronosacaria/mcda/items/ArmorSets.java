@@ -111,6 +111,14 @@ public enum ArmorSets implements ArmorMaterial {
             15,
             ITEM_ARMOR_EQUIP_LEATHER,
             () -> Ingredient.ofItems(Items.LEATHER)),
+    SQUID("squid", "squid_armor",
+            15,
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(Items.LEATHER)),
+    GLOW_SQUID("glowsquid", "glow_squid_armor",
+            15,
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(Items.LEATHER)),
 
     //GOAT("goat", "goat_gear",
     //        15,
@@ -188,6 +196,14 @@ public enum ArmorSets implements ArmorMaterial {
             9,
             ENTITY_SKELETON_AMBIENT,
             () -> Ingredient.ofItems(Items.BONE)),
+    TURTLE("turtle", "turtle_armor",
+            9,
+            ITEM_ARMOR_EQUIP_TURTLE,
+            () -> Ingredient.ofItems(Items.SCUTE)),
+    NIMBLE_TURTLE("nimbleturtle", "nimble_turtle_armor",
+            9,
+            ITEM_ARMOR_EQUIP_TURTLE,
+            () -> Ingredient.ofItems(Items.SCUTE)),
 
     /* * * * * * *|
     | LIGHT PLATE |

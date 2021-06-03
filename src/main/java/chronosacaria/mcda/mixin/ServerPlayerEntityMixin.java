@@ -30,5 +30,6 @@ public class ServerPlayerEntityMixin {
         ArmorEffects.applyHunger(playerEntity); // Hungry Horror Armour
         ArmorEffects.applyLuck(playerEntity); // Opulent Armour
         ArmorEffects.applySprintingSpeed(playerEntity); // Shadow Walker Armour
+        ArmorEffects.applyWaterBreathing(playerEntity); // Glow Squid Armour Water Breathing under water
     }
 }

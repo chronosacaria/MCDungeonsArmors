@@ -161,6 +161,29 @@ public class ArmorEffects {
         }
     }
 
+    public static void applyNimbleTurtleEffects(PlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(NIMBLE_TURTLE_EFFECTS))
+            return;
+        if (playerEntity.isAlive()) {
+            ItemStack helmetStack = playerEntity.inventory.armor.get(3);
+            ItemStack chestStack = playerEntity.inventory.armor.get(2);
+            ItemStack legsStack = playerEntity.inventory.armor.get(1);
+            ItemStack feetStack = playerEntity.inventory.armor.get(0);
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.NIMBLE_TURTLE).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.NIMBLE_TURTLE).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.NIMBLE_TURTLE).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.NIMBLE_TURTLE).get(EquipmentSlot.FEET).asItem()) {
+                StatusEffectInstance resistance = new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 1, false,
+                        false);
+                StatusEffectInstance healing = new StatusEffectInstance(StatusEffects.REGENERATION, 60, 1, false,
+                        false);
+                playerEntity.addStatusEffect(resistance);
+                playerEntity.addStatusEffect(healing);
+            }
+        }
+    }
+
     // Effects for ServerPlayerEntityMixin
     public static void applyHaste(ServerPlayerEntity playerEntity){
         if (!config.enableArmorEffect.get(HASTE))
@@ -310,6 +333,28 @@ public class ArmorEffects {
                     StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
                             false);
                     playerEntity.addStatusEffect(speed);
+                }
+            }
+        }
+    }
+
+    public static void applyWaterBreathing(ServerPlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(WATER_BREATHING))
+            return;
+        if (playerEntity.isAlive()) {
+            ItemStack helmetStack = playerEntity.inventory.armor.get(3);
+            ItemStack chestStack = playerEntity.inventory.armor.get(2);
+            ItemStack legsStack = playerEntity.inventory.armor.get(1);
+            ItemStack feetStack = playerEntity.inventory.armor.get(0);
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GLOW_SQUID).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GLOW_SQUID).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GLOW_SQUID).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GLOW_SQUID).get(EquipmentSlot.FEET).asItem()) {
+                if (playerEntity.isSubmergedInWater()) {
+                    StatusEffectInstance waterBreathing = new StatusEffectInstance(StatusEffects.WATER_BREATHING, 42, 0,
+                            false, false);
+                    playerEntity.addStatusEffect(waterBreathing);
                 }
             }
         }

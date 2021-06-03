@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:turtle_armor_chestplate"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_oceanic"
+  },
+  "result": {
+    "item": "mcda:nimble_turtle_armor_chestplate"
+  }
+}

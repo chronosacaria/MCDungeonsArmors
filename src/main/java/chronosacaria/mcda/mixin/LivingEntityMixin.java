@@ -11,6 +11,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -33,6 +34,8 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow protected abstract int computeFallDamage(float fallDistance, float damageMultiplier);
 
+    @Shadow protected float lastDamageTaken;
+
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
     // Mixins for enchants related to consuming a potion
@@ -53,6 +56,9 @@ public abstract class LivingEntityMixin extends Entity {
     // Mixins for enchants related to damage reception
     @Inject(method = "damage", at = @At("HEAD"))
     public void healAlliesDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+        if (!config.enableEnchantment.get(HEAL_ALLIES))
+            return;
+
         if (!((Object)this instanceof PlayerEntity))
             return;
         if (!(source.getAttacker() instanceof LivingEntity))
@@ -78,6 +84,21 @@ public abstract class LivingEntityMixin extends Entity {
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
         ArmorEffects.applyWithered(playerEntity, (LivingEntity) source.getAttacker());
+    }
+
+    // Mixin for Nimble Turtle Armour Effects
+    @Inject(method = "damage", at = @At("HEAD"))
+    public void applyNimbleTurtleDamageEffects(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+        if (!config.enableArmorEffect.get(NIMBLE_TURTLE_EFFECTS))
+            return;
+        if(!((Object)this instanceof PlayerEntity)) return;
+
+        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+        if (playerEntity.isAlive()){
+            if (this.lastDamageTaken >= 0){
+                    ArmorEffects.applyNimbleTurtleEffects(playerEntity);
+            }
+        }
     }
 
     // Mixins for Armour and Enchantment Effects on Tick

@@ -12,6 +12,8 @@
     "mcda:arctic_fox_armor_helmet",
     "mcda:climbing_gear_helmet",
     "mcda:rugged_climbing_gear_helmet",
+    "mcda:squid_armor_helmet",
+    "mcda:glow_squid_armor_helmet",
 
     "mcda:evocation_robe_helmet",
     "mcda:ember_robe_helmet",
@@ -28,6 +30,8 @@
     "mcda:frost_bite_armor_helmet",
     "mcda:grim_armor_helmet",
     "mcda:wither_armor_helmet",
+    "mcda:turtle_armor_helmet",
+    "mcda:nimble_turtle_armor_helmet",
 
     "mcda:highland_armor_helmet",
     "mcda:beehive_armor_helmet",

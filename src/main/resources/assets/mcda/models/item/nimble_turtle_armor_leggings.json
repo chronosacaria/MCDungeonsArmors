@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mcda:item/nimble_turtle_armor_leggings"
+  }
+}

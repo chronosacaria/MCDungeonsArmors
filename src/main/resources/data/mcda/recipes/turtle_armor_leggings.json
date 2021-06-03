@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "HHH",
+    "H H",
+    "H H"
+  ],
+  "key": {
+    "H": {
+      "item": "minecraft:scute"
+    }
+  },
+  "result": {
+    "item": "mcda:turtle_armor_leggings",
+    "count": 1
+  }
+}

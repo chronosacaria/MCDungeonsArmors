@@ -516,6 +516,42 @@
   "item.mcda.golden_piglin_armor.tooltip_2":      "融合了猪灵的两种喜好：",
   "item.mcda.golden_piglin_armor.tooltip_3":      "不死和黄金。",
 
+  "item.mcda.squid_armor_boots":                  "鱿鱼靴子",
+  "item.mcda.squid_armor_leggings":               "鱿鱼护腿",
+  "item.mcda.squid_armor_chestplate":             "鱿鱼胸甲",
+  "item.mcda.squid_armor_helmet":                 "鱿鱼头盔",
+
+  "item.mcda.squid_armor.tooltip_1":              "很容易让这件漆黑的铠甲",
+  "item.mcda.squid_armor.tooltip_2":              "看起来很酷。困难的部分",
+  "item.mcda.squid_armor.tooltip_3":              "是收集墨囊。",
+
+  "item.mcda.glow_squid_armor_boots":             "发光鱿鱼靴子",
+  "item.mcda.glow_squid_armor_leggings":          "发光鱿鱼护腿",
+  "item.mcda.glow_squid_armor_chestplate":        "发光鱿鱼胸甲",
+  "item.mcda.glow_squid_armor_helmet":            "发光鱿鱼头盔",
+
+  "item.mcda.glow_squid_armor.tooltip_1":         "那些追捕难以捉摸的发光鱿鱼",
+  "item.mcda.glow_squid_armor.tooltip_2":         "的人穿上这件盔甲与",
+  "item.mcda.glow_squid_armor.tooltip_3":         "美丽的猎物融为一体。",
+
+  "item.mcda.turtle_armor_boots":                 "海龟靴子",
+  "item.mcda.turtle_armor_leggings":              "海龟护腿",
+  "item.mcda.turtle_armor_chestplate":            "海龟胸甲",
+  "item.mcda.turtle_armor_helmet":                "海龟头盔",
+
+  "item.mcda.turtle_armor.tooltip_1":             "海龟铠甲的灵感来自于",
+  "item.mcda.turtle_armor.tooltip_2":             "不起眼的乌龟坚硬的",
+  "item.mcda.turtle_armor.tooltip_3":             "保护壳。",
+
+  "item.mcda.nimble_turtle_armor_boots":          "敏捷海龟靴子",
+  "item.mcda.nimble_turtle_armor_leggings":       "敏捷海龟护腿",
+  "item.mcda.nimble_turtle_armor_chestplate":     "敏捷海龟胸甲",
+  "item.mcda.nimble_turtle_armor_helmet":         "敏捷海龟头盔",
+
+  "item.mcda.nimble_turtle_armor.tooltip_1":      "这件盔甲是由生活在深海",
+  "item.mcda.nimble_turtle_armor.tooltip_2":      "中的海龟的密集但出奇的",
+  "item.mcda.nimble_turtle_armor.tooltip_3":      "轻的贝壳制成的。",
+
   "item.mcda.bone_rib_cage":                      "骨肋笼",
   "item.mcda.phantom_bones":                      "幻翼骨",
   "item.mcda.phantom_skin":                       "幻翼皮",
@@ -559,6 +595,7 @@
   "item.mcda.upgrade_core_hive":                  "升级核心——蜂箱",
   "item.mcda.upgrade_core_magicked":              "升级核心——魔法",
   "item.mcda.upgrade_core_metal":                 "升级核心——金属",
+  "item.mcda.upgrade_core_oceanic":               "升级核心——海属",
   "item.mcda.upgrade_core_shadows":               "升级核心——暗影",
   "item.mcda.upgrade_core_spider":                "升级核心——蜘蛛",
   "item.mcda.upgrade_core_soul":                  "升级核心——灵魂",

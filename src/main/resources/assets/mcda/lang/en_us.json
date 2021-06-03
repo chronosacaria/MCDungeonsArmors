@@ -516,6 +516,42 @@
   "item.mcda.golden_piglin_armor.tooltip_2":      "a piglin's two favorite things:",
   "item.mcda.golden_piglin_armor.tooltip_3":      "not dying and gold.",
 
+  "item.mcda.squid_armor_boots":                  "Squid Boots",
+  "item.mcda.squid_armor_leggings":               "Squid Leggings",
+  "item.mcda.squid_armor_chestplate":             "Squid Chestplate",
+  "item.mcda.squid_armor_helmet":                 "Squid Helmet",
+
+  "item.mcda.squid_armor.tooltip_1":              "It was easy to make this jet-black",
+  "item.mcda.squid_armor.tooltip_2":              "armor look cool. The hard part was",
+  "item.mcda.squid_armor.tooltip_3":              "securing the ink sacs.",
+
+  "item.mcda.glow_squid_armor_boots":             "Glow Squid Boots",
+  "item.mcda.glow_squid_armor_leggings":          "Glow Squid Leggings",
+  "item.mcda.glow_squid_armor_chestplate":        "Glow Squid Chestplate",
+  "item.mcda.glow_squid_armor_helmet":            "Glow Squid Helmet",
+
+  "item.mcda.glow_squid_armor.tooltip_1":         "Those who hunt elusive glow squids",
+  "item.mcda.glow_squid_armor.tooltip_2":         "wear this armor to blend in with",
+  "item.mcda.glow_squid_armor.tooltip_3":         "their beautiful prey.",
+
+  "item.mcda.turtle_armor_boots":                 "Turtle Boots",
+  "item.mcda.turtle_armor_leggings":              "Turtle Leggings",
+  "item.mcda.turtle_armor_chestplate":            "Turtle Chestplate",
+  "item.mcda.turtle_armor_helmet":                "Turtle Helmet",
+
+  "item.mcda.turtle_armor.tooltip_1":             "The Turtle Armor is inspired by",
+  "item.mcda.turtle_armor.tooltip_2":             "the hardy and protective shell of",
+  "item.mcda.turtle_armor.tooltip_3":             "the humble turtle.",
+
+  "item.mcda.nimble_turtle_armor_boots":          "Nimble Turtle Boots",
+  "item.mcda.nimble_turtle_armor_leggings":       "Nimble Turtle Leggings",
+  "item.mcda.nimble_turtle_armor_chestplate":     "Nimble Turtle Chestplate",
+  "item.mcda.nimble_turtle_armor_helmet":         "Nimble Turtle Helmet",
+
+  "item.mcda.nimble_turtle_armor.tooltip_1":      "This armor is made from the dense",
+  "item.mcda.nimble_turtle_armor.tooltip_2":      "(but surprisingly light) shells of",
+  "item.mcda.nimble_turtle_armor.tooltip_3":      "turtles who lived at crushing depths.",
+
   "item.mcda.bone_rib_cage":                      "Bone Rib Cage",
   "item.mcda.phantom_bones":                      "Phantom Bones",
   "item.mcda.phantom_skin":                       "Phantom Skin",
@@ -559,6 +595,7 @@
   "item.mcda.upgrade_core_hive":                  "Upgrade Core - Hive",
   "item.mcda.upgrade_core_magicked":              "Upgrade Core - Magicked",
   "item.mcda.upgrade_core_metal":                 "Upgrade Core - Metal",
+  "item.mcda.upgrade_core_oceanic":               "Upgrade Core - Oceanic",
   "item.mcda.upgrade_core_shadows":               "Upgrade Core - Shadows",
   "item.mcda.upgrade_core_spider":                "Upgrade Core - Spider",
   "item.mcda.upgrade_core_soul":                  "Upgrade Core - Soul",

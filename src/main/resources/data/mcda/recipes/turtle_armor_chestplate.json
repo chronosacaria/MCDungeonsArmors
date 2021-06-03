@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "H H",
+    "HHH",
+    "HHH"
+  ],
+  "key": {
+    "H": {
+      "item": "minecraft:scute"
+    }
+  },
+  "result": {
+    "item": "mcda:turtle_armor_chestplate",
+    "count": 1
+  }
+}

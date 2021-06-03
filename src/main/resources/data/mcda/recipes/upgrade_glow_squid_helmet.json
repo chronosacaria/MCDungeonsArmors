@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:squid_armor_helmet"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_oceanic"
+  },
+  "result": {
+    "item": "mcda:glow_squid_armor_helmet"
+  }
+}

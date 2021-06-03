@@ -89,6 +89,8 @@ public class McdaConfig implements ConfigData {
         setProtection(2, 6, 4, 2, ARCTIC_FOX).setDurabilityMultiplier(15);
         setProtection(1, 6, 5, 1, CLIMBING_GEAR).setDurabilityMultiplier(15);
         setProtection(2, 6, 5, 2, RUGGED_CLIMBING_GEAR).setDurabilityMultiplier(15);
+        setProtection(1, 5, 3, 1, SQUID).setDurabilityMultiplier(15);
+        setProtection(2, 6, 4, 2, GLOW_SQUID).setDurabilityMultiplier(15);
         // setProtection(2, 6, 5, 2, GOAT).setDurabilityMultiplier(15); // TODO
         // setKnockbackRes(0.2F, GOAT);
 
@@ -109,10 +111,12 @@ public class McdaConfig implements ConfigData {
         setProtection(2, 4, 2, 2, PIGLIN).setDurabilityMultiplier(5);
 
         // Bone Armours
-        setProtection(2, 6, 5, 3, PHANTOM).setDurabilityMultiplier(25);
+        setProtection(2, 6, 4, 2, PHANTOM).setDurabilityMultiplier(25);
         setProtection(3, 7, 5, 3, FROST_BITE).setDurabilityMultiplier(25);
-        setProtection(2, 6, 5, 3, GRIM).setDurabilityMultiplier(25);
+        setProtection(2, 6, 4, 2, GRIM).setDurabilityMultiplier(25);
         setProtection(3, 7, 5, 3, WITHER).setDurabilityMultiplier(25);
+        setProtection(2, 6, 4, 2, TURTLE).setDurabilityMultiplier(25);
+        setProtection(3, 7, 5, 3, NIMBLE_TURTLE).setDurabilityMultiplier(25);
 
         // Light Plate Armor
         setProtection(2, 5, 4, 2, SCALE_MAIL).setDurabilityMultiplier(14);
