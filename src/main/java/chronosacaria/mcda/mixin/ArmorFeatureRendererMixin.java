@@ -26,14 +26,15 @@ public class ArmorFeatureRendererMixin {
     @Inject(method = "renderArmor", at = @At("HEAD"), cancellable = true)
     public void renderArmorOverride(MatrixStack matrices, VertexConsumerProvider vertexConsumers,
                                  LivingEntity livingEntity, EquipmentSlot equipmentSlot, int i, BipedEntityModel<LivingEntity> bipedEntityModel, CallbackInfo info) {
-        if (!config.enableArmorEffect.get(FIRE_RESISTANCE))
+        if (!config.enableArmorEffect.get(INVISIBILITY))
             return;
 
         if (livingEntity instanceof PlayerEntity && livingEntity.isSneaking()){
-            ItemStack helmetStack = ((PlayerEntity) livingEntity).inventory.armor.get(3);
-            ItemStack chestStack = ((PlayerEntity) livingEntity).inventory.armor.get(2);
-            ItemStack legsStack = ((PlayerEntity) livingEntity).inventory.armor.get(1);
-            ItemStack feetStack = ((PlayerEntity) livingEntity).inventory.armor.get(0);
+
+            ItemStack helmetStack = ((PlayerEntity) livingEntity).getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = ((PlayerEntity) livingEntity).getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = ((PlayerEntity) livingEntity).getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = ((PlayerEntity) livingEntity).getEquippedStack(EquipmentSlot.FEET);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.CHEST).asItem()

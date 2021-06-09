@@ -5,9 +5,9 @@ import chronosacaria.mcda.items.ItemID;
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.minecraft.item.Items;
-import net.minecraft.loot.BinomialLootTableRange;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.provider.number.BinomialLootNumberProvider;
 import net.minecraft.util.Identifier;
 
 import java.util.*;
@@ -50,39 +50,39 @@ public class LootRegistry {
             switch (id.getPath()) {
                 case "entities/phantom":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootTableRange.create(1,0.10F))
+                            .rolls(BinomialLootNumberProvider.create(1,0.10F))
                             .with(ItemEntry.builder(ItemID.PHANTOM_BONES))
-                            .rolls(BinomialLootTableRange.create(1,0.25F))
+                            .rolls(BinomialLootNumberProvider.create(1,0.25F))
                             .with(ItemEntry.builder(ItemID.PHANTOM_SKIN));
                     supplier.pool(poolBuilder);
                     break;
                 case "entities/ocelot":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootTableRange.create(1,0.10F))
+                            .rolls(BinomialLootNumberProvider.create(1,0.10F))
                             .with(ItemEntry.builder(ItemID.OCELOT_PELT))
-                            .rolls(BinomialLootTableRange.create(1,0.25F))
+                            .rolls(BinomialLootNumberProvider.create(1,0.25F))
                             .with(ItemEntry.builder(ItemID.OCELOT_PELT_BLACK));
                     supplier.pool(poolBuilder);
                     break;
                 case "entities/skeleton":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootTableRange.create(1, 0.05F))
+                            .rolls(BinomialLootNumberProvider.create(1, 0.05F))
                             .with(ItemEntry.builder(Items.SKELETON_SKULL));
                     supplier.pool(poolBuilder);
                     break;
                 case "entities/wolf":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootTableRange.create(1,0.10F))
+                            .rolls(BinomialLootNumberProvider.create(1,0.10F))
                             .with(ItemEntry.builder(ItemID.WOLF_PELT))
-                            .rolls(BinomialLootTableRange.create(1,0.25F))
+                            .rolls(BinomialLootNumberProvider.create(1,0.25F))
                             .with(ItemEntry.builder(ItemID.WOLF_PELT_BLACK));
                     supplier.pool(poolBuilder);
                     break;
                 case "entities/fox":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootTableRange.create(1,0.10F))
+                            .rolls(BinomialLootNumberProvider.create(1,0.10F))
                             .with(ItemEntry.builder(ItemID.FOX_PELT))
-                            .rolls(BinomialLootTableRange.create(1,0.25F))
+                            .rolls(BinomialLootNumberProvider.create(1,0.25F))
                             .with(ItemEntry.builder(ItemID.FOX_PELT_ARCTIC));
                     supplier.pool(poolBuilder);
                     break;
@@ -93,7 +93,7 @@ public class LootRegistry {
                     break;
                 case "blocks/blue_ice":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootTableRange.create(1, 0.05F))
+                            .rolls(BinomialLootNumberProvider.create(1, 0.05F))
                             .with(ItemEntry.builder(ItemID.FROST_CRYSTAL));
                     supplier.pool(poolBuilder);
                     break;
@@ -156,10 +156,18 @@ public class LootRegistry {
         addArmorSet(poolBuilder, ArmorSets.RED_MYSTERY, p);
     }
 
+    //public static void addArmorSet(FabricLootPoolBuilder poolBuilder, ArmorSets set, float p) {
+    //    ArmorsRegistry.armorItems.get(set).values()
+    //            .forEach((item -> {
+    //                poolBuilder.rolls(new BinomialLootTableRange(1, p));
+    //                poolBuilder.with(ItemEntry.builder(item));
+    //            }));
+    //}
+
     public static void addArmorSet(FabricLootPoolBuilder poolBuilder, ArmorSets set, float p) {
         ArmorsRegistry.armorItems.get(set).values()
                 .forEach((item -> {
-                    poolBuilder.rolls(new BinomialLootTableRange(1, p));
+                    poolBuilder.rolls(BinomialLootNumberProvider.create(1, p));
                     poolBuilder.with(ItemEntry.builder(item));
                 }));
     }

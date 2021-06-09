@@ -56,7 +56,7 @@ public abstract class ExperienceOrbEntityMixin extends Entity {
                     bagOfSoulsCount ++;
                 }
                 this.amount = (this.amount * (1 + (bagOfSoulsLevel / 3))) * bagOfSoulsCount;
-                this.remove();
+                this.remove(RemovalReason.KILLED);
             }
         }
     }

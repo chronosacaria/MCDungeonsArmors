@@ -6,6 +6,7 @@ import chronosacaria.mcda.registry.ArmorsRegistry;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.PiglinBrain;
+import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,16 +20,16 @@ import static chronosacaria.mcda.effects.ArmorEffectID.PIGLIN_FOOLING;
 @Mixin(PiglinBrain.class)
 public abstract class PiglinBrainMixin {
 
-    @Inject(method = "shouldAttack", at = @At(value = "RETURN"), cancellable = true)
-    private static void onPiglinSelectPlayerToAttack(LivingEntity target, CallbackInfoReturnable<Boolean> cir){
+    @Inject(method = "isPreferredAttackTarget", at = @At(value = "RETURN"), cancellable = true)
+    private static void onPiglinSelectPlayerToAttack(PiglinEntity piglin, LivingEntity target, CallbackInfoReturnable<Boolean> cir){
         if (!config.enableArmorEffect.get(PIGLIN_FOOLING))
             return;
         boolean shouldAttack = cir.getReturnValue();
         if (shouldAttack && target instanceof PlayerEntity) {
-            ItemStack helmetStack = ((PlayerEntity) target).inventory.armor.get(3);
-            ItemStack chestStack = ((PlayerEntity) target).inventory.armor.get(2);
-            ItemStack legsStack = ((PlayerEntity) target).inventory.armor.get(1);
-            ItemStack feetStack = ((PlayerEntity) target).inventory.armor.get(0);
+            ItemStack helmetStack = ((PlayerEntity) target).getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = ((PlayerEntity) target).getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = ((PlayerEntity) target).getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = ((PlayerEntity) target).getEquippedStack(EquipmentSlot.FEET);
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOLDEN_PIGLIN).get(EquipmentSlot.HEAD).asItem() &&
                     chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOLDEN_PIGLIN).get(EquipmentSlot.CHEST).asItem() &&
                     legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOLDEN_PIGLIN).get(EquipmentSlot.LEGS).asItem() &&

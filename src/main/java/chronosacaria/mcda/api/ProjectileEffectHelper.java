@@ -27,12 +27,12 @@ public class ProjectileEffectHelper {
         LivingEntity target = nearest.get();
         SnowballEntity snowballEntity = new SnowballEntity(world, user);
         // borrowed from AbstractSkeletonEntity
-        double towardsX = target.getX() - user.getX();
-        double towardsZ = target.getZ() - user.getZ();
-        double euclideanDist = MathHelper.sqrt(towardsX * towardsX + towardsZ * towardsZ);
-        double towardsY = target.getBodyY(0.3333333333333333) - snowballEntity.getY() + euclideanDist * 0.2;
-        snowballEntity.setProperties(user, user.pitch, user.yaw, 0.0F, 1.5F, 1.0F);
-        setProjectileTowards(snowballEntity, towardsX, towardsY, towardsZ, 0);
+        double d = target.getX() - snowballEntity.getX();
+        double e = target.getBodyY(0.3333333333333333D) - snowballEntity.getY();
+        double f = target.getZ() - snowballEntity.getZ();
+        double g = Math.sqrt(d * d + f * f);
+        snowballEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
+        setProjectileTowards(snowballEntity, d, e, g, 0);
         //
         user.world.spawnEntity(snowballEntity);
     }
@@ -45,10 +45,10 @@ public class ProjectileEffectHelper {
                         random.nextGaussian() * 0.0075 * inaccuracy,
                         random.nextGaussian() * 0.0075 * inaccuracy);
         projectileEntity.setVelocity(vec3d);
-        float f = MathHelper.sqrt(projectileEntity.squaredDistanceTo(vec3d));
-        projectileEntity.yaw = (float)(MathHelper.atan2(vec3d.x, vec3d.z) * (180.0 / Math.PI));
-        projectileEntity.pitch = (float)(MathHelper.atan2(vec3d.y, f) * (180.0 / Math.PI));
-        projectileEntity.prevYaw = projectileEntity.yaw;
-        projectileEntity.prevPitch = projectileEntity.pitch;
+        float f = MathHelper.sqrt((float)projectileEntity.squaredDistanceTo(vec3d));
+        projectileEntity.getYaw((float)(MathHelper.atan2(vec3d.x, vec3d.z) * (180.0 / Math.PI)));
+        projectileEntity.getPitch((float)(MathHelper.atan2(vec3d.y, f) * (180.0 / Math.PI)));
+        projectileEntity.prevYaw = projectileEntity.getYaw();
+        projectileEntity.prevPitch = projectileEntity.getPitch();
     }
 }

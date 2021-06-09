@@ -7,10 +7,12 @@ import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -19,6 +21,7 @@ import net.minecraft.potion.Potions;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -176,8 +179,7 @@ public class EnchantmentEffects {
         float deflectRand = victim.getRandom().nextFloat();
         if (deflectRand <= deflectChance) {
             projectile.setDamage(originalDamage * 0.5D);
-            projectile.yaw += 180.0F;
-            projectile.prevYaw += 180.0F;
+            projectile.setYaw(updateRotation(projectile.prevYaw, projectile.getYaw()));
         }
     }
 
@@ -211,5 +213,17 @@ public class EnchantmentEffects {
                     false, false);
             player.addStatusEffect(swiftfooted);
         }
+    }
+
+    protected static float updateRotation(float prevRot, float newRot) {
+        while(newRot - prevRot < -180.0F) {
+            prevRot -= 360.0F;
+        }
+
+        while(newRot - prevRot >= 180.0F) {
+            prevRot += 360.0F;
+        }
+
+        return MathHelper.lerp(180.0F, prevRot, newRot);
     }
 }
