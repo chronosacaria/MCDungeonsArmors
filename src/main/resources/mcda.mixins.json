@@ -9,6 +9,7 @@
     "LivingEntityMixin",
     "PersistentProjectileEntityMixin",
     "PiglinBrainMixin",
+    "PowderSnowBlockMixin",
     "ServerPlayerEntityMixin"
   ],
   "client": [

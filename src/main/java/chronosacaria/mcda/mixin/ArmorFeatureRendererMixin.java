@@ -1,6 +1,5 @@
 package chronosacaria.mcda.mixin;
 
-import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
 import net.minecraft.client.render.VertexConsumerProvider;
