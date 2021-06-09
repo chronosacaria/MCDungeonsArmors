@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ggg",
+    "gLg",
+    "g g"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:leather_leggings"
+    },
+    "g": {
+      "item": "mcda:goat_pelt"
+    }
+  },
+  "result": {
+    "item": "mcda:goat_gear_leggings",
+    "count": 1
+  }
+}

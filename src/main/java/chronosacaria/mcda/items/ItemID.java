@@ -16,7 +16,7 @@ public enum ItemID implements ItemConvertible {
     WOLF_PELT_BLACK,
     FOX_PELT,
     FOX_PELT_ARCTIC,
-    // GOAT_PELT, // TODO
+    GOAT_PELT,
 
     // Block Drops
     FROST_CRYSTAL,

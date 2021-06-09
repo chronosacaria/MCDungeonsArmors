@@ -36,7 +36,7 @@ public class McdaConfig implements ConfigData {
         return armorStats.get(set).setProtection(head, chest, legs, feet);
     }
 
-    protected ArmorStats setDurabilityMultiplierLeather(int value, ArmorSets set){
+    protected ArmorStats setDurabilityMultiplier(int value, ArmorSets set){
         return armorStats.get(set).setDurabilityMultiplier(value);
     }
 
@@ -50,6 +50,10 @@ public class McdaConfig implements ConfigData {
 
     protected ArmorStats setMovementSpeedBoost(double value, ArmorSets set) {
         return armorStats.get(set).setMovementSpeedBoost(value);
+    }
+
+    protected ArmorStats setKnockbackResistance(float value, ArmorSets set) {
+        return armorStats.get(set).setKnockbackRes(value);
     }
 
     // set config defaults
@@ -91,8 +95,8 @@ public class McdaConfig implements ConfigData {
         setProtection(2, 6, 5, 2, RUGGED_CLIMBING_GEAR).setDurabilityMultiplier(15);
         setProtection(1, 5, 3, 1, SQUID).setDurabilityMultiplier(15);
         setProtection(2, 6, 4, 2, GLOW_SQUID).setDurabilityMultiplier(15);
-        // setProtection(2, 6, 5, 2, GOAT).setDurabilityMultiplier(15); // TODO
-        // setKnockbackRes(0.2F, GOAT);
+        setProtection(2, 6, 5, 2, GOAT).setDurabilityMultiplier(15)
+                .setKnockbackRes(0.2F);
 
         // Fabric Armours
         setProtection(1, 3, 2, 1, BATTLE).setDurabilityMultiplier(5);

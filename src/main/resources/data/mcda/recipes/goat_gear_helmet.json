@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GgG",
+    "gLg",
+    "ggg"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:iron_ingot"
+    },
+    "g": {
+      "item": "mcda:goat_pelt"
+    },
+    "L": {
+      "item": "minecraft:leather_helmet"
+    }
+  },
+  "result": {
+    "item": "mcda:goat_gear_helmet",
+    "count": 1
+  }
+}

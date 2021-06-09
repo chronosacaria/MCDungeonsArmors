@@ -120,10 +120,10 @@ public enum ArmorSets implements ArmorMaterial {
             ITEM_ARMOR_EQUIP_LEATHER,
             () -> Ingredient.ofItems(Items.LEATHER)),
 
-    //GOAT("goat", "goat_gear",
-    //        15,
-    //        ITEM_ARMOR_EQUIP_LEATHER,
-    //        () -> Ingredient.ofItems(ItemsInit.GOAT_PELT)),
+    GOAT("goat", "goat_gear",
+            15,
+            ITEM_ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.ofItems(ItemID.GOAT_PELT)),
 
 
     /* * * * |
