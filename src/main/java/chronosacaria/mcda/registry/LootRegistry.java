@@ -91,6 +91,12 @@ public class LootRegistry {
                     addArmorSet(poolBuilder, ArmorSets.EVOCATION,0.10F);
                     supplier.pool(poolBuilder);
                     break;
+                case "entities/goat":
+                    poolBuilder = FabricLootPoolBuilder.builder()
+                            .rolls(BinomialLootNumberProvider.create(1,0.30F))
+                            .with(ItemEntry.builder(ItemID.GOAT_PELT));
+                    supplier.pool(poolBuilder);
+                    break;
                 case "blocks/blue_ice":
                     poolBuilder = FabricLootPoolBuilder.builder()
                             .rolls(BinomialLootNumberProvider.create(1, 0.05F))
