@@ -1,8 +1,12 @@
 package chronosacaria.mcda.api;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -35,6 +39,18 @@ public class ProjectileEffectHelper {
         setProjectileTowards(snowballEntity, d, e, g, 0);
         //
         user.world.spawnEntity(snowballEntity);
+    }
+
+    public static void ricochetArrowLikeShield(PersistentProjectileEntity persistentProjectileEntity, LivingEntity livingEntity){
+        persistentProjectileEntity.setVelocity(persistentProjectileEntity.getVelocity().multiply(-0.1D));
+        persistentProjectileEntity.getYaw(180.0F);
+        persistentProjectileEntity.prevYaw += 180.0F;
+        if (!persistentProjectileEntity.world.isClient && persistentProjectileEntity.getVelocity().lengthSquared() < 1.0E-7D){
+            if (persistentProjectileEntity.pickupType == PersistentProjectileEntity.PickupPermission.ALLOWED){
+                persistentProjectileEntity.dropStack(new ItemStack(Items.ARROW), 0.1F);
+            }
+            persistentProjectileEntity.remove(Entity.RemovalReason.KILLED);
+        }
     }
 
     public static void setProjectileTowards(ProjectileEntity projectileEntity, double x, double y, double z, float inaccuracy) {

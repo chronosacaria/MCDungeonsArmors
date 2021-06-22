@@ -6,20 +6,15 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 
@@ -161,26 +156,6 @@ public class EnchantmentEffects {
 
             StatusEffectInstance frenzied = new StatusEffectInstance(StatusEffects.HASTE, 40, frenziedLevel, false, false);
             player.addStatusEffect(frenzied);
-        }
-    }
-
-    public static void applyDeflect(EntityHitResult hitResult, PersistentProjectileEntity projectile) {
-        if (!config.enableEnchantment.get(DEFLECT))
-            return;
-
-        if (!(projectile.getOwner() instanceof LivingEntity)) return;
-        if (!(hitResult.getEntity() instanceof LivingEntity)) return;
-
-        LivingEntity victim = (LivingEntity) hitResult.getEntity();
-        int deflectLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(DEFLECT), victim);
-        if (deflectLevel == 0) return;
-
-        double originalDamage = projectile.getDamage();
-        double deflectChance = deflectLevel * 0.2F;
-        float deflectRand = victim.getRandom().nextFloat();
-        if (deflectRand <= deflectChance) {
-            projectile.setDamage(originalDamage * 0.5D);
-            projectile.setYaw(updateRotation(projectile.prevYaw, projectile.getYaw()));
         }
     }
 
