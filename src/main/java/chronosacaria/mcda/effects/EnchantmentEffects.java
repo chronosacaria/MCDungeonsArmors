@@ -145,7 +145,8 @@ public class EnchantmentEffects {
         if (player.getHealth() == player.getMaxHealth()) {
             int cowardiceLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(COWARDICE), player);
             if (cowardiceLevel == 0) return;
-            StatusEffectInstance strengthBoost = new StatusEffectInstance(StatusEffects.STRENGTH, 42, cowardiceLevel + 1, false, false);
+            StatusEffectInstance strengthBoost = new StatusEffectInstance(StatusEffects.STRENGTH, 42,
+                    cowardiceLevel - 1, false, false);
             player.addStatusEffect(strengthBoost);
         }
     }
