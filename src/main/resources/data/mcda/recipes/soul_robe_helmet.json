@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "GGG",
-    "GSG",
-    "S S"
+    "SBS",
+    "   "
   ],
   "key": {
     "G": {
@@ -11,6 +11,9 @@
     },
     "S": {
       "item": "minecraft:soul_sand"
+    },
+    "B": {
+      "item": "mcda:fabric_bolt_black"
     }
   },
   "result": {
