@@ -11,10 +11,16 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.screen.slot.Slot;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -22,9 +28,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
-import static chronosacaria.mcda.enchants.EnchantID.HEAL_ALLIES;
+import static chronosacaria.mcda.enchants.EnchantID.*;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
@@ -34,6 +44,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow protected abstract int computeFallDamage(float fallDistance, float damageMultiplier);
 
     @Shadow protected float lastDamageTaken;
+
+    @Shadow @Nullable public abstract LivingEntity getAttacker();
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
@@ -52,7 +64,7 @@ public abstract class LivingEntityMixin extends Entity {
         EnchantmentEffects.applySurpriseGift(playerEntity);
     }
 
-    // Mixins for enchants related to damage reception
+    // Mixin for Heal Allies Enchantment
     @Inject(method = "damage", at = @At("HEAD"))
     public void healAlliesDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
         if (!config.enableEnchantment.get(HEAL_ALLIES))
@@ -173,6 +185,65 @@ public abstract class LivingEntityMixin extends Entity {
                 if (i > 0) {
                     cir.setReturnValue(true);
                 }
+            }
+        }
+    }
+
+    // Mixin for Death Barter
+    @Inject(method = "tryUseTotem", at = @At("HEAD"), cancellable = true)
+    public void onDeathBarterDeath(DamageSource damageSource, CallbackInfoReturnable<Boolean> cir){
+        if (!config.enableEnchantment.get(DEATH_BARTER))
+            return;
+
+        LivingEntity livingEntity = (LivingEntity) (Object) this;
+
+        PlayerEntity playerEntity = null;
+
+        if (livingEntity instanceof PlayerEntity){
+            playerEntity = (PlayerEntity) livingEntity;
+        } else {
+            return;
+        }
+
+        PlayerInventory playerInventory = playerEntity.getInventory();
+        int emeraldTotal = 0;
+        List<Integer> emeraldSlotIndices = new ArrayList<>();
+        for(int slotIndex = 0; slotIndex < playerInventory.size(); slotIndex++){
+            ItemStack currentStack = playerInventory.getStack(slotIndex);
+            if(currentStack.getItem() == Items.EMERALD){
+                emeraldTotal += currentStack.getCount();
+                emeraldSlotIndices.add(slotIndex);
+            }
+        }
+
+        int deathBarterLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(DEATH_BARTER), playerEntity);
+        int minEmeralds = 150 / deathBarterLevel;
+        if (deathBarterLevel > 0 && emeraldTotal >= minEmeralds && emeraldTotal > 0){
+
+            for (Integer slotIndex : emeraldSlotIndices) {
+                if (minEmeralds > 0) {
+                    ItemStack currentEmeraldsStack = playerInventory.getStack(slotIndex);
+                    int currentEmeraldsCount = currentEmeraldsStack.getCount();
+                    if (currentEmeraldsCount >= minEmeralds) {
+                        currentEmeraldsStack.setCount(currentEmeraldsCount - minEmeralds);
+                        minEmeralds = 0;
+                    } else {
+                        currentEmeraldsStack.setCount(0);
+                        minEmeralds -= currentEmeraldsCount;
+                    }
+                } else {
+                    break;
+                }
+
+                        playerEntity.setHealth(1.0F);
+                        playerEntity.clearStatusEffects();
+                        playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
+                        playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1));
+                        playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
+
+                        cir.setReturnValue(true);
+
+
             }
         }
     }

@@ -16,7 +16,6 @@ import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -163,14 +162,16 @@ public class EnchantmentEffects {
         if (!config.enableEnchantment.get(RECKLESS))
             return;
 
+        float recklessHealth = player.getMaxHealth() * 0.4F;
+
         int recklessLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(RECKLESS), player);
         if (recklessLevel == 0) return;
 
-        if (player.getHealth() >= 8) {
-            player.setHealth(8f);
+        if (player.getHealth() >= recklessHealth) {
+            player.setHealth(recklessHealth);
         }
 
-        if (player.getHealth() <= 8){
+        if (player.getHealth() <= recklessHealth){
             StatusEffectInstance reckless = new StatusEffectInstance(StatusEffects.STRENGTH, 40, recklessLevel - 1,false, false);
             player.addStatusEffect(reckless);
         }
@@ -189,17 +190,5 @@ public class EnchantmentEffects {
                     false, false);
             player.addStatusEffect(swiftfooted);
         }
-    }
-
-    protected static float updateRotation(float prevRot, float newRot) {
-        while(newRot - prevRot < -180.0F) {
-            prevRot -= 360.0F;
-        }
-
-        while(newRot - prevRot >= 180.0F) {
-            prevRot += 360.0F;
-        }
-
-        return MathHelper.lerp(180.0F, prevRot, newRot);
     }
 }
