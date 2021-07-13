@@ -217,33 +217,35 @@ public abstract class LivingEntityMixin extends Entity {
         }
 
         int deathBarterLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(DEATH_BARTER), playerEntity);
-        int minEmeralds = 150 / deathBarterLevel;
-        if (deathBarterLevel > 0 && emeraldTotal >= minEmeralds && emeraldTotal > 0){
+        if (deathBarterLevel > 0) {
+            int minEmeralds = 150 / deathBarterLevel;
+            if (deathBarterLevel > 0 && emeraldTotal >= minEmeralds && emeraldTotal > 0) {
 
-            for (Integer slotIndex : emeraldSlotIndices) {
-                if (minEmeralds > 0) {
-                    ItemStack currentEmeraldsStack = playerInventory.getStack(slotIndex);
-                    int currentEmeraldsCount = currentEmeraldsStack.getCount();
-                    if (currentEmeraldsCount >= minEmeralds) {
-                        currentEmeraldsStack.setCount(currentEmeraldsCount - minEmeralds);
-                        minEmeralds = 0;
+                for (Integer slotIndex : emeraldSlotIndices) {
+                    if (minEmeralds > 0) {
+                        ItemStack currentEmeraldsStack = playerInventory.getStack(slotIndex);
+                        int currentEmeraldsCount = currentEmeraldsStack.getCount();
+                        if (currentEmeraldsCount >= minEmeralds) {
+                            currentEmeraldsStack.setCount(currentEmeraldsCount - minEmeralds);
+                            minEmeralds = 0;
+                        } else {
+                            currentEmeraldsStack.setCount(0);
+                            minEmeralds -= currentEmeraldsCount;
+                        }
                     } else {
-                        currentEmeraldsStack.setCount(0);
-                        minEmeralds -= currentEmeraldsCount;
+                        break;
                     }
-                } else {
-                    break;
+
+                    playerEntity.setHealth(1.0F);
+                    playerEntity.clearStatusEffects();
+                    playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
+                    playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1));
+                    playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
+
+                    cir.setReturnValue(true);
+
+
                 }
-
-                        playerEntity.setHealth(1.0F);
-                        playerEntity.clearStatusEffects();
-                        playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
-                        playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1));
-                        playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
-
-                        cir.setReturnValue(true);
-
-
             }
         }
     }
