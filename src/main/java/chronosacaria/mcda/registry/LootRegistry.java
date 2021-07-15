@@ -121,6 +121,7 @@ public class LootRegistry {
                 addArmorSet(poolBuilder, ArmorSets.DARK,  0.10F);
                 addArmorSet(poolBuilder, ArmorSets.THIEF, 0.10F);
                 addArmorSet(poolBuilder, ArmorSets.ROYAL, 0.05F);
+                addArmorSet(poolBuilder, ArmorSets.TITAN, 0.025F);
                 supplier.pool(poolBuilder);
             } else if (VILLAGE_SMITH_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();

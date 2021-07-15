@@ -1,16 +1,21 @@
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.api.AbilityHelper;
+import chronosacaria.mcda.api.McdaEnchantmentHelper;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
 import chronosacaria.mcda.registry.EnchantsRegistry;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,9 +33,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
@@ -46,6 +49,10 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow protected float lastDamageTaken;
 
     @Shadow @Nullable public abstract LivingEntity getAttacker();
+
+    @Shadow public abstract boolean addStatusEffect(StatusEffectInstance effect);
+
+    @Shadow public abstract boolean damage(DamageSource source, float amount);
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
@@ -245,6 +252,61 @@ public abstract class LivingEntityMixin extends Entity {
                     cir.setReturnValue(true);
 
 
+                }
+            }
+        }
+    }
+
+    // Mixin for Titan Shroud Effect
+    @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
+    public void applyTitanShroudStatusEffects(DamageSource source, float amount, CallbackInfo info) {
+        if (!config.enableArmorEffect.get(TITAN_SHROUD_EFFECTS))
+            return;
+
+        PlayerEntity playerEntity = (PlayerEntity) source.getAttacker();
+        LivingEntity target = (LivingEntity) (Object) this;
+
+        if (source.getSource() instanceof PlayerEntity) {
+            if (amount != 0.0F) {
+                if (playerEntity != null) {
+                    ItemStack mainHandStack = playerEntity.getMainHandStack();
+                    ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+                    ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+                    ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+                    ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
+
+
+                    if (mainHandStack != null && helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TITAN).get(EquipmentSlot.HEAD).asItem()
+                            && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TITAN).get(EquipmentSlot.CHEST).asItem()
+                            && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TITAN).get(EquipmentSlot.LEGS).asItem()
+                            && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TITAN).get(EquipmentSlot.FEET).asItem()) {
+
+                        ArmorEffects.applyTitanShroudStatuses(playerEntity, target);
+
+                    }
+                }
+            }
+        }
+    }
+
+    @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
+    public void onFireFocusAttack(DamageSource source, float amount, CallbackInfo info) {
+       if (!config.enableEnchantment.get(FIRE_FOCUS))
+           return;
+
+        PlayerEntity playerEntity = (PlayerEntity) source.getAttacker();
+        LivingEntity target = (LivingEntity) (Object) this;
+
+        if (source.getSource() instanceof PlayerEntity) {
+            if (amount != 0.0F) {
+                if (playerEntity != null && McdaEnchantmentHelper.hasFireAspect(playerEntity)) {
+                    int fireFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FIRE_FOCUS), playerEntity);
+                    if (fireFocusLevel > 0) {
+                        float h = target.getHealth();
+                        float multiplier = 1 + (0.25F * fireFocusLevel);
+                        target.setHealth(h - (amount * multiplier));
+
+                    }
                 }
             }
         }

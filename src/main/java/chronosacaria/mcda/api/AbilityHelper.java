@@ -1,5 +1,7 @@
 package chronosacaria.mcda.api;
 
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -81,4 +83,6 @@ public class AbilityHelper {
                 && !isAllyOf(self, enemy)
                 && isNotAPlayer(enemy);
     }
+
+
 }

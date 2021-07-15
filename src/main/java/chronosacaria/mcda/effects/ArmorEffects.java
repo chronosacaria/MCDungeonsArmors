@@ -5,6 +5,7 @@ import chronosacaria.mcda.registry.ArmorsRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.FoxEntity;
@@ -18,12 +19,20 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
 
 public class ArmorEffects {
+
+    public static final List<StatusEffect> TITAN_SHROUD_STATUS_EFFECTS_LIST =
+            List.of(StatusEffects.HUNGER, StatusEffects.NAUSEA, StatusEffects.BLINDNESS,
+                    StatusEffects.MINING_FATIGUE, StatusEffects.SLOWNESS,
+                    StatusEffects.UNLUCK, StatusEffects.WEAKNESS);
 
     // Effects for LivingEntityMixin
     public static void teleportOnHit(LivingEntity livingEntity) {
@@ -182,6 +191,14 @@ public class ArmorEffects {
                 playerEntity.addStatusEffect(healing);
             }
         }
+    }
+
+    public static void applyTitanShroudStatuses(PlayerEntity playerEntity, LivingEntity target){
+        if (!config.enableArmorEffect.get(TITAN_SHROUD_EFFECTS))
+            return;
+        StatusEffect titanStatusEffect =
+                TITAN_SHROUD_STATUS_EFFECTS_LIST.get(playerEntity.getRandom().nextInt(TITAN_SHROUD_STATUS_EFFECTS_LIST.size()));
+        target.addStatusEffect(new StatusEffectInstance(titanStatusEffect, 60, 0));
     }
 
     // Effects for ServerPlayerEntityMixin
