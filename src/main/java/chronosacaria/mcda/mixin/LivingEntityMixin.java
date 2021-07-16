@@ -1,28 +1,20 @@
 package chronosacaria.mcda.mixin;
 
-import chronosacaria.mcda.api.AbilityHelper;
 import chronosacaria.mcda.api.McdaEnchantmentHelper;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
 import chronosacaria.mcda.registry.EnchantsRegistry;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.screen.slot.Slot;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -53,6 +45,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow public abstract boolean addStatusEffect(StatusEffectInstance effect);
 
     @Shadow public abstract boolean damage(DamageSource source, float amount);
+
+    @Shadow @Nullable private LivingEntity attacker;
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
@@ -299,14 +293,36 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (source.getSource() instanceof PlayerEntity) {
             if (amount != 0.0F) {
-                if (playerEntity != null && McdaEnchantmentHelper.hasFireAspect(playerEntity)) {
+                if (playerEntity != null && McdaEnchantmentHelper.hasFireAspect(playerEntity) || target.isOnFire()) {
                     int fireFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FIRE_FOCUS), playerEntity);
                     if (fireFocusLevel > 0) {
                         float h = target.getHealth();
                         float multiplier = 1 + (0.25F * fireFocusLevel);
                         target.setHealth(h - (amount * multiplier));
-
                     }
+                }
+            }
+        }
+    }
+
+    @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
+    public void onPoisonFocusAttack(DamageSource source, float amount, CallbackInfo info) {
+        if (!config.enableEnchantment.get(POISON_FOCUS))
+            return;
+
+        if (source != DamageSource.MAGIC) return;
+
+        LivingEntity target = (LivingEntity) (Object) this;
+
+        if (target.getActiveStatusEffects().get(StatusEffects.POISON) != null) {
+            PlayerEntity playerEntity = (PlayerEntity) target.getAttacker();
+            if (playerEntity != null) {
+                int poisonFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POISON_FOCUS),
+                        playerEntity);
+                if (poisonFocusLevel > 0) {
+                    float h = target.getHealth();
+                    float multiplier = 1 + (0.25F * poisonFocusLevel);
+                    target.setHealth(h - (amount * multiplier));
                 }
             }
         }

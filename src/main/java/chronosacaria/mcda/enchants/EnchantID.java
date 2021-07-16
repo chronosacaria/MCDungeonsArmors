@@ -13,6 +13,7 @@ public enum EnchantID {
     FOOD_RESERVES,
     FRENZIED,
     HEAL_ALLIES,
+    POISON_FOCUS,
     POTION_BARRIER,
     RECKLESS,
     RECYCLER,
