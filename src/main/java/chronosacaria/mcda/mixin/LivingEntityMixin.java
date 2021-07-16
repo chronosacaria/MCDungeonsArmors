@@ -283,6 +283,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
+    // Mixin for Fire Focus
     @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
     public void onFireFocusAttack(DamageSource source, float amount, CallbackInfo info) {
        if (!config.enableEnchantment.get(FIRE_FOCUS))
@@ -305,6 +306,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
+    // Mixin for Poison Focus
     @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
     public void onPoisonFocusAttack(DamageSource source, float amount, CallbackInfo info) {
         if (!config.enableEnchantment.get(POISON_FOCUS))
