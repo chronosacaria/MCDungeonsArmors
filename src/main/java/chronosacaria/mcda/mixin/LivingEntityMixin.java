@@ -257,6 +257,8 @@ public abstract class LivingEntityMixin extends Entity {
         if (!config.enableArmorEffect.get(TITAN_SHROUD_EFFECTS))
             return;
 
+        if(!(source.getAttacker() instanceof PlayerEntity))return;
+
         PlayerEntity playerEntity = (PlayerEntity) source.getAttacker();
         LivingEntity target = (LivingEntity) (Object) this;
 
@@ -289,6 +291,8 @@ public abstract class LivingEntityMixin extends Entity {
        if (!config.enableEnchantment.get(FIRE_FOCUS))
            return;
 
+        if(!(source.getAttacker() instanceof PlayerEntity))return;
+
         PlayerEntity playerEntity = (PlayerEntity) source.getAttacker();
         LivingEntity target = (LivingEntity) (Object) this;
 
@@ -311,6 +315,8 @@ public abstract class LivingEntityMixin extends Entity {
     public void onPoisonFocusAttack(DamageSource source, float amount, CallbackInfo info) {
         if (!config.enableEnchantment.get(POISON_FOCUS))
             return;
+
+        if(!(source.getAttacker() instanceof PlayerEntity))return;
 
         if (source != DamageSource.MAGIC) return;
 
