@@ -11,10 +11,12 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -40,13 +42,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow protected float lastDamageTaken;
 
-    @Shadow @Nullable public abstract LivingEntity getAttacker();
-
-    @Shadow public abstract boolean addStatusEffect(StatusEffectInstance effect);
-
     @Shadow public abstract boolean damage(DamageSource source, float amount);
-
-    @Shadow @Nullable private LivingEntity attacker;
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
@@ -331,6 +327,46 @@ public abstract class LivingEntityMixin extends Entity {
                     float h = target.getHealth();
                     float multiplier = 1 + (0.25F * poisonFocusLevel);
                     target.setHealth(h - (amount * multiplier));
+                }
+            }
+        }
+    }
+
+    // Mixin for Black Wolf Armour Effect (Leader of the Pack)
+    @Inject(method = "applyDamage", at = @At("HEAD"), cancellable = true)
+    public void onBlackWolfArmourEffect(DamageSource source, float amount, CallbackInfo info){
+        if (!config.enableArmorEffect.get(LEADER_OF_THE_PACK))
+            return;
+
+        LivingEntity target = (LivingEntity) (Object) this;
+        Entity petSource = source.getSource();
+
+        if (petSource == null) return;
+
+        if (petSource.world instanceof ServerWorld && petSource instanceof TameableEntity){
+            ServerWorld serverWorld = (ServerWorld) petSource.world;
+            PlayerEntity owner = (PlayerEntity) ((TameableEntity) petSource).getOwner();
+            if (owner != null){
+                UUID petOwnerUUID = owner.getUuid();
+                ItemStack helmetStack = owner.getEquippedStack(EquipmentSlot.HEAD);
+                ItemStack chestStack = owner.getEquippedStack(EquipmentSlot.CHEST);
+                ItemStack legsStack = owner.getEquippedStack(EquipmentSlot.LEGS);
+                ItemStack feetStack = owner.getEquippedStack(EquipmentSlot.FEET);
+
+                if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLACK_WOLF).get(EquipmentSlot.HEAD).asItem()
+                        && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLACK_WOLF).get(EquipmentSlot.CHEST).asItem()
+                        && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLACK_WOLF).get(EquipmentSlot.LEGS).asItem()
+                        && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLACK_WOLF).get(EquipmentSlot.FEET).asItem()) {
+
+                    if (petOwnerUUID != null) {
+                        Entity petOwner = serverWorld.getEntity(petOwnerUUID);
+                        if (petOwner instanceof LivingEntity) {
+                            float blackWolfArmourFactor = 1.5f;
+                            float newDamage = amount * blackWolfArmourFactor;
+                            float h = target.getHealth();
+                            target.setHealth(h - newDamage);
+                        }
+                    }
                 }
             }
         }

@@ -87,7 +87,7 @@ public class McdaConfig implements ConfigData {
         setProtection(2, 6, 4, 2, SHADOW_WALKER).setDurabilityMultiplier(15);
         setProtection(2, 6, 4, 2, SPELUNKER).setDurabilityMultiplier(15);
         setProtection(2, 6, 5, 2, CAVE_CRAWLER).setDurabilityMultiplier(15);
-        setProtection(2, 6, 4, 2, WOLF).setDurabilityMultiplier(15);
+        setProtection(2, 5, 4, 2, WOLF).setDurabilityMultiplier(15);
         setProtection(2, 6, 5, 2, BLACK_WOLF).setDurabilityMultiplier(15);
         setProtection(2, 6, 4, 2, FOX).setDurabilityMultiplier(15);
         setProtection(2, 6, 4, 2, ARCTIC_FOX).setDurabilityMultiplier(15);

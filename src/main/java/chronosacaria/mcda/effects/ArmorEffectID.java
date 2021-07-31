@@ -7,6 +7,7 @@ public enum ArmorEffectID {
     HERO_OF_THE_VILLAGE,
     HUNGER,
     INVISIBILITY,
+    LEADER_OF_THE_PACK,
     LUCK,
     NIMBLE_TURTLE_EFFECTS,
     NO_FALL_DAMAGE,
