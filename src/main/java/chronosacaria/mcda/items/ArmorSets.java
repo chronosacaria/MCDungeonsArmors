@@ -7,6 +7,7 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Lazy;
 import net.minecraft.util.Rarity;
 
@@ -102,7 +103,6 @@ public enum ArmorSets implements ArmorMaterial {
             15,
             ITEM_ARMOR_EQUIP_LEATHER,
             () -> Ingredient.ofItems(Items.LEATHER)),
-
     CLIMBING_GEAR("climbing", "climbing_gear",
             15,
             ITEM_ARMOR_EQUIP_LEATHER,
@@ -177,6 +177,22 @@ public enum ArmorSets implements ArmorMaterial {
             9,
             ITEM_ARMOR_EQUIP_IRON,
             () -> Ingredient.ofItems(Items.LEATHER)),
+    ENTERTAINER("entertainer", "entertainer_garb",
+            25,
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_CYAN)),
+    TROUBADOUR("troubadour", "troubadour_armor",
+            25,
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_MAGENTA)),
+    TELEPORTATION("teleportation", "teleportation_robe",
+            25,
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_PURPLE)),
+    UNSTABLE("unstable", "unstable_robe",
+            25,
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_PURPLE)),
     /* * * |
     | BONE |
     | * * */
@@ -339,7 +355,15 @@ public enum ArmorSets implements ArmorMaterial {
     GILDED("gildedglory", "gilded_glory",
             10,
             ITEM_ARMOR_EQUIP_DIAMOND,
-            () -> Ingredient.ofItems(Items.EMERALD));
+            () -> Ingredient.ofItems(Items.EMERALD)),
+    SHULKER("shulker", "shulker_armor",
+                   10,
+            BLOCK_SHULKER_BOX_CLOSE,
+            () -> Ingredient.ofItems(Items.SHULKER_SHELL)),
+    STURDY_SHULKER("sturdyshulker", "sturdy_shulker_armor",
+                   10,
+            BLOCK_SHULKER_BOX_CLOSE,
+            () -> Ingredient.ofItems(Items.SHULKER_SHELL));
 
     private static final int[] baseDurability = new int[]{12, 14, 15, 10};
     private final String textureName;
@@ -397,7 +421,10 @@ public enum ArmorSets implements ArmorMaterial {
             case GILDED:
             case RUGGED_CLIMBING_GEAR:
             case GOLDEN_PIGLIN:
-            //case GOAT: // TODO
+            case GOAT:
+            case TROUBADOUR:
+            case UNSTABLE:
+            case STURDY_SHULKER:
                 return Rarity.RARE;
             default:
                 return Rarity.UNCOMMON;

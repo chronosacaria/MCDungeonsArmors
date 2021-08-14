@@ -113,6 +113,10 @@ public class McdaConfig implements ConfigData {
         setProtection(2, 3, 2, 2, SPROUT).setDurabilityMultiplier(5);
         setProtection(2, 3, 2, 2, LIVING_VINES).setDurabilityMultiplier(5);
         setProtection(2, 4, 2, 2, PIGLIN).setDurabilityMultiplier(5);
+        setProtection(2, 4, 3, 2, ENTERTAINER).setDurabilityMultiplier(5);
+        setProtection(3, 5, 4, 3, TROUBADOUR).setDurabilityMultiplier(5);
+        setProtection(2, 4, 3, 2, TELEPORTATION).setDurabilityMultiplier(5);
+        setProtection(3, 5, 4, 3, UNSTABLE).setDurabilityMultiplier(5);
 
         // Bone Armours
         setProtection(2, 6, 4, 2, PHANTOM).setDurabilityMultiplier(25);
@@ -170,6 +174,9 @@ public class McdaConfig implements ConfigData {
                 .setToughness(2.0F);
         setProtection(3, 8, 6, 3, GILDED).setDurabilityMultiplier(36)
                 .setToughness(2.0F);
+        setProtection(2, 7, 5, 2, SHULKER).setDurabilityMultiplier(36);
+        setProtection(3, 8, 6, 3, STURDY_SHULKER).setDurabilityMultiplier(36)
+                .setKnockbackRes(0.2F);
 
         // Stat Boosts
         setAttackDamageBoost(0.075, SPLENDID);

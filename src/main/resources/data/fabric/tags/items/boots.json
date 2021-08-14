@@ -23,6 +23,10 @@
     "mcda:sprout_armor_boots",
     "mcda:living_vines_armor_boots",
     "mcda:piglin_armor_boots",
+    "mcda:entertainer_garb_boots",
+    "mcda:troubadour_armor_boots",
+    "mcda:teleportation_robe_boots",
+    "mcda:unstable_robe_boots",
 
     "mcda:phantom_armor_boots",
     "mcda:frost_bite_armor_boots",
@@ -61,6 +65,8 @@
     "mcda:red_mystery_armor_boots",
     "mcda:champions_armor_boots",
     "mcda:heros_armor_boots",
-    "mcda:gilded_glory_boots"
+    "mcda:gilded_glory_boots",
+    "mcda:shulker_armor_boots",
+    "mcda:sturdy_shulker_armor_boots"
   ]
 }

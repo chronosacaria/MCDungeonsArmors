@@ -26,6 +26,10 @@
     "mcda:sprout_armor_helmet",
     "mcda:living_vines_armor_helmet",
     "mcda:piglin_armor_helmet",
+    "mcda:entertainer_garb_helmet",
+    "mcda:troubadour_armor_helmet",
+    "mcda:teleportation_robe_helmet",
+    "mcda:unstable_robe_helmet",
 
     "mcda:phantom_armor_helmet",
     "mcda:frost_bite_armor_helmet",
@@ -64,6 +68,8 @@
     "mcda:red_mystery_armor_helmet",
     "mcda:champions_armor_helmet",
     "mcda:heros_armor_helmet",
-    "mcda:gilded_glory_helmet"
+    "mcda:gilded_glory_helmet",
+    "mcda:shulker_armor_helmet",
+    "mcda:sturdy_shulker_armor_helmet"
   ]
 }

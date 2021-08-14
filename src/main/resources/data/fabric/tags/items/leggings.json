@@ -28,6 +28,10 @@
     "mcda:sprout_armor_leggings",
     "mcda:living_vines_armor_leggings",
     "mcda:piglin_armor_leggings",
+    "mcda:entertainer_garb_leggings",
+    "mcda:troubadour_armor_leggings",
+    "mcda:teleportation_robe_leggings",
+    "mcda:unstable_robe_leggings",
 
     "mcda:phantom_armor_leggings",
     "mcda:frost_bite_armor_leggings",
@@ -66,6 +70,8 @@
     "mcda:red_mystery_armor_leggings",
     "mcda:champions_armor_leggings",
     "mcda:heros_armor_leggings",
-    "mcda:gilded_glory_leggings"
+    "mcda:gilded_glory_leggings",
+    "mcda:shulker_armor_leggings",
+    "mcda:sturdy_shulker_armor_leggings"
   ]
 }

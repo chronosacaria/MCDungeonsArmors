@@ -552,6 +552,56 @@
   "item.mcda.nimble_turtle_armor.tooltip_2":      "中的海龟的密集但出奇的",
   "item.mcda.nimble_turtle_armor.tooltip_3":      "轻的贝壳制成的。",
 
+  "item.mcda.entertainer_garb_helmet":            "演出帽子",
+  "item.mcda.entertainer_garb_chestplate":        "演出背心",
+  "item.mcda.entertainer_garb_leggings":          "演出绑腿",
+  "item.mcda.entertainer_garb_boots":             "演出短裤",
+
+  "item.mcda.entertainer_garb.tooltip_1":         "有保护作用吗？ 当然。 它是神话般的？ 绝对地！",
+
+  "item.mcda.troubadour_armor_helmet":            "游吟诗人的帽子",
+  "item.mcda.troubadour_armor_chestplate":        "游吟诗人的背心",
+  "item.mcda.troubadour_armor_leggings":          "游吟诗人的绑腿",
+  "item.mcda.troubadour_armor_boots":             "游吟诗人的短裤",
+
+  "item.mcda.troubadour_armor.tooltip_1":         "当你可以用这件鼓舞人心的",
+  "item.mcda.troubadour_armor.tooltip_2":         "服装让他们惊叹时，为什么",
+  "item.mcda.troubadour_armor.tooltip_3":         "要让你崇拜的粉丝想要更多呢？",
+
+  "item.mcda.teleportation_robe_helmet":          "传送兜帽",
+  "item.mcda.teleportation_robe_chestplate":      "传送长袍",
+  "item.mcda.teleportation_robe_leggings":        "传送腰带",
+  "item.mcda.teleportation_robe_boots":           "传送鞋",
+
+  "item.mcda.teleportation_robe.tooltip_1":       "传送长袍是由毕生",
+  "item.mcda.teleportation_robe.tooltip_2":       "致力于研究末地之",
+  "item.mcda.teleportation_robe.tooltip_3":       "谜的人制作的。",
+
+  "item.mcda.unstable_robe_helmet":               "不稳定兜帽",
+  "item.mcda.unstable_robe_chestplate":           "不稳定长袍",
+  "item.mcda.unstable_robe_leggings":             "不稳定腰带",
+  "item.mcda.unstable_robe_boots":                "不稳定鞋",
+
+  "item.mcda.unstable_robe.tooltip_1":            "这件长袍会在你穿越",
+  "item.mcda.unstable_robe.tooltip_2":            "战场时发出静电火花。",
+
+  "item.mcda.shulker_armor_helmet":               "潜影贝头盔",
+  "item.mcda.shulker_armor_chestplate":           "潜影贝胸甲",
+  "item.mcda.shulker_armor_leggings":             "潜影贝护腿",
+  "item.mcda.shulker_armor_boots":                "潜影贝靴子",
+
+  "item.mcda.shulker_armor.tooltip_1":            "潜影贝盔甲可以匹敌",
+  "item.mcda.shulker_armor.tooltip_2":            "最坚硬的钢板。",
+
+  "item.mcda.sturdy_shulker_armor_helmet":        "坚固潜影贝头盔",
+  "item.mcda.sturdy_shulker_armor_chestplate":    "坚固潜影贝胸甲",
+  "item.mcda.sturdy_shulker_armor_leggings":      "坚固潜影贝护腿",
+  "item.mcda.sturdy_shulker_armor_boots":         "坚固潜影贝靴子",
+
+  "item.mcda.sturdy_shulker_armor.tooltip_1":     "他们说最好的防守是",
+  "item.mcda.sturdy_shulker_armor.tooltip_2":     "一次好的进攻，但祝你好运",
+  "item.mcda.sturdy_shulker_armor.tooltip_3":     "突破这个堡垒。",
+
   "item.mcda.bone_rib_cage":                      "骨肋笼",
   "item.mcda.phantom_bones":                      "幻翼骨",
   "item.mcda.phantom_skin":                       "幻翼皮",

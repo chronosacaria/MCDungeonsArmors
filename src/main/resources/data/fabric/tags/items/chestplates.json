@@ -29,6 +29,10 @@
     "mcda:sprout_armor_chestplate",
     "mcda:living_vines_armor_chestplate",
     "mcda:piglin_armor_chestplate",
+    "mcda:entertainer_garb_chestplate",
+    "mcda:troubadour_armor_chestplate",
+    "mcda:teleportation_robe_chestplate",
+    "mcda:unstable_robe_chestplate",
 
     "mcda:phantom_armor_chestplate",
     "mcda:frost_bite_armor_chestplate",
@@ -67,6 +71,8 @@
     "mcda:red_mystery_armor_chestplate",
     "mcda:champions_armor_chestplate",
     "mcda:heros_armor_chestplate",
-    "mcda:gilded_glory_chestplate"
+    "mcda:gilded_glory_chestplate",
+    "mcda:shulker_armor_chestplate",
+    "mcda:sturdy_shulker_armor_chestplate"
   ]
 }

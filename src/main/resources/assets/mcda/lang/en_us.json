@@ -552,6 +552,56 @@
   "item.mcda.nimble_turtle_armor.tooltip_2":      "(but surprisingly light) shells of",
   "item.mcda.nimble_turtle_armor.tooltip_3":      "turtles who lived at crushing depths.",
 
+  "item.mcda.entertainer_garb_helmet":            "Entertainer's Hat",
+  "item.mcda.entertainer_garb_chestplate":        "Entertainer's Vest",
+  "item.mcda.entertainer_garb_leggings":          "Entertainer's Pads",
+  "item.mcda.entertainer_garb_boots":             "Entertainer's Pants",
+
+  "item.mcda.entertainer_garb.tooltip_1":         "Defensive? Sure. Fabulous? ABSOLUTELY.",
+
+  "item.mcda.troubadour_armor_helmet":            "Troubadour's Hat",
+  "item.mcda.troubadour_armor_chestplate":        "Troubadour's Vest",
+  "item.mcda.troubadour_armor_leggings":          "Troubadour's Pads",
+  "item.mcda.troubadour_armor_boots":             "Troubadour's Pants",
+
+  "item.mcda.troubadour_armor.tooltip_1":         "Why leave your adoring fans wanting",
+  "item.mcda.troubadour_armor.tooltip_2":         "more when you can wow them with this",
+  "item.mcda.troubadour_armor.tooltip_3":         "inspirational outfit?",
+
+  "item.mcda.teleportation_robe_helmet":          "Teleportation Hood",
+  "item.mcda.teleportation_robe_chestplate":      "Teleportation Robe",
+  "item.mcda.teleportation_robe_leggings":        "Teleportation Sash",
+  "item.mcda.teleportation_robe_boots":           "Teleportation Shoes",
+
+  "item.mcda.teleportation_robe.tooltip_1":       "The Teleportation Robes were made by",
+  "item.mcda.teleportation_robe.tooltip_2":       "those who devoted their lives to studying",
+  "item.mcda.teleportation_robe.tooltip_3":       "the enigmas of the End.",
+
+  "item.mcda.unstable_robe_helmet":               "Unstable Hood",
+  "item.mcda.unstable_robe_chestplate":           "Unstable Robe",
+  "item.mcda.unstable_robe_leggings":             "Unstable Sash",
+  "item.mcda.unstable_robe_boots":                "Unstable Shoes",
+
+  "item.mcda.unstable_robe.tooltip_1":            "This Enderobe sparks with static as you",
+  "item.mcda.unstable_robe.tooltip_2":            "sashay across the battlefield.",
+
+  "item.mcda.shulker_armor_helmet":               "Shulker Helmet",
+  "item.mcda.shulker_armor_chestplate":           "Shulker Chestplate",
+  "item.mcda.shulker_armor_leggings":             "Shulker Poleyns",
+  "item.mcda.shulker_armor_boots":                "Shulker Cuisses",
+
+  "item.mcda.shulker_armor.tooltip_1":            "Shulker Armor rivals even the",
+  "item.mcda.shulker_armor.tooltip_2":            "toughest steel plate.",
+
+  "item.mcda.sturdy_shulker_armor_helmet":        "Sturdy Shulker Helmet",
+  "item.mcda.sturdy_shulker_armor_chestplate":    "Sturdy Shulker Chestplate",
+  "item.mcda.sturdy_shulker_armor_leggings":      "Sturdy Shulker Poleyns",
+  "item.mcda.sturdy_shulker_armor_boots":         "Sturdy Shulker Cuisses",
+
+  "item.mcda.sturdy_shulker_armor.tooltip_1":     "They say the best defense is",
+  "item.mcda.sturdy_shulker_armor.tooltip_2":     "a good offense, but good luck",
+  "item.mcda.sturdy_shulker_armor.tooltip_3":     "breaking through this bulwark.",
+
   "item.mcda.bone_rib_cage":                      "Bone Rib Cage",
   "item.mcda.phantom_bones":                      "Phantom Bones",
   "item.mcda.phantom_skin":                       "Phantom Skin",
