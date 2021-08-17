@@ -25,6 +25,7 @@ public class ServerPlayerEntityMixin {
 
         // Effects from Armour Sets
         ArmorEffects.applyFireResistance(playerEntity); // Sprout & Living Vines Armour
+        ArmorEffects.applyInvisibility(playerEntity); // Thief Armour Sneaking
         ArmorEffects.applyHaste(playerEntity); // Cave Crawler (below Y level 32) & Highland (above Y level 100)
         ArmorEffects.applyHeroOfTheVillage(playerEntity); // Hero's Armour & Gilded Glory
         ArmorEffects.applyHunger(playerEntity); // Hungry Horror Armour

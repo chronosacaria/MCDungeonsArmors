@@ -4,10 +4,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.entity.projectile.ShulkerBulletEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -39,6 +41,28 @@ public class ProjectileEffectHelper {
         setProjectileTowards(snowballEntity, d, e, g, 0);
         //
         user.world.spawnEntity(snowballEntity);
+    }
+
+    public static void fireShulkerBulletAtNearbyEnemy(LivingEntity user, int distance) {
+        World world = user.getEntityWorld();
+        List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class,
+                new Box(user.getX() - distance, user.getY() - distance, user.getZ() - distance,
+                        user.getX() + distance, user.getY() + distance, user.getZ() + distance),
+                (nearbyEntity) -> nearbyEntity != user && AbilityHelper.canFireAtEnemy(user, nearbyEntity));
+        if (nearbyEntities.size() < 2) return;
+        Optional<LivingEntity> nearest = nearbyEntities.stream().min(Comparator.comparingDouble(e -> e.squaredDistanceTo(user)));
+        LivingEntity target = nearest.get();
+        ShulkerBulletEntity shulkerBulletEntity = new ShulkerBulletEntity(world, user, target,
+                Direction.Axis.pickRandomAxis(random));
+        // borrowed from AbstractSkeletonEntity
+        double d = target.getX() - shulkerBulletEntity.getX();
+        double e = target.getBodyY(0.3333333333333333D) - shulkerBulletEntity.getY();
+        double f = target.getZ() - shulkerBulletEntity.getZ();
+        double g = Math.sqrt(d * d + f * f);
+        shulkerBulletEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
+        setProjectileTowards(shulkerBulletEntity, d, e, g, 0);
+        //
+        user.world.spawnEntity(shulkerBulletEntity);
     }
 
     public static void ricochetArrowLikeShield(PersistentProjectileEntity persistentProjectileEntity, LivingEntity livingEntity){

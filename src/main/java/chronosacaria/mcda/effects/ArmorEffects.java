@@ -377,6 +377,28 @@ public class ArmorEffects {
         }
     }
 
+    public static void applyInvisibility(ServerPlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(INVISIBILITY))
+            return;
+        if (playerEntity.isAlive()) {
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.FEET).asItem()) {
+                if (playerEntity.isSneaking()) {
+                    StatusEffectInstance invisibility = new StatusEffectInstance(StatusEffects.INVISIBILITY, 42, 0,
+                            false, false);
+                    playerEntity.addStatusEffect(invisibility);
+                }
+            }
+        }
+    }
+
 
 
 }

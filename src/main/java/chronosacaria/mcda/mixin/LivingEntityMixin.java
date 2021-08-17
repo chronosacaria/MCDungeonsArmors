@@ -1,6 +1,7 @@
 package chronosacaria.mcda.mixin;
 
 import chronosacaria.mcda.api.McdaEnchantmentHelper;
+import chronosacaria.mcda.api.ProjectileEffectHelper;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.items.ArmorSets;
@@ -9,6 +10,7 @@ import chronosacaria.mcda.registry.EnchantsRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.TameableEntity;
@@ -19,7 +21,6 @@ import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -43,6 +44,10 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow protected float lastDamageTaken;
 
     @Shadow public abstract boolean damage(DamageSource source, float amount);
+
+
+    @Shadow public abstract boolean removeStatusEffect(StatusEffect type);
+
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
@@ -368,6 +373,36 @@ public abstract class LivingEntityMixin extends Entity {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    // Mixin for Shulker Bullet Effect
+    @Inject(method = "damage", at = @At("HEAD"))
+    public void fireShulkerBulletOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+        if (!config.enableArmorEffect.get(SHULKER_LIKE))
+            return;
+        if (!((Object)this instanceof PlayerEntity))
+            return;
+        if (!(source.getAttacker() instanceof LivingEntity)){
+            return;
+        }
+
+        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+        if (playerEntity != null) {
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
+
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.FEET).asItem()) {
+
+                ProjectileEffectHelper.fireShulkerBulletAtNearbyEnemy(playerEntity, 10);
+                this.removeStatusEffect(StatusEffects.LEVITATION);
             }
         }
     }
