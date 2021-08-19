@@ -64,6 +64,20 @@ public class AbilityHelper {
                 || self.isTeammate(other);
     }
 
+    public static boolean isAoeTarget(LivingEntity self, LivingEntity attacker, LivingEntity center) {
+        return self != attacker
+                && self.isAlive()
+                && !isAllyOf(attacker, self)
+                && !isUnaffectedByAoe(self)
+                && center.canSee(self);
+    }
+
+    private static boolean isUnaffectedByAoe(LivingEntity entity) {
+        if (entity instanceof PlayerEntity)
+            return ((PlayerEntity) entity).isCreative();
+        return false;
+    }
+
     public static boolean canHealEntity(LivingEntity self, LivingEntity other) {
         if (!self.isAlive() || !other.isAlive())
             return false;

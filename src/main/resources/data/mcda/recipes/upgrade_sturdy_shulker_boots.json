@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:shulker_armor_boots"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_void"
+  },
+  "result": {
+    "item": "mcda:sturdy_shulker_armor_boots"
+  }
+}

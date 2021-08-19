@@ -1,5 +1,7 @@
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.api.AOECloudHelper;
+import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.api.McdaEnchantmentHelper;
 import chronosacaria.mcda.api.ProjectileEffectHelper;
 import chronosacaria.mcda.effects.ArmorEffects;
@@ -45,9 +47,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow public abstract boolean damage(DamageSource source, float amount);
 
-
     @Shadow public abstract boolean removeStatusEffect(StatusEffect type);
-
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
@@ -403,6 +403,59 @@ public abstract class LivingEntityMixin extends Entity {
 
                 ProjectileEffectHelper.fireShulkerBulletAtNearbyEnemy(playerEntity, 10);
                 this.removeStatusEffect(StatusEffects.LEVITATION);
+            }
+        }
+    }
+
+    // Mixin for Teleportation Robes Effect
+    @Inject(method = "jump", at = @At("HEAD"))
+    public void onTeleportationRobesTeleport(CallbackInfo ci){
+
+        if (!((Object)this instanceof PlayerEntity))
+            return;
+        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+        if (playerEntity != null) {
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
+
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TELEPORTATION).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TELEPORTATION).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TELEPORTATION).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TELEPORTATION).get(EquipmentSlot.FEET).asItem()) {
+                if (playerEntity.isSneaking()) {
+                    ArmorEffects.endermanLikeTeleportEffect(playerEntity);
+                }
+            }
+        }
+    }
+
+    // Mixin for Unstable Robes Effect
+    @Inject(method = "jump", at = @At("HEAD"))
+    public void onUnstableRobesTeleport(CallbackInfo ci){
+        if (!((Object)this instanceof PlayerEntity))
+            return;
+        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+
+        if (playerEntity != null) {
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
+
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.UNSTABLE).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.UNSTABLE).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.UNSTABLE).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.UNSTABLE).get(EquipmentSlot.FEET).asItem()) {
+                if (playerEntity.isSneaking()) {
+                    AOECloudHelper.spawnExplosionCloud(playerEntity, playerEntity, 3.0F);
+                    AOEHelper.causeExplosion(playerEntity, playerEntity, 10, 3.0f);
+                    ArmorEffects.endermanLikeTeleportEffect(playerEntity);
+
+                }
             }
         }
     }

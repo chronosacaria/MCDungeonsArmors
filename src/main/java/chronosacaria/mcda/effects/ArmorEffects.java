@@ -19,8 +19,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -35,8 +33,9 @@ public class ArmorEffects {
                     StatusEffects.UNLUCK, StatusEffects.WEAKNESS);
 
     // Effects for LivingEntityMixin
-    public static void teleportOnHit(LivingEntity livingEntity) {
+    public static void endermanLikeTeleportEffect(LivingEntity livingEntity) {
         World world = livingEntity.getEntityWorld();
+
         if (!world.isClient) {
             double xpos = livingEntity.getX();
             double ypos = livingEntity.getY();

@@ -18,6 +18,13 @@ import static chronosacaria.mcda.Mcda.random;
 // TODO: unused
 public class AOEHelper {
 
+    /** Returns targets of an AOE effect from 'attacker' around 'center'. This includes 'center'. */
+    public static List<LivingEntity> getAoeTargets(LivingEntity center, LivingEntity attacker, float distance) {
+        return center.getEntityWorld().getEntitiesByClass(LivingEntity.class,
+                new Box(center.getBlockPos()).expand(distance),
+                (nearbyEntity) -> AbilityHelper.isAoeTarget(nearbyEntity, attacker, center)
+        );
+    }
 
     public static void healNearbyAllies(LivingEntity healer, StatusEffectInstance effectInstance, float distance) {
         if (!(healer instanceof PlayerEntity)) return;
@@ -71,6 +78,12 @@ public class AOEHelper {
         for (LivingEntity nearbyEntity : nearbyEntities) {
             if (nearbyEntity == null) return;
             nearbyEntity.damage(DamageSource.ON_FIRE, damage);
+        }
+    }
+
+    public static void causeExplosion(LivingEntity user, LivingEntity target, float damageAmount, float distance) {
+        for (LivingEntity nearbyEntity : getAoeTargets(target, user, distance)) {
+            nearbyEntity.damage(DamageSource.explosion(user), damageAmount);
         }
     }
 

@@ -40,6 +40,9 @@ public class LootRegistry {
     public static final Collection<Identifier> HERO_OF_THE_VILLAGE_LOOT_TABLES = Collections.singletonList(
             LootTables.HERO_OF_THE_VILLAGE_ARMORER_GIFT_GAMEPLAY);
 
+    public static final Collection<Identifier> STRONGHOLD_LOOT_TABLES = Collections.unmodifiableList(Arrays.asList(
+            LootTables.STRONGHOLD_CORRIDOR_CHEST, LootTables.STRONGHOLD_CROSSING_CHEST, LootTables.STRONGHOLD_LIBRARY_CHEST));
+
     public static void init() {
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (!id.getNamespace().equals("minecraft"))
@@ -149,6 +152,11 @@ public class LootRegistry {
                 poolBuilder = FabricLootPoolBuilder.builder();
                 addArmorSet(poolBuilder, ArmorSets.HERO, 0.10F);
                 addArmorSet(poolBuilder, ArmorSets.GILDED, 0.10F);
+                supplier.pool(poolBuilder);
+            } else if (STRONGHOLD_LOOT_TABLES.contains(id)){
+                poolBuilder = FabricLootPoolBuilder.builder();
+                addArmorSet(poolBuilder, ArmorSets.TELEPORTATION, 0.10F);
+                addArmorSet(poolBuilder, ArmorSets.UNSTABLE, 0.01F);
                 supplier.pool(poolBuilder);
             }
         });
