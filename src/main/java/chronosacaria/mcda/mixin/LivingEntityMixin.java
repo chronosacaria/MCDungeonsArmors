@@ -410,7 +410,8 @@ public abstract class LivingEntityMixin extends Entity {
     // Mixin for Teleportation Robes Effect
     @Inject(method = "jump", at = @At("HEAD"))
     public void onTeleportationRobesTeleport(CallbackInfo ci){
-
+        if (!config.enableArmorEffect.get(TELEPORTATION_ROBES_EFFECT))
+            return;
         if (!((Object)this instanceof PlayerEntity))
             return;
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
@@ -435,6 +436,8 @@ public abstract class LivingEntityMixin extends Entity {
     // Mixin for Unstable Robes Effect
     @Inject(method = "jump", at = @At("HEAD"))
     public void onUnstableRobesTeleport(CallbackInfo ci){
+        if (!config.enableArmorEffect.get(UNSTABLE_ROBES_EFFECT))
+            return;
         if (!((Object)this instanceof PlayerEntity))
             return;
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;

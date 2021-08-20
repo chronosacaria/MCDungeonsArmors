@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B B",
+    "W W",
+    "S S"
+  ],
+  "key": {
+    "W": {
+      "item": "mcda:fabric_bolt_purple"
+    },
+    "S": {
+      "item": "minecraft:ender_eye"
+    },
+    "B": {
+      "item": "mcda:fabric_bolt_yellow"
+    }
+  },
+  "result": {
+    "item": "mcda:teleportation_robe_boots",
+    "count": 1
+  }
+}

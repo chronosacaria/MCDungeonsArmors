@@ -174,9 +174,10 @@ public class McdaConfig implements ConfigData {
                 .setToughness(2.0F);
         setProtection(3, 8, 6, 3, GILDED).setDurabilityMultiplier(36)
                 .setToughness(2.0F);
-        setProtection(2, 7, 5, 2, SHULKER).setDurabilityMultiplier(36);
+        setProtection(3, 7, 5, 3, SHULKER).setDurabilityMultiplier(36)
+                .setToughness(1.0F);
         setProtection(3, 8, 6, 3, STURDY_SHULKER).setDurabilityMultiplier(36)
-                .setKnockbackRes(0.2F);
+                .setToughness(3.0F).setKnockbackRes(0.2F);
 
         // Stat Boosts
         setAttackDamageBoost(0.075, SPLENDID);

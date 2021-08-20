@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:entertainer_garb_chestplate"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_void"
+  },
+  "result": {
+    "item": "mcda:troubadour_armor_chestplate"
+  }
+}

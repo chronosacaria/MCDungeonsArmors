@@ -60,6 +60,7 @@ public enum ItemID implements ItemConvertible {
     UPGRADE_CORE_SPIDER,
     UPGRADE_CORE_SOUL,
     UPGRADE_CORE_VERDANT,
+    UPGRADE_CORE_VOID,
     UPGRADE_CORE_WITHER,
     UPGRADE_CORE_WOLF;
 

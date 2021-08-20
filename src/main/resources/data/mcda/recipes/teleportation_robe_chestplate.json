@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WSW",
+    "BBB",
+    "WCW"
+  ],
+  "key": {
+    "W": {
+      "item": "mcda:fabric_bolt_purple"
+    },
+    "S": {
+      "item": "minecraft:ender_eye"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "B": {
+      "item": "mcda:fabric_bolt_yellow"
+    }
+  },
+  "result": {
+    "item": "mcda:teleportation_robe_chestplate",
+    "count": 1
+  }
+}

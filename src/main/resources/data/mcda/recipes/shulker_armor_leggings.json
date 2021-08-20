@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "SSS",
+    "   "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:shulker_shell"
+    }
+  },
+  "result": {
+    "item": "mcda:shulker_armor_leggings",
+    "count": 1
+  }
+}

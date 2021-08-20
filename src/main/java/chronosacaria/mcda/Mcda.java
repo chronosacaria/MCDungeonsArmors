@@ -30,5 +30,6 @@ public class Mcda implements ModInitializer {
         ItemsRegistry.init();
         LootRegistry.init();
         TradesRegistry.registerVillagerOffers();
+        TradesRegistry.registerWanderingTrades();
     }
 }
