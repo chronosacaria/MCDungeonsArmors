@@ -34,6 +34,7 @@ public class ServerPlayerEntityMixin {
         ArmorEffects.applyHeroOfTheVillage(playerEntity); // Hero's Armour & Gilded Glory
         ArmorEffects.applyHunger(playerEntity); // Hungry Horror Armour
         ArmorEffects.applyLuck(playerEntity); // Opulent Armour
+        ArmorEffects.applySlowFalling(playerEntity); // Phantom and Frost Bite Armour
         ArmorEffects.applySprintingSpeed(playerEntity); // Shadow Walker Armour
         ArmorEffects.applyWaterBreathing(playerEntity); // Glow Squid Armour Water Breathing under water
 

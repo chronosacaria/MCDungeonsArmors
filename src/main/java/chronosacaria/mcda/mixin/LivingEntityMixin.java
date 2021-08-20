@@ -455,7 +455,7 @@ public abstract class LivingEntityMixin extends Entity {
                     && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.UNSTABLE).get(EquipmentSlot.FEET).asItem()) {
                 if (playerEntity.isSneaking()) {
                     AOECloudHelper.spawnExplosionCloud(playerEntity, playerEntity, 3.0F);
-                    AOEHelper.causeExplosion(playerEntity, playerEntity, 10, 3.0f);
+                    AOEHelper.causeExplosion(playerEntity, playerEntity, 5, 3.0f);
                     ArmorEffects.endermanLikeTeleportEffect(playerEntity);
 
                 }

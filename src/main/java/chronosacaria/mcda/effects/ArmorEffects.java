@@ -398,6 +398,28 @@ public class ArmorEffects {
         }
     }
 
+    public static void applySlowFalling(ServerPlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(SLOW_FALLING))
+            return;
+        if (playerEntity.isAlive()) {
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PHANTOM).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PHANTOM).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PHANTOM).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PHANTOM).get(EquipmentSlot.FEET).asItem()
+                    || helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.FEET).asItem()) {
+                StatusEffectInstance slowFalling = new StatusEffectInstance(StatusEffects.SLOW_FALLING, 42, 0, false,
+                        false);
+                playerEntity.addStatusEffect(slowFalling);
+            }
+        }
+    }
 
 }
