@@ -462,4 +462,38 @@ public abstract class LivingEntityMixin extends Entity {
             }
         }
     }
+
+    // Mixin for Frost Bite Effect
+    @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
+    public void applyFrostBiteStatusEffect(DamageSource source, float amount, CallbackInfo info) {
+        if (!config.enableArmorEffect.get(FROST_BITE_EFFECT))
+            return;
+
+        if(!(source.getAttacker() instanceof PlayerEntity))return;
+
+        PlayerEntity playerEntity = (PlayerEntity) source.getAttacker();
+        LivingEntity target = (LivingEntity) (Object) this;
+
+        if (source.getSource() instanceof PlayerEntity) {
+            if (amount != 0.0F) {
+                if (playerEntity != null) {
+                    ItemStack mainHandStack = playerEntity.getMainHandStack();
+                    ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+                    ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+                    ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+                    ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
+
+
+                    if (mainHandStack != null && helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.HEAD).asItem()
+                            && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.CHEST).asItem()
+                            && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.LEGS).asItem()
+                            && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.FEET).asItem()) {
+
+                        ArmorEffects.applyFrostBiteStatus(playerEntity, target);
+
+                    }
+                }
+            }
+        }
+    }
 }

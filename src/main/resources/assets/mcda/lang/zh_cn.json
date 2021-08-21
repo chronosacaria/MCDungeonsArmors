@@ -671,6 +671,8 @@
   "enchantment.mcda.recycler":                    "回收",
   "enchantment.mcda.snowball":                    "雪球",
   "enchantment.mcda.surprise_gift":               "惊喜礼物",
-  "enchantment.mcda.swiftfooted":                 "疾行"
+  "enchantment.mcda.swiftfooted":                 "疾行",
+
+  "effect.mcda.freezing":                         "冰冻"
 
 }

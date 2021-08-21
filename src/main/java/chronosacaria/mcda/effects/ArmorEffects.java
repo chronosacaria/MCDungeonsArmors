@@ -2,25 +2,30 @@ package chronosacaria.mcda.effects;
 
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
+import chronosacaria.mcda.registry.StatusEffectsRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.tag.EntityTypeTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
@@ -198,6 +203,23 @@ public class ArmorEffects {
         StatusEffect titanStatusEffect =
                 TITAN_SHROUD_STATUS_EFFECTS_LIST.get(playerEntity.getRandom().nextInt(TITAN_SHROUD_STATUS_EFFECTS_LIST.size()));
         target.addStatusEffect(new StatusEffectInstance(titanStatusEffect, 60, 0));
+    }
+
+    public static void applyFrostBiteStatus(PlayerEntity playerEntity, LivingEntity target){
+        if (!config.enableArmorEffect.get(FROST_BITE_EFFECT))
+            return;
+        ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+        ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+        ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+        ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
+
+        if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.HEAD).asItem()
+                && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.CHEST).asItem()
+                && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.LEGS).asItem()
+                && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.FEET).asItem()) {
+            target.addStatusEffect(new StatusEffectInstance(StatusEffectsRegistry.FREEZING, 60, 0, true, true,
+                    false));
+        }
     }
 
     // Effects for ServerPlayerEntityMixin

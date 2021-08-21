@@ -16,10 +16,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ServerPlayerEntity.class)
 public class ServerPlayerEntityMixin {
     @Inject(method = "tick", at = @At("HEAD"))
-    public void tick(CallbackInfo ci) {
+    public void onArmorsAbilitiesTick(CallbackInfo ci) {
         ServerPlayerEntity playerEntity = (ServerPlayerEntity) (Object) this;
-        if (playerEntity == null) return;
 
+        if (playerEntity == null) return;
 
         // Effects from Enchantments
         EnchantmentEffects.applyCowardice(playerEntity);

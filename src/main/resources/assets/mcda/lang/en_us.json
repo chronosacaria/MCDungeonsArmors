@@ -671,6 +671,8 @@
   "enchantment.mcda.recycler":                    "Recycler",
   "enchantment.mcda.snowball":                    "Snowball",
   "enchantment.mcda.surprise_gift":               "Surprise Gift",
-  "enchantment.mcda.swiftfooted":                 "Swiftfooted"
+  "enchantment.mcda.swiftfooted":                 "Swiftfooted",
+
+  "effect.mcda.freezing":                         "Freezing"
 
 }
