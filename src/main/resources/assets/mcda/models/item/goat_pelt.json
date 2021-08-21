@@ -2,5 +2,11 @@
   "parent": "builtin/generated",
   "textures": {
     "layer0": "mcda:item/goat_pelt"
+  },
+  "display": {
+    "ground": {
+      "translation": [0, 1.25, 0],
+      "scale": [0.5, 0.5, 0.5]
+    }
   }
 }
