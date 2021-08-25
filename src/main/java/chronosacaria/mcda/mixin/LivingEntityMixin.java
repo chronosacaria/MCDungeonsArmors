@@ -20,6 +20,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.network.packet.s2c.play.EntityStatusEffectS2CPacket;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerChunkManager;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -412,9 +415,9 @@ public abstract class LivingEntityMixin extends Entity {
     public void onTeleportationRobesTeleport(CallbackInfo ci){
         if (!config.enableArmorEffect.get(TELEPORTATION_ROBES_EFFECT))
             return;
-        if (!((Object)this instanceof PlayerEntity))
+        if (!((Object)this instanceof ServerPlayerEntity))
             return;
-        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+        ServerPlayerEntity playerEntity = (ServerPlayerEntity) (Object) this;
         if (playerEntity != null) {
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
@@ -427,7 +430,10 @@ public abstract class LivingEntityMixin extends Entity {
                     && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TELEPORTATION).get(EquipmentSlot.LEGS).asItem()
                     && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TELEPORTATION).get(EquipmentSlot.FEET).asItem()) {
                 if (playerEntity.isSneaking()) {
+                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
                     ArmorEffects.endermanLikeTeleportEffect(playerEntity);
+                } else {
+                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
                 }
             }
         }
@@ -438,9 +444,9 @@ public abstract class LivingEntityMixin extends Entity {
     public void onUnstableRobesTeleport(CallbackInfo ci){
         if (!config.enableArmorEffect.get(UNSTABLE_ROBES_EFFECT))
             return;
-        if (!((Object)this instanceof PlayerEntity))
+        if (!((Object)this instanceof ServerPlayerEntity))
             return;
-        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+        ServerPlayerEntity playerEntity = (ServerPlayerEntity) (Object) this;
 
         if (playerEntity != null) {
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
@@ -454,10 +460,12 @@ public abstract class LivingEntityMixin extends Entity {
                     && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.UNSTABLE).get(EquipmentSlot.LEGS).asItem()
                     && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.UNSTABLE).get(EquipmentSlot.FEET).asItem()) {
                 if (playerEntity.isSneaking()) {
+                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
                     AOECloudHelper.spawnExplosionCloud(playerEntity, playerEntity, 3.0F);
                     AOEHelper.causeExplosion(playerEntity, playerEntity, 5, 3.0f);
                     ArmorEffects.endermanLikeTeleportEffect(playerEntity);
-
+                } else {
+                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
                 }
             }
         }
