@@ -20,9 +20,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.network.packet.s2c.play.EntityStatusEffectS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerChunkManager;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -431,7 +429,11 @@ public abstract class LivingEntityMixin extends Entity {
                     && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TELEPORTATION).get(EquipmentSlot.FEET).asItem()) {
                 if (playerEntity.isSneaking()) {
                     ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
-                    ArmorEffects.endermanLikeTeleportEffect(playerEntity);
+                    if (config.controlledTeleportation){
+                        ArmorEffects.controlledTeleportEffect(playerEntity);
+                    } else {
+                        ArmorEffects.endermanLikeTeleportEffect(playerEntity);
+                    }
                 } else {
                     ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
                 }
@@ -463,7 +465,11 @@ public abstract class LivingEntityMixin extends Entity {
                     ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
                     AOECloudHelper.spawnExplosionCloud(playerEntity, playerEntity, 3.0F);
                     AOEHelper.causeExplosion(playerEntity, playerEntity, 5, 3.0f);
-                    ArmorEffects.endermanLikeTeleportEffect(playerEntity);
+                    if (config.controlledTeleportation){
+                        ArmorEffects.controlledTeleportEffect(playerEntity);
+                    } else {
+                        ArmorEffects.endermanLikeTeleportEffect(playerEntity);
+                    }
                 } else {
                     ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
                 }

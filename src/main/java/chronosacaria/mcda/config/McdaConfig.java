@@ -8,6 +8,7 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
+import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 import net.minecraft.entity.EquipmentSlot;
 
 import java.util.EnumMap;
@@ -30,6 +31,9 @@ public class McdaConfig implements ConfigData {
     public EnumMap<EnchantID, Boolean> enableEnchantment = new EnumMap<>(EnchantID.class);
     public EnumMap<ArmorEffectID, Boolean> enableArmorEffect = new EnumMap<>(ArmorEffectID.class);
     public EnumMap<ArmorSets, ArmorStats> armorStats = new EnumMap<>(ArmorSets.class);
+
+    @Comment("Controlled Teleportation for Teleportation and Unstable Robes")
+    public boolean controlledTeleportation = false;
 
     // convenience methods:
     protected ArmorStats setProtection(int head, int chest, int legs, int feet, ArmorSets set) {

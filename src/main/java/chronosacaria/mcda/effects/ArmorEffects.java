@@ -16,8 +16,10 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.*;
+import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 
 import java.util.Iterator;
@@ -68,6 +70,78 @@ public class ArmorEffects {
                 }
             }
         }
+    }
+
+    public static void controlledTeleportEffect(LivingEntity livingEntity) {
+        World world = livingEntity.getEntityWorld();
+        Vec3d target = raytraceForTeleportation(livingEntity);
+
+        if (!world.isClient && target != null) {
+            double xpos = livingEntity.getX();
+            double ypos = livingEntity.getY();
+            double zpos = livingEntity.getZ();
+
+            for (int i = 0; i < 16; i++) {
+                Random random = world.random;
+                double teleportX =
+                        (target.x - livingEntity.getX()) * random.nextDouble() + livingEntity.getX() - 0.5;
+                double teleportY =
+                        (target.y - livingEntity.getY()) * random.nextDouble() + livingEntity.getY() + 1;
+                double teleportZ =
+                        (target.z - livingEntity.getZ()) * random.nextDouble() + livingEntity.getZ() - 0.5;
+                if (livingEntity.hasVehicle()) {
+                    livingEntity.stopRiding();
+                }
+
+                if (livingEntity.teleport(teleportX, teleportY, teleportZ, true)) {
+                    SoundEvent soundEvent = livingEntity instanceof FoxEntity ? SoundEvents.ENTITY_FOX_TELEPORT :
+                            SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT;
+                    livingEntity.world.playSound(
+                            null,
+                            xpos,
+                            ypos,
+                            zpos,
+                            soundEvent,
+                            SoundCategory.PLAYERS,
+                            1.0F,
+                            1.0F);
+                }
+            }
+        }
+    }
+
+    public static Vec3d raytraceForTeleportation(LivingEntity livingEntity) {
+        World world = livingEntity.getEntityWorld();
+        Vec3d eyeVec = livingEntity.getCameraPosVec(0f);
+        Vec3d direction = livingEntity.getRotationVec(0f);
+        Vec3d rayEnd = eyeVec.add(direction.x * 16, direction.y * 16, direction.z * 16);
+        BlockHitResult result = world.raycast(new RaycastContext(eyeVec, rayEnd, RaycastContext.ShapeType.COLLIDER,
+                RaycastContext.FluidHandling.NONE, livingEntity));
+
+        BlockPos teleportPos = result.getBlockPos().down(2);
+
+        boolean positionIsFree = positionIsClear(world, teleportPos);
+
+        if (!world.isClient && !result.isInsideBlock()) {
+
+            while(!positionIsFree) {
+                teleportPos = teleportPos.down();
+                positionIsFree = positionIsClear(world, teleportPos) && world.raycast(new RaycastContext(eyeVec,
+                       Vec3d.ofCenter(teleportPos.up()),
+                        RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.NONE, livingEntity)).getType() == HitResult.Type.MISS;
+                if (teleportPos.getY() <= 0){
+                    break;
+                }
+            }
+        } else if (positionIsFree) {
+            Vec3d.ofCenter(teleportPos);
+        }
+        return Vec3d.ofCenter(teleportPos);
+    }
+
+    private static boolean positionIsClear(World world, BlockPos pos) {
+        return (world.isAir(pos) || world.getBlockState(pos).getCollisionShape(world, pos).isEmpty()
+                && (world.isAir(pos.up()) || world.getBlockState(pos.up()).getCollisionShape(world, pos.up()).isEmpty()));
     }
 
     public static void applyFluidFreezing(PlayerEntity playerEntity){
