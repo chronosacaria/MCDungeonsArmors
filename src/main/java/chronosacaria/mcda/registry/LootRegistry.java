@@ -12,6 +12,8 @@ import net.minecraft.util.Identifier;
 
 import java.util.*;
 
+import static chronosacaria.mcda.config.McdaConfig.config;
+
 public class LootRegistry {
 
     public static final Collection<Identifier> BASTION_LOOT_TABLES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
@@ -53,56 +55,56 @@ public class LootRegistry {
             switch (id.getPath()) {
                 case "entities/phantom":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootNumberProvider.create(1,0.25F))
+                            .rolls(BinomialLootNumberProvider.create(1, config.phantomBones))
                             .with(ItemEntry.builder(ItemID.PHANTOM_BONES))
-                            .rolls(BinomialLootNumberProvider.create(1,0.10F))
+                            .rolls(BinomialLootNumberProvider.create(1,config.phantomSkin))
                             .with(ItemEntry.builder(ItemID.PHANTOM_SKIN));
                     supplier.pool(poolBuilder);
                     break;
                 case "entities/ocelot":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootNumberProvider.create(1,0.25F))
+                            .rolls(BinomialLootNumberProvider.create(1,config.ocelotPelt))
                             .with(ItemEntry.builder(ItemID.OCELOT_PELT))
-                            .rolls(BinomialLootNumberProvider.create(1,0.15F))
+                            .rolls(BinomialLootNumberProvider.create(1,config.blackOcelotPelt))
                             .with(ItemEntry.builder(ItemID.OCELOT_PELT_BLACK));
                     supplier.pool(poolBuilder);
                     break;
                 case "entities/skeleton":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootNumberProvider.create(1, 0.05F))
+                            .rolls(BinomialLootNumberProvider.create(1, config.skeletonSkull))
                             .with(ItemEntry.builder(Items.SKELETON_SKULL));
                     supplier.pool(poolBuilder);
                     break;
                 case "entities/wolf":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootNumberProvider.create(1,0.25F))
+                            .rolls(BinomialLootNumberProvider.create(1,config.wolfPelt))
                             .with(ItemEntry.builder(ItemID.WOLF_PELT))
-                            .rolls(BinomialLootNumberProvider.create(1,0.10F))
+                            .rolls(BinomialLootNumberProvider.create(1,config.blackWolfPelt))
                             .with(ItemEntry.builder(ItemID.WOLF_PELT_BLACK));
                     supplier.pool(poolBuilder);
                     break;
                 case "entities/fox":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootNumberProvider.create(1,0.25F))
+                            .rolls(BinomialLootNumberProvider.create(1,config.foxPelt))
                             .with(ItemEntry.builder(ItemID.FOX_PELT))
-                            .rolls(BinomialLootNumberProvider.create(1,0.10F))
+                            .rolls(BinomialLootNumberProvider.create(1,config.arcticFoxPelt))
                             .with(ItemEntry.builder(ItemID.FOX_PELT_ARCTIC));
                     supplier.pool(poolBuilder);
                     break;
                 case "entities/evoker":
                     poolBuilder = FabricLootPoolBuilder.builder();
-                    addArmorSet(poolBuilder, ArmorSets.EVOCATION,0.10F);
+                    addArmorSet(poolBuilder, ArmorSets.EVOCATION, config.evocationRobe);
                     supplier.pool(poolBuilder);
                     break;
                 case "entities/goat":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootNumberProvider.create(1,0.30F))
+                            .rolls(BinomialLootNumberProvider.create(1,config.goatPelt))
                             .with(ItemEntry.builder(ItemID.GOAT_PELT));
                     supplier.pool(poolBuilder);
                     break;
                 case "blocks/blue_ice":
                     poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootNumberProvider.create(1, 0.05F))
+                            .rolls(BinomialLootNumberProvider.create(1, config.frostCrystal))
                             .with(ItemEntry.builder(ItemID.FROST_CRYSTAL));
                     supplier.pool(poolBuilder);
                     break;
@@ -110,53 +112,53 @@ public class LootRegistry {
 
             if (BASTION_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.GHOSTLY,       0.05F);
-                addArmorSet(poolBuilder, ArmorSets.GHOST_KINDLER, 0.01F);
-                addMysteryArmorSets(poolBuilder, 0.05F);
+                addArmorSet(poolBuilder, ArmorSets.GHOSTLY,       config.ghostlyArmor);
+                addArmorSet(poolBuilder, ArmorSets.GHOST_KINDLER, config.ghostlyKindler);
+                addMysteryArmorSets(poolBuilder, config.mysteryArmors);
                 supplier.pool(poolBuilder);
             } else if (NETHER_FORTRESS_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.GRIM, 0.05F);
-                addMysteryArmorSets(poolBuilder, 0.05F);
+                addArmorSet(poolBuilder, ArmorSets.GRIM, config.grimArmor);
+                addMysteryArmorSets(poolBuilder, config.mysteryArmors);
                 supplier.pool(poolBuilder);
             } else if (PILLAGER_TOWER_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.DARK,  0.10F);
-                addArmorSet(poolBuilder, ArmorSets.THIEF, 0.10F);
-                addArmorSet(poolBuilder, ArmorSets.ROYAL, 0.05F);
-                addArmorSet(poolBuilder, ArmorSets.TITAN, 0.025F);
+                addArmorSet(poolBuilder, ArmorSets.DARK,  config.darkArmor);
+                addArmorSet(poolBuilder, ArmorSets.THIEF, config.thiefArmor);
+                addArmorSet(poolBuilder, ArmorSets.ROYAL, config.royalArmor);
+                addArmorSet(poolBuilder, ArmorSets.TITAN, config.titansShroud);
                 supplier.pool(poolBuilder);
             } else if (VILLAGE_SMITH_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.PLATE,           0.05F);
-                addArmorSet(poolBuilder, ArmorSets.FULL_METAL,      0.01F);
-                addArmorSet(poolBuilder, ArmorSets.SNOW,            0.03F);
-                addArmorSet(poolBuilder, ArmorSets.WOLF,            0.05F);
-                addArmorSet(poolBuilder, ArmorSets.FOX,             0.01F);
-                addArmorSet(poolBuilder, ArmorSets.REINFORCED_MAIL, 0.05F);
-                addArmorSet(poolBuilder, ArmorSets.STALWART_MAIL,   0.01F);
+                addArmorSet(poolBuilder, ArmorSets.PLATE,           config.plateArmor);
+                addArmorSet(poolBuilder, ArmorSets.FULL_METAL,      config.fullMetalArmor);
+                addArmorSet(poolBuilder, ArmorSets.SNOW,            config.snowArmor);
+                addArmorSet(poolBuilder, ArmorSets.WOLF,            config.wolfArmor);
+                addArmorSet(poolBuilder, ArmorSets.FOX,             config.foxArmor);
+                addArmorSet(poolBuilder, ArmorSets.REINFORCED_MAIL, config.reinforcedMail);
+                addArmorSet(poolBuilder, ArmorSets.STALWART_MAIL,   config.stalwartMail);
                 supplier.pool(poolBuilder);
             } else if (SUNKEN_SHIP_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.SCALE_MAIL, 0.05F);
-                addArmorSet(poolBuilder, ArmorSets.MERCENARY,  0.05F);
+                addArmorSet(poolBuilder, ArmorSets.SCALE_MAIL, config.scaleMail);
+                addArmorSet(poolBuilder, ArmorSets.MERCENARY,  config.mercenaryArmor);
                 addMysteryArmorSets(poolBuilder, 0.05F);
                 supplier.pool(poolBuilder);
             } else if (MINESHAFT_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.SPELUNKER,    0.05F);
-                addArmorSet(poolBuilder, ArmorSets.CAVE_CRAWLER, 0.01F);
+                addArmorSet(poolBuilder, ArmorSets.SPELUNKER,    config.spelunkerArmor);
+                addArmorSet(poolBuilder, ArmorSets.CAVE_CRAWLER, config.caveCrawler);
                 addMysteryArmorSets(poolBuilder, 0.05F);
                 supplier.pool(poolBuilder);
             } else if (HERO_OF_THE_VILLAGE_LOOT_TABLES.contains(id)){
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.HERO, 0.10F);
-                addArmorSet(poolBuilder, ArmorSets.GILDED, 0.10F);
+                addArmorSet(poolBuilder, ArmorSets.HERO, config.heroArmor);
+                addArmorSet(poolBuilder, ArmorSets.GILDED, config.gildedArmor);
                 supplier.pool(poolBuilder);
             } else if (STRONGHOLD_LOOT_TABLES.contains(id)){
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.TELEPORTATION, 0.10F);
-                addArmorSet(poolBuilder, ArmorSets.UNSTABLE, 0.01F);
+                addArmorSet(poolBuilder, ArmorSets.TELEPORTATION, config.teleportationRobes);
+                addArmorSet(poolBuilder, ArmorSets.UNSTABLE, config.unstableRobes);
                 supplier.pool(poolBuilder);
             }
         });
