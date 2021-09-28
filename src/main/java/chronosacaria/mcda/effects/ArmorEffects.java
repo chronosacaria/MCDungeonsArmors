@@ -150,7 +150,7 @@ public class ArmorEffects {
         World world = playerEntity.getEntityWorld();
         BlockPos blockPos = playerEntity.getBlockPos();
 
-        if (playerEntity.isAlive()) {
+        if (playerEntity.isAlive() && world.getTime() % 10 == 0) {
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
@@ -297,7 +297,9 @@ public class ArmorEffects {
     public static void applyHaste(ServerPlayerEntity playerEntity){
         if (!config.enableArmorEffect.get(HASTE))
             return;
-        if (playerEntity.getY() < 32.0F) {
+        World world = playerEntity.getEntityWorld();
+
+        if (playerEntity.getY() < 32.0F && world.getTime() % 30 == 0) {
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
@@ -311,7 +313,7 @@ public class ArmorEffects {
                 playerEntity.addStatusEffect(haste);
             }
         }
-        if (playerEntity.getY() > 100.0F) {
+        if (playerEntity.getY() > 100.0F && world.getTime() % 30 == 0) {
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
@@ -330,7 +332,10 @@ public class ArmorEffects {
     public static void applyHeroOfTheVillage(ServerPlayerEntity playerEntity){
         if (!config.enableArmorEffect.get(HERO_OF_THE_VILLAGE))
             return;
-        if (playerEntity.isAlive()) {
+
+        World world = playerEntity.getEntityWorld();
+
+        if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
@@ -359,7 +364,10 @@ public class ArmorEffects {
     public static void applyHunger(ServerPlayerEntity playerEntity){
         if (!config.enableArmorEffect.get(HUNGER))
             return;
-        if (playerEntity.isAlive()) {
+
+        World world = playerEntity.getEntityWorld();
+
+        if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
@@ -379,7 +387,10 @@ public class ArmorEffects {
     public static void applyFireResistance(ServerPlayerEntity playerEntity){
         if (!config.enableArmorEffect.get(FIRE_RESISTANCE))
             return;
-        if (playerEntity.isAlive()) {
+
+        World world = playerEntity.getEntityWorld();
+
+        if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
@@ -408,7 +419,10 @@ public class ArmorEffects {
     public static void applyLuck(ServerPlayerEntity playerEntity){
         if (!config.enableArmorEffect.get(LUCK))
             return;
-        if (playerEntity.isAlive()) {
+
+        World world = playerEntity.getEntityWorld();
+
+        if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
@@ -428,7 +442,10 @@ public class ArmorEffects {
     public static void applySprintingSpeed(ServerPlayerEntity playerEntity){
         if (!config.enableArmorEffect.get(SPRINTING))
             return;
-        if (playerEntity.isAlive()) {
+
+        World world = playerEntity.getEntityWorld();
+
+        if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
@@ -450,7 +467,10 @@ public class ArmorEffects {
     public static void applyWaterBreathing(ServerPlayerEntity playerEntity){
         if (!config.enableArmorEffect.get(WATER_BREATHING))
             return;
-        if (playerEntity.isAlive()) {
+
+        World world = playerEntity.getEntityWorld();
+
+        if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
@@ -472,7 +492,10 @@ public class ArmorEffects {
     public static void applyInvisibility(ServerPlayerEntity playerEntity){
         if (!config.enableArmorEffect.get(INVISIBILITY))
             return;
-        if (playerEntity.isAlive()) {
+
+        World world = playerEntity.getEntityWorld();
+
+        if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
@@ -494,7 +517,10 @@ public class ArmorEffects {
     public static void applySlowFalling(ServerPlayerEntity playerEntity){
         if (!config.enableArmorEffect.get(SLOW_FALLING))
             return;
-        if (playerEntity.isAlive()) {
+
+        World world = playerEntity.getEntityWorld();
+
+        if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);

@@ -16,6 +16,7 @@ import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -136,7 +137,9 @@ public class EnchantmentEffects {
         if (!config.enableEnchantment.get(COWARDICE))
             return;
 
-        if (player.getHealth() == player.getMaxHealth()) {
+        World world = player.getEntityWorld();
+
+        if (player.getHealth() == player.getMaxHealth() && world.getTime() % 30 == 0) {
             int cowardiceLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(COWARDICE), player);
             if (cowardiceLevel == 0) return;
             StatusEffectInstance strengthBoost = new StatusEffectInstance(StatusEffects.STRENGTH, 42,
@@ -149,7 +152,9 @@ public class EnchantmentEffects {
         if (!config.enableEnchantment.get(FRENZIED))
             return;
 
-        if (player.getHealth() <= (0.5F * player.getMaxHealth())) {
+        World world = player.getEntityWorld();
+
+        if (player.getHealth() <= (0.5F * player.getMaxHealth()) && world.getTime() % 30 == 0) {
             int frenziedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FRENZIED), player);
             if (frenziedLevel == 0) return;
 
@@ -162,6 +167,8 @@ public class EnchantmentEffects {
         if (!config.enableEnchantment.get(RECKLESS))
             return;
 
+        World world = player.getEntityWorld();
+
         float recklessHealth = player.getMaxHealth() * 0.4F;
 
         int recklessLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(RECKLESS), player);
@@ -171,7 +178,7 @@ public class EnchantmentEffects {
             player.setHealth(recklessHealth);
         }
 
-        if (player.getHealth() <= recklessHealth){
+        if (player.getHealth() <= recklessHealth && world.getTime() % 30 == 0){
             StatusEffectInstance reckless = new StatusEffectInstance(StatusEffects.STRENGTH, 40, recklessLevel - 1,false, false);
             player.addStatusEffect(reckless);
         }
@@ -182,7 +189,9 @@ public class EnchantmentEffects {
         if (!config.enableEnchantment.get(SWIFTFOOTED))
             return;
 
-        if (!(player.isOnGround())){
+        World world = player.getEntityWorld();
+
+        if (!(player.isOnGround()) && world.getTime() % 50 == 0){
             int swiftfootedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SWIFTFOOTED),player);
             if (swiftfootedLevel == 0) return;
 

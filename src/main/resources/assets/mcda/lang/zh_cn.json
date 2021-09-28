@@ -673,6 +673,25 @@
   "enchantment.mcda.surprise_gift":               "惊喜礼物",
   "enchantment.mcda.swiftfooted":                 "疾行",
 
-  "effect.mcda.freezing":                         "冰冻"
+  "effect.mcda.freezing":                         "冰冻",
+
+  "enchantment.mcda.bag_of_souls.desc":           "相对于附魔等级，它会增加您获得的 XP 数量。",
+  "enchantment.mcda.burning.desc":                "它是荆棘的火热版本。",
+  "enchantment.mcda.chilling.desc":               "它减慢了攻击者的速度，并对他们施加了挖矿疲劳。",
+  "enchantment.mcda.cowardice.desc":              "当您处于完全健康状态时，您会获得力量。",
+  "enchantment.mcda.death_barter.desc":           "当你死了，你可以用绿宝石付费不死。",
+  "enchantment.mcda.deflect.desc":                "当你被箭射中时，箭有可能造成一半伤害并且可能会被扔离你。",
+  "enchantment.mcda.fire_focus.desc":             "增加火焰攻击造成的伤害量，特别是火焰附加。",
+  "enchantment.mcda.fire_trail.desc":             "一条火路径会跟随玩家。",
+  "enchantment.mcda.food_reserves.desc":          "饮用治疗药水时，您会收到某种形式的食物。",
+  "enchantment.mcda.frenzied.desc":               "当你的健康下降到50%以下时，你就会变得急迫。",
+  "enchantment.mcda.heal_allies.desc":            "盟友（伙伴，宠物，铁傀儡，其他玩家）在你受伤时被治愈。",
+  "enchantment.mcda.poison_focus.desc":           "增加毒药攻击造成的伤害量。",
+  "enchantment.mcda.potion_barrier.desc":         "饮用治疗药水时，您会获得抗性提升。",
+  "enchantment.mcda.reckless.desc":               "你的生命值降低了 60%，但你获得了相对于结界等级的力量。",
+  "enchantment.mcda.recycler.desc":               "当你被箭射中时，你有可能抓住被射中的箭。",
+  "enchantment.mcda.snowball.desc":               "当被两个或两个以上攻击者攻击时，会向其中一个攻击者投掷魔法雪球，将其击退。",
+  "enchantment.mcda.surprise_gift.desc":          "饮用治疗药水时，你会从一组选项中获得另一种药水。",
+  "enchantment.mcda.swiftfooted.desc":            "跳跃时，你获得几秒的速度。"
 
 }

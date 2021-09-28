@@ -673,6 +673,25 @@
   "enchantment.mcda.surprise_gift":               "Surprise Gift",
   "enchantment.mcda.swiftfooted":                 "Swiftfooted",
 
-  "effect.mcda.freezing":                         "Freezing"
+  "effect.mcda.freezing":                         "Freezing",
+
+  "enchantment.mcda.bag_of_souls.desc":           "Increases the amount of experience you gain relative to the level of the enchantment.",
+  "enchantment.mcda.burning.desc":                "A fiery version of thorns.",
+  "enchantment.mcda.chilling.desc":               "Slows and applies mining fatigue to attacker.",
+  "enchantment.mcda.cowardice.desc":              "When at full health, you receive the Strength effect.",
+  "enchantment.mcda.death_barter.desc":           "When you die, you can pay your way out of death with Emeralds.",
+  "enchantment.mcda.deflect.desc":                "When you are shot with an arrow, there is a chance that arrow will do half damage and could be flung away from you.",
+  "enchantment.mcda.fire_focus.desc":             "Increases the amount of damage done by fire attacks, especially Fire Aspect.",
+  "enchantment.mcda.fire_trail.desc":             "A trail of fire follows the player.",
+  "enchantment.mcda.food_reserves.desc":          "When drinking an Instant Health potion, you receive some form of food.",
+  "enchantment.mcda.frenzied.desc":               "When your health drops below 50%, you gain the Haste effect.",
+  "enchantment.mcda.heal_allies.desc":            "Allies (villagers, pets, golems, and other players) are healed when taking damage.",
+  "enchantment.mcda.poison_focus.desc":           "Increases the amount of damage done by poison attacks.",
+  "enchantment.mcda.potion_barrier.desc":         "When drinking an Instant Health potion, you receive the Resistance effect.",
+  "enchantment.mcda.reckless.desc":               "Your health is reduced by 60% but you gain the Strength effect relative to the level of the enchantment.",
+  "enchantment.mcda.recycler.desc":               "There is a chance when shot with an arrow that you will gain an arrow, having caught or picked up the arrow you were shot with.",
+  "enchantment.mcda.snowball.desc":               "When being attacked by two or more attackers, a magical snowball will be thrown at one of the attackers, knocking them back.",
+  "enchantment.mcda.surprise_gift.desc":          "When drinking an Instant Health potion, you receive another potion from a pool of options.",
+  "enchantment.mcda.swiftfooted.desc":            "When jumping, you gain several seconds of speed boost."
 
 }
