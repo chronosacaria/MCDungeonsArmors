@@ -4,6 +4,7 @@ import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.enchants.EnchantID;
 import chronosacaria.mcda.items.ArmorSets;
+import chronosacaria.mcda.items.DropHelper;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
@@ -30,23 +31,11 @@ public class McdaConfig implements ConfigData {
     // config contents:
     public EnumMap<EnchantID, Boolean> enableEnchantment = new EnumMap<>(EnchantID.class);
     public EnumMap<ArmorEffectID, Boolean> enableArmorEffect = new EnumMap<>(ArmorEffectID.class);
+    public EnumMap<DropHelper, Float> maxDropAmounts = new EnumMap<>(DropHelper.class);
     public EnumMap<ArmorSets, ArmorStats> armorStats = new EnumMap<>(ArmorSets.class);
 
-    @Comment("Controlled Teleportation for Teleportation and Unstable Robes")
+    @Comment("Controlled Teleportation for Teleportation and Unstable Robes, default = false")
     public boolean controlledTeleportation = false;
-    @Comment("Drop Rates")
-    public float phantomBones = 0.25f;
-    public float phantomSkin = 0.10f;
-    public float ocelotPelt = 0.25f;
-    public float blackOcelotPelt = 0.15f;
-    public float skeletonSkull = 0.05f;
-    public float wolfPelt = 0.25f;
-    public float blackWolfPelt = 0.10f;
-    public float foxPelt = 0.25f;
-    public float arcticFoxPelt = 0.10f;
-    public float goatPelt = 0.30f;
-    public float evocationRobe = 0.10f;
-    public float frostCrystal = 0.05f;
 
     @Comment("Armor Set Spawn Rates")
     public float ghostlyArmor = 0.05f;
@@ -106,6 +95,10 @@ public class McdaConfig implements ConfigData {
 
         for (ArmorEffectID armorEffectID : ArmorEffectID.values()){
             enableArmorEffect.put(armorEffectID, true);
+        }
+
+        for (DropHelper dropHelper : DropHelper.values()){
+            maxDropAmounts.put(dropHelper, 1.0F);
         }
 
         for (ArmorSets armorSet : ArmorSets.values()) {
