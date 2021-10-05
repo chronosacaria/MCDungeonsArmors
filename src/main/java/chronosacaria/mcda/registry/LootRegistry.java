@@ -1,13 +1,20 @@
 package chronosacaria.mcda.registry;
 
 import chronosacaria.mcda.items.ArmorSets;
+import chronosacaria.mcda.items.DropHelper;
 import chronosacaria.mcda.items.ItemID;
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Items;
+import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.LootingEnchantLootFunction;
+import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.BinomialLootNumberProvider;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
+import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.util.Identifier;
 
 import java.util.*;
@@ -54,59 +61,131 @@ public class LootRegistry {
 
             switch (id.getPath()) {
                 case "entities/phantom":
-                    poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootNumberProvider.create(1, config.phantomBones))
+                    LootPool phantomBonesLootPool = FabricLootPoolBuilder.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
                             .with(ItemEntry.builder(ItemID.PHANTOM_BONES))
-                            .rolls(BinomialLootNumberProvider.create(1,config.phantomSkin))
-                            .with(ItemEntry.builder(ItemID.PHANTOM_SKIN));
-                    supplier.pool(poolBuilder);
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                    config.maxDropAmounts.get(DropHelper.PHANTOM_BONES))).build())
+                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
+                            .build();
+                    supplier.withPool(phantomBonesLootPool);
+                    LootPool phantomSkinLootPool = FabricLootPoolBuilder.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
+                            .with(ItemEntry.builder(ItemID.PHANTOM_SKIN))
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                    config.maxDropAmounts.get(DropHelper.PHANTOM_SKIN))).build())
+                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
+                            .build();
+                    supplier.withPool(phantomSkinLootPool);
                     break;
                 case "entities/ocelot":
-                    poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootNumberProvider.create(1,config.ocelotPelt))
+                    LootPool ocelotPeltLootPool = FabricLootPoolBuilder.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
                             .with(ItemEntry.builder(ItemID.OCELOT_PELT))
-                            .rolls(BinomialLootNumberProvider.create(1,config.blackOcelotPelt))
-                            .with(ItemEntry.builder(ItemID.OCELOT_PELT_BLACK));
-                    supplier.pool(poolBuilder);
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                    config.maxDropAmounts.get(DropHelper.OCELOT_PELT))).build())
+                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
+                            .build();
+                    supplier.withPool(ocelotPeltLootPool);
+                    LootPool blackOcelotPeltLootPool = FabricLootPoolBuilder.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
+                            .with(ItemEntry.builder(ItemID.OCELOT_PELT_BLACK))
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                    config.maxDropAmounts.get(DropHelper.OCELOT_PELT_BLACK))).build())
+                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
+                            .build();
+                    supplier.withPool(blackOcelotPeltLootPool);
                     break;
                 case "entities/skeleton":
-                    poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootNumberProvider.create(1, config.skeletonSkull))
-                            .with(ItemEntry.builder(Items.SKELETON_SKULL));
-                    supplier.pool(poolBuilder);
+                    LootPool skullLootPool = FabricLootPoolBuilder.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
+                            .with(ItemEntry.builder(Items.SKELETON_SKULL))
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                            config.maxDropAmounts.get(DropHelper.SKELETON_SKULL))).build())
+                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
+                            .build();
+                    supplier.withPool(skullLootPool);
                     break;
                 case "entities/wolf":
-                    poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootNumberProvider.create(1,config.wolfPelt))
+                    LootPool wolfPeltLootPool = FabricLootPoolBuilder.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
                             .with(ItemEntry.builder(ItemID.WOLF_PELT))
-                            .rolls(BinomialLootNumberProvider.create(1,config.blackWolfPelt))
-                            .with(ItemEntry.builder(ItemID.WOLF_PELT_BLACK));
-                    supplier.pool(poolBuilder);
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                    config.maxDropAmounts.get(DropHelper.WOLF_PELT))).build())
+                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
+                            .build();
+                    supplier.withPool(wolfPeltLootPool);
+                    LootPool blackWolfPeltLootPool = FabricLootPoolBuilder.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
+                            .with(ItemEntry.builder(ItemID.WOLF_PELT_BLACK))
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                    config.maxDropAmounts.get(DropHelper.WOLF_PELT_BLACK))).build())
+                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
+                            .build();
+                    supplier.withPool(blackWolfPeltLootPool);
                     break;
                 case "entities/fox":
-                    poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootNumberProvider.create(1,config.foxPelt))
+                    LootPool foxPeltLootPool = FabricLootPoolBuilder.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
                             .with(ItemEntry.builder(ItemID.FOX_PELT))
-                            .rolls(BinomialLootNumberProvider.create(1,config.arcticFoxPelt))
-                            .with(ItemEntry.builder(ItemID.FOX_PELT_ARCTIC));
-                    supplier.pool(poolBuilder);
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                    config.maxDropAmounts.get(DropHelper.FOX_PELT))).build())
+                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
+                            .build();
+                    supplier.withPool(foxPeltLootPool);
+                    LootPool arcticFoxPeltLootPool = FabricLootPoolBuilder.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
+                            .with(ItemEntry.builder(ItemID.FOX_PELT_ARCTIC))
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                    config.maxDropAmounts.get(DropHelper.FOX_PELT_ARCTIC))).build())
+                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
+                            .build();
+                    supplier.withPool(arcticFoxPeltLootPool);
                     break;
                 case "entities/evoker":
-                    poolBuilder = FabricLootPoolBuilder.builder();
-                    addArmorSet(poolBuilder, ArmorSets.EVOCATION, config.evocationRobe);
-                    supplier.pool(poolBuilder);
+                    LootPool evocationHatLootPool = FabricLootPoolBuilder.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
+                            .with(ItemEntry.builder(ArmorsRegistry.armorItems.get(ArmorSets.EVOCATION).get(EquipmentSlot.HEAD)))
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                    config.maxDropAmounts.get(DropHelper.EVOCATION_ROBE))).build())
+                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
+                            .build();
+                    supplier.withPool(evocationHatLootPool);
+                    LootPool evocationRobeLootPool = FabricLootPoolBuilder.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
+                            .with(ItemEntry.builder(ArmorsRegistry.armorItems.get(ArmorSets.EVOCATION).get(EquipmentSlot.CHEST)))
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                    config.maxDropAmounts.get(DropHelper.EVOCATION_ROBE))).build())
+                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
+                            .build();
+                    supplier.withPool(evocationRobeLootPool);
+                    LootPool evocationPantsLootPool = FabricLootPoolBuilder.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
+                            .with(ItemEntry.builder(ArmorsRegistry.armorItems.get(ArmorSets.EVOCATION).get(EquipmentSlot.LEGS)))
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                    config.maxDropAmounts.get(DropHelper.EVOCATION_ROBE))).build())
+                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
+                            .build();
+                    supplier.withPool(evocationPantsLootPool);
                     break;
                 case "entities/goat":
-                    poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootNumberProvider.create(1,config.goatPelt))
-                            .with(ItemEntry.builder(ItemID.GOAT_PELT));
-                    supplier.pool(poolBuilder);
+                    LootPool goatPeltLootPool = FabricLootPoolBuilder.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
+                            .with(ItemEntry.builder(ItemID.GOAT_PELT))
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                    config.maxDropAmounts.get(DropHelper.GOAT_PELT))).build())
+                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
+                            .build();
+                    supplier.withPool(goatPeltLootPool);
                     break;
                 case "blocks/blue_ice":
-                    poolBuilder = FabricLootPoolBuilder.builder()
-                            .rolls(BinomialLootNumberProvider.create(1, config.frostCrystal))
-                            .with(ItemEntry.builder(ItemID.FROST_CRYSTAL));
-                    supplier.pool(poolBuilder);
+                    LootPool frostCrystalLootPool = FabricLootPoolBuilder.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
+                            .with(ItemEntry.builder(ItemID.FROST_CRYSTAL))
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                    config.maxDropAmounts.get(DropHelper.FROST_CRYSTAL))).build())
+                            .build();
+                    supplier.withPool(frostCrystalLootPool);
                     break;
             }
 
