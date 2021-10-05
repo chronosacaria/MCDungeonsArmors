@@ -4,7 +4,7 @@ import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.enchants.EnchantID;
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.items.DropHelper;
+import chronosacaria.mcda.items.itemhelpers.DropHelper;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
