@@ -39,31 +39,6 @@ public class McdaConfig implements ConfigData {
     @Comment("Controlled Teleportation for Teleportation and Unstable Robes, default = false")
     public boolean controlledTeleportation = false;
 
-    //@Comment("Armor Set Spawn Rates")
-    //public float ghostlyArmor = 0.05f;
-    //public float ghostlyKindler = 0.01f;
-    //public float grimArmor = 0.05f;
-    //public float darkArmor = 0.10f;
-    //public float thiefArmor = 0.10f;
-    //public float royalArmor = 0.05f;
-    //public float titansShroud = 0.025f;
-    //public float plateArmor = 0.05f;
-    //public float fullMetalArmor = 0.01f;
-    //public float snowArmor = 0.03f;
-    //public float wolfArmor = 0.05f;
-    //public float foxArmor = 0.01f;
-    //public float reinforcedMail = 0.05f;
-    //public float stalwartMail = 0.01f;
-    //public float scaleMail = 0.05f;
-    //public float mercenaryArmor = 0.05f;
-    //public float spelunkerArmor = 0.05f;
-    //public float caveCrawler = 0.01f;
-    //public float heroArmor = 0.10f;
-    //public float gildedArmor = 0.10f;
-    //public float teleportationRobes = 0.10f;
-    //public float unstableRobes = 0.01f;
-    //public float mysteryArmors = 0.05f;
-
     // convenience methods:
     protected ArmorStats setProtection(int head, int chest, int legs, int feet, ArmorSets set) {
         return armorStats.get(set).setProtection(head, chest, legs, feet);
