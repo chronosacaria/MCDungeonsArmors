@@ -5,6 +5,7 @@ import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.enchants.EnchantID;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.items.itemhelpers.DropHelper;
+import chronosacaria.mcda.items.itemhelpers.SpawnHelper;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
@@ -32,35 +33,36 @@ public class McdaConfig implements ConfigData {
     public EnumMap<EnchantID, Boolean> enableEnchantment = new EnumMap<>(EnchantID.class);
     public EnumMap<ArmorEffectID, Boolean> enableArmorEffect = new EnumMap<>(ArmorEffectID.class);
     public EnumMap<DropHelper, Float> maxDropAmounts = new EnumMap<>(DropHelper.class);
+    public EnumMap<SpawnHelper, Float> armorSpawnRates = new EnumMap<>(SpawnHelper.class);
     public EnumMap<ArmorSets, ArmorStats> armorStats = new EnumMap<>(ArmorSets.class);
 
     @Comment("Controlled Teleportation for Teleportation and Unstable Robes, default = false")
     public boolean controlledTeleportation = false;
 
-    @Comment("Armor Set Spawn Rates")
-    public float ghostlyArmor = 0.05f;
-    public float ghostlyKindler = 0.01f;
-    public float grimArmor = 0.05f;
-    public float darkArmor = 0.10f;
-    public float thiefArmor = 0.10f;
-    public float royalArmor = 0.05f;
-    public float titansShroud = 0.025f;
-    public float plateArmor = 0.05f;
-    public float fullMetalArmor = 0.01f;
-    public float snowArmor = 0.03f;
-    public float wolfArmor = 0.05f;
-    public float foxArmor = 0.01f;
-    public float reinforcedMail = 0.05f;
-    public float stalwartMail = 0.01f;
-    public float scaleMail = 0.05f;
-    public float mercenaryArmor = 0.05f;
-    public float spelunkerArmor = 0.05f;
-    public float caveCrawler = 0.01f;
-    public float heroArmor = 0.10f;
-    public float gildedArmor = 0.10f;
-    public float teleportationRobes = 0.10f;
-    public float unstableRobes = 0.01f;
-    public float mysteryArmors = 0.05f;
+    //@Comment("Armor Set Spawn Rates")
+    //public float ghostlyArmor = 0.05f;
+    //public float ghostlyKindler = 0.01f;
+    //public float grimArmor = 0.05f;
+    //public float darkArmor = 0.10f;
+    //public float thiefArmor = 0.10f;
+    //public float royalArmor = 0.05f;
+    //public float titansShroud = 0.025f;
+    //public float plateArmor = 0.05f;
+    //public float fullMetalArmor = 0.01f;
+    //public float snowArmor = 0.03f;
+    //public float wolfArmor = 0.05f;
+    //public float foxArmor = 0.01f;
+    //public float reinforcedMail = 0.05f;
+    //public float stalwartMail = 0.01f;
+    //public float scaleMail = 0.05f;
+    //public float mercenaryArmor = 0.05f;
+    //public float spelunkerArmor = 0.05f;
+    //public float caveCrawler = 0.01f;
+    //public float heroArmor = 0.10f;
+    //public float gildedArmor = 0.10f;
+    //public float teleportationRobes = 0.10f;
+    //public float unstableRobes = 0.01f;
+    //public float mysteryArmors = 0.05f;
 
     // convenience methods:
     protected ArmorStats setProtection(int head, int chest, int legs, int feet, ArmorSets set) {
@@ -99,6 +101,32 @@ public class McdaConfig implements ConfigData {
 
         for (DropHelper dropHelper : DropHelper.values()){
             maxDropAmounts.put(dropHelper, 1.0F);
+        }
+
+        for (SpawnHelper spawnHelper : SpawnHelper.values()){
+            armorSpawnRates.put(SpawnHelper.GHOSTLY, 0.05f);
+            armorSpawnRates.put(SpawnHelper.GHOST_KINDLER, 0.01f);
+            armorSpawnRates.put(SpawnHelper.GRIM, 0.05f);
+            armorSpawnRates.put(SpawnHelper.DARK, 0.1f);
+            armorSpawnRates.put(SpawnHelper.ROYAL, 0.05f);
+            armorSpawnRates.put(SpawnHelper.TITAN, 0.025f);
+            armorSpawnRates.put(SpawnHelper.THIEF, 0.1f);
+            armorSpawnRates.put(SpawnHelper.PLATE, 0.05f);
+            armorSpawnRates.put(SpawnHelper.FULL_METAL, 0.01f);
+            armorSpawnRates.put(SpawnHelper.SNOW, 0.03f);
+            armorSpawnRates.put(SpawnHelper.WOLF, 0.05f);
+            armorSpawnRates.put(SpawnHelper.FOX, 0.01f);
+            armorSpawnRates.put(SpawnHelper.REINFORCED, 0.05f);
+            armorSpawnRates.put(SpawnHelper.STALWART, 0.01f);
+            armorSpawnRates.put(SpawnHelper.SCALE, 0.05f);
+            armorSpawnRates.put(SpawnHelper.MERCENARY, 0.05f);
+            armorSpawnRates.put(SpawnHelper.SPELUNKER, 0.05f);
+            armorSpawnRates.put(SpawnHelper.CAVE_CRAWLER, 0.01f);
+            armorSpawnRates.put(SpawnHelper.HERO, 0.1f);
+            armorSpawnRates.put(SpawnHelper.GILDED, 0.1f);
+            armorSpawnRates.put(SpawnHelper.TELEPORTATION, 0.1f);
+            armorSpawnRates.put(SpawnHelper.UNSTABLE, 0.01f);
+            armorSpawnRates.put(SpawnHelper.MYSTERY, 0.05f);
         }
 
         for (ArmorSets armorSet : ArmorSets.values()) {

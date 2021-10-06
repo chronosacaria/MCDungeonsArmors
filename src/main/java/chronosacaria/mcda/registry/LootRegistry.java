@@ -3,6 +3,7 @@ package chronosacaria.mcda.registry;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.items.itemhelpers.DropHelper;
 import chronosacaria.mcda.items.ItemID;
+import chronosacaria.mcda.items.itemhelpers.SpawnHelper;
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.minecraft.entity.EquipmentSlot;
@@ -33,7 +34,6 @@ public class LootRegistry {
 
     public static final Collection<Identifier> PILLAGER_TOWER_LOOT_TABLES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
             LootTables.PILLAGER_OUTPOST_CHEST, LootTables.WOODLAND_MANSION_CHEST)));
-
 
     public static final Collection<Identifier> VILLAGE_SMITH_LOOT_TABLES = Collections.unmodifiableList(Arrays.asList(
             LootTables.VILLAGE_TOOLSMITH_CHEST,
@@ -163,53 +163,53 @@ public class LootRegistry {
 
             if (BASTION_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.GHOSTLY,       config.ghostlyArmor);
-                addArmorSet(poolBuilder, ArmorSets.GHOST_KINDLER, config.ghostlyKindler);
-                addMysteryArmorSets(poolBuilder, config.mysteryArmors);
+                addArmorSet(poolBuilder, ArmorSets.GHOSTLY,       config.armorSpawnRates.get(SpawnHelper.GHOSTLY));
+                addArmorSet(poolBuilder, ArmorSets.GHOST_KINDLER, config.armorSpawnRates.get(SpawnHelper.GHOST_KINDLER));
+                addMysteryArmorSets(poolBuilder, config.armorSpawnRates.get(SpawnHelper.MYSTERY));
                 supplier.pool(poolBuilder);
             } else if (NETHER_FORTRESS_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.GRIM, config.grimArmor);
-                addMysteryArmorSets(poolBuilder, config.mysteryArmors);
+                addArmorSet(poolBuilder, ArmorSets.GRIM, config.armorSpawnRates.get(SpawnHelper.GRIM));
+                addMysteryArmorSets(poolBuilder, config.armorSpawnRates.get(SpawnHelper.MYSTERY));
                 supplier.pool(poolBuilder);
             } else if (PILLAGER_TOWER_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.DARK,  config.darkArmor);
-                addArmorSet(poolBuilder, ArmorSets.THIEF, config.thiefArmor);
-                addArmorSet(poolBuilder, ArmorSets.ROYAL, config.royalArmor);
-                addArmorSet(poolBuilder, ArmorSets.TITAN, config.titansShroud);
+                addArmorSet(poolBuilder, ArmorSets.DARK,  config.armorSpawnRates.get(SpawnHelper.DARK));
+                addArmorSet(poolBuilder, ArmorSets.THIEF, config.armorSpawnRates.get(SpawnHelper.THIEF));
+                addArmorSet(poolBuilder, ArmorSets.ROYAL, config.armorSpawnRates.get(SpawnHelper.ROYAL));
+                addArmorSet(poolBuilder, ArmorSets.TITAN, config.armorSpawnRates.get(SpawnHelper.TITAN));
                 supplier.pool(poolBuilder);
             } else if (VILLAGE_SMITH_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.PLATE,           config.plateArmor);
-                addArmorSet(poolBuilder, ArmorSets.FULL_METAL,      config.fullMetalArmor);
-                addArmorSet(poolBuilder, ArmorSets.SNOW,            config.snowArmor);
-                addArmorSet(poolBuilder, ArmorSets.WOLF,            config.wolfArmor);
-                addArmorSet(poolBuilder, ArmorSets.FOX,             config.foxArmor);
-                addArmorSet(poolBuilder, ArmorSets.REINFORCED_MAIL, config.reinforcedMail);
-                addArmorSet(poolBuilder, ArmorSets.STALWART_MAIL,   config.stalwartMail);
+                addArmorSet(poolBuilder, ArmorSets.PLATE,           config.armorSpawnRates.get(SpawnHelper.PLATE));
+                addArmorSet(poolBuilder, ArmorSets.FULL_METAL,      config.armorSpawnRates.get(SpawnHelper.FULL_METAL));
+                addArmorSet(poolBuilder, ArmorSets.SNOW,            config.armorSpawnRates.get(SpawnHelper.SNOW));
+                addArmorSet(poolBuilder, ArmorSets.WOLF,            config.armorSpawnRates.get(SpawnHelper.WOLF));
+                addArmorSet(poolBuilder, ArmorSets.FOX,             config.armorSpawnRates.get(SpawnHelper.FOX));
+                addArmorSet(poolBuilder, ArmorSets.REINFORCED_MAIL, config.armorSpawnRates.get(SpawnHelper.REINFORCED));
+                addArmorSet(poolBuilder, ArmorSets.STALWART_MAIL,   config.armorSpawnRates.get(SpawnHelper.STALWART));
                 supplier.pool(poolBuilder);
             } else if (SUNKEN_SHIP_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.SCALE_MAIL, config.scaleMail);
-                addArmorSet(poolBuilder, ArmorSets.MERCENARY,  config.mercenaryArmor);
+                addArmorSet(poolBuilder, ArmorSets.SCALE_MAIL, config.armorSpawnRates.get(SpawnHelper.SCALE));
+                addArmorSet(poolBuilder, ArmorSets.MERCENARY,  config.armorSpawnRates.get(SpawnHelper.MERCENARY));
                 addMysteryArmorSets(poolBuilder, 0.05F);
                 supplier.pool(poolBuilder);
             } else if (MINESHAFT_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.SPELUNKER,    config.spelunkerArmor);
-                addArmorSet(poolBuilder, ArmorSets.CAVE_CRAWLER, config.caveCrawler);
+                addArmorSet(poolBuilder, ArmorSets.SPELUNKER,    config.armorSpawnRates.get(SpawnHelper.SPELUNKER));
+                addArmorSet(poolBuilder, ArmorSets.CAVE_CRAWLER, config.armorSpawnRates.get(SpawnHelper.CAVE_CRAWLER));
                 addMysteryArmorSets(poolBuilder, 0.05F);
                 supplier.pool(poolBuilder);
             } else if (HERO_OF_THE_VILLAGE_LOOT_TABLES.contains(id)){
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.HERO, config.heroArmor);
-                addArmorSet(poolBuilder, ArmorSets.GILDED, config.gildedArmor);
+                addArmorSet(poolBuilder, ArmorSets.HERO, config.armorSpawnRates.get(SpawnHelper.HERO));
+                addArmorSet(poolBuilder, ArmorSets.GILDED, config.armorSpawnRates.get(SpawnHelper.GILDED));
                 supplier.pool(poolBuilder);
             } else if (STRONGHOLD_LOOT_TABLES.contains(id)){
                 poolBuilder = FabricLootPoolBuilder.builder();
-                addArmorSet(poolBuilder, ArmorSets.TELEPORTATION, config.teleportationRobes);
-                addArmorSet(poolBuilder, ArmorSets.UNSTABLE, config.unstableRobes);
+                addArmorSet(poolBuilder, ArmorSets.TELEPORTATION, config.armorSpawnRates.get(SpawnHelper.TELEPORTATION));
+                addArmorSet(poolBuilder, ArmorSets.UNSTABLE, config.armorSpawnRates.get(SpawnHelper.UNSTABLE));
                 supplier.pool(poolBuilder);
             }
         });
