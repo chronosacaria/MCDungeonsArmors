@@ -4,7 +4,7 @@ import chronosacaria.mcda.Mcda;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectType;
+import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.tag.EntityTypeTags;
 import net.minecraft.util.Identifier;
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class FreezingStatusEffect extends StatusEffect {
-    public FreezingStatusEffect(StatusEffectType type, int color, String id) {
+    public FreezingStatusEffect(StatusEffectCategory type, int color, String id) {
         super(type, color);
         Registry.register(Registry.STATUS_EFFECT, new Identifier(Mcda.MOD_ID, id), this);
     }
