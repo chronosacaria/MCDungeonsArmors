@@ -456,7 +456,6 @@ public enum ArmorSets implements ArmorMaterial {
         return this.repairIngredient.get();
     }
 
-    @Environment(EnvType.CLIENT)
     @Override
     public String getName() {
         return this.textureName;
