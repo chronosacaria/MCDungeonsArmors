@@ -33,5 +33,8 @@ public class ServerPlayerEntityMixin {
         ArmorEffects.applySlowFalling(playerEntity); // Phantom and Frost Bite Armour
         ArmorEffects.applySprintingSpeed(playerEntity); // Shadow Walker Armour
         ArmorEffects.applyWaterBreathing(playerEntity); // Glow Squid Armour Water Breathing under water
+
+        // Status Effect Removal
+        ArmorEffects.applyLevitationRemoval(playerEntity); // Sturdy Shulker Armour Remove Levitation Effect
     }
 }

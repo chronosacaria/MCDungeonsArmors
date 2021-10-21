@@ -50,6 +50,8 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow public abstract boolean removeStatusEffect(StatusEffect type);
 
+    @Shadow public abstract boolean hasStatusEffect(StatusEffect effect);
+
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
     // Mixins for enchants related to consuming a potion
@@ -403,7 +405,6 @@ public abstract class LivingEntityMixin extends Entity {
                     && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.FEET).asItem()) {
 
                 ProjectileEffectHelper.fireShulkerBulletAtNearbyEnemy(playerEntity, 10);
-                this.removeStatusEffect(StatusEffects.LEVITATION);
             }
         }
     }
