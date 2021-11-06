@@ -511,4 +511,16 @@ public abstract class LivingEntityMixin extends Entity {
             }
         }
     }
+
+    // Mixin for Gourdian's Hatred Effect
+    @Inject(method = "onDeath", at = @At("HEAD"))
+    public void onGourdiansHatredKill(DamageSource source, CallbackInfo ci){
+        LivingEntity user = (LivingEntity) source.getAttacker();
+        if (user != null) {
+            float hatredRand = user.getRandom().nextFloat();
+            if (hatredRand <= 0.15F){
+                ArmorEffects.applyGourdiansHatredStatus((PlayerEntity) user);
+            }
+        }
+    }
 }

@@ -363,7 +363,15 @@ public enum ArmorSets implements ArmorMaterial {
     STURDY_SHULKER("sturdyshulker", "sturdy_shulker_armor",
                    10,
             BLOCK_SHULKER_BOX_CLOSE,
-            () -> Ingredient.ofItems(Items.SHULKER_SHELL));
+            () -> Ingredient.ofItems(Items.SHULKER_SHELL)),
+    CAULDRON("cauldron", "cauldron_armor",
+            15,
+            ITEM_ARMOR_EQUIP_IRON,
+            () -> Ingredient.ofItems(ItemID.IRON_PLATE)),
+    GOURDIAN("gourdian", "gourdian_armor",
+            15,
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_BLACK));
 
     private static final int[] baseDurability = new int[]{12, 14, 15, 10};
     private final String textureName;

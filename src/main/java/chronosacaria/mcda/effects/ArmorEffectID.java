@@ -4,6 +4,7 @@ public enum ArmorEffectID {
     FIRE_RESISTANCE,
     FLUID_FREEZING,
     FROST_BITE_EFFECT,
+    GOURDIANS_HATRED,
     HASTE,
     HERO_OF_THE_VILLAGE,
     HUNGER,
