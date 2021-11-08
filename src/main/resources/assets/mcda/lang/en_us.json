@@ -602,6 +602,26 @@
   "item.mcda.sturdy_shulker_armor.tooltip_2":     "a good offense, but good luck",
   "item.mcda.sturdy_shulker_armor.tooltip_3":     "breaking through this bulwark.",
 
+  "item.mcda.gourdian_armor_helmet":              "Gourdian Helmet",
+  "item.mcda.gourdian_armor_chestplate":          "Gourdian Chestplate",
+  "item.mcda.gourdian_armor_leggings":            "Gourdian Leggings",
+  "item.mcda.gourdian_armor_boots":               "Gourdian Boots",
+
+  "item.mcda.gourdian_armor.tooltip_1":           "Those who wear the mantle of",
+  "item.mcda.gourdian_armor.tooltip_2":           "The Spooky Gourdian become the",
+  "item.mcda.gourdian_armor.tooltip_3":           "legendary terror of the Pumpkin",
+  "item.mcda.gourdian_armor.tooltip_4":           "Pastures.",
+
+  "item.mcda.cauldron_helmet":                    "Cauldron Helmet",
+  "item.mcda.cauldron_chestplate":                "Cauldron Chestplate",
+  "item.mcda.cauldron_leggings":                  "Cauldron Poleyns",
+  "item.mcda.cauldron_boots":                     "Cauldron Cuisses",
+
+  "item.mcda.cauldron.tooltip_1":                 "The Cauldron Armor was created",
+  "item.mcda.cauldron.tooltip_2":                 "with camouflage in mind, but what",
+  "item.mcda.cauldron.tooltip_3":                 "it lacks in stealth, it makes up",
+  "item.mcda.cauldron.tooltip_4":                 "for in bubbly charm.",
+
   "item.mcda.bone_rib_cage":                      "Bone Rib Cage",
   "item.mcda.phantom_bones":                      "Phantom Bones",
   "item.mcda.phantom_skin":                       "Phantom Skin",

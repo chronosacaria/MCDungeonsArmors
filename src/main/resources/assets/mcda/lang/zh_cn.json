@@ -602,6 +602,26 @@
   "item.mcda.sturdy_shulker_armor.tooltip_2":     "一次好的进攻，但祝你好运",
   "item.mcda.sturdy_shulker_armor.tooltip_3":     "突破这个堡垒。",
 
+  "item.mcda.gourdian_armor_helmet":              "南瓜头盔",
+  "item.mcda.gourdian_armor_chestplate":          "南瓜胸甲",
+  "item.mcda.gourdian_armor_leggings":            "南瓜护腿",
+  "item.mcda.gourdian_armor_boots":               "南瓜靴子",
+
+  "item.mcda.gourdian_armor.tooltip_1":           "穿上惊悚南瓜",
+  "item.mcda.gourdian_armor.tooltip_2":           "披风，成为南瓜",
+  "item.mcda.gourdian_armor.tooltip_3":           "牧场上的传奇",
+  "item.mcda.gourdian_armor.tooltip_4":           "恐怖之源！",
+
+  "item.mcda.cauldron_helmet":                    "锅釜怪头盔",
+  "item.mcda.cauldron_chestplate":                "锅釜怪胸甲",
+  "item.mcda.cauldron_leggings":                  "锅釜怪护腿",
+  "item.mcda.cauldron_boots":                     "锅釜怪靴子",
+
+  "item.mcda.cauldron.tooltip_1":                 "锅釜怪盔甲在设计之初",
+  "item.mcda.cauldron.tooltip_2":                 "就着眼于伪装的功效，",
+  "item.mcda.cauldron.tooltip_3":                 "而潜行方面的笨重恰巧",
+  "item.mcda.cauldron.tooltip_4":                 "可以让美到冒泡的魅力来弥补。",
+
   "item.mcda.bone_rib_cage":                      "骨肋笼",
   "item.mcda.phantom_bones":                      "幻翼骨",
   "item.mcda.phantom_skin":                       "幻翼皮",

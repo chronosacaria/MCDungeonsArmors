@@ -515,11 +515,45 @@ public abstract class LivingEntityMixin extends Entity {
     // Mixin for Gourdian's Hatred Effect
     @Inject(method = "onDeath", at = @At("HEAD"))
     public void onGourdiansHatredKill(DamageSource source, CallbackInfo ci){
+        if (!config.enableArmorEffect.get(GOURDIANS_HATRED))
+            return;
+
         LivingEntity user = (LivingEntity) source.getAttacker();
         if (user != null) {
             float hatredRand = user.getRandom().nextFloat();
             if (hatredRand <= 0.15F){
                 ArmorEffects.applyGourdiansHatredStatus((PlayerEntity) user);
+            }
+        }
+    }
+
+    // Mixin for Cauldron's Overflow Effect
+    @Inject(method = "damage", at = @At("HEAD"))
+    public void applyCauldronsOverflow(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        if (!config.enableArmorEffect.get(CAULDRONS_OVERFLOW))
+            return;
+
+        if(!(source.getAttacker() instanceof LivingEntity))return;
+
+        LivingEntity targetedEntity = (LivingEntity) (Object) this;
+
+        if (targetedEntity != null) {
+            if (amount != 0.0F) {
+                ItemStack helmetStack = targetedEntity.getEquippedStack(EquipmentSlot.HEAD);
+                ItemStack chestStack = targetedEntity.getEquippedStack(EquipmentSlot.CHEST);
+                ItemStack legsStack = targetedEntity.getEquippedStack(EquipmentSlot.LEGS);
+                ItemStack feetStack = targetedEntity.getEquippedStack(EquipmentSlot.FEET);
+
+                if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.CAULDRON).get(EquipmentSlot.HEAD).asItem()
+                        && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.CAULDRON).get(EquipmentSlot.CHEST).asItem()
+                        && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.CAULDRON).get(EquipmentSlot.LEGS).asItem()
+                        && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.CAULDRON).get(EquipmentSlot.FEET).asItem()) {
+
+                    float overflowRand = targetedEntity.getRandom().nextFloat();
+                    if (overflowRand <= 0.15F) {
+                        ArmorEffects.applyCauldronsOverflow(targetedEntity);
+                    }
+                }
             }
         }
     }
