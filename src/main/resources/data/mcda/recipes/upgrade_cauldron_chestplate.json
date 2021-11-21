@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:cauldron"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_soul"
+  },
+  "result": {
+    "item": "mcda:cauldron_armor_chestplate"
+  }
+}
