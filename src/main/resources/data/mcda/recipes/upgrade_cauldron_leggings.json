@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:plate_armor_leggings"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_soul"
+  },
+  "result": {
+    "item": "mcda:cauldron_armor_leggings"
+  }
+}

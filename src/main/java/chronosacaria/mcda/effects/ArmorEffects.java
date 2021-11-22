@@ -5,6 +5,7 @@ import chronosacaria.mcda.registry.ArmorsRegistry;
 import chronosacaria.mcda.registry.StatusEffectsRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -12,6 +13,9 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.potion.PotionUtil;
+import net.minecraft.potion.Potions;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -22,9 +26,7 @@ import net.minecraft.util.math.*;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
@@ -35,6 +37,11 @@ public class ArmorEffects {
             List.of(StatusEffects.HUNGER, StatusEffects.NAUSEA, StatusEffects.BLINDNESS,
                     StatusEffects.MINING_FATIGUE, StatusEffects.SLOWNESS,
                     StatusEffects.UNLUCK, StatusEffects.WEAKNESS);
+
+    public static final List<ItemStack> CAULDRONS_OVERFLOW_LIST =
+            List.of(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.STRENGTH),
+                    PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.SWIFTNESS),
+                    PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.INVISIBILITY));
 
     // Effects for LivingEntityMixin
     public static void endermanLikeTeleportEffect(LivingEntity livingEntity) {
@@ -291,6 +298,36 @@ public class ArmorEffects {
             target.addStatusEffect(new StatusEffectInstance(StatusEffectsRegistry.FREEZING, 60, 0, true, true,
                     false));
         }
+    }
+
+    public static void applyGourdiansHatredStatus(PlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(GOURDIANS_HATRED))
+            return;
+        if (playerEntity.isAlive()) {
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.FEET).asItem()) {
+                StatusEffectInstance strength = new StatusEffectInstance(StatusEffects.STRENGTH, 200, 1);
+                playerEntity.addStatusEffect(strength);
+            }
+        }
+    }
+
+    public static void applyCauldronsOverflow(LivingEntity targetedEntity){
+        if (!config.enableArmorEffect.get(CAULDRONS_OVERFLOW))
+            return;
+        ItemStack potionToDrop =
+                CAULDRONS_OVERFLOW_LIST.get(targetedEntity.getRandom().nextInt(CAULDRONS_OVERFLOW_LIST.size()));
+
+        ItemEntity potion = new ItemEntity(targetedEntity.world, targetedEntity.getX(), targetedEntity.getY(),
+                targetedEntity.getZ(), potionToDrop);
+        targetedEntity.world.spawnEntity(potion);
     }
 
     // Effects for ServerPlayerEntityMixin

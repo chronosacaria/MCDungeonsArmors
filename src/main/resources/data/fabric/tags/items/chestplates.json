@@ -73,6 +73,8 @@
     "mcda:heros_armor_chestplate",
     "mcda:gilded_glory_chestplate",
     "mcda:shulker_armor_chestplate",
-    "mcda:sturdy_shulker_armor_chestplate"
+    "mcda:sturdy_shulker_armor_chestplate",
+    "mcda:gourdian_armor_chestplate",
+    "mcda:cauldron_armor_chestplate"
   ]
 }

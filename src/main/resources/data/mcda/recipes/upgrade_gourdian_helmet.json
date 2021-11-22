@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:jack_o_lantern"
+  },
+  "addition": {
+    "item": "mcda:upgrade_core_soul"
+  },
+  "result": {
+    "item": "mcda:gourdian_armor_helmet"
+  }
+}

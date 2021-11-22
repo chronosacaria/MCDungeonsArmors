@@ -1,9 +1,11 @@
 package chronosacaria.mcda.effects;
 
 public enum ArmorEffectID {
+    CAULDRONS_OVERFLOW,
     FIRE_RESISTANCE,
     FLUID_FREEZING,
     FROST_BITE_EFFECT,
+    GOURDIANS_HATRED,
     HASTE,
     HERO_OF_THE_VILLAGE,
     HUNGER,
@@ -21,5 +23,6 @@ public enum ArmorEffectID {
     TITAN_SHROUD_EFFECTS,
     UNSTABLE_ROBES_EFFECT,
     WATER_BREATHING,
+    WEB_WALKING,
     WITHERED
 }

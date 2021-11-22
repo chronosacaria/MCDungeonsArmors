@@ -155,6 +155,7 @@ public class McdaConfig implements ConfigData {
         setProtection(3, 5, 4, 3, TROUBADOUR).setDurabilityMultiplier(5);
         setProtection(2, 4, 3, 2, TELEPORTATION).setDurabilityMultiplier(5);
         setProtection(3, 5, 4, 3, UNSTABLE).setDurabilityMultiplier(5);
+        setProtection(3, 7, 5, 3, GOURDIAN).setDurabilityMultiplier(25);
 
         // Bone Armours
         setProtection(2, 6, 4, 2, PHANTOM).setDurabilityMultiplier(25);
@@ -202,6 +203,7 @@ public class McdaConfig implements ConfigData {
         setProtection(3, 8, 6, 3, ROYAL).setDurabilityMultiplier(36);
         setProtection(3, 8, 6, 3, PLATE).setDurabilityMultiplier(36);
         setProtection(4, 9, 7, 4, FULL_METAL).setDurabilityMultiplier(36);
+        setProtection(4, 9, 7, 4, CAULDRON).setDurabilityMultiplier(36);
         setProtection(3, 8, 6, 3, MYSTERY).setDurabilityMultiplier(36);
         setProtection(3, 8, 6, 3, BLUE_MYSTERY).setDurabilityMultiplier(36);
         setProtection(3, 8, 6, 3, GREEN_MYSTERY).setDurabilityMultiplier(36);
@@ -235,6 +237,7 @@ public class McdaConfig implements ConfigData {
         setAttackDamageBoost(0.0375, GHOST_KINDLER);
         setAttackDamageBoost(0.0375, GRIM);
         setAttackDamageBoost(0.0375, WITHER);
+        setAttackDamageBoost(0.0375, GOURDIAN);
         setAttackDamageBoost(0.05, RENEGADE);
         setAttackDamageBoost(0.05, HUNGRY_HORROR).setMovementSpeedBoost(0.0625);
         setMovementSpeedBoost(0.05, OCELOT);
@@ -243,6 +246,7 @@ public class McdaConfig implements ConfigData {
         setMovementSpeedBoost(0.075, FROST_BITE);
         setAttackDamageBoost(0.05, PLATE).setMovementSpeedBoost(-0.0375);
         setAttackDamageBoost(0.05, FULL_METAL).setMovementSpeedBoost(-0.025);
+        setAttackDamageBoost(0.05, CAULDRON).setMovementSpeedBoost(-0.025);
         setAttackDamageBoost(0.0375, SCALE_MAIL);
         setAttackDamageBoost(0.0375, HIGHLAND);
         setMovementSpeedBoost(0.025, CAVE_CRAWLER);
