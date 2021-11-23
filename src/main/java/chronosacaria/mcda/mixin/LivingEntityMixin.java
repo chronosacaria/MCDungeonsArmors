@@ -519,10 +519,23 @@ public abstract class LivingEntityMixin extends Entity {
             return;
 
         LivingEntity user = (LivingEntity) source.getAttacker();
+
         if (user != null) {
-            float hatredRand = user.getRandom().nextFloat();
-            if (hatredRand <= 0.15F){
-                ArmorEffects.applyGourdiansHatredStatus((PlayerEntity) user);
+            ItemStack helmetStack = user.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = user.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = user.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = user.getEquippedStack(EquipmentSlot.FEET);
+
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.FEET).asItem()) {
+
+                float hatredRand = user.getRandom().nextFloat();
+                if (hatredRand <= 0.15F) {
+                    ArmorEffects.applyGourdiansHatredStatus(user);
+                }
             }
         }
     }

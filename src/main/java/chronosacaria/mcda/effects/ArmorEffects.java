@@ -300,21 +300,21 @@ public class ArmorEffects {
         }
     }
 
-    public static void applyGourdiansHatredStatus(PlayerEntity playerEntity){
+    public static void applyGourdiansHatredStatus(LivingEntity livingEntity){
         if (!config.enableArmorEffect.get(GOURDIANS_HATRED))
             return;
-        if (playerEntity.isAlive()) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
+        if (livingEntity.isAlive()) {
+            ItemStack helmetStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.CHEST).asItem()
                     && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.LEGS).asItem()
                     && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.FEET).asItem()) {
                 StatusEffectInstance strength = new StatusEffectInstance(StatusEffects.STRENGTH, 200, 1);
-                playerEntity.addStatusEffect(strength);
+                livingEntity.addStatusEffect(strength);
             }
         }
     }
