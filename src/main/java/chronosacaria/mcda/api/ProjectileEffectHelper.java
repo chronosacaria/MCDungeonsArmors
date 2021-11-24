@@ -37,7 +37,7 @@ public class ProjectileEffectHelper {
         double e = target.getBodyY(0.3333333333333333D) - snowballEntity.getY();
         double f = target.getZ() - snowballEntity.getZ();
         double g = Math.sqrt(d * d + f * f);
-        snowballEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
+        snowballEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
         setProjectileTowards(snowballEntity, d, e, g, 0);
         //
         user.world.spawnEntity(snowballEntity);
@@ -59,7 +59,7 @@ public class ProjectileEffectHelper {
         double e = target.getBodyY(0.3333333333333333D) - shulkerBulletEntity.getY();
         double f = target.getZ() - shulkerBulletEntity.getZ();
         double g = Math.sqrt(d * d + f * f);
-        shulkerBulletEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
+        shulkerBulletEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
         setProjectileTowards(shulkerBulletEntity, d, e, g, 0);
         //
         user.world.spawnEntity(shulkerBulletEntity);

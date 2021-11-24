@@ -14,10 +14,6 @@ repositories{
     maven { url "https://maven.shedaniel.me/" }
 }
 
-minecraft {
-    accessWidener "src/main/resources/mcda.accesswidener"
-}
-
 dependencies {
     //to change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -34,6 +30,7 @@ dependencies {
 }
 processResources {
     inputs.property "version", project.version
+    filteringCharset "UTF-8"
 
     filesMatching("fabric.mod.json") {
         expand "version": project.version
@@ -48,7 +45,7 @@ tasks.withType(JavaCompile).configureEach {
     // this fixes some edge cases with special characters not displaying correctly
     // see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
     // If Javadoc is generated, this must be specified in that task too.
-    // it.options.encoding = "UTF-8"
+    it.options.encoding = "UTF-8"
 
     // Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
     it.options.release = 17

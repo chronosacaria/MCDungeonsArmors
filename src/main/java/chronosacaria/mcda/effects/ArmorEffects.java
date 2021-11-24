@@ -183,7 +183,7 @@ public class ArmorEffects {
                                 BlockState blockState3 = world.getBlockState(blockPos2);
                                 if (blockState3.getMaterial() == Material.WATER && blockState3.get(FluidBlock.LEVEL) == 0 && blockState.canPlaceAt(world, blockPos2) && world.canPlace(blockState, blockPos2, ShapeContext.absent())) {
                                     world.setBlockState(blockPos2, blockState);
-                                    world.getBlockTickScheduler().schedule(blockPos2, Blocks.FROSTED_ICE, MathHelper.nextInt(playerEntity.getRandom(), 60, 120));
+                                    world.createAndScheduleBlockTick(blockPos2, Blocks.FROSTED_ICE, MathHelper.nextInt(playerEntity.getRandom(), 60, 120));
                                 }
                             }
                         }
@@ -204,7 +204,7 @@ public class ArmorEffects {
                                 BlockState blockState3 = world.getBlockState(blockPos2);
                                 if (blockState3.getMaterial() == Material.LAVA && blockState3.get(FluidBlock.LEVEL) == 0 && blockState.canPlaceAt(world, blockPos2) && world.canPlace(blockState, blockPos2, ShapeContext.absent())) {
                                     world.setBlockState(blockPos2, blockState);
-                                    world.getBlockTickScheduler().schedule(blockPos2, Blocks.CRYING_OBSIDIAN,
+                                    world.createAndScheduleBlockTick(blockPos2, Blocks.CRYING_OBSIDIAN,
                                             MathHelper.nextInt(playerEntity.getRandom(), 60, 120));
                                 }
                             }
