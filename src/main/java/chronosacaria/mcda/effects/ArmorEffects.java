@@ -132,13 +132,13 @@ public class ArmorEffects {
         if (!world.isClient && !result.isInsideBlock()) {
 
             while(!positionIsFree) {
-                teleportPos = teleportPos.down();
+                teleportPos = livingEntity.getBlockPos();
                 positionIsFree = positionIsClear(world, teleportPos) && world.raycast(new RaycastContext(eyeVec,
                        Vec3d.ofCenter(teleportPos.up()),
                         RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.NONE, livingEntity)).getType() == HitResult.Type.MISS;
-                if (teleportPos.getY() <= 0){
-                    break;
-                }
+                //if (teleportPos.getY() <= 0){
+                //    break;
+                //}
             }
         } else if (positionIsFree) {
             Vec3d.ofCenter(teleportPos);
@@ -582,23 +582,20 @@ public class ArmorEffects {
         if (!config.enableArmorEffect.get(SHULKER_LIKE))
             return;
 
-        World world = playerEntity.getEntityWorld();
+        ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+        ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+        ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+        ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-        if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
+        if (playerEntity.isAlive()
+            && helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.HEAD).asItem()
+            && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.CHEST).asItem()
+            && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.LEGS).asItem()
+            && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.FEET).asItem()) {
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.FEET).asItem()) {
-                if (playerEntity.hasStatusEffect(StatusEffects.LEVITATION)) {
-                    playerEntity.removeStatusEffect(StatusEffects.LEVITATION);
-                }
+            if (playerEntity.hasStatusEffect(StatusEffects.LEVITATION)) {
+                playerEntity.removeStatusEffect(StatusEffects.LEVITATION);
             }
         }
     }
-
 }
