@@ -430,11 +430,7 @@ public abstract class LivingEntityMixin extends Entity {
                     && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TELEPORTATION).get(EquipmentSlot.FEET).asItem()) {
                 if (playerEntity.isSneaking()) {
                     ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
-                    if (config.controlledTeleportation){
-                        ArmorEffects.controlledTeleportEffect(playerEntity);
-                    } else {
                         ArmorEffects.endermanLikeTeleportEffect(playerEntity);
-                    }
                 } else {
                     ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
                 }
