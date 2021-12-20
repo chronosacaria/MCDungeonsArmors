@@ -11,6 +11,7 @@
     "PersistentProjectileEntityMixin",
     "PiglinBrainMixin",
     "PlayerTeleportationStateAccessor",
+    "PotionItemMixin",
     "PowderSnowBlockMixin",
     "ServerPlayerEntityMixin"
   ],
