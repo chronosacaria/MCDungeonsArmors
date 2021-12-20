@@ -514,6 +514,8 @@ public abstract class LivingEntityMixin extends Entity {
         if (!config.enableArmorEffect.get(GOURDIANS_HATRED))
             return;
 
+        if(!(source.getAttacker() instanceof LivingEntity))return;
+
         LivingEntity user = (LivingEntity) source.getAttacker();
 
         if (user != null) {
