@@ -48,10 +48,6 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow public abstract boolean damage(DamageSource source, float amount);
 
-    @Shadow public abstract boolean removeStatusEffect(StatusEffect type);
-
-    @Shadow public abstract boolean hasStatusEffect(StatusEffect effect);
-
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
     // Mixins for enchants related to consuming a potion
@@ -224,7 +220,7 @@ public abstract class LivingEntityMixin extends Entity {
         int deathBarterLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(DEATH_BARTER), playerEntity);
         if (deathBarterLevel > 0) {
             int minEmeralds = 150 / deathBarterLevel;
-            if (deathBarterLevel > 0 && emeraldTotal >= minEmeralds && emeraldTotal > 0) {
+            if (emeraldTotal >= minEmeralds && emeraldTotal > 0) {
 
                 for (Integer slotIndex : emeraldSlotIndices) {
                     if (minEmeralds > 0) {
