@@ -21,7 +21,7 @@ public class PotionItemMixin {
     @Redirect(method = "finishUsing", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;" +
             "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;)Z"))
     private boolean troubadoursCharisma(LivingEntity livingEntity, StatusEffectInstance instance) {
-        int newDuration = 0;
+        int interceptedDuration = instance.getDuration();
 
         if (livingEntity instanceof ServerPlayerEntity && config.enableArmorEffect.get(TROUBADOURS_CHARISMA)) {
             ItemStack helmetStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
@@ -37,16 +37,16 @@ public class PotionItemMixin {
                 // Positive Effect
                 if (instance.getEffectType().getCategory().equals(StatusEffectCategory.BENEFICIAL)) {
                     // Positive Effect
-                    newDuration = instance.getDuration() * 2;
+                    interceptedDuration = instance.getDuration() * 2;
                 } else if (instance.getEffectType().getCategory().equals(StatusEffectCategory.HARMFUL)){
                     // Negative Effect
-                    newDuration = instance.getDuration() / 2;
+                    interceptedDuration = instance.getDuration() / 2;
                 }
             }
 
             return livingEntity.addStatusEffect(new StatusEffectInstance(
                     instance.getEffectType(),
-                    newDuration,
+                    interceptedDuration,
                     instance.getAmplifier(),
                     instance.isAmbient(),
                     instance.shouldShowParticles(),
