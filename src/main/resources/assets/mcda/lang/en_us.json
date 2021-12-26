@@ -92,7 +92,7 @@
   "item.mcda.royal_guard_armor.tooltip_3":        "by the Illager royal guard.",
 
   "item.mcda.evocation_robe_helmet":              "Evocation Hat",
-  "item.mcda.evocation_robe_chestplate":          "Evocation Robe Chestplate",
+  "item.mcda.evocation_robe_chestplate":          "Evocation Robe",
   "item.mcda.evocation_robe_leggings":            "Evocation Pants",
 
   "item.mcda.evocation_robe.tooltip_1":           "Potent magical runes are",
@@ -345,10 +345,10 @@
   "item.mcda.soul_robe.tooltip_2":                "woven into the cloth of the Soul",
   "item.mcda.soul_robe.tooltip_3":                "Robe shimmer with power.",
 
-  "item.mcda.souldancer_robe_helmet":             "Souldancer's Hood",
-  "item.mcda.souldancer_robe_chestplate":         "Souldancer's Robe",
-  "item.mcda.souldancer_robe_leggings":           "Souldancer's Leggings",
-  "item.mcda.souldancer_robe_boots":              "Souldancer's Belt",
+  "item.mcda.souldancer_robe_helmet":             "Souldancer Hood",
+  "item.mcda.souldancer_robe_chestplate":         "Souldancer Robe",
+  "item.mcda.souldancer_robe_leggings":           "Souldancer Leggings",
+  "item.mcda.souldancer_robe_boots":              "Souldancer Belt",
 
   "item.mcda.souldancer_robe.tooltip_1":          "The Souldancer Robe comes alive",
   "item.mcda.souldancer_robe.tooltip_2":          "in the light, as if the souls",
@@ -372,10 +372,10 @@
   "item.mcda.cave_crawler.tooltip_2":             "down through generations of brave",
   "item.mcda.cave_crawler.tooltip_3":             "spelunkers and miners.",
 
-  "item.mcda.thief_armor_helmet":                 "Thief's Mask",
-  "item.mcda.thief_armor_chestplate":             "Thief's Vest",
-  "item.mcda.thief_armor_leggings":               "Thief's Leggings",
-  "item.mcda.thief_armor_boots":                  "Thief's Belt",
+  "item.mcda.thief_armor_helmet":                 "Thief Mask",
+  "item.mcda.thief_armor_chestplate":             "Thief Vest",
+  "item.mcda.thief_armor_leggings":               "Thief Leggings",
+  "item.mcda.thief_armor_boots":                  "Thief Belt",
 
   "item.mcda.thief_armor.tooltip_1":              "This armor is light, nimble, and",
   "item.mcda.thief_armor.tooltip_2":              "smells faintly of sulfur.",
@@ -559,10 +559,10 @@
 
   "item.mcda.entertainer_garb.tooltip_1":         "Defensive? Sure. Fabulous? ABSOLUTELY.",
 
-  "item.mcda.troubadour_armor_helmet":            "Troubadour's Hat",
-  "item.mcda.troubadour_armor_chestplate":        "Troubadour's Vest",
-  "item.mcda.troubadour_armor_leggings":          "Troubadour's Pads",
-  "item.mcda.troubadour_armor_boots":             "Troubadour's Pants",
+  "item.mcda.troubadour_armor_helmet":            "Troubadour Hat",
+  "item.mcda.troubadour_armor_chestplate":        "Troubadour Vest",
+  "item.mcda.troubadour_armor_leggings":          "Troubadour Pads",
+  "item.mcda.troubadour_armor_boots":             "Troubadour Pants",
 
   "item.mcda.troubadour_armor.tooltip_1":         "Why leave your adoring fans wanting",
   "item.mcda.troubadour_armor.tooltip_2":         "more when you can wow them with this",
