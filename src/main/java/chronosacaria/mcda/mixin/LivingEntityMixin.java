@@ -367,8 +367,7 @@ public abstract class LivingEntityMixin extends Entity {
                         if (petOwner instanceof LivingEntity) {
                             float blackWolfArmourFactor = 1.5f;
                             float newDamage = amount * blackWolfArmourFactor;
-                            float h = target.getHealth();
-                            target.setHealth(h - newDamage);
+                            target.damage(DamageSource.GENERIC, newDamage);
                         }
                     }
                 }
