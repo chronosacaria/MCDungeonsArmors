@@ -561,8 +561,8 @@
 
   "item.mcda.troubadour_armor_helmet":            "Troubadour Hat",
   "item.mcda.troubadour_armor_chestplate":        "Troubadour Vest",
-  "item.mcda.troubadour_armor_leggings":          "Troubadour Pads",
-  "item.mcda.troubadour_armor_boots":             "Troubadour Pants",
+  "item.mcda.troubadour_armor_leggings":          "Troubadour Pants",
+  "item.mcda.troubadour_armor_boots":             "Troubadour Pads",
 
   "item.mcda.troubadour_armor.tooltip_1":         "Why leave your adoring fans wanting",
   "item.mcda.troubadour_armor.tooltip_2":         "more when you can wow them with this",
