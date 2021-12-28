@@ -64,10 +64,14 @@ public class LootRegistry {
                     LootPool phantomBonesLootPool = FabricLootPoolBuilder.builder()
                             .rolls(ConstantLootNumberProvider.create(1))
                             .with(ItemEntry.builder(ItemID.PHANTOM_BONES).weight(100))
-                            .with(ItemEntry.builder(ItemID.PHANTOM_SKIN).weight(10))
                             .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
                                     config.maxDropAmounts.get(DropHelper.PHANTOM_SKIN_AND_BONES))).build())
-                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
+
+                            .rolls(ConstantLootNumberProvider.create(1))
+                            .with(ItemEntry.builder(ItemID.PHANTOM_SKIN).weight(50))
+                            .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
+                                    config.maxDropAmounts.get(DropHelper.PHANTOM_SKIN_AND_BONES))).build())
+                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 2.0F)).build())
                             .build();
                     supplier.withPool(phantomBonesLootPool);
                     break;
@@ -88,7 +92,6 @@ public class LootRegistry {
                             .with(ItemEntry.builder(Items.SKELETON_SKULL))
                             .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
                                             config.maxDropAmounts.get(DropHelper.SKELETON_SKULL))).build())
-                            .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
                             .build();
                     supplier.withPool(skullLootPool);
                     break;

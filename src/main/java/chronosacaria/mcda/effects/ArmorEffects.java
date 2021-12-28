@@ -7,6 +7,7 @@ import net.minecraft.block.*;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -398,7 +399,7 @@ public class ArmorEffects {
         }
     }
 
-    public static void applyHunger(ServerPlayerEntity playerEntity){
+    public static void applyHungerPain(ServerPlayerEntity playerEntity){
         if (!config.enableArmorEffect.get(HUNGER))
             return;
 
@@ -417,6 +418,13 @@ public class ArmorEffects {
                 StatusEffectInstance hunger = new StatusEffectInstance(StatusEffects.HUNGER, 42, 1, false,
                         false);
                 playerEntity.addStatusEffect(hunger);
+                if (playerEntity.getHungerManager().getFoodLevel() <= 6){
+                    playerEntity.damage(DamageSource.STARVE, 0.5f);
+                    StatusEffectInstance hungerPain = new StatusEffectInstance(StatusEffects.STRENGTH, 42, 2, false,
+                            true);
+                    playerEntity.addStatusEffect(hungerPain);
+
+                }
             }
         }
     }

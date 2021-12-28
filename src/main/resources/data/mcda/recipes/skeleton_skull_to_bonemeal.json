@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:skeleton_skull"
+    }
+  ],
+  "result": {
+    "item": "minecraft:bone_meal",
+    "count": 3
+  }
+}
