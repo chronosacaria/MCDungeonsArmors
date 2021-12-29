@@ -418,22 +418,33 @@ public class ArmorEffects {
                 StatusEffectInstance hunger = new StatusEffectInstance(StatusEffects.HUNGER, 42, 1, false,
                         false);
                 playerEntity.addStatusEffect(hunger);
-                if (playerEntity.getHungerManager().getFoodLevel() > 12 && playerEntity.getHungerManager().getFoodLevel() <= 18){
-                    StatusEffectInstance snacky = new StatusEffectInstance(StatusEffects.STRENGTH, 42, 0,
-                            false, true);
-                    playerEntity.addStatusEffect(snacky);
-                } else if (playerEntity.getHungerManager().getFoodLevel() > 6 && playerEntity.getHungerManager().getFoodLevel() <= 12){
-                    StatusEffectInstance tummyGrumbles = new StatusEffectInstance(StatusEffects.STRENGTH, 42, 1,
-                            false, true);
-                    playerEntity.removeStatusEffect(StatusEffects.STRENGTH);
-                    playerEntity.addStatusEffect(tummyGrumbles);
-                } else if (playerEntity.getHungerManager().getFoodLevel() <= 6){
-                    playerEntity.damage(DamageSource.STARVE, 0.5f);
-                    playerEntity.removeStatusEffect(StatusEffects.STRENGTH);
-                    StatusEffectInstance hungerPain = new StatusEffectInstance(StatusEffects.STRENGTH, 42, 2,
-                            false, true);
-                    playerEntity.addStatusEffect(hungerPain);
+
+                int foodLevel = playerEntity.getHungerManager().getFoodLevel();
+
+                if(foodLevel <= 18){
+
+                    if (foodLevel > 12){
+                        //apply Strength 1
+                        StatusEffectInstance snacky = new StatusEffectInstance(StatusEffects.STRENGTH, 42, 0,
+                                false, true);
+                        playerEntity.addStatusEffect(snacky);
+                    } else if (foodLevel > 6){
+                        //apply Strength 2
+                        StatusEffectInstance tummyGrumbles = new StatusEffectInstance(StatusEffects.STRENGTH, 42, 1,
+                                false, true);
+                        playerEntity.removeStatusEffect(StatusEffects.STRENGTH);
+                        playerEntity.addStatusEffect(tummyGrumbles);
+                    } else if (foodLevel <= 6){
+                        //Sooner Starvation
+                        playerEntity.damage(DamageSource.STARVE, 0.5f);
+                        //apply Strength 3
+                        StatusEffectInstance hungerPain = new StatusEffectInstance(StatusEffects.STRENGTH, 42, 2,
+                                false, true);
+                        playerEntity.removeStatusEffect(StatusEffects.STRENGTH);
+                        playerEntity.addStatusEffect(hungerPain);
+                    }
                 }
+
             }
         }
     }
