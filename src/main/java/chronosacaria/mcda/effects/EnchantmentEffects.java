@@ -84,18 +84,6 @@ public class EnchantmentEffects {
         }
     }
 
-    public static void applyHealAllies(PlayerEntity playerEntity, float amount){
-        if (!config.enableEnchantment.get(HEAL_ALLIES))
-            return;
-
-        if (playerEntity.getHealth() < playerEntity.getMaxHealth()){
-            int healAlliesLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(HEAL_ALLIES), playerEntity);
-            float damageToHealingMultiplier = (amount * (0.25F * healAlliesLevel));
-
-            AOEHelper.healNearbyAllies(playerEntity, damageToHealingMultiplier, 12);
-        }
-    }
-
     public static void applyPotionBarrier(PlayerEntity playerEntity) {
         if (!config.enableEnchantment.get(POTION_BARRIER))
             return;
@@ -178,7 +166,7 @@ public class EnchantmentEffects {
             player.setHealth(recklessHealth);
         }
 
-        if (player.getHealth() <= recklessHealth && world.getTime() % 30 == 0){
+        if (world.getTime() % 30 == 0){
             StatusEffectInstance reckless = new StatusEffectInstance(StatusEffects.STRENGTH, 40, recklessLevel - 1,false, false);
             player.addStatusEffect(reckless);
         }

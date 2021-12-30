@@ -80,7 +80,9 @@ public abstract class LivingEntityMixin extends Entity {
 
         int healAlliesLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(HEAL_ALLIES), playerEntity);
         if (EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(HEAL_ALLIES), playerEntity) > 0) {
-            EnchantmentEffects.applyHealAllies(playerEntity, (0.25f * amount) * healAlliesLevel);
+            if (playerEntity.getHealth() < playerEntity.getMaxHealth()) {
+                AOEHelper.healNearbyAllies(playerEntity, (0.25f * amount) * healAlliesLevel, 12);
+            }
         }
 
     }
