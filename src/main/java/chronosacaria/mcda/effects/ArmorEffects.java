@@ -444,7 +444,6 @@ public class ArmorEffects {
                         playerEntity.addStatusEffect(hungerPain);
                     }
                 }
-
             }
         }
     }

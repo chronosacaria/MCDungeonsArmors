@@ -146,7 +146,8 @@ public class EnchantmentEffects {
             int frenziedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FRENZIED), player);
             if (frenziedLevel == 0) return;
 
-            StatusEffectInstance frenzied = new StatusEffectInstance(StatusEffects.HASTE, 40, frenziedLevel, false, false);
+            StatusEffectInstance frenzied = new StatusEffectInstance(StatusEffects.HASTE, 40, frenziedLevel - 1, false,
+                    false);
             player.addStatusEffect(frenzied);
         }
     }
@@ -179,7 +180,7 @@ public class EnchantmentEffects {
 
         World world = player.getEntityWorld();
 
-        if (!(player.isOnGround()) && world.getTime() % 50 == 0){
+        if (!(player.isOnGround()) && world.getTime() % 20 == 0){
             int swiftfootedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SWIFTFOOTED),player);
             if (swiftfootedLevel == 0) return;
 
