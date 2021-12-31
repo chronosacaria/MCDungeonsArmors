@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:dark_armor_helmet"
+  },
+  "addition": {
+    "item": "minecraft:totem_of_undying"
+  },
+  "result": {
+    "item": "mcda:royal_guard_armor_helmet"
+  }
+}

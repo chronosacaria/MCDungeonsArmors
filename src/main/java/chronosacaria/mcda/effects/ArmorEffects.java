@@ -44,6 +44,67 @@ public class ArmorEffects {
                     PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.SWIFTNESS),
                     PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.INVISIBILITY));
 
+    public static final List<ArmorEffectID> ARMOR_EFFECT_ID_LIST =
+            List.of(FIRE_RESISTANCE, HASTE, HERO_OF_THE_VILLAGE, INVISIBILITY, LUCK,
+                    SLOW_FALLING, SPRINTING, WATER_BREATHING);
+
+    public static int applyMysteryArmorEffect(PlayerEntity playerEntity) {
+        ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+        ItemStack chestplateStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+        ItemStack leggingsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+        ItemStack bootsStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
+
+        int helmDOM = 0;
+        int chestDOM = 0;
+        int legDOM = 0;
+        int bootDOM = 0;
+
+        if (helmetStack.getNbt() != null) {
+            helmDOM = helmetStack.getNbt().getInt("dominance");
+        }
+        if (chestplateStack.getNbt() != null) {
+            chestDOM = chestplateStack.getNbt().getInt("dominance");
+        }
+        if (leggingsStack.getNbt() != null) {
+            legDOM = leggingsStack.getNbt().getInt("dominance");
+        }
+        if (bootsStack.getNbt() != null) {
+            bootDOM = bootsStack.getNbt().getInt("dominance");
+        }
+
+        int stackTracker = 0;
+
+        int domDOM = helmDOM;
+        if (chestDOM > domDOM) {
+            stackTracker = 1;
+            domDOM = chestDOM;
+        }
+        if (legDOM > domDOM) {
+            stackTracker = 2;
+            domDOM = legDOM;
+        }
+        if (bootDOM > domDOM) {
+            stackTracker = 3;
+            domDOM = bootDOM;
+        }
+
+        switch (stackTracker) {
+            case 0 -> {
+                return helmetStack.getNbt().getInt("mystery_effect");
+            }
+            case 1 -> {
+                return chestplateStack.getNbt().getInt("mystery_effect");
+            }
+            case 2 -> {
+                return leggingsStack.getNbt().getInt("mystery_effect");
+            }
+            case 3 -> {
+                return bootsStack.getNbt().getInt("mystery_effect");
+            }
+        }
+        return -1;
+    }
+
     // Effects for LivingEntityMixin
     public static void endermanLikeTeleportEffect(LivingEntity livingEntity) {
         World world = livingEntity.getEntityWorld();
@@ -132,10 +193,10 @@ public class ArmorEffects {
 
         if (!world.isClient && !result.isInsideBlock()) {
 
-            while(!positionIsFree) {
+            while (!positionIsFree) {
                 teleportPos = livingEntity.getBlockPos();
                 positionIsFree = positionIsClear(world, teleportPos) && world.raycast(new RaycastContext(eyeVec,
-                       Vec3d.ofCenter(teleportPos.up()),
+                        Vec3d.ofCenter(teleportPos.up()),
                         RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.NONE, livingEntity)).getType() == HitResult.Type.MISS;
                 //if (teleportPos.getY() <= 0){
                 //    break;
@@ -152,7 +213,7 @@ public class ArmorEffects {
                 && (world.isAir(pos.up()) || world.getBlockState(pos.up()).getCollisionShape(world, pos.up()).isEmpty()));
     }
 
-    public static void applyFluidFreezing(PlayerEntity playerEntity){
+    public static void applyFluidFreezing(PlayerEntity playerEntity) {
         if (!config.enableArmorEffect.get(FLUID_FREEZING))
             return;
         World world = playerEntity.getEntityWorld();
@@ -216,10 +277,10 @@ public class ArmorEffects {
         }
     }
 
-    public static void applyThiefInvisibilityTick(PlayerEntity playerEntity){
+    public static void applyThiefInvisibilityTick(PlayerEntity playerEntity) {
         if (!config.enableArmorEffect.get(INVISIBILITY))
             return;
-        if (playerEntity.isAlive()){
+        if (playerEntity.isAlive()) {
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
@@ -233,7 +294,7 @@ public class ArmorEffects {
         }
     }
 
-    public static void applyWithered(PlayerEntity playerEntity, LivingEntity attacker){
+    public static void applyWithered(PlayerEntity playerEntity, LivingEntity attacker) {
         if (!config.enableArmorEffect.get(WITHERED))
             return;
         if (attacker != null) {
@@ -253,7 +314,7 @@ public class ArmorEffects {
         }
     }
 
-    public static void applyNimbleTurtleEffects(PlayerEntity playerEntity){
+    public static void applyNimbleTurtleEffects(PlayerEntity playerEntity) {
         if (!config.enableArmorEffect.get(NIMBLE_TURTLE_EFFECTS))
             return;
         if (playerEntity.isAlive()) {
@@ -276,7 +337,7 @@ public class ArmorEffects {
         }
     }
 
-    public static void applyTitanShroudStatuses(PlayerEntity playerEntity, LivingEntity target){
+    public static void applyTitanShroudStatuses(PlayerEntity playerEntity, LivingEntity target) {
         if (!config.enableArmorEffect.get(TITAN_SHROUD_EFFECTS))
             return;
         StatusEffect titanStatusEffect =
@@ -284,7 +345,7 @@ public class ArmorEffects {
         target.addStatusEffect(new StatusEffectInstance(titanStatusEffect, 60, 0));
     }
 
-    public static void applyFrostBiteStatus(PlayerEntity playerEntity, LivingEntity target){
+    public static void applyFrostBiteStatus(PlayerEntity playerEntity, LivingEntity target) {
         if (!config.enableArmorEffect.get(FROST_BITE_EFFECT))
             return;
         ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
@@ -301,7 +362,7 @@ public class ArmorEffects {
         }
     }
 
-    public static void applyGourdiansHatredStatus(LivingEntity livingEntity){
+    public static void applyGourdiansHatredStatus(LivingEntity livingEntity) {
         if (!config.enableArmorEffect.get(GOURDIANS_HATRED))
             return;
         if (livingEntity.isAlive()) {
@@ -320,7 +381,7 @@ public class ArmorEffects {
         }
     }
 
-    public static void applyCauldronsOverflow(LivingEntity targetedEntity){
+    public static void applyCauldronsOverflow(LivingEntity targetedEntity) {
         if (!config.enableArmorEffect.get(CAULDRONS_OVERFLOW))
             return;
         ItemStack potionToDrop =
@@ -330,6 +391,56 @@ public class ArmorEffects {
                 targetedEntity.getZ(), potionToDrop);
         targetedEntity.world.spawnEntity(potion);
     }
+
+    public static void applyWhiteMysteryArmorEffect(LivingEntity livingEntity) {
+        //if (!config.enableArmorEffect.get(MYSTERY_EFFECT)) {
+        //    return;
+        //}
+        if (livingEntity.isAlive()) {
+            ItemStack helmetStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
+
+            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.FEET).asItem()) {
+
+                ArmorEffectID armorEffectID =
+                        ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect((PlayerEntity) livingEntity));
+
+                switch (armorEffectID) {
+                    case FIRE_RESISTANCE -> {StatusEffectInstance fire_resistance =
+                            new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 42, 0, false,
+                            false); livingEntity.addStatusEffect(fire_resistance);}
+                    case HASTE -> {StatusEffectInstance haste =
+                            new StatusEffectInstance(StatusEffects.HASTE, 42, 0, false,
+                                    false); livingEntity.addStatusEffect(haste);}
+                    case HERO_OF_THE_VILLAGE -> {StatusEffectInstance hero_of_the_village =
+                            new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 42, 0, false,
+                                    false); livingEntity.addStatusEffect(hero_of_the_village);}
+                    case INVISIBILITY -> {StatusEffectInstance invisibility =
+                            new StatusEffectInstance(StatusEffects.INVISIBILITY, 42, 0, false,
+                                    false); livingEntity.addStatusEffect(invisibility);}
+                    case LUCK -> {StatusEffectInstance luck = new StatusEffectInstance(StatusEffects.LUCK, 42, 0, false,
+                            false); livingEntity.addStatusEffect(luck);}
+                    case SLOW_FALLING -> {StatusEffectInstance slow_falling =
+                            new StatusEffectInstance(StatusEffects.SLOW_FALLING, 42, 0, false,
+                                    false); livingEntity.addStatusEffect(slow_falling);}
+                    case SPRINTING -> {StatusEffectInstance sprinting =
+                            new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
+                                    false); livingEntity.addStatusEffect(sprinting);}
+                    case WATER_BREATHING -> {StatusEffectInstance water_breathing =
+                            new StatusEffectInstance(StatusEffects.WATER_BREATHING, 42, 0, false,
+                                    false); livingEntity.addStatusEffect(water_breathing);}
+
+                }
+            }
+        }
+    }
+
+
 
     // Effects for ServerPlayerEntityMixin
     public static void applyHaste(ServerPlayerEntity playerEntity){

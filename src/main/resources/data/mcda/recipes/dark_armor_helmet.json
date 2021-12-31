@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SRS",
+    "iBi",
+    "BBB"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:netherite_scrap"
+    },
+    "B": {
+      "item": "mcda:fabric_bolt_black"
+    },
+    "R": {
+      "item": "minecraft:redstone_block"
+    }
+
+  },
+  "result": {
+    "item": "mcda:dark_armor_helmet",
+    "count": 1
+  }
+}

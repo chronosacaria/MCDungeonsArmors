@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "SBS",
+    "BBB"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:netherite_scrap"
+    },
+    "B": {
+      "item": "mcda:fabric_bolt_black"
+    }
+  },
+  "result": {
+    "item": "mcda:dark_armor_leggings",
+    "count": 1
+  }
+}

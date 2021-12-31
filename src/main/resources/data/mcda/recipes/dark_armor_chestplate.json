@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S S",
+    "iii",
+    "BBB"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:netherite_scrap"
+    },
+    "B": {
+      "item": "mcda:fabric_bolt_black"
+    }
+  },
+  "result": {
+    "item": "mcda:dark_armor_chestplate",
+    "count": 1
+  }
+}

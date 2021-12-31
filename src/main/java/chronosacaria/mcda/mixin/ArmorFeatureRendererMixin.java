@@ -30,10 +30,10 @@ public class ArmorFeatureRendererMixin {
 
         if (livingEntity instanceof PlayerEntity && livingEntity.isSneaking()){
 
-            ItemStack helmetStack = ((PlayerEntity) livingEntity).getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = ((PlayerEntity) livingEntity).getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = ((PlayerEntity) livingEntity).getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = ((PlayerEntity) livingEntity).getEquippedStack(EquipmentSlot.FEET);
+            ItemStack helmetStack = (livingEntity).getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestStack = (livingEntity).getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack legsStack = (livingEntity).getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack feetStack = (livingEntity).getEquippedStack(EquipmentSlot.FEET);
 
             if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.CHEST).asItem()

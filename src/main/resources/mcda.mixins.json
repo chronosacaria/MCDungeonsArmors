@@ -7,6 +7,7 @@
     "ArmorFeatureRendererMixin",
     "CobwebBlockMixin",
     "ExperienceOrbEntityMixin",
+    "ItemStackMixin",
     "LivingEntityMixin",
     "PersistentProjectileEntityMixin",
     "PiglinBrainMixin",

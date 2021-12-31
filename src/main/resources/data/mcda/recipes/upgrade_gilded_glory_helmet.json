@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mcda:opulent_armor_helmet"
+  },
+  "addition": {
+    "item": "minecraft:totem_of_undying"
+  },
+  "result": {
+    "item": "mcda:gilded_glory_helmet"
+  }
+}

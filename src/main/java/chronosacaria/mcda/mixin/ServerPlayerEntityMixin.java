@@ -34,6 +34,8 @@ public class ServerPlayerEntityMixin {
         ArmorEffects.applySprintingSpeed(playerEntity); // Shadow Walker Armour
         ArmorEffects.applyWaterBreathing(playerEntity); // Glow Squid Armour Water Breathing underwater
 
+        ArmorEffects.applyWhiteMysteryArmorEffect(playerEntity); // Dear G-d PLEASE LET THIS WORK!
+
         // Status Effect Removal
         ArmorEffects.applyLevitationRemoval(playerEntity); // Sturdy Shulker Armour Remove Levitation Effect
     }
