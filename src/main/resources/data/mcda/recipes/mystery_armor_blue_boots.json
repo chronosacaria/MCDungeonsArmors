@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IGI",
+    "I I",
+    "   "
+  ],
+  "key": {
+    "G": {
+      "item": "mcda:gemstone_blue"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "mcda:blue_mystery_armor_boots",
+    "count": 1
+  }
+}

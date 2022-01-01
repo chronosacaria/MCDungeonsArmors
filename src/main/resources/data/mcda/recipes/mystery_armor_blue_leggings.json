@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BGB",
+    "I I",
+    "I I"
+  ],
+  "key": {
+    "G": {
+      "item": "mcda:gemstone_blue"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "mcda:blue_mystery_armor_leggings",
+    "count": 1
+  }
+}

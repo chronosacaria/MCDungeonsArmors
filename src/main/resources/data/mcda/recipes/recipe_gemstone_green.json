@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "QQQ",
+    "QNQ",
+    "QQQ"
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "Q": {
+      "item": "minecraft:emerald"
+    }
+  },
+  "result": {
+    "item": "mcda:gemstone_green",
+    "count": 1
+  }
+}

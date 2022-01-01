@@ -9,10 +9,10 @@ import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
 import chronosacaria.mcda.registry.EnchantsRegistry;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.TameableEntity;
@@ -35,6 +35,7 @@ import java.util.*;
 
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
+import static chronosacaria.mcda.effects.ArmorEffects.applyMysteryArmorEffect;
 import static chronosacaria.mcda.enchants.EnchantID.*;
 
 @Mixin(LivingEntity.class)
@@ -359,16 +360,21 @@ public abstract class LivingEntityMixin extends Entity {
                 ItemStack legsStack = owner.getEquippedStack(EquipmentSlot.LEGS);
                 ItemStack feetStack = owner.getEquippedStack(EquipmentSlot.FEET);
 
-                if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLACK_WOLF).get(EquipmentSlot.HEAD).asItem()
+                if ((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLACK_WOLF).get(EquipmentSlot.HEAD).asItem()
                         && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLACK_WOLF).get(EquipmentSlot.CHEST).asItem()
                         && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLACK_WOLF).get(EquipmentSlot.LEGS).asItem()
-                        && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLACK_WOLF).get(EquipmentSlot.FEET).asItem()) {
+                        && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLACK_WOLF).get(EquipmentSlot.FEET).asItem())
+                        || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.HEAD).asItem()
+                        && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.CHEST).asItem()
+                        && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.LEGS).asItem()
+                        && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.FEET).asItem()
+                        && ArmorEffects.ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player)) == LEADER_OF_THE_PACK)) {
 
                     if (petOwnerUUID != null) {
                         Entity petOwner = serverWorld.getEntity(petOwnerUUID);
                         if (petOwner instanceof LivingEntity) {
-                            float blackWolfArmourFactor = 1.5f;
-                            float newDamage = amount * blackWolfArmourFactor;
+                            float blackWolfArmorFactor = 1.5f;
+                            float newDamage = amount * blackWolfArmorFactor;
                             target.damage(DamageSource.GENERIC, newDamage);
                         }
                     }

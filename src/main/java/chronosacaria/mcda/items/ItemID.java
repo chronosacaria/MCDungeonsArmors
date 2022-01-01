@@ -62,7 +62,14 @@ public enum ItemID implements ItemConvertible {
     UPGRADE_CORE_VERDANT,
     UPGRADE_CORE_VOID,
     UPGRADE_CORE_WITHER,
-    UPGRADE_CORE_WOLF;
+    UPGRADE_CORE_WOLF,
+
+    // Gemstones
+    GEMSTONE_WHITE,
+    GEMSTONE_PURPLE,
+    GEMSTONE_BLUE,
+    GEMSTONE_GREEN,
+    GEMSTONE_RED;
 
     public Item asItem() {
         return ItemsRegistry.items.get(this);

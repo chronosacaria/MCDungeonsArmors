@@ -436,9 +436,12 @@ public class ArmorEffects {
                     case HERO_OF_THE_VILLAGE -> {StatusEffectInstance hero_of_the_village =
                             new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 42, 0, false,
                                     false); livingEntity.addStatusEffect(hero_of_the_village);}
-                    /* case INVISIBILITY -> {StatusEffectInstance invisibility =
-                            new StatusEffectInstance(StatusEffects.INVISIBILITY, 42, 0, false,
-                                    false); livingEntity.addStatusEffect(invisibility);} Constant Invisibility doesn't work same as Thief armor */
+                    case INVISIBILITY -> {
+                        if (livingEntity.isSneaking()) {
+                            StatusEffectInstance invisibility =
+                                    new StatusEffectInstance(StatusEffects.INVISIBILITY, 42, 0, false,
+                                            false); livingEntity.addStatusEffect(invisibility);}
+                        }
                     case LUCK -> {StatusEffectInstance luck = new StatusEffectInstance(StatusEffects.LUCK, 42, 0, false,
                             false); livingEntity.addStatusEffect(luck);}
                     case SLOW_FALLING -> {StatusEffectInstance slow_falling =

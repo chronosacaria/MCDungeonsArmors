@@ -674,6 +674,14 @@
   "item.mcda.upgrade_core_wither":                "Upgrade Core - Wither",
   "item.mcda.upgrade_core_wolf":                  "Upgrade Core - Wolf",
 
+  "item.mcda.gemstone_white":                     "Quartz Gem",
+  "item.mcda.gemstone_blue":                      "Lapis Lazuli Gem",
+  "item.mcda.gemstone_green":                     "Emerald Gem",
+  "item.mcda.gemstone_purple":                    "Amethyst Gem",
+  "item.mcda.gemstone_red":                       "Redstone Gem",
+
+
+
   "enchantment.mcda.bag_of_souls":                "Bag of Souls",
   "enchantment.mcda.burning":                     "Burning",
   "enchantment.mcda.chilling":                    "Chilling",

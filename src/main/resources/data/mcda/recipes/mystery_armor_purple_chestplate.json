@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B B",
+    "IGI",
+    "III"
+  ],
+  "key": {
+    "G": {
+      "item": "mcda:gemstone_purple"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "mcda:purple_mystery_armor_chestplate",
+    "count": 1
+  }
+}

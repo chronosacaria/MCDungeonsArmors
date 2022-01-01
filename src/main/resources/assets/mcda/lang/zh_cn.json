@@ -674,6 +674,12 @@
   "item.mcda.upgrade_core_wither":                "升级核心——凋灵",
   "item.mcda.upgrade_core_wolf":                  "升级核心——狼",
 
+  "item.mcda.gemstone_white":                     "石英宝石",
+  "item.mcda.gemstone_blue":                      "青金石宝石",
+  "item.mcda.gemstone_green":                     "绿宝石",
+  "item.mcda.gemstone_purple":                    "紫晶宝石",
+  "item.mcda.gemstone_red":                       "红石宝石",
+
   "enchantment.mcda.bag_of_souls":                "束魂",
   "enchantment.mcda.burning":                     "灼烧",
   "enchantment.mcda.chilling":                    "冻结",
