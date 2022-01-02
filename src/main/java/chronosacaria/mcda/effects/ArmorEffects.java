@@ -35,6 +35,8 @@ import static chronosacaria.mcda.effects.ArmorEffectID.*;
 
 public class ArmorEffects {
 
+    //public enum NonMysteryArmorID {NONMYSTERY};
+
     public static final List<StatusEffect> TITAN_SHROUD_STATUS_EFFECTS_LIST =
             List.of(StatusEffects.HUNGER, StatusEffects.NAUSEA, StatusEffects.BLINDNESS,
                     StatusEffects.MINING_FATIGUE, StatusEffects.SLOWNESS,
@@ -46,21 +48,21 @@ public class ArmorEffects {
                     PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.INVISIBILITY));
 
     public static final List<ArmorEffectID> ARMOR_EFFECT_ID_LIST =
-            List.of(FIRE_RESISTANCE, FLUID_FREEZING, FROST_BITE_EFFECT, GOURDIANS_HATRED, HASTE, HERO_OF_THE_VILLAGE,
+            List.of(TITAN_SHROUD_EFFECTS, FIRE_RESISTANCE, FLUID_FREEZING, FROST_BITE_EFFECT, GOURDIANS_HATRED, HASTE, HERO_OF_THE_VILLAGE,
                     INVISIBILITY, LEADER_OF_THE_PACK, LUCK, NIMBLE_TURTLE_EFFECTS, NO_FALL_DAMAGE, SHULKER_LIKE,
                     SLOW_FALLING, SPIDER_CLIMBING, SPRINTING, WATER_BREATHING, WEB_WALKING, WITHERED);
 
     public static final List<ArmorEffectID> RED_ARMOR_EFFECT_ID_LIST =
-            List.of(FIRE_RESISTANCE, GOURDIANS_HATRED, LEADER_OF_THE_PACK, WITHERED);
+            List.of(TITAN_SHROUD_EFFECTS, FIRE_RESISTANCE, GOURDIANS_HATRED, LEADER_OF_THE_PACK, WITHERED);
 
     public static final List<ArmorEffectID> GREEN_ARMOR_EFFECT_ID_LIST =
-            List.of(HASTE, HERO_OF_THE_VILLAGE, LUCK, NO_FALL_DAMAGE);
+            List.of(TITAN_SHROUD_EFFECTS, HASTE, HERO_OF_THE_VILLAGE, LUCK, NO_FALL_DAMAGE);
 
     public static final List<ArmorEffectID> BLUE_ARMOR_EFFECT_ID_LIST =
-            List.of(FLUID_FREEZING, FROST_BITE_EFFECT, NIMBLE_TURTLE_EFFECTS, SLOW_FALLING, WATER_BREATHING);
+            List.of(TITAN_SHROUD_EFFECTS, FLUID_FREEZING, FROST_BITE_EFFECT, NIMBLE_TURTLE_EFFECTS, SLOW_FALLING, WATER_BREATHING);
 
     public static final List<ArmorEffectID> PURPLE_ARMOR_EFFECT_ID_LIST =
-            List.of(INVISIBILITY, SHULKER_LIKE, SPIDER_CLIMBING, SPRINTING, WEB_WALKING);
+            List.of(TITAN_SHROUD_EFFECTS, INVISIBILITY, SHULKER_LIKE, SPIDER_CLIMBING, SPRINTING, WEB_WALKING);
 
     public static int applyMysteryArmorEffect(PlayerEntity playerEntity) {
         //if (!config.enableArmorEffect.get(MYSTERY_EFFECT)) {
@@ -71,55 +73,78 @@ public class ArmorEffects {
         ItemStack leggingsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
         ItemStack bootsStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-        int helmDOM = 0;
-        int chestDOM = 0;
-        int legDOM = 0;
-        int bootDOM = 0;
+        if ((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.HEAD).asItem()
+                && chestplateStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.CHEST).asItem()
+                && leggingsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.LEGS).asItem()
+                && bootsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.FEET).asItem())
+                || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.RED_MYSTERY).get(EquipmentSlot.HEAD).asItem()
+                && chestplateStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.RED_MYSTERY).get(EquipmentSlot.CHEST).asItem()
+                && leggingsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.RED_MYSTERY).get(EquipmentSlot.LEGS).asItem()
+                && bootsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.RED_MYSTERY).get(EquipmentSlot.FEET).asItem())
+                || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.HEAD).asItem()
+                && chestplateStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.CHEST).asItem()
+                && leggingsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.LEGS).asItem()
+                && bootsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.FEET).asItem())
+                || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.HEAD).asItem()
+                && chestplateStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.CHEST).asItem()
+                && leggingsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.LEGS).asItem()
+                && bootsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.FEET).asItem())
+                || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PURPLE_MYSTERY).get(EquipmentSlot.HEAD).asItem()
+                && chestplateStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PURPLE_MYSTERY).get(EquipmentSlot.CHEST).asItem()
+                && leggingsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PURPLE_MYSTERY).get(EquipmentSlot.LEGS).asItem()
+                && bootsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PURPLE_MYSTERY).get(EquipmentSlot.FEET).asItem())) {
 
-        if (helmetStack.getNbt() != null) {
-            helmDOM = helmetStack.getNbt().getInt("dominance");
-        }
-        if (chestplateStack.getNbt() != null) {
-            chestDOM = chestplateStack.getNbt().getInt("dominance");
-        }
-        if (leggingsStack.getNbt() != null) {
-            legDOM = leggingsStack.getNbt().getInt("dominance");
-        }
-        if (bootsStack.getNbt() != null) {
-            bootDOM = bootsStack.getNbt().getInt("dominance");
-        }
+            int helmDOM = 0;
+            int chestDOM = 0;
+            int legDOM = 0;
+            int bootDOM = 0;
 
-        int stackTracker = 0;
+            if (helmetStack.getNbt() != null) {
+                helmDOM = helmetStack.getNbt().getInt("dominance");
+            }
+            if (chestplateStack.getNbt() != null) {
+                chestDOM = chestplateStack.getNbt().getInt("dominance");
+            }
+            if (leggingsStack.getNbt() != null) {
+                legDOM = leggingsStack.getNbt().getInt("dominance");
+            }
+            if (bootsStack.getNbt() != null) {
+                bootDOM = bootsStack.getNbt().getInt("dominance");
+            }
 
-        int domDOM = helmDOM;
-        if (chestDOM > domDOM) {
-            stackTracker = 1;
-            domDOM = chestDOM;
-        }
-        if (legDOM > domDOM) {
-            stackTracker = 2;
-            domDOM = legDOM;
-        }
-        if (bootDOM > domDOM) {
-            stackTracker = 3;
-            domDOM = bootDOM;
-        }
+            int stackTracker = 0;
+            int domDOM = helmDOM;
 
-        switch (stackTracker) {
-            case 0 -> {
-                return helmetStack.getNbt().getInt("mystery_effect");
+            if (chestDOM > domDOM) {
+                stackTracker = 1;
+                domDOM = chestDOM;
             }
-            case 1 -> {
-                return chestplateStack.getNbt().getInt("mystery_effect");
+            if (legDOM > domDOM) {
+                stackTracker = 2;
+                domDOM = legDOM;
             }
-            case 2 -> {
-                return leggingsStack.getNbt().getInt("mystery_effect");
+            if (bootDOM > domDOM) {
+                stackTracker = 3;
+                domDOM = bootDOM;
             }
-            case 3 -> {
-                return bootsStack.getNbt().getInt("mystery_effect");
+
+            switch (stackTracker) {
+                case 0 -> {
+                    return helmetStack.getNbt().getInt("mystery_effect");
+                }
+                case 1 -> {
+                    return chestplateStack.getNbt().getInt("mystery_effect");
+                }
+                case 2 -> {
+                    return leggingsStack.getNbt().getInt("mystery_effect");
+                }
+                case 3 -> {
+                    return bootsStack.getNbt().getInt("mystery_effect");
+                }
             }
+            return 0;
         }
-        return -1;
+        return 0;
     }
 
     // Effects for LivingEntityMixin
