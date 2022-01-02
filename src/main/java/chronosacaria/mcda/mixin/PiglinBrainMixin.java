@@ -1,13 +1,11 @@
 
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.registry.ArmorsRegistry;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.PiglinBrain;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -24,14 +22,7 @@ public abstract class PiglinBrainMixin {
         if (!config.enableArmorEffect.get(PIGLIN_FOOLING))
             return;
         if (entity instanceof PlayerEntity) {
-            ItemStack helmetStack = entity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = entity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = entity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = entity.getEquippedStack(EquipmentSlot.FEET);
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOLDEN_PIGLIN).get(EquipmentSlot.HEAD).asItem() &&
-                    chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOLDEN_PIGLIN).get(EquipmentSlot.CHEST).asItem() &&
-                    legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOLDEN_PIGLIN).get(EquipmentSlot.LEGS).asItem() &&
-                    feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOLDEN_PIGLIN).get(EquipmentSlot.FEET).asItem()){
+            if (CleanlinessHelper.hasArmorSet((LivingEntity) entity, ArmorSets.GOLDEN_PIGLIN)){
                 cir.setReturnValue(true);
             }
         }
