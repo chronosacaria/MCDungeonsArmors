@@ -1,12 +1,10 @@
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.registry.ArmorsRegistry;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.PotionItem;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -24,15 +22,7 @@ public class PotionItemMixin {
         int interceptedDuration = instance.getDuration();
 
         if (livingEntity instanceof ServerPlayerEntity && config.enableArmorEffect.get(TROUBADOURS_CHARISMA)) {
-            ItemStack helmetStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
-
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TROUBADOUR).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TROUBADOUR).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TROUBADOUR).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TROUBADOUR).get(EquipmentSlot.FEET).asItem()) {
+            if (CleanlinessHelper.hasArmorSet(livingEntity, ArmorSets.TROUBADOUR)) {
 
                 // Positive Effect
                 if (instance.getEffectType().getCategory().equals(StatusEffectCategory.BENEFICIAL)) {

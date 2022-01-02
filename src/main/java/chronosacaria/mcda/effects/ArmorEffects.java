@@ -1,8 +1,6 @@
 package chronosacaria.mcda.effects;
 
-import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.registry.ArmorsRegistry;
 import chronosacaria.mcda.registry.StatusEffectsRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.EquipmentSlot;

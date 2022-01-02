@@ -1,13 +1,9 @@
 package chronosacaria.mcda.mixin;
 
-import chronosacaria.mcda.api.AOECloudHelper;
-import chronosacaria.mcda.api.AOEHelper;
-import chronosacaria.mcda.api.McdaEnchantmentHelper;
-import chronosacaria.mcda.api.ProjectileEffectHelper;
+import chronosacaria.mcda.api.*;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.registry.ArmorsRegistry;
 import chronosacaria.mcda.registry.EnchantsRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -33,6 +29,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.*;
 
+import static chronosacaria.mcda.api.CleanlinessHelper.hasArmorSet;
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
 import static chronosacaria.mcda.effects.ArmorEffects.applyMysteryArmorEffect;
@@ -149,15 +146,8 @@ public abstract class LivingEntityMixin extends Entity {
 
             if (playerEntity == null) return;
 
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
-
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPIDER).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPIDER).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPIDER).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPIDER).get(EquipmentSlot.FEET).asItem())
+            if (hasArmorSet(playerEntity, ArmorSets.SPIDER) ||
+                    (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity)) == SPIDER_CLIMBING))
                 if (this.horizontalCollision){
                     cir.setReturnValue(true);
                 }
@@ -181,19 +171,8 @@ public abstract class LivingEntityMixin extends Entity {
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
             ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if ((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.FEET).asItem())
-                    || (((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.FEET).asItem())
-                    || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.FEET).asItem()))
-                    && ArmorEffects.ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player)) == NO_FALL_DAMAGE)) {
+            if (hasArmorSet(playerEntity, ArmorSets.SHADOW_WALKER) ||
+                    (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player)) == NO_FALL_DAMAGE)) {
                 int i = this.computeFallDamage(fallDistance, damageMultiplier);
                 if (i > 0) {
                     cir.setReturnValue(true);
@@ -278,19 +257,9 @@ public abstract class LivingEntityMixin extends Entity {
             if (amount != 0.0F) {
                 if (playerEntity != null) {
                     ItemStack mainHandStack = playerEntity.getMainHandStack();
-                    ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-                    ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-                    ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-                    ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-
-                    if (mainHandStack != null && helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TITAN).get(EquipmentSlot.HEAD).asItem()
-                            && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TITAN).get(EquipmentSlot.CHEST).asItem()
-                            && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TITAN).get(EquipmentSlot.LEGS).asItem()
-                            && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TITAN).get(EquipmentSlot.FEET).asItem()) {
-
+                    if (mainHandStack != null && hasArmorSet(playerEntity, ArmorSets.TITAN)) {
                         ArmorEffects.applyTitanShroudStatuses(playerEntity, target);
-
                     }
                 }
             }
@@ -364,20 +333,8 @@ public abstract class LivingEntityMixin extends Entity {
             PlayerEntity owner = (PlayerEntity) ((TameableEntity) petSource).getOwner();
             if (owner != null){
                 UUID petOwnerUUID = owner.getUuid();
-                ItemStack helmetStack = owner.getEquippedStack(EquipmentSlot.HEAD);
-                ItemStack chestStack = owner.getEquippedStack(EquipmentSlot.CHEST);
-                ItemStack legsStack = owner.getEquippedStack(EquipmentSlot.LEGS);
-                ItemStack feetStack = owner.getEquippedStack(EquipmentSlot.FEET);
-
-                if ((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLACK_WOLF).get(EquipmentSlot.HEAD).asItem()
-                        && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLACK_WOLF).get(EquipmentSlot.CHEST).asItem()
-                        && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLACK_WOLF).get(EquipmentSlot.LEGS).asItem()
-                        && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLACK_WOLF).get(EquipmentSlot.FEET).asItem())
-                        || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                        && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                        && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                        && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.FEET).asItem()
-                        && ArmorEffects.ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player)) == LEADER_OF_THE_PACK)) {
+                if (hasArmorSet(owner, ArmorSets.BLACK_WOLF) ||
+                        (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player)) == LEADER_OF_THE_PACK)) {
 
                     if (petOwnerUUID != null) {
                         Entity petOwner = serverWorld.getEntity(petOwnerUUID);
@@ -405,17 +362,7 @@ public abstract class LivingEntityMixin extends Entity {
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
         if (playerEntity != null) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
-
-
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.FEET).asItem()) {
-
+            if (hasArmorSet(playerEntity, ArmorSets.STURDY_SHULKER)) {
                 ProjectileEffectHelper.fireShulkerBulletAtNearbyEnemy(playerEntity, 10);
             }
         }
@@ -430,16 +377,7 @@ public abstract class LivingEntityMixin extends Entity {
             return;
         ServerPlayerEntity playerEntity = (ServerPlayerEntity) (Object) this;
         if (playerEntity != null) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
-
-
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TELEPORTATION).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TELEPORTATION).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TELEPORTATION).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.TELEPORTATION).get(EquipmentSlot.FEET).asItem()) {
+            if (hasArmorSet(playerEntity, ArmorSets.TELEPORTATION)) {
                 if (playerEntity.isSneaking()) {
                     ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
                         ArmorEffects.endermanLikeTeleportEffect(playerEntity);
@@ -460,16 +398,7 @@ public abstract class LivingEntityMixin extends Entity {
         ServerPlayerEntity playerEntity = (ServerPlayerEntity) (Object) this;
 
         if (playerEntity != null) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
-
-
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.UNSTABLE).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.UNSTABLE).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.UNSTABLE).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.UNSTABLE).get(EquipmentSlot.FEET).asItem()) {
+            if (hasArmorSet(playerEntity, ArmorSets.UNSTABLE)) {
                 if (playerEntity.isSneaking()) {
                     ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
                     AOECloudHelper.spawnExplosionCloud(playerEntity, playerEntity, 3.0F);
@@ -501,19 +430,8 @@ public abstract class LivingEntityMixin extends Entity {
             if (amount != 0.0F) {
                 if (playerEntity != null) {
                     ItemStack mainHandStack = playerEntity.getMainHandStack();
-                    ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-                    ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-                    ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-                    ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
-
-
-                    if (mainHandStack != null && helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.HEAD).asItem()
-                            && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.CHEST).asItem()
-                            && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.LEGS).asItem()
-                            && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.FEET).asItem()) {
-
+                    if (mainHandStack != null) {
                         ArmorEffects.applyFrostBiteStatus(playerEntity, target);
-
                     }
                 }
             }
@@ -531,17 +449,8 @@ public abstract class LivingEntityMixin extends Entity {
         LivingEntity user = (LivingEntity) source.getAttacker();
 
         if (user != null) {
-            ItemStack helmetStack = user.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = user.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = user.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = user.getEquippedStack(EquipmentSlot.FEET);
-
-
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.FEET).asItem()) {
-
+            if (hasArmorSet(user, ArmorSets.GOURDIAN)
+                    || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect((PlayerEntity) user)) == GOURDIANS_HATRED)) {
                 float hatredRand = user.getRandom().nextFloat();
                 if (hatredRand <= 0.15F) {
                     ArmorEffects.applyGourdiansHatredStatus(user);
@@ -562,16 +471,7 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (targetedEntity != null) {
             if (amount != 0.0F) {
-                ItemStack helmetStack = targetedEntity.getEquippedStack(EquipmentSlot.HEAD);
-                ItemStack chestStack = targetedEntity.getEquippedStack(EquipmentSlot.CHEST);
-                ItemStack legsStack = targetedEntity.getEquippedStack(EquipmentSlot.LEGS);
-                ItemStack feetStack = targetedEntity.getEquippedStack(EquipmentSlot.FEET);
-
-                if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.CAULDRON).get(EquipmentSlot.HEAD).asItem()
-                        && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.CAULDRON).get(EquipmentSlot.CHEST).asItem()
-                        && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.CAULDRON).get(EquipmentSlot.LEGS).asItem()
-                        && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.CAULDRON).get(EquipmentSlot.FEET).asItem()) {
-
+                if (hasArmorSet(targetedEntity, ArmorSets.CAULDRON)) {
                     float overflowRand = targetedEntity.getRandom().nextFloat();
                     if (overflowRand <= 0.15F) {
                         ArmorEffects.applyCauldronsOverflow(targetedEntity);
