@@ -67,31 +67,15 @@ public class ArmorEffects {
         if (!config.enableArmorEffect.get(MYSTERY_EFFECTS)) {
             return 0;
         }
-        ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-        ItemStack chestplateStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-        ItemStack leggingsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-        ItemStack bootsStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-        if ((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                && chestplateStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                && leggingsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                && bootsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.FEET).asItem())
-                || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.RED_MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                && chestplateStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.RED_MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                && leggingsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.RED_MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                && bootsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.RED_MYSTERY).get(EquipmentSlot.FEET).asItem())
-                || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                && chestplateStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                && leggingsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                && bootsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.FEET).asItem())
-                || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                && chestplateStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                && leggingsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                && bootsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.FEET).asItem())
-                || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PURPLE_MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                && chestplateStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PURPLE_MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                && leggingsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PURPLE_MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                && bootsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PURPLE_MYSTERY).get(EquipmentSlot.FEET).asItem())) {
+        if (hasArmorSet(playerEntity, ArmorSets.MYSTERY) || hasArmorSet(playerEntity, ArmorSets.RED_MYSTERY)
+                || hasArmorSet(playerEntity, ArmorSets.BLUE_MYSTERY) || hasArmorSet(playerEntity, ArmorSets.GREEN_MYSTERY)
+                || hasArmorSet(playerEntity, ArmorSets.PURPLE_MYSTERY)){
+
+            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestplateStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack leggingsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack bootsStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
             int helmDOM = 0;
             int chestDOM = 0;
@@ -260,24 +244,9 @@ public class ArmorEffects {
         BlockPos blockPos = playerEntity.getBlockPos();
 
         if (playerEntity.isAlive() && world.getTime() % 10 == 0) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if ((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.FEET).asItem())
-                    || (((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.FEET).asItem())
-                    || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.FEET).asItem()))
-                    && ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == FLUID_FREEZING)) {
+            if (hasArmorSet(playerEntity, ArmorSets.FROST)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == FLUID_FREEZING)) {
                 // From FrostWalkerEnchantment
                 if (playerEntity.isOnGround()) {
                     BlockState blockState = Blocks.FROSTED_ICE.getDefaultState();
@@ -330,15 +299,9 @@ public class ArmorEffects {
         if (!config.enableArmorEffect.get(INVISIBILITY))
             return;
         if (playerEntity.isAlive()) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.FEET).asItem())
+            if (hasArmorSet(playerEntity, ArmorSets.THIEF)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == INVISIBILITY))
                 playerEntity.setInvisible(playerEntity.isSneaking());
         }
     }
@@ -348,15 +311,9 @@ public class ArmorEffects {
             return;
         if (attacker != null) {
             if (playerEntity.isAlive()) {
-                ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-                ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-                ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-                ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-                if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.WITHER).get(EquipmentSlot.HEAD).asItem()
-                        && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.WITHER).get(EquipmentSlot.CHEST).asItem()
-                        && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.WITHER).get(EquipmentSlot.LEGS).asItem()
-                        && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.WITHER).get(EquipmentSlot.FEET).asItem()) {
+                if (hasArmorSet(playerEntity, ArmorSets.WITHER)
+                        || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == WITHERED)) {
                     attacker.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 120, 0));
                 }
             }
@@ -367,24 +324,10 @@ public class ArmorEffects {
         if (!config.enableArmorEffect.get(NIMBLE_TURTLE_EFFECTS))
             return;
         if (playerEntity.isAlive()) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if ((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.NIMBLE_TURTLE).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.NIMBLE_TURTLE).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.NIMBLE_TURTLE).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.NIMBLE_TURTLE).get(EquipmentSlot.FEET).asItem())
-                    || (((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.FEET).asItem())
-                    || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.FEET).asItem()))
-                    && ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == NIMBLE_TURTLE_EFFECTS)) {
+            if (hasArmorSet(playerEntity, ArmorSets.NIMBLE_TURTLE)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == NIMBLE_TURTLE_EFFECTS)) {
+
                 StatusEffectInstance resistance = new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 1, false,
                         false);
                 StatusEffectInstance healing = new StatusEffectInstance(StatusEffects.REGENERATION, 60, 1, false,
@@ -406,24 +349,10 @@ public class ArmorEffects {
     public static void applyFrostBiteStatus(PlayerEntity playerEntity, LivingEntity target) {
         if (!config.enableArmorEffect.get(FROST_BITE_EFFECT))
             return;
-        ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-        ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-        ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-        ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-        if ((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.HEAD).asItem()
-                && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.CHEST).asItem()
-                && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.LEGS).asItem()
-                && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.FEET).asItem())
-                || (((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.FEET).asItem())
-                || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.FEET).asItem()))
-                && ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == FROST_BITE_EFFECT)) {
+        if (hasArmorSet(playerEntity, ArmorSets.FROST_BITE)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == FROST_BITE_EFFECT)) {
+
             target.addStatusEffect(new StatusEffectInstance(StatusEffectsRegistry.FREEZING, 60, 0, true, true,
                     false));
         }
@@ -433,15 +362,9 @@ public class ArmorEffects {
         if (!config.enableArmorEffect.get(GOURDIANS_HATRED))
             return;
         if (livingEntity.isAlive()) {
-            ItemStack helmetStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GOURDIAN).get(EquipmentSlot.FEET).asItem()) {
+            if (hasArmorSet(livingEntity, ArmorSets.GOURDIAN)) {
+
                 StatusEffectInstance strength = new StatusEffectInstance(StatusEffects.STRENGTH, 200, 1);
                 livingEntity.addStatusEffect(strength);
             }
@@ -459,180 +382,6 @@ public class ArmorEffects {
         targetedEntity.world.spawnEntity(potion);
     }
 
-    // Mystery Armor Color Effects
-    public static void applyWhiteMysteryArmorEffect(LivingEntity livingEntity) {
-        //if (!config.enableArmorEffect.get(MYSTERY_EFFECT)) {
-        //    return;
-        //}
-        if (livingEntity.isAlive()) {
-            ItemStack helmetStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
-
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.FEET).asItem()) {
-
-                ArmorEffectID armorEffectID =
-                        ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect((PlayerEntity) livingEntity));
-
-                switch (armorEffectID) {
-                    case FIRE_RESISTANCE -> {StatusEffectInstance fire_resistance =
-                            new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 42, 0, false,
-                            false); livingEntity.addStatusEffect(fire_resistance);}
-                    case HASTE -> {StatusEffectInstance haste =
-                            new StatusEffectInstance(StatusEffects.HASTE, 42, 0, false,
-                                    false); livingEntity.addStatusEffect(haste);}
-                    case HERO_OF_THE_VILLAGE -> {StatusEffectInstance hero_of_the_village =
-                            new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 42, 0, false,
-                                    false); livingEntity.addStatusEffect(hero_of_the_village);}
-                    case INVISIBILITY -> {
-                        if (livingEntity.isSneaking()) {
-                            StatusEffectInstance invisibility =
-                                    new StatusEffectInstance(StatusEffects.INVISIBILITY, 42, 0, false,
-                                            false); livingEntity.addStatusEffect(invisibility);}
-                        }
-                    case LUCK -> {StatusEffectInstance luck = new StatusEffectInstance(StatusEffects.LUCK, 42, 0, false,
-                            false); livingEntity.addStatusEffect(luck);}
-                    case SLOW_FALLING -> {StatusEffectInstance slow_falling =
-                            new StatusEffectInstance(StatusEffects.SLOW_FALLING, 42, 0, false,
-                                    false); livingEntity.addStatusEffect(slow_falling);}
-                    /* case SPRINTING -> {StatusEffectInstance sprinting =
-                            new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
-                                    false); livingEntity.addStatusEffect(sprinting);} Constant Sprinting doesn't work same as Shadow Walker */
-                    case WATER_BREATHING -> {StatusEffectInstance water_breathing =
-                            new StatusEffectInstance(StatusEffects.WATER_BREATHING, 42, 0, false,
-                                    false); livingEntity.addStatusEffect(water_breathing);}
-
-                }
-            }
-        }
-    }
-
-    public static void applyRedMysteryArmorEffect(LivingEntity livingEntity) {
-        //if (!config.enableArmorEffect.get(MYSTERY_EFFECT)) {
-        //    return;
-        //}
-        if (livingEntity.isAlive()) {
-            ItemStack helmetStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
-
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.RED_MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.RED_MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.RED_MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.RED_MYSTERY).get(EquipmentSlot.FEET).asItem()) {
-
-                ArmorEffectID armorEffectID =
-                        RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect((PlayerEntity) livingEntity));
-
-                if (armorEffectID == FIRE_RESISTANCE) {
-                    StatusEffectInstance fire_resistance =
-                            new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 42, 0, false, false);
-                    livingEntity.addStatusEffect(fire_resistance);
-                }
-            }
-        }
-    }
-
-    public static void applyGreenMysteryArmorEffect(LivingEntity livingEntity) {
-        //if (!config.enableArmorEffect.get(MYSTERY_EFFECT)) {
-        //    return;
-        //}
-        if (livingEntity.isAlive()) {
-            ItemStack helmetStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
-
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GREEN_MYSTERY).get(EquipmentSlot.FEET).asItem()) {
-
-                ArmorEffectID armorEffectID =
-                        GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect((PlayerEntity) livingEntity));
-
-                switch (armorEffectID) {
-                    case HASTE -> {StatusEffectInstance haste =
-                            new StatusEffectInstance(StatusEffects.HASTE, 42, 0, false,
-                                    false); livingEntity.addStatusEffect(haste);}
-                    case HERO_OF_THE_VILLAGE -> {StatusEffectInstance hero_of_the_village =
-                            new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 42, 0, false,
-                                    false); livingEntity.addStatusEffect(hero_of_the_village);}
-                    case LUCK -> {StatusEffectInstance luck = new StatusEffectInstance(StatusEffects.LUCK, 42, 0, false,
-                            false); livingEntity.addStatusEffect(luck);}
-
-                }
-            }
-        }
-    }
-
-    public static void applyBlueMysteryArmorEffect(LivingEntity livingEntity) {
-        //if (!config.enableArmorEffect.get(MYSTERY_EFFECT)) {
-        //    return;
-        //}
-        if (livingEntity.isAlive()) {
-            ItemStack helmetStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
-
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.FEET).asItem()) {
-
-                ArmorEffectID armorEffectID =
-                        BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect((PlayerEntity) livingEntity));
-
-                switch (armorEffectID) {
-                    case SLOW_FALLING -> {StatusEffectInstance slow_falling =
-                            new StatusEffectInstance(StatusEffects.SLOW_FALLING, 42, 0, false,
-                                    false); livingEntity.addStatusEffect(slow_falling);}
-                    case WATER_BREATHING -> {StatusEffectInstance water_breathing =
-                            new StatusEffectInstance(StatusEffects.WATER_BREATHING, 42, 0, false,
-                                    false); livingEntity.addStatusEffect(water_breathing);}
-
-                }
-            }
-        }
-    }
-
-    public static void applyPurpleMysteryArmorEffect(LivingEntity livingEntity) {
-        //if (!config.enableArmorEffect.get(MYSTERY_EFFECT)) {
-        //    return;
-        //}
-        if (livingEntity.isAlive()) {
-            ItemStack helmetStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
-
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PURPLE_MYSTERY).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PURPLE_MYSTERY).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PURPLE_MYSTERY).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PURPLE_MYSTERY).get(EquipmentSlot.FEET).asItem()) {
-
-                ArmorEffectID armorEffectID =
-                        PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect((PlayerEntity) livingEntity));
-
-                // switch (armorEffectID) {
-                    /* case INVISIBILITY -> {StatusEffectInstance invisibility =
-                            new StatusEffectInstance(StatusEffects.INVISIBILITY, 42, 0, false,
-                                    false); livingEntity.addStatusEffect(invisibility);} Constant Invisibility doesn't work same as Thief armor */
-                    /* case SPRINTING -> {StatusEffectInstance sprinting =
-                            new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
-                                    false); livingEntity.addStatusEffect(sprinting);} Constant Sprinting doesn't work same as Shadow Walker */
-
-                // }
-            }
-        }
-    }
-
     // Effects for ServerPlayerEntityMixin
     public static void applyHaste(ServerPlayerEntity playerEntity){
         if (!config.enableArmorEffect.get(HASTE))
@@ -640,29 +389,19 @@ public class ArmorEffects {
         World world = playerEntity.getEntityWorld();
 
         if (playerEntity.getY() < 32.0F && world.getTime() % 30 == 0) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.CAVE_CRAWLER).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.CAVE_CRAWLER).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.CAVE_CRAWLER).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.CAVE_CRAWLER).get(EquipmentSlot.FEET).asItem()) {
+            if (hasArmorSet(playerEntity, ArmorSets.CAVE_CRAWLER)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == HASTE)) {
+
                 StatusEffectInstance haste = new StatusEffectInstance(StatusEffects.HASTE, 42, 0, false, false);
                 playerEntity.addStatusEffect(haste);
             }
         }
         if (playerEntity.getY() > 100.0F && world.getTime() % 30 == 0) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HIGHLAND).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HIGHLAND).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HIGHLAND).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HIGHLAND).get(EquipmentSlot.FEET).asItem()) {
+            if (hasArmorSet(playerEntity, ArmorSets.HIGHLAND)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == HASTE)) {
+
                 StatusEffectInstance haste = new StatusEffectInstance(StatusEffects.HASTE, 42, 0, false, false);
                 playerEntity.addStatusEffect(haste);
             }
@@ -676,24 +415,10 @@ public class ArmorEffects {
         World world = playerEntity.getEntityWorld();
 
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HERO).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HERO).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HERO).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HERO).get(EquipmentSlot.FEET).asItem()) {
-                StatusEffectInstance heroOfTheVillage = new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 42, 0, false,
-                        false);
-                playerEntity.addStatusEffect(heroOfTheVillage);
-            }
+            if (hasArmorSet(playerEntity, ArmorSets.HERO) || hasArmorSet(playerEntity, ArmorSets.GILDED)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == HERO_OF_THE_VILLAGE)) {
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GILDED).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GILDED).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GILDED).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GILDED).get(EquipmentSlot.FEET).asItem()) {
                 StatusEffectInstance heroOfTheVillage = new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 42, 0, false,
                         false);
                 playerEntity.addStatusEffect(heroOfTheVillage);
@@ -708,15 +433,9 @@ public class ArmorEffects {
         World world = playerEntity.getEntityWorld();
 
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HUNGRY_HORROR).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HUNGRY_HORROR).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HUNGRY_HORROR).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.HUNGRY_HORROR).get(EquipmentSlot.FEET).asItem()) {
+            if (hasArmorSet(playerEntity, ArmorSets.HUNGRY_HORROR)) {
+
                 StatusEffectInstance hunger = new StatusEffectInstance(StatusEffects.HUNGER, 42, 1, false,
                         false);
                 playerEntity.addStatusEffect(hunger);
@@ -757,24 +476,10 @@ public class ArmorEffects {
         World world = playerEntity.getEntityWorld();
 
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SPROUT).get(EquipmentSlot.FEET).asItem()) {
-                StatusEffectInstance fireResistance = new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 42, 1,
-                        false,false);
-                playerEntity.addStatusEffect(fireResistance);
-            }
+            if (hasArmorSet(playerEntity, ArmorSets.SPROUT) || hasArmorSet(playerEntity, ArmorSets.LIVING_VINES)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == FIRE_RESISTANCE)) {
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.LIVING_VINES).get(EquipmentSlot.FEET).asItem()) {
                 StatusEffectInstance fireResistance = new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 42, 1,
                         false,false);
                 playerEntity.addStatusEffect(fireResistance);
@@ -789,15 +494,10 @@ public class ArmorEffects {
         World world = playerEntity.getEntityWorld();
 
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.OPULENT).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.OPULENT).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.OPULENT).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.OPULENT).get(EquipmentSlot.FEET).asItem()) {
+            if (hasArmorSet(playerEntity, ArmorSets.OPULENT)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == LUCK)) {
+
                 StatusEffectInstance luck = new StatusEffectInstance(StatusEffects.LUCK, 42, 0, false,
                         false);
                 playerEntity.addStatusEffect(luck);
@@ -812,15 +512,10 @@ public class ArmorEffects {
         World world = playerEntity.getEntityWorld();
 
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.SHADOW_WALKER).get(EquipmentSlot.FEET).asItem()) {
+            if (hasArmorSet(playerEntity, ArmorSets.SHADOW_WALKER)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == SPRINTING)) {
+
                 if (playerEntity.isSprinting()) {
                     StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
                             false);
@@ -837,15 +532,10 @@ public class ArmorEffects {
         World world = playerEntity.getEntityWorld();
 
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GLOW_SQUID).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GLOW_SQUID).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GLOW_SQUID).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.GLOW_SQUID).get(EquipmentSlot.FEET).asItem()) {
+            if (hasArmorSet(playerEntity, ArmorSets.GLOW_SQUID)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == WATER_BREATHING)) {
+
                 if (playerEntity.isSubmergedInWater()) {
                     StatusEffectInstance waterBreathing = new StatusEffectInstance(StatusEffects.WATER_BREATHING, 42, 0,
                             false, false);
@@ -862,15 +552,10 @@ public class ArmorEffects {
         World world = playerEntity.getEntityWorld();
 
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.THIEF).get(EquipmentSlot.FEET).asItem()) {
+            if (hasArmorSet(playerEntity, ArmorSets.THIEF)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == INVISIBILITY)) {
+
                 if (playerEntity.isSneaking()) {
                     StatusEffectInstance invisibility = new StatusEffectInstance(StatusEffects.INVISIBILITY, 42, 0,
                             false, false);
@@ -887,19 +572,10 @@ public class ArmorEffects {
         World world = playerEntity.getEntityWorld();
 
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PHANTOM).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PHANTOM).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PHANTOM).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.PHANTOM).get(EquipmentSlot.FEET).asItem()
-                    || helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.CHEST).asItem()
-                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.FEET).asItem()) {
+            if (hasArmorSet(playerEntity, ArmorSets.PHANTOM) || hasArmorSet(playerEntity, ArmorSets.FROST_BITE)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == SLOW_FALLING)) {
+
                 StatusEffectInstance slowFalling = new StatusEffectInstance(StatusEffects.SLOW_FALLING, 42, 0, false,
                         false);
                 playerEntity.addStatusEffect(slowFalling);
@@ -911,7 +587,8 @@ public class ArmorEffects {
         if (!config.enableArmorEffect.get(SHULKER_LIKE))
             return;
 
-        if (playerEntity.isAlive() && hasArmorSet(playerEntity, ArmorSets.STURDY_SHULKER)){
+        if (playerEntity.isAlive() && (hasArmorSet(playerEntity, ArmorSets.STURDY_SHULKER)
+            || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == SHULKER_LIKE))){
 
             if (playerEntity.hasStatusEffect(StatusEffects.LEVITATION)) {
                 playerEntity.removeStatusEffect(StatusEffects.LEVITATION);
