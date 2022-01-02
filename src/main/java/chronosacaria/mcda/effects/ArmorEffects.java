@@ -1,10 +1,10 @@
 package chronosacaria.mcda.effects;
 
+import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
 import chronosacaria.mcda.registry.StatusEffectsRegistry;
 import net.minecraft.block.*;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
@@ -30,12 +30,11 @@ import net.minecraft.world.World;
 
 import java.util.*;
 
+import static chronosacaria.mcda.api.CleanlinessHelper.hasArmorSet;
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
 
 public class ArmorEffects {
-
-    //public enum NonMysteryArmorID {NONMYSTERY};
 
     public static final List<StatusEffect> TITAN_SHROUD_STATUS_EFFECTS_LIST =
             List.of(StatusEffects.HUNGER, StatusEffects.NAUSEA, StatusEffects.BLINDNESS,
@@ -48,26 +47,26 @@ public class ArmorEffects {
                     PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.INVISIBILITY));
 
     public static final List<ArmorEffectID> ARMOR_EFFECT_ID_LIST =
-            List.of(TITAN_SHROUD_EFFECTS, FIRE_RESISTANCE, FLUID_FREEZING, FROST_BITE_EFFECT, GOURDIANS_HATRED, HASTE, HERO_OF_THE_VILLAGE,
-                    INVISIBILITY, LEADER_OF_THE_PACK, LUCK, NIMBLE_TURTLE_EFFECTS, NO_FALL_DAMAGE, SHULKER_LIKE,
+            List.of(MYSTERY_EFFECTS, FIRE_RESISTANCE, FLUID_FREEZING, FROST_BITE_EFFECT, GOURDIANS_HATRED, HASTE,
+                    HERO_OF_THE_VILLAGE, INVISIBILITY, LEADER_OF_THE_PACK, LUCK, NIMBLE_TURTLE_EFFECTS, NO_FALL_DAMAGE, SHULKER_LIKE,
                     SLOW_FALLING, SPIDER_CLIMBING, SPRINTING, WATER_BREATHING, WEB_WALKING, WITHERED);
 
     public static final List<ArmorEffectID> RED_ARMOR_EFFECT_ID_LIST =
-            List.of(TITAN_SHROUD_EFFECTS, FIRE_RESISTANCE, GOURDIANS_HATRED, LEADER_OF_THE_PACK, WITHERED);
+            List.of(MYSTERY_EFFECTS, FIRE_RESISTANCE, GOURDIANS_HATRED, LEADER_OF_THE_PACK, WITHERED);
 
     public static final List<ArmorEffectID> GREEN_ARMOR_EFFECT_ID_LIST =
-            List.of(TITAN_SHROUD_EFFECTS, HASTE, HERO_OF_THE_VILLAGE, LUCK, NO_FALL_DAMAGE);
+            List.of(MYSTERY_EFFECTS, HASTE, HERO_OF_THE_VILLAGE, LUCK, NO_FALL_DAMAGE);
 
     public static final List<ArmorEffectID> BLUE_ARMOR_EFFECT_ID_LIST =
-            List.of(TITAN_SHROUD_EFFECTS, FLUID_FREEZING, FROST_BITE_EFFECT, NIMBLE_TURTLE_EFFECTS, SLOW_FALLING, WATER_BREATHING);
+            List.of(MYSTERY_EFFECTS, FLUID_FREEZING, FROST_BITE_EFFECT, NIMBLE_TURTLE_EFFECTS, SLOW_FALLING, WATER_BREATHING);
 
     public static final List<ArmorEffectID> PURPLE_ARMOR_EFFECT_ID_LIST =
-            List.of(TITAN_SHROUD_EFFECTS, INVISIBILITY, SHULKER_LIKE, SPIDER_CLIMBING, SPRINTING, WEB_WALKING);
+            List.of(MYSTERY_EFFECTS, INVISIBILITY, SHULKER_LIKE, SPIDER_CLIMBING, SPRINTING, WEB_WALKING);
 
     public static int applyMysteryArmorEffect(PlayerEntity playerEntity) {
-        //if (!config.enableArmorEffect.get(MYSTERY_EFFECT)) {
-        //    return;
-        //}
+        if (!config.enableArmorEffect.get(MYSTERY_EFFECTS)) {
+            return 0;
+        }
         ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
         ItemStack chestplateStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
         ItemStack leggingsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
@@ -142,7 +141,6 @@ public class ArmorEffects {
                     return bootsStack.getNbt().getInt("mystery_effect");
                 }
             }
-            return 0;
         }
         return 0;
     }
@@ -913,20 +911,13 @@ public class ArmorEffects {
         if (!config.enableArmorEffect.get(SHULKER_LIKE))
             return;
 
-        ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-        ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-        ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-        ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
-
-        if (playerEntity.isAlive()
-            && helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.HEAD).asItem()
-            && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.CHEST).asItem()
-            && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.LEGS).asItem()
-            && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.STURDY_SHULKER).get(EquipmentSlot.FEET).asItem()) {
+        if (playerEntity.isAlive() && hasArmorSet(playerEntity, ArmorSets.STURDY_SHULKER)){
 
             if (playerEntity.hasStatusEffect(StatusEffects.LEVITATION)) {
                 playerEntity.removeStatusEffect(StatusEffects.LEVITATION);
             }
         }
     }
+
+
 }
