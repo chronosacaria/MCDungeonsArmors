@@ -4,6 +4,7 @@ import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
 import chronosacaria.mcda.registry.StatusEffectsRegistry;
 import net.minecraft.block.*;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
@@ -241,10 +242,19 @@ public class ArmorEffects {
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
             ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.HEAD).asItem()
+            if ((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.CHEST).asItem()
                     && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.FEET).asItem()) {
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST).get(EquipmentSlot.FEET).asItem())
+                    || (((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.FEET).asItem())
+                    || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.FEET).asItem()))
+                    && ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == FLUID_FREEZING)) {
                 // From FrostWalkerEnchantment
                 if (playerEntity.isOnGround()) {
                     BlockState blockState = Blocks.FROSTED_ICE.getDefaultState();
@@ -339,10 +349,19 @@ public class ArmorEffects {
             ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
             ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.NIMBLE_TURTLE).get(EquipmentSlot.HEAD).asItem()
+            if ((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.NIMBLE_TURTLE).get(EquipmentSlot.HEAD).asItem()
                     && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.NIMBLE_TURTLE).get(EquipmentSlot.CHEST).asItem()
                     && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.NIMBLE_TURTLE).get(EquipmentSlot.LEGS).asItem()
-                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.NIMBLE_TURTLE).get(EquipmentSlot.FEET).asItem()) {
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.NIMBLE_TURTLE).get(EquipmentSlot.FEET).asItem())
+                    || (((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.FEET).asItem())
+                    || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.HEAD).asItem()
+                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.CHEST).asItem()
+                    && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.LEGS).asItem()
+                    && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.FEET).asItem()))
+                    && ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == NIMBLE_TURTLE_EFFECTS)) {
                 StatusEffectInstance resistance = new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 1, false,
                         false);
                 StatusEffectInstance healing = new StatusEffectInstance(StatusEffects.REGENERATION, 60, 1, false,
@@ -369,10 +388,19 @@ public class ArmorEffects {
         ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
         ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-        if (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.HEAD).asItem()
+        if ((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.HEAD).asItem()
                 && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.CHEST).asItem()
                 && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.LEGS).asItem()
-                && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.FEET).asItem()) {
+                && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.FROST_BITE).get(EquipmentSlot.FEET).asItem())
+                || (((helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.HEAD).asItem()
+                && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.CHEST).asItem()
+                && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.LEGS).asItem()
+                && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.MYSTERY).get(EquipmentSlot.FEET).asItem())
+                || (helmetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.HEAD).asItem()
+                && chestStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.CHEST).asItem()
+                && legsStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.LEGS).asItem()
+                && feetStack.getItem() == ArmorsRegistry.armorItems.get(ArmorSets.BLUE_MYSTERY).get(EquipmentSlot.FEET).asItem()))
+                && ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == FROST_BITE_EFFECT)) {
             target.addStatusEffect(new StatusEffectInstance(StatusEffectsRegistry.FREEZING, 60, 0, true, true,
                     false));
         }
@@ -408,6 +436,7 @@ public class ArmorEffects {
         targetedEntity.world.spawnEntity(potion);
     }
 
+    // Mystery Armor Color Effects
     public static void applyWhiteMysteryArmorEffect(LivingEntity livingEntity) {
         //if (!config.enableArmorEffect.get(MYSTERY_EFFECT)) {
         //    return;
