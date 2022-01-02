@@ -351,7 +351,8 @@ public class ArmorEffects {
             return;
 
         if (hasArmorSet(playerEntity, ArmorSets.FROST_BITE)
-                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == FROST_BITE_EFFECT)) {
+                || (hasArmorSet(playerEntity, ArmorSets.MYSTERY) && (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == FROST_BITE_EFFECT))
+                || (hasArmorSet(playerEntity, ArmorSets.BLUE_MYSTERY) && (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == FROST_BITE_EFFECT))) {
 
             target.addStatusEffect(new StatusEffectInstance(StatusEffectsRegistry.FREEZING, 60, 0, true, true,
                     false));
