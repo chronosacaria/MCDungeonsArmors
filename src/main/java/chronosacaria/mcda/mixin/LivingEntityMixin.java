@@ -146,8 +146,9 @@ public abstract class LivingEntityMixin extends Entity {
 
             if (playerEntity == null) return;
 
-            if (hasArmorSet(playerEntity, ArmorSets.SPIDER) ||
-                    (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity)) == SPIDER_CLIMBING))
+            if (hasArmorSet(playerEntity, ArmorSets.SPIDER)
+                    || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SPIDER_CLIMBING)
+                    || (ArmorEffects.PURPLE_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == SPIDER_CLIMBING))
                 if (this.horizontalCollision){
                     cir.setReturnValue(true);
                 }
@@ -166,13 +167,9 @@ public abstract class LivingEntityMixin extends Entity {
 
             if (playerEntity == null) return;
 
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack feetStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
-
-            if (hasArmorSet(playerEntity, ArmorSets.SHADOW_WALKER) ||
-                    (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player)) == NO_FALL_DAMAGE)) {
+            if (hasArmorSet(playerEntity, ArmorSets.SHADOW_WALKER)
+                    || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.MYSTERY)) == NO_FALL_DAMAGE)
+                    || (ArmorEffects.GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.GREEN_MYSTERY)) == NO_FALL_DAMAGE)) {
                 int i = this.computeFallDamage(fallDistance, damageMultiplier);
                 if (i > 0) {
                     cir.setReturnValue(true);
@@ -333,8 +330,9 @@ public abstract class LivingEntityMixin extends Entity {
             PlayerEntity owner = (PlayerEntity) ((TameableEntity) petSource).getOwner();
             if (owner != null){
                 UUID petOwnerUUID = owner.getUuid();
-                if (hasArmorSet(owner, ArmorSets.BLACK_WOLF) ||
-                        (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player)) == LEADER_OF_THE_PACK)) {
+                if (hasArmorSet(owner, ArmorSets.BLACK_WOLF)
+                        || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.MYSTERY)) == LEADER_OF_THE_PACK)
+                        || (ArmorEffects.RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.RED_MYSTERY)) == LEADER_OF_THE_PACK)) {
 
                     if (petOwnerUUID != null) {
                         Entity petOwner = serverWorld.getEntity(petOwnerUUID);
@@ -450,7 +448,8 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (user != null) {
             if (hasArmorSet(user, ArmorSets.GOURDIAN)
-                    || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect((PlayerEntity) user)) == GOURDIANS_HATRED)) {
+                    || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect((PlayerEntity) user, ArmorSets.MYSTERY)) == GOURDIANS_HATRED)
+                    || (ArmorEffects.RED_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect((PlayerEntity) user, ArmorSets.RED_MYSTERY)) == GOURDIANS_HATRED)) {
                 float hatredRand = user.getRandom().nextFloat();
                 if (hatredRand <= 0.15F) {
                     ArmorEffects.applyGourdiansHatredStatus(user);

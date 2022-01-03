@@ -61,14 +61,13 @@ public class ArmorEffects {
     public static final List<ArmorEffectID> PURPLE_ARMOR_EFFECT_ID_LIST =
             List.of(MYSTERY_EFFECTS, INVISIBILITY, SHULKER_LIKE, SPIDER_CLIMBING, SPRINTING, WEB_WALKING);
 
-    public static int applyMysteryArmorEffect(PlayerEntity playerEntity) {
+    public static int applyMysteryArmorEffect(PlayerEntity playerEntity, ArmorSets armorSets) {
         if (!config.enableArmorEffect.get(MYSTERY_EFFECTS)) {
             return 0;
         }
 
-        if (hasArmorSet(playerEntity, ArmorSets.MYSTERY) || hasArmorSet(playerEntity, ArmorSets.RED_MYSTERY)
-                || hasArmorSet(playerEntity, ArmorSets.BLUE_MYSTERY) || hasArmorSet(playerEntity, ArmorSets.GREEN_MYSTERY)
-                || hasArmorSet(playerEntity, ArmorSets.PURPLE_MYSTERY)){
+        //Checks Mystery Armor Color
+        if (hasArmorSet(playerEntity, armorSets)){
 
             ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestplateStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
@@ -106,7 +105,6 @@ public class ArmorEffects {
             }
             if (bootDOM > domDOM) {
                 stackTracker = 3;
-                domDOM = bootDOM;
             }
 
             switch (stackTracker) {
@@ -244,7 +242,8 @@ public class ArmorEffects {
         if (playerEntity.isAlive() && world.getTime() % 10 == 0) {
 
             if (hasArmorSet(playerEntity, ArmorSets.FROST)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == FLUID_FREEZING)) {
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == FLUID_FREEZING)
+                    || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == FLUID_FREEZING)){
                 // From FrostWalkerEnchantment
                 if (playerEntity.isOnGround()) {
                     BlockState blockState = Blocks.FROSTED_ICE.getDefaultState();
@@ -299,7 +298,8 @@ public class ArmorEffects {
         if (playerEntity.isAlive()) {
 
             if (hasArmorSet(playerEntity, ArmorSets.THIEF)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == INVISIBILITY))
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == INVISIBILITY)
+                    || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == INVISIBILITY))
                 playerEntity.setInvisible(playerEntity.isSneaking());
         }
     }
@@ -311,7 +311,8 @@ public class ArmorEffects {
             if (playerEntity.isAlive()) {
 
                 if (hasArmorSet(playerEntity, ArmorSets.WITHER)
-                        || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == WITHERED)) {
+                        || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == WITHERED)
+                        || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == WITHERED)) {
                     attacker.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 120, 0));
                 }
             }
@@ -324,7 +325,8 @@ public class ArmorEffects {
         if (playerEntity.isAlive()) {
 
             if (hasArmorSet(playerEntity, ArmorSets.NIMBLE_TURTLE)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == NIMBLE_TURTLE_EFFECTS)) {
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == NIMBLE_TURTLE_EFFECTS)
+                    || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == NIMBLE_TURTLE_EFFECTS)) {
 
                 StatusEffectInstance resistance = new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 1, false,
                         false);
@@ -349,8 +351,8 @@ public class ArmorEffects {
             return;
 
         if (hasArmorSet(playerEntity, ArmorSets.FROST_BITE)
-                || (hasArmorSet(playerEntity, ArmorSets.MYSTERY) && (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == FROST_BITE_EFFECT))
-                || (hasArmorSet(playerEntity, ArmorSets.BLUE_MYSTERY) && (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == FROST_BITE_EFFECT))) {
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == FROST_BITE_EFFECT)
+                || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == FROST_BITE_EFFECT)) {
 
             target.addStatusEffect(new StatusEffectInstance(StatusEffectsRegistry.FREEZING, 60, 0, true, true,
                     false));
@@ -390,7 +392,8 @@ public class ArmorEffects {
         if (playerEntity.getY() < 32.0F && world.getTime() % 30 == 0) {
 
             if (hasArmorSet(playerEntity, ArmorSets.CAVE_CRAWLER)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == HASTE)) {
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == HASTE)
+                    || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.GREEN_MYSTERY)) == HASTE)) {
 
                 StatusEffectInstance haste = new StatusEffectInstance(StatusEffects.HASTE, 42, 0, false, false);
                 playerEntity.addStatusEffect(haste);
@@ -399,7 +402,8 @@ public class ArmorEffects {
         if (playerEntity.getY() > 100.0F && world.getTime() % 30 == 0) {
 
             if (hasArmorSet(playerEntity, ArmorSets.HIGHLAND)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == HASTE)) {
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == HASTE)
+                    || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.GREEN_MYSTERY)) == HASTE)) {
 
                 StatusEffectInstance haste = new StatusEffectInstance(StatusEffects.HASTE, 42, 0, false, false);
                 playerEntity.addStatusEffect(haste);
@@ -416,7 +420,8 @@ public class ArmorEffects {
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
 
             if (hasArmorSet(playerEntity, ArmorSets.HERO) || hasArmorSet(playerEntity, ArmorSets.GILDED)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == HERO_OF_THE_VILLAGE)) {
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == HERO_OF_THE_VILLAGE)
+                    || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.GREEN_MYSTERY)) == HERO_OF_THE_VILLAGE)) {
 
                 StatusEffectInstance heroOfTheVillage = new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 42, 0, false,
                         false);
@@ -454,7 +459,7 @@ public class ArmorEffects {
                                 false, true);
                         playerEntity.removeStatusEffect(StatusEffects.STRENGTH);
                         playerEntity.addStatusEffect(tummyGrumbles);
-                    } else if (foodLevel <= 6){
+                    } else {
                         //Sooner Starvation
                         playerEntity.damage(DamageSource.STARVE, 0.5f);
                         //apply Strength 3
@@ -477,7 +482,8 @@ public class ArmorEffects {
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
 
             if (hasArmorSet(playerEntity, ArmorSets.SPROUT) || hasArmorSet(playerEntity, ArmorSets.LIVING_VINES)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == FIRE_RESISTANCE)) {
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == FIRE_RESISTANCE)
+                    || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == FIRE_RESISTANCE)) {
 
                 StatusEffectInstance fireResistance = new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 42, 1,
                         false,false);
@@ -495,7 +501,8 @@ public class ArmorEffects {
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
 
             if (hasArmorSet(playerEntity, ArmorSets.OPULENT)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == LUCK)) {
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == LUCK)
+                    || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.GREEN_MYSTERY)) == LUCK)) {
 
                 StatusEffectInstance luck = new StatusEffectInstance(StatusEffects.LUCK, 42, 0, false,
                         false);
@@ -513,7 +520,8 @@ public class ArmorEffects {
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
 
             if (hasArmorSet(playerEntity, ArmorSets.SHADOW_WALKER)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == SPRINTING)) {
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SPRINTING)
+                    || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == SPRINTING)) {
 
                 if (playerEntity.isSprinting()) {
                     StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
@@ -533,7 +541,8 @@ public class ArmorEffects {
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
 
             if (hasArmorSet(playerEntity, ArmorSets.GLOW_SQUID)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == WATER_BREATHING)) {
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == WATER_BREATHING)
+                    || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == WATER_BREATHING)) {
 
                 if (playerEntity.isSubmergedInWater()) {
                     StatusEffectInstance waterBreathing = new StatusEffectInstance(StatusEffects.WATER_BREATHING, 42, 0,
@@ -553,7 +562,8 @@ public class ArmorEffects {
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
 
             if (hasArmorSet(playerEntity, ArmorSets.THIEF)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == INVISIBILITY)) {
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == INVISIBILITY)
+                    || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == INVISIBILITY)) {
 
                 if (playerEntity.isSneaking()) {
                     StatusEffectInstance invisibility = new StatusEffectInstance(StatusEffects.INVISIBILITY, 42, 0,
@@ -573,7 +583,8 @@ public class ArmorEffects {
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
 
             if (hasArmorSet(playerEntity, ArmorSets.PHANTOM) || hasArmorSet(playerEntity, ArmorSets.FROST_BITE)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == SLOW_FALLING)) {
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SLOW_FALLING)
+                    || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == SLOW_FALLING)) {
 
                 StatusEffectInstance slowFalling = new StatusEffectInstance(StatusEffects.SLOW_FALLING, 42, 0, false,
                         false);
@@ -587,7 +598,8 @@ public class ArmorEffects {
             return;
 
         if (playerEntity.isAlive() && (hasArmorSet(playerEntity, ArmorSets.STURDY_SHULKER)
-            || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity)) == SHULKER_LIKE))){
+            || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SHULKER_LIKE)
+            || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == SHULKER_LIKE))){
 
             if (playerEntity.hasStatusEffect(StatusEffects.LEVITATION)) {
                 playerEntity.removeStatusEffect(StatusEffects.LEVITATION);

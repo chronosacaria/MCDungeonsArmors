@@ -29,7 +29,8 @@ public class CobwebBlockMixin {
         if (!(entity instanceof LivingEntity)) return;
 
         if (CleanlinessHelper.hasArmorSet((LivingEntity) entity, ArmorSets.SPIDER)
-                || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect((PlayerEntity) entity)) == WEB_WALKING)){
+                || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect((PlayerEntity) entity, ArmorSets.MYSTERY)) == WEB_WALKING)
+                || (ArmorEffects.PURPLE_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect((PlayerEntity) entity, ArmorSets.PURPLE_MYSTERY)) == WEB_WALKING)){
             ci.cancel();
         }
     }

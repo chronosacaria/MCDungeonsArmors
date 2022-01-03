@@ -28,7 +28,8 @@ public class InGameOverlayRendererMixin {
         if (playerEntity.isAlive()) {
             if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.SPROUT)
                     || CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.LIVING_VINES)
-                    || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity)) == FIRE_RESISTANCE)) {
+                    || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == FIRE_RESISTANCE)
+                    || (ArmorEffects.RED_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == FIRE_RESISTANCE)) {
                 ci.cancel();
             }
         }
