@@ -74,37 +74,30 @@ public class ArmorEffects {
             ItemStack leggingsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
             ItemStack bootsStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            int helmDOM = 0;
-            int chestDOM = 0;
-            int legDOM = 0;
-            int bootDOM = 0;
+
+            int[] domArr = {0,0,0,0};
 
             if (helmetStack.getNbt() != null) {
-                helmDOM = helmetStack.getNbt().getInt("dominance");
+                domArr[0] = helmetStack.getNbt().getInt("dominance");
             }
             if (chestplateStack.getNbt() != null) {
-                chestDOM = chestplateStack.getNbt().getInt("dominance");
+                domArr[1] = chestplateStack.getNbt().getInt("dominance");
             }
             if (leggingsStack.getNbt() != null) {
-                legDOM = leggingsStack.getNbt().getInt("dominance");
+                domArr[2] = leggingsStack.getNbt().getInt("dominance");
             }
             if (bootsStack.getNbt() != null) {
-                bootDOM = bootsStack.getNbt().getInt("dominance");
+                domArr[3] = bootsStack.getNbt().getInt("dominance");
             }
 
+            int maxDOM = domArr[0];
             int stackTracker = 0;
-            int domDOM = helmDOM;
 
-            if (chestDOM > domDOM) {
-                stackTracker = 1;
-                domDOM = chestDOM;
-            }
-            if (legDOM > domDOM) {
-                stackTracker = 2;
-                domDOM = legDOM;
-            }
-            if (bootDOM > domDOM) {
-                stackTracker = 3;
+            for (int i = 1; i < domArr.length; i++) {
+                if (domArr[i] > maxDOM) {
+                    maxDOM = domArr[i];
+                    stackTracker = i;
+                }
             }
 
             switch (stackTracker) {
