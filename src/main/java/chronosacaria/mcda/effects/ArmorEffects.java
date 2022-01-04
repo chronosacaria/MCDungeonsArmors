@@ -298,59 +298,28 @@ public class ArmorEffects {
         }
     }
 
-    public static void applyWithered(PlayerEntity playerEntity, LivingEntity attacker) {
-        if (!config.enableArmorEffect.get(WITHERED))
-            return;
-        if (attacker != null) {
-            if (playerEntity.isAlive()) {
-
-                if (hasArmorSet(playerEntity, ArmorSets.WITHER)
-                        || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == WITHERED)
-                        || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == WITHERED)) {
-                    attacker.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 120, 0));
-                }
-            }
-        }
+    public static void applyWithered(LivingEntity attacker) {
+        attacker.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 120, 0));
     }
 
     public static void applyNimbleTurtleEffects(PlayerEntity playerEntity) {
-        if (!config.enableArmorEffect.get(NIMBLE_TURTLE_EFFECTS))
-            return;
-        if (playerEntity.isAlive()) {
-
-            if (hasArmorSet(playerEntity, ArmorSets.NIMBLE_TURTLE)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == NIMBLE_TURTLE_EFFECTS)
-                    || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == NIMBLE_TURTLE_EFFECTS)) {
-
-                StatusEffectInstance resistance = new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 1, false,
-                        false);
-                StatusEffectInstance healing = new StatusEffectInstance(StatusEffects.REGENERATION, 60, 1, false,
-                        false);
-                playerEntity.addStatusEffect(resistance);
-                playerEntity.addStatusEffect(healing);
-            }
-        }
+        StatusEffectInstance resistance = new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 1, false,
+                false);
+        StatusEffectInstance healing = new StatusEffectInstance(StatusEffects.REGENERATION, 60, 1, false,
+                false);
+        playerEntity.addStatusEffect(resistance);
+        playerEntity.addStatusEffect(healing);
     }
 
     public static void applyTitanShroudStatuses(PlayerEntity playerEntity, LivingEntity target) {
-        if (!config.enableArmorEffect.get(TITAN_SHROUD_EFFECTS))
-            return;
         StatusEffect titanStatusEffect =
                 TITAN_SHROUD_STATUS_EFFECTS_LIST.get(playerEntity.getRandom().nextInt(TITAN_SHROUD_STATUS_EFFECTS_LIST.size()));
         target.addStatusEffect(new StatusEffectInstance(titanStatusEffect, 60, 0));
     }
 
-    public static void applyFrostBiteStatus(PlayerEntity playerEntity, LivingEntity target) {
-        if (!config.enableArmorEffect.get(FROST_BITE_EFFECT))
-            return;
-
-        if (hasArmorSet(playerEntity, ArmorSets.FROST_BITE)
-                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == FROST_BITE_EFFECT)
-                || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == FROST_BITE_EFFECT)) {
-
-            target.addStatusEffect(new StatusEffectInstance(StatusEffectsRegistry.FREEZING, 60, 0, true, true,
+    public static void applyFrostBiteStatus(LivingEntity target) {
+        target.addStatusEffect(new StatusEffectInstance(StatusEffectsRegistry.FREEZING, 60, 0, true, true,
                     false));
-        }
     }
 
     public static void applyGourdiansHatredStatus(LivingEntity livingEntity) {

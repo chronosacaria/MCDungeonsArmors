@@ -50,8 +50,6 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow public abstract boolean damage(DamageSource source, float amount);
 
-    @Shadow public abstract void takeKnockback(double strength, double x, double z);
-
     public EntityType<SummonedBeeEntity> summonedBee = SummonedEntityRegistry.SUMMONED_BEE_ENTITY;
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
@@ -103,7 +101,19 @@ public abstract class LivingEntityMixin extends Entity {
         }
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
-        ArmorEffects.applyWithered(playerEntity, (LivingEntity) source.getAttacker());
+
+        if (!config.enableArmorEffect.get(WITHERED))
+            return;
+        if (source.getAttacker() != null) {
+            if (playerEntity.isAlive()) {
+
+                if (hasArmorSet(playerEntity, ArmorSets.WITHER)
+                        || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == WITHERED)
+                        || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == WITHERED)) {
+                    ArmorEffects.applyWithered((LivingEntity) source.getAttacker());
+                }
+            }
+        }
     }
 
     // Mixin for Nimble Turtle Armour Effects
@@ -114,9 +124,13 @@ public abstract class LivingEntityMixin extends Entity {
         if(!((Object)this instanceof PlayerEntity)) return;
 
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
-        if (playerEntity.isAlive()){
-            if (this.lastDamageTaken >= 0){
+        if (hasArmorSet(playerEntity, ArmorSets.NIMBLE_TURTLE)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == NIMBLE_TURTLE_EFFECTS)
+                || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == NIMBLE_TURTLE_EFFECTS)) {
+            if (playerEntity.isAlive()) {
+                if (this.lastDamageTaken >= 0) {
                     ArmorEffects.applyNimbleTurtleEffects(playerEntity);
+                }
             }
         }
     }
@@ -240,8 +254,6 @@ public abstract class LivingEntityMixin extends Entity {
                     playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
 
                     cir.setReturnValue(true);
-
-
                 }
             }
         }
@@ -253,19 +265,16 @@ public abstract class LivingEntityMixin extends Entity {
         if (!config.enableArmorEffect.get(TITAN_SHROUD_EFFECTS))
             return;
 
-        if(!(source.getAttacker() instanceof PlayerEntity))return;
+        if(!(source.getAttacker() instanceof PlayerEntity playerEntity))return;
 
-        PlayerEntity playerEntity = (PlayerEntity) source.getAttacker();
         LivingEntity target = (LivingEntity) (Object) this;
 
         if (source.getSource() instanceof PlayerEntity) {
-            if (amount != 0.0F) {
-                if (playerEntity != null) {
-                    ItemStack mainHandStack = playerEntity.getMainHandStack();
 
-                    if (mainHandStack != null && hasArmorSet(playerEntity, ArmorSets.TITAN)) {
-                        ArmorEffects.applyTitanShroudStatuses(playerEntity, target);
-                    }
+            ItemStack mainHandStack = playerEntity.getMainHandStack();
+            if (mainHandStack != null && hasArmorSet(playerEntity, ArmorSets.TITAN)) {
+                if (amount != 0.0F) {
+                    ArmorEffects.applyTitanShroudStatuses(playerEntity, target);
                 }
             }
         }
@@ -433,11 +442,15 @@ public abstract class LivingEntityMixin extends Entity {
         LivingEntity target = (LivingEntity) (Object) this;
 
         if (source.getSource() instanceof PlayerEntity) {
-            if (amount != 0.0F) {
-                if (playerEntity != null) {
-                    ItemStack mainHandStack = playerEntity.getMainHandStack();
-                    if (mainHandStack != null) {
-                        ArmorEffects.applyFrostBiteStatus(playerEntity, target);
+            if (hasArmorSet(playerEntity, ArmorSets.FROST_BITE)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == FROST_BITE_EFFECT)
+                    || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == FROST_BITE_EFFECT)) {
+                if (amount != 0.0F) {
+                    if (playerEntity != null) {
+                        ItemStack mainHandStack = playerEntity.getMainHandStack();
+                        if (mainHandStack != null) {
+                            ArmorEffects.applyFrostBiteStatus(target);
+                        }
                     }
                 }
             }
@@ -477,8 +490,8 @@ public abstract class LivingEntityMixin extends Entity {
         LivingEntity targetedEntity = (LivingEntity) (Object) this;
 
         if (targetedEntity != null) {
-            if (amount != 0.0F) {
-                if (hasArmorSet(targetedEntity, ArmorSets.CAULDRON)) {
+            if (hasArmorSet(targetedEntity, ArmorSets.CAULDRON)) {
+                if (amount != 0.0F) {
                     float overflowRand = targetedEntity.getRandom().nextFloat();
                     if (overflowRand <= 0.15F) {
                         ArmorEffects.applyCauldronsOverflow(targetedEntity);
