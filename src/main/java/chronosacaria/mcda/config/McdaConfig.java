@@ -198,18 +198,30 @@ public class McdaConfig implements ConfigData {
                 .setToughness(2.0F);
 
         // Heavy Plate Armor
-        setProtection(3, 8, 6, 3, DARK).setDurabilityMultiplier(36);
-        setProtection(3, 8, 6, 3, TITAN).setDurabilityMultiplier(36);
-        setProtection(3, 8, 6, 3, ROYAL).setDurabilityMultiplier(36);
-        setProtection(3, 8, 6, 3, PLATE).setDurabilityMultiplier(36);
-        setProtection(4, 9, 7, 4, FULL_METAL).setDurabilityMultiplier(36);
-        setProtection(4, 9, 7, 4, CAULDRON).setDurabilityMultiplier(36);
-        setProtection(3, 8, 6, 3, MYSTERY).setDurabilityMultiplier(36);
-        setProtection(3, 8, 6, 3, BLUE_MYSTERY).setDurabilityMultiplier(36);
-        setProtection(3, 8, 6, 3, GREEN_MYSTERY).setDurabilityMultiplier(36);
-        setProtection(3, 8, 6, 3, PURPLE_MYSTERY).setDurabilityMultiplier(36);
-        setProtection(3, 8, 6, 3, RED_MYSTERY).setDurabilityMultiplier(36);
-        setProtection(3, 8, 6, 3, CHAMPION).setDurabilityMultiplier(36);
+        setProtection(3, 8, 6, 3, DARK).setDurabilityMultiplier(36)
+                .setToughness(1.0F);
+        setProtection(3, 8, 6, 3, TITAN).setDurabilityMultiplier(36)
+                .setToughness(2.0F);
+        setProtection(3, 8, 6, 3, ROYAL).setDurabilityMultiplier(36)
+                .setToughness(1.5F);
+        setProtection(3, 8, 6, 3, PLATE).setDurabilityMultiplier(36)
+                .setToughness(1.5F);
+        setProtection(4, 9, 7, 4, FULL_METAL).setDurabilityMultiplier(36)
+                .setToughness(3.0F);
+        setProtection(4, 9, 7, 4, CAULDRON).setDurabilityMultiplier(36)
+                .setToughness(2.0F);
+        setProtection(3, 8, 6, 3, MYSTERY).setDurabilityMultiplier(36)
+                .setToughness(1.5F);
+        setProtection(3, 8, 6, 3, BLUE_MYSTERY).setDurabilityMultiplier(36)
+                .setToughness(1.5F);
+        setProtection(3, 8, 6, 3, GREEN_MYSTERY).setDurabilityMultiplier(36)
+                .setToughness(1.5F);
+        setProtection(3, 8, 6, 3, PURPLE_MYSTERY).setDurabilityMultiplier(36)
+                .setToughness(1.5F);
+        setProtection(3, 8, 6, 3, RED_MYSTERY).setDurabilityMultiplier(36)
+                .setToughness(1.5F);
+        setProtection(3, 8, 6, 3, CHAMPION).setDurabilityMultiplier(36)
+                .setToughness(1.0F);
         setProtection(4, 9, 7, 4, HERO).setDurabilityMultiplier(36)
                 .setToughness(2.0F);
         setProtection(3, 8, 6, 3, GILDED).setDurabilityMultiplier(36)
