@@ -48,10 +48,10 @@ public class ArmorEffects {
     public static final List<ArmorEffectID> ARMOR_EFFECT_ID_LIST =
             List.of(MYSTERY_EFFECTS, FIRE_RESISTANCE, FLUID_FREEZING, FROST_BITE_EFFECT, GOURDIANS_HATRED, HASTE,
                     HERO_OF_THE_VILLAGE, INVISIBILITY, LEADER_OF_THE_PACK, LUCK, NIMBLE_TURTLE_EFFECTS, NO_FALL_DAMAGE, SHULKER_LIKE,
-                    SLOW_FALLING, SPIDER_CLIMBING, SPRINTING, WATER_BREATHING, WEB_WALKING, WITHERED);
+                    SLOW_FALLING, SPIDER_CLIMBING, SPRINTING,STALWART_BULWARK, WATER_BREATHING, WEB_WALKING, WITHERED);
 
     public static final List<ArmorEffectID> RED_ARMOR_EFFECT_ID_LIST =
-            List.of(MYSTERY_EFFECTS, FIRE_RESISTANCE, GOURDIANS_HATRED, LEADER_OF_THE_PACK, WITHERED);
+            List.of(MYSTERY_EFFECTS, FIRE_RESISTANCE, GOURDIANS_HATRED, LEADER_OF_THE_PACK, STALWART_BULWARK, WITHERED);
 
     public static final List<ArmorEffectID> GREEN_ARMOR_EFFECT_ID_LIST =
             List.of(MYSTERY_EFFECTS, HASTE, HERO_OF_THE_VILLAGE, LUCK, NO_FALL_DAMAGE);
@@ -598,6 +598,20 @@ public class ArmorEffects {
             if (playerEntity.hasStatusEffect(StatusEffects.LEVITATION)) {
                 playerEntity.removeStatusEffect(StatusEffects.LEVITATION);
             }
+        }
+    }
+
+    public static void applyStalwartBulwarkResistanceEffect(ServerPlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(STALWART_BULWARK))
+            return;
+
+        if (playerEntity.isAlive() && playerEntity.isSneaking() && (hasArmorSet(playerEntity, ArmorSets.STALWART_MAIL)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == STALWART_BULWARK)
+                || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == STALWART_BULWARK))){
+
+            StatusEffectInstance resistance = new StatusEffectInstance(StatusEffects.RESISTANCE, 42, 0, false,
+                    false);
+            playerEntity.addStatusEffect(resistance);
         }
     }
 
