@@ -3,8 +3,10 @@ package chronosacaria.mcda.mixin;
 import chronosacaria.mcda.api.*;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
+import chronosacaria.mcda.entities.SummonedBeeEntity;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.EnchantsRegistry;
+import chronosacaria.mcda.registry.SummonedEntityRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
@@ -49,6 +51,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow public abstract boolean damage(DamageSource source, float amount);
 
     @Shadow public abstract void takeKnockback(double strength, double x, double z);
+
+    public EntityType<SummonedBeeEntity> summonedBee = SummonedEntityRegistry.SUMMONED_BEE_ENTITY;
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
@@ -495,5 +499,29 @@ public abstract class LivingEntityMixin extends Entity {
             return strength * 0;
         }
         return strength;
+    }
+
+    @Inject(method = "damage", at = @At("HEAD"))
+    public void summonBeesOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        if (!config.enableArmorEffect.get(BUZZY_HIVE))
+            return;
+
+        if (!(source.getAttacker() instanceof LivingEntity)) return;
+
+        LivingEntity targetedEntity = (LivingEntity) (Object) this;
+
+        SummonedBeeEntity summonedBeeEntity = summonedBee.create(world);
+        if (hasArmorSet(targetedEntity, ArmorSets.BEEHIVE)) {
+            if (amount != 0.0F) {
+                float beeSummonChance = targetedEntity.getRandom().nextFloat();
+                if (beeSummonChance <= 0.15F) {
+                    if (summonedBeeEntity != null) {
+                        summonedBeeEntity.setSummoner(targetedEntity);
+                        summonedBeeEntity.refreshPositionAndAngles(this.getX(), this.getY() + 1, this.getZ(), 0, 0);
+                        world.spawnEntity(summonedBeeEntity);
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 package chronosacaria.mcda.effects;
 
 public enum ArmorEffectID {
+    BUZZY_HIVE,
     CAULDRONS_OVERFLOW,
     FIRE_RESISTANCE,
     FLUID_FREEZING,
