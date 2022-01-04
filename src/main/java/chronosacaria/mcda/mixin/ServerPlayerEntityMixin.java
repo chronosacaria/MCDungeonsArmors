@@ -32,6 +32,7 @@ public class ServerPlayerEntityMixin {
         ArmorEffects.applyLuck(playerEntity); // Opulent Armour
         ArmorEffects.applySlowFalling(playerEntity); // Phantom and Frost Bite Armour
         ArmorEffects.applySprintingSpeed(playerEntity); // Shadow Walker Armour
+        ArmorEffects.applyStalwartBulwarkResistanceEffect(playerEntity); // Stalwart Mail Armour
         ArmorEffects.applyWaterBreathing(playerEntity); // Glow Squid Armour Water Breathing underwater
 
         // Status Effect Removal

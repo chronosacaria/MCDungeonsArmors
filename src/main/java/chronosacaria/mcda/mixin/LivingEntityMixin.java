@@ -24,6 +24,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -32,7 +34,7 @@ import java.util.*;
 import static chronosacaria.mcda.api.CleanlinessHelper.hasArmorSet;
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
-import static chronosacaria.mcda.effects.ArmorEffects.applyMysteryArmorEffect;
+import static chronosacaria.mcda.effects.ArmorEffects.*;
 import static chronosacaria.mcda.enchants.EnchantID.*;
 
 @Mixin(LivingEntity.class)
@@ -45,6 +47,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow protected float lastDamageTaken;
 
     @Shadow public abstract boolean damage(DamageSource source, float amount);
+
+    @Shadow public abstract void takeKnockback(double strength, double x, double z);
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
@@ -147,7 +151,7 @@ public abstract class LivingEntityMixin extends Entity {
             if (playerEntity == null) return;
 
             if (hasArmorSet(playerEntity, ArmorSets.SPIDER)
-                    || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SPIDER_CLIMBING)
+                    || (ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SPIDER_CLIMBING)
                     || (ArmorEffects.PURPLE_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == SPIDER_CLIMBING))
                 if (this.horizontalCollision){
                     cir.setReturnValue(true);
@@ -168,7 +172,7 @@ public abstract class LivingEntityMixin extends Entity {
             if (playerEntity == null) return;
 
             if (hasArmorSet(playerEntity, ArmorSets.SHADOW_WALKER)
-                    || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.MYSTERY)) == NO_FALL_DAMAGE)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.MYSTERY)) == NO_FALL_DAMAGE)
                     || (ArmorEffects.GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.GREEN_MYSTERY)) == NO_FALL_DAMAGE)) {
                 int i = this.computeFallDamage(fallDistance, damageMultiplier);
                 if (i > 0) {
@@ -331,8 +335,8 @@ public abstract class LivingEntityMixin extends Entity {
             if (owner != null){
                 UUID petOwnerUUID = owner.getUuid();
                 if (hasArmorSet(owner, ArmorSets.BLACK_WOLF)
-                        || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.MYSTERY)) == LEADER_OF_THE_PACK)
-                        || (ArmorEffects.RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.RED_MYSTERY)) == LEADER_OF_THE_PACK)) {
+                        || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.MYSTERY)) == LEADER_OF_THE_PACK)
+                        || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.RED_MYSTERY)) == LEADER_OF_THE_PACK)) {
 
                     if (petOwnerUUID != null) {
                         Entity petOwner = serverWorld.getEntity(petOwnerUUID);
@@ -448,8 +452,8 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (user != null) {
             if (hasArmorSet(user, ArmorSets.GOURDIAN)
-                    || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(user, ArmorSets.MYSTERY)) == GOURDIANS_HATRED)
-                    || (ArmorEffects.RED_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect( user, ArmorSets.RED_MYSTERY)) == GOURDIANS_HATRED)) {
+                    || (ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(user, ArmorSets.MYSTERY)) == GOURDIANS_HATRED)
+                    || (RED_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect( user, ArmorSets.RED_MYSTERY)) == GOURDIANS_HATRED)) {
                 float hatredRand = user.getRandom().nextFloat();
                 if (hatredRand <= 0.15F) {
                     ArmorEffects.applyGourdiansHatredStatus(user);
@@ -478,5 +482,18 @@ public abstract class LivingEntityMixin extends Entity {
                 }
             }
         }
+    }
+
+    // Mixin for Knockback Resistance for Stalwart Bulwark Effect
+    @ModifyVariable(method = "takeKnockback", at = @At("HEAD"), ordinal = 0)
+    private double applyStalwartBulwarkKnockbackResistanceEffect(double strength){
+        LivingEntity livingEntity = (LivingEntity) (Object) this;
+
+        if (this.isAlive() && this.isSneaking() && (hasArmorSet(livingEntity, ArmorSets.STALWART_MAIL)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.MYSTERY)) == STALWART_BULWARK)
+                || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.RED_MYSTERY)) == STALWART_BULWARK))) {
+            return strength * 0;
+        }
+        return strength;
     }
 }
