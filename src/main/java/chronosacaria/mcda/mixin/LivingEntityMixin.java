@@ -121,7 +121,7 @@ public abstract class LivingEntityMixin extends Entity {
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
 
         ArmorEffects.applyFluidFreezing(playerEntity);
-        //ArmorEffects.applyThiefInvisibilityTick(playerEntity);
+        ArmorEffects.applyThiefInvisibilityTick(playerEntity);
         //EnchantmentEffects.applyFireTrail(playerEntity);
     }
 
@@ -448,8 +448,8 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (user != null) {
             if (hasArmorSet(user, ArmorSets.GOURDIAN)
-                    || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect((PlayerEntity) user, ArmorSets.MYSTERY)) == GOURDIANS_HATRED)
-                    || (ArmorEffects.RED_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect((PlayerEntity) user, ArmorSets.RED_MYSTERY)) == GOURDIANS_HATRED)) {
+                    || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(user, ArmorSets.MYSTERY)) == GOURDIANS_HATRED)
+                    || (ArmorEffects.RED_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect( user, ArmorSets.RED_MYSTERY)) == GOURDIANS_HATRED)) {
                 float hatredRand = user.getRandom().nextFloat();
                 if (hatredRand <= 0.15F) {
                     ArmorEffects.applyGourdiansHatredStatus(user);

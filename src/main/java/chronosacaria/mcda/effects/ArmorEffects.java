@@ -62,18 +62,18 @@ public class ArmorEffects {
     public static final List<ArmorEffectID> PURPLE_ARMOR_EFFECT_ID_LIST =
             List.of(MYSTERY_EFFECTS, INVISIBILITY, SHULKER_LIKE, SPIDER_CLIMBING, SPRINTING, WEB_WALKING);
 
-    public static int applyMysteryArmorEffect(PlayerEntity playerEntity, ArmorSets armorSets) {
+    public static int applyMysteryArmorEffect(LivingEntity livingEntity, ArmorSets armorSets) {
         if (!config.enableArmorEffect.get(MYSTERY_EFFECTS)) {
             return 0;
         }
 
         //Checks Mystery Armor Color
-        if (hasArmorSet(playerEntity, armorSets)){
+        if (hasArmorSet(livingEntity, armorSets)){
 
-            ItemStack helmetStack = playerEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestplateStack = playerEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack leggingsStack = playerEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack bootsStack = playerEntity.getEquippedStack(EquipmentSlot.FEET);
+            ItemStack helmetStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack chestplateStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack leggingsStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack bootsStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
 
 
             int[] domArr = {0,0,0,0};

@@ -7,6 +7,7 @@ import chronosacaria.mcda.items.itemhelpers.SpawnHelper;
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTables;
@@ -25,9 +26,12 @@ import static chronosacaria.mcda.config.McdaConfig.config;
 public class LootRegistry {
 
     public static final Collection<Identifier> BASTION_LOOT_TABLES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
-            LootTables.PIGLIN_BARTERING_GAMEPLAY, LootTables.BASTION_BRIDGE_CHEST,
+            LootTables.BASTION_BRIDGE_CHEST,
             LootTables.BASTION_HOGLIN_STABLE_CHEST, LootTables.BASTION_OTHER_CHEST,
             LootTables.BASTION_TREASURE_CHEST)));
+
+    public static final Collection<Identifier> PIGLIN_TRADING_LOOT_TABLES = Collections.singletonList(
+            LootTables.PIGLIN_BARTERING_GAMEPLAY);
 
     public static final Collection<Identifier> NETHER_FORTRESS_LOOT_TABLES = Collections.singletonList(
             LootTables.NETHER_BRIDGE_CHEST);
@@ -170,6 +174,14 @@ public class LootRegistry {
                 addArmorSet(poolBuilder, ArmorSets.GHOST_KINDLER, config.armorSpawnRates.get(SpawnHelper.GHOST_KINDLER));
                 addMysteryArmorSets(poolBuilder, config.armorSpawnRates.get(SpawnHelper.MYSTERY));
                 supplier.pool(poolBuilder);
+            } else if (PIGLIN_TRADING_LOOT_TABLES.contains(id)) {
+                poolBuilder = FabricLootPoolBuilder.builder();
+                addItemDrop(poolBuilder, ItemsRegistry.items.get(ItemID.GEMSTONE_WHITE), 0.01F);
+                addItemDrop(poolBuilder, ItemsRegistry.items.get(ItemID.GEMSTONE_RED), 0.01F);
+                addItemDrop(poolBuilder, ItemsRegistry.items.get(ItemID.GEMSTONE_GREEN), 0.01F);
+                addItemDrop(poolBuilder, ItemsRegistry.items.get(ItemID.GEMSTONE_BLUE), 0.01F);
+                addItemDrop(poolBuilder, ItemsRegistry.items.get(ItemID.GEMSTONE_PURPLE), 0.01F);
+                supplier.pool(poolBuilder);
             } else if (NETHER_FORTRESS_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
                 addArmorSet(poolBuilder, ArmorSets.GRIM, config.armorSpawnRates.get(SpawnHelper.GRIM));
@@ -233,5 +245,10 @@ public class LootRegistry {
                     poolBuilder.rolls(BinomialLootNumberProvider.create(1, p));
                     poolBuilder.with(ItemEntry.builder(item));
                 }));
+    }
+
+    public static void addItemDrop(FabricLootPoolBuilder poolBuilder, Item item, float p){
+        poolBuilder.rolls(BinomialLootNumberProvider.create(1, p));
+        poolBuilder.withEntry(ItemEntry.builder(item).build());
     }
 }
