@@ -121,7 +121,7 @@ public abstract class LivingEntityMixin extends Entity {
         PlayerEntity playerEntity = (PlayerEntity) (Object) this;
 
         ArmorEffects.applyFluidFreezing(playerEntity);
-        ArmorEffects.applyThiefInvisibilityTick(playerEntity);
+        //ArmorEffects.applyThiefInvisibilityTick(playerEntity);
         //EnchantmentEffects.applyFireTrail(playerEntity);
     }
 

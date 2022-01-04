@@ -44,6 +44,7 @@ public class ArmorEffects {
                     PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.SWIFTNESS),
                     PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.INVISIBILITY));
 
+    // DO NOT CHANGE THE ORDER OF THESE ARMOUR EFFECTS
     public static final List<ArmorEffectID> ARMOR_EFFECT_ID_LIST =
             List.of(MYSTERY_EFFECTS, FIRE_RESISTANCE, FLUID_FREEZING, FROST_BITE_EFFECT, GOURDIANS_HATRED, HASTE,
                     HERO_OF_THE_VILLAGE, INVISIBILITY, LEADER_OF_THE_PACK, LUCK, NIMBLE_TURTLE_EFFECTS, NO_FALL_DAMAGE, SHULKER_LIKE,
