@@ -35,6 +35,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.*;
 
 import static chronosacaria.mcda.api.CleanlinessHelper.hasArmorSet;
+import static chronosacaria.mcda.api.CleanlinessHelper.hasRobeWithHatSet;
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
 import static chronosacaria.mcda.effects.ArmorEffects.*;
@@ -145,7 +146,13 @@ public abstract class LivingEntityMixin extends Entity {
 
         ArmorEffects.applyFluidFreezing(playerEntity);
         ArmorEffects.applyThiefInvisibilityTick(playerEntity);
-        //EnchantmentEffects.applyFireTrail(playerEntity);
+
+        if (config.enableArmorEffect.get(SYLVAN_PRESENCE) && playerEntity.isAlive() && playerEntity.isSneaking() && (hasRobeWithHatSet(playerEntity, ArmorSets.VERDANT)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SYLVAN_PRESENCE)
+                || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.GREEN_MYSTERY)) == SYLVAN_PRESENCE))
+                && world.getTime() % 20 == 0){
+            ArmorEffects.applySylvanPresence(playerEntity);
+        }
     }
 
     // Mixin for Fire Trail
@@ -597,4 +604,28 @@ public abstract class LivingEntityMixin extends Entity {
             }
         }
     }
+
+    @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
+    public void applyGhostKindling(DamageSource source, float amount, CallbackInfo info) {
+        if (!config.enableArmorEffect.get(GHOST_KINDLING))
+            return;
+
+        if(!(source.getAttacker() instanceof PlayerEntity playerEntity))return;
+
+        LivingEntity target = (LivingEntity) (Object) this;
+
+        if (source.getSource() instanceof PlayerEntity) {
+
+            ItemStack mainHandStack = playerEntity.getMainHandStack();
+            if (mainHandStack != null && (hasArmorSet(playerEntity, ArmorSets.GHOST_KINDLER)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == GHOST_KINDLING)
+                    || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == GHOST_KINDLING))) {
+                if (amount != 0.0F) {
+                    ArmorEffects.applyGhostKindlingEffect(target);
+                }
+            }
+        }
+    }
+
+
 }

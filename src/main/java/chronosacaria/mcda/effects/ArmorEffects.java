@@ -1,5 +1,6 @@
 package chronosacaria.mcda.effects;
 
+import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.StatusEffectsRegistry;
 import net.minecraft.block.*;
@@ -14,9 +15,11 @@ import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -47,23 +50,23 @@ public class ArmorEffects {
     // DO NOT CHANGE THE ORDER OF THESE ARMOUR EFFECTS
     public static final List<ArmorEffectID> ARMOR_EFFECT_ID_LIST =
             List.of(MYSTERY_EFFECTS, CURIOUS_TELEPORTATION, FIRE_RESISTANCE, FLUID_FREEZING, FROST_BITE_EFFECT,
-                    GOURDIANS_HATRED, HASTE, HERO_OF_THE_VILLAGE, INVISIBILITY, LEADER_OF_THE_PACK, LUCK,
-                    NIMBLE_TURTLE_EFFECTS, NO_FALL_DAMAGE, RENEGADES_RUSH, SHULKER_LIKE,
-                    SLOW_FALLING, SPIDER_CLIMBING, SPRINTING, STALWART_BULWARK, WATER_BREATHING, WEB_WALKING, WITHERED);
+                    GHOST_KINDLING, GOURDIANS_HATRED, HASTE, HERO_OF_THE_VILLAGE, INVISIBILITY, LEADER_OF_THE_PACK,
+                    LUCK, NIMBLE_TURTLE_EFFECTS, NO_FALL_DAMAGE, RENEGADES_RUSH, SHULKER_LIKE, SLOW_FALLING,
+                    SPIDER_CLIMBING, SPRINTING, STALWART_BULWARK, SYLVAN_PRESENCE, WATER_BREATHING, WEB_WALKING, WITHERED);
 
     public static final List<ArmorEffectID> RED_ARMOR_EFFECT_ID_LIST =
-            List.of(MYSTERY_EFFECTS, FIRE_RESISTANCE, GOURDIANS_HATRED, LEADER_OF_THE_PACK, RENEGADES_RUSH, STALWART_BULWARK,
-                    WITHERED);
+            List.of(MYSTERY_EFFECTS, FIRE_RESISTANCE, GHOST_KINDLING, GOURDIANS_HATRED, LEADER_OF_THE_PACK,
+                    RENEGADES_RUSH,STALWART_BULWARK, WITHERED);
 
     public static final List<ArmorEffectID> GREEN_ARMOR_EFFECT_ID_LIST =
-            List.of(MYSTERY_EFFECTS, HASTE, HERO_OF_THE_VILLAGE, LUCK, NO_FALL_DAMAGE);
+            List.of(MYSTERY_EFFECTS, HASTE, HERO_OF_THE_VILLAGE, LUCK, NO_FALL_DAMAGE, SYLVAN_PRESENCE);
 
     public static final List<ArmorEffectID> BLUE_ARMOR_EFFECT_ID_LIST =
             List.of(MYSTERY_EFFECTS, FLUID_FREEZING, FROST_BITE_EFFECT, NIMBLE_TURTLE_EFFECTS, SLOW_FALLING, WATER_BREATHING);
 
     public static final List<ArmorEffectID> PURPLE_ARMOR_EFFECT_ID_LIST =
-            List.of(MYSTERY_EFFECTS, CURIOUS_TELEPORTATION, INVISIBILITY, SHULKER_LIKE, SPIDER_CLIMBING, SPRINTING,
-                    WEB_WALKING);
+            List.of(MYSTERY_EFFECTS, CURIOUS_TELEPORTATION, INVISIBILITY, SHULKER_LIKE, SPIDER_CLIMBING,
+                    SOULDANCER_GRACE, SPRINTING, WEB_WALKING);
 
     public static int applyMysteryArmorEffect(LivingEntity livingEntity, ArmorSets armorSets) {
         if (!config.enableArmorEffect.get(MYSTERY_EFFECTS)) {
@@ -586,6 +589,7 @@ public class ArmorEffects {
             playerEntity.addStatusEffect(resistance);
         }
     }
+
     public static void applyRenegadesRushEffect(ServerPlayerEntity playerEntity){
         if (!config.enableArmorEffect.get(RENEGADES_RUSH))
             return;
@@ -612,5 +616,33 @@ public class ArmorEffects {
         }
     }
 
+    public static void applyGhostKindlingEffect(LivingEntity target){
+        target.setOnFireFor(4);
+    }
 
+    public static void applySylvanPresence(LivingEntity livingEntity){
+        World world = livingEntity.getWorld();
+        BlockPos blockPos = livingEntity.getBlockPos();
+
+        float size = (float) Math.min(16, 2 + 1);
+        BlockPos.Mutable mutablePosition = new BlockPos.Mutable();
+
+        for (BlockPos blockPos2 : BlockPos.iterate(blockPos.add(-size, 0.0D, -size), blockPos.add(size, 0.0D, size))) {
+            if (blockPos2.isWithinDistance(livingEntity.getPos(), size)) {
+                mutablePosition.set(blockPos2.getX(), blockPos2.getY() + 1, blockPos2.getZ());
+                BlockState checkstate = world.getBlockState(blockPos2);
+                if (checkstate.getBlock() instanceof Fertilizable fertilizable) {
+                    if (fertilizable.isFertilizable(world, blockPos2, checkstate, world.isClient)) {
+                        if (world instanceof ServerWorld) {
+                            if (fertilizable.canGrow(world, world.random, blockPos2, checkstate)) {
+                                fertilizable.grow((ServerWorld) world, world.random, blockPos2, checkstate);
+                                AOEHelper.addParticlesToBlock((ServerWorld) world, blockPos2,
+                                        ParticleTypes.HAPPY_VILLAGER);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

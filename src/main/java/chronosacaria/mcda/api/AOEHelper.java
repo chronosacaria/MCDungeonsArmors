@@ -7,11 +7,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import org.apache.logging.log4j.core.jmx.Server;
 
 import java.util.List;
+import java.util.Random;
 
 import static chronosacaria.mcda.Mcda.random;
 
@@ -116,4 +118,32 @@ public class AOEHelper {
         }
     }
 
+    public static void addParticlesToBlock(ServerWorld world, BlockPos blockPos, ParticleEffect particleEffect){
+        double velX = 0;
+        double velY = 1;
+        double velZ = 0;
+
+        double startX = blockPos.getX() - .275f;
+        double startY = blockPos.getY();
+        double startZ = blockPos.getZ() - .275f;
+
+        for (int i = 0; i < 10; i++) {
+            Random random = new Random();
+            double frontX = .5f * random.nextDouble();
+            world.spawnParticles(particleEffect, startX + frontX, startY + random.nextDouble() * .5, startZ + .5f,
+                    1, velX, velY, velZ, 0);
+
+            double backX = .5f * random.nextDouble();
+            world.spawnParticles(particleEffect, startX + backX, startY + random.nextDouble() * .5, startZ, 1, velX, velY,
+                    velZ, 0);
+
+            double leftZ = .5f * random.nextDouble();
+            world.spawnParticles(particleEffect, startX, startY + random.nextDouble() * .5, startZ + leftZ, 1, velX, velY,
+                    velZ, 0);
+
+            double rightZ = .5f * random.nextDouble();
+            world.spawnParticles(particleEffect, startX + .5f, startY + random.nextDouble() * .5, startZ + rightZ, 1, velX,
+                    velY, velZ, 0);
+        }
+    }
 }

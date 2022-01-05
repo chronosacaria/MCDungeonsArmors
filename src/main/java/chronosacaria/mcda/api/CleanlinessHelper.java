@@ -20,6 +20,24 @@ public class CleanlinessHelper {
                 && footStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.FEET).asItem();
     }
 
+    public static boolean hasRobeSet(LivingEntity livingEntity, ArmorSets armorSets){
+        ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
+        ItemStack legStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
+
+        return chestStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.CHEST).asItem()
+                && legStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.LEGS).asItem();
+    }
+
+    public static boolean hasRobeWithHatSet(LivingEntity livingEntity, ArmorSets armorSets){
+        ItemStack headStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
+        ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
+        ItemStack legStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
+
+        return headStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.HEAD).asItem()
+                && chestStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.CHEST).asItem()
+                && legStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.LEGS).asItem();
+    }
+
     public static boolean isMysteryArmor(Item item, ArmorSets armorSets) {
         return item.asItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.HEAD)
                 || item.asItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.CHEST)
