@@ -1,9 +1,10 @@
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.api.McdaEnchantmentHelper;
 import chronosacaria.mcda.enchants.EnchantID;
+import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.EnchantsRegistry;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,10 +16,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Iterator;
-import java.util.Random;
-
 import static chronosacaria.mcda.config.McdaConfig.config;
+import static chronosacaria.mcda.effects.ArmorEffectID.SOULDANCER_EXPERIENCE;
 import static chronosacaria.mcda.enchants.EnchantID.*;
 
 @Mixin(ExperienceOrbEntity.class)
@@ -32,6 +31,9 @@ public abstract class ExperienceOrbEntityMixin extends Entity {
 
     @Inject(method = "onPlayerCollision", at = @At("HEAD"))
     public void applyBagOfSouls(PlayerEntity playerEntity, CallbackInfo ci){
+        if(config.enableArmorEffect.get(SOULDANCER_EXPERIENCE) && CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.SOULDANCER)) {
+            this.amount = (int) Math.round(1.5 * this.amount);
+        }
         if (!config.enableEnchantment.get(BAG_OF_SOULS))
             return;
 
