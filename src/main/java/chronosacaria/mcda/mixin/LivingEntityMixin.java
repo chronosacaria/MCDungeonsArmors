@@ -51,8 +51,6 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow public abstract boolean damage(DamageSource source, float amount);
 
-    @Shadow protected abstract void playBlockFallSound();
-
     public EntityType<SummonedBeeEntity> summonedBee = SummonedEntityRegistry.SUMMONED_BEE_ENTITY;
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
@@ -576,6 +574,26 @@ public abstract class LivingEntityMixin extends Entity {
                         playerEntity.addStatusEffect(speed);
                     }
                 }
+            }
+        }
+    }
+
+    @Inject(method = "damage", at = @At("TAIL"))
+    public void applyCuriousTeleportation(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+        if (!config.enableArmorEffect.get(CURIOUS_TELEPORTATION))
+            return;
+
+        if(!((Object) this instanceof PlayerEntity playerEntity)) return;
+
+        if (playerEntity.isAlive() && (hasArmorSet(playerEntity, ArmorSets.CURIOUS)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == CURIOUS_TELEPORTATION)
+                || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == CURIOUS_TELEPORTATION))){
+
+            if (!(source.getAttacker() instanceof LivingEntity))
+                return;
+
+            if (amount != 0.0F) {
+                ArmorEffects.applyCuriousTeleportationEffect(playerEntity, (LivingEntity) source.getAttacker());
             }
         }
     }

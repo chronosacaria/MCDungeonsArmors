@@ -30,6 +30,7 @@ public class ServerPlayerEntityMixin {
         ArmorEffects.applyHeroOfTheVillage(playerEntity); // Hero's Armour & Gilded Glory
         ArmorEffects.applyHungerPain(playerEntity); // Hungry Horror Armour
         ArmorEffects.applyLuck(playerEntity); // Opulent Armour
+        ArmorEffects.applyRenegadesRushEffect(playerEntity); // Renegade Armour
         ArmorEffects.applySlowFalling(playerEntity); // Phantom and Frost Bite Armour
         ArmorEffects.applySprintingSpeed(playerEntity); // Shadow Walker Armour
         ArmorEffects.applyStalwartBulwarkResistanceEffect(playerEntity); // Stalwart Mail Armour

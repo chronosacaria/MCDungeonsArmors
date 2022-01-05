@@ -46,12 +46,14 @@ public class ArmorEffects {
 
     // DO NOT CHANGE THE ORDER OF THESE ARMOUR EFFECTS
     public static final List<ArmorEffectID> ARMOR_EFFECT_ID_LIST =
-            List.of(MYSTERY_EFFECTS, FIRE_RESISTANCE, FLUID_FREEZING, FROST_BITE_EFFECT, GOURDIANS_HATRED, HASTE,
-                    HERO_OF_THE_VILLAGE, INVISIBILITY, LEADER_OF_THE_PACK, LUCK, NIMBLE_TURTLE_EFFECTS, NO_FALL_DAMAGE, SHULKER_LIKE,
-                    SLOW_FALLING, SPIDER_CLIMBING, SPRINTING,STALWART_BULWARK, WATER_BREATHING, WEB_WALKING, WITHERED);
+            List.of(MYSTERY_EFFECTS, CURIOUS_TELEPORTATION, FIRE_RESISTANCE, FLUID_FREEZING, FROST_BITE_EFFECT,
+                    GOURDIANS_HATRED, HASTE, HERO_OF_THE_VILLAGE, INVISIBILITY, LEADER_OF_THE_PACK, LUCK,
+                    NIMBLE_TURTLE_EFFECTS, NO_FALL_DAMAGE, RENEGADES_RUSH, SHULKER_LIKE,
+                    SLOW_FALLING, SPIDER_CLIMBING, SPRINTING, STALWART_BULWARK, WATER_BREATHING, WEB_WALKING, WITHERED);
 
     public static final List<ArmorEffectID> RED_ARMOR_EFFECT_ID_LIST =
-            List.of(MYSTERY_EFFECTS, FIRE_RESISTANCE, GOURDIANS_HATRED, LEADER_OF_THE_PACK, STALWART_BULWARK, WITHERED);
+            List.of(MYSTERY_EFFECTS, FIRE_RESISTANCE, GOURDIANS_HATRED, LEADER_OF_THE_PACK, RENEGADES_RUSH, STALWART_BULWARK,
+                    WITHERED);
 
     public static final List<ArmorEffectID> GREEN_ARMOR_EFFECT_ID_LIST =
             List.of(MYSTERY_EFFECTS, HASTE, HERO_OF_THE_VILLAGE, LUCK, NO_FALL_DAMAGE);
@@ -60,7 +62,8 @@ public class ArmorEffects {
             List.of(MYSTERY_EFFECTS, FLUID_FREEZING, FROST_BITE_EFFECT, NIMBLE_TURTLE_EFFECTS, SLOW_FALLING, WATER_BREATHING);
 
     public static final List<ArmorEffectID> PURPLE_ARMOR_EFFECT_ID_LIST =
-            List.of(MYSTERY_EFFECTS, INVISIBILITY, SHULKER_LIKE, SPIDER_CLIMBING, SPRINTING, WEB_WALKING);
+            List.of(MYSTERY_EFFECTS, CURIOUS_TELEPORTATION, INVISIBILITY, SHULKER_LIKE, SPIDER_CLIMBING, SPRINTING,
+                    WEB_WALKING);
 
     public static int applyMysteryArmorEffect(LivingEntity livingEntity, ArmorSets armorSets) {
         if (!config.enableArmorEffect.get(MYSTERY_EFFECTS)) {
@@ -581,6 +584,31 @@ public class ArmorEffects {
             StatusEffectInstance resistance = new StatusEffectInstance(StatusEffects.RESISTANCE, 42, 0, false,
                     false);
             playerEntity.addStatusEffect(resistance);
+        }
+    }
+    public static void applyRenegadesRushEffect(ServerPlayerEntity playerEntity){
+        if (!config.enableArmorEffect.get(RENEGADES_RUSH))
+            return;
+
+        if (playerEntity.isAlive() && playerEntity.isSprinting() && (hasArmorSet(playerEntity, ArmorSets.RENEGADE)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == RENEGADES_RUSH)
+                || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == RENEGADES_RUSH))){
+
+            StatusEffectInstance strength = new StatusEffectInstance(StatusEffects.STRENGTH, 42, 2, false,
+                    false);
+            playerEntity.addStatusEffect(strength);
+        }
+    }
+
+    public static void applyCuriousTeleportationEffect(LivingEntity player, LivingEntity target){
+        float teleportationRand = player.getRandom().nextFloat();
+        int toBeTeleportedRand = player.getRandom().nextInt(99);
+        if (teleportationRand <= 0.1F){
+            if (toBeTeleportedRand % 2 == 0){
+                endermanLikeTeleportEffect(player);
+            } else {
+                endermanLikeTeleportEffect(target);
+            }
         }
     }
 

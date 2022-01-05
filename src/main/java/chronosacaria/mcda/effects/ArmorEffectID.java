@@ -3,6 +3,7 @@ package chronosacaria.mcda.effects;
 public enum ArmorEffectID {
     BUZZY_HIVE,
     CAULDRONS_OVERFLOW,
+    CURIOUS_TELEPORTATION,
     FIRE_RESISTANCE,
     FLUID_FREEZING,
     FROST_BITE_EFFECT,
@@ -18,6 +19,7 @@ public enum ArmorEffectID {
     MYSTERY_EFFECTS,
     MYSTERY_EFFECTS_ON_CRAFTING,
     PIGLIN_FOOLING,
+    RENEGADES_RUSH,
     SHULKER_LIKE,
     SLOW_FALLING,
     SOULDANCER_EXPERIENCE,
