@@ -20,6 +20,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -49,6 +51,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow protected float lastDamageTaken;
 
     @Shadow public abstract boolean damage(DamageSource source, float amount);
+
+    @Shadow protected abstract void playBlockFallSound();
 
     public EntityType<SummonedBeeEntity> summonedBee = SummonedEntityRegistry.SUMMONED_BEE_ENTITY;
 
@@ -532,6 +536,44 @@ public abstract class LivingEntityMixin extends Entity {
                         summonedBeeEntity.setSummoner(targetedEntity);
                         summonedBeeEntity.refreshPositionAndAngles(this.getX(), this.getY() + 1, this.getZ(), 0, 0);
                         world.spawnEntity(summonedBeeEntity);
+                    }
+                }
+            }
+        }
+    }
+
+    @Inject(method = "damage", at = @At("HEAD"), cancellable = true)
+    public void applySouldancerGrace(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+        if (!config.enableArmorEffect.get(SOULDANCER_GRACE))
+            return;
+
+        if(!((Object)this instanceof PlayerEntity)) return;
+        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+
+        if (playerEntity.isAlive()) {
+            if (hasArmorSet(playerEntity, ArmorSets.SOULDANCER)) {
+
+                if (!(source.getAttacker() instanceof LivingEntity))
+                    return;
+
+                if (amount != 0.0F) {
+                    float overflowRand = playerEntity.getRandom().nextFloat();
+                    if (overflowRand <= 0.2F) {
+                        // Dodge the damage
+                        cir.cancel();
+                        playerEntity.world.playSound(
+                                null,
+                                playerEntity.getX(),
+                                playerEntity.getY(),
+                                playerEntity.getZ(),
+                                SoundEvents.ENTITY_VEX_AMBIENT,
+                                SoundCategory.PLAYERS,
+                                0.2F,
+                                2.0F);
+                        // Apply Speed after dodge
+                        StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
+                                false);
+                        playerEntity.addStatusEffect(speed);
                     }
                 }
             }
