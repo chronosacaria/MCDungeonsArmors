@@ -553,12 +553,12 @@ public abstract class LivingEntityMixin extends Entity {
         if (playerEntity.isAlive()) {
             if (hasArmorSet(playerEntity, ArmorSets.SOULDANCER)) {
 
-                if (!(source.getAttacker() instanceof LivingEntity))
+                if (!(source.getAttacker() instanceof LivingEntity || source.isProjectile()))
                     return;
 
                 if (amount != 0.0F) {
                     float overflowRand = playerEntity.getRandom().nextFloat();
-                    if (overflowRand <= 0.2F) {
+                    if (overflowRand <= 0.3F) {
                         // Dodge the damage
                         cir.cancel();
                         playerEntity.world.playSound(
@@ -570,6 +570,7 @@ public abstract class LivingEntityMixin extends Entity {
                                 SoundCategory.PLAYERS,
                                 0.2F,
                                 2.0F);
+                        AOECloudHelper.spawnCloudCloud(playerEntity, playerEntity, 0.5F);
                         // Apply Speed after dodge
                         StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
                                 false);
