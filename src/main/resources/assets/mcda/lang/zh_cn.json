@@ -701,6 +701,8 @@
 
   "effect.mcda.freezing":                         "冰冻",
 
+  "subtitles.mcda.player_dodged":                 "玩家躲闪",
+
   "enchantment.mcda.bag_of_souls.desc":           "相对于附魔等级，它会增加您获得的 XP 数量。",
   "enchantment.mcda.burning.desc":                "它是荆棘的火热版本。",
   "enchantment.mcda.chilling.desc":               "它减慢了攻击者的速度，并对他们施加了挖矿疲劳。",

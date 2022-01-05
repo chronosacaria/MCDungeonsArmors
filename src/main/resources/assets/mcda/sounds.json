@@ -1,0 +1,9 @@
+{
+  "dodge": {
+    "subtitle": "subtitles.mcda.player_dodged",
+    "category": "players",
+    "sounds": [
+      "mcda:dodge"
+    ]
+  }
+}

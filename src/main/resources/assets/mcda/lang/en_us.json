@@ -703,6 +703,8 @@
 
   "effect.mcda.freezing":                         "Freezing",
 
+  "subtitles.mcda.player_dodged":                 "Player dodged",
+
   "enchantment.mcda.bag_of_souls.desc":           "Increases the amount of experience you gain relative to the level of the enchantment.",
   "enchantment.mcda.burning.desc":                "A fiery version of thorns.",
   "enchantment.mcda.chilling.desc":               "Slows and applies mining fatigue to attacker.",

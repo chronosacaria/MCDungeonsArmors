@@ -6,6 +6,7 @@ import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.entities.SummonedBeeEntity;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.EnchantsRegistry;
+import chronosacaria.mcda.registry.SoundsRegistry;
 import chronosacaria.mcda.registry.SummonedEntityRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -21,7 +22,6 @@ import net.minecraft.item.Items;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -29,7 +29,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -566,10 +565,10 @@ public abstract class LivingEntityMixin extends Entity {
                                 playerEntity.getX(),
                                 playerEntity.getY(),
                                 playerEntity.getZ(),
-                                SoundEvents.ENTITY_VEX_AMBIENT,
+                                SoundsRegistry.DODGE_SOUND_EVENT,
                                 SoundCategory.PLAYERS,
-                                0.2F,
-                                2.0F);
+                                1.0F,
+                                1.0F);
                         AOECloudHelper.spawnCloudCloud(playerEntity, playerEntity, 0.5F);
                         // Apply Speed after dodge
                         StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
