@@ -1,11 +1,14 @@
 
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.api.ProjectileEffectHelper;
+import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.EnchantsRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.util.hit.EntityHitResult;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,7 +16,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Random;
+
 import static chronosacaria.mcda.config.McdaConfig.config;
+import static chronosacaria.mcda.effects.ArmorEffectID.ARCHERS_PROWESS;
 import static chronosacaria.mcda.enchants.EnchantID.*;
 
 @Mixin(PersistentProjectileEntity.class)
@@ -43,6 +49,28 @@ public abstract class PersistentProjectileEntityMixin {
                 }
                 ProjectileEffectHelper.ricochetArrowLikeShield(persistentProjectileEntity, (LivingEntity) victim);
             }
+        }
+    }
+
+    @Inject(method = "onEntityHit", at = @At("HEAD"))
+    public void onArchersProwessHit(EntityHitResult entityHitResult, CallbackInfo ci) {
+        if (!config.enableArmorEffect.get(ARCHERS_PROWESS))
+            return;
+
+        Random random = new Random();
+
+        PersistentProjectileEntity persistentProjectileEntity = (PersistentProjectileEntity) (Object) this;
+        if (!(persistentProjectileEntity.getOwner() instanceof LivingEntity shooter)) return;
+        if (!((entityHitResult.getEntity()) instanceof LivingEntity target)) return;
+
+        if (CleanlinessHelper.hasArmorSet((LivingEntity) persistentProjectileEntity.getOwner(), ArmorSets.ARCHER)) {
+
+            double randArrowMult = (random.nextInt(4) + 4);
+            double modifiedArrowDamage = (double)(2.0F) * (2 + randArrowMult);
+            modifiedArrowDamage -= randArrowMult;
+
+            target.damage(DamageSource.arrow(persistentProjectileEntity, shooter), (float) modifiedArrowDamage);
+            persistentProjectileEntity.kill();
         }
     }
 }
