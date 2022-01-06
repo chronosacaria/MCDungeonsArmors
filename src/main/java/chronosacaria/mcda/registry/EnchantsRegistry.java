@@ -5,6 +5,8 @@ import chronosacaria.mcda.enchants.ArmorEnchantment;
 import chronosacaria.mcda.enchants.EnchantID;
 import chronosacaria.mcda.enchants.enchantments.*;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.util.registry.Registry;
 
 import java.util.EnumMap;
@@ -23,26 +25,81 @@ public class EnchantsRegistry {
             Enchantment enchantment;
 
             switch (enchantID) {
+                case BAG_OF_SOULS:
+                    enchantment = new BagOfSoulsEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                    break;
                 case BURNING:
-                    enchantment = new BurningEnchantment(enchantID);
+                    enchantment = new BurningEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
                     break;
                 case CHILLING:
-                    enchantment = new ChillingEnchantment(enchantID);
+                    enchantment = new ChillingEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
                     break;
                 case COWARDICE:
-                    enchantment = new CowardiceEnchantment(enchantID);
+                    enchantment = new CowardiceEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                    break;
+                case DEATH_BARTER:
+                    enchantment = new DeathBarterEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                    break;
+                case DEFLECT:
+                    enchantment = new DeflectEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                    break;
+                case FIRE_FOCUS:
+                    enchantment = new FireFocusEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
                     break;
                 case FIRE_TRAIL:
-                    enchantment = new FireTrailEnchantment(enchantID);
+                    enchantment = new FireTrailEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR_FEET,
+                            EquipmentSlot.FEET);
                     break;
                 case RECKLESS:
-                    enchantment = new RecklessEnchantment(enchantID);
+                    enchantment = new RecklessEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                    break;
+                case FOOD_RESERVES:
+                    enchantment = new FoodReservesEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                    break;
+                case FRENZIED:
+                    enchantment = new FrenziedEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                    break;
+                case HEAL_ALLIES:
+                    enchantment = new HealAlliesEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                    break;
+                case LUCKY_EXPLORER:
+                    enchantment = new LuckyExplorerEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR_FEET,
+                            EquipmentSlot.FEET);
+                    break;
+                case POISON_FOCUS:
+                    enchantment = new PoisonFocusEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                    break;
+                case POTION_BARRIER:
+                    enchantment = new PotionBarrierEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
                     break;
                 case RECYCLER:
-                    enchantment = new RecyclerEnchantment(enchantID);
+                    enchantment = new RecyclerEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
                     break;
                 case SNOWBALL:
-                    enchantment = new SnowballEnchantment(enchantID);
+                    enchantment = new SnowballEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                    break;
+                case SURPRISE_GIFT:
+                    enchantment = new SurpriseGiftEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                    break;
+                case SWIFTFOOTED:
+                    enchantment = new SwiftFootedEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR_FEET,
+                            EquipmentSlot.FEET);
                     break;
                 default:
                     enchantment = new ArmorEnchantment(enchantID);

@@ -17,13 +17,4 @@ public class ArmorEnchantment  extends Enchantment {
         return 3;
     }
 
-    @Override
-    public int getMinPower(int level) {
-        return 1 + level * 10;
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return this.getMinPower(level) + 5;
-    }
 }
