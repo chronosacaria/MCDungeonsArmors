@@ -1,11 +1,12 @@
 package chronosacaria.mcda.effects;
 
-import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.registry.EnchantsRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,6 +17,7 @@ import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.Arrays;
@@ -187,6 +189,45 @@ public class EnchantmentEffects {
             StatusEffectInstance swiftfooted = new StatusEffectInstance(StatusEffects.SPEED, 60, swiftfootedLevel - 1,
                     false, false);
             player.addStatusEffect(swiftfooted);
+        }
+    }
+
+    public static void applyLuckyExplorer(LivingEntity livingEntity){
+        int luckyExplorerLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(LUCKY_EXPLORER),
+                livingEntity);
+        if (luckyExplorerLevel == 0) return;
+
+        float luckyExplorerThreshold = luckyExplorerLevel * 0.10f;
+        float luckyExplorerRand = livingEntity.getRandom().nextFloat();
+
+        if (luckyExplorerThreshold >= luckyExplorerRand){
+            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
+
+            double currentXCoord = livingEntity.getPos().getX();
+            double currentZCoord = livingEntity.getPos().getZ();
+
+            if (feetStack.getNbt().get("x-coord") == null){
+                feetStack.getOrCreateNbt().putDouble("x-coord", currentXCoord);
+                feetStack.getOrCreateNbt().putDouble("z-coord", currentZCoord);
+
+                return;
+            }
+
+            double storedXCoord = feetStack.getNbt().getDouble("x-coord");
+            double storedZCoord = feetStack.getNbt().getDouble("z-coord");
+
+            Vec3d vec3d = new Vec3d(storedXCoord, 0, storedZCoord);
+
+            double distanceBetween = Math.sqrt(vec3d.squaredDistanceTo(currentXCoord, 0, currentZCoord));
+
+            if (distanceBetween >= 20) {
+                ItemEntity emerald = new ItemEntity(livingEntity.world, currentXCoord,
+                        livingEntity.getY(), currentZCoord, Items.EMERALD.getDefaultStack());
+                livingEntity.world.spawnEntity(emerald);
+
+                feetStack.getOrCreateNbt().putDouble("x-coord", currentXCoord);
+                feetStack.getOrCreateNbt().putDouble("z-coord", currentZCoord);
+            }
         }
     }
 }

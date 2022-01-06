@@ -137,7 +137,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    // Mixins for Armour and Enchantment Effects on Tick
+    // Mixins for Armour and Enchantment Effects on Tick for PlayerEntities
     @Inject(method = "tick", at = @At("HEAD"))
     private void tickEffects(CallbackInfo ci){
         if(!((Object)this instanceof PlayerEntity)) return;
@@ -152,6 +152,17 @@ public abstract class LivingEntityMixin extends Entity {
                 || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.GREEN_MYSTERY)) == SYLVAN_PRESENCE))
                 && world.getTime() % 20 == 0){
             ArmorEffects.applySylvanPresence(playerEntity);
+        }
+    }
+
+    // Mixins for Armour and Enchantment Effects on Tick for LivingEntities
+    @Inject(method = "tick", at = @At("HEAD"))
+    private void livingEntityTickEffects(CallbackInfo ci){
+
+        if(!((Object)this instanceof LivingEntity livingEntity)) return;
+
+        if (config.enableEnchantment.get(LUCKY_EXPLORER) && livingEntity.isAlive() && livingEntity.isOnGround() && world.getTime() % 50 == 0){
+            EnchantmentEffects.applyLuckyExplorer(livingEntity);
         }
     }
 
