@@ -1,6 +1,7 @@
 package chronosacaria.mcda.effects;
 
 public enum ArmorEffectID {
+    ARCHERS_PROWESS,
     BUZZY_HIVE,
     CAULDRONS_OVERFLOW,
     CURIOUS_TELEPORTATION,

@@ -627,5 +627,26 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
+    @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
+    public void applyArchersProwessDamage(DamageSource source, float amount, CallbackInfo info) {
+        if (!config.enableArmorEffect.get(ARCHERS_PROWESS))
+            return;
+
+        if(!((source.getAttacker() instanceof PlayerEntity playerEntity) && source.isProjectile())) return;
+
+        if (source.getSource() instanceof PlayerEntity) {
+
+            ItemStack mainHandStack = playerEntity.getMainHandStack();
+
+            if (mainHandStack != null && hasArmorSet(playerEntity, ArmorSets.ARCHER)) {
+                if (amount != 0.0F) {
+                    float modifiedArrowDamage = 1.5f * amount;
+
+                    LivingEntity target = (LivingEntity) (Object) this;
+                    target.damage(DamageSource.GENERIC, modifiedArrowDamage);
+                }
+            }
+        }
+    }
 
 }
