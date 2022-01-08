@@ -637,4 +637,17 @@ public abstract class LivingEntityMixin extends Entity {
             }
         }
     }
+
+    @Inject(method = "jump", at = @At("HEAD"))
+    public void onEmberJump(CallbackInfo ci){
+        if (!config.enableArmorEffect.get(EMBER_JUMP))
+            return;
+        if (!((Object) this instanceof ServerPlayerEntity playerEntity))
+            return;
+        if (playerEntity != null) {
+            if (hasRobeWithHatSet(playerEntity, ArmorSets.EMBER)) {
+                ArmorEffects.applyEmberJumpEffect(playerEntity);
+            }
+        }
+    }
 }

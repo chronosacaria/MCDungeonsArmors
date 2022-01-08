@@ -11,6 +11,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -643,6 +644,29 @@ public class ArmorEffects {
                     }
                 }
             }
+        }
+    }
+
+    public static void applyEmberJumpEffect(LivingEntity livingEntity){
+        boolean playFireSound = false;
+
+        for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(livingEntity, livingEntity, 6.0f)) {
+            if (nearbyEntity instanceof Monster && livingEntity.isSneaking()){
+                nearbyEntity.setOnFireFor(5);
+                playFireSound = true;
+            }
+        }
+        if (playFireSound) {
+            livingEntity.world.playSound(
+                    null,
+                    livingEntity.getX(),
+                    livingEntity.getY(),
+                    livingEntity.getZ(),
+                    SoundEvents.ENTITY_BLAZE_SHOOT,
+                    SoundCategory.PLAYERS,
+                    1.0f,
+                    1.0f
+            );
         }
     }
 }
