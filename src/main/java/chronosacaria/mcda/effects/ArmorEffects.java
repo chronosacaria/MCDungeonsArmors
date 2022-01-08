@@ -7,10 +7,12 @@ import net.minecraft.block.*;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.IllagerEntity;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -667,6 +669,30 @@ public class ArmorEffects {
                     1.0f,
                     1.0f
             );
+        }
+    }
+
+    public static void applySplendidAoEAttackEffect(LivingEntity livingEntity, LivingEntity target){
+
+        for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(target, livingEntity, 6.0f)){
+            float damageToBeDone = (float) livingEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+            if (nearbyEntity instanceof IllagerEntity){
+                damageToBeDone = damageToBeDone * 1.5f;
+            }
+            if (nearbyEntity instanceof Monster){
+                nearbyEntity.damage(DamageSource.GENERIC, damageToBeDone);
+                nearbyEntity.world.playSound(
+                        null,
+                        nearbyEntity.getX(),
+                        nearbyEntity.getY(),
+                        nearbyEntity.getZ(),
+                        SoundEvents.ENTITY_VEX_CHARGE,
+                        SoundCategory.PLAYERS,
+                        1.0f,
+                        1.0f
+                );
+                AOEHelper.addParticlesToBlock((ServerWorld) nearbyEntity.world, nearbyEntity.getBlockPos(), ParticleTypes.ENCHANTED_HIT);
+            }
         }
     }
 }

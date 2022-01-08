@@ -34,8 +34,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.*;
 
-import static chronosacaria.mcda.api.CleanlinessHelper.hasArmorSet;
-import static chronosacaria.mcda.api.CleanlinessHelper.hasRobeWithHatSet;
+import static chronosacaria.mcda.api.CleanlinessHelper.*;
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
 import static chronosacaria.mcda.effects.ArmorEffects.*;
@@ -647,6 +646,31 @@ public abstract class LivingEntityMixin extends Entity {
         if (playerEntity != null) {
             if (hasRobeWithHatSet(playerEntity, ArmorSets.EMBER)) {
                 ArmorEffects.applyEmberJumpEffect(playerEntity);
+            }
+        }
+    }
+
+    @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("TAIL"))
+    public void applySplendidAoEAttack(DamageSource source, float amount, CallbackInfo info) {
+        if (!config.enableArmorEffect.get(SPLENDID_ATTACK))
+            return;
+
+        if(!(source.getAttacker() instanceof PlayerEntity playerEntity))return;
+        if(source.isProjectile()) return;
+
+        LivingEntity target = (LivingEntity) (Object) this;
+
+        if (source.getSource() instanceof PlayerEntity) {
+
+            ItemStack mainHandStack = playerEntity.getMainHandStack();
+            if (mainHandStack != null && (hasRobeSet(playerEntity, ArmorSets.SPLENDID))) {
+                if (amount != 0.0F) {
+                    float splendidRand = playerEntity.getRandom().nextFloat();
+
+                    if (splendidRand <= 0.3f) {
+                        ArmorEffects.applySplendidAoEAttackEffect(playerEntity, target);
+                    }
+                }
             }
         }
     }
