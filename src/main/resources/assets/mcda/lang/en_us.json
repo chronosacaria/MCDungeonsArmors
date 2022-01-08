@@ -622,6 +622,16 @@
   "item.mcda.cauldron_armor.tooltip_3":           "it lacks in stealth, it makes up",
   "item.mcda.cauldron_armor.tooltip_4":           "for in bubbly charm.",
 
+  "item.mcda.sweet_tooth_helmet":                 "Sweet Tooth Helmet",
+  "item.mcda.sweet_tooth_chestplate":             "Sweet Tooth Chestplate",
+  "item.mcda.sweet_tooth_leggings":               "Sweet Tooth Leggings",
+  "item.mcda.sweet_tooth_boots":                  "Sweet Tooth Boots",
+
+  "item.mcda.sweet_tooth.tooltip_1":              "This armor may look like a piece",
+  "item.mcda.sweet_tooth.tooltip_2":              "of cake to your enemies, but it",
+  "item.mcda.sweet_tooth.tooltip_3":              "is surprisingly durable in battle.",
+  "item.mcda.sweet_tooth.tooltip_4":              "Must be the fondant.",
+
   "item.mcda.bone_rib_cage":                      "Bone Rib Cage",
   "item.mcda.phantom_bones":                      "Phantom Bones",
   "item.mcda.phantom_skin":                       "Phantom Skin",

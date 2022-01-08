@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CDC",
+    "C C",
+    "   "
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:cake"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "mcda:sweet_tooth_boots",
+    "count": 1
+  }
+}

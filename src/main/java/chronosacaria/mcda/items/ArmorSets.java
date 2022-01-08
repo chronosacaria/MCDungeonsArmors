@@ -252,6 +252,10 @@ public enum ArmorSets implements ArmorMaterial {
             25,
             ITEM_ARMOR_EQUIP_GOLD,
             () -> Ingredient.ofItems(Items.GOLD_INGOT)),
+    SWEET_TOOTH("sweettooth", "sweet_tooth",
+            9,
+            ITEM_ARMOR_EQUIP_ELYTRA,
+            () -> Ingredient.ofItems(Items.CAKE)),
 
     /* * * * * * * |
     | MEDIUM PLATE |

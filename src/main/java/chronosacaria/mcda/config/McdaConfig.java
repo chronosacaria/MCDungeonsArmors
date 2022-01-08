@@ -173,6 +173,7 @@ public class McdaConfig implements ConfigData {
         setProtection(2, 5, 4, 2, GHOSTLY).setDurabilityMultiplier(14);
         setProtection(2, 6, 5, 2, GHOST_KINDLER).setDurabilityMultiplier(14);
         setProtection(2, 6, 5, 2, GOLDEN_PIGLIN).setDurabilityMultiplier(14);
+        setProtection(2, 6, 5, 2, SWEET_TOOTH).setDurabilityMultiplier(14);
 
         // Medium Plate Armor
         setProtection(3, 6, 4, 3, REINFORCED_MAIL).setDurabilityMultiplier(30)
