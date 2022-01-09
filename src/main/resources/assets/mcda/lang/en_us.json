@@ -632,6 +632,10 @@
   "item.mcda.sweet_tooth.tooltip_3":              "is surprisingly durable in battle.",
   "item.mcda.sweet_tooth.tooltip_4":              "Must be the fondant.",
 
+  "item.mcda.vanguard_armor_helmet":                 "Vanguard Helmet",
+  "item.mcda.vanguard_armor_chestplate":             "Vanguard Chestplate",
+  "item.mcda.vanguard_armor_leggings":               "Vanguard Belt",
+
   "item.mcda.bone_rib_cage":                      "Bone Rib Cage",
   "item.mcda.phantom_bones":                      "Phantom Bones",
   "item.mcda.phantom_skin":                       "Phantom Skin",

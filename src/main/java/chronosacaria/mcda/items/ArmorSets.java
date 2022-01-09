@@ -256,6 +256,10 @@ public enum ArmorSets implements ArmorMaterial {
             9,
             ITEM_ARMOR_EQUIP_ELYTRA,
             () -> Ingredient.ofItems(Items.CAKE)),
+    VANGUARD("vanguard", "vanguard_armor",
+                       9,
+               ITEM_ARMOR_EQUIP_IRON,
+            () -> Ingredient.ofItems(ItemID.IRON_SCALE)),
 
     /* * * * * * * |
     | MEDIUM PLATE |

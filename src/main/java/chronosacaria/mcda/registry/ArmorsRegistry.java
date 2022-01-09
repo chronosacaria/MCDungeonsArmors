@@ -61,6 +61,7 @@ public class ArmorsRegistry {
                 case EVOCATION:
                 case EMBER:
                 case VERDANT:
+                case VANGUARD:
                     slots = EnumSet.of(HEAD, CHEST, LEGS);
                     break;
                 case SCALE_MAIL:
