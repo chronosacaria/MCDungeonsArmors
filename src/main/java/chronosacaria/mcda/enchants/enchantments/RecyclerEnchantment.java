@@ -41,4 +41,10 @@ public class RecyclerEnchantment extends Enchantment {
     public int getMaxPower(int level) {
         return this.getMinPower(level) + 5;
     }
+
+    @Override
+    public int getMaxLevel() {
+        return 3;
+    }
+
 }

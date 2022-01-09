@@ -17,9 +17,11 @@ public class ChillingEnchantment extends Enchantment {
 
     @Override
     public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
-        if (attacker instanceof LivingEntity e) {
-            e.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20 * level, level * 2 - 1));
-            e.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 20 * level, level * 2 - 1));
+        if (user.getDamageTracker().getMostRecentDamage().getDamage() > 0.10) {
+            if (attacker instanceof LivingEntity e) {
+                e.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20 * level, level * 2 - 1));
+                e.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 20 * level, level * 2 - 1));
+            }
         }
     }
     @Override
@@ -35,5 +37,10 @@ public class ChillingEnchantment extends Enchantment {
     @Override
     public int getMaxPower(int level) {
         return this.getMinPower(level) + 5;
+    }
+
+    @Override
+    public int getMaxLevel() {
+        return 3;
     }
 }
