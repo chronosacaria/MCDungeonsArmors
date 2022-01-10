@@ -9,6 +9,7 @@ import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.EnchantsRegistry;
 import chronosacaria.mcda.registry.SoundsRegistry;
 import chronosacaria.mcda.registry.SummonedEntityRegistry;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
@@ -24,6 +25,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -53,6 +55,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow public abstract boolean damage(DamageSource source, float amount);
 
     @Shadow public abstract int getArmor();
+
+    @Shadow public abstract void setOnGround(boolean onGround);
 
     public EntityType<SummonedBeeEntity> summonedBee = SummonedEntityRegistry.SUMMONED_BEE_ENTITY;
 
@@ -191,10 +195,30 @@ public abstract class LivingEntityMixin extends Entity {
 
             if (hasArmorSet(playerEntity, ArmorSets.SPIDER)
                     || (ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SPIDER_CLIMBING)
-                    || (ArmorEffects.PURPLE_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == SPIDER_CLIMBING))
-                if (this.horizontalCollision){
+                    || (ArmorEffects.PURPLE_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == SPIDER_CLIMBING)){
+
+                // If Statement provided by Apace100; Thanks, Apace!
+                if (playerEntity.world.getBlockCollisions(playerEntity,
+                        playerEntity.getBoundingBox().offset(0.01 * playerEntity.getBoundingBox().getXLength(), 0,
+                                0.01 * playerEntity.getBoundingBox().getZLength())).iterator().hasNext()
+                        || playerEntity.world.getBlockCollisions(playerEntity,
+                                playerEntity.getBoundingBox().offset(-0.01 * playerEntity.getBoundingBox().getXLength(), 0,
+                                        -0.01 * playerEntity.getBoundingBox().getZLength())).iterator().hasNext() ) {
+                    this.setOnGround(true);
                     cir.setReturnValue(true);
+                    this.onLanding();
+
+                    double f = 0.15D;
+                    double d = MathHelper.clamp(this.getVelocity().x, -f, f);
+                    double e = MathHelper.clamp(this.getVelocity().z, -f, f);
+                    double g = Math.max(this.getVelocity().y, -f);
+
+                    if (g < 0.0D && !this.getBlockStateAtPos().isOf(Blocks.SCAFFOLDING) && this.isSneaking()) {
+                        g = 0.0D;
+                    }
+                    this.setVelocity(d, g, e);
                 }
+            }
         }
     }
 
