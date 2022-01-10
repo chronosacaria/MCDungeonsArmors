@@ -684,7 +684,9 @@ public abstract class LivingEntityMixin extends Entity {
 
         LivingEntity livingEntity = (LivingEntity) (Object) this;
 
-        if (config.enableArmorEffect.get(GILDED_HERO) && hasArmorSet(livingEntity, ArmorSets.GILDED)){
+        if (config.enableArmorEffect.get(GILDED_HERO)
+                && hasArmorSet(livingEntity, ArmorSets.GILDED)
+                && livingEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)){
             if (!source.isOutOfWorld()) {
                 Iterable<ItemStack> iterable = livingEntity.getArmorItems();
                 Iterator var4 = iterable.iterator();
@@ -704,39 +706,81 @@ public abstract class LivingEntityMixin extends Entity {
                     i++;
                 }
                 for (int k = 0; k < 3 ; k++){
-                    ItemStack itemStack = (ItemStack)var4.next();
                     if (armorPieceDurability[k + 1] > armorPieceDurability[r]) {
                         r = k + 1;
                     }
                 }
-                if (!(armorPieceDurability[r] > 50)) {
+                if (!(armorPieceDurability[r] > 0.50f)) {
                     itemToBreak = true;
                 }
-                Iterable<ItemStack> itemDamageable = livingEntity.getArmorItems();
-                Iterator damageIterator = itemDamageable.iterator();
-                i = 0;
-                while(damageIterator.hasNext()) {
-                    ItemStack itemStack = (ItemStack)damageIterator.next();
-                    int k = itemStack.getMaxDamage();
-                    int j = k - itemStack.getDamage();
-                    if (i == r){
-                        if (itemToBreak) {
-                            itemStack.setDamage(-1);
-                        } else {
-                            itemStack.setDamage(j - (k/2));
+
+                if (itemToBreak) {
+                    switch (r) {
+                        case 0 -> {
+                            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
+                            int k = feetStack.getMaxDamage();
+                            int j = k - feetStack.getDamage();
+                            feetStack.damage(j, livingEntity,
+                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.FEET));
+                        }
+                        case 1 -> {
+                            ItemStack legStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
+                            int k = legStack.getMaxDamage();
+                            int j = k - legStack.getDamage();
+                            legStack.damage(j, livingEntity,
+                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.LEGS));
+                        }
+                        case 2 -> {
+                            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
+                            int k = chestStack.getMaxDamage();
+                            int j = k - chestStack.getDamage();
+                            chestStack.damage(j, livingEntity,
+                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.CHEST));
+                        }
+                        case 3 -> {
+                            ItemStack headStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
+                            int k = headStack.getMaxDamage();
+                            int j = k - headStack.getDamage();
+                            headStack.damage(j, livingEntity,
+                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.HEAD));
                         }
                     }
-                    i++;
+                } else {
+                    switch (r) {
+                        case 0 -> {
+                            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
+                            int k = feetStack.getMaxDamage();
+                            feetStack.damage((k / 2), livingEntity,
+                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.FEET));
+                        }
+                        case 1 -> {
+                            ItemStack legStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
+                            int k = legStack.getMaxDamage();
+                            legStack.damage((k / 2), livingEntity,
+                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.LEGS));
+                        }
+                        case 2 -> {
+                            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
+                            int k = chestStack.getMaxDamage();
+                            chestStack.damage((k / 2), livingEntity,
+                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.CHEST));
+                        }
+                        case 3 -> {
+                            ItemStack headStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
+                            int k = headStack.getMaxDamage();
+                            headStack.damage((k / 2), livingEntity,
+                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.HEAD));
+                        }
+                    }
                 }
+                livingEntity.setHealth(1.0F);
+                livingEntity.clearStatusEffects();
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1));
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
+                livingEntity.world.sendEntityStatus(livingEntity, (byte)35);
+                cir.setReturnValue(true);
             }
-            livingEntity.setHealth(1.0F);
-            livingEntity.clearStatusEffects();
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1));
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
-            livingEntity.world.sendEntityStatus(livingEntity, (byte)35);
-
-            cir.setReturnValue(true);
         }
     }
 }

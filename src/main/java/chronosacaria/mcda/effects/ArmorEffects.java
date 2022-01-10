@@ -391,7 +391,10 @@ public class ArmorEffects {
 
         if (playerEntity.isAlive() && world.getTime() % 30 == 0) {
 
-            if (hasArmorSet(playerEntity, ArmorSets.HERO) || hasArmorSet(playerEntity, ArmorSets.GILDED)
+            if (hasArmorSet(playerEntity, ArmorSets.HERO)
+                    || (hasArmorSet(playerEntity, ArmorSets.GILDED)
+                        && config.enableArmorEffect.get(GILDED_HERO)
+                        && playerEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE))
                     || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == HERO_OF_THE_VILLAGE)
                     || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.GREEN_MYSTERY)) == HERO_OF_THE_VILLAGE)) {
 
