@@ -1,6 +1,7 @@
 package chronosacaria.mcda.mixin;
 
 import chronosacaria.mcda.api.*;
+import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.entities.SummonedBeeEntity;
@@ -50,6 +51,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow protected float lastDamageTaken;
 
     @Shadow public abstract boolean damage(DamageSource source, float amount);
+
+    @Shadow public abstract int getArmor();
 
     public EntityType<SummonedBeeEntity> summonedBee = SummonedEntityRegistry.SUMMONED_BEE_ENTITY;
 
@@ -298,6 +301,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
+    //TODO Fix Fire Focus Damage Calculation
     // Mixin for Fire Focus
     @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
     public void onFireFocusAttack(DamageSource source, float amount, CallbackInfo info) {
@@ -671,6 +675,30 @@ public abstract class LivingEntityMixin extends Entity {
                         ArmorEffects.applySplendidAoEAttackEffect(playerEntity, target);
                     }
                 }
+            }
+        }
+    }
+
+    @Inject(method = "tryUseTotem", at = @At("HEAD"), cancellable = true)
+    private void tryUseGildedTotemEffect(DamageSource source, CallbackInfoReturnable<Boolean> cir){
+
+        LivingEntity livingEntity = (LivingEntity) (Object) this;
+
+        if (config.enableArmorEffect.get(GILDED_HERO) && hasArmorSet(livingEntity, ArmorSets.GILDED)){
+            if (!source.isOutOfWorld()) {
+                Iterable<ItemStack> iterable = livingEntity.getArmorItems();
+                                 int i = 0;
+                    Iterator var4 = iterable.iterator();
+
+                    while(var4.hasNext()) {
+                        ItemStack itemStack = (ItemStack)var4.next();
+                        int j = itemStack.getDamage();
+                        int k = itemStack.getMaxDamage();
+                        if (2 * j > i) {
+                            itemStack.setDamage(j - (k / 2));
+                            break;
+                        }
+                    }
             }
         }
     }
