@@ -687,19 +687,56 @@ public abstract class LivingEntityMixin extends Entity {
         if (config.enableArmorEffect.get(GILDED_HERO) && hasArmorSet(livingEntity, ArmorSets.GILDED)){
             if (!source.isOutOfWorld()) {
                 Iterable<ItemStack> iterable = livingEntity.getArmorItems();
-                                 int i = 0;
-                    Iterator var4 = iterable.iterator();
+                Iterator var4 = iterable.iterator();
 
-                    while(var4.hasNext()) {
-                        ItemStack itemStack = (ItemStack)var4.next();
-                        int j = itemStack.getDamage();
-                        int k = itemStack.getMaxDamage();
-                        if (2 * j > i) {
-                            itemStack.setDamage(j - (k / 2));
-                            break;
+                // Trackers
+                boolean itemToBreak = false;
+                int i = 0;
+                int r = 0;
+
+                float[] armorPieceDurability = {0, 0, 0, 0};
+
+                while(var4.hasNext()) {
+                    ItemStack itemStack = (ItemStack)var4.next();
+                    float k = itemStack.getMaxDamage();
+                    float j = k - itemStack.getDamage();
+                    armorPieceDurability[i] = j/k;
+                    i++;
+                }
+                for (int k = 0; k < 3 ; k++){
+                    ItemStack itemStack = (ItemStack)var4.next();
+                    if (armorPieceDurability[k + 1] > armorPieceDurability[r]) {
+                        r = k + 1;
+                    }
+                }
+                if (!(armorPieceDurability[r] > 50)) {
+                    itemToBreak = true;
+                }
+                Iterable<ItemStack> itemDamageable = livingEntity.getArmorItems();
+                Iterator damageIterator = itemDamageable.iterator();
+                i = 0;
+                while(damageIterator.hasNext()) {
+                    ItemStack itemStack = (ItemStack)damageIterator.next();
+                    int k = itemStack.getMaxDamage();
+                    int j = k - itemStack.getDamage();
+                    if (i == r){
+                        if (itemToBreak) {
+                            itemStack.setDamage(-1);
+                        } else {
+                            itemStack.setDamage(j - (k/2));
                         }
                     }
+                    i++;
+                }
             }
+            livingEntity.setHealth(1.0F);
+            livingEntity.clearStatusEffects();
+            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
+            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1));
+            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
+            livingEntity.world.sendEntityStatus(livingEntity, (byte)35);
+
+            cir.setReturnValue(true);
         }
     }
 }
