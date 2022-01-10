@@ -698,4 +698,13 @@ public class ArmorEffects {
             }
         }
     }
+
+    public static void gildedHeroDamageBuff(LivingEntity livingEntity, LivingEntity target){
+        float gildedHeroDamageBuffDamageAmount =
+                (float) livingEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+        if (target instanceof IllagerEntity && livingEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)){
+            gildedHeroDamageBuffDamageAmount = gildedHeroDamageBuffDamageAmount * 1.5f;
+            target.damage(DamageSource.GENERIC, gildedHeroDamageBuffDamageAmount);
+        }
+    }
 }

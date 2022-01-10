@@ -783,4 +783,25 @@ public abstract class LivingEntityMixin extends Entity {
             }
         }
     }
+
+    @Inject(method = "damage", at = @At("HEAD"))
+    public void applyGildedGloryDamageBuff(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        if (!config.enableArmorEffect.get(GILDED_HERO))
+            return;
+
+        if(!(source.getAttacker() instanceof PlayerEntity playerEntity))return;
+        if(source.isProjectile()) return;
+
+        LivingEntity target = (LivingEntity) (Object) this;
+
+        if (source.getSource() instanceof PlayerEntity) {
+
+            ItemStack mainHandStack = playerEntity.getMainHandStack();
+            if (mainHandStack != null && (hasArmorSet(playerEntity, ArmorSets.GILDED))) {
+                if (amount != 0.0F) {
+                    ArmorEffects.gildedHeroDamageBuff(playerEntity, target);
+                }
+            }
+        }
+    }
 }
