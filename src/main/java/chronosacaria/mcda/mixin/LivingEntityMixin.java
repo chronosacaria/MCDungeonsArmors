@@ -95,32 +95,28 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    // Mixins for Armour and Enchantment Effects on Tick for PlayerEntities
+    // Mixins for Armour and Enchantment Effects on Tick
     @Inject(method = "tick", at = @At("HEAD"))
     private void tickEffects(CallbackInfo ci){
-        if(!((Object) this instanceof PlayerEntity playerEntity))
-            return;
+        // Mixins for Armour and Enchantment Effects on Tick for PlayerEntities
+        if((Object) this instanceof PlayerEntity playerEntity) {
 
-        ArmorEffects.applyFluidFreezing(playerEntity);
-        ArmorEffects.applyThiefInvisibilityTick(playerEntity);
+            ArmorEffects.applyFluidFreezing(playerEntity);
+            ArmorEffects.applyThiefInvisibilityTick(playerEntity);
 
-        if (config.enableArmorEffect.get(SYLVAN_PRESENCE) && playerEntity.isAlive() && playerEntity.isSneaking() && (hasRobeWithHatSet(playerEntity, ArmorSets.VERDANT)
-                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SYLVAN_PRESENCE)
-                || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.GREEN_MYSTERY)) == SYLVAN_PRESENCE))
-                && world.getTime() % 20 == 0){
-            ArmorEffects.applySylvanPresence(playerEntity);
+            if (config.enableArmorEffect.get(SYLVAN_PRESENCE) && playerEntity.isAlive() && playerEntity.isSneaking() && (hasRobeWithHatSet(playerEntity, ArmorSets.VERDANT)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SYLVAN_PRESENCE)
+                    || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.GREEN_MYSTERY)) == SYLVAN_PRESENCE))
+                    && world.getTime() % 20 == 0) {
+                ArmorEffects.applySylvanPresence(playerEntity);
+            }
         }
-    }
+        // Mixins for Armour and Enchantment Effects on Tick for LivingEntities
+        if((Object)this instanceof LivingEntity livingEntity) {
 
-    // Mixins for Armour and Enchantment Effects on Tick for LivingEntities
-    @Inject(method = "tick", at = @At("HEAD"))
-    private void livingEntityTickEffects(CallbackInfo ci){
-
-        if(!((Object)this instanceof LivingEntity livingEntity))
-            return;
-
-        if (config.enableEnchantment.get(LUCKY_EXPLORER) && livingEntity.isAlive() && livingEntity.isOnGround() && world.getTime() % 50 == 0){
-            EnchantmentEffects.applyLuckyExplorer(livingEntity);
+            if (config.enableEnchantment.get(LUCKY_EXPLORER) && livingEntity.isAlive() && livingEntity.isOnGround() && world.getTime() % 50 == 0) {
+                EnchantmentEffects.applyLuckyExplorer(livingEntity);
+            }
         }
     }
 
@@ -299,6 +295,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
+    //TODO Fix Poison Focus Damage Calculation
     // Mixin for Poison Focus
     @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
     public void onPoisonFocusAttack(DamageSource source, float amount, CallbackInfo info) {
