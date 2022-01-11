@@ -1,6 +1,13 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "mcda:item/vanguard_armor_leggings"
-  }
+	"credit": "Made with Blockbench",
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "mcda:item/vanguard_armor_leggings"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, -1.25, 1.25],
+			"scale": [0.7, 0.7, 0.7]
+		}
+	}
 }
