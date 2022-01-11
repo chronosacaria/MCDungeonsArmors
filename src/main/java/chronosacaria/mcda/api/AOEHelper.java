@@ -1,5 +1,7 @@
 package chronosacaria.mcda.api;
 
+import chronosacaria.mcda.registry.EnchantsRegistry;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -10,12 +12,12 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
-import org.apache.logging.log4j.core.jmx.Server;
 
 import java.util.List;
 import java.util.Random;
 
 import static chronosacaria.mcda.Mcda.random;
+import static chronosacaria.mcda.enchants.EnchantID.HEAL_ALLIES;
 
 // TODO: unused
 public class AOEHelper {
@@ -29,8 +31,7 @@ public class AOEHelper {
     }
 
     public static void healNearbyAllies(LivingEntity healer, StatusEffectInstance effectInstance, float distance) {
-        if (!(healer instanceof PlayerEntity)) return;
-        PlayerEntity playerEntity = (PlayerEntity) healer;
+        if (!(healer instanceof PlayerEntity playerEntity)) return;
 
         World world = healer.getEntityWorld();
         List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class,
@@ -52,19 +53,27 @@ public class AOEHelper {
         }
     }
 
-    public static void healNearbyAllies(LivingEntity healer, float amount, float distance) {
-        if (!(healer instanceof PlayerEntity)) return;
+    public static void healNearbyAllies(LivingEntity healer, float amount) {
+        //if (!(healer instanceof PlayerEntity)) return;
 
+        if (healer.getHealth() <= healer.getMaxHealth())
+            return;
+
+        int healAlliesLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(HEAL_ALLIES), healer);
+        if (healAlliesLevel <= 0)
+            return;
+
+        amount *= 0.25f * healAlliesLevel;
+        float distance = 12;
         World world = healer.getEntityWorld();
+
         List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class,
                 new Box(healer.getBlockPos()).expand(distance),
                 (nearbyEntity) -> nearbyEntity != healer && AbilityHelper.canHealEntity(healer, nearbyEntity));
-
         for (LivingEntity nearbyEntity : nearbyEntities) {
             if (nearbyEntity == null) return;
             if (nearbyEntity.getHealth() < nearbyEntity.getMaxHealth()) {
                 nearbyEntity.heal(amount);
-
                 addParticles((ServerWorld) world, nearbyEntity, ParticleTypes.HEART);
             }
         }

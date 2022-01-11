@@ -1,7 +1,6 @@
 package chronosacaria.mcda.mixin;
 
 import chronosacaria.mcda.api.*;
-import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.entities.SummonedBeeEntity;
@@ -80,22 +79,14 @@ public abstract class LivingEntityMixin extends Entity {
     // Mixin for Heal Allies Enchantment
     @Inject(method = "damage", at = @At("HEAD"))
     public void healAlliesDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
-        if (!config.enableEnchantment.get(HEAL_ALLIES))
-            return;
 
-        if (!((Object)this instanceof PlayerEntity))
+        if (!((Object) this instanceof PlayerEntity playerEntity))
             return;
         if (!(source.getAttacker() instanceof LivingEntity))
             return;
 
-        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
-
-        int healAlliesLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(HEAL_ALLIES), playerEntity);
-        if (EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(HEAL_ALLIES), playerEntity) > 0) {
-            if (playerEntity.getHealth() < playerEntity.getMaxHealth()) {
-                AOEHelper.healNearbyAllies(playerEntity, (0.25f * amount) * healAlliesLevel, 12);
-            }
-        }
+        if (config.enableEnchantment.get(HEAL_ALLIES))
+            AOEHelper.healNearbyAllies(playerEntity, amount);
 
     }
 
