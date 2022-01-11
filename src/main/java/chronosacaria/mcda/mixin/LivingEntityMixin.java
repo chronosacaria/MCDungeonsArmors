@@ -279,7 +279,6 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    //TODO Fix Fire Focus Damage Calculation
     // Mixin for Fire Focus
     @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
     public void onFireFocusAttack(DamageSource source, float amount, CallbackInfo info) {
@@ -295,16 +294,14 @@ public abstract class LivingEntityMixin extends Entity {
                 if (playerEntity != null && McdaEnchantmentHelper.hasFireAspect(playerEntity) || target.isOnFire()) {
                     int fireFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FIRE_FOCUS), playerEntity);
                     if (fireFocusLevel > 0) {
-                        float h = target.getHealth();
                         float multiplier = 1 + (0.25F * fireFocusLevel);
-                        target.setHealth(h - (amount * multiplier));
+                        target.damage(DamageSource.MAGIC, amount * multiplier);
                     }
                 }
             }
         }
     }
 
-    //TODO Fix Poison Focus Damage Calculation
     // Mixin for Poison Focus
     @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
     public void onPoisonFocusAttack(DamageSource source, float amount, CallbackInfo info) {
@@ -323,9 +320,8 @@ public abstract class LivingEntityMixin extends Entity {
                 int poisonFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POISON_FOCUS),
                         playerEntity);
                 if (poisonFocusLevel > 0) {
-                    float h = target.getHealth();
                     float multiplier = 1 + (0.25F * poisonFocusLevel);
-                    target.setHealth(h - (amount * multiplier));
+                    target.damage(DamageSource.MAGIC, amount * multiplier);
                 }
             }
         }
