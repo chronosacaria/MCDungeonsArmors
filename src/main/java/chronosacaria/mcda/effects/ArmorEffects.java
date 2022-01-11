@@ -35,6 +35,7 @@ import net.minecraft.world.World;
 import java.util.*;
 
 import static chronosacaria.mcda.api.CleanlinessHelper.hasArmorSet;
+import static chronosacaria.mcda.api.CleanlinessHelper.hasRobeSet;
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
 
@@ -339,14 +340,23 @@ public class ArmorEffects {
     }
 
     public static void applyTitanShroudStatuses(PlayerEntity playerEntity, LivingEntity target) {
-        StatusEffect titanStatusEffect =
-                TITAN_SHROUD_STATUS_EFFECTS_LIST.get(playerEntity.getRandom().nextInt(TITAN_SHROUD_STATUS_EFFECTS_LIST.size()));
-        target.addStatusEffect(new StatusEffectInstance(titanStatusEffect, 60, 0));
+
+        if (hasArmorSet(playerEntity, ArmorSets.TITAN)) {
+            StatusEffect titanStatusEffect =
+                    TITAN_SHROUD_STATUS_EFFECTS_LIST.get(playerEntity.getRandom().nextInt(TITAN_SHROUD_STATUS_EFFECTS_LIST.size()));
+            target.addStatusEffect(new StatusEffectInstance(titanStatusEffect, 60, 0));
+        }
     }
 
-    public static void applyFrostBiteStatus(LivingEntity target) {
-        target.addStatusEffect(new StatusEffectInstance(StatusEffectsRegistry.FREEZING, 60, 0, true, true,
-                    false));
+    public static void applyFrostBiteStatus(PlayerEntity playerEntity, LivingEntity target) {
+
+        if (hasArmorSet(playerEntity, ArmorSets.FROST_BITE)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == FROST_BITE_EFFECT)
+                || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == FROST_BITE_EFFECT)) {
+
+            target.addStatusEffect(new StatusEffectInstance(StatusEffectsRegistry.FREEZING, 60, 0, true, true,
+                        false));
+        }
     }
 
     public static void applyGourdiansHatredStatus(LivingEntity livingEntity) {
@@ -362,15 +372,22 @@ public class ArmorEffects {
         }
     }
 
-    public static void applyCauldronsOverflow(LivingEntity targetedEntity) {
-        if (!config.enableArmorEffect.get(CAULDRONS_OVERFLOW))
+    public static void applyCauldronsOverflow(LivingEntity targetedEntity, float amount) {
+        if (targetedEntity == null)
             return;
-        ItemStack potionToDrop =
-                CAULDRONS_OVERFLOW_LIST.get(targetedEntity.getRandom().nextInt(CAULDRONS_OVERFLOW_LIST.size()));
+        if (!hasArmorSet(targetedEntity, ArmorSets.CAULDRON))
+            return;
+        if (amount == 0.0F)
+            return;
 
-        ItemEntity potion = new ItemEntity(targetedEntity.world, targetedEntity.getX(), targetedEntity.getY(),
-                targetedEntity.getZ(), potionToDrop);
-        targetedEntity.world.spawnEntity(potion);
+        float overflowRand = targetedEntity.getRandom().nextFloat();
+        if (overflowRand <= 0.15F) {
+            ItemStack potionToDrop =
+                    CAULDRONS_OVERFLOW_LIST.get(targetedEntity.getRandom().nextInt(CAULDRONS_OVERFLOW_LIST.size()));
+            ItemEntity potion = new ItemEntity(targetedEntity.world, targetedEntity.getX(), targetedEntity.getY(),
+                    targetedEntity.getZ(), potionToDrop);
+            targetedEntity.world.spawnEntity(potion);
+        }
     }
 
     // Effects for ServerPlayerEntityMixin
@@ -640,8 +657,13 @@ public class ArmorEffects {
         }
     }
 
-    public static void applyGhostKindlingEffect(LivingEntity target){
-        target.setOnFireFor(4);
+    public static void applyGhostKindlingEffect(PlayerEntity playerEntity, LivingEntity target){
+
+        if (hasArmorSet(playerEntity, ArmorSets.GHOST_KINDLER)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == GHOST_KINDLING)
+                || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == GHOST_KINDLING)) {
+            target.setOnFireFor(4);
+        }
     }
 
     public static void applySylvanPresence(LivingEntity livingEntity){
@@ -693,26 +715,33 @@ public class ArmorEffects {
         }
     }
 
-    public static void applySplendidAoEAttackEffect(LivingEntity livingEntity, LivingEntity target){
+    public static void applySplendidAoEAttackEffect(PlayerEntity playerEntity, LivingEntity target){
 
-        for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(target, livingEntity, 6.0f)){
-            float damageToBeDone = (float) livingEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-            if (nearbyEntity instanceof IllagerEntity){
-                damageToBeDone = damageToBeDone * 1.5f;
-            }
-            if (nearbyEntity instanceof Monster){
-                nearbyEntity.damage(DamageSource.GENERIC, damageToBeDone);
-                nearbyEntity.world.playSound(
-                        null,
-                        nearbyEntity.getX(),
-                        nearbyEntity.getY(),
-                        nearbyEntity.getZ(),
-                        SoundEvents.ENTITY_VEX_CHARGE,
-                        SoundCategory.PLAYERS,
-                        1.0f,
-                        1.0f
-                );
-                AOEHelper.addParticlesToBlock((ServerWorld) nearbyEntity.world, nearbyEntity.getBlockPos(), ParticleTypes.ENCHANTED_HIT);
+        if (hasRobeSet(playerEntity, ArmorSets.SPLENDID))
+            return;
+
+        float splendidRand = playerEntity.getRandom().nextFloat();
+        if (splendidRand <= 0.3f) {
+
+            for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(target, playerEntity, 6.0f)){
+                float damageToBeDone = (float) playerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+                if (nearbyEntity instanceof IllagerEntity){
+                    damageToBeDone = damageToBeDone * 1.5f;
+                }
+                if (nearbyEntity instanceof Monster){
+                    nearbyEntity.damage(DamageSource.GENERIC, damageToBeDone);
+                    nearbyEntity.world.playSound(
+                            null,
+                            nearbyEntity.getX(),
+                            nearbyEntity.getY(),
+                            nearbyEntity.getZ(),
+                            SoundEvents.ENTITY_VEX_CHARGE,
+                            SoundCategory.PLAYERS,
+                            1.0f,
+                            1.0f
+                    );
+                    AOEHelper.addParticlesToBlock((ServerWorld) nearbyEntity.world, nearbyEntity.getBlockPos(), ParticleTypes.ENCHANTED_HIT);
+                }
             }
         }
     }

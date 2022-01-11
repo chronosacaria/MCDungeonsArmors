@@ -1,5 +1,6 @@
 package chronosacaria.mcda.api;
 
+import chronosacaria.mcda.items.ArmorSets;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static chronosacaria.mcda.Mcda.random;
+import static chronosacaria.mcda.api.CleanlinessHelper.hasArmorSet;
 
 public class ProjectileEffectHelper {
 
@@ -43,8 +45,12 @@ public class ProjectileEffectHelper {
         user.world.spawnEntity(snowballEntity);
     }
 
-    public static void fireShulkerBulletAtNearbyEnemy(LivingEntity user, int distance) {
+    public static void fireShulkerBulletAtNearbyEnemy(LivingEntity user) {
+        if (!hasArmorSet(user, ArmorSets.STURDY_SHULKER))
+            return;
+
         World world = user.getEntityWorld();
+        int distance = 10;
         List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class,
                 new Box(user.getX() - distance, user.getY() - distance, user.getZ() - distance,
                         user.getX() + distance, user.getY() + distance, user.getZ() + distance),
