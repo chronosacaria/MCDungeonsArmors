@@ -13,6 +13,8 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.TameableEntity;
@@ -764,5 +766,40 @@ public abstract class LivingEntityMixin extends Entity {
                 }
             }
         }
+    }
+
+    @ModifyVariable(method = "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;" +
+            "Lnet/minecraft/entity/Entity;)Z", at = @At("HEAD"))
+    private StatusEffectInstance troubadoursCharismaModifyStatusEffect(StatusEffectInstance statusEffectInstance){
+
+        LivingEntity livingEntity = (LivingEntity) (Object) this;
+
+        if (livingEntity instanceof ServerPlayerEntity && config.enableArmorEffect.get(TROUBADOURS_CHARISMA)) {
+            if (CleanlinessHelper.hasArmorSet(livingEntity, ArmorSets.TROUBADOUR)) {
+                StatusEffect statusEffectType = statusEffectInstance.getEffectType();
+
+                int interceptedDuration = statusEffectInstance.getDuration();
+
+                int newDuration = statusEffectInstance.getDuration();
+                if (statusEffectType.isBeneficial()) {
+                    newDuration *= 2;
+                }
+                if (statusEffectType.getCategory() == StatusEffectCategory.HARMFUL) {
+                    newDuration /= 2;
+                }
+
+                if (newDuration != interceptedDuration) {
+                    return new StatusEffectInstance(
+                            statusEffectType,
+                            newDuration,
+                            statusEffectInstance.getAmplifier(),
+                            statusEffectInstance.isAmbient(),
+                            statusEffectInstance.shouldShowParticles(),
+                            statusEffectInstance.shouldShowIcon()
+                    );
+                }
+            }
+        }
+        return statusEffectInstance;
     }
 }
