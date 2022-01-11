@@ -93,26 +93,15 @@ public abstract class LivingEntityMixin extends Entity {
     // Mixin for Wither Effect
     @Inject(method = "damage", at = @At("HEAD"))
     public void applyEffectsFromPlayerDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
-        if (!((Object)this instanceof PlayerEntity))
+        if (!((Object) this instanceof PlayerEntity playerEntity))
             return;
         if (!(source.getAttacker() instanceof LivingEntity)){
             return;
         }
 
-        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+        if (config.enableArmorEffect.get(WITHERED))
+            ArmorEffects.applyWithered(playerEntity, (LivingEntity) source.getAttacker());
 
-        if (!config.enableArmorEffect.get(WITHERED))
-            return;
-        if (source.getAttacker() != null) {
-            if (playerEntity.isAlive()) {
-
-                if (hasArmorSet(playerEntity, ArmorSets.WITHER)
-                        || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == WITHERED)
-                        || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == WITHERED)) {
-                    ArmorEffects.applyWithered((LivingEntity) source.getAttacker());
-                }
-            }
-        }
     }
 
     // Mixin for Nimble Turtle Armour Effects

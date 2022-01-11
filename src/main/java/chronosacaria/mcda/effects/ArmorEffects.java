@@ -307,8 +307,17 @@ public class ArmorEffects {
         }
     }
 
-    public static void applyWithered(LivingEntity attacker) {
-        attacker.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 120, 0));
+    public static void applyWithered(PlayerEntity playerEntity, LivingEntity attacker) {
+        if (attacker == null)
+            return;
+        if (!playerEntity.isAlive())
+            return;
+
+        if (hasArmorSet(playerEntity, ArmorSets.WITHER)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == WITHERED)
+                || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == WITHERED)) {
+            attacker.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 120, 0));
+        }
     }
 
     public static void applyNimbleTurtleEffects(PlayerEntity playerEntity) {
