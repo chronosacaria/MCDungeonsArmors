@@ -130,41 +130,48 @@ public abstract class LivingEntityMixin extends Entity {
         EnchantmentEffects.applyFireTrail(playerEntity, blockPos);
     }
 
-    // Spider Armour Climbing
+
     @Inject(method = "isClimbing", at = @At("HEAD"), cancellable = true)
-    private void spiderArmourClimbing(CallbackInfoReturnable<Boolean> cir){
-        if (!config.enableArmorEffect.get(SPIDER_CLIMBING))
-            return;
+    private void armourClimbing(CallbackInfoReturnable<Boolean> cir){
         if(!((Object) this instanceof PlayerEntity playerEntity)) return;
 
         if (playerEntity.isAlive()){
-
-            if (playerEntity == null) return;
-
-            if (hasArmorSet(playerEntity, ArmorSets.SPIDER)
+            // Spider Armour Climbing
+            if (config.enableArmorEffect.get(SPIDER_CLIMBING)
+                    && this.horizontalCollision
+                    && (hasArmorSet(playerEntity, ArmorSets.SPIDER)
                     || (ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SPIDER_CLIMBING)
-                    || (ArmorEffects.PURPLE_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == SPIDER_CLIMBING)){
+                    || (ArmorEffects.PURPLE_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == SPIDER_CLIMBING))){
+                cir.setReturnValue(true);
+            }
 
+            // Rugged Armour Climbing
+            if (config.enableArmorEffect.get(RUGGED_CLIMBING)
+                    && hasArmorSet(playerEntity, ArmorSets.RUGGED_CLIMBING_GEAR)){
                 // If Statement provided by Apace100; Thanks, Apace!
                 if (playerEntity.world.getBlockCollisions(playerEntity,
                         playerEntity.getBoundingBox().offset(0.01 * playerEntity.getBoundingBox().getXLength(), 0,
                                 0.01 * playerEntity.getBoundingBox().getZLength())).iterator().hasNext()
                         || playerEntity.world.getBlockCollisions(playerEntity,
-                                playerEntity.getBoundingBox().offset(-0.01 * playerEntity.getBoundingBox().getXLength(), 0,
-                                        -0.01 * playerEntity.getBoundingBox().getZLength())).iterator().hasNext() ) {
+                        playerEntity.getBoundingBox().offset(-0.01 * playerEntity.getBoundingBox().getXLength(), 0,
+                                -0.01 * playerEntity.getBoundingBox().getZLength())).iterator().hasNext() ) {
                     this.setOnGround(true);
                     cir.setReturnValue(true);
                     this.onLanding();
 
-                    double f = 0.15D;
-                    double d = MathHelper.clamp(this.getVelocity().x, -f, f);
-                    double e = MathHelper.clamp(this.getVelocity().z, -f, f);
-                    double g = Math.max(this.getVelocity().y, -f);
+                    double f = 0.1D;
+                    double x = MathHelper.clamp(this.getVelocity().x, -f, f);
+                    double z = MathHelper.clamp(this.getVelocity().z, -f, f);
+                    double y = Math.max(this.getVelocity().y, -f);
 
-                    if (g < 0.0D && !this.getBlockStateAtPos().isOf(Blocks.SCAFFOLDING) && this.isSneaking()) {
-                        g = 0.0D;
+                    if (y < 0.0D && !this.getBlockStateAtPos().isOf(Blocks.SCAFFOLDING) && this.isSneaking()) {
+                        y = 0.0D;
+                    } else if (this.horizontalCollision && !this.getBlockStateAtPos().isOf(Blocks.SCAFFOLDING)){
+                        x /=3.5D;
+                        y = f/2;
+                        z /=3.5D;
                     }
-                    this.setVelocity(d, g, e);
+                    this.setVelocity(x, y, z);
                 }
             }
         }
