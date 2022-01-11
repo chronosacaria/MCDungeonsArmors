@@ -76,9 +76,9 @@ public abstract class LivingEntityMixin extends Entity {
         EnchantmentEffects.applySurpriseGift(playerEntity);
     }
 
-    // Mixin for Heal Allies Enchantment
+    // Mixins for Armour and Enchantment Effects on Damage for PlayerEntities
     @Inject(method = "damage", at = @At("HEAD"))
-    public void healAlliesDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+    public void onDamageEffects(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
 
         if (!((Object) this instanceof PlayerEntity playerEntity))
             return;
@@ -87,18 +87,6 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (config.enableEnchantment.get(HEAL_ALLIES))
             AOEHelper.healNearbyAllies(playerEntity, amount);
-
-    }
-
-    // Mixin for Wither Effect
-    @Inject(method = "damage", at = @At("HEAD"))
-    public void applyEffectsFromPlayerDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
-        if (!((Object) this instanceof PlayerEntity playerEntity))
-            return;
-        if (!(source.getAttacker() instanceof LivingEntity)){
-            return;
-        }
-
         if (config.enableArmorEffect.get(WITHERED))
             ArmorEffects.applyWithered(playerEntity, (LivingEntity) source.getAttacker());
 
