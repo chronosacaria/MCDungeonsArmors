@@ -64,10 +64,9 @@ public abstract class LivingEntityMixin extends Entity {
     // Mixins for enchants related to consuming a potion
     @Inject(method = "consumeItem", at = @At("HEAD"))
     public void consumeItem(CallbackInfo ci) {
-        if (!((Object)this instanceof PlayerEntity))
+        if (!((Object) this instanceof PlayerEntity playerEntity))
             return;
 
-        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
         if (!playerEntity.isAlive())
             return;
 
@@ -82,13 +81,14 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (!((Object) this instanceof PlayerEntity playerEntity))
             return;
-        if (!(source.getAttacker() instanceof LivingEntity))
-            return;
 
-        if (config.enableEnchantment.get(HEAL_ALLIES))
-            AOEHelper.healNearbyAllies(playerEntity, amount);
-        if (config.enableArmorEffect.get(WITHERED))
-            ArmorEffects.applyWithered(playerEntity, (LivingEntity) source.getAttacker());
+        if (source.getAttacker() instanceof LivingEntity) {
+            if (config.enableEnchantment.get(HEAL_ALLIES))
+                AOEHelper.healNearbyAllies(playerEntity, amount);
+            if (config.enableArmorEffect.get(WITHERED))
+                ArmorEffects.applyWithered(playerEntity, (LivingEntity) source.getAttacker());
+        }
+
         if (this.lastDamageTaken >= 0) {
             if (config.enableArmorEffect.get(NIMBLE_TURTLE_EFFECTS))
                 ArmorEffects.applyNimbleTurtleEffects(playerEntity);
@@ -98,9 +98,8 @@ public abstract class LivingEntityMixin extends Entity {
     // Mixins for Armour and Enchantment Effects on Tick for PlayerEntities
     @Inject(method = "tick", at = @At("HEAD"))
     private void tickEffects(CallbackInfo ci){
-        if(!((Object)this instanceof PlayerEntity)) return;
-
-        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+        if(!((Object) this instanceof PlayerEntity playerEntity))
+            return;
 
         ArmorEffects.applyFluidFreezing(playerEntity);
         ArmorEffects.applyThiefInvisibilityTick(playerEntity);
@@ -117,7 +116,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(method = "tick", at = @At("HEAD"))
     private void livingEntityTickEffects(CallbackInfo ci){
 
-        if(!((Object)this instanceof LivingEntity livingEntity)) return;
+        if(!((Object)this instanceof LivingEntity livingEntity))
+            return;
 
         if (config.enableEnchantment.get(LUCKY_EXPLORER) && livingEntity.isAlive() && livingEntity.isOnGround() && world.getTime() % 50 == 0){
             EnchantmentEffects.applyLuckyExplorer(livingEntity);
@@ -127,8 +127,7 @@ public abstract class LivingEntityMixin extends Entity {
     // Mixin for Fire Trail
     @Inject(method = "applyMovementEffects", at = @At("HEAD"))
     protected void applyFireTrailEffects(BlockPos blockPos, CallbackInfo ci){
-        if(!((Object)this instanceof PlayerEntity)) return;
-        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+        if(!((Object) this instanceof PlayerEntity playerEntity)) return;
 
         EnchantmentEffects.applyFireTrail(playerEntity, blockPos);
     }
@@ -138,9 +137,8 @@ public abstract class LivingEntityMixin extends Entity {
     private void spiderArmourClimbing(CallbackInfoReturnable<Boolean> cir){
         if (!config.enableArmorEffect.get(SPIDER_CLIMBING))
             return;
-        if(!((Object)this instanceof PlayerEntity)) return;
+        if(!((Object) this instanceof PlayerEntity playerEntity)) return;
 
-        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
         if (playerEntity.isAlive()){
 
             if (playerEntity == null) return;
@@ -179,9 +177,8 @@ public abstract class LivingEntityMixin extends Entity {
     public void shadowWalkerArmorNoFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource, CallbackInfoReturnable<Boolean> cir){
         if (!config.enableArmorEffect.get(NO_FALL_DAMAGE))
             return;
-        if(!((Object)this instanceof PlayerEntity)) return;
+        if(!((Object) this instanceof PlayerEntity playerEntity)) return;
 
-        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
         if (playerEntity.isAlive()) {
 
             if (playerEntity == null) return;
@@ -284,9 +281,8 @@ public abstract class LivingEntityMixin extends Entity {
        if (!config.enableEnchantment.get(FIRE_FOCUS))
            return;
 
-        if(!(source.getAttacker() instanceof PlayerEntity))return;
+        if(!(source.getAttacker() instanceof PlayerEntity playerEntity))return;
 
-        PlayerEntity playerEntity = (PlayerEntity) source.getAttacker();
         LivingEntity target = (LivingEntity) (Object) this;
 
         if (source.getSource() instanceof PlayerEntity) {
@@ -340,8 +336,7 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (petSource == null) return;
 
-        if (petSource.world instanceof ServerWorld && petSource instanceof TameableEntity){
-            ServerWorld serverWorld = (ServerWorld) petSource.world;
+        if (petSource.world instanceof ServerWorld serverWorld && petSource instanceof TameableEntity){
             PlayerEntity owner = (PlayerEntity) ((TameableEntity) petSource).getOwner();
             if (owner != null){
                 UUID petOwnerUUID = owner.getUuid();
@@ -367,13 +362,12 @@ public abstract class LivingEntityMixin extends Entity {
     public void fireShulkerBulletOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
         if (!config.enableArmorEffect.get(SHULKER_LIKE))
             return;
-        if (!((Object)this instanceof PlayerEntity))
+        if (!((Object) this instanceof PlayerEntity playerEntity))
             return;
         if (!(source.getAttacker() instanceof LivingEntity)){
             return;
         }
 
-        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
         if (playerEntity != null) {
             if (hasArmorSet(playerEntity, ArmorSets.STURDY_SHULKER)) {
                 ProjectileEffectHelper.fireShulkerBulletAtNearbyEnemy(playerEntity, 10);
@@ -386,9 +380,8 @@ public abstract class LivingEntityMixin extends Entity {
     public void onTeleportationRobesTeleport(CallbackInfo ci){
         if (!config.enableArmorEffect.get(TELEPORTATION_ROBES_EFFECT))
             return;
-        if (!((Object)this instanceof ServerPlayerEntity))
+        if (!((Object) this instanceof ServerPlayerEntity playerEntity))
             return;
-        ServerPlayerEntity playerEntity = (ServerPlayerEntity) (Object) this;
         if (playerEntity != null) {
             if (hasArmorSet(playerEntity, ArmorSets.TELEPORTATION)) {
                 if (playerEntity.isSneaking()) {
@@ -406,9 +399,8 @@ public abstract class LivingEntityMixin extends Entity {
     public void onUnstableRobesTeleport(CallbackInfo ci){
         if (!config.enableArmorEffect.get(UNSTABLE_ROBES_EFFECT))
             return;
-        if (!((Object)this instanceof ServerPlayerEntity))
+        if (!((Object) this instanceof ServerPlayerEntity playerEntity))
             return;
-        ServerPlayerEntity playerEntity = (ServerPlayerEntity) (Object) this;
 
         if (playerEntity != null) {
             if (hasArmorSet(playerEntity, ArmorSets.UNSTABLE)) {
@@ -434,9 +426,8 @@ public abstract class LivingEntityMixin extends Entity {
         if (!config.enableArmorEffect.get(FROST_BITE_EFFECT))
             return;
 
-        if(!(source.getAttacker() instanceof PlayerEntity))return;
+        if(!(source.getAttacker() instanceof PlayerEntity playerEntity))return;
 
-        PlayerEntity playerEntity = (PlayerEntity) source.getAttacker();
         LivingEntity target = (LivingEntity) (Object) this;
 
         if (source.getSource() instanceof PlayerEntity) {
@@ -461,9 +452,7 @@ public abstract class LivingEntityMixin extends Entity {
         if (!config.enableArmorEffect.get(GOURDIANS_HATRED))
             return;
 
-        if(!(source.getAttacker() instanceof LivingEntity))return;
-
-        LivingEntity user = (LivingEntity) source.getAttacker();
+        if(!(source.getAttacker() instanceof LivingEntity user))return;
 
         if (user != null) {
             if (hasArmorSet(user, ArmorSets.GOURDIAN)
@@ -541,8 +530,7 @@ public abstract class LivingEntityMixin extends Entity {
         if (!config.enableArmorEffect.get(SOULDANCER_GRACE))
             return;
 
-        if(!((Object)this instanceof PlayerEntity)) return;
-        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
+        if(!((Object) this instanceof PlayerEntity playerEntity)) return;
 
         if (playerEntity.isAlive()) {
             if (hasArmorSet(playerEntity, ArmorSets.SOULDANCER)) {
