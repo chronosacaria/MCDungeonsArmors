@@ -4,6 +4,8 @@ import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.StatusEffectsRegistry;
 import net.minecraft.block.*;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
@@ -15,6 +17,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.IllagerEntity;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.passive.FoxEntity;
+import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -746,12 +749,40 @@ public class ArmorEffects {
         }
     }
 
-    public static void gildedHeroDamageBuff(LivingEntity livingEntity, LivingEntity target){
-        float gildedHeroDamageBuffDamageAmount =
-                (float) livingEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-        if (target instanceof IllagerEntity && livingEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)){
-            gildedHeroDamageBuffDamageAmount = gildedHeroDamageBuffDamageAmount * 1.5f;
-            target.damage(DamageSource.GENERIC, gildedHeroDamageBuffDamageAmount);
+    public static void gildedHeroDamageBuff(PlayerEntity playerEntity, LivingEntity target){
+        if ((hasArmorSet(playerEntity, ArmorSets.GILDED))) {
+            float gildedHeroDamageBuffDamageAmount =
+                    (float) playerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+            if (target instanceof IllagerEntity && playerEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)){
+                gildedHeroDamageBuffDamageAmount = gildedHeroDamageBuffDamageAmount * 1.5f;
+                target.damage(DamageSource.GENERIC, gildedHeroDamageBuffDamageAmount);
+            }
+        }
+    }
+
+    public static void leaderOfThePackEffect(LivingEntity target, DamageSource source, float amount){
+        Entity petSource = source.getSource();
+
+        if (petSource == null) return;
+
+        if (petSource.world instanceof ServerWorld serverWorld && petSource instanceof TameableEntity){
+            PlayerEntity owner = (PlayerEntity) ((TameableEntity) petSource).getOwner();
+            if (owner != null){
+                UUID petOwnerUUID = owner.getUuid();
+                if (hasArmorSet(owner, ArmorSets.BLACK_WOLF)
+                        || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.MYSTERY)) == LEADER_OF_THE_PACK)
+                        || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.RED_MYSTERY)) == LEADER_OF_THE_PACK)) {
+
+                    if (petOwnerUUID != null) {
+                        Entity petOwner = serverWorld.getEntity(petOwnerUUID);
+                        if (petOwner instanceof LivingEntity) {
+                            float blackWolfArmorFactor = 1.5f;
+                            float newDamage = amount * blackWolfArmorFactor;
+                            target.damage(DamageSource.GENERIC, newDamage);
+                        }
+                    }
+                }
+            }
         }
     }
 }

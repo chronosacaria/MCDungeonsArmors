@@ -1,5 +1,6 @@
 package chronosacaria.mcda.effects;
 
+import chronosacaria.mcda.api.McdaEnchantmentHelper;
 import chronosacaria.mcda.registry.EnchantsRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -7,6 +8,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -228,6 +230,24 @@ public class EnchantmentEffects {
                 feetStack.getOrCreateNbt().putDouble("x-coord", currentXCoord);
                 feetStack.getOrCreateNbt().putDouble("z-coord", currentZCoord);
             }
+        }
+    }
+
+    public static void applyFireFocusDamage(PlayerEntity playerEntity, LivingEntity target, float amount){
+        if (McdaEnchantmentHelper.hasFireAspect(playerEntity) || target.isOnFire()) {
+            int fireFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FIRE_FOCUS), playerEntity);
+            if (fireFocusLevel > 0) {
+                float multiplier = 1 + (0.25F * fireFocusLevel);
+                target.damage(DamageSource.MAGIC, amount * multiplier);
+            }
+        }
+    }
+
+    public static void applyPoisonFocusDamage(PlayerEntity playerEntity, LivingEntity target, float amount){
+        int poisonFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POISON_FOCUS), playerEntity);
+        if (poisonFocusLevel > 0) {
+            float multiplier = 1 + (0.25F * poisonFocusLevel);
+            target.damage(DamageSource.MAGIC, amount * multiplier);
         }
     }
 }

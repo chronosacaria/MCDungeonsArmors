@@ -270,18 +270,32 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    // Mixin for apply damage Effects
+    // Mixin for apply damage Effects and Enchantments
     @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
     public void mcdaApplyDamageEffects(DamageSource source, float amount, CallbackInfo info) {
 
         if (!((Object) this instanceof LivingEntity target))
             return;
+
+        if (config.enableArmorEffect.get(LEADER_OF_THE_PACK))
+            ArmorEffects.leaderOfThePackEffect(target, source, amount);
+
         if(!(source.getAttacker() instanceof PlayerEntity playerEntity))
             return;
         if (!(source.getSource() instanceof PlayerEntity))
             return;
 
         if (amount != 0.0F) {
+            if (config.enableEnchantment.get(FIRE_FOCUS)) {
+                EnchantmentEffects.applyFireFocusDamage(playerEntity, target, amount);
+            }
+
+            if (source.isMagic()){
+                if (config.enableEnchantment.get(POISON_FOCUS)) {
+                    EnchantmentEffects.applyPoisonFocusDamage(playerEntity, target, amount);
+                }
+            }
+
             ItemStack mainHandStack = playerEntity.getMainHandStack();
             if (!mainHandStack.isEmpty()) {
                 if (config.enableArmorEffect.get(TITAN_SHROUD_EFFECTS))
@@ -294,87 +308,8 @@ public abstract class LivingEntityMixin extends Entity {
                 if(!source.isProjectile()) {
                     if (config.enableArmorEffect.get(SPLENDID_ATTACK))
                         ArmorEffects.applySplendidAoEAttackEffect(playerEntity, target);
-                }
-            }
-        }
-
-    }
-
-    // Mixin for Fire Focus
-    @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
-    public void onFireFocusAttack(DamageSource source, float amount, CallbackInfo info) {
-       if (!config.enableEnchantment.get(FIRE_FOCUS))
-           return;
-
-        if(!(source.getAttacker() instanceof PlayerEntity playerEntity))return;
-
-        LivingEntity target = (LivingEntity) (Object) this;
-
-        if (source.getSource() instanceof PlayerEntity) {
-            if (amount != 0.0F) {
-                if (playerEntity != null && McdaEnchantmentHelper.hasFireAspect(playerEntity) || target.isOnFire()) {
-                    int fireFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FIRE_FOCUS), playerEntity);
-                    if (fireFocusLevel > 0) {
-                        float multiplier = 1 + (0.25F * fireFocusLevel);
-                        target.damage(DamageSource.MAGIC, amount * multiplier);
-                    }
-                }
-            }
-        }
-    }
-
-    // Mixin for Poison Focus
-    @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
-    public void onPoisonFocusAttack(DamageSource source, float amount, CallbackInfo info) {
-        if (!config.enableEnchantment.get(POISON_FOCUS))
-            return;
-
-        if(!(source.getAttacker() instanceof PlayerEntity))return;
-
-        if (source != DamageSource.MAGIC) return;
-
-        LivingEntity target = (LivingEntity) (Object) this;
-
-        if (target.getActiveStatusEffects().get(StatusEffects.POISON) != null) {
-            PlayerEntity playerEntity = (PlayerEntity) target.getAttacker();
-            if (playerEntity != null) {
-                int poisonFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POISON_FOCUS),
-                        playerEntity);
-                if (poisonFocusLevel > 0) {
-                    float multiplier = 1 + (0.25F * poisonFocusLevel);
-                    target.damage(DamageSource.MAGIC, amount * multiplier);
-                }
-            }
-        }
-    }
-
-    // Mixin for Black Wolf Armour Effect (Leader of the Pack)
-    @Inject(method = "applyDamage", at = @At("HEAD"), cancellable = true)
-    public void onBlackWolfArmourEffect(DamageSource source, float amount, CallbackInfo info){
-        if (!config.enableArmorEffect.get(LEADER_OF_THE_PACK))
-            return;
-
-        LivingEntity target = (LivingEntity) (Object) this;
-        Entity petSource = source.getSource();
-
-        if (petSource == null) return;
-
-        if (petSource.world instanceof ServerWorld serverWorld && petSource instanceof TameableEntity){
-            PlayerEntity owner = (PlayerEntity) ((TameableEntity) petSource).getOwner();
-            if (owner != null){
-                UUID petOwnerUUID = owner.getUuid();
-                if (hasArmorSet(owner, ArmorSets.BLACK_WOLF)
-                        || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.MYSTERY)) == LEADER_OF_THE_PACK)
-                        || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.RED_MYSTERY)) == LEADER_OF_THE_PACK)) {
-
-                    if (petOwnerUUID != null) {
-                        Entity petOwner = serverWorld.getEntity(petOwnerUUID);
-                        if (petOwner instanceof LivingEntity) {
-                            float blackWolfArmorFactor = 1.5f;
-                            float newDamage = amount * blackWolfArmorFactor;
-                            target.damage(DamageSource.GENERIC, newDamage);
-                        }
-                    }
+                    if (config.enableArmorEffect.get(GILDED_HERO))
+                        ArmorEffects.gildedHeroDamageBuff(playerEntity, target);
                 }
             }
         }
@@ -654,27 +589,6 @@ public abstract class LivingEntityMixin extends Entity {
                 livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
                 livingEntity.world.sendEntityStatus(livingEntity, (byte)35);
                 cir.setReturnValue(true);
-            }
-        }
-    }
-
-    @Inject(method = "damage", at = @At("HEAD"))
-    public void applyGildedGloryDamageBuff(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if (!config.enableArmorEffect.get(GILDED_HERO))
-            return;
-
-        if(!(source.getAttacker() instanceof PlayerEntity playerEntity))return;
-        if(source.isProjectile()) return;
-
-        LivingEntity target = (LivingEntity) (Object) this;
-
-        if (source.getSource() instanceof PlayerEntity) {
-
-            ItemStack mainHandStack = playerEntity.getMainHandStack();
-            if (mainHandStack != null && (hasArmorSet(playerEntity, ArmorSets.GILDED))) {
-                if (amount != 0.0F) {
-                    ArmorEffects.gildedHeroDamageBuff(playerEntity, target);
-                }
             }
         }
     }
