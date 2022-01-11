@@ -89,25 +89,9 @@ public abstract class LivingEntityMixin extends Entity {
             AOEHelper.healNearbyAllies(playerEntity, amount);
         if (config.enableArmorEffect.get(WITHERED))
             ArmorEffects.applyWithered(playerEntity, (LivingEntity) source.getAttacker());
-
-    }
-
-    // Mixin for Nimble Turtle Armour Effects
-    @Inject(method = "damage", at = @At("HEAD"))
-    public void applyNimbleTurtleDamageEffects(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
-        if (!config.enableArmorEffect.get(NIMBLE_TURTLE_EFFECTS))
-            return;
-        if(!((Object)this instanceof PlayerEntity)) return;
-
-        PlayerEntity playerEntity = (PlayerEntity) (Object) this;
-        if (hasArmorSet(playerEntity, ArmorSets.NIMBLE_TURTLE)
-                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == NIMBLE_TURTLE_EFFECTS)
-                || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == NIMBLE_TURTLE_EFFECTS)) {
-            if (playerEntity.isAlive()) {
-                if (this.lastDamageTaken >= 0) {
-                    ArmorEffects.applyNimbleTurtleEffects(playerEntity);
-                }
-            }
+        if (this.lastDamageTaken >= 0) {
+            if (config.enableArmorEffect.get(NIMBLE_TURTLE_EFFECTS))
+                ArmorEffects.applyNimbleTurtleEffects(playerEntity);
         }
     }
 

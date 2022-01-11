@@ -321,12 +321,21 @@ public class ArmorEffects {
     }
 
     public static void applyNimbleTurtleEffects(PlayerEntity playerEntity) {
-        StatusEffectInstance resistance = new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 1, false,
-                false);
-        StatusEffectInstance healing = new StatusEffectInstance(StatusEffects.REGENERATION, 60, 1, false,
-                false);
-        playerEntity.addStatusEffect(resistance);
-        playerEntity.addStatusEffect(healing);
+
+        if (!playerEntity.isAlive())
+            return;
+
+        if (hasArmorSet(playerEntity, ArmorSets.NIMBLE_TURTLE)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == NIMBLE_TURTLE_EFFECTS)
+                || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == NIMBLE_TURTLE_EFFECTS)) {
+            StatusEffectInstance resistance = new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 1, false,
+                    false);
+            StatusEffectInstance healing = new StatusEffectInstance(StatusEffects.REGENERATION, 60, 1, false,
+                    false);
+            playerEntity.addStatusEffect(resistance);
+            playerEntity.addStatusEffect(healing);
+        }
+
     }
 
     public static void applyTitanShroudStatuses(PlayerEntity playerEntity, LivingEntity target) {
