@@ -244,23 +244,21 @@ public abstract class LivingEntityMixin extends Entity {
         // Mixins for Armour and Enchantment Effects on Tick for PlayerEntities
         if((Object) this instanceof PlayerEntity playerEntity) {
 
-            if (config.enableArmorEffect.get(FLUID_FREEZING))
-                ArmorEffects.applyFluidFreezing(playerEntity);
-
-            ArmorEffects.applyThiefInvisibilityTick(playerEntity);
-
-            if (config.enableArmorEffect.get(SYLVAN_PRESENCE) && playerEntity.isAlive() && playerEntity.isSneaking() && (hasRobeWithHatSet(playerEntity, ArmorSets.VERDANT)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SYLVAN_PRESENCE)
-                    || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.GREEN_MYSTERY)) == SYLVAN_PRESENCE))
-                    && world.getTime() % 20 == 0) {
-                ArmorEffects.applySylvanPresence(playerEntity);
+            if(playerEntity.isAlive()) {
+                if (config.enableArmorEffect.get(FLUID_FREEZING))
+                    ArmorEffects.applyFluidFreezing(playerEntity);
+                if (config.enableArmorEffect.get(INVISIBILITY))
+                    ArmorEffects.applyThiefInvisibilityTick(playerEntity);
+                if (config.enableArmorEffect.get(SYLVAN_PRESENCE))
+                    ArmorEffects.applySylvanPresence(playerEntity);
             }
         }
         // Mixins for Armour and Enchantment Effects on Tick for LivingEntities
         if((Object)this instanceof LivingEntity livingEntity) {
 
-            if (config.enableEnchantment.get(LUCKY_EXPLORER) && livingEntity.isAlive() && livingEntity.isOnGround() && world.getTime() % 50 == 0) {
-                EnchantmentEffects.applyLuckyExplorer(livingEntity);
+            if (livingEntity.isAlive()) {
+                if (config.enableEnchantment.get(LUCKY_EXPLORER))
+                    EnchantmentEffects.applyLuckyExplorer(livingEntity);
             }
         }
     }

@@ -284,15 +284,10 @@ public class ArmorEffects {
     }
 
     public static void applyThiefInvisibilityTick(PlayerEntity playerEntity) {
-        if (!config.enableArmorEffect.get(INVISIBILITY))
-            return;
-        if (playerEntity.isAlive()) {
-
-            if (hasArmorSet(playerEntity, ArmorSets.THIEF)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == INVISIBILITY)
-                    || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == INVISIBILITY))
-                playerEntity.setInvisible(playerEntity.isSneaking());
-        }
+        if (hasArmorSet(playerEntity, ArmorSets.THIEF)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == INVISIBILITY)
+                || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == INVISIBILITY))
+            playerEntity.setInvisible(playerEntity.isSneaking());
     }
 
     public static void applyWithered(PlayerEntity playerEntity, LivingEntity attacker) {
@@ -406,23 +401,30 @@ public class ArmorEffects {
     }
 
     public static void applySylvanPresence(LivingEntity livingEntity){
+
         World world = livingEntity.getWorld();
         BlockPos blockPos = livingEntity.getBlockPos();
 
-        float size = (float) Math.min(16, 2 + 1);
-        BlockPos.Mutable mutablePosition = new BlockPos.Mutable();
+        if (livingEntity.isSneaking() && (hasRobeWithHatSet(livingEntity, ArmorSets.VERDANT)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.MYSTERY)) == SYLVAN_PRESENCE)
+                || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.GREEN_MYSTERY)) == SYLVAN_PRESENCE))
+                && world.getTime() % 20 == 0) {
 
-        for (BlockPos blockPos2 : BlockPos.iterate(blockPos.add(-size, 0.0D, -size), blockPos.add(size, 0.0D, size))) {
-            if (blockPos2.isWithinDistance(livingEntity.getPos(), size)) {
-                mutablePosition.set(blockPos2.getX(), blockPos2.getY() + 1, blockPos2.getZ());
-                BlockState checkstate = world.getBlockState(blockPos2);
-                if (checkstate.getBlock() instanceof Fertilizable fertilizable) {
-                    if (fertilizable.isFertilizable(world, blockPos2, checkstate, world.isClient)) {
-                        if (world instanceof ServerWorld) {
-                            if (fertilizable.canGrow(world, world.random, blockPos2, checkstate)) {
-                                fertilizable.grow((ServerWorld) world, world.random, blockPos2, checkstate);
-                                AOEHelper.addParticlesToBlock((ServerWorld) world, blockPos2,
-                                        ParticleTypes.HAPPY_VILLAGER);
+            float size = (float) Math.min(16, 2 + 1);
+            BlockPos.Mutable mutablePosition = new BlockPos.Mutable();
+
+            for (BlockPos blockPos2 : BlockPos.iterate(blockPos.add(-size, 0.0D, -size), blockPos.add(size, 0.0D, size))) {
+                if (blockPos2.isWithinDistance(livingEntity.getPos(), size)) {
+                    mutablePosition.set(blockPos2.getX(), blockPos2.getY() + 1, blockPos2.getZ());
+                    BlockState checkstate = world.getBlockState(blockPos2);
+                    if (checkstate.getBlock() instanceof Fertilizable fertilizable) {
+                        if (fertilizable.isFertilizable(world, blockPos2, checkstate, world.isClient)) {
+                            if (world instanceof ServerWorld) {
+                                if (fertilizable.canGrow(world, world.random, blockPos2, checkstate)) {
+                                    fertilizable.grow((ServerWorld) world, world.random, blockPos2, checkstate);
+                                    AOEHelper.addParticlesToBlock((ServerWorld) world, blockPos2,
+                                            ParticleTypes.HAPPY_VILLAGER);
+                                }
                             }
                         }
                     }

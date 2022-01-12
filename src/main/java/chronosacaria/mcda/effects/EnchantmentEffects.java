@@ -195,40 +195,43 @@ public class EnchantmentEffects {
     }
 
     public static void applyLuckyExplorer(LivingEntity livingEntity){
-        int luckyExplorerLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(LUCKY_EXPLORER),
-                livingEntity);
-        if (luckyExplorerLevel == 0) return;
+        World world = livingEntity.getWorld();
+        if (livingEntity.isOnGround() && world.getTime() % 50 == 0) {
+            int luckyExplorerLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(LUCKY_EXPLORER),
+                    livingEntity);
+            if (luckyExplorerLevel == 0) return;
 
-        float luckyExplorerThreshold = luckyExplorerLevel * 0.10f;
-        float luckyExplorerRand = livingEntity.getRandom().nextFloat();
+            float luckyExplorerThreshold = luckyExplorerLevel * 0.10f;
+            float luckyExplorerRand = livingEntity.getRandom().nextFloat();
 
-        if (luckyExplorerThreshold >= luckyExplorerRand){
-            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
+            if (luckyExplorerThreshold >= luckyExplorerRand) {
+                ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
 
-            double currentXCoord = livingEntity.getPos().getX();
-            double currentZCoord = livingEntity.getPos().getZ();
+                double currentXCoord = livingEntity.getPos().getX();
+                double currentZCoord = livingEntity.getPos().getZ();
 
-            if (feetStack.getNbt().get("x-coord") == null){
-                feetStack.getOrCreateNbt().putDouble("x-coord", currentXCoord);
-                feetStack.getOrCreateNbt().putDouble("z-coord", currentZCoord);
+                if (feetStack.getNbt().get("x-coord") == null) {
+                    feetStack.getOrCreateNbt().putDouble("x-coord", currentXCoord);
+                    feetStack.getOrCreateNbt().putDouble("z-coord", currentZCoord);
 
-                return;
-            }
+                    return;
+                }
 
-            double storedXCoord = feetStack.getNbt().getDouble("x-coord");
-            double storedZCoord = feetStack.getNbt().getDouble("z-coord");
+                double storedXCoord = feetStack.getNbt().getDouble("x-coord");
+                double storedZCoord = feetStack.getNbt().getDouble("z-coord");
 
-            Vec3d vec3d = new Vec3d(storedXCoord, 0, storedZCoord);
+                Vec3d vec3d = new Vec3d(storedXCoord, 0, storedZCoord);
 
-            double distanceBetween = Math.sqrt(vec3d.squaredDistanceTo(currentXCoord, 0, currentZCoord));
+                double distanceBetween = Math.sqrt(vec3d.squaredDistanceTo(currentXCoord, 0, currentZCoord));
 
-            if (distanceBetween >= 20) {
-                ItemEntity emerald = new ItemEntity(livingEntity.world, currentXCoord,
-                        livingEntity.getY(), currentZCoord, Items.EMERALD.getDefaultStack());
-                livingEntity.world.spawnEntity(emerald);
+                if (distanceBetween >= 20) {
+                    ItemEntity emerald = new ItemEntity(livingEntity.world, currentXCoord,
+                            livingEntity.getY(), currentZCoord, Items.EMERALD.getDefaultStack());
+                    livingEntity.world.spawnEntity(emerald);
 
-                feetStack.getOrCreateNbt().putDouble("x-coord", currentXCoord);
-                feetStack.getOrCreateNbt().putDouble("z-coord", currentZCoord);
+                    feetStack.getOrCreateNbt().putDouble("x-coord", currentXCoord);
+                    feetStack.getOrCreateNbt().putDouble("z-coord", currentZCoord);
+                }
             }
         }
     }
