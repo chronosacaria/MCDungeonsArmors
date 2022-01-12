@@ -4,7 +4,6 @@ import chronosacaria.mcda.api.*;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.items.ArmorSets;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
@@ -15,7 +14,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -239,98 +237,29 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (playerEntity.isAlive()){
             // Spider Armour Climbing
-            if (config.enableArmorEffect.get(SPIDER_CLIMBING)
-                    && this.horizontalCollision
-                    && (hasArmorSet(playerEntity, ArmorSets.SPIDER)
-                    || (ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SPIDER_CLIMBING)
-                    || (ArmorEffects.PURPLE_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == SPIDER_CLIMBING))){
-                cir.setReturnValue(true);
-            }
+            if (config.enableArmorEffect.get(SPIDER_CLIMBING))
+                if (ArmorEffects.spiderClimbing(playerEntity))
+                    cir.setReturnValue(true);
 
             // Rugged Armour Climbing
-            if (config.enableArmorEffect.get(RUGGED_CLIMBING)
-                    && hasArmorSet(playerEntity, ArmorSets.RUGGED_CLIMBING_GEAR)){
-                // If Statement provided by Apace100; Thanks, Apace!
-                if (playerEntity.world.getBlockCollisions(playerEntity,
-                        playerEntity.getBoundingBox().offset(0.01 * playerEntity.getBoundingBox().getXLength(), 0,
-                                0.01 * playerEntity.getBoundingBox().getZLength())).iterator().hasNext()
-                        || playerEntity.world.getBlockCollisions(playerEntity,
-                        playerEntity.getBoundingBox().offset(-0.01 * playerEntity.getBoundingBox().getXLength(), 0,
-                                -0.01 * playerEntity.getBoundingBox().getZLength())).iterator().hasNext() ) {
-                    this.setOnGround(true);
+            if (config.enableArmorEffect.get(RUGGED_CLIMBING))
+                if (ArmorEffects.ruggedClimbing(playerEntity))
                     cir.setReturnValue(true);
-                    this.onLanding();
-
-                    double f = 0.1D;
-                    double x = MathHelper.clamp(this.getVelocity().x, -f, f);
-                    double z = MathHelper.clamp(this.getVelocity().z, -f, f);
-                    double y = Math.max(this.getVelocity().y, -f);
-
-                    if (y < 0.0D && !this.getBlockStateAtPos().isOf(Blocks.SCAFFOLDING) && this.isSneaking()) {
-                        y = 0.0D;
-                    } else if (this.horizontalCollision && !this.getBlockStateAtPos().isOf(Blocks.SCAFFOLDING)){
-                        x /= 3.5D;
-                        y = f/2;
-                        z /= 3.5D;
-                    }
-                    this.setVelocity(x, y, z);
-                }
-            }
         }
     }
 
-    // Mixin for Teleportation Robe Effect
+    // Mixin for Jump Effects
     @Inject(method = "jump", at = @At("HEAD"))
-    public void onTeleportationRobesTeleport(CallbackInfo ci){
-        if (!config.enableArmorEffect.get(TELEPORTATION_ROBES_EFFECT))
-            return;
-        if (!((Object) this instanceof ServerPlayerEntity playerEntity))
-            return;
-        if (playerEntity != null) {
-            if (hasArmorSet(playerEntity, ArmorSets.TELEPORTATION)) {
-                if (playerEntity.isSneaking()) {
-                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
-                        ArmorEffects.endermanLikeTeleportEffect(playerEntity);
-                } else {
-                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
-                }
-            }
-        }
-    }
-
-    // Mixin for Unstable Robe Effect
-    @Inject(method = "jump", at = @At("HEAD"))
-    public void onUnstableRobesTeleport(CallbackInfo ci){
-        if (!config.enableArmorEffect.get(UNSTABLE_ROBES_EFFECT))
-            return;
-        if (!((Object) this instanceof ServerPlayerEntity playerEntity))
-            return;
-
-        if (playerEntity != null) {
-            if (hasArmorSet(playerEntity, ArmorSets.UNSTABLE)) {
-                if (playerEntity.isSneaking()) {
-                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
-                    AOECloudHelper.spawnExplosionCloud(playerEntity, playerEntity, 3.0F);
-                    AOEHelper.causeExplosion(playerEntity, playerEntity, 5, 3.0f);
-                    if (config.controlledTeleportation){
-                        ArmorEffects.controlledTeleportEffect(playerEntity);
-                    } else {
-                        ArmorEffects.endermanLikeTeleportEffect(playerEntity);
-                    }
-                } else {
-                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
-                }
-            }
-        }
-    }
-
-    @Inject(method = "jump", at = @At("HEAD"))
-    public void onEmberJump(CallbackInfo ci){
+    public void onMCDAJumpEffects(CallbackInfo ci){
         if (!((Object) this instanceof ServerPlayerEntity playerEntity))
             return;
         if (playerEntity != null) {
             if (config.enableArmorEffect.get(EMBER_JUMP))
                 ArmorEffects.applyEmberJumpEffect(playerEntity);
+            if (config.enableArmorEffect.get(TELEPORTATION_ROBES_EFFECT))
+                ArmorEffects.teleportationRobeTeleport(playerEntity);
+            if (config.enableArmorEffect.get(UNSTABLE_ROBES_EFFECT))
+                ArmorEffects.unstableRobeTeleport(playerEntity);
         }
     }
 

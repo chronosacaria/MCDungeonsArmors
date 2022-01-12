@@ -4,6 +4,7 @@ import chronosacaria.mcda.api.AOECloudHelper;
 import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.entities.SummonedBeeEntity;
 import chronosacaria.mcda.items.ArmorSets;
+import chronosacaria.mcda.mixin.PlayerTeleportationStateAccessor;
 import chronosacaria.mcda.registry.SoundsRegistry;
 import chronosacaria.mcda.registry.StatusEffectsRegistry;
 import chronosacaria.mcda.registry.SummonedEntityRegistry;
@@ -174,7 +175,7 @@ public class ArmorEffects {
         World world = livingEntity.getEntityWorld();
         Vec3d target = raytraceForTeleportation(livingEntity);
 
-        if (!world.isClient && target != null) {
+        if (!world.isClient /*&& target != null*/) {
             double xpos = livingEntity.getX();
             double ypos = livingEntity.getY();
             double zpos = livingEntity.getZ();
@@ -240,6 +241,34 @@ public class ArmorEffects {
     private static boolean positionIsClear(World world, BlockPos pos) {
         return (world.isAir(pos) || world.getBlockState(pos).getCollisionShape(world, pos).isEmpty()
                 && (world.isAir(pos.up()) || world.getBlockState(pos.up()).getCollisionShape(world, pos.up()).isEmpty()));
+    }
+
+    public static void teleportationRobeTeleport(ServerPlayerEntity playerEntity){
+        if (hasArmorSet(playerEntity, ArmorSets.TELEPORTATION)) {
+            if (playerEntity.isSneaking()) {
+                ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
+                ArmorEffects.endermanLikeTeleportEffect(playerEntity);
+            } else {
+                ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
+            }
+        }
+    }
+
+    public static void unstableRobeTeleport(ServerPlayerEntity playerEntity){
+        if (hasArmorSet(playerEntity, ArmorSets.UNSTABLE)) {
+            if (playerEntity.isSneaking()) {
+                ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
+                AOECloudHelper.spawnExplosionCloud(playerEntity, playerEntity, 3.0F);
+                AOEHelper.causeExplosion(playerEntity, playerEntity, 5, 3.0f);
+                if (config.controlledTeleportation){
+                    ArmorEffects.controlledTeleportEffect(playerEntity);
+                } else {
+                    ArmorEffects.endermanLikeTeleportEffect(playerEntity);
+                }
+            } else {
+                ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
+            }
+        }
     }
 
     public static void applyFluidFreezing(PlayerEntity playerEntity) {
@@ -662,6 +691,44 @@ public class ArmorEffects {
                 }
             }
         }
+    }
+
+    public static boolean spiderClimbing(PlayerEntity playerEntity) {
+        return playerEntity.horizontalCollision
+                && (hasArmorSet(playerEntity, ArmorSets.SPIDER)
+                || (ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SPIDER_CLIMBING)
+                || (ArmorEffects.PURPLE_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == SPIDER_CLIMBING));
+    }
+
+    public static boolean ruggedClimbing(PlayerEntity playerEntity){
+        if (hasArmorSet(playerEntity, ArmorSets.RUGGED_CLIMBING_GEAR)){
+            // If Statement provided by Apace100; Thanks, Apace!
+            if (playerEntity.world.getBlockCollisions(playerEntity,
+                    playerEntity.getBoundingBox().offset(0.01 * playerEntity.getBoundingBox().getXLength(), 0,
+                            0.01 * playerEntity.getBoundingBox().getZLength())).iterator().hasNext()
+                    || playerEntity.world.getBlockCollisions(playerEntity,
+                    playerEntity.getBoundingBox().offset(-0.01 * playerEntity.getBoundingBox().getXLength(), 0,
+                            -0.01 * playerEntity.getBoundingBox().getZLength())).iterator().hasNext() ) {
+                playerEntity.setOnGround(true);
+                playerEntity.onLanding();
+
+                double f = 0.1D;
+                double x = MathHelper.clamp(playerEntity.getVelocity().x, -f, f);
+                double z = MathHelper.clamp(playerEntity.getVelocity().z, -f, f);
+                double y = Math.max(playerEntity.getVelocity().y, -f);
+
+                if (y < 0.0D && !playerEntity.getBlockStateAtPos().isOf(Blocks.SCAFFOLDING) && playerEntity.isSneaking()) {
+                    y = 0.0D;
+                } else if (playerEntity.horizontalCollision && !playerEntity.getBlockStateAtPos().isOf(Blocks.SCAFFOLDING)){
+                    x /= 3.5D;
+                    y = f/2;
+                    z /= 3.5D;
+                }
+                playerEntity.setVelocity(x, y, z);
+                return true;
+            }
+        }
+        return false;
     }
 
     // Effects for ServerPlayerEntityMixin
