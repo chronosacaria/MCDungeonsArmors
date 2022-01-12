@@ -244,7 +244,9 @@ public abstract class LivingEntityMixin extends Entity {
         // Mixins for Armour and Enchantment Effects on Tick for PlayerEntities
         if((Object) this instanceof PlayerEntity playerEntity) {
 
-            ArmorEffects.applyFluidFreezing(playerEntity);
+            if (config.enableArmorEffect.get(FLUID_FREEZING))
+                ArmorEffects.applyFluidFreezing(playerEntity);
+
             ArmorEffects.applyThiefInvisibilityTick(playerEntity);
 
             if (config.enableArmorEffect.get(SYLVAN_PRESENCE) && playerEntity.isAlive() && playerEntity.isSneaking() && (hasRobeWithHatSet(playerEntity, ArmorSets.VERDANT)
@@ -529,6 +531,7 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     // Mixin for Knockback Resistance for Stalwart Bulwark Effect
+    @SuppressWarnings("ModifyVariableMayBeArgsOnly")
     @ModifyVariable(method = "takeKnockback", at = @At("HEAD"), ordinal = 0)
     private double applyStalwartBulwarkKnockbackResistanceEffect(double strength){
         LivingEntity livingEntity = (LivingEntity) (Object) this;
@@ -541,6 +544,7 @@ public abstract class LivingEntityMixin extends Entity {
         return strength;
     }
 
+    @SuppressWarnings("ModifyVariableMayBeArgsOnly")
     @ModifyVariable(method = "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;" +
             "Lnet/minecraft/entity/Entity;)Z", at = @At("HEAD"))
     private StatusEffectInstance troubadoursCharismaModifyStatusEffect(StatusEffectInstance statusEffectInstance){
