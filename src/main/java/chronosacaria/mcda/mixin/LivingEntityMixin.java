@@ -6,14 +6,19 @@ import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.items.ArmorSets;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -22,6 +27,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.List;
 
 import static chronosacaria.mcda.api.CleanlinessHelper.*;
 import static chronosacaria.mcda.config.McdaConfig.config;
@@ -87,6 +94,8 @@ public abstract class LivingEntityMixin extends Entity {
                         ArmorEffects.applySplendidAoEAttackEffect(playerEntity, target);
                     if (config.enableArmorEffect.get(GILDED_HERO))
                         ArmorEffects.gildedHeroDamageBuff(playerEntity, target);
+                    if (config.enableArmorEffect.get(ARCTIC_FOXS_HIGH_GROUND))
+                        ArmorEffects.arcticFoxsHighGround(playerEntity, target, amount);
                 }
             }
         }
@@ -288,6 +297,28 @@ public abstract class LivingEntityMixin extends Entity {
                     }
                 }
             }
+        }
+    }
+
+
+    //Its broken AF
+    @Inject(method = "onAttacking", at = @At("HEAD"))
+    public void onFoxPounce(Entity target, CallbackInfo ci){
+        if(((Object) this instanceof PlayerEntity playerEntity)) {
+
+            //List<HostileEntity> found = world.getEntitiesByClass(HostileEntity.class, new Box())
+
+            double xVel = playerEntity.getVelocity().x;
+            double yVel = playerEntity.getVelocity().y;
+            double zVel = playerEntity.getVelocity().z;
+
+            //if (playerEntity.isSneaking()) {
+                if (target instanceof LivingEntity) {
+                    playerEntity.setOnGround(true);
+                    playerEntity.onLanding();
+                    playerEntity.addVelocity(100.0D, 100.0D, 100.0D);
+                }
+            //}
         }
     }
 

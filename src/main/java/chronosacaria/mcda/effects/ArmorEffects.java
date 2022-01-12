@@ -2,6 +2,8 @@ package chronosacaria.mcda.effects;
 
 import chronosacaria.mcda.api.AOECloudHelper;
 import chronosacaria.mcda.api.AOEHelper;
+import chronosacaria.mcda.api.CleanlinessHelper;
+import chronosacaria.mcda.config.McdaConfig;
 import chronosacaria.mcda.entities.SummonedBeeEntity;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.mixin.PlayerTeleportationStateAccessor;
@@ -490,7 +492,7 @@ public class ArmorEffects {
 
     public static void applySplendidAoEAttackEffect(PlayerEntity playerEntity, LivingEntity target){
 
-        if (hasRobeSet(playerEntity, ArmorSets.SPLENDID))
+        if (!hasRobeSet(playerEntity, ArmorSets.SPLENDID))
             return;
 
         float splendidRand = playerEntity.getRandom().nextFloat();
@@ -729,6 +731,14 @@ public class ArmorEffects {
             }
         }
         return false;
+    }
+
+    public static void arcticFoxsHighGround(PlayerEntity playerEntity, LivingEntity target, float amount){
+        if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
+            if (playerEntity.getVelocity().y < 0) {
+                target.damage(DamageSource.GENERIC, amount * 1.5f);
+            }
+        }
     }
 
     // Effects for ServerPlayerEntityMixin
@@ -983,6 +993,18 @@ public class ArmorEffects {
             StatusEffectInstance strength = new StatusEffectInstance(StatusEffects.STRENGTH, 42, 2, false,
                     false);
             playerEntity.addStatusEffect(strength);
+        }
+    }
+
+    public static void sweetBerrySpeed(ServerPlayerEntity playerEntity){
+        if (McdaConfig.config.enableArmorEffect.get(ArmorEffectID.SWEET_BERRY_SPEED)) {
+            if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.FOX)
+                    || CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
+                if (playerEntity.getMainHandStack().getItem() == Items.SWEET_BERRIES) {
+                    StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 200, 0, false, false);
+                    playerEntity.addStatusEffect(speed);
+                }
+            }
         }
     }
 

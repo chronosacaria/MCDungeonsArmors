@@ -1,6 +1,8 @@
 
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.config.McdaConfig;
+import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -38,5 +40,13 @@ public class ServerPlayerEntityMixin {
 
         // Status Effect Removal
         ArmorEffects.applyLevitationRemoval(playerEntity); // Sturdy Shulker Armour Remove Levitation Effect
+    }
+
+    @Inject(method = "consumeItem", at = @At("HEAD"))
+    public void onMCDAConsumeItem(CallbackInfo ci){
+
+        ServerPlayerEntity playerEntity = (ServerPlayerEntity) (Object) this;
+
+        ArmorEffects.sweetBerrySpeed(playerEntity);
     }
 }

@@ -14,7 +14,8 @@
     "PiglinBrainMixin",
     "PlayerTeleportationStateAccessor",
     "PowderSnowBlockMixin",
-    "ServerPlayerEntityMixin"
+    "ServerPlayerEntityMixin",
+    "SweetBerryBushBlockMixin"
   ],
   "client": [
     "InGameOverlayRendererMixin"
