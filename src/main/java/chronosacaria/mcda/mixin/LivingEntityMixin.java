@@ -369,18 +369,11 @@ public abstract class LivingEntityMixin extends Entity {
     // Mixin for Death Barter
     @Inject(method = "tryUseTotem", at = @At("HEAD"), cancellable = true)
     public void onDeathBarterDeath(DamageSource damageSource, CallbackInfoReturnable<Boolean> cir){
+        if(!((Object) this instanceof PlayerEntity playerEntity))
+            return;
+
         if (!config.enableEnchantment.get(DEATH_BARTER))
             return;
-
-        LivingEntity livingEntity = (LivingEntity) (Object) this;
-
-        PlayerEntity playerEntity = null;
-
-        if (livingEntity instanceof PlayerEntity){
-            playerEntity = (PlayerEntity) livingEntity;
-        } else {
-            return;
-        }
 
         PlayerInventory playerInventory = playerEntity.getInventory();
         int emeraldTotal = 0;
@@ -434,33 +427,28 @@ public abstract class LivingEntityMixin extends Entity {
                 && hasArmorSet(livingEntity, ArmorSets.GILDED)
                 && livingEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)){
             if (!source.isOutOfWorld()) {
-                Iterable<ItemStack> iterable = livingEntity.getArmorItems();
-                Iterator var4 = iterable.iterator();
 
                 // Trackers
-                boolean itemToBreak = false;
                 int i = 0;
-                int r = 0;
-
                 float[] armorPieceDurability = {0, 0, 0, 0};
 
-                while(var4.hasNext()) {
-                    ItemStack itemStack = (ItemStack)var4.next();
+                Iterable<ItemStack> iterable = livingEntity.getArmorItems();
+
+                for (ItemStack itemStack : iterable) {
                     float k = itemStack.getMaxDamage();
                     float j = k - itemStack.getDamage();
-                    armorPieceDurability[i] = j/k;
+                    armorPieceDurability[i] = j / k;
                     i++;
                 }
+
+                int r = 0;
                 for (int k = 0; k < 3 ; k++){
                     if (armorPieceDurability[k + 1] > armorPieceDurability[r]) {
                         r = k + 1;
                     }
                 }
                 if (!(armorPieceDurability[r] > 0.50f)) {
-                    itemToBreak = true;
-                }
-
-                if (itemToBreak) {
+                    //Item breaks
                     switch (r) {
                         case 0 -> {
                             ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
@@ -492,6 +480,7 @@ public abstract class LivingEntityMixin extends Entity {
                         }
                     }
                 } else {
+                    //reduce by 50%
                     switch (r) {
                         case 0 -> {
                             ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
