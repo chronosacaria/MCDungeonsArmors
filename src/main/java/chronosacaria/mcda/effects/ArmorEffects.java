@@ -2,15 +2,14 @@ package chronosacaria.mcda.effects;
 
 import chronosacaria.mcda.api.AOECloudHelper;
 import chronosacaria.mcda.api.AOEHelper;
+import chronosacaria.mcda.entities.SummonedBeeEntity;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.SoundsRegistry;
 import chronosacaria.mcda.registry.StatusEffectsRegistry;
+import chronosacaria.mcda.registry.SummonedEntityRegistry;
 import net.minecraft.block.*;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
@@ -44,6 +43,8 @@ import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
 
 public class ArmorEffects {
+
+    public static EntityType<SummonedBeeEntity> summonedBee = SummonedEntityRegistry.SUMMONED_BEE_ENTITY;
 
     public static final List<StatusEffect> TITAN_SHROUD_STATUS_EFFECTS_LIST =
             List.of(StatusEffects.HUNGER, StatusEffects.NAUSEA, StatusEffects.BLINDNESS,
@@ -526,7 +527,7 @@ public class ArmorEffects {
         }
     }
 
-    public static  boolean souldancerGraceEffect(PlayerEntity playerEntity) {
+    public static boolean souldancerGraceEffect(PlayerEntity playerEntity) {
         if (!hasArmorSet(playerEntity, ArmorSets.SOULDANCER))
             return false;
         if (!playerEntity.isAlive())
@@ -554,7 +555,101 @@ public class ArmorEffects {
         return  false;
     }
 
-    /*public static void buzzyHiveEffect(LivingEntity targetedEntity) {
+    public static boolean gildedGloryTotemEffect(LivingEntity livingEntity){
+        if (hasArmorSet(livingEntity, ArmorSets.GILDED)
+                && livingEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)) {
+            // Trackers
+            int i = 0;
+            float[] armorPieceDurability = {0, 0, 0, 0};
+
+            Iterable<ItemStack> iterable = livingEntity.getArmorItems();
+
+            for (ItemStack itemStack : iterable) {
+                float k = itemStack.getMaxDamage();
+                float j = k - itemStack.getDamage();
+                armorPieceDurability[i] = j / k;
+                i++;
+            }
+
+            int r = 0;
+            for (int k = 0; k < 3; k++) {
+                if (armorPieceDurability[k + 1] > armorPieceDurability[r]) {
+                    r = k + 1;
+                }
+            }
+            if (!(armorPieceDurability[r] > 0.50f)) {
+                //Item breaks
+                switch (r) {
+                    case 0 -> {
+                        ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
+                        int k = feetStack.getMaxDamage();
+                        int j = k - feetStack.getDamage();
+                        feetStack.damage(j, livingEntity,
+                                (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.FEET));
+                    }
+                    case 1 -> {
+                        ItemStack legStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
+                        int k = legStack.getMaxDamage();
+                        int j = k - legStack.getDamage();
+                        legStack.damage(j, livingEntity,
+                                (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.LEGS));
+                    }
+                    case 2 -> {
+                        ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
+                        int k = chestStack.getMaxDamage();
+                        int j = k - chestStack.getDamage();
+                        chestStack.damage(j, livingEntity,
+                                (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.CHEST));
+                    }
+                    case 3 -> {
+                        ItemStack headStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
+                        int k = headStack.getMaxDamage();
+                        int j = k - headStack.getDamage();
+                        headStack.damage(j, livingEntity,
+                                (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.HEAD));
+                    }
+                }
+            } else {
+                //reduce by 50%
+                switch (r) {
+                    case 0 -> {
+                        ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
+                        int k = feetStack.getMaxDamage();
+                        feetStack.damage((k / 2), livingEntity,
+                                (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.FEET));
+                    }
+                    case 1 -> {
+                        ItemStack legStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
+                        int k = legStack.getMaxDamage();
+                        legStack.damage((k / 2), livingEntity,
+                                (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.LEGS));
+                    }
+                    case 2 -> {
+                        ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
+                        int k = chestStack.getMaxDamage();
+                        chestStack.damage((k / 2), livingEntity,
+                                (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.CHEST));
+                    }
+                    case 3 -> {
+                        ItemStack headStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
+                        int k = headStack.getMaxDamage();
+                        headStack.damage((k / 2), livingEntity,
+                                (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.HEAD));
+                    }
+                }
+            }
+            livingEntity.setHealth(1.0F);
+            livingEntity.clearStatusEffects();
+            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
+            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1));
+            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
+            livingEntity.world.sendEntityStatus(livingEntity, (byte) 35);
+            return true;
+        }
+        return false;
+    }
+
+    public static void buzzyHiveEffect(LivingEntity targetedEntity) {
         if (hasArmorSet(targetedEntity, ArmorSets.BEEHIVE)) {
             float beeSummonChance = targetedEntity.getRandom().nextFloat();
             if (beeSummonChance <= 0.15F) {
@@ -567,7 +662,7 @@ public class ArmorEffects {
                 }
             }
         }
-    }*/
+    }
 
     // Effects for ServerPlayerEntityMixin
     public static void applyHaste(ServerPlayerEntity playerEntity){

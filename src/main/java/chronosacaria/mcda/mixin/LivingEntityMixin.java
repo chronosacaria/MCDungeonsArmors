@@ -3,23 +3,16 @@ package chronosacaria.mcda.mixin;
 import chronosacaria.mcda.api.*;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
-import chronosacaria.mcda.entities.SummonedBeeEntity;
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.registry.EnchantsRegistry;
-import chronosacaria.mcda.registry.SummonedEntityRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -32,14 +25,13 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.*;
-
 import static chronosacaria.mcda.api.CleanlinessHelper.*;
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
 import static chronosacaria.mcda.effects.ArmorEffects.*;
 import static chronosacaria.mcda.enchants.EnchantID.*;
 
+@SuppressWarnings("ConstantConditions")
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
 
@@ -54,8 +46,6 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow public abstract int getArmor();
 
     @Shadow public abstract void setOnGround(boolean onGround);
-
-    public EntityType<SummonedBeeEntity> summonedBee = SummonedEntityRegistry.SUMMONED_BEE_ENTITY;
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
@@ -161,29 +151,9 @@ public abstract class LivingEntityMixin extends Entity {
                 if (config.enableArmorEffect.get(CAULDRONS_OVERFLOW))
                     ArmorEffects.applyCauldronsOverflow(livingEntity, amount);
             }
-        }
-    }
-
-    @Inject(method = "damage", at = @At("HEAD"))
-    public void summonBeesOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-
-        if (!(source.getAttacker() instanceof LivingEntity)) return;
-
-        LivingEntity targetedEntity = (LivingEntity) (Object) this;
-
-        if (amount != 0.0F) {
-            if (!config.enableArmorEffect.get(BUZZY_HIVE))
-                return;
-            if (hasArmorSet(targetedEntity, ArmorSets.BEEHIVE)) {
-                float beeSummonChance = targetedEntity.getRandom().nextFloat();
-                if (beeSummonChance <= 0.15F) {
-                    SummonedBeeEntity summonedBeeEntity = summonedBee.create(world);
-                    if (summonedBeeEntity != null) {
-                        summonedBeeEntity.setSummoner(targetedEntity);
-                        summonedBeeEntity.refreshPositionAndAngles(this.getX(), this.getY() + 1, this.getZ(), 0, 0);
-                        world.spawnEntity(summonedBeeEntity);
-                    }
-                }
+            if (amount > 0 && source.getAttacker() instanceof LivingEntity){
+                if (config.enableArmorEffect.get(BUZZY_HIVE))
+                    ArmorEffects.buzzyHiveEffect(livingEntity);
             }
         }
     }
@@ -364,155 +334,30 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    // Mixin for Death Barter
+    // Mixin for MCDA Totem Deaths
     @Inject(method = "tryUseTotem", at = @At("HEAD"), cancellable = true)
-    public void onDeathBarterDeath(DamageSource damageSource, CallbackInfoReturnable<Boolean> cir){
-        if(!((Object) this instanceof PlayerEntity playerEntity))
-            return;
+    public void onMCDATotemDeaths(DamageSource damageSource, CallbackInfoReturnable<Boolean> cir){
+        // Death Barter
+        if(((Object) this instanceof PlayerEntity playerEntity)) {
 
-        if (!config.enableEnchantment.get(DEATH_BARTER))
-            return;
-
-        PlayerInventory playerInventory = playerEntity.getInventory();
-        int emeraldTotal = 0;
-        List<Integer> emeraldSlotIndices = new ArrayList<>();
-        for(int slotIndex = 0; slotIndex < playerInventory.size(); slotIndex++){
-            ItemStack currentStack = playerInventory.getStack(slotIndex);
-            if(currentStack.getItem() == Items.EMERALD){
-                emeraldTotal += currentStack.getCount();
-                emeraldSlotIndices.add(slotIndex);
+            if (config.enableEnchantment.get(DEATH_BARTER)) {
+                if (!damageSource.isOutOfWorld()) {
+                    if (EnchantmentEffects.deathBarterEffect(playerEntity)) {
+                        cir.setReturnValue(true);
+                    }
+                }
             }
         }
 
-        int deathBarterLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(DEATH_BARTER), playerEntity);
-        if (deathBarterLevel > 0) {
-            int minEmeralds = 150 / deathBarterLevel;
-            if (emeraldTotal >= minEmeralds && emeraldTotal > 0) {
+        // Gilded Glory Gilded Hero Effect
+        if(((Object) this instanceof LivingEntity livingEntity)) {
 
-                for (Integer slotIndex : emeraldSlotIndices) {
-                    if (minEmeralds > 0) {
-                        ItemStack currentEmeraldsStack = playerInventory.getStack(slotIndex);
-                        int currentEmeraldsCount = currentEmeraldsStack.getCount();
-                        if (currentEmeraldsCount >= minEmeralds) {
-                            currentEmeraldsStack.setCount(currentEmeraldsCount - minEmeralds);
-                            minEmeralds = 0;
-                        } else {
-                            currentEmeraldsStack.setCount(0);
-                            minEmeralds -= currentEmeraldsCount;
-                        }
-                    } else {
-                        break;
-                    }
-
-                    playerEntity.setHealth(1.0F);
-                    playerEntity.clearStatusEffects();
-                    playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
-                    playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1));
-                    playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
-
-                    cir.setReturnValue(true);
-                }
-            }
-        }
-    }
-
-    @Inject(method = "tryUseTotem", at = @At("HEAD"), cancellable = true)
-    private void tryUseGildedTotemEffect(DamageSource source, CallbackInfoReturnable<Boolean> cir){
-
-        LivingEntity livingEntity = (LivingEntity) (Object) this;
-
-        if (config.enableArmorEffect.get(GILDED_HERO)
-                && hasArmorSet(livingEntity, ArmorSets.GILDED)
-                && livingEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)){
-            if (!source.isOutOfWorld()) {
-
-                // Trackers
-                int i = 0;
-                float[] armorPieceDurability = {0, 0, 0, 0};
-
-                Iterable<ItemStack> iterable = livingEntity.getArmorItems();
-
-                for (ItemStack itemStack : iterable) {
-                    float k = itemStack.getMaxDamage();
-                    float j = k - itemStack.getDamage();
-                    armorPieceDurability[i] = j / k;
-                    i++;
-                }
-
-                int r = 0;
-                for (int k = 0; k < 3 ; k++){
-                    if (armorPieceDurability[k + 1] > armorPieceDurability[r]) {
-                        r = k + 1;
+            if (config.enableArmorEffect.get(GILDED_HERO)) {
+                if (!damageSource.isOutOfWorld()) {
+                    if (ArmorEffects.gildedGloryTotemEffect(livingEntity)) {
+                        cir.setReturnValue(true);
                     }
                 }
-                if (!(armorPieceDurability[r] > 0.50f)) {
-                    //Item breaks
-                    switch (r) {
-                        case 0 -> {
-                            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
-                            int k = feetStack.getMaxDamage();
-                            int j = k - feetStack.getDamage();
-                            feetStack.damage(j, livingEntity,
-                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.FEET));
-                        }
-                        case 1 -> {
-                            ItemStack legStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
-                            int k = legStack.getMaxDamage();
-                            int j = k - legStack.getDamage();
-                            legStack.damage(j, livingEntity,
-                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.LEGS));
-                        }
-                        case 2 -> {
-                            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
-                            int k = chestStack.getMaxDamage();
-                            int j = k - chestStack.getDamage();
-                            chestStack.damage(j, livingEntity,
-                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.CHEST));
-                        }
-                        case 3 -> {
-                            ItemStack headStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
-                            int k = headStack.getMaxDamage();
-                            int j = k - headStack.getDamage();
-                            headStack.damage(j, livingEntity,
-                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.HEAD));
-                        }
-                    }
-                } else {
-                    //reduce by 50%
-                    switch (r) {
-                        case 0 -> {
-                            ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
-                            int k = feetStack.getMaxDamage();
-                            feetStack.damage((k / 2), livingEntity,
-                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.FEET));
-                        }
-                        case 1 -> {
-                            ItemStack legStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
-                            int k = legStack.getMaxDamage();
-                            legStack.damage((k / 2), livingEntity,
-                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.LEGS));
-                        }
-                        case 2 -> {
-                            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
-                            int k = chestStack.getMaxDamage();
-                            chestStack.damage((k / 2), livingEntity,
-                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.CHEST));
-                        }
-                        case 3 -> {
-                            ItemStack headStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
-                            int k = headStack.getMaxDamage();
-                            headStack.damage((k / 2), livingEntity,
-                                    (entity) -> entity.sendEquipmentBreakStatus(EquipmentSlot.HEAD));
-                        }
-                    }
-                }
-                livingEntity.setHealth(1.0F);
-                livingEntity.clearStatusEffects();
-                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
-                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1));
-                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
-                livingEntity.world.sendEntityStatus(livingEntity, (byte)35);
-                cir.setReturnValue(true);
             }
         }
     }

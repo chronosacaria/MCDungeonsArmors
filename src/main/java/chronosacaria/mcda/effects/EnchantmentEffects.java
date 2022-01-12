@@ -12,6 +12,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -22,8 +23,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import static chronosacaria.mcda.config.McdaConfig.config;
@@ -31,15 +31,15 @@ import static chronosacaria.mcda.enchants.EnchantID.*;
 
 public class EnchantmentEffects {
 
-    public static final List<Item> FOOD_RESERVE_LIST = Collections.unmodifiableList(Arrays.asList(
-            Items.APPLE, Items.BREAD, Items.COOKED_SALMON, Items.COOKED_PORKCHOP, Items.COOKED_MUTTON,
-            Items.COOKED_COD, Items.COOKED_COD, Items.COOKED_RABBIT, Items.COOKED_CHICKEN, Items.COOKED_BEEF,
-            Items.MELON_SLICE, Items.CARROT, Items.GOLDEN_CARROT, Items.GOLDEN_APPLE, Items.BAKED_POTATO));
+    public static final List<Item> FOOD_RESERVE_LIST = List.of(Items.APPLE, Items.BREAD, Items.COOKED_SALMON,
+            Items.COOKED_PORKCHOP, Items.COOKED_MUTTON, Items.COOKED_COD, Items.COOKED_COD, Items.COOKED_RABBIT,
+            Items.COOKED_CHICKEN, Items.COOKED_BEEF, Items.MELON_SLICE, Items.CARROT, Items.GOLDEN_CARROT,
+            Items.GOLDEN_APPLE, Items.BAKED_POTATO);
 
-    public static final List<ItemStack> SURPRISE_GIFT_LIST = Collections.unmodifiableList(Arrays.asList(
-            PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.STRENGTH),
-            PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.SWIFTNESS),
-            PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.INVISIBILITY)));
+    public static final List<ItemStack> SURPRISE_GIFT_LIST =
+            List.of(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.STRENGTH),
+                    PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.SWIFTNESS),
+                    PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.INVISIBILITY));
 
     protected static boolean isInstantHealthPotion(ItemStack itemStack) {
         boolean hasInstantHealth = false;
@@ -252,5 +252,50 @@ public class EnchantmentEffects {
             float multiplier = 1 + (0.25F * poisonFocusLevel);
             target.damage(DamageSource.MAGIC, amount * multiplier);
         }
+    }
+
+    public static boolean deathBarterEffect(PlayerEntity playerEntity){
+        PlayerInventory playerInventory = playerEntity.getInventory();
+        int emeraldTotal = 0;
+        List<Integer> emeraldSlotIndices = new ArrayList<>();
+        for(int slotIndex = 0; slotIndex < playerInventory.size(); slotIndex++){
+            ItemStack currentStack = playerInventory.getStack(slotIndex);
+            if(currentStack.getItem() == Items.EMERALD){
+                emeraldTotal += currentStack.getCount();
+                emeraldSlotIndices.add(slotIndex);
+            }
+        }
+
+        int deathBarterLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(DEATH_BARTER), playerEntity);
+        if (deathBarterLevel > 0) {
+            int minEmeralds = 150 / deathBarterLevel;
+            if (emeraldTotal >= minEmeralds && emeraldTotal > 0) {
+
+                for (Integer slotIndex : emeraldSlotIndices) {
+                    if (minEmeralds > 0) {
+                        ItemStack currentEmeraldsStack = playerInventory.getStack(slotIndex);
+                        int currentEmeraldsCount = currentEmeraldsStack.getCount();
+                        if (currentEmeraldsCount >= minEmeralds) {
+                            currentEmeraldsStack.setCount(currentEmeraldsCount - minEmeralds);
+                            minEmeralds = 0;
+                        } else {
+                            currentEmeraldsStack.setCount(0);
+                            minEmeralds -= currentEmeraldsCount;
+                        }
+                    } else {
+                        break;
+                    }
+
+                    playerEntity.setHealth(1.0F);
+                    playerEntity.clearStatusEffects();
+                    playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
+                    playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1));
+                    playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
+
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
