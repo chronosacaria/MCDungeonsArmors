@@ -71,7 +71,7 @@ public class ProjectileEffectHelper {
         user.world.spawnEntity(shulkerBulletEntity);
     }
 
-    public static void ricochetArrowLikeShield(PersistentProjectileEntity persistentProjectileEntity, LivingEntity livingEntity){
+    public static void ricochetArrowLikeShield(PersistentProjectileEntity persistentProjectileEntity){
         persistentProjectileEntity.setVelocity(persistentProjectileEntity.getVelocity().multiply(-0.1D));
         persistentProjectileEntity.getYaw(180.0F);
         persistentProjectileEntity.prevYaw += 180.0F;
@@ -83,6 +83,7 @@ public class ProjectileEffectHelper {
         }
     }
 
+    @SuppressWarnings("SuspiciousNameCombination")
     public static void setProjectileTowards(ProjectileEntity projectileEntity, double x, double y, double z, float inaccuracy) {
         Vec3d vec3d = (new Vec3d(x, y, z))
                 .normalize()

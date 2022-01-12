@@ -47,7 +47,7 @@ public abstract class PersistentProjectileEntityMixin {
                 if (ci.isCancellable()) {
                     ci.cancel();
                 }
-                ProjectileEffectHelper.ricochetArrowLikeShield(persistentProjectileEntity, (LivingEntity) victim);
+                ProjectileEffectHelper.ricochetArrowLikeShield(persistentProjectileEntity);
             }
         }
     }
