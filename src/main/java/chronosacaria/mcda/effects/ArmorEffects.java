@@ -2,7 +2,6 @@ package chronosacaria.mcda.effects;
 
 import chronosacaria.mcda.api.AOECloudHelper;
 import chronosacaria.mcda.api.AOEHelper;
-import chronosacaria.mcda.entities.SummonedBeeEntity;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.SoundsRegistry;
 import chronosacaria.mcda.registry.StatusEffectsRegistry;
@@ -227,9 +226,9 @@ public class ArmorEffects {
                 positionIsFree = positionIsClear(world, teleportPos) && world.raycast(new RaycastContext(eyeVec,
                         Vec3d.ofCenter(teleportPos.up()),
                         RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.NONE, livingEntity)).getType() == HitResult.Type.MISS;
-                //if (teleportPos.getY() <= 0){
-                //    break;
-                //}
+                if (teleportPos.getY() <= 0){
+                    break;
+                }
             }
         } else if (positionIsFree) {
             Vec3d.ofCenter(teleportPos);
@@ -265,18 +264,18 @@ public class ArmorEffects {
                         BlockState blockState2 = world.getBlockState(mutable);
                         if (blockState2.isAir()) {
                             BlockState blockState3 = world.getBlockState(blockPos2);
-                                // Transform Water
-                                BlockState blockState = Blocks.FROSTED_ICE.getDefaultState();
-                                if (blockState3.getMaterial() == Material.WATER && blockState3.get(FluidBlock.LEVEL) == 0 && blockState.canPlaceAt(world, blockPos2) && world.canPlace(blockState, blockPos2, ShapeContext.absent())) {
-                                    world.setBlockState(blockPos2, blockState);
-                                    world.createAndScheduleBlockTick(blockPos2, Blocks.FROSTED_ICE, MathHelper.nextInt(playerEntity.getRandom(), 60, 120));
-                                }
-                                // Transform Lava
-                                blockState = Blocks.CRYING_OBSIDIAN.getDefaultState();
-                                if (blockState3.getMaterial() == Material.LAVA && blockState3.get(FluidBlock.LEVEL) == 0 && blockState.canPlaceAt(world, blockPos2) && world.canPlace(blockState, blockPos2, ShapeContext.absent())) {
-                                    world.setBlockState(blockPos2, blockState);
-                                    world.createAndScheduleBlockTick(blockPos2, Blocks.CRYING_OBSIDIAN, MathHelper.nextInt(playerEntity.getRandom(), 60, 120));
-                                }
+                            // Transform Water
+                            BlockState blockState = Blocks.FROSTED_ICE.getDefaultState();
+                            if (blockState3.getMaterial() == Material.WATER && blockState3.get(FluidBlock.LEVEL) == 0 && blockState.canPlaceAt(world, blockPos2) && world.canPlace(blockState, blockPos2, ShapeContext.absent())) {
+                                world.setBlockState(blockPos2, blockState);
+                                world.createAndScheduleBlockTick(blockPos2, Blocks.FROSTED_ICE, MathHelper.nextInt(playerEntity.getRandom(), 60, 120));
+                            }
+                            // Transform Lava
+                            blockState = Blocks.CRYING_OBSIDIAN.getDefaultState();
+                            if (blockState3.getMaterial() == Material.LAVA && blockState3.get(FluidBlock.LEVEL) == 0 && blockState.canPlaceAt(world, blockPos2) && world.canPlace(blockState, blockPos2, ShapeContext.absent())) {
+                                world.setBlockState(blockPos2, blockState);
+                                world.createAndScheduleBlockTick(blockPos2, Blocks.CRYING_OBSIDIAN, MathHelper.nextInt(playerEntity.getRandom(), 60, 120));
+                            }
                         }
                     }
                 }
@@ -379,6 +378,194 @@ public class ArmorEffects {
             targetedEntity.world.spawnEntity(potion);
         }
     }
+
+    public static void applyCuriousTeleportationEffect(PlayerEntity playerEntity, LivingEntity target){
+
+        if (playerEntity.isAlive() && (hasArmorSet(playerEntity, ArmorSets.CURIOUS)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == CURIOUS_TELEPORTATION)
+                || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == CURIOUS_TELEPORTATION))) {
+            float teleportationRand = playerEntity.getRandom().nextFloat();
+            int toBeTeleportedRand = playerEntity.getRandom().nextInt(99);
+            if (teleportationRand <= 0.1F) {
+                if (toBeTeleportedRand % 2 == 0) {
+                    endermanLikeTeleportEffect(playerEntity);
+                } else {
+                    endermanLikeTeleportEffect(target);
+                }
+            }
+        }
+    }
+
+    public static void applyGhostKindlingEffect(PlayerEntity playerEntity, LivingEntity target){
+
+        if (hasArmorSet(playerEntity, ArmorSets.GHOST_KINDLER)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == GHOST_KINDLING)
+                || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == GHOST_KINDLING)) {
+            target.setOnFireFor(4);
+        }
+    }
+
+    public static void applySylvanPresence(LivingEntity livingEntity){
+        World world = livingEntity.getWorld();
+        BlockPos blockPos = livingEntity.getBlockPos();
+
+        float size = (float) Math.min(16, 2 + 1);
+        BlockPos.Mutable mutablePosition = new BlockPos.Mutable();
+
+        for (BlockPos blockPos2 : BlockPos.iterate(blockPos.add(-size, 0.0D, -size), blockPos.add(size, 0.0D, size))) {
+            if (blockPos2.isWithinDistance(livingEntity.getPos(), size)) {
+                mutablePosition.set(blockPos2.getX(), blockPos2.getY() + 1, blockPos2.getZ());
+                BlockState checkstate = world.getBlockState(blockPos2);
+                if (checkstate.getBlock() instanceof Fertilizable fertilizable) {
+                    if (fertilizable.isFertilizable(world, blockPos2, checkstate, world.isClient)) {
+                        if (world instanceof ServerWorld) {
+                            if (fertilizable.canGrow(world, world.random, blockPos2, checkstate)) {
+                                fertilizable.grow((ServerWorld) world, world.random, blockPos2, checkstate);
+                                AOEHelper.addParticlesToBlock((ServerWorld) world, blockPos2,
+                                        ParticleTypes.HAPPY_VILLAGER);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public static void applyEmberJumpEffect(LivingEntity livingEntity){
+        if (!hasRobeWithHatSet(livingEntity, ArmorSets.EMBER))
+            return;
+        boolean playFireSound = false;
+
+        for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(livingEntity, livingEntity, 6.0f)) {
+            if (nearbyEntity instanceof Monster && livingEntity.isSneaking()){
+                nearbyEntity.setOnFireFor(5);
+                playFireSound = true;
+            }
+        }
+        if (playFireSound) {
+            livingEntity.world.playSound(
+                    null,
+                    livingEntity.getX(),
+                    livingEntity.getY(),
+                    livingEntity.getZ(),
+                    SoundEvents.ENTITY_BLAZE_SHOOT,
+                    SoundCategory.PLAYERS,
+                    1.0f,
+                    1.0f
+            );
+        }
+    }
+
+    public static void applySplendidAoEAttackEffect(PlayerEntity playerEntity, LivingEntity target){
+
+        if (hasRobeSet(playerEntity, ArmorSets.SPLENDID))
+            return;
+
+        float splendidRand = playerEntity.getRandom().nextFloat();
+        if (splendidRand <= 0.3f) {
+
+            for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(target, playerEntity, 6.0f)){
+                float damageToBeDone = (float) playerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+                if (nearbyEntity instanceof IllagerEntity){
+                    damageToBeDone = damageToBeDone * 1.5f;
+                }
+                if (nearbyEntity instanceof Monster){
+                    nearbyEntity.damage(DamageSource.GENERIC, damageToBeDone);
+                    nearbyEntity.world.playSound(
+                            null,
+                            nearbyEntity.getX(),
+                            nearbyEntity.getY(),
+                            nearbyEntity.getZ(),
+                            SoundEvents.ENTITY_VEX_CHARGE,
+                            SoundCategory.PLAYERS,
+                            1.0f,
+                            1.0f
+                    );
+                    AOEHelper.addParticlesToBlock((ServerWorld) nearbyEntity.world, nearbyEntity.getBlockPos(), ParticleTypes.ENCHANTED_HIT);
+                }
+            }
+        }
+    }
+
+    public static void gildedHeroDamageBuff(PlayerEntity playerEntity, LivingEntity target){
+        if ((hasArmorSet(playerEntity, ArmorSets.GILDED))) {
+            float gildedHeroDamageBuffDamageAmount =
+                    (float) playerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+            if (target instanceof IllagerEntity && playerEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)){
+                gildedHeroDamageBuffDamageAmount = gildedHeroDamageBuffDamageAmount * 1.5f;
+                target.damage(DamageSource.GENERIC, gildedHeroDamageBuffDamageAmount);
+            }
+        }
+    }
+
+    public static void leaderOfThePackEffect(LivingEntity target, DamageSource source, float amount){
+        Entity petSource = source.getSource();
+
+        if (petSource == null) return;
+
+        if (petSource.world instanceof ServerWorld serverWorld && petSource instanceof TameableEntity){
+            PlayerEntity owner = (PlayerEntity) ((TameableEntity) petSource).getOwner();
+            if (owner != null){
+                UUID petOwnerUUID = owner.getUuid();
+                if (hasArmorSet(owner, ArmorSets.BLACK_WOLF)
+                        || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.MYSTERY)) == LEADER_OF_THE_PACK)
+                        || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.RED_MYSTERY)) == LEADER_OF_THE_PACK)) {
+
+                    if (petOwnerUUID != null) {
+                        Entity petOwner = serverWorld.getEntity(petOwnerUUID);
+                        if (petOwner instanceof LivingEntity) {
+                            float blackWolfArmorFactor = 1.5f;
+                            float newDamage = amount * blackWolfArmorFactor;
+                            target.damage(DamageSource.GENERIC, newDamage);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public static  boolean souldancerGraceEffect(PlayerEntity playerEntity) {
+        if (!hasArmorSet(playerEntity, ArmorSets.SOULDANCER))
+            return false;
+        if (!playerEntity.isAlive())
+            return false;
+
+        float dodgeRand = playerEntity.getRandom().nextFloat();
+        if (dodgeRand <= 0.3F) {
+            // Dodge the damage
+            playerEntity.world.playSound(
+                    null,
+                    playerEntity.getX(),
+                    playerEntity.getY(),
+                    playerEntity.getZ(),
+                    SoundsRegistry.DODGE_SOUND_EVENT,
+                    SoundCategory.PLAYERS,
+                    1.0F,
+                    1.0F);
+            AOECloudHelper.spawnCloudCloud(playerEntity, playerEntity, 0.5F);
+            // Apply Speed after dodge
+            StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
+                    false);
+            playerEntity.addStatusEffect(speed);
+            return true;
+        }
+        return  false;
+    }
+
+    /*public static void buzzyHiveEffect(LivingEntity targetedEntity) {
+        if (hasArmorSet(targetedEntity, ArmorSets.BEEHIVE)) {
+            float beeSummonChance = targetedEntity.getRandom().nextFloat();
+            if (beeSummonChance <= 0.15F) {
+                World world = targetedEntity.getEntityWorld();
+                SummonedBeeEntity summonedBeeEntity = summonedBee.create(world);
+                if (summonedBeeEntity != null) {
+                    summonedBeeEntity.setSummoner(targetedEntity);
+                    summonedBeeEntity.refreshPositionAndAngles(targetedEntity.getX(), targetedEntity.getY() + 1, targetedEntity.getZ(), 0, 0);
+                    world.spawnEntity(summonedBeeEntity);
+                }
+            }
+        }
+    }*/
 
     // Effects for ServerPlayerEntityMixin
     public static void applyHaste(ServerPlayerEntity playerEntity){
@@ -634,193 +821,5 @@ public class ArmorEffects {
             playerEntity.addStatusEffect(strength);
         }
     }
-
-    public static void applyCuriousTeleportationEffect(PlayerEntity playerEntity, LivingEntity target){
-
-        if (playerEntity.isAlive() && (hasArmorSet(playerEntity, ArmorSets.CURIOUS)
-                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == CURIOUS_TELEPORTATION)
-                || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == CURIOUS_TELEPORTATION))) {
-            float teleportationRand = playerEntity.getRandom().nextFloat();
-            int toBeTeleportedRand = playerEntity.getRandom().nextInt(99);
-            if (teleportationRand <= 0.1F) {
-                if (toBeTeleportedRand % 2 == 0) {
-                    endermanLikeTeleportEffect(playerEntity);
-                } else {
-                    endermanLikeTeleportEffect(target);
-                }
-            }
-        }
-    }
-
-    public static void applyGhostKindlingEffect(PlayerEntity playerEntity, LivingEntity target){
-
-        if (hasArmorSet(playerEntity, ArmorSets.GHOST_KINDLER)
-                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == GHOST_KINDLING)
-                || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == GHOST_KINDLING)) {
-            target.setOnFireFor(4);
-        }
-    }
-
-    public static void applySylvanPresence(LivingEntity livingEntity){
-        World world = livingEntity.getWorld();
-        BlockPos blockPos = livingEntity.getBlockPos();
-
-        float size = (float) Math.min(16, 2 + 1);
-        BlockPos.Mutable mutablePosition = new BlockPos.Mutable();
-
-        for (BlockPos blockPos2 : BlockPos.iterate(blockPos.add(-size, 0.0D, -size), blockPos.add(size, 0.0D, size))) {
-            if (blockPos2.isWithinDistance(livingEntity.getPos(), size)) {
-                mutablePosition.set(blockPos2.getX(), blockPos2.getY() + 1, blockPos2.getZ());
-                BlockState checkstate = world.getBlockState(blockPos2);
-                if (checkstate.getBlock() instanceof Fertilizable fertilizable) {
-                    if (fertilizable.isFertilizable(world, blockPos2, checkstate, world.isClient)) {
-                        if (world instanceof ServerWorld) {
-                            if (fertilizable.canGrow(world, world.random, blockPos2, checkstate)) {
-                                fertilizable.grow((ServerWorld) world, world.random, blockPos2, checkstate);
-                                AOEHelper.addParticlesToBlock((ServerWorld) world, blockPos2,
-                                        ParticleTypes.HAPPY_VILLAGER);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    public static void applyEmberJumpEffect(LivingEntity livingEntity){
-        if (!hasRobeWithHatSet(livingEntity, ArmorSets.EMBER))
-            return;
-        boolean playFireSound = false;
-
-        for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(livingEntity, livingEntity, 6.0f)) {
-            if (nearbyEntity instanceof Monster && livingEntity.isSneaking()){
-                nearbyEntity.setOnFireFor(5);
-                playFireSound = true;
-            }
-        }
-        if (playFireSound) {
-            livingEntity.world.playSound(
-                    null,
-                    livingEntity.getX(),
-                    livingEntity.getY(),
-                    livingEntity.getZ(),
-                    SoundEvents.ENTITY_BLAZE_SHOOT,
-                    SoundCategory.PLAYERS,
-                    1.0f,
-                    1.0f
-            );
-        }
-    }
-
-    public static void applySplendidAoEAttackEffect(PlayerEntity playerEntity, LivingEntity target){
-
-        if (hasRobeSet(playerEntity, ArmorSets.SPLENDID))
-            return;
-
-        float splendidRand = playerEntity.getRandom().nextFloat();
-        if (splendidRand <= 0.3f) {
-
-            for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(target, playerEntity, 6.0f)){
-                float damageToBeDone = (float) playerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-                if (nearbyEntity instanceof IllagerEntity){
-                    damageToBeDone = damageToBeDone * 1.5f;
-                }
-                if (nearbyEntity instanceof Monster){
-                    nearbyEntity.damage(DamageSource.GENERIC, damageToBeDone);
-                    nearbyEntity.world.playSound(
-                            null,
-                            nearbyEntity.getX(),
-                            nearbyEntity.getY(),
-                            nearbyEntity.getZ(),
-                            SoundEvents.ENTITY_VEX_CHARGE,
-                            SoundCategory.PLAYERS,
-                            1.0f,
-                            1.0f
-                    );
-                    AOEHelper.addParticlesToBlock((ServerWorld) nearbyEntity.world, nearbyEntity.getBlockPos(), ParticleTypes.ENCHANTED_HIT);
-                }
-            }
-        }
-    }
-
-    public static void gildedHeroDamageBuff(PlayerEntity playerEntity, LivingEntity target){
-        if ((hasArmorSet(playerEntity, ArmorSets.GILDED))) {
-            float gildedHeroDamageBuffDamageAmount =
-                    (float) playerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-            if (target instanceof IllagerEntity && playerEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)){
-                gildedHeroDamageBuffDamageAmount = gildedHeroDamageBuffDamageAmount * 1.5f;
-                target.damage(DamageSource.GENERIC, gildedHeroDamageBuffDamageAmount);
-            }
-        }
-    }
-
-    public static void leaderOfThePackEffect(LivingEntity target, DamageSource source, float amount){
-        Entity petSource = source.getSource();
-
-        if (petSource == null) return;
-
-        if (petSource.world instanceof ServerWorld serverWorld && petSource instanceof TameableEntity){
-            PlayerEntity owner = (PlayerEntity) ((TameableEntity) petSource).getOwner();
-            if (owner != null){
-                UUID petOwnerUUID = owner.getUuid();
-                if (hasArmorSet(owner, ArmorSets.BLACK_WOLF)
-                        || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.MYSTERY)) == LEADER_OF_THE_PACK)
-                        || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.RED_MYSTERY)) == LEADER_OF_THE_PACK)) {
-
-                    if (petOwnerUUID != null) {
-                        Entity petOwner = serverWorld.getEntity(petOwnerUUID);
-                        if (petOwner instanceof LivingEntity) {
-                            float blackWolfArmorFactor = 1.5f;
-                            float newDamage = amount * blackWolfArmorFactor;
-                            target.damage(DamageSource.GENERIC, newDamage);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    public static  boolean souldancerGraceEffect(PlayerEntity playerEntity) {
-        if (!hasArmorSet(playerEntity, ArmorSets.SOULDANCER))
-            return false;
-        if (!playerEntity.isAlive())
-            return false;
-
-        float dodgeRand = playerEntity.getRandom().nextFloat();
-        if (dodgeRand <= 0.3F) {
-            // Dodge the damage
-            playerEntity.world.playSound(
-                    null,
-                    playerEntity.getX(),
-                    playerEntity.getY(),
-                    playerEntity.getZ(),
-                    SoundsRegistry.DODGE_SOUND_EVENT,
-                    SoundCategory.PLAYERS,
-                    1.0F,
-                    1.0F);
-            AOECloudHelper.spawnCloudCloud(playerEntity, playerEntity, 0.5F);
-            // Apply Speed after dodge
-            StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
-                    false);
-            playerEntity.addStatusEffect(speed);
-            return true;
-        }
-        return  false;
-    }
-
-    /*public static void buzzyHiveEffect(LivingEntity targetedEntity) {
-        if (hasArmorSet(targetedEntity, ArmorSets.BEEHIVE)) {
-            float beeSummonChance = targetedEntity.getRandom().nextFloat();
-            if (beeSummonChance <= 0.15F) {
-                World world = targetedEntity.getEntityWorld();
-                SummonedBeeEntity summonedBeeEntity = summonedBee.create(world);
-                if (summonedBeeEntity != null) {
-                    summonedBeeEntity.setSummoner(targetedEntity);
-                    summonedBeeEntity.refreshPositionAndAngles(targetedEntity.getX(), targetedEntity.getY() + 1, targetedEntity.getZ(), 0, 0);
-                    world.spawnEntity(summonedBeeEntity);
-                }
-            }
-        }
-    }*/
 
 }
