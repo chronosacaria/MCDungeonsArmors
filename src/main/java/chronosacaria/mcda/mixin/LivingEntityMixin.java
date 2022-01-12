@@ -6,7 +6,6 @@ import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.entities.SummonedBeeEntity;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.EnchantsRegistry;
-import chronosacaria.mcda.registry.SoundsRegistry;
 import chronosacaria.mcda.registry.SummonedEntityRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
@@ -17,14 +16,11 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -63,6 +59,59 @@ public abstract class LivingEntityMixin extends Entity {
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
+    // Mixins for apply damage Effects and Enchantments
+    @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
+    public void mcdaApplyDamageEffects(DamageSource source, float amount, CallbackInfo info) {
+
+        if (!((Object) this instanceof LivingEntity target))
+            return;
+
+        if (config.enableArmorEffect.get(LEADER_OF_THE_PACK))
+            ArmorEffects.leaderOfThePackEffect(target, source, amount);
+
+        if(!(source.getAttacker() instanceof PlayerEntity playerEntity))
+            return;
+        if (!(source.getSource() instanceof PlayerEntity))
+            return;
+
+        if (amount != 0.0F) {
+            if (config.enableEnchantment.get(FIRE_FOCUS)) {
+                EnchantmentEffects.applyFireFocusDamage(playerEntity, target, amount);
+            }
+
+            if (source.isMagic()){
+                if (config.enableEnchantment.get(POISON_FOCUS)) {
+                    EnchantmentEffects.applyPoisonFocusDamage(playerEntity, target, amount);
+                }
+            }
+
+            ItemStack mainHandStack = playerEntity.getMainHandStack();
+            if (!mainHandStack.isEmpty()) {
+                if (config.enableArmorEffect.get(TITAN_SHROUD_EFFECTS))
+                    ArmorEffects.applyTitanShroudStatuses(playerEntity, target);
+                if (config.enableArmorEffect.get(FROST_BITE_EFFECT))
+                    ArmorEffects.applyFrostBiteStatus(playerEntity, target);
+                if (config.enableArmorEffect.get(GHOST_KINDLING))
+                    ArmorEffects.applyGhostKindlingEffect(playerEntity, target);
+
+                if(!source.isProjectile()) {
+                    if (config.enableArmorEffect.get(SPLENDID_ATTACK))
+                        ArmorEffects.applySplendidAoEAttackEffect(playerEntity, target);
+                    if (config.enableArmorEffect.get(GILDED_HERO))
+                        ArmorEffects.gildedHeroDamageBuff(playerEntity, target);
+                }
+            }
+        }
+    }
+
+    // Mixins for apply movement Effects and Enchantments. Only Fire Trail rn
+    @Inject(method = "applyMovementEffects", at = @At("HEAD"))
+    protected void applyFireTrailEffects(BlockPos blockPos, CallbackInfo ci){
+        if(!((Object) this instanceof PlayerEntity playerEntity)) return;
+
+        EnchantmentEffects.applyFireTrail(playerEntity, blockPos);
+    }
+
     // Mixins for enchants related to consuming a potion
     @Inject(method = "consumeItem", at = @At("HEAD"))
     public void consumeItem(CallbackInfo ci) {
@@ -77,9 +126,9 @@ public abstract class LivingEntityMixin extends Entity {
         EnchantmentEffects.applySurpriseGift(playerEntity);
     }
 
-    // Mixins for Armour and Enchantment Effects on Damage
-    @Inject(method = "damage", at = @At("HEAD"))
-    public void onMCDADamageEffects(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+    // Mixins for Armor and Enchantment Effects on Damage at HEAD
+    @Inject(method = "damage", at = @At("HEAD"), cancellable = true)
+    public void onMCDADamageEffects(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
 
         // Mixins for Armour and Enchantment Effects on Damage for PlayerEntities
         if ((Object) this instanceof PlayerEntity playerEntity) {
@@ -94,6 +143,13 @@ public abstract class LivingEntityMixin extends Entity {
             }
 
             if (this.lastDamageTaken >= 0) {
+
+                if (source.getAttacker() instanceof LivingEntity || source.isProjectile()) {
+                    if (config.enableArmorEffect.get(SOULDANCER_GRACE)) {
+                        if (ArmorEffects.souldancerGraceEffect(playerEntity))
+                            cir.cancel();
+                    }
+                }
                 if (config.enableArmorEffect.get(NIMBLE_TURTLE_EFFECTS))
                     ArmorEffects.applyNimbleTurtleEffects(playerEntity);
             }
@@ -106,10 +162,83 @@ public abstract class LivingEntityMixin extends Entity {
                     ArmorEffects.applyCauldronsOverflow(livingEntity, amount);
             }
         }
-
     }
 
-    // Mixins for Armour and Enchantment Effects on Tick
+    @Inject(method = "damage", at = @At("HEAD"))
+    public void summonBeesOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+
+        if (!(source.getAttacker() instanceof LivingEntity)) return;
+
+        LivingEntity targetedEntity = (LivingEntity) (Object) this;
+
+        if (amount != 0.0F) {
+            if (!config.enableArmorEffect.get(BUZZY_HIVE))
+                return;
+            if (hasArmorSet(targetedEntity, ArmorSets.BEEHIVE)) {
+                float beeSummonChance = targetedEntity.getRandom().nextFloat();
+                if (beeSummonChance <= 0.15F) {
+                    SummonedBeeEntity summonedBeeEntity = summonedBee.create(world);
+                    if (summonedBeeEntity != null) {
+                        summonedBeeEntity.setSummoner(targetedEntity);
+                        summonedBeeEntity.refreshPositionAndAngles(this.getX(), this.getY() + 1, this.getZ(), 0, 0);
+                        world.spawnEntity(summonedBeeEntity);
+                    }
+                }
+            }
+        }
+    }
+
+    // Mixins for Armor and Enchantment Effects on Damage at TAIL only Curious rn
+    @Inject(method = "damage", at = @At("TAIL"))
+    public void applyCuriousTeleportation(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+
+        if(!((Object) this instanceof PlayerEntity playerEntity)) return;
+
+        if (!(source.getAttacker() instanceof LivingEntity attacker))
+            return;
+
+        if (amount != 0.0F) {
+            if (config.enableArmorEffect.get(CURIOUS_TELEPORTATION)) {
+                ArmorEffects.applyCuriousTeleportationEffect(playerEntity, attacker);
+            }
+        }
+    }
+
+    // Shadow Walker Armor Negate Fall Damage
+    @Inject(method = "handleFallDamage", at = @At("HEAD"), cancellable = true)
+    public void shadowWalkerArmorNoFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource, CallbackInfoReturnable<Boolean> cir){
+        if (!config.enableArmorEffect.get(NO_FALL_DAMAGE))
+            return;
+        if(!((Object) this instanceof PlayerEntity playerEntity)) return;
+
+        if (playerEntity.isAlive()) {
+
+            if (playerEntity == null) return;
+
+            if (hasArmorSet(playerEntity, ArmorSets.SHADOW_WALKER)
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.MYSTERY)) == NO_FALL_DAMAGE)
+                    || (ArmorEffects.GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.GREEN_MYSTERY)) == NO_FALL_DAMAGE)) {
+                int i = this.computeFallDamage(fallDistance, damageMultiplier);
+                if (i > 0) {
+                    cir.setReturnValue(true);
+                }
+            }
+        }
+    }
+
+    // Mixin for on death Effects and Enchantments. Only Gourdian's Hatred rn
+    @Inject(method = "onDeath", at = @At("HEAD"))
+    public void onGourdiansHatredKill(DamageSource source, CallbackInfo ci) {
+
+        if(!(source.getAttacker() instanceof LivingEntity user))return;
+
+        if (user != null) {
+            if (config.enableArmorEffect.get(GOURDIANS_HATRED))
+                ArmorEffects.applyGourdiansHatredStatus(user);
+        }
+    }
+
+    // Mixins for Armor and Enchantment Effects on Tick
     @Inject(method = "tick", at = @At("HEAD"))
     private void mcdaTickEffects(CallbackInfo ci){
         // Mixins for Armour and Enchantment Effects on Tick for PlayerEntities
@@ -134,17 +263,8 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    // Mixin for Fire Trail
-    @Inject(method = "applyMovementEffects", at = @At("HEAD"))
-    protected void applyFireTrailEffects(BlockPos blockPos, CallbackInfo ci){
-        if(!((Object) this instanceof PlayerEntity playerEntity)) return;
-
-        EnchantmentEffects.applyFireTrail(playerEntity, blockPos);
-    }
-
-
     @Inject(method = "isClimbing", at = @At("HEAD"), cancellable = true)
-    private void armourClimbing(CallbackInfoReturnable<Boolean> cir){
+    private void armorClimbing(CallbackInfoReturnable<Boolean> cir){
         if(!((Object) this instanceof PlayerEntity playerEntity)) return;
 
         if (playerEntity.isAlive()){
@@ -179,9 +299,9 @@ public abstract class LivingEntityMixin extends Entity {
                     if (y < 0.0D && !this.getBlockStateAtPos().isOf(Blocks.SCAFFOLDING) && this.isSneaking()) {
                         y = 0.0D;
                     } else if (this.horizontalCollision && !this.getBlockStateAtPos().isOf(Blocks.SCAFFOLDING)){
-                        x /=3.5D;
+                        x /= 3.5D;
                         y = f/2;
-                        z /=3.5D;
+                        z /= 3.5D;
                     }
                     this.setVelocity(x, y, z);
                 }
@@ -189,25 +309,58 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    // Shadow Walker Armour Negate Fall Damage
-    @Inject(method = "handleFallDamage", at = @At("HEAD"), cancellable = true)
-    public void shadowWalkerArmorNoFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource, CallbackInfoReturnable<Boolean> cir){
-        if (!config.enableArmorEffect.get(NO_FALL_DAMAGE))
+    // Mixin for Teleportation Robe Effect
+    @Inject(method = "jump", at = @At("HEAD"))
+    public void onTeleportationRobesTeleport(CallbackInfo ci){
+        if (!config.enableArmorEffect.get(TELEPORTATION_ROBES_EFFECT))
             return;
-        if(!((Object) this instanceof PlayerEntity playerEntity)) return;
-
-        if (playerEntity.isAlive()) {
-
-            if (playerEntity == null) return;
-
-            if (hasArmorSet(playerEntity, ArmorSets.SHADOW_WALKER)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.MYSTERY)) == NO_FALL_DAMAGE)
-                    || (ArmorEffects.GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.GREEN_MYSTERY)) == NO_FALL_DAMAGE)) {
-                int i = this.computeFallDamage(fallDistance, damageMultiplier);
-                if (i > 0) {
-                    cir.setReturnValue(true);
+        if (!((Object) this instanceof ServerPlayerEntity playerEntity))
+            return;
+        if (playerEntity != null) {
+            if (hasArmorSet(playerEntity, ArmorSets.TELEPORTATION)) {
+                if (playerEntity.isSneaking()) {
+                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
+                        ArmorEffects.endermanLikeTeleportEffect(playerEntity);
+                } else {
+                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
                 }
             }
+        }
+    }
+
+    // Mixin for Unstable Robe Effect
+    @Inject(method = "jump", at = @At("HEAD"))
+    public void onUnstableRobesTeleport(CallbackInfo ci){
+        if (!config.enableArmorEffect.get(UNSTABLE_ROBES_EFFECT))
+            return;
+        if (!((Object) this instanceof ServerPlayerEntity playerEntity))
+            return;
+
+        if (playerEntity != null) {
+            if (hasArmorSet(playerEntity, ArmorSets.UNSTABLE)) {
+                if (playerEntity.isSneaking()) {
+                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
+                    AOECloudHelper.spawnExplosionCloud(playerEntity, playerEntity, 3.0F);
+                    AOEHelper.causeExplosion(playerEntity, playerEntity, 5, 3.0f);
+                    if (config.controlledTeleportation){
+                        ArmorEffects.controlledTeleportEffect(playerEntity);
+                    } else {
+                        ArmorEffects.endermanLikeTeleportEffect(playerEntity);
+                    }
+                } else {
+                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
+                }
+            }
+        }
+    }
+
+    @Inject(method = "jump", at = @At("HEAD"))
+    public void onEmberJump(CallbackInfo ci){
+        if (!((Object) this instanceof ServerPlayerEntity playerEntity))
+            return;
+        if (playerEntity != null) {
+            if (config.enableArmorEffect.get(EMBER_JUMP))
+                ArmorEffects.applyEmberJumpEffect(playerEntity);
         }
     }
 
@@ -266,224 +419,6 @@ public abstract class LivingEntityMixin extends Entity {
 
                     cir.setReturnValue(true);
                 }
-            }
-        }
-    }
-
-    // Mixin for apply damage Effects and Enchantments
-    @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
-    public void mcdaApplyDamageEffects(DamageSource source, float amount, CallbackInfo info) {
-
-        if (!((Object) this instanceof LivingEntity target))
-            return;
-
-        if (config.enableArmorEffect.get(LEADER_OF_THE_PACK))
-            ArmorEffects.leaderOfThePackEffect(target, source, amount);
-
-        if(!(source.getAttacker() instanceof PlayerEntity playerEntity))
-            return;
-        if (!(source.getSource() instanceof PlayerEntity))
-            return;
-
-        if (amount != 0.0F) {
-            if (config.enableEnchantment.get(FIRE_FOCUS)) {
-                EnchantmentEffects.applyFireFocusDamage(playerEntity, target, amount);
-            }
-
-            if (source.isMagic()){
-                if (config.enableEnchantment.get(POISON_FOCUS)) {
-                    EnchantmentEffects.applyPoisonFocusDamage(playerEntity, target, amount);
-                }
-            }
-
-            ItemStack mainHandStack = playerEntity.getMainHandStack();
-            if (!mainHandStack.isEmpty()) {
-                if (config.enableArmorEffect.get(TITAN_SHROUD_EFFECTS))
-                    ArmorEffects.applyTitanShroudStatuses(playerEntity, target);
-                if (config.enableArmorEffect.get(FROST_BITE_EFFECT))
-                    ArmorEffects.applyFrostBiteStatus(playerEntity, target);
-                if (config.enableArmorEffect.get(GHOST_KINDLING))
-                    ArmorEffects.applyGhostKindlingEffect(playerEntity, target);
-
-                if(!source.isProjectile()) {
-                    if (config.enableArmorEffect.get(SPLENDID_ATTACK))
-                        ArmorEffects.applySplendidAoEAttackEffect(playerEntity, target);
-                    if (config.enableArmorEffect.get(GILDED_HERO))
-                        ArmorEffects.gildedHeroDamageBuff(playerEntity, target);
-                }
-            }
-        }
-    }
-
-    // Mixin for Teleportation Robes Effect
-    @Inject(method = "jump", at = @At("HEAD"))
-    public void onTeleportationRobesTeleport(CallbackInfo ci){
-        if (!config.enableArmorEffect.get(TELEPORTATION_ROBES_EFFECT))
-            return;
-        if (!((Object) this instanceof ServerPlayerEntity playerEntity))
-            return;
-        if (playerEntity != null) {
-            if (hasArmorSet(playerEntity, ArmorSets.TELEPORTATION)) {
-                if (playerEntity.isSneaking()) {
-                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
-                        ArmorEffects.endermanLikeTeleportEffect(playerEntity);
-                } else {
-                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
-                }
-            }
-        }
-    }
-
-    // Mixin for Unstable Robes Effect
-    @Inject(method = "jump", at = @At("HEAD"))
-    public void onUnstableRobesTeleport(CallbackInfo ci){
-        if (!config.enableArmorEffect.get(UNSTABLE_ROBES_EFFECT))
-            return;
-        if (!((Object) this instanceof ServerPlayerEntity playerEntity))
-            return;
-
-        if (playerEntity != null) {
-            if (hasArmorSet(playerEntity, ArmorSets.UNSTABLE)) {
-                if (playerEntity.isSneaking()) {
-                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
-                    AOECloudHelper.spawnExplosionCloud(playerEntity, playerEntity, 3.0F);
-                    AOEHelper.causeExplosion(playerEntity, playerEntity, 5, 3.0f);
-                    if (config.controlledTeleportation){
-                        ArmorEffects.controlledTeleportEffect(playerEntity);
-                    } else {
-                        ArmorEffects.endermanLikeTeleportEffect(playerEntity);
-                    }
-                } else {
-                    ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
-                }
-            }
-        }
-    }
-
-    // Mixin for Gourdian's Hatred Effect
-    @Inject(method = "onDeath", at = @At("HEAD"))
-    public void onGourdiansHatredKill(DamageSource source, CallbackInfo ci){
-        if (!config.enableArmorEffect.get(GOURDIANS_HATRED))
-            return;
-
-        if(!(source.getAttacker() instanceof LivingEntity user))return;
-
-        if (user != null) {
-            if (hasArmorSet(user, ArmorSets.GOURDIAN)
-                    || (ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(user, ArmorSets.MYSTERY)) == GOURDIANS_HATRED)
-                    || (RED_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect( user, ArmorSets.RED_MYSTERY)) == GOURDIANS_HATRED)) {
-                float hatredRand = user.getRandom().nextFloat();
-                if (hatredRand <= 0.15F) {
-                    ArmorEffects.applyGourdiansHatredStatus(user);
-                }
-            }
-        }
-    }
-
-    // Mixin for Knockback Resistance for Stalwart Bulwark Effect
-    @ModifyVariable(method = "takeKnockback", at = @At("HEAD"), ordinal = 0)
-    private double applyStalwartBulwarkKnockbackResistanceEffect(double strength){
-        LivingEntity livingEntity = (LivingEntity) (Object) this;
-
-        if (this.isAlive() && this.isSneaking() && (hasArmorSet(livingEntity, ArmorSets.STALWART_MAIL)
-                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.MYSTERY)) == STALWART_BULWARK)
-                || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.RED_MYSTERY)) == STALWART_BULWARK))) {
-            return strength * 0;
-        }
-        return strength;
-    }
-
-    @Inject(method = "damage", at = @At("HEAD"))
-    public void summonBeesOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if (!config.enableArmorEffect.get(BUZZY_HIVE))
-            return;
-
-        if (!(source.getAttacker() instanceof LivingEntity)) return;
-
-        LivingEntity targetedEntity = (LivingEntity) (Object) this;
-
-        SummonedBeeEntity summonedBeeEntity = summonedBee.create(world);
-        if (hasArmorSet(targetedEntity, ArmorSets.BEEHIVE)) {
-            if (amount != 0.0F) {
-                float beeSummonChance = targetedEntity.getRandom().nextFloat();
-                if (beeSummonChance <= 0.15F) {
-                    if (summonedBeeEntity != null) {
-                        summonedBeeEntity.setSummoner(targetedEntity);
-                        summonedBeeEntity.refreshPositionAndAngles(this.getX(), this.getY() + 1, this.getZ(), 0, 0);
-                        world.spawnEntity(summonedBeeEntity);
-                    }
-                }
-            }
-        }
-    }
-
-    @Inject(method = "damage", at = @At("HEAD"), cancellable = true)
-    public void applySouldancerGrace(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
-        if (!config.enableArmorEffect.get(SOULDANCER_GRACE))
-            return;
-
-        if(!((Object) this instanceof PlayerEntity playerEntity)) return;
-
-        if (playerEntity.isAlive()) {
-            if (hasArmorSet(playerEntity, ArmorSets.SOULDANCER)) {
-
-                if (!(source.getAttacker() instanceof LivingEntity || source.isProjectile()))
-                    return;
-
-                if (amount != 0.0F) {
-                    float dodgeRand = playerEntity.getRandom().nextFloat();
-                    if (dodgeRand <= 1.0F) {
-                        // Dodge the damage
-                        cir.cancel();
-                        playerEntity.world.playSound(
-                                null,
-                                playerEntity.getX(),
-                                playerEntity.getY(),
-                                playerEntity.getZ(),
-                                SoundsRegistry.DODGE_SOUND_EVENT,
-                                SoundCategory.PLAYERS,
-                                1.0F,
-                                1.0F);
-                        AOECloudHelper.spawnCloudCloud(playerEntity, playerEntity, 0.5F);
-                        // Apply Speed after dodge
-                        StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
-                                false);
-                        playerEntity.addStatusEffect(speed);
-                    }
-                }
-            }
-        }
-    }
-
-    @Inject(method = "damage", at = @At("TAIL"))
-    public void applyCuriousTeleportation(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
-        if (!config.enableArmorEffect.get(CURIOUS_TELEPORTATION))
-            return;
-
-        if(!((Object) this instanceof PlayerEntity playerEntity)) return;
-
-        if (playerEntity.isAlive() && (hasArmorSet(playerEntity, ArmorSets.CURIOUS)
-                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == CURIOUS_TELEPORTATION)
-                || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == CURIOUS_TELEPORTATION))){
-
-            if (!(source.getAttacker() instanceof LivingEntity))
-                return;
-
-            if (amount != 0.0F) {
-                ArmorEffects.applyCuriousTeleportationEffect(playerEntity, (LivingEntity) source.getAttacker());
-            }
-        }
-    }
-
-    @Inject(method = "jump", at = @At("HEAD"))
-    public void onEmberJump(CallbackInfo ci){
-        if (!config.enableArmorEffect.get(EMBER_JUMP))
-            return;
-        if (!((Object) this instanceof ServerPlayerEntity playerEntity))
-            return;
-        if (playerEntity != null) {
-            if (hasRobeWithHatSet(playerEntity, ArmorSets.EMBER)) {
-                ArmorEffects.applyEmberJumpEffect(playerEntity);
             }
         }
     }
@@ -591,6 +526,19 @@ public abstract class LivingEntityMixin extends Entity {
                 cir.setReturnValue(true);
             }
         }
+    }
+
+    // Mixin for Knockback Resistance for Stalwart Bulwark Effect
+    @ModifyVariable(method = "takeKnockback", at = @At("HEAD"), ordinal = 0)
+    private double applyStalwartBulwarkKnockbackResistanceEffect(double strength){
+        LivingEntity livingEntity = (LivingEntity) (Object) this;
+
+        if (this.isAlive() && this.isSneaking() && (hasArmorSet(livingEntity, ArmorSets.STALWART_MAIL)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.MYSTERY)) == STALWART_BULWARK)
+                || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.RED_MYSTERY)) == STALWART_BULWARK))) {
+            return strength * 0;
+        }
+        return strength;
     }
 
     @ModifyVariable(method = "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;" +

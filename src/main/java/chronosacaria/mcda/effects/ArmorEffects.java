@@ -1,7 +1,10 @@
 package chronosacaria.mcda.effects;
 
+import chronosacaria.mcda.api.AOECloudHelper;
 import chronosacaria.mcda.api.AOEHelper;
+import chronosacaria.mcda.entities.SummonedBeeEntity;
 import chronosacaria.mcda.items.ArmorSets;
+import chronosacaria.mcda.registry.SoundsRegistry;
 import chronosacaria.mcda.registry.StatusEffectsRegistry;
 import net.minecraft.block.*;
 import net.minecraft.client.MinecraftClient;
@@ -37,8 +40,7 @@ import net.minecraft.world.World;
 
 import java.util.*;
 
-import static chronosacaria.mcda.api.CleanlinessHelper.hasArmorSet;
-import static chronosacaria.mcda.api.CleanlinessHelper.hasRobeSet;
+import static chronosacaria.mcda.api.CleanlinessHelper.*;
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
 
@@ -363,12 +365,14 @@ public class ArmorEffects {
     }
 
     public static void applyGourdiansHatredStatus(LivingEntity livingEntity) {
-        if (!config.enableArmorEffect.get(GOURDIANS_HATRED))
+        if (!livingEntity.isAlive())
             return;
-        if (livingEntity.isAlive()) {
 
-            if (hasArmorSet(livingEntity, ArmorSets.GOURDIAN)) {
-
+        if (hasArmorSet(livingEntity, ArmorSets.GOURDIAN)
+                || (ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(livingEntity, ArmorSets.MYSTERY)) == GOURDIANS_HATRED)
+                || (RED_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect( livingEntity, ArmorSets.RED_MYSTERY)) == GOURDIANS_HATRED)) {
+            float hatredRand = livingEntity.getRandom().nextFloat();
+            if (hatredRand <= 0.15F) {
                 StatusEffectInstance strength = new StatusEffectInstance(StatusEffects.STRENGTH, 200, 1);
                 livingEntity.addStatusEffect(strength);
             }
@@ -648,14 +652,19 @@ public class ArmorEffects {
         }
     }
 
-    public static void applyCuriousTeleportationEffect(LivingEntity player, LivingEntity target){
-        float teleportationRand = player.getRandom().nextFloat();
-        int toBeTeleportedRand = player.getRandom().nextInt(99);
-        if (teleportationRand <= 0.1F){
-            if (toBeTeleportedRand % 2 == 0){
-                endermanLikeTeleportEffect(player);
-            } else {
-                endermanLikeTeleportEffect(target);
+    public static void applyCuriousTeleportationEffect(PlayerEntity playerEntity, LivingEntity target){
+
+        if (playerEntity.isAlive() && (hasArmorSet(playerEntity, ArmorSets.CURIOUS)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == CURIOUS_TELEPORTATION)
+                || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == CURIOUS_TELEPORTATION))) {
+            float teleportationRand = playerEntity.getRandom().nextFloat();
+            int toBeTeleportedRand = playerEntity.getRandom().nextInt(99);
+            if (teleportationRand <= 0.1F) {
+                if (toBeTeleportedRand % 2 == 0) {
+                    endermanLikeTeleportEffect(playerEntity);
+                } else {
+                    endermanLikeTeleportEffect(target);
+                }
             }
         }
     }
@@ -696,6 +705,8 @@ public class ArmorEffects {
     }
 
     public static void applyEmberJumpEffect(LivingEntity livingEntity){
+        if (!hasRobeWithHatSet(livingEntity, ArmorSets.EMBER))
+            return;
         boolean playFireSound = false;
 
         for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(livingEntity, livingEntity, 6.0f)) {
@@ -785,4 +796,48 @@ public class ArmorEffects {
             }
         }
     }
+
+    public static  boolean souldancerGraceEffect(PlayerEntity playerEntity) {
+        if (!hasArmorSet(playerEntity, ArmorSets.SOULDANCER))
+            return false;
+        if (!playerEntity.isAlive())
+            return false;
+
+        float dodgeRand = playerEntity.getRandom().nextFloat();
+        if (dodgeRand <= 0.3F) {
+            // Dodge the damage
+            playerEntity.world.playSound(
+                    null,
+                    playerEntity.getX(),
+                    playerEntity.getY(),
+                    playerEntity.getZ(),
+                    SoundsRegistry.DODGE_SOUND_EVENT,
+                    SoundCategory.PLAYERS,
+                    1.0F,
+                    1.0F);
+            AOECloudHelper.spawnCloudCloud(playerEntity, playerEntity, 0.5F);
+            // Apply Speed after dodge
+            StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
+                    false);
+            playerEntity.addStatusEffect(speed);
+            return true;
+        }
+        return  false;
+    }
+
+    /*public static void buzzyHiveEffect(LivingEntity targetedEntity) {
+        if (hasArmorSet(targetedEntity, ArmorSets.BEEHIVE)) {
+            float beeSummonChance = targetedEntity.getRandom().nextFloat();
+            if (beeSummonChance <= 0.15F) {
+                World world = targetedEntity.getEntityWorld();
+                SummonedBeeEntity summonedBeeEntity = summonedBee.create(world);
+                if (summonedBeeEntity != null) {
+                    summonedBeeEntity.setSummoner(targetedEntity);
+                    summonedBeeEntity.refreshPositionAndAngles(targetedEntity.getX(), targetedEntity.getY() + 1, targetedEntity.getZ(), 0, 0);
+                    world.spawnEntity(summonedBeeEntity);
+                }
+            }
+        }
+    }*/
+
 }
