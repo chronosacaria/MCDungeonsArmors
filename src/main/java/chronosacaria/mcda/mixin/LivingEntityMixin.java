@@ -16,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -46,6 +47,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow public abstract int getArmor();
 
     @Shadow public abstract void setOnGround(boolean onGround);
+
+    @Shadow protected abstract void playBlockFallSound();
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
@@ -297,25 +300,35 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    //Its broken AF
+    //Its broken AF but now less
     @Inject(method = "onAttacking", at = @At("HEAD"))
     public void onFoxPounce(Entity target, CallbackInfo ci){
         if(((Object) this instanceof PlayerEntity playerEntity)) {
 
             //List<HostileEntity> found = world.getEntitiesByClass(HostileEntity.class, new Box())
 
-            double xVel = playerEntity.getVelocity().x;
-            double yVel = playerEntity.getVelocity().y;
-            double zVel = playerEntity.getVelocity().z;
-
-            //if (playerEntity.isSneaking()) {
             if (target instanceof LivingEntity) {
-                playerEntity.setOnGround(true);
-                playerEntity.onLanding();
-                playerEntity.addVelocity(100.0D, 100.0D, 100.0D);
-                playerEntity.velocityModified = true;
+                if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.FOX)
+                        || CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
+
+                    if (playerEntity.isSneaking() && playerEntity.isOnGround()) {
+                        // Unsneak the player
+                        double gravity = playerEntity.getVelocity().y;
+                        Vec3d vec3d = playerEntity.getVelocity();
+                        if (vec3d.x == vec3d.z && vec3d.z == 0) {
+                            Vec3d vec3d2 = new Vec3d(target.getX() - playerEntity.getX(), 0.0D, target.getZ() - playerEntity.getZ());
+
+                            vec3d2 = vec3d2.normalize().multiply(0.4D).add(vec3d.multiply(0.2D));
+
+                            // Fix calculations
+                            playerEntity.setVelocity(vec3d2.x, 0.8, vec3d2.z);
+                            // Thanks Apace!
+                            playerEntity.velocityModified = true;
+                            // Somehow make the player model move like the fox does?
+                        }
+                    }
+                }
             }
-            //}
         }
     }
 
