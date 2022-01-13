@@ -41,24 +41,8 @@ public class EnchantmentEffects {
                     PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.SWIFTNESS),
                     PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.INVISIBILITY));
 
-    protected static boolean isInstantHealthPotion(ItemStack itemStack) {
-        boolean hasInstantHealth = false;
-
-        for (StatusEffectInstance potionEffect : PotionUtil.getPotionEffects(itemStack)) {
-            if (potionEffect.getEffectType() == StatusEffects.INSTANT_HEALTH) {
-                hasInstantHealth = true;
-                break;
-            }
-        }
-
-        return hasInstantHealth;
-    }
-
     // Effects for LivingEntityMixin
     public static void applyFireTrail(PlayerEntity player, BlockPos blockPos){
-        if (!config.enableEnchantment.get(FIRE_TRAIL))
-            return;
-
         int fireTrailLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FIRE_TRAIL), player);
         if (fireTrailLevel == 0) return;
 
@@ -72,55 +56,40 @@ public class EnchantmentEffects {
     }
 
     public static void applyFoodReserves(PlayerEntity playerEntity) {
-        if (!config.enableEnchantment.get(FOOD_RESERVES))
-            return;
+        int foodReserveLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FOOD_RESERVES), playerEntity);
 
-        if (isInstantHealthPotion(playerEntity.getMainHandStack())) {
-            int foodReserveLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FOOD_RESERVES), playerEntity);
-
-            while (foodReserveLevel > 0) {
-                Item foodToDrop = FOOD_RESERVE_LIST.get(playerEntity.getRandom().nextInt(FOOD_RESERVE_LIST.size()));
-                ItemEntity foodDrop = new ItemEntity(playerEntity.world, playerEntity.getX(),
-                        playerEntity.getY(), playerEntity.getZ(), new ItemStack(foodToDrop));
-                playerEntity.world.spawnEntity(foodDrop);
-                foodReserveLevel--;
-            }
+        while (foodReserveLevel > 0) {
+            Item foodToDrop = FOOD_RESERVE_LIST.get(playerEntity.getRandom().nextInt(FOOD_RESERVE_LIST.size()));
+            ItemEntity foodDrop = new ItemEntity(playerEntity.world, playerEntity.getX(),
+                    playerEntity.getY(), playerEntity.getZ(), new ItemStack(foodToDrop));
+            playerEntity.world.spawnEntity(foodDrop);
+            foodReserveLevel--;
         }
     }
 
     public static void applyPotionBarrier(PlayerEntity playerEntity) {
-        if (!config.enableEnchantment.get(POTION_BARRIER))
+        int potionBarrierLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POTION_BARRIER), playerEntity);
+        if (potionBarrierLevel != 0)
             return;
-
-        if (isInstantHealthPotion(playerEntity.getMainHandStack())) {
-            int potionBarrierLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POTION_BARRIER), playerEntity);
-            if (potionBarrierLevel == 0) return;
-            int duration = 60 + (20 * potionBarrierLevel);
-            StatusEffectInstance resistance = new StatusEffectInstance(StatusEffects.RESISTANCE, duration, 3);
-            playerEntity.addStatusEffect(resistance);
-        }
+        StatusEffectInstance resistance = new StatusEffectInstance(StatusEffects.RESISTANCE, 60 + (20 * potionBarrierLevel), 3);
+        playerEntity.addStatusEffect(resistance);
     }
 
     public static void applySurpriseGift(PlayerEntity playerEntity) {
-        if (!config.enableEnchantment.get(SURPRISE_GIFT))
-            return;
+        int surpriseGiftLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SURPRISE_GIFT), playerEntity);
+        if (surpriseGiftLevel == 0) return;
 
-        if (isInstantHealthPotion(playerEntity.getMainHandStack())) {
-            int surpriseGiftLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SURPRISE_GIFT), playerEntity);
-            if (surpriseGiftLevel == 0) return;
+        float surpriseGiftChance = 0.5F * surpriseGiftLevel;
 
-            float surpriseGiftChance = 0.5F * surpriseGiftLevel;
-
-            while (surpriseGiftChance > 0) {
-                float surpriseGiftRand = playerEntity.getRandom().nextFloat();
-                if (surpriseGiftRand <= surpriseGiftChance) {
-                    ItemStack potionToDrop = SURPRISE_GIFT_LIST.get(playerEntity.getRandom().nextInt(SURPRISE_GIFT_LIST.size()));
-                    ItemEntity surpriseGift = new ItemEntity(playerEntity.world, playerEntity.getX(),
-                            playerEntity.getY(), playerEntity.getZ(), potionToDrop);
-                    playerEntity.world.spawnEntity(surpriseGift);
-                }
-                surpriseGiftChance -= 1.0F;
+        while (surpriseGiftChance > 0) {
+            float surpriseGiftRand = playerEntity.getRandom().nextFloat();
+            if (surpriseGiftRand <= surpriseGiftChance) {
+                ItemStack potionToDrop = SURPRISE_GIFT_LIST.get(playerEntity.getRandom().nextInt(SURPRISE_GIFT_LIST.size()));
+                ItemEntity surpriseGift = new ItemEntity(playerEntity.world, playerEntity.getX(),
+                        playerEntity.getY(), playerEntity.getZ(), potionToDrop);
+                playerEntity.world.spawnEntity(surpriseGift);
             }
+            surpriseGiftChance -= 1.0F;
         }
     }
 

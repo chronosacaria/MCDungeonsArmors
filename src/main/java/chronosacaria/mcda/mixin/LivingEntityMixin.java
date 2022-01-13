@@ -10,8 +10,10 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionUtil;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -47,6 +49,19 @@ public abstract class LivingEntityMixin extends Entity {
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
+    protected static boolean isInstantHealthPotion(ItemStack itemStack) {
+        boolean hasInstantHealth = false;
+
+        for (StatusEffectInstance potionEffect : PotionUtil.getPotionEffects(itemStack)) {
+            if (potionEffect.getEffectType() == StatusEffects.INSTANT_HEALTH) {
+                hasInstantHealth = true;
+                break;
+            }
+        }
+
+        return hasInstantHealth;
+    }
+
     // Mixins for apply damage Effects and Enchantments
     @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
     public void mcdaApplyDamageEffects(DamageSource source, float amount, CallbackInfo info) {
@@ -63,14 +78,12 @@ public abstract class LivingEntityMixin extends Entity {
             return;
 
         if (amount != 0.0F) {
-            if (config.enableEnchantment.get(FIRE_FOCUS)) {
+            if (config.enableEnchantment.get(FIRE_FOCUS))
                 EnchantmentEffects.applyFireFocusDamage(playerEntity, target, amount);
-            }
 
             if (source.isMagic()){
-                if (config.enableEnchantment.get(POISON_FOCUS)) {
+                if (config.enableEnchantment.get(POISON_FOCUS))
                     EnchantmentEffects.applyPoisonFocusDamage(playerEntity, target, amount);
-                }
             }
 
             ItemStack mainHandStack = playerEntity.getMainHandStack();
@@ -99,10 +112,11 @@ public abstract class LivingEntityMixin extends Entity {
     protected void applyFireTrailEffects(BlockPos blockPos, CallbackInfo ci){
         if(!((Object) this instanceof PlayerEntity playerEntity)) return;
 
-        EnchantmentEffects.applyFireTrail(playerEntity, blockPos);
+        if (config.enableEnchantment.get(FIRE_TRAIL))
+            EnchantmentEffects.applyFireTrail(playerEntity, blockPos);
     }
 
-    // Mixins for enchants related to consuming a potion
+    // Mixins for enchants related to consuming an item. Only potions rn
     @Inject(method = "consumeItem", at = @At("HEAD"))
     public void consumeItem(CallbackInfo ci) {
         if (!((Object) this instanceof PlayerEntity playerEntity))
@@ -110,10 +124,14 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (!playerEntity.isAlive())
             return;
-
-        EnchantmentEffects.applyFoodReserves(playerEntity);
-        EnchantmentEffects.applyPotionBarrier(playerEntity);
-        EnchantmentEffects.applySurpriseGift(playerEntity);
+        if (isInstantHealthPotion(playerEntity.getMainHandStack())) {
+            if (config.enableEnchantment.get(FOOD_RESERVES))
+                EnchantmentEffects.applyFoodReserves(playerEntity);
+            if (config.enableEnchantment.get(POTION_BARRIER))
+                EnchantmentEffects.applyPotionBarrier(playerEntity);
+            if (config.enableEnchantment.get(SURPRISE_GIFT))
+                EnchantmentEffects.applySurpriseGift(playerEntity);
+        }
     }
 
     // Mixins for Armor and Enchantment Effects on Damage at HEAD
@@ -196,45 +214,9 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    // Mixin for on death Effects and Enchantments. Only Gourdian's Hatred rn
-    @Inject(method = "onDeath", at = @At("HEAD"))
-    public void onGourdiansHatredKill(DamageSource source, CallbackInfo ci) {
-
-        if(!(source.getAttacker() instanceof LivingEntity user))return;
-
-        if (user != null) {
-            if (config.enableArmorEffect.get(GOURDIANS_HATRED))
-                ArmorEffects.applyGourdiansHatredStatus(user);
-        }
-    }
-
-    // Mixins for Armor and Enchantment Effects on Tick
-    @Inject(method = "tick", at = @At("HEAD"))
-    private void mcdaTickEffects(CallbackInfo ci){
-        // Mixins for Armour and Enchantment Effects on Tick for PlayerEntities
-        if((Object) this instanceof PlayerEntity playerEntity) {
-
-            if(playerEntity.isAlive()) {
-                if (config.enableArmorEffect.get(FLUID_FREEZING))
-                    ArmorEffects.applyFluidFreezing(playerEntity);
-                if (config.enableArmorEffect.get(INVISIBILITY))
-                    ArmorEffects.applyThiefInvisibilityTick(playerEntity);
-                if (config.enableArmorEffect.get(SYLVAN_PRESENCE))
-                    ArmorEffects.applySylvanPresence(playerEntity);
-            }
-        }
-        // Mixins for Armour and Enchantment Effects on Tick for LivingEntities
-        if((Object)this instanceof LivingEntity livingEntity) {
-
-            if (livingEntity.isAlive()) {
-                if (config.enableEnchantment.get(LUCKY_EXPLORER))
-                    EnchantmentEffects.applyLuckyExplorer(livingEntity);
-            }
-        }
-    }
-
+    // Mixins for climbing effects
     @Inject(method = "isClimbing", at = @At("HEAD"), cancellable = true)
-    private void armorClimbing(CallbackInfoReturnable<Boolean> cir){
+    private void mcdaArmorClimbing(CallbackInfoReturnable<Boolean> cir){
         if(!((Object) this instanceof PlayerEntity playerEntity)) return;
 
         if (playerEntity.isAlive()){
@@ -262,6 +244,43 @@ public abstract class LivingEntityMixin extends Entity {
                 ArmorEffects.teleportationRobeTeleport(playerEntity);
             if (config.enableArmorEffect.get(UNSTABLE_ROBES_EFFECT))
                 ArmorEffects.unstableRobeTeleport(playerEntity);
+        }
+    }
+
+    // Mixin for on death Effects and Enchantments. Only Gourdian's Hatred rn
+    @Inject(method = "onDeath", at = @At("HEAD"))
+    public void onGourdiansHatredKill(DamageSource source, CallbackInfo ci) {
+
+        if(!(source.getAttacker() instanceof LivingEntity user))return;
+
+        if (user != null) {
+            if (config.enableArmorEffect.get(GOURDIANS_HATRED))
+                ArmorEffects.applyGourdiansHatredStatus(user);
+        }
+    }
+
+    // Mixins for Armor and Enchantment Effects on Tick
+    @Inject(method = "tick", at = @At("HEAD"))
+    private void onMCDATickEffects(CallbackInfo ci){
+        // Mixins for Armour and Enchantment Effects on Tick for PlayerEntities
+        if((Object) this instanceof PlayerEntity playerEntity) {
+
+            if(playerEntity.isAlive()) {
+                if (config.enableArmorEffect.get(FLUID_FREEZING))
+                    ArmorEffects.applyFluidFreezing(playerEntity);
+                if (config.enableArmorEffect.get(INVISIBILITY))
+                    ArmorEffects.applyThiefInvisibilityTick(playerEntity);
+                if (config.enableArmorEffect.get(SYLVAN_PRESENCE))
+                    ArmorEffects.applySylvanPresence(playerEntity);
+            }
+        }
+        // Mixins for Armour and Enchantment Effects on Tick for LivingEntities
+        if((Object)this instanceof LivingEntity livingEntity) {
+
+            if (livingEntity.isAlive()) {
+                if (config.enableEnchantment.get(LUCKY_EXPLORER))
+                    EnchantmentEffects.applyLuckyExplorer(livingEntity);
+            }
         }
     }
 
