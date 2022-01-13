@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IGI",
+    "P P",
+    "   "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "P": {
+      "item": "mcda:iron_plate"
+    }
+  },
+  "result": {
+    "item": "mcda:vanguard_armor_helmet",
+    "count": 1
+  }
+}
