@@ -1,6 +1,7 @@
 package chronosacaria.mcda.api;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
@@ -20,6 +21,18 @@ public class AbilityHelper {
         for (MobEntity nearbyPet : nearbyPets) {
             nearbyPet.setTarget(target);
         }
+    }
+
+    public static LivingEntity getClosestPounceTarget(LivingEntity pouncer, LivingEntity targets, LivingEntity closest, float distance){
+        return targets.getEntityWorld().getClosestEntity(getPotentialPounceTargets(pouncer, targets, distance),
+                TargetPredicate.DEFAULT,
+                closest, closest.getX(), closest.getY(), closest.getZ());
+    }
+
+    public static List<LivingEntity> getPotentialPounceTargets(LivingEntity pouncer, LivingEntity targets, float distance){
+        return targets.getEntityWorld().getEntitiesByClass(LivingEntity.class,
+                new Box(targets.getBlockPos()).expand(distance),
+                (nearbyEntity) -> AbilityHelper.isPounceTarget(nearbyEntity, pouncer, pouncer));
     }
 
     public static boolean isPetOf(LivingEntity self, LivingEntity owner) {
@@ -69,6 +82,13 @@ public class AbilityHelper {
                 && self.isAlive()
                 && !isAllyOf(attacker, self)
                 && !isUnaffectedByAoe(self)
+                && center.canSee(self);
+    }
+
+    public static boolean isPounceTarget(LivingEntity self, LivingEntity attacker, LivingEntity center){
+        return self != attacker
+                && self.isAlive()
+                && !isAllyOf(attacker, self)
                 && center.canSee(self);
     }
 
