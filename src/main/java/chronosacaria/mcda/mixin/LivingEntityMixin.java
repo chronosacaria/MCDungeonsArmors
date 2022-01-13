@@ -293,28 +293,6 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-
-    //Its broken AF
-    @Inject(method = "onAttacking", at = @At("HEAD"))
-    public void onFoxPounce(Entity target, CallbackInfo ci){
-        if(((Object) this instanceof PlayerEntity playerEntity)) {
-
-            //List<HostileEntity> found = world.getEntitiesByClass(HostileEntity.class, new Box())
-
-            double xVel = playerEntity.getVelocity().x;
-            double yVel = playerEntity.getVelocity().y;
-            double zVel = playerEntity.getVelocity().z;
-
-            //if (playerEntity.isSneaking()) {
-                if (target instanceof LivingEntity) {
-                    playerEntity.setOnGround(true);
-                    playerEntity.onLanding();
-                    playerEntity.addVelocity(100.0D, 100.0D, 100.0D);
-                }
-            //}
-        }
-    }
-
     // Mixin for Knockback Resistance for Stalwart Bulwark Effect
     @SuppressWarnings("ModifyVariableMayBeArgsOnly")
     @ModifyVariable(method = "takeKnockback", at = @At("HEAD"), ordinal = 0)

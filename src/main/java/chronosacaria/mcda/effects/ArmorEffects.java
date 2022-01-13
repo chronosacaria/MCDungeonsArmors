@@ -998,8 +998,7 @@ public class ArmorEffects {
 
     public static void sweetBerrySpeed(ServerPlayerEntity playerEntity){
         if (McdaConfig.config.enableArmorEffect.get(ArmorEffectID.SWEET_BERRY_SPEED)) {
-            if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.FOX)
-                    || CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
+            if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
                 if (playerEntity.getMainHandStack().getItem() == Items.SWEET_BERRIES) {
                     StatusEffectInstance speed = new StatusEffectInstance(StatusEffects.SPEED, 200, 0, false, false);
                     playerEntity.addStatusEffect(speed);
@@ -1008,4 +1007,18 @@ public class ArmorEffects {
         }
     }
 
+    public static void foxSneakJumpBoost(ServerPlayerEntity playerEntity){
+        if (config.enableArmorEffect.get(ArmorEffectID.FOX_SNEAK_JUMP_BOOST)) {
+            if (playerEntity.world.getTime() % 100 == 0) {
+                if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.FOX)
+                        || CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
+                    if (playerEntity.isSneaking()) {
+                        StatusEffectInstance jumpBoost = new StatusEffectInstance(StatusEffects.JUMP_BOOST, 60, 0,
+                                false, true);
+                        playerEntity.addStatusEffect(jumpBoost);
+                    }
+                }
+            }
+        }
+    }
 }
