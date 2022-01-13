@@ -49,19 +49,6 @@ public abstract class LivingEntityMixin extends Entity {
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
-    protected static boolean isInstantHealthPotion(ItemStack itemStack) {
-        boolean hasInstantHealth = false;
-
-        for (StatusEffectInstance potionEffect : PotionUtil.getPotionEffects(itemStack)) {
-            if (potionEffect.getEffectType() == StatusEffects.INSTANT_HEALTH) {
-                hasInstantHealth = true;
-                break;
-            }
-        }
-
-        return hasInstantHealth;
-    }
-
     // Mixins for apply damage Effects and Enchantments
     @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
     public void mcdaApplyDamageEffects(DamageSource source, float amount, CallbackInfo info) {
@@ -124,14 +111,12 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (!playerEntity.isAlive())
             return;
-        if (isInstantHealthPotion(playerEntity.getMainHandStack())) {
-            if (config.enableEnchantment.get(FOOD_RESERVES))
-                EnchantmentEffects.applyFoodReserves(playerEntity);
-            if (config.enableEnchantment.get(POTION_BARRIER))
-                EnchantmentEffects.applyPotionBarrier(playerEntity);
-            if (config.enableEnchantment.get(SURPRISE_GIFT))
-                EnchantmentEffects.applySurpriseGift(playerEntity);
-        }
+        if (config.enableEnchantment.get(FOOD_RESERVES))
+            EnchantmentEffects.applyFoodReserves(playerEntity);
+        if (config.enableEnchantment.get(POTION_BARRIER))
+            EnchantmentEffects.applyPotionBarrier(playerEntity);
+        if (config.enableEnchantment.get(SURPRISE_GIFT))
+            EnchantmentEffects.applySurpriseGift(playerEntity);
     }
 
     // Mixins for Armor and Enchantment Effects on Damage at HEAD
@@ -309,6 +294,28 @@ public abstract class LivingEntityMixin extends Entity {
                     }
                 }
             }
+        }
+    }
+
+    //Its broken AF
+    @Inject(method = "onAttacking", at = @At("HEAD"))
+    public void onFoxPounce(Entity target, CallbackInfo ci){
+        if(((Object) this instanceof PlayerEntity playerEntity)) {
+
+            //List<HostileEntity> found = world.getEntitiesByClass(HostileEntity.class, new Box())
+
+            double xVel = playerEntity.getVelocity().x;
+            double yVel = playerEntity.getVelocity().y;
+            double zVel = playerEntity.getVelocity().z;
+
+            //if (playerEntity.isSneaking()) {
+            if (target instanceof LivingEntity) {
+                playerEntity.setOnGround(true);
+                playerEntity.onLanding();
+                playerEntity.addVelocity(100.0D, 100.0D, 100.0D);
+                playerEntity.velocityModified = true;
+            }
+            //}
         }
     }
 

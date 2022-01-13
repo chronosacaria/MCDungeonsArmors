@@ -41,6 +41,19 @@ public class EnchantmentEffects {
                     PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.SWIFTNESS),
                     PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.INVISIBILITY));
 
+    protected static boolean isInstantHealthPotion(ItemStack itemStack) {
+        boolean hasInstantHealth = false;
+
+        for (StatusEffectInstance potionEffect : PotionUtil.getPotionEffects(itemStack)) {
+            if (potionEffect.getEffectType() == StatusEffects.INSTANT_HEALTH) {
+                hasInstantHealth = true;
+                break;
+            }
+        }
+
+        return hasInstantHealth;
+    }
+
     // Effects for LivingEntityMixin
     public static void applyFireTrail(PlayerEntity player, BlockPos blockPos){
         int fireTrailLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FIRE_TRAIL), player);
@@ -56,6 +69,8 @@ public class EnchantmentEffects {
     }
 
     public static void applyFoodReserves(PlayerEntity playerEntity) {
+        if (!isInstantHealthPotion(playerEntity.getMainHandStack()))
+            return;
         int foodReserveLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FOOD_RESERVES), playerEntity);
 
         while (foodReserveLevel > 0) {
@@ -68,6 +83,8 @@ public class EnchantmentEffects {
     }
 
     public static void applyPotionBarrier(PlayerEntity playerEntity) {
+        if (!isInstantHealthPotion(playerEntity.getMainHandStack()))
+            return;
         int potionBarrierLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POTION_BARRIER), playerEntity);
         if (potionBarrierLevel != 0)
             return;
@@ -76,6 +93,8 @@ public class EnchantmentEffects {
     }
 
     public static void applySurpriseGift(PlayerEntity playerEntity) {
+        if (!isInstantHealthPotion(playerEntity.getMainHandStack()))
+            return;
         int surpriseGiftLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SURPRISE_GIFT), playerEntity);
         if (surpriseGiftLevel == 0) return;
 
