@@ -6,15 +6,17 @@ import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.items.ArmorSets;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -298,13 +300,37 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     //Its broken AF but now less
-    @Inject(method = "onAttacking", at = @At("HEAD"))
-    public void onFoxPounce(Entity target, CallbackInfo ci){
+    @Inject(method = "swingHand(Lnet/minecraft/util/Hand;)V", at = @At("HEAD"))
+    public void onFoxPounce(Hand hand, CallbackInfo ci){
         if(((Object) this instanceof PlayerEntity playerEntity)) {
 
-            //List<HostileEntity> found = world.getEntitiesByClass(HostileEntity.class, new Box())
+            float listDistance = 6.0f;
 
-            if (target instanceof LivingEntity) {
+            LivingEntity target =
+                    playerEntity.getEntityWorld().getClosestEntity(
+                            AbilityHelper.getPotentialPounceTargets(playerEntity, listDistance),
+                            TargetPredicate.DEFAULT,
+                            playerEntity,
+                            playerEntity.getX(),
+                            playerEntity.getY(),
+                            playerEntity.getZ());
+
+            if (target == null) return;
+
+            Vec3d playerVec = new Vec3d(playerEntity.getHorizontalFacing().getVector().getX(),
+                    this.getVerticalFacing().getVector().getY(),
+                    playerEntity.getHorizontalFacing().getVector().getZ());
+            Vec3d blockPosVec = new Vec3d((target.getBlockPos().getX() - playerEntity.getBlockPos().getX()),
+                    (target.getBlockPos().getY() - playerEntity.getBlockPos().getY()),(target.getBlockPos().getZ() - playerEntity.getBlockPos().getZ()));
+
+            // Modify range based on distance, use target height for offset, change comparisons to absolute value
+            if (target instanceof LivingEntity
+                    && ((playerVec.normalize().x - 0.5f)) < blockPosVec.normalize().x
+                    && ((playerVec.z)) < 20
+                    && ((playerVec.normalize().z - 0.5f)) < blockPosVec.normalize().z
+                    && ((playerVec.normalize().x + 0.5f)) > blockPosVec.normalize().x
+                    && ((playerVec.z)) > - 20
+                    && ((playerVec.normalize().z + 0.5f)) > blockPosVec.normalize().z){
                 if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.FOX)
                         || CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
 
@@ -314,17 +340,19 @@ public abstract class LivingEntityMixin extends Entity {
                         Vec3d vec3d = playerEntity.getVelocity();
                         if (vec3d.x == vec3d.z && vec3d.z == 0) {
 
-                            Vec3d vec3d3 = new Vec3d((target.getX() + (target.getVelocity().x)/6) - playerEntity.getX(), 0.0D, (target.getZ() + (target.getVelocity().z)/6) - playerEntity.getZ());
+                            Vec3d vec3d3 = new Vec3d(target.getX() - playerEntity.getX(), 0.0D,
+                                    target.getZ() - playerEntity.getZ());
 
                             double distance = (vec3d3.horizontalLength())/6;
                             vec3d3 = vec3d3.normalize().multiply(distance);
 
-                            playerEntity.setVelocity(vec3d3.x, 0.8, vec3d3.z);
+                            playerEntity.setVelocity(vec3d3.x + target.getVelocity().x, 0.8,
+                                    vec3d3.z + target.getVelocity().z);
                             // Thanks Apace!
                             playerEntity.velocityModified = true;
-                            StatusEffectInstance jumpBoost = new StatusEffectInstance(StatusEffects.JUMP_BOOST, 22, 2,
-                                    false, false);
-                            playerEntity.addStatusEffect(jumpBoost);
+                            //StatusEffectInstance jumpBoost = new StatusEffectInstance(StatusEffects.JUMP_BOOST, 22, 2,
+                            //        false, false);
+                            //playerEntity.addStatusEffect(jumpBoost);
                             // Somehow make the player model move like the fox does?
                         }
                     }
@@ -381,5 +409,10 @@ public abstract class LivingEntityMixin extends Entity {
             }
         }
         return statusEffectInstance;
+    }
+
+
+    private Direction getVerticalFacing() {
+        return Direction.fromRotation(this.getPitch());
     }
 }
