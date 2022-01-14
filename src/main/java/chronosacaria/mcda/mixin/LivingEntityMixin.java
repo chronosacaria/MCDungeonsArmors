@@ -13,7 +13,6 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionUtil;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -47,8 +46,6 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow public abstract int getArmor();
 
     @Shadow public abstract void setOnGround(boolean onGround);
-
-    @Shadow protected abstract void playBlockFallSound();
 
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
 
@@ -312,18 +309,22 @@ public abstract class LivingEntityMixin extends Entity {
                         || CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
 
                     if (playerEntity.isSneaking() && playerEntity.isOnGround()) {
-                        // Unsneak the player
-                        double gravity = playerEntity.getVelocity().y;
+                        playerEntity.setSneaking(false);
+
                         Vec3d vec3d = playerEntity.getVelocity();
                         if (vec3d.x == vec3d.z && vec3d.z == 0) {
-                            Vec3d vec3d2 = new Vec3d(target.getX() - playerEntity.getX(), 0.0D, target.getZ() - playerEntity.getZ());
 
-                            vec3d2 = vec3d2.normalize().multiply(0.4D).add(vec3d.multiply(0.2D));
+                            Vec3d vec3d3 = new Vec3d((target.getX() + (target.getVelocity().x)/6) - playerEntity.getX(), 0.0D, (target.getZ() + (target.getVelocity().z)/6) - playerEntity.getZ());
 
-                            // Fix calculations
-                            playerEntity.setVelocity(vec3d2.x, 0.8, vec3d2.z);
+                            double distance = (vec3d3.horizontalLength())/6;
+                            vec3d3 = vec3d3.normalize().multiply(distance);
+
+                            playerEntity.setVelocity(vec3d3.x, 0.8, vec3d3.z);
                             // Thanks Apace!
                             playerEntity.velocityModified = true;
+                            StatusEffectInstance jumpBoost = new StatusEffectInstance(StatusEffects.JUMP_BOOST, 22, 2,
+                                    false, false);
+                            playerEntity.addStatusEffect(jumpBoost);
                             // Somehow make the player model move like the fox does?
                         }
                     }
