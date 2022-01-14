@@ -1,8 +1,8 @@
 package chronosacaria.mcda.effects;
 
+import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.api.McdaEnchantmentHelper;
 import chronosacaria.mcda.registry.EnchantsRegistry;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;
@@ -41,6 +41,7 @@ public class EnchantmentEffects {
                     PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.SWIFTNESS),
                     PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.INVISIBILITY));
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     protected static boolean isInstantHealthPotion(ItemStack itemStack) {
         boolean hasInstantHealth = false;
 
@@ -59,12 +60,9 @@ public class EnchantmentEffects {
         int fireTrailLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FIRE_TRAIL), player);
         if (fireTrailLevel == 0) return;
 
-        BlockState blockState = Blocks.FIRE.getDefaultState();
-
-            BlockPos placeFireTrail = blockPos.offset(player.getMovementDirection().getOpposite(), 2);
-            if (player.world.getBlockState(placeFireTrail).isAir() && player.isOnGround() && !(player.isSneaking())){
-                player.world.setBlockState(placeFireTrail, blockState);
-            }
+        BlockPos placeFireTrail = blockPos.offset(player.getMovementDirection().getOpposite(), 2);
+        if (player.world.getBlockState(placeFireTrail).isAir() && player.isOnGround() && !(player.isSneaking()))
+            player.world.setBlockState(placeFireTrail, Blocks.FIRE.getDefaultState());
 
     }
 
@@ -112,87 +110,18 @@ public class EnchantmentEffects {
         }
     }
 
-    // Effects for ServerPlayerEntityMixin
-    public static void applyCowardice(ServerPlayerEntity player) {
-        if (!config.enableEnchantment.get(COWARDICE))
-            return;
-
-        World world = player.getEntityWorld();
-
-        if (player.getHealth() == player.getMaxHealth() && world.getTime() % 30 == 0) {
-            int cowardiceLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(COWARDICE), player);
-            if (cowardiceLevel == 0) return;
-            StatusEffectInstance strengthBoost = new StatusEffectInstance(StatusEffects.STRENGTH, 42,
-                    cowardiceLevel - 1, false, false);
-            player.addStatusEffect(strengthBoost);
-        }
-    }
-
-    public static void applyFrenzied(ServerPlayerEntity player) {
-        if (!config.enableEnchantment.get(FRENZIED))
-            return;
-
-        World world = player.getEntityWorld();
-
-        if (player.getHealth() <= (0.5F * player.getMaxHealth()) && world.getTime() % 30 == 0) {
-            int frenziedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FRENZIED), player);
-            if (frenziedLevel == 0) return;
-
-            StatusEffectInstance frenzied = new StatusEffectInstance(StatusEffects.HASTE, 40, frenziedLevel - 1, false,
-                    false);
-            player.addStatusEffect(frenzied);
-        }
-    }
-
-    public static void applyReckless(ServerPlayerEntity player){
-        if (!config.enableEnchantment.get(RECKLESS))
-            return;
-
-        World world = player.getEntityWorld();
-
-        float recklessHealth = player.getMaxHealth() * 0.4F;
-
-        int recklessLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(RECKLESS), player);
-        if (recklessLevel == 0) return;
-
-        if (player.getHealth() >= recklessHealth) {
-            player.setHealth(recklessHealth);
-        }
-
-        if (world.getTime() % 30 == 0){
-            StatusEffectInstance reckless = new StatusEffectInstance(StatusEffects.STRENGTH, 40, recklessLevel - 1,false, false);
-            player.addStatusEffect(reckless);
-        }
-
-    }
-
-    public static void applySwiftfooted(ServerPlayerEntity player){
-        if (!config.enableEnchantment.get(SWIFTFOOTED))
-            return;
-
-        World world = player.getEntityWorld();
-
-        if (!(player.isOnGround()) && world.getTime() % 20 == 0){
-            int swiftfootedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SWIFTFOOTED),player);
-            if (swiftfootedLevel == 0) return;
-
-            StatusEffectInstance swiftfooted = new StatusEffectInstance(StatusEffects.SPEED, 60, swiftfootedLevel - 1,
-                    false, false);
-            player.addStatusEffect(swiftfooted);
-        }
-    }
-
     public static void applyLuckyExplorer(LivingEntity livingEntity){
         World world = livingEntity.getWorld();
         if (livingEntity.isOnGround() && world.getTime() % 50 == 0) {
             int luckyExplorerLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(LUCKY_EXPLORER),
                     livingEntity);
-            if (luckyExplorerLevel == 0) return;
+            if (luckyExplorerLevel == 0)
+                return;
 
             float luckyExplorerThreshold = luckyExplorerLevel * 0.10f;
             float luckyExplorerRand = livingEntity.getRandom().nextFloat();
 
-            if (luckyExplorerThreshold >= luckyExplorerRand) {
+            if (luckyExplorerRand <= luckyExplorerThreshold) {
                 ItemStack feetStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
 
                 double currentXCoord = livingEntity.getPos().getX();
@@ -201,7 +130,6 @@ public class EnchantmentEffects {
                 if (feetStack.getNbt().get("x-coord") == null) {
                     feetStack.getOrCreateNbt().putDouble("x-coord", currentXCoord);
                     feetStack.getOrCreateNbt().putDouble("z-coord", currentZCoord);
-
                     return;
                 }
 
@@ -243,47 +171,96 @@ public class EnchantmentEffects {
     }
 
     public static boolean deathBarterEffect(PlayerEntity playerEntity){
-        PlayerInventory playerInventory = playerEntity.getInventory();
-        int emeraldTotal = 0;
-        List<Integer> emeraldSlotIndices = new ArrayList<>();
-        for(int slotIndex = 0; slotIndex < playerInventory.size(); slotIndex++){
-            ItemStack currentStack = playerInventory.getStack(slotIndex);
-            if(currentStack.getItem() == Items.EMERALD){
-                emeraldTotal += currentStack.getCount();
-                emeraldSlotIndices.add(slotIndex);
-            }
-        }
 
         int deathBarterLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(DEATH_BARTER), playerEntity);
         if (deathBarterLevel > 0) {
+            PlayerInventory playerInventory = playerEntity.getInventory();
+            int emeraldTotal = 0;
+            List<Integer> emeraldSlotIndices = new ArrayList<>();
+            for (int slotIndex = 0; slotIndex < playerInventory.size(); slotIndex++){
+                ItemStack currentStack = playerInventory.getStack(slotIndex);
+                if(currentStack.getItem() == Items.EMERALD){
+                    emeraldTotal += currentStack.getCount();
+                    emeraldSlotIndices.add(slotIndex);
+                }
+            }
             int minEmeralds = 150 / deathBarterLevel;
             if (emeraldTotal >= minEmeralds && emeraldTotal > 0) {
-
                 for (Integer slotIndex : emeraldSlotIndices) {
                     if (minEmeralds > 0) {
-                        ItemStack currentEmeraldsStack = playerInventory.getStack(slotIndex);
-                        int currentEmeraldsCount = currentEmeraldsStack.getCount();
-                        if (currentEmeraldsCount >= minEmeralds) {
-                            currentEmeraldsStack.setCount(currentEmeraldsCount - minEmeralds);
-                            minEmeralds = 0;
-                        } else {
-                            currentEmeraldsStack.setCount(0);
-                            minEmeralds -= currentEmeraldsCount;
-                        }
-                    } else {
+                        ItemStack currEmeraldsStack = playerInventory.getStack(slotIndex);
+                        int currEmeraldsCount = currEmeraldsStack.getCount();
+                        int emeraldsToTake = Math.min(minEmeralds, currEmeraldsCount);
+                        currEmeraldsStack.setCount(currEmeraldsCount - emeraldsToTake);
+                        minEmeralds -= emeraldsToTake;
+                    } else
                         break;
-                    }
-
-                    playerEntity.setHealth(1.0F);
-                    playerEntity.clearStatusEffects();
-                    playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
-                    playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1));
-                    playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
-
-                    return true;
                 }
+                CleanlinessHelper.onTotemDeathEffects(playerEntity);
+                return  true;
             }
         }
         return false;
+    }
+
+    // Effects for ServerPlayerEntityMixin
+    public static void applyCowardice(ServerPlayerEntity player) {
+        if (!config.enableEnchantment.get(COWARDICE))
+            return;
+
+        if (player.getHealth() == player.getMaxHealth()) {
+            int cowardiceLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(COWARDICE), player);
+            if (cowardiceLevel == 0)
+                return;
+            StatusEffectInstance strengthBoost = new StatusEffectInstance(StatusEffects.STRENGTH, 42,
+                    cowardiceLevel - 1, false, false);
+            player.addStatusEffect(strengthBoost);
+        }
+    }
+
+    public static void applyFrenzied(ServerPlayerEntity player) {
+        if (!config.enableEnchantment.get(FRENZIED))
+            return;
+
+        if (player.getHealth() <= (0.5F * player.getMaxHealth())) {
+            int frenziedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FRENZIED), player);
+            if (frenziedLevel == 0)
+                return;
+            StatusEffectInstance frenzied = new StatusEffectInstance(StatusEffects.HASTE, 40, frenziedLevel - 1, false,
+                    false);
+            player.addStatusEffect(frenzied);
+        }
+    }
+
+    public static void applyReckless(ServerPlayerEntity player){
+        if (!config.enableEnchantment.get(RECKLESS))
+            return;
+
+        int recklessLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(RECKLESS), player);
+        if (recklessLevel == 0)
+            return;
+
+        float recklessHealth = player.getMaxHealth() * 0.4F;
+        if (player.getHealth() >= recklessHealth)
+            player.setHealth(recklessHealth);
+
+        StatusEffectInstance reckless = new StatusEffectInstance(StatusEffects.STRENGTH, 40, recklessLevel - 1,false, false);
+        player.addStatusEffect(reckless);
+
+    }
+
+    public static void applySwiftfooted(ServerPlayerEntity player){
+        if (!config.enableEnchantment.get(SWIFTFOOTED))
+            return;
+
+        int swiftfootedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SWIFTFOOTED),player);
+        if (swiftfootedLevel == 0)
+            return;
+
+        if (!player.isOnGround()){
+            StatusEffectInstance swiftfooted = new StatusEffectInstance(StatusEffects.SPEED, 60, swiftfootedLevel - 1,
+                    false, false);
+            player.addStatusEffect(swiftfooted);
+        }
     }
 }

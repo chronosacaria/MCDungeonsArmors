@@ -6,6 +6,7 @@ import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -20,10 +21,15 @@ public class ServerPlayerEntityMixin {
         if (playerEntity == null) return;
 
         // Effects from Enchantments
-        EnchantmentEffects.applyCowardice(playerEntity);
-        EnchantmentEffects.applyFrenzied(playerEntity);
-        EnchantmentEffects.applyReckless(playerEntity);
-        EnchantmentEffects.applySwiftfooted(playerEntity);
+        World world = playerEntity.getEntityWorld();
+        if (world.getTime() % 30 == 0) {
+            EnchantmentEffects.applyCowardice(playerEntity);
+            EnchantmentEffects.applyFrenzied(playerEntity);
+            EnchantmentEffects.applyReckless(playerEntity);
+        }
+        if (world.getTime() % 10 == 0) {
+            EnchantmentEffects.applySwiftfooted(playerEntity);
+        }
 
         // Effects from Armour Sets
         ArmorEffects.applyFireResistance(playerEntity); // Sprout & Living Vines Armour

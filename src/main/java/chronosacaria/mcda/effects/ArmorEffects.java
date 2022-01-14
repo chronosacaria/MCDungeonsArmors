@@ -669,12 +669,7 @@ public class ArmorEffects {
                     }
                 }
             }
-            livingEntity.setHealth(1.0F);
-            livingEntity.clearStatusEffects();
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1));
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
-            livingEntity.world.sendEntityStatus(livingEntity, (byte) 35);
+            CleanlinessHelper.onTotemDeathEffects(livingEntity);
             return true;
         }
         return false;
