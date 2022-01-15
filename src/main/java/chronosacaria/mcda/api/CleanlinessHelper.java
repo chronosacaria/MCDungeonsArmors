@@ -6,6 +6,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -54,5 +55,23 @@ public class CleanlinessHelper {
         livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1));
         livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
         livingEntity.world.sendEntityStatus(livingEntity, (byte) 35);
+    }
+
+    public static void mcdaDamageEquipment(LivingEntity livingEntity, EquipmentSlot equipSlot, boolean toBreak) {
+        ItemStack armorStack = livingEntity.getEquippedStack(equipSlot);
+        int k = armorStack.getMaxDamage();
+        int j = k - armorStack.getDamage();
+        if (toBreak)
+            armorStack.damage(j, livingEntity,
+                    (entity) -> entity.sendEquipmentBreakStatus(equipSlot));
+        else
+            armorStack.damage((k / 2), livingEntity,
+                (entity) -> entity.sendEquipmentBreakStatus(equipSlot));
+    }
+
+    public static boolean mcdaBoundingBox(PlayerEntity playerEntity, float boxSize) {
+        return playerEntity.world.getBlockCollisions(playerEntity,
+                playerEntity.getBoundingBox().offset(boxSize * playerEntity.getBoundingBox().getXLength(), 0,
+                        boxSize * playerEntity.getBoundingBox().getZLength())).iterator().hasNext();
     }
 }

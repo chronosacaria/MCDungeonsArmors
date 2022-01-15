@@ -90,7 +90,7 @@ public abstract class LivingEntityMixin extends Entity {
                     if (config.enableArmorEffect.get(GILDED_HERO))
                         ArmorEffects.gildedHeroDamageBuff(playerEntity, target);
                     if (config.enableArmorEffect.get(ARCTIC_FOXS_HIGH_GROUND))
-                        ArmorEffects.arcticFoxsHighGround(playerEntity, target, amount);
+                        ArmorEffects.arcticFoxesHighGround(playerEntity, target, amount);
                 }
             }
         }
@@ -98,7 +98,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     // Mixins for apply movement Effects and Enchantments. Only Fire Trail rn
     @Inject(method = "applyMovementEffects", at = @At("HEAD"))
-    protected void applyFireTrailEffects(BlockPos blockPos, CallbackInfo ci){
+    protected void applyFireTrailEffects(BlockPos blockPos, CallbackInfo ci) {
         if(!((Object) this instanceof PlayerEntity playerEntity)) return;
 
         if (config.enableEnchantment.get(FIRE_TRAIL))
@@ -138,7 +138,6 @@ public abstract class LivingEntityMixin extends Entity {
             }
 
             if (this.lastDamageTaken >= 0) {
-
                 if (source.getAttacker() instanceof LivingEntity || source.isProjectile()) {
                     if (config.enableArmorEffect.get(SOULDANCER_GRACE)) {
                         if (ArmorEffects.souldancerGraceEffect(playerEntity))
@@ -152,13 +151,11 @@ public abstract class LivingEntityMixin extends Entity {
         // Mixins for Armour and Enchantment Effects on Damage for LivingEntities
         if ((Object) this instanceof LivingEntity livingEntity) {
 
-            if((source.getAttacker() instanceof LivingEntity)) {
-                if (config.enableArmorEffect.get(CAULDRONS_OVERFLOW))
-                    ArmorEffects.applyCauldronsOverflow(livingEntity, amount);
-            }
-            if (amount > 0 && source.getAttacker() instanceof LivingEntity){
+            if (amount > 0 && source.getAttacker() instanceof LivingEntity) {
                 if (config.enableArmorEffect.get(BUZZY_HIVE))
                     ArmorEffects.buzzyHiveEffect(livingEntity);
+                if (config.enableArmorEffect.get(CAULDRONS_OVERFLOW))
+                    ArmorEffects.applyCauldronsOverflow(livingEntity);
             }
         }
     }
