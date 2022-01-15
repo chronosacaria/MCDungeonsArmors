@@ -1,8 +1,6 @@
 
 package chronosacaria.mcda.mixin;
 
-import chronosacaria.mcda.config.McdaConfig;
-import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
 import net.minecraft.server.network.ServerPlayerEntity;

@@ -81,9 +81,8 @@ public class ArmorEffects {
                     SOULDANCER_GRACE, SPRINTING, WEB_WALKING);
 
     public static int applyMysteryArmorEffect(LivingEntity livingEntity, ArmorSets armorSets) {
-        if (!config.enableArmorEffect.get(MYSTERY_EFFECTS)) {
+        if (!config.enableArmorEffect.get(MYSTERY_EFFECTS))
             return 0;
-        }
 
         //Checks Mystery Armor Color
         if (hasArmorSet(livingEntity, armorSets)){
@@ -93,19 +92,18 @@ public class ArmorEffects {
             ItemStack leggingsStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
             ItemStack bootsStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
 
-
             int[] domArr = {0,0,0,0};
 
-            if (helmetStack.getNbt() != null) {
+            if (helmetStack.getNbt().get("dominance") != null) {
                 domArr[0] = helmetStack.getNbt().getInt("dominance");
             }
-            if (chestplateStack.getNbt() != null) {
+            if (chestplateStack.getNbt().get("dominance") != null) {
                 domArr[1] = chestplateStack.getNbt().getInt("dominance");
             }
-            if (leggingsStack.getNbt() != null) {
+            if (leggingsStack.getNbt().get("dominance") != null) {
                 domArr[2] = leggingsStack.getNbt().getInt("dominance");
             }
-            if (bootsStack.getNbt() != null) {
+            if (bootsStack.getNbt().get("dominance") != null) {
                 domArr[3] = bootsStack.getNbt().getInt("dominance");
             }
 
@@ -142,71 +140,71 @@ public class ArmorEffects {
         World world = livingEntity.getEntityWorld();
 
         if (!world.isClient) {
+
+            if (livingEntity.hasVehicle())
+                livingEntity.stopRiding();
+
             double xpos = livingEntity.getX();
             double ypos = livingEntity.getY();
             double zpos = livingEntity.getZ();
 
-            for (int i = 0; i < 16; i++) {
-                double teleportX = livingEntity.getX() + (livingEntity.getRandom().nextDouble() - 0.5D) * 16.0D;
-                double teleportY =
-                        MathHelper.clamp(livingEntity.getY() + (double) (livingEntity.getRandom().nextInt(16) - 8),
-                                0.0D, world.getHeight() - 1);
-                double teleportZ = livingEntity.getZ() + (livingEntity.getRandom().nextDouble() - 0.5D) * 16.0D;
-                if (livingEntity.hasVehicle()) {
-                    livingEntity.stopRiding();
-                }
+            double teleportX;
+            double teleportY;
+            double teleportZ;
+            int i = 0;
 
-                if (livingEntity.teleport(teleportX, teleportY, teleportZ, true)) {
-                    SoundEvent soundEvent = livingEntity instanceof FoxEntity ? SoundEvents.ENTITY_FOX_TELEPORT :
-                            SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT;
-                    livingEntity.world.playSound(
-                            null,
-                            xpos,
-                            ypos,
-                            zpos,
-                            soundEvent,
-                            SoundCategory.PLAYERS,
-                            1.0F,
-                            1.0F);
-                }
-            }
+            do {
+                double xDiff = (livingEntity.getRandom().nextDouble(0.5D) + 0.5D) * 32.0D;
+                double zDiff = (livingEntity.getRandom().nextDouble(0.5D) + 0.5D) * 32.0D;
+                teleportX = livingEntity.getRandom().nextInt() % 2 == 0 ?
+                        xpos + xDiff :
+                        xpos - xDiff;
+                teleportY =
+                        MathHelper.clamp(ypos + (double) (livingEntity.getRandom().nextInt(16) - 8),
+                                0.0D, world.getHeight() - 1);
+                teleportZ = livingEntity.getRandom().nextInt() % 2 == 0 ?
+                        zpos + zDiff :
+                        zpos - zDiff;
+                i++;
+
+            } while (!livingEntity.teleport(teleportX, teleportY, teleportZ, true) && i != 16);
+
+            if (i == 16 && livingEntity.getX() == xpos && livingEntity.getY() == ypos && livingEntity.getZ() == zpos)
+                return;
+            SoundEvent soundEvent = livingEntity instanceof FoxEntity ? SoundEvents.ENTITY_FOX_TELEPORT :
+                    SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT;
+            livingEntity.world.playSound(
+                    null,
+                    livingEntity.getX(),
+                    livingEntity.getY(),
+                    livingEntity.getZ(),
+                    soundEvent,
+                    SoundCategory.PLAYERS,
+                    1.0F,
+                    1.0F);
         }
     }
 
     public static void controlledTeleportEffect(LivingEntity livingEntity) {
-        World world = livingEntity.getEntityWorld();
         Vec3d target = raytraceForTeleportation(livingEntity);
 
-        if (!world.isClient /*&& target != null*/) {
-            double xpos = livingEntity.getX();
-            double ypos = livingEntity.getY();
-            double zpos = livingEntity.getZ();
+        if (!livingEntity.getEntityWorld().isClient /*&& target != null*/) {
 
-            for (int i = 0; i < 16; i++) {
-                Random random = world.random;
-                double teleportX =
-                        (target.x - livingEntity.getX()) * random.nextDouble() + livingEntity.getX() - 0.5;
-                double teleportY =
-                        (target.y - livingEntity.getY()) * random.nextDouble() + livingEntity.getY() + 1;
-                double teleportZ =
-                        (target.z - livingEntity.getZ()) * random.nextDouble() + livingEntity.getZ() - 0.5;
-                if (livingEntity.hasVehicle()) {
-                    livingEntity.stopRiding();
-                }
+            if (livingEntity.hasVehicle())
+                livingEntity.stopRiding();
 
-                if (livingEntity.teleport(teleportX, teleportY, teleportZ, true)) {
-                    SoundEvent soundEvent = livingEntity instanceof FoxEntity ? SoundEvents.ENTITY_FOX_TELEPORT :
-                            SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT;
-                    livingEntity.world.playSound(
-                            null,
-                            xpos,
-                            ypos,
-                            zpos,
-                            soundEvent,
-                            SoundCategory.PLAYERS,
-                            1.0F,
-                            1.0F);
-                }
+            if (livingEntity.teleport(target.x, target.y, target.z, true)) {
+                SoundEvent soundEvent = livingEntity instanceof FoxEntity ? SoundEvents.ENTITY_FOX_TELEPORT :
+                        SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT;
+                livingEntity.world.playSound(
+                        null,
+                        livingEntity.getX(),
+                        livingEntity.getY(),
+                        livingEntity.getZ(),
+                        soundEvent,
+                        SoundCategory.PLAYERS,
+                        1.0F,
+                        1.0F);
             }
         }
     }
@@ -219,30 +217,33 @@ public class ArmorEffects {
         BlockHitResult result = world.raycast(new RaycastContext(eyeVec, rayEnd, RaycastContext.ShapeType.COLLIDER,
                 RaycastContext.FluidHandling.NONE, livingEntity));
 
-        BlockPos teleportPos = result.getBlockPos().down(2);
+        BlockPos rayResult = result.getBlockPos().offset(result.getSide());
 
-        boolean positionIsFree = positionIsClear(world, teleportPos);
+        boolean positionIsFree = positionIsClear(world, rayResult);
 
-        if (!world.isClient && !result.isInsideBlock()) {
+        if (!result.isInsideBlock()) {
 
             while (!positionIsFree) {
-                teleportPos = livingEntity.getBlockPos();
-                positionIsFree = positionIsClear(world, teleportPos) && world.raycast(new RaycastContext(eyeVec,
-                        Vec3d.ofCenter(teleportPos.up()),
+                rayResult = livingEntity.getBlockPos();
+                positionIsFree = positionIsClear(world, rayResult) && world.raycast(new RaycastContext(eyeVec,
+                        Vec3d.ofCenter(rayResult.up()),
                         RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.NONE, livingEntity)).getType() == HitResult.Type.MISS;
-                if (teleportPos.getY() <= 0){
+                if (rayResult.getY() <= -60)
                     break;
-                }
             }
         } else if (positionIsFree) {
-            Vec3d.ofCenter(teleportPos);
+            Vec3d.ofCenter(rayResult);
         }
-        return Vec3d.ofCenter(teleportPos);
+        return Vec3d.ofCenter(rayResult);
     }
 
     private static boolean positionIsClear(World world, BlockPos pos) {
-        return (world.isAir(pos) || world.getBlockState(pos).getCollisionShape(world, pos).isEmpty()
-                && (world.isAir(pos.up()) || world.getBlockState(pos.up()).getCollisionShape(world, pos.up()).isEmpty()));
+        return ((world.isAir(pos)
+                || world.getBlockState(pos).getBlock() == Blocks.DEAD_BUSH
+                || world.getBlockState(pos).getBlock() == Blocks.GRASS
+                || (world.getBlockState(pos).getBlock() == Blocks.TALL_GRASS && world.getBlockState(pos.up()).getBlock() == Blocks.TALL_GRASS)
+                || world.getBlockState(pos).getCollisionShape(world, pos).isEmpty())
+                && (world.isAir(pos.up()) || world.getBlockState(pos.up()).getBlock() == Blocks.TALL_GRASS || world.getBlockState(pos.up()).getCollisionShape(world, pos.up()).isEmpty()));
     }
 
     public static void teleportationRobeTeleport(ServerPlayerEntity playerEntity){
