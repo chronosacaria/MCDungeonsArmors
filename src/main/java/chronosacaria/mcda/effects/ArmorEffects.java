@@ -3,7 +3,6 @@ package chronosacaria.mcda.effects;
 import chronosacaria.mcda.api.AOECloudHelper;
 import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.api.CleanlinessHelper;
-import chronosacaria.mcda.config.McdaConfig;
 import chronosacaria.mcda.entities.SummonedBeeEntity;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.mixin.PlayerTeleportationStateAccessor;

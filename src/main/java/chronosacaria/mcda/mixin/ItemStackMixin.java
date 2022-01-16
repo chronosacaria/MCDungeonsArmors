@@ -4,7 +4,6 @@ import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.registry.SoundsRegistry;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -77,12 +76,11 @@ public abstract class ItemStackMixin {
     public void useEmeraldToChargeArmor(World world, PlayerEntity user, Hand hand,
                                         CallbackInfoReturnable<TypedActionResult<ItemStack>> cir){
         ItemStack getMainHandStack = user.getMainHandStack();
-        int decrementAmount = 10;
 
         if (config.enableArmorEffect.get(ArmorEffectID.GILDED_HERO) && CleanlinessHelper.hasArmorSet(user, ArmorSets.GILDED)) {
             if (getMainHandStack.getItem() == Items.EMERALD) {
-                int getMainHandInventorySize = getMainHandStack.getCount();
-                if (getMainHandInventorySize >= decrementAmount) {
+                int decrementAmount = 10;
+                if (getMainHandStack.getCount() >= decrementAmount) {
                     getMainHandStack.decrement(decrementAmount);
                     StatusEffectInstance hov = new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 42, 0, false,
                             false);
