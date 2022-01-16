@@ -575,31 +575,15 @@ public class ArmorEffects {
     public static boolean gildedGloryTotemEffect(LivingEntity livingEntity) {
         if (hasArmorSet(livingEntity, ArmorSets.GILDED)
                 && livingEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)) {
-            // Trackers
-            int i = 0;
-            float[] armorPieceDurability = {0, 0, 0, 0};
 
-            // Store durability percents of armor
-            for (ItemStack itemStack : livingEntity.getArmorItems()) {
-                float k = itemStack.getMaxDamage();
-                float j = k - itemStack.getDamage();
-                armorPieceDurability[i] = j / k;
-                i++;
-            }
-            // Find the highest durability armor
-            int r = 0;
-            for (int k = 0; k < 3; k++) {
-                if (armorPieceDurability[k + 1] > armorPieceDurability[r]) {
-                    r = k + 1;
-                }
-            }
-
-            boolean toBreak = armorPieceDurability[r] <= 0.50f;
-            switch (r) {
-                case 0 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.FEET, toBreak);
-                case 1 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.LEGS, toBreak);
-                case 2 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.CHEST, toBreak);
-                case 3 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.HEAD, toBreak);
+            float[] armorPieceDurability = CleanlinessHelper.mcdaFindMostDamagedEquipment(livingEntity);
+            int index = (int) armorPieceDurability[0];
+            boolean toBreak = armorPieceDurability[index] <= 0.50f;
+            switch (index) {
+                case 1 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.FEET, toBreak);
+                case 2 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.LEGS, toBreak);
+                case 3 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.CHEST, toBreak);
+                case 4 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.HEAD, toBreak);
             }
             CleanlinessHelper.onTotemDeathEffects(livingEntity);
             return true;
