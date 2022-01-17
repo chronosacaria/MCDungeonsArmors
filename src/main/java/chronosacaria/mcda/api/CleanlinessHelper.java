@@ -10,6 +10,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import java.util.Random;
+
 public class CleanlinessHelper {
     public static boolean hasArmorSet(LivingEntity livingEntity, ArmorSets armorSets){
         ItemStack headStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
@@ -57,10 +59,10 @@ public class CleanlinessHelper {
         livingEntity.world.sendEntityStatus(livingEntity, (byte) 35);
     }
 
-    public static float[] mcdaFindHighestDurabilityEquipment(LivingEntity livingEntity) {
+    public static int mcdaFindHighestDurabilityEquipment(LivingEntity livingEntity) {
         // Trackers
-        int i = 1;
-        float[] armorPieceDurability = {0, 0, 0, 0, 0};
+        int i = 0;
+        float[] armorPieceDurability = {0, 0, 0, 0};
 
         // Store durability percents of armor
         for (ItemStack itemStack : livingEntity.getArmorItems()) {
@@ -71,29 +73,56 @@ public class CleanlinessHelper {
         }
         // Find the highest durability armor
         i = 0;
-        for (int k = 0; k < 4; k++) {
+        for (int k = 0; k < 3; k++) {
             if (armorPieceDurability[k + 1] > armorPieceDurability[i]) {
                 i = k + 1;
             }
         }
-        // Durabilities are stored in the last 4 slots
-        // Index of the highest durability is the first index in the array
-        armorPieceDurability[0] = i;
-        return armorPieceDurability;
+
+        return i;
     }
 
-    public static void mcdaDamageEquipment(LivingEntity livingEntity, EquipmentSlot equipSlot, float damageAmount, boolean toBreak) {
+    public static void mcdaRandomArmorDamage(LivingEntity livingEntity, float damagePercentage){
+        Random random = new Random();
+
+        int index = random.nextInt(4);
+
+        switch (index){
+            case 0 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.FEET, damagePercentage);
+            case 1 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.LEGS, damagePercentage);
+            case 2 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.CHEST, damagePercentage);
+            case 3 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.HEAD, damagePercentage);
+        }
+    }
+
+    public static void mcdaDamageEquipment(LivingEntity livingEntity, EquipmentSlot equipSlot, float damagePercentage) {
         ItemStack armorStack = livingEntity.getEquippedStack(equipSlot);
         int k = armorStack.getMaxDamage();
         int j = k - armorStack.getDamage();
         // Necessary for proper types.
-        damageAmount = 1 / damageAmount;
+        int breakDamage = (int) (k * damagePercentage);
+        boolean toBreak = j <= breakDamage;
+
         if (toBreak)
             armorStack.damage(j, livingEntity,
                     (entity) -> entity.sendEquipmentBreakStatus(equipSlot));
         else
-            armorStack.damage((k / (int) damageAmount), livingEntity,
+            armorStack.damage(breakDamage, livingEntity,
                     (entity) -> entity.sendEquipmentBreakStatus(equipSlot));
+    }
+
+    public static boolean mcdaCooldownCheck(LivingEntity livingEntity, int ticks){
+        ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
+
+        long currentTime = livingEntity.world.getTime();
+
+        if (chestStack.getNbt().get("time-check") == null) {
+            chestStack.getOrCreateNbt().putLong("time-check", currentTime);
+            return false;
+        }
+        long storedTime = chestStack.getNbt().getLong("time-check");
+
+        return Math.abs(currentTime - storedTime) > ticks;
     }
 
     public static boolean mcdaBoundingBox(PlayerEntity playerEntity, float boxSize) {

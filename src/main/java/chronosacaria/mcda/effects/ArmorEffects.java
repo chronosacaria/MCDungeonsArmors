@@ -250,9 +250,11 @@ public class ArmorEffects {
             if (playerEntity.isSneaking()) {
                 ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
                 ArmorEffects.endermanLikeTeleportEffect(playerEntity);
-            } else {
-                ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
-            }
+                if (CleanlinessHelper.mcdaCooldownCheck(playerEntity, 40))
+                    CleanlinessHelper.mcdaRandomArmorDamage(playerEntity, 0.10f);
+
+            } else ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
+
         }
     }
 
@@ -267,6 +269,8 @@ public class ArmorEffects {
                 } else {
                     ArmorEffects.endermanLikeTeleportEffect(playerEntity);
                 }
+                if (CleanlinessHelper.mcdaCooldownCheck(playerEntity, 40))
+                    CleanlinessHelper.mcdaRandomArmorDamage(playerEntity, 0.10f);
             } else {
                 ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
             }
@@ -575,15 +579,13 @@ public class ArmorEffects {
         if (hasArmorSet(livingEntity, ArmorSets.GILDED)
                 && livingEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)) {
 
-            float[] armorPieceDurability = CleanlinessHelper.mcdaFindHighestDurabilityEquipment(livingEntity);
-            int index = (int) armorPieceDurability[0];
+            int index = CleanlinessHelper.mcdaFindHighestDurabilityEquipment(livingEntity);
             float damageAmount = 0.50f;
-            boolean toBreak = armorPieceDurability[index] <= damageAmount;
             switch (index) {
-                case 1 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.FEET, damageAmount, toBreak);
-                case 2 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.LEGS, damageAmount, toBreak);
-                case 3 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.CHEST, damageAmount, toBreak);
-                case 4 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.HEAD, damageAmount, toBreak);
+                case 0 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.FEET, damageAmount);
+                case 1 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.LEGS, damageAmount);
+                case 2 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.CHEST, damageAmount);
+                case 3 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.HEAD, damageAmount);
             }
             CleanlinessHelper.onTotemDeathEffects(livingEntity);
             return true;
