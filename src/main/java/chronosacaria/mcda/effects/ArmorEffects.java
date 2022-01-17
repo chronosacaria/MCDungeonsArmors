@@ -251,7 +251,7 @@ public class ArmorEffects {
                 ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
                 ArmorEffects.endermanLikeTeleportEffect(playerEntity);
                 if (CleanlinessHelper.mcdaCooldownCheck(playerEntity, 40))
-                    CleanlinessHelper.mcdaRandomArmorDamage(playerEntity, 0.10f);
+                    CleanlinessHelper.mcdaRandomArmorDamage(playerEntity, 0.10f, 4, false);
 
             } else ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
 
@@ -270,7 +270,7 @@ public class ArmorEffects {
                     ArmorEffects.endermanLikeTeleportEffect(playerEntity);
                 }
                 if (CleanlinessHelper.mcdaCooldownCheck(playerEntity, 40))
-                    CleanlinessHelper.mcdaRandomArmorDamage(playerEntity, 0.10f);
+                    CleanlinessHelper.mcdaRandomArmorDamage(playerEntity, 0.10f, 4, false);
             } else {
                 ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
             }
@@ -479,7 +479,7 @@ public class ArmorEffects {
         }
         if (playFireSound) {
             if (CleanlinessHelper.mcdaCooldownCheck(livingEntity, 40))
-                CleanlinessHelper.mcdaRandomArmorDamage(livingEntity, 0.10f);
+                CleanlinessHelper.mcdaRandomArmorDamage(livingEntity, 0.10f, 3, true);
             livingEntity.world.playSound(
                     null,
                     livingEntity.getX(),
@@ -598,7 +598,7 @@ public class ArmorEffects {
     public static void buzzyHiveEffect(LivingEntity targetedEntity) {
         if (hasArmorSet(targetedEntity, ArmorSets.BEEHIVE)) {
             float beeSummonChance = targetedEntity.getRandom().nextFloat();
-            if (beeSummonChance <= 0.15F) {
+            if (beeSummonChance <= 0.3F) {
                 World world = targetedEntity.getEntityWorld();
                 SummonedBeeEntity summonedBeeEntity = summonedBee.create(world);
                 if (summonedBeeEntity != null) {
@@ -632,7 +632,9 @@ public class ArmorEffects {
 
                 if (y < 0.0D && !playerEntity.getBlockStateAtPos().isOf(Blocks.SCAFFOLDING) && playerEntity.isSneaking()) {
                     y = 0.0D;
-                } else if (playerEntity.horizontalCollision && !playerEntity.getBlockStateAtPos().isOf(Blocks.SCAFFOLDING)){
+                } else if (playerEntity.horizontalCollision
+                        && !playerEntity.getBlockStateAtPos().isOf(Blocks.SCAFFOLDING)
+                        && !playerEntity.getBlockStateAtPos().isOf(Blocks.VINE)) {
                     x /= 3.5D;
                     y = f/2;
                     z /= 3.5D;

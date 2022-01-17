@@ -102,6 +102,7 @@ public class McdaConfig implements ConfigData {
             armorSpawnRates.put(SpawnHelper.TELEPORTATION, 0.1f);
             armorSpawnRates.put(SpawnHelper.UNSTABLE, 0.01f);
             armorSpawnRates.put(SpawnHelper.MYSTERY, 0.05f);
+            armorSpawnRates.put(SpawnHelper.VANGUARD, 0.05f);
         }
 
         for (ArmorSets armorSet : ArmorSets.values()) {

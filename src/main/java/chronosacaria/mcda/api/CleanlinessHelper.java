@@ -82,10 +82,11 @@ public class CleanlinessHelper {
         return i;
     }
 
-    public static void mcdaRandomArmorDamage(LivingEntity livingEntity, float damagePercentage){
+    public static void mcdaRandomArmorDamage(LivingEntity livingEntity, float damagePercentage, int totalNumOfPieces, boolean missingBoots){
         Random random = new Random();
-
-        int index = random.nextInt(4);
+        int index = random.nextInt(totalNumOfPieces);
+        if (missingBoots)
+            index++;
 
         switch (index){
             case 0 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.FEET, damagePercentage);
