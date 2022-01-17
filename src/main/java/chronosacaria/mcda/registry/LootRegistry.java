@@ -25,10 +25,8 @@ import static chronosacaria.mcda.config.McdaConfig.config;
 
 public class LootRegistry {
 
-    public static final Collection<Identifier> BASTION_LOOT_TABLES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
-            LootTables.BASTION_BRIDGE_CHEST,
-            LootTables.BASTION_HOGLIN_STABLE_CHEST, LootTables.BASTION_OTHER_CHEST,
-            LootTables.BASTION_TREASURE_CHEST)));
+    public static final Collection<Identifier> BASTION_LOOT_TABLES = Set.of(LootTables.BASTION_BRIDGE_CHEST,
+            LootTables.BASTION_HOGLIN_STABLE_CHEST, LootTables.BASTION_OTHER_CHEST, LootTables.BASTION_TREASURE_CHEST);
 
     public static final Collection<Identifier> PIGLIN_TRADING_LOOT_TABLES = Collections.singletonList(
             LootTables.PIGLIN_BARTERING_GAMEPLAY);
@@ -36,16 +34,14 @@ public class LootRegistry {
     public static final Collection<Identifier> NETHER_FORTRESS_LOOT_TABLES = Collections.singletonList(
             LootTables.NETHER_BRIDGE_CHEST);
 
-    public static final Collection<Identifier> PILLAGER_TOWER_LOOT_TABLES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
-            LootTables.PILLAGER_OUTPOST_CHEST, LootTables.WOODLAND_MANSION_CHEST)));
+    public static final Collection<Identifier> PILLAGER_TOWER_LOOT_TABLES = Set.of(LootTables.PILLAGER_OUTPOST_CHEST,
+            LootTables.WOODLAND_MANSION_CHEST);
 
-    public static final Collection<Identifier> VILLAGE_SMITH_LOOT_TABLES = Collections.unmodifiableList(Arrays.asList(
-            LootTables.VILLAGE_TOOLSMITH_CHEST,
-            LootTables.VILLAGE_WEAPONSMITH_CHEST));
+    public static final Collection<Identifier> VILLAGE_SMITH_LOOT_TABLES = List.of(LootTables.VILLAGE_TOOLSMITH_CHEST,
+            LootTables.VILLAGE_WEAPONSMITH_CHEST);
 
-    public static final Collection<Identifier> SUNKEN_SHIP_LOOT_TABLES = Collections.unmodifiableList(Arrays.asList(
-            LootTables.SHIPWRECK_TREASURE_CHEST,
-            LootTables.SHIPWRECK_SUPPLY_CHEST));
+    public static final Collection<Identifier> SUNKEN_SHIP_LOOT_TABLES = List.of(LootTables.SHIPWRECK_TREASURE_CHEST,
+            LootTables.SHIPWRECK_SUPPLY_CHEST);
 
     public static final Collection<Identifier> MINESHAFT_LOOT_TABLES = Collections.singletonList(
             LootTables.ABANDONED_MINESHAFT_CHEST);
@@ -53,8 +49,8 @@ public class LootRegistry {
     public static final Collection<Identifier> HERO_OF_THE_VILLAGE_LOOT_TABLES = Collections.singletonList(
             LootTables.HERO_OF_THE_VILLAGE_ARMORER_GIFT_GAMEPLAY);
 
-    public static final Collection<Identifier> STRONGHOLD_LOOT_TABLES = Collections.unmodifiableList(Arrays.asList(
-            LootTables.STRONGHOLD_CORRIDOR_CHEST, LootTables.STRONGHOLD_CROSSING_CHEST, LootTables.STRONGHOLD_LIBRARY_CHEST));
+    public static final Collection<Identifier> STRONGHOLD_LOOT_TABLES = List.of(LootTables.STRONGHOLD_CORRIDOR_CHEST,
+            LootTables.STRONGHOLD_CROSSING_CHEST, LootTables.STRONGHOLD_LIBRARY_CHEST);
 
     public static void init() {
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
