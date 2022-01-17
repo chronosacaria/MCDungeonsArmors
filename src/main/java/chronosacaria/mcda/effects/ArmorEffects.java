@@ -653,6 +653,21 @@ public class ArmorEffects {
         }
     }
 
+    public static void ghostKindlerTrail(PlayerEntity playerEntity, BlockPos blockPos){
+        if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.GHOST_KINDLER)) {
+
+            for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(playerEntity, playerEntity, 3.0f)){
+                if (nearbyEntity instanceof Monster){
+                    if (blockPos.offset(playerEntity.getMovementDirection().getOpposite()).isWithinDistance(nearbyEntity.getPos(), 3)) {
+                        nearbyEntity.setOnFireFor(5);
+                        AOEHelper.addParticlesToBlock((ServerWorld) playerEntity.world, playerEntity.getBlockPos(),
+                                ParticleTypes.FLAME);
+                    }
+                }
+            }
+        }
+    }
+
     // Effects for ServerPlayerEntityMixin
     public static void applyFireResistance(ServerPlayerEntity playerEntity) {
         if (!config.enableArmorEffect.get(FIRE_RESISTANCE))

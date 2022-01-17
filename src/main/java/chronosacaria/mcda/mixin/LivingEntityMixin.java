@@ -101,8 +101,13 @@ public abstract class LivingEntityMixin extends Entity {
     protected void applyFireTrailEffects(BlockPos blockPos, CallbackInfo ci) {
         if(!((Object) this instanceof PlayerEntity playerEntity)) return;
 
+        World world = playerEntity.getEntityWorld();
+
         if (config.enableEnchantment.get(FIRE_TRAIL))
             EnchantmentEffects.applyFireTrail(playerEntity, blockPos);
+        if (config.enableArmorEffect.get(GHOST_KINDLER_TRAIL) && world.getTime() % 3 == 0)
+            ArmorEffects.ghostKindlerTrail(playerEntity, blockPos);
+
     }
 
     // Mixins for enchants related to consuming an item. Only potions rn
