@@ -478,6 +478,8 @@ public class ArmorEffects {
             }
         }
         if (playFireSound) {
+            if (CleanlinessHelper.mcdaCooldownCheck(livingEntity, 40))
+                CleanlinessHelper.mcdaRandomArmorDamage(livingEntity, 0.10f);
             livingEntity.world.playSound(
                     null,
                     livingEntity.getX(),
