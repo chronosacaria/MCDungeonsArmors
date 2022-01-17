@@ -23,6 +23,7 @@ public enum SpawnHelper {
     GILDED,
     TELEPORTATION,
     UNSTABLE,
-    MYSTERY
+    MYSTERY,
+    VANGUARD
 
 }

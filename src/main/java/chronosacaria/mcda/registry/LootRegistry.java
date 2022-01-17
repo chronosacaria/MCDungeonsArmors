@@ -64,7 +64,7 @@ public class LootRegistry {
             FabricLootPoolBuilder poolBuilder;
 
             switch (id.getPath()) {
-                case "entities/phantom":
+                case "entities/phantom" -> {
                     LootPool phantomBonesLootPool = FabricLootPoolBuilder.builder()
                             .rolls(ConstantLootNumberProvider.create(1))
                             .with(ItemEntry.builder(ItemID.PHANTOM_BONES).weight(100))
@@ -78,8 +78,8 @@ public class LootRegistry {
                             .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 2.0F)).build())
                             .build();
                     supplier.withPool(phantomBonesLootPool);
-                    break;
-                case "entities/ocelot":
+                }
+                case "entities/ocelot" -> {
                     LootPool ocelotPeltLootPool = FabricLootPoolBuilder.builder()
                             .rolls(ConstantLootNumberProvider.create(1))
                             .with(ItemEntry.builder(ItemID.OCELOT_PELT).weight(100))
@@ -89,17 +89,17 @@ public class LootRegistry {
                             .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
                             .build();
                     supplier.withPool(ocelotPeltLootPool);
-                    break;
-                case "entities/skeleton":
+                }
+                case "entities/skeleton" -> {
                     LootPool skullLootPool = FabricLootPoolBuilder.builder()
                             .rolls(ConstantLootNumberProvider.create(1))
                             .with(ItemEntry.builder(Items.SKELETON_SKULL))
                             .withFunction(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F,
-                                            config.maxDropAmounts.get(DropHelper.SKELETON_SKULL))).build())
+                                    config.maxDropAmounts.get(DropHelper.SKELETON_SKULL))).build())
                             .build();
                     supplier.withPool(skullLootPool);
-                    break;
-                case "entities/wolf":
+                }
+                case "entities/wolf" -> {
                     LootPool wolfPeltLootPool = FabricLootPoolBuilder.builder()
                             .rolls(ConstantLootNumberProvider.create(1))
                             .with(ItemEntry.builder(ItemID.WOLF_PELT).weight(100))
@@ -109,8 +109,8 @@ public class LootRegistry {
                             .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
                             .build();
                     supplier.withPool(wolfPeltLootPool);
-                    break;
-                case "entities/fox":
+                }
+                case "entities/fox" -> {
                     LootPool foxPeltLootPool = FabricLootPoolBuilder.builder()
                             .rolls(ConstantLootNumberProvider.create(1))
                             .with(ItemEntry.builder(ItemID.FOX_PELT).weight(100))
@@ -120,8 +120,8 @@ public class LootRegistry {
                             .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
                             .build();
                     supplier.withPool(foxPeltLootPool);
-                    break;
-                case "entities/evoker":
+                }
+                case "entities/evoker" -> {
                     LootPool evocationHatLootPool = FabricLootPoolBuilder.builder()
                             .rolls(ConstantLootNumberProvider.create(1))
                             .with(ItemEntry.builder(ArmorsRegistry.armorItems.get(ArmorSets.EVOCATION).get(EquipmentSlot.HEAD)))
@@ -146,8 +146,8 @@ public class LootRegistry {
                             .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
                             .build();
                     supplier.withPool(evocationPantsLootPool);
-                    break;
-                case "entities/goat":
+                }
+                case "entities/goat" -> {
                     LootPool goatPeltLootPool = FabricLootPoolBuilder.builder()
                             .rolls(ConstantLootNumberProvider.create(1))
                             .with(ItemEntry.builder(ItemID.GOAT_PELT))
@@ -156,8 +156,8 @@ public class LootRegistry {
                             .withFunction(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)).build())
                             .build();
                     supplier.withPool(goatPeltLootPool);
-                    break;
-                case "blocks/blue_ice":
+                }
+                case "blocks/blue_ice" -> {
                     LootPool frostCrystalLootPool = FabricLootPoolBuilder.builder()
                             .rolls(ConstantLootNumberProvider.create(1))
                             .with(ItemEntry.builder(ItemID.FROST_CRYSTAL))
@@ -165,7 +165,7 @@ public class LootRegistry {
                                     config.maxDropAmounts.get(DropHelper.FROST_CRYSTAL))).build())
                             .build();
                     supplier.withPool(frostCrystalLootPool);
-                    break;
+                }
             }
 
             if (BASTION_LOOT_TABLES.contains(id)) {
@@ -185,6 +185,7 @@ public class LootRegistry {
             } else if (NETHER_FORTRESS_LOOT_TABLES.contains(id)) {
                 poolBuilder = FabricLootPoolBuilder.builder();
                 addArmorSet(poolBuilder, ArmorSets.GRIM, config.armorSpawnRates.get(SpawnHelper.GRIM));
+                addArmorSet(poolBuilder, ArmorSets.VANGUARD, config.armorSpawnRates.get(SpawnHelper.VANGUARD));
                 addMysteryArmorSets(poolBuilder, config.armorSpawnRates.get(SpawnHelper.MYSTERY));
                 supplier.pool(poolBuilder);
             } else if (PILLAGER_TOWER_LOOT_TABLES.contains(id)) {
