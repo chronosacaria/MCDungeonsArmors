@@ -8,23 +8,20 @@ import net.minecraft.item.ItemConvertible;
 public enum ItemID implements ItemConvertible {
     // Mob Drops
     BONE_RIB_CAGE,
-    PHANTOM_BONES,
-    PHANTOM_SKIN,
-    OCELOT_PELT,
-    OCELOT_PELT_BLACK,
-    WOLF_PELT,
-    WOLF_PELT_BLACK,
     FOX_PELT,
     FOX_PELT_ARCTIC,
     GOAT_PELT,
+    OCELOT_PELT,
+    OCELOT_PELT_BLACK,
+    PHANTOM_BONES,
+    PHANTOM_SKIN,
+    WOLF_PELT,
+    WOLF_PELT_BLACK,
 
     // Block Drops
     FROST_CRYSTAL,
 
     // Crafting
-    GLUT_CHARM,
-    IRON_PLATE,
-    IRON_SCALE,
     FABRIC_BOLT_WHITE,
     FABRIC_BOLT_BLACK,
     FABRIC_BOLT_RED,
@@ -41,6 +38,9 @@ public enum ItemID implements ItemConvertible {
     FABRIC_BOLT_LIGHT_BLUE,
     FABRIC_BOLT_MAGENTA,
     FABRIC_BOLT_ORANGE,
+    GLUT_CHARM,
+    IRON_PLATE,
+    IRON_SCALE,
 
     // Upgrades
     UPGRADE_CORE,
@@ -65,11 +65,11 @@ public enum ItemID implements ItemConvertible {
     UPGRADE_CORE_WOLF,
 
     // Gemstones
-    GEMSTONE_WHITE,
-    GEMSTONE_PURPLE,
     GEMSTONE_BLUE,
     GEMSTONE_GREEN,
-    GEMSTONE_RED;
+    GEMSTONE_PURPLE,
+    GEMSTONE_RED,
+    GEMSTONE_WHITE;
 
     public Item asItem() {
         return ItemsRegistry.items.get(this);
