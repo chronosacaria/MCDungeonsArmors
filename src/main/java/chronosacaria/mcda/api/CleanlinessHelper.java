@@ -57,7 +57,7 @@ public class CleanlinessHelper {
         livingEntity.world.sendEntityStatus(livingEntity, (byte) 35);
     }
 
-    public static float[] mcdaFindMostDamagedEquipment(LivingEntity livingEntity) {
+    public static float[] mcdaFindHighestDurabilityEquipment(LivingEntity livingEntity) {
         // Trackers
         int i = 1;
         float[] armorPieceDurability = {0, 0, 0, 0, 0};
@@ -82,16 +82,18 @@ public class CleanlinessHelper {
         return armorPieceDurability;
     }
 
-    public static void mcdaDamageEquipment(LivingEntity livingEntity, EquipmentSlot equipSlot, boolean toBreak) {
+    public static void mcdaDamageEquipment(LivingEntity livingEntity, EquipmentSlot equipSlot, float damageAmount, boolean toBreak) {
         ItemStack armorStack = livingEntity.getEquippedStack(equipSlot);
         int k = armorStack.getMaxDamage();
         int j = k - armorStack.getDamage();
+        // Necessary for proper types.
+        damageAmount = 1 / damageAmount;
         if (toBreak)
             armorStack.damage(j, livingEntity,
                     (entity) -> entity.sendEquipmentBreakStatus(equipSlot));
         else
-            armorStack.damage((k / 2), livingEntity,
-                (entity) -> entity.sendEquipmentBreakStatus(equipSlot));
+            armorStack.damage((k / (int) damageAmount), livingEntity,
+                    (entity) -> entity.sendEquipmentBreakStatus(equipSlot));
     }
 
     public static boolean mcdaBoundingBox(PlayerEntity playerEntity, float boxSize) {
