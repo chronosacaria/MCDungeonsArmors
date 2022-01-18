@@ -4,7 +4,6 @@ import chronosacaria.mcda.api.*;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.items.ArmorSets;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.damage.DamageSource;
@@ -193,8 +192,8 @@ public abstract class LivingEntityMixin extends Entity {
             if (playerEntity == null) return;
 
             if (hasArmorSet(playerEntity, ArmorSets.SHADOW_WALKER)
-                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.MYSTERY)) == NO_FALL_DAMAGE)
-                    || (ArmorEffects.GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.GREEN_MYSTERY)) == NO_FALL_DAMAGE)) {
+                    || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == NO_FALL_DAMAGE)
+                    || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.GREEN_MYSTERY)) == NO_FALL_DAMAGE)) {
                 int i = this.computeFallDamage(fallDistance, damageMultiplier);
                 if (i > 0) {
                     cir.setReturnValue(true);
