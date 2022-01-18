@@ -18,6 +18,7 @@
     "SweetBerryBushBlockMixin"
   ],
   "client": [
+    "MinecraftClientMixin",
     "InGameOverlayRendererMixin"
   ],
   "injectors": {
