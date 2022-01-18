@@ -2,7 +2,6 @@ package chronosacaria.mcda.effects;
 
 import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.api.McdaEnchantmentHelper;
-import chronosacaria.mcda.client.McdaClient;
 import chronosacaria.mcda.registry.EnchantsRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -62,7 +61,7 @@ public class EnchantmentEffects {
         if (fireTrailLevel == 0) return;
 
         BlockPos placeFireTrail = blockPos.offset(player.getMovementDirection().getOpposite(), 2);
-        if (player.world.getBlockState(placeFireTrail).isAir() && player.isOnGround() && McdaClient.isEnabled())
+        if (player.world.getBlockState(placeFireTrail).isAir() && player.isOnGround() && player.isSneaking())
             player.world.setBlockState(placeFireTrail, Blocks.FIRE.getDefaultState());
 
     }
