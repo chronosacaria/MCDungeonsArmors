@@ -540,8 +540,8 @@ public class ArmorEffects {
             return;
 
         if (hasArmorSet(owner, ArmorSets.BLACK_WOLF)
-                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.MYSTERY)) == LEADER_OF_THE_PACK)
-                || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(MinecraftClient.getInstance().player, ArmorSets.RED_MYSTERY)) == LEADER_OF_THE_PACK)) {
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(owner, ArmorSets.MYSTERY)) == LEADER_OF_THE_PACK)
+                || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(owner, ArmorSets.RED_MYSTERY)) == LEADER_OF_THE_PACK)) {
             UUID petOwnerUUID = owner.getUuid();
 
             if (petOwnerUUID != null)
