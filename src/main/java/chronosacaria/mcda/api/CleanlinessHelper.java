@@ -146,13 +146,20 @@ public class CleanlinessHelper {
         Vec3d rightSideVec =
                 vecHorizontalDistanceToTarget.normalize().multiply(horizontalDistanceToTarget).add(perpendicularisedVecHorizontalDistanceToTarget.multiply(-target.getWidth()));
         double playerEyeHeight = playerEntity.getEyeY() - playerEntity.getBlockPos().getY();
-        float targetHeight = target.getHeight();
 
         return Math.max(leftSideVec.normalize().x, rightSideVec.normalize().x) >= playerVec.normalize().x
                 && Math.min(leftSideVec.normalize().x, rightSideVec.normalize().x) <= playerVec.normalize().x
                 && Math.max(leftSideVec.normalize().z, rightSideVec.normalize().z) >= playerVec.normalize().z
                 && Math.min(leftSideVec.normalize().z, rightSideVec.normalize().z) <= playerVec.normalize().z
                 && playerVec.y > -Math.atan(playerEyeHeight / horizontalDistanceToTarget)
-                && playerVec.y < Math.atan((targetHeight - playerEyeHeight) / horizontalDistanceToTarget);
+                && playerVec.y < Math.atan((target.getHeight() - playerEyeHeight) / horizontalDistanceToTarget);
     }
+
+    public static boolean mcdaCheckHorizontalVelocity(Vec3d vec3d, double magnitude, boolean equality) {
+        double horVelocity = vec3d.horizontalLength();
+        if (equality)
+            return horVelocity == magnitude;
+        return horVelocity > magnitude;
+    }
+
 }

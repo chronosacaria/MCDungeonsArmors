@@ -301,43 +301,42 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "swingHand(Lnet/minecraft/util/Hand;)V", at = @At("HEAD"))
     public void onMCDAFoxPounce(Hand hand, CallbackInfo ci){
-        if(((Object) this instanceof PlayerEntity playerEntity)) {
-            if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.FOX)
-                    || CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
-                float listDistance = 6.0f;
+        if ((!((Object) this instanceof PlayerEntity playerEntity)))
+            return;
 
-                LivingEntity target = playerEntity.getEntityWorld().getClosestEntity(
-                        AbilityHelper.getPotentialPounceTargets(playerEntity, listDistance),
-                        TargetPredicate.DEFAULT,
-                        playerEntity,
-                        playerEntity.getX(),
-                        playerEntity.getY(),
-                        playerEntity.getZ());
+        if (hasArmorSet(playerEntity, ArmorSets.FOX)
+                || hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
+            if (!mcdaCheckHorizontalVelocity(playerEntity.getVelocity(), 0, true))
+                return;
+            if (!playerEntity.isSneaking() || !playerEntity.isOnGround())
+                return;
 
-                if (target == null) return;
+            LivingEntity target = playerEntity.getEntityWorld().getClosestEntity(
+                    AbilityHelper.getPotentialPounceTargets(playerEntity, 6.0f),
+                    TargetPredicate.DEFAULT,
+                    playerEntity,
+                    playerEntity.getX(),
+                    playerEntity.getY(),
+                    playerEntity.getZ());
 
-                // TODO Look into changing out brute force box to EntityDimensions#getBoxAt?
-                if (mcdaCanTargetEntity(playerEntity, target)){
-                    if (playerEntity.isSneaking() && playerEntity.isOnGround()) {
-                        playerEntity.setSneaking(false);
+            if (target == null) return;
 
-                        Vec3d vec3d = playerEntity.getVelocity();
-                        if (vec3d.x == vec3d.z && vec3d.z == 0) {
-                            Vec3d vecHorizontalDistanceToTarget = new Vec3d((target.getX() - playerEntity.getX()),
-                                    (target.getY() - playerEntity.getY()),(target.getZ() - playerEntity.getZ()));
-                            double horizontalDistanceToTarget = vecHorizontalDistanceToTarget.horizontalLength();
+            // TODO Look into changing out brute force box to EntityDimensions#getBoxAt?
+            if (mcdaCanTargetEntity(playerEntity, target)){
+                playerEntity.setSneaking(false);
 
-                            double distance = horizontalDistanceToTarget/6;
-                            vecHorizontalDistanceToTarget = vecHorizontalDistanceToTarget.normalize().multiply(distance);
+                Vec3d vecHorizontalDistanceToTarget = new Vec3d((target.getX() - playerEntity.getX()),
+                        (target.getY() - playerEntity.getY()),(target.getZ() - playerEntity.getZ()));
+                double horizontalDistanceToTarget = vecHorizontalDistanceToTarget.horizontalLength();
 
-                            playerEntity.setVelocity(vecHorizontalDistanceToTarget.x + target.getVelocity().x, 0.8,
-                                    vecHorizontalDistanceToTarget.z + target.getVelocity().z);
-                            // Thanks Apace!
-                            playerEntity.velocityModified = true;
-                            // Somehow make the player model move like the fox does?
-                        }
-                    }
-                }
+                double distance = horizontalDistanceToTarget/6;
+                vecHorizontalDistanceToTarget = vecHorizontalDistanceToTarget.normalize().multiply(distance);
+
+                playerEntity.setVelocity(vecHorizontalDistanceToTarget.x + target.getVelocity().x, 0.8,
+                        vecHorizontalDistanceToTarget.z + target.getVelocity().z);
+                // Thanks Apace!
+                playerEntity.velocityModified = true;
+                // Somehow make the player model move like the fox does?
             }
         }
     }
