@@ -2,6 +2,7 @@ package chronosacaria.mcda.api;
 
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -9,6 +10,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.Vec3d;
 
 import java.util.Random;
 
@@ -130,5 +132,27 @@ public class CleanlinessHelper {
         return playerEntity.world.getBlockCollisions(playerEntity,
                 playerEntity.getBoundingBox().offset(boxSize * playerEntity.getBoundingBox().getXLength(), 0,
                         boxSize * playerEntity.getBoundingBox().getZLength())).iterator().hasNext();
+    }
+
+    public static boolean mcdaCanTargetEntity(PlayerEntity playerEntity, Entity target){
+        Vec3d playerVec = playerEntity.getRotationVec(0f);
+        Vec3d vecHorizontalDistanceToTarget = new Vec3d((target.getX() - playerEntity.getX()),
+                (target.getY() - playerEntity.getY()),(target.getZ() - playerEntity.getZ()));
+        double horizontalDistanceToTarget = vecHorizontalDistanceToTarget.horizontalLength();
+        Vec3d perpendicularisedVecHorizontalDistanceToTarget =
+                vecHorizontalDistanceToTarget.normalize().crossProduct(new Vec3d(0, 1, 0));
+        Vec3d leftSideVec =
+                vecHorizontalDistanceToTarget.normalize().multiply(horizontalDistanceToTarget).add(perpendicularisedVecHorizontalDistanceToTarget.multiply(target.getWidth()));
+        Vec3d rightSideVec =
+                vecHorizontalDistanceToTarget.normalize().multiply(horizontalDistanceToTarget).add(perpendicularisedVecHorizontalDistanceToTarget.multiply(-target.getWidth()));
+        double playerEyeHeight = playerEntity.getEyeY() - playerEntity.getBlockPos().getY();
+        float targetHeight = target.getHeight();
+
+        return Math.max(leftSideVec.normalize().x, rightSideVec.normalize().x) >= playerVec.normalize().x
+                && Math.min(leftSideVec.normalize().x, rightSideVec.normalize().x) <= playerVec.normalize().x
+                && Math.max(leftSideVec.normalize().z, rightSideVec.normalize().z) >= playerVec.normalize().z
+                && Math.min(leftSideVec.normalize().z, rightSideVec.normalize().z) <= playerVec.normalize().z
+                && playerVec.y > -Math.atan(playerEyeHeight / horizontalDistanceToTarget)
+                && playerVec.y < Math.atan((targetHeight - playerEyeHeight) / horizontalDistanceToTarget);
     }
 }
