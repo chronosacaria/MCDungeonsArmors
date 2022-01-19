@@ -649,7 +649,7 @@ public class ArmorEffects {
     public static void arcticFoxesHighGround(PlayerEntity playerEntity, LivingEntity target, float amount){
         if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
             if (playerEntity.getVelocity().y < 0)
-                target.damage(DamageSource.GENERIC, 1.5f * amount);
+                target.damage(DamageSource.GENERIC, 1.2f * amount);
         }
     }
 
