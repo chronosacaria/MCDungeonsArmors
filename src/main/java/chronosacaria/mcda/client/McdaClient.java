@@ -2,6 +2,7 @@ package chronosacaria.mcda.client;
 
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.entities.SummonedBeeRenderer;
+import chronosacaria.mcda.networking.McdaS2CPackets;
 import chronosacaria.mcda.registry.SummonedEntityRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -35,10 +36,11 @@ public class McdaClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
-        //KeyBindingRegistryImpl.addCategory(KEYBIND_CATEGORY);
-        //KeyBindingHelper.registerKeyBinding(keyToggle = new KeyBinding(
-        //        TOGGLE_KEYBIND.toString(), GLFW.GLFW_KEY_P, KEYBIND_CATEGORY));
+        KeyBindingRegistryImpl.addCategory(KEYBIND_CATEGORY);
+        KeyBindingHelper.registerKeyBinding(keyToggle = new KeyBinding(
+                TOGGLE_KEYBIND.toString(), GLFW.GLFW_KEY_SEMICOLON, KEYBIND_CATEGORY));
 
+        McdaS2CPackets.registerS2CReceivers();
         SummonedEntityRegistry.register();
         EntityRendererRegistry.register(SummonedEntityRegistry.SUMMONED_BEE_ENTITY, SummonedBeeRenderer::new);
     }

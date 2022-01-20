@@ -1,13 +1,10 @@
 package chronosacaria.mcda.items;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Lazy;
 import net.minecraft.util.Rarity;
 
@@ -315,15 +312,15 @@ public enum ArmorSets implements ArmorMaterial {
     DARK("dark", "dark_armor",
             15,
             ITEM_ARMOR_EQUIP_NETHERITE,
-            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+            () -> Ingredient.ofItems(Items.NETHERITE_SCRAP)),
     TITAN("titans", "titans_shroud",
             15,
             ITEM_ARMOR_EQUIP_NETHERITE,
-            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+            () -> Ingredient.ofItems(Items.NETHERITE_SCRAP)),
     ROYAL("royalguard", "royal_guard_armor",
             15,
             ITEM_ARMOR_EQUIP_NETHERITE,
-            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+            () -> Ingredient.ofItems(Items.NETHERITE_SCRAP)),
     PLATE("plate", "plate_armor",
             15,
             ITEM_ARMOR_EQUIP_NETHERITE,
@@ -355,11 +352,11 @@ public enum ArmorSets implements ArmorMaterial {
     CHAMPION("champions", "champions_armor",
             15,
             ITEM_ARMOR_EQUIP_NETHERITE,
-            () -> Ingredient.ofItems(Items.IRON_INGOT)),
+            () -> Ingredient.ofItems(Items.NETHERITE_SCRAP)),
     HERO("heros", "heros_armor",
             25,
             ITEM_ARMOR_EQUIP_NETHERITE,
-            () -> Ingredient.ofItems(ItemID.IRON_PLATE)),
+            () -> Ingredient.ofItems(Items.NETHERITE_SCRAP)),
     GILDED("gildedglory", "gilded_glory",
             10,
             ITEM_ARMOR_EQUIP_DIAMOND,
@@ -404,47 +401,10 @@ public enum ArmorSets implements ArmorMaterial {
     }
 
     public Rarity getRarity() {
-        switch (this) {
-            case SPLENDID:
-            case BEEHIVE:
-            case HERO:
-            case TITAN:
-            case ROYAL:
-            case EMBER:
-            case VERDANT:
-            case GHOST_KINDLER:
-            case WITHER:
-            case CURIOUS:
-            case ARCHER:
-            case RENEGADE:
-            case HUNGRY_HORROR:
-            case MYSTERY:
-            case BLUE_MYSTERY:
-            case GREEN_MYSTERY:
-            case PURPLE_MYSTERY:
-            case RED_MYSTERY:
-            case FROST_BITE:
-            case FULL_METAL:
-            case STALWART_MAIL:
-            case HIGHLAND:
-            case FROST:
-            case SOULDANCER:
-            case CAVE_CRAWLER:
-            case SPIDER:
-            case BLACK_WOLF:
-            case ARCTIC_FOX:
-            case OPULENT:
-            case GILDED:
-            case RUGGED_CLIMBING_GEAR:
-            case GOLDEN_PIGLIN:
-            case GOAT:
-            case TROUBADOUR:
-            case UNSTABLE:
-            case STURDY_SHULKER:
-                return Rarity.RARE;
-            default:
-                return Rarity.UNCOMMON;
-        }
+        return switch (this) {
+            case SPLENDID, BEEHIVE, HERO, TITAN, ROYAL, EMBER, VERDANT, GHOST_KINDLER, WITHER, CURIOUS, ARCHER, RENEGADE, HUNGRY_HORROR, MYSTERY, BLUE_MYSTERY, GREEN_MYSTERY, PURPLE_MYSTERY, RED_MYSTERY, FROST_BITE, FULL_METAL, STALWART_MAIL, HIGHLAND, FROST, SOULDANCER, CAVE_CRAWLER, SPIDER, BLACK_WOLF, ARCTIC_FOX, OPULENT, GILDED, RUGGED_CLIMBING_GEAR, GOLDEN_PIGLIN, GOAT, TROUBADOUR, UNSTABLE, STURDY_SHULKER -> Rarity.RARE;
+            default -> Rarity.UNCOMMON;
+        };
     }
 
     @Override

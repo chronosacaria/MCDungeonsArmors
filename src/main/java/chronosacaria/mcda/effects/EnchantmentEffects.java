@@ -61,7 +61,8 @@ public class EnchantmentEffects {
         if (fireTrailLevel == 0) return;
 
         BlockPos placeFireTrail = blockPos.offset(player.getMovementDirection().getOpposite(), 2);
-        if (player.world.getBlockState(placeFireTrail).isAir() && player.isOnGround() && player.isSneaking())
+        ItemStack feetStack = player.getEquippedStack(EquipmentSlot.FEET);
+        if (player.world.getBlockState(placeFireTrail).isAir() && player.isOnGround() && feetStack.getOrCreateNbt().getBoolean("is_fire_trail_enabled"))
             player.world.setBlockState(placeFireTrail, Blocks.FIRE.getDefaultState());
 
     }
