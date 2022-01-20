@@ -251,7 +251,7 @@ public abstract class LivingEntityMixin extends Entity {
             return;
 
         if (config.enableArmorEffect.get(FOX_POUNCING))
-            foxPouncing(playerEntity);
+            ArmorEffects.foxPouncing(playerEntity);
     }
 
     // Mixins for Armor and Enchantment Effects on Tick
