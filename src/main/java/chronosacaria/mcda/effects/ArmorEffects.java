@@ -2,7 +2,7 @@ package chronosacaria.mcda.effects;
 
 import chronosacaria.mcda.api.AOECloudHelper;
 import chronosacaria.mcda.api.AOEHelper;
-import chronosacaria.mcda.api.CleanlinessHelper;
+import chronosacaria.mcda.api.AbilityHelper;
 import chronosacaria.mcda.entities.SummonedBeeEntity;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.mixin.PlayerTeleportationStateAccessor;
@@ -10,8 +10,8 @@ import chronosacaria.mcda.registry.SoundsRegistry;
 import chronosacaria.mcda.registry.StatusEffectsRegistry;
 import chronosacaria.mcda.registry.SummonedEntityRegistry;
 import net.minecraft.block.*;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
@@ -250,8 +250,8 @@ public class ArmorEffects {
             if (playerEntity.isSneaking()) {
                 ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
                 ArmorEffects.endermanLikeTeleportEffect(playerEntity);
-                if (CleanlinessHelper.mcdaCooldownCheck(playerEntity, 40))
-                    CleanlinessHelper.mcdaRandomArmorDamage(playerEntity, 0.10f, 4, false);
+                if (mcdaCooldownCheck(playerEntity, 40))
+                    mcdaRandomArmorDamage(playerEntity, 0.10f, 4, false);
 
             } else ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
 
@@ -269,8 +269,8 @@ public class ArmorEffects {
                 } else {
                     ArmorEffects.endermanLikeTeleportEffect(playerEntity);
                 }
-                if (CleanlinessHelper.mcdaCooldownCheck(playerEntity, 40))
-                    CleanlinessHelper.mcdaRandomArmorDamage(playerEntity, 0.10f, 4, false);
+                if (mcdaCooldownCheck(playerEntity, 40))
+                    mcdaRandomArmorDamage(playerEntity, 0.10f, 4, false);
             } else {
                 ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
             }
@@ -478,8 +478,8 @@ public class ArmorEffects {
             }
         }
         if (playFireSound) {
-            if (CleanlinessHelper.mcdaCooldownCheck(livingEntity, 40))
-                CleanlinessHelper.mcdaRandomArmorDamage(livingEntity, 0.10f, 3, true);
+            if (mcdaCooldownCheck(livingEntity, 40))
+                mcdaRandomArmorDamage(livingEntity, 0.10f, 3, true);
             livingEntity.world.playSound(
                     null,
                     livingEntity.getX(),
@@ -581,15 +581,15 @@ public class ArmorEffects {
         if (hasArmorSet(livingEntity, ArmorSets.GILDED)
                 && livingEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)) {
 
-            int index = CleanlinessHelper.mcdaFindHighestDurabilityEquipment(livingEntity);
+            int index = mcdaFindHighestDurabilityEquipment(livingEntity);
             float damageAmount = 0.50f;
             switch (index) {
-                case 0 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.FEET, damageAmount);
-                case 1 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.LEGS, damageAmount);
-                case 2 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.CHEST, damageAmount);
-                case 3 -> CleanlinessHelper.mcdaDamageEquipment(livingEntity, EquipmentSlot.HEAD, damageAmount);
+                case 0 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.FEET, damageAmount);
+                case 1 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.LEGS, damageAmount);
+                case 2 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.CHEST, damageAmount);
+                case 3 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.HEAD, damageAmount);
             }
-            CleanlinessHelper.onTotemDeathEffects(livingEntity);
+            onTotemDeathEffects(livingEntity);
             return true;
         }
         return false;
@@ -620,8 +620,8 @@ public class ArmorEffects {
     public static boolean ruggedClimbing(PlayerEntity playerEntity){
         if (hasArmorSet(playerEntity, ArmorSets.RUGGED_CLIMBING_GEAR)){
             // If Statement provided by Apace100; Thanks, Apace!
-            if (CleanlinessHelper.mcdaBoundingBox(playerEntity, 0.01f)
-                    || CleanlinessHelper.mcdaBoundingBox(playerEntity, -0.01f)) {
+            if (mcdaBoundingBox(playerEntity, 0.01f)
+                    || mcdaBoundingBox(playerEntity, -0.01f)) {
                 playerEntity.setOnGround(true);
                 playerEntity.onLanding();
 
@@ -647,14 +647,14 @@ public class ArmorEffects {
     }
 
     public static void arcticFoxesHighGround(PlayerEntity playerEntity, LivingEntity target, float amount){
-        if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
+        if (hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
             if (playerEntity.getVelocity().y < 0)
                 target.damage(DamageSource.GENERIC, 1.2f * amount);
         }
     }
 
     public static void ghostKindlerTrail(PlayerEntity playerEntity, BlockPos blockPos){
-        if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.GHOST_KINDLER)) {
+        if (hasArmorSet(playerEntity, ArmorSets.GHOST_KINDLER)) {
 
             for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(playerEntity, playerEntity, 3.0f)){
                 if (nearbyEntity instanceof Monster){
@@ -664,6 +664,40 @@ public class ArmorEffects {
                                 ParticleTypes.FLAME);
                     }
                 }
+            }
+        }
+    }
+
+    public static void foxPouncing(PlayerEntity playerEntity){
+        if (hasArmorSet(playerEntity, ArmorSets.FOX)
+                || hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
+            if (!mcdaCheckHorizontalVelocity(playerEntity.getVelocity(), 0, true))
+                return;
+            if (!playerEntity.isSneaking() || !playerEntity.isOnGround())
+                return;
+
+            LivingEntity target = playerEntity.getEntityWorld().getClosestEntity(
+                    AbilityHelper.getPotentialPounceTargets(playerEntity, 6.0f),
+                    TargetPredicate.DEFAULT,
+                    playerEntity,
+                    playerEntity.getX(),
+                    playerEntity.getY(),
+                    playerEntity.getZ());
+
+            if (target == null) return;
+
+            // TODO Look into changing out brute force box to EntityDimensions#getBoxAt?
+            if (mcdaCanTargetEntity(playerEntity, target)){
+
+                Vec3d vecHorTargetDist = new Vec3d((target.getX() - playerEntity.getX()),
+                        (target.getY() - playerEntity.getY()),(target.getZ() - playerEntity.getZ()));
+                Vec3d vecVelHorTargetDist = vecHorTargetDist.normalize().multiply(vecHorTargetDist.horizontalLength()/6);
+
+                playerEntity.setVelocity(vecVelHorTargetDist.x + target.getVelocity().x, 0.8,
+                        vecVelHorTargetDist.z + target.getVelocity().z);
+                // Thanks Apace!
+                playerEntity.velocityModified = true;
+                // Somehow make the player model move like the fox does?
             }
         }
     }
@@ -867,22 +901,6 @@ public class ArmorEffects {
             if (hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
                 if (playerEntity.getMainHandStack().getItem() == Items.SWEET_BERRIES) {
                     playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 200, 0, false, false));
-                }
-            }
-        }
-    }
-
-    //To be removed for less sad pouncing
-    public static void foxSneakJumpBoost(ServerPlayerEntity playerEntity){
-        if (config.enableArmorEffect.get(ArmorEffectID.FOX_SNEAK_JUMP_BOOST)) {
-            if (playerEntity.world.getTime() % 100 == 0) {
-                if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.FOX)
-                        || CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
-                    if (playerEntity.isSneaking()) {
-                        StatusEffectInstance jumpBoost = new StatusEffectInstance(StatusEffects.JUMP_BOOST, 60, 0,
-                                false, true);
-                        playerEntity.addStatusEffect(jumpBoost);
-                    }
                 }
             }
         }

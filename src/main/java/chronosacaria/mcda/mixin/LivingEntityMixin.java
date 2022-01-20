@@ -5,7 +5,6 @@ import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
 import chronosacaria.mcda.items.ArmorSets;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
@@ -15,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -87,7 +85,7 @@ public abstract class LivingEntityMixin extends Entity {
                         ArmorEffects.applySplendidAoEAttackEffect(playerEntity, target);
                     if (config.enableArmorEffect.get(GILDED_HERO))
                         ArmorEffects.gildedHeroDamageBuff(playerEntity, target);
-                    if (config.enableArmorEffect.get(ARCTIC_FOXS_HIGH_GROUND))
+                    if (config.enableArmorEffect.get(ARCTIC_FOX_HIGH_GROUND))
                         ArmorEffects.arcticFoxesHighGround(playerEntity, target, amount);
                 }
             }
@@ -246,6 +244,16 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
+    // Mixin for Swing Hand. Only Fox Pounce rn
+    @Inject(method = "swingHand(Lnet/minecraft/util/Hand;)V", at = @At("HEAD"))
+    public void onMCDAFoxPounce(Hand hand, CallbackInfo ci){
+        if ((!((Object) this instanceof PlayerEntity playerEntity)))
+            return;
+
+        if (config.enableArmorEffect.get(FOX_POUNCING))
+            foxPouncing(playerEntity);
+    }
+
     // Mixins for Armor and Enchantment Effects on Tick
     @Inject(method = "tick", at = @At("HEAD"))
     private void onMCDATickEffects(CallbackInfo ci){
@@ -295,48 +303,6 @@ public abstract class LivingEntityMixin extends Entity {
                         cir.setReturnValue(true);
                     }
                 }
-            }
-        }
-    }
-
-    @Inject(method = "swingHand(Lnet/minecraft/util/Hand;)V", at = @At("HEAD"))
-    public void onMCDAFoxPounce(Hand hand, CallbackInfo ci){
-        if ((!((Object) this instanceof PlayerEntity playerEntity)))
-            return;
-
-        if (hasArmorSet(playerEntity, ArmorSets.FOX)
-                || hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
-            if (!mcdaCheckHorizontalVelocity(playerEntity.getVelocity(), 0, true))
-                return;
-            if (!playerEntity.isSneaking() || !playerEntity.isOnGround())
-                return;
-
-            LivingEntity target = playerEntity.getEntityWorld().getClosestEntity(
-                    AbilityHelper.getPotentialPounceTargets(playerEntity, 6.0f),
-                    TargetPredicate.DEFAULT,
-                    playerEntity,
-                    playerEntity.getX(),
-                    playerEntity.getY(),
-                    playerEntity.getZ());
-
-            if (target == null) return;
-
-            // TODO Look into changing out brute force box to EntityDimensions#getBoxAt?
-            if (mcdaCanTargetEntity(playerEntity, target)){
-                playerEntity.setSneaking(false);
-
-                Vec3d vecHorizontalDistanceToTarget = new Vec3d((target.getX() - playerEntity.getX()),
-                        (target.getY() - playerEntity.getY()),(target.getZ() - playerEntity.getZ()));
-                double horizontalDistanceToTarget = vecHorizontalDistanceToTarget.horizontalLength();
-
-                double distance = horizontalDistanceToTarget/6;
-                vecHorizontalDistanceToTarget = vecHorizontalDistanceToTarget.normalize().multiply(distance);
-
-                playerEntity.setVelocity(vecHorizontalDistanceToTarget.x + target.getVelocity().x, 0.8,
-                        vecHorizontalDistanceToTarget.z + target.getVelocity().z);
-                // Thanks Apace!
-                playerEntity.velocityModified = true;
-                // Somehow make the player model move like the fox does?
             }
         }
     }

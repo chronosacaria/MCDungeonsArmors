@@ -46,7 +46,6 @@ public class ServerPlayerEntityMixin {
 
         // Effects from Armor Sets on non-standard ticks
         ArmorEffects.applyRenegadesRushEffect(playerEntity); // Renegade Armour
-        ArmorEffects.foxSneakJumpBoost(playerEntity); // Fox and Arctic Fox Armour Jump Boost
 
         // Status Effect Removal
         ArmorEffects.applyLevitationRemoval(playerEntity); // Sturdy Shulker Armour Remove Levitation Effect

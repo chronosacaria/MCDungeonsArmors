@@ -136,23 +136,38 @@ public class CleanlinessHelper {
 
     public static boolean mcdaCanTargetEntity(PlayerEntity playerEntity, Entity target){
         Vec3d playerVec = playerEntity.getRotationVec(0f);
-        Vec3d vecHorizontalDistanceToTarget = new Vec3d((target.getX() - playerEntity.getX()),
+        Vec3d vecHorTargetDist = new Vec3d((target.getX() - playerEntity.getX()),
                 (target.getY() - playerEntity.getY()),(target.getZ() - playerEntity.getZ()));
-        double horizontalDistanceToTarget = vecHorizontalDistanceToTarget.horizontalLength();
-        Vec3d perpendicularisedVecHorizontalDistanceToTarget =
-                vecHorizontalDistanceToTarget.normalize().crossProduct(new Vec3d(0, 1, 0));
+        double horTargetDist = vecHorTargetDist.horizontalLength();
+        Vec3d perpHorTargetDist =
+                vecHorTargetDist.normalize().crossProduct(new Vec3d(0, 1, 0));
         Vec3d leftSideVec =
-                vecHorizontalDistanceToTarget.normalize().multiply(horizontalDistanceToTarget).add(perpendicularisedVecHorizontalDistanceToTarget.multiply(target.getWidth()));
+                vecHorTargetDist.normalize().multiply(horTargetDist)
+                        .add(perpHorTargetDist.multiply(target.getWidth()));
         Vec3d rightSideVec =
-                vecHorizontalDistanceToTarget.normalize().multiply(horizontalDistanceToTarget).add(perpendicularisedVecHorizontalDistanceToTarget.multiply(-target.getWidth()));
+                vecHorTargetDist.normalize().multiply(horTargetDist)
+                        .add(perpHorTargetDist.multiply(-target.getWidth()));
         double playerEyeHeight = playerEntity.getEyeY() - playerEntity.getBlockPos().getY();
 
-        return Math.max(leftSideVec.normalize().x, rightSideVec.normalize().x) >= playerVec.normalize().x
+        //return mcdaDoubleInequalityBoundsCheck(playerVec.normalize().x,
+        //        Math.min(leftSideVec.normalize().x, rightSideVec.normalize().x),
+        //        Math.max(leftSideVec.normalize().x, rightSideVec.normalize().x),
+        //        true, true)
+        //        && mcdaDoubleInequalityBoundsCheck(playerVec.normalize().z,
+        //        Math.min(leftSideVec.normalize().z, rightSideVec.normalize().z),
+        //        Math.max(leftSideVec.normalize().z, rightSideVec.normalize().z),
+        //        true, true)
+        //        && mcdaDoubleInequalityBoundsCheck(playerVec.y,
+        //        -Math.atan(playerEyeHeight / horizontalDistanceToTarget),
+        //        Math.atan((target.getHeight() - playerEyeHeight) / horizontalDistanceToTarget),
+        //        true, true);
+
+                return Math.max(leftSideVec.normalize().x, rightSideVec.normalize().x) >= playerVec.normalize().x
                 && Math.min(leftSideVec.normalize().x, rightSideVec.normalize().x) <= playerVec.normalize().x
                 && Math.max(leftSideVec.normalize().z, rightSideVec.normalize().z) >= playerVec.normalize().z
                 && Math.min(leftSideVec.normalize().z, rightSideVec.normalize().z) <= playerVec.normalize().z
-                && playerVec.y > -Math.atan(playerEyeHeight / horizontalDistanceToTarget)
-                && playerVec.y < Math.atan((target.getHeight() - playerEyeHeight) / horizontalDistanceToTarget);
+                && playerVec.y > -Math.atan(playerEyeHeight / horTargetDist)
+                && playerVec.y < Math.atan((target.getHeight() - playerEyeHeight) / horTargetDist);
     }
 
     public static boolean mcdaCheckHorizontalVelocity(Vec3d vec3d, double magnitude, boolean equality) {
@@ -161,5 +176,15 @@ public class CleanlinessHelper {
             return horVelocity == magnitude;
         return horVelocity > magnitude;
     }
+
+    //public static boolean mcdaDoubleInequalityBoundsCheck(double target, double lowerBound, double upperBound, boolean lowerInclusive, boolean upperInclusive) {
+    //    if (lowerBound == upperBound)
+    //        return target == lowerBound && (lowerInclusive || upperInclusive);
+    //    if (target == lowerBound)
+    //        return lowerInclusive;
+    //    if (target == upperBound)
+    //        return upperInclusive;
+    //    return upperBound > target && target > lowerBound;
+    //}
 
 }
