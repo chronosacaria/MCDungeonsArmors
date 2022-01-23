@@ -93,42 +93,20 @@ public class ArmorEffects {
 
             int[] domArr = {0,0,0,0};
 
-            if (helmetStack.getNbt().get("dominance") != null) {
+            if (helmetStack.getNbt().get("dominance") != null)
                 domArr[0] = helmetStack.getNbt().getInt("dominance");
-            }
-            if (chestplateStack.getNbt().get("dominance") != null) {
+            if (chestplateStack.getNbt().get("dominance") != null)
                 domArr[1] = chestplateStack.getNbt().getInt("dominance");
-            }
-            if (leggingsStack.getNbt().get("dominance") != null) {
+            if (leggingsStack.getNbt().get("dominance") != null)
                 domArr[2] = leggingsStack.getNbt().getInt("dominance");
-            }
-            if (bootsStack.getNbt().get("dominance") != null) {
+            if (bootsStack.getNbt().get("dominance") != null)
                 domArr[3] = bootsStack.getNbt().getInt("dominance");
-            }
 
-            int maxDOM = domArr[0];
-            int stackTracker = 0;
-
-            for (int i = 1; i < domArr.length; i++) {
-                if (domArr[i] > maxDOM) {
-                    maxDOM = domArr[i];
-                    stackTracker = i;
-                }
-            }
-
-            switch (stackTracker) {
-                case 0 -> {
-                    return helmetStack.getNbt().getInt("mystery_effect");
-                }
-                case 1 -> {
-                    return chestplateStack.getNbt().getInt("mystery_effect");
-                }
-                case 2 -> {
-                    return leggingsStack.getNbt().getInt("mystery_effect");
-                }
-                case 3 -> {
-                    return bootsStack.getNbt().getInt("mystery_effect");
-                }
+            switch (mcdaIndexOfLargestElementInArray(domArr)) {
+                case 0: return helmetStack.getNbt().getInt("mystery_effect");
+                case 1: return chestplateStack.getNbt().getInt("mystery_effect");
+                case 2: return leggingsStack.getNbt().getInt("mystery_effect");
+                case 3: return bootsStack.getNbt().getInt("mystery_effect");
             }
         }
         return 0;

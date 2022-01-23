@@ -61,27 +61,33 @@ public class CleanlinessHelper {
         livingEntity.world.sendEntityStatus(livingEntity, (byte) 35);
     }
 
+    public static int mcdaIndexOfLargestElementInArray(int[] arr) {
+        int maxVal = arr[0];
+        int index = 0;
+
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > maxVal) {
+                maxVal = arr[i];
+                index = i;
+            }
+        }
+        return index;
+    }
+
     public static int mcdaFindHighestDurabilityEquipment(LivingEntity livingEntity) {
-        // Trackers
         int i = 0;
-        float[] armorPieceDurability = {0, 0, 0, 0};
+        int[] armorPieceDurability = {0, 0, 0, 0};
 
         // Store durability percents of armor
         for (ItemStack itemStack : livingEntity.getArmorItems()) {
             float k = itemStack.getMaxDamage();
             float j = k - itemStack.getDamage();
-            armorPieceDurability[i] = j / k;
+            armorPieceDurability[i] = (int) ((j / k) * 100);
             i++;
         }
-        // Find the highest durability armor
-        i = 0;
-        for (int k = 0; k < 3; k++) {
-            if (armorPieceDurability[k + 1] > armorPieceDurability[i]) {
-                i = k + 1;
-            }
-        }
 
-        return i;
+        // Find the highest durability armor's index
+        return mcdaIndexOfLargestElementInArray(armorPieceDurability);
     }
 
     public static void mcdaRandomArmorDamage(LivingEntity livingEntity, float damagePercentage, int totalNumOfPieces, boolean missingBoots){
