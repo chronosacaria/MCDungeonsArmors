@@ -40,7 +40,7 @@ public class McdaClient implements ClientModInitializer {
         KeyBindingHelper.registerKeyBinding(keyToggle = new KeyBinding(
                 TOGGLE_KEYBIND.toString(), GLFW.GLFW_KEY_SEMICOLON, KEYBIND_CATEGORY));
 
-        McdaS2CPackets.registerS2CReceivers();
+        //McdaS2CPackets.registerS2CReceivers();
         SummonedEntityRegistry.register();
         EntityRendererRegistry.register(SummonedEntityRegistry.SUMMONED_BEE_ENTITY, SummonedBeeRenderer::new);
     }

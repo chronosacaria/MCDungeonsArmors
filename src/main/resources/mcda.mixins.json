@@ -10,7 +10,6 @@
     "ItemEntryMixin",
     "ItemStackMixin",
     "LivingEntityMixin",
-    "MinecraftClientMixin",
     "PersistentProjectileEntityMixin",
     "PiglinBrainMixin",
     "PlayerTeleportationStateAccessor",

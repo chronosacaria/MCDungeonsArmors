@@ -30,7 +30,7 @@ public class Mcda implements ModInitializer {
         EnchantsRegistry.init();
         ItemsRegistry.init();
         LootRegistry.init();
-        McdaC2SPackets.registerC2SReceivers();
+        //McdaC2SPackets.registerC2SReceivers();
         SoundsRegistry.init();
         StatusEffectsRegistry.init();
         TradesRegistry.registerVillagerOffers();

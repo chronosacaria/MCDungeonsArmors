@@ -256,17 +256,12 @@ public class ArmorEffects {
     }
 
     public static void applyFluidFreezing(PlayerEntity playerEntity) {
-
-        if (!playerEntity.isAlive())
-            return;
-
         if (hasArmorSet(playerEntity, ArmorSets.FROST)
                 || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == FLUID_FREEZING)
                 || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == FLUID_FREEZING)){
             // From FrostWalkerEnchantment
-            if (!playerEntity.isOnGround()) {
+            if (!playerEntity.isOnGround())
                 return;
-            }
 
             float f = (float) Math.min(16, 2 + 1);
             BlockPos.Mutable mutable = new BlockPos.Mutable();
