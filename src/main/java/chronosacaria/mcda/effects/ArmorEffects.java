@@ -621,7 +621,9 @@ public class ArmorEffects {
 
     public static void arcticFoxesHighGround(PlayerEntity playerEntity, LivingEntity target, float amount){
         if (hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
-            if (playerEntity.getVelocity().y < 0)
+            if (playerEntity.getVelocity().y < 0
+                    && !playerEntity.isOnGround()
+                    && !playerEntity.isHoldingOntoLadder())
                 target.damage(DamageSource.GENERIC, 1.2f * amount);
         }
     }
