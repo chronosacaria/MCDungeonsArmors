@@ -1,10 +1,14 @@
 package chronosacaria.mcda.items.itemhelpers;
 
 public enum DropHelper {
-    PHANTOM_SKIN_AND_BONES,
-    OCELOT_PELTS,
-    WOLF_PELTS,
-    FOX_PELTS,
+    PHANTOM_SKIN,
+    PHANTOM_BONES,
+    OCELOT_PELT,
+    BLACK_OCELOT_PELT,
+    WOLF_PELT,
+    BLACK_WOLF_PELT,
+    FOX_PELT,
+    ARCTIC_FOX_PELT,
     GOAT_PELT,
     FROST_CRYSTAL,
     EVOCATION_ROBE,

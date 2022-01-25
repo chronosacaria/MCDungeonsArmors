@@ -44,10 +44,6 @@ public class McdaConfig implements ConfigData {
         return armorStats.get(set).setProtection(head, chest, legs, feet);
     }
 
-    protected ArmorStats setDurabilityMultiplier(int value, ArmorSets set){
-        return armorStats.get(set).setDurabilityMultiplier(value);
-    }
-
     protected ArmorStats setAttackDamageBoost(double value, ArmorSets set) {
         return armorStats.get(set).setAttackDamageBoost(value);
     }
@@ -60,54 +56,45 @@ public class McdaConfig implements ConfigData {
         return armorStats.get(set).setMovementSpeedBoost(value);
     }
 
-    protected ArmorStats setKnockbackResistance(float value, ArmorSets set) {
-        return armorStats.get(set).setKnockbackRes(value);
-    }
-
     // set config defaults
     public McdaConfig() {
-        for (EnchantID enchantID : EnchantID.values()) {
+        for (EnchantID enchantID : EnchantID.values())
             enableEnchantment.put(enchantID, true);
-        }
 
-        for (ArmorEffectID armorEffectID : ArmorEffectID.values()){
+        for (ArmorEffectID armorEffectID : ArmorEffectID.values())
             enableArmorEffect.put(armorEffectID, true);
-        }
 
-        for (DropHelper dropHelper : DropHelper.values()){
+        for (DropHelper dropHelper : DropHelper.values())
             maxDropAmounts.put(dropHelper, 1.0F);
-        }
+        maxDropAmounts.replace(DropHelper.GOAT_PELT, 2.0F);
 
-        for (SpawnHelper spawnHelper : SpawnHelper.values()){
-            armorSpawnRates.put(SpawnHelper.GHOSTLY, 0.05f);
-            armorSpawnRates.put(SpawnHelper.GHOST_KINDLER, 0.01f);
-            armorSpawnRates.put(SpawnHelper.GRIM, 0.05f);
-            armorSpawnRates.put(SpawnHelper.DARK, 0.1f);
-            armorSpawnRates.put(SpawnHelper.ROYAL, 0.05f);
-            armorSpawnRates.put(SpawnHelper.TITAN, 0.025f);
-            armorSpawnRates.put(SpawnHelper.THIEF, 0.1f);
-            armorSpawnRates.put(SpawnHelper.PLATE, 0.05f);
-            armorSpawnRates.put(SpawnHelper.FULL_METAL, 0.01f);
-            armorSpawnRates.put(SpawnHelper.SNOW, 0.03f);
-            armorSpawnRates.put(SpawnHelper.WOLF, 0.05f);
-            armorSpawnRates.put(SpawnHelper.FOX, 0.01f);
-            armorSpawnRates.put(SpawnHelper.REINFORCED, 0.05f);
-            armorSpawnRates.put(SpawnHelper.STALWART, 0.01f);
-            armorSpawnRates.put(SpawnHelper.SCALE, 0.05f);
-            armorSpawnRates.put(SpawnHelper.MERCENARY, 0.05f);
-            armorSpawnRates.put(SpawnHelper.SPELUNKER, 0.05f);
-            armorSpawnRates.put(SpawnHelper.CAVE_CRAWLER, 0.01f);
-            armorSpawnRates.put(SpawnHelper.HERO, 0.1f);
-            armorSpawnRates.put(SpawnHelper.GILDED, 0.1f);
-            armorSpawnRates.put(SpawnHelper.TELEPORTATION, 0.1f);
-            armorSpawnRates.put(SpawnHelper.UNSTABLE, 0.01f);
-            armorSpawnRates.put(SpawnHelper.MYSTERY, 0.05f);
-            armorSpawnRates.put(SpawnHelper.VANGUARD, 0.05f);
-        }
+        armorSpawnRates.put(SpawnHelper.GHOSTLY, 0.05f);
+        armorSpawnRates.put(SpawnHelper.GHOST_KINDLER, 0.01f);
+        armorSpawnRates.put(SpawnHelper.GRIM, 0.05f);
+        armorSpawnRates.put(SpawnHelper.DARK, 0.1f);
+        armorSpawnRates.put(SpawnHelper.ROYAL, 0.05f);
+        armorSpawnRates.put(SpawnHelper.TITAN, 0.025f);
+        armorSpawnRates.put(SpawnHelper.THIEF, 0.1f);
+        armorSpawnRates.put(SpawnHelper.PLATE, 0.05f);
+        armorSpawnRates.put(SpawnHelper.FULL_METAL, 0.01f);
+        armorSpawnRates.put(SpawnHelper.SNOW, 0.03f);
+        armorSpawnRates.put(SpawnHelper.WOLF, 0.05f);
+        armorSpawnRates.put(SpawnHelper.FOX, 0.01f);
+        armorSpawnRates.put(SpawnHelper.REINFORCED, 0.05f);
+        armorSpawnRates.put(SpawnHelper.STALWART, 0.01f);
+        armorSpawnRates.put(SpawnHelper.SCALE, 0.05f);
+        armorSpawnRates.put(SpawnHelper.MERCENARY, 0.05f);
+        armorSpawnRates.put(SpawnHelper.SPELUNKER, 0.05f);
+        armorSpawnRates.put(SpawnHelper.CAVE_CRAWLER, 0.01f);
+        armorSpawnRates.put(SpawnHelper.HERO, 0.1f);
+        armorSpawnRates.put(SpawnHelper.GILDED, 0.1f);
+        armorSpawnRates.put(SpawnHelper.TELEPORTATION, 0.1f);
+        armorSpawnRates.put(SpawnHelper.UNSTABLE, 0.01f);
+        armorSpawnRates.put(SpawnHelper.MYSTERY, 0.05f);
+        armorSpawnRates.put(SpawnHelper.VANGUARD, 0.05f);
 
-        for (ArmorSets armorSet : ArmorSets.values()) {
+        for (ArmorSets armorSet : ArmorSets.values())
             armorStats.put(armorSet, new ArmorStats());
-        }
 
         for (ArmorSets armorSet : ArmorSets.values()) {
             ArmorStats s = new ArmorStats();
@@ -115,7 +102,6 @@ public class McdaConfig implements ConfigData {
             for (EquipmentSlot slot : EnumSet.of(HEAD, CHEST, LEGS, FEET)) {
                 s.protection.put(slot, 0);
             }
-
             this.armorStats.put(armorSet, s);
         }
 
