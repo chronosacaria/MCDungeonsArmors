@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MinecraftClientMixin {
     @Inject(method = "handleInputEvents", at = @At("HEAD"))
     private void mcdaHandleInputEvents(CallbackInfo ci){
-        McdaClient.handleInputEvent();
+        //McdaClient.handleInputEvent();
     }
 }

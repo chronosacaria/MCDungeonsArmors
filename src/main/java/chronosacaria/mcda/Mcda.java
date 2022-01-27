@@ -1,7 +1,6 @@
 package chronosacaria.mcda;
 
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.networking.McdaC2SPackets;
 import chronosacaria.mcda.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
@@ -30,7 +29,6 @@ public class Mcda implements ModInitializer {
         EnchantsRegistry.init();
         ItemsRegistry.init();
         LootRegistry.init();
-        //McdaC2SPackets.registerC2SReceivers();
         SoundsRegistry.init();
         StatusEffectsRegistry.init();
         TradesRegistry.registerVillagerOffers();
