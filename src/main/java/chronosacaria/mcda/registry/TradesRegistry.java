@@ -8,10 +8,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.village.TradeOffer;
-import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerProfession;
-
-import static net.minecraft.village.TradeOffers.PROFESSION_TO_LEVELED_TRADE;
 
 public class TradesRegistry {
 

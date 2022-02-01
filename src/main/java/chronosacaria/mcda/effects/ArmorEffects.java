@@ -240,7 +240,7 @@ public class ArmorEffects {
         if (hasArmorSet(playerEntity, ArmorSets.UNSTABLE)) {
             if (playerEntity.isSneaking()) {
                 ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
-                AOECloudHelper.spawnExplosionCloud(playerEntity, playerEntity, 3.0F);
+                AOECloudHelper.spawnParticleCloud(playerEntity, playerEntity, 3.0F, 0, ParticleTypes.EXPLOSION);
                 AOEHelper.causeExplosion(playerEntity, playerEntity, 5, 3.0f);
                 if (config.controlledTeleportation){
                     ArmorEffects.controlledTeleportEffect(playerEntity);
@@ -541,10 +541,9 @@ public class ArmorEffects {
                     SoundCategory.PLAYERS,
                     1.0F,
                     1.0F);
-            AOECloudHelper.spawnCloudCloud(playerEntity, playerEntity, 0.5F);
+            AOECloudHelper.spawnParticleCloud(playerEntity, playerEntity, 0.5F, 0, ParticleTypes.CLOUD);
             // Apply Speed after dodge
-            playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false,
-                    false));
+            playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false, false));
             return true;
         }
         return  false;

@@ -33,7 +33,8 @@ import static chronosacaria.mcda.effects.ArmorEffectID.MYSTERY_EFFECTS_ON_CRAFTI
 public abstract class ItemStackMixin {
     @Shadow public abstract NbtCompound getOrCreateNbt();
 
-    @Shadow @Final @Deprecated private Item item;
+    @Shadow @Final
+    private Item item;
     Random random = new Random();
 
     private boolean isMysteryArmor(){

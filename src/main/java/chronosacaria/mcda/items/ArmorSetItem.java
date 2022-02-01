@@ -43,8 +43,6 @@ public class ArmorSetItem extends ArmorItem {
         int protection = set.getProtectionAmount(slot);
         float toughness = set.getToughness();
 
-        int durabilityMultiplier = set.getDurability(slot);
-
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         UUID uuid = ARMOR_MODIFIERS[slot.getEntitySlotId()];
         builder.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uuid, "Armor modifier",
@@ -87,26 +85,15 @@ public class ArmorSetItem extends ArmorItem {
         super.appendTooltip(itemStack, world, tooltip, tooltipContext);
 
         for (int i = 1; i <= MAX_TOOLTIPS; i++) {
-            String setId;
-
-            switch (set) {
-                case MYSTERY:
-                case BLUE_MYSTERY:
-                case GREEN_MYSTERY:
-                case PURPLE_MYSTERY:
-                case RED_MYSTERY:
-                    setId = "mystery_armor";
-                    break;
-                default:
-                    setId = set.getSetName();
-                    break;
-            }
+            String setId = switch (set) {
+                case MYSTERY, BLUE_MYSTERY, GREEN_MYSTERY, PURPLE_MYSTERY, RED_MYSTERY -> "mystery_armor";
+                default -> set.getSetName();
+            };
 
             String translationKey = String.format("item.mcda.%s.tooltip_%d", setId, i);
 
-            if (I18n.hasTranslation(translationKey)) {
+            if (I18n.hasTranslation(translationKey))
                 tooltip.add(new TranslatableText(translationKey));
-            }
         }
 
         // "attribute.name.healthPotionsHealNearbyAllies"

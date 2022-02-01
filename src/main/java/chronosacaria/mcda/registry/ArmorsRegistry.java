@@ -16,23 +16,13 @@ public class ArmorsRegistry {
     public static final EnumMap<ArmorSets, EnumMap<EquipmentSlot, Item>> armorItems = new EnumMap<>(ArmorSets.class);
 
     protected static String armorID(ArmorSets set, EquipmentSlot slot) {
-        String slotID;
-        switch (slot) {
-            case HEAD:
-                slotID = "helmet";
-                break;
-            case CHEST:
-                slotID = "chestplate";
-                break;
-            case LEGS:
-                slotID = "leggings";
-                break;
-            case FEET:
-                slotID = "boots";
-                break;
-            default:
-                throw new IllegalArgumentException("armor with non-armor equipment slot");
-        }
+        String slotID = switch (slot) {
+            case HEAD -> "helmet";
+            case CHEST -> "chestplate";
+            case LEGS -> "leggings";
+            case FEET -> "boots";
+            default -> throw new IllegalArgumentException("armor with non-armor equipment slot");
+        };
 
         return set.getSetName() + "_" + slotID;
     }
@@ -51,29 +41,13 @@ public class ArmorsRegistry {
 
     public static void init() {
         for (ArmorSets set : ArmorSets.values()) {
-            EnumSet<EquipmentSlot> slots;
-
-            switch (set) {
-                case BATTLE:
-                case SPLENDID:
-                    slots = EnumSet.of(CHEST, LEGS);
-                    break;
-                case EVOCATION:
-                case EMBER:
-                case VERDANT:
-                case VANGUARD:
-                    slots = EnumSet.of(HEAD, CHEST, LEGS);
-                    break;
-                case SCALE_MAIL:
-                    slots = EnumSet.of(CHEST, LEGS, FEET);
-                    break;
-                case HUNTER:
-                    slots = EnumSet.of(CHEST);
-                    break;
-                default:
-                    slots = EnumSet.of(HEAD, CHEST, LEGS, FEET);
-                    break;
-            }
+            EnumSet<EquipmentSlot> slots = switch (set) {
+                case BATTLE, SPLENDID -> EnumSet.of(CHEST, LEGS);
+                case EVOCATION, EMBER, VERDANT, VANGUARD -> EnumSet.of(HEAD, CHEST, LEGS);
+                case SCALE_MAIL -> EnumSet.of(CHEST, LEGS, FEET);
+                case HUNTER -> EnumSet.of(CHEST);
+                default -> EnumSet.of(HEAD, CHEST, LEGS, FEET);
+            };
 
             registerArmor(set, slots);
         }

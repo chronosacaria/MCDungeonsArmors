@@ -16,5 +16,4 @@ public class ArmorEnchantment  extends Enchantment {
     public int getMaxLevel() {
         return 3;
     }
-
 }

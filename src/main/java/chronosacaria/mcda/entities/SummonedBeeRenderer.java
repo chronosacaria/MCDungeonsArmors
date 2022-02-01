@@ -13,7 +13,7 @@ public class SummonedBeeRenderer extends MobEntityRenderer<SummonedBeeEntity, Be
     private static final Identifier NECTAR_TEXTURE = new Identifier("textures/entity/bee/bee_nectar.png");
 
     public SummonedBeeRenderer(EntityRendererFactory.Context context) {
-        super(context, new BeeEntityModel(context.getPart(EntityModelLayers.BEE)), 0.4F);
+        super(context, new BeeEntityModel<>(context.getPart(EntityModelLayers.BEE)), 0.4F);
     }
 
     public Identifier getTexture(SummonedBeeEntity beeEntity) {
