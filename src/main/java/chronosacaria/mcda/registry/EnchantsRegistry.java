@@ -61,6 +61,8 @@ public class EnchantsRegistry {
                         EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
                 case SWIFTFOOTED -> new SwiftFootedEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR_FEET,
                         EquipmentSlot.FEET);
+                //noinspection UnnecessaryDefault
+                default -> new ArmorEnchantment(enchantID);
             };
 
             enchants.put(enchantID, enchantment);
