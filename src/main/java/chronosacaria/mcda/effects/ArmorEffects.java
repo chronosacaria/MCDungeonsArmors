@@ -568,16 +568,22 @@ public class ArmorEffects {
     }
 
     public static void buzzyHiveEffect(LivingEntity targetedEntity) {
-        if (hasArmorSet(targetedEntity, ArmorSets.BEEHIVE)) {
-            float beeSummonChance = targetedEntity.getRandom().nextFloat();
-            if (beeSummonChance <= 0.3F) {
-                World world = targetedEntity.getEntityWorld();
-                SummonedBeeEntity summonedBeeEntity = summonedBee.create(world);
-                if (summonedBeeEntity != null) {
-                    summonedBeeEntity.setSummoner(targetedEntity);
-                    summonedBeeEntity.refreshPositionAndAngles(targetedEntity.getX(), targetedEntity.getY() + 1, targetedEntity.getZ(), 0, 0);
-                    world.spawnEntity(summonedBeeEntity);
-                }
+        float beeSummonChance = 0;
+        if (hasArmorSet(targetedEntity, ArmorSets.BEEHIVE))
+            beeSummonChance = 0.3F;
+        if (hasArmorSet(targetedEntity, ArmorSets.BEENEST))
+            beeSummonChance = 0.1F;
+
+        if (beeSummonChance == 0)
+            return;
+        float beeSummonRand = targetedEntity.getRandom().nextFloat();
+        if (beeSummonRand <= beeSummonChance) {
+            World world = targetedEntity.getEntityWorld();
+            SummonedBeeEntity summonedBeeEntity = summonedBee.create(world);
+            if (summonedBeeEntity != null) {
+                summonedBeeEntity.setSummoner(targetedEntity);
+                summonedBeeEntity.refreshPositionAndAngles(targetedEntity.getX(), targetedEntity.getY() + 1, targetedEntity.getZ(), 0, 0);
+                world.spawnEntity(summonedBeeEntity);
             }
         }
     }
