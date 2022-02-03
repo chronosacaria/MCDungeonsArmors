@@ -27,46 +27,31 @@ public class SummonedBeeEntity extends BeeEntity {
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5.0D)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 48.0D)
                 .build();
-    }public void setSummoner(Entity user){
+    }
+
+    public void setSummoner(Entity user){
         summoner = user;
     }
 
     protected void mobTick(){
-        if(summoner instanceof PlayerEntity){
-            if(((PlayerEntity)summoner).getAttacker() != null){
+        if (summoner instanceof PlayerEntity){
+            if (((PlayerEntity)summoner).getAttacker() != null)
                 this.setBeeAttacker(((PlayerEntity)summoner).getAttacker());
-            }
-
-            if (((PlayerEntity)summoner).getAttacking() != null){
+            if (((PlayerEntity)summoner).getAttacking() != null)
                 this.setBeeAttacker(((PlayerEntity)summoner).getAttacking());
-            }
         }
         super.mobTick();
     }
 
-    private boolean setBeeAttacker(LivingEntity attacker){
-        if(attacker.equals(summoner)){
-            return false;
-        }
+    private void setBeeAttacker(LivingEntity attacker){
+        if (attacker.equals(summoner))
+            return;
         setAttacker(attacker);
-        return true;
     }
+
     public boolean tryAttack(Entity target) {
-
-        if(target.equals(summoner)) {
+        if (target.equals(summoner) || this.hasStung())
             return false;
-        }
-        else if (this.hasStung()){
-
-            return false;
-
-        }
-        else {
-
-            return super.tryAttack(target);
-
-        }
-
+        return super.tryAttack(target);
     }
-
 }

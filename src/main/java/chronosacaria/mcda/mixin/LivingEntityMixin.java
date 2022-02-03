@@ -308,8 +308,7 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     // Mixin for Knockback Resistance for Stalwart Bulwark Effect
-    @SuppressWarnings("ModifyVariableMayBeArgsOnly")
-    @ModifyVariable(method = "takeKnockback", at = @At("HEAD"), ordinal = 0)
+    @ModifyVariable(method = "takeKnockback", at = @At("HEAD"), ordinal = 0, argsOnly = true)
     private double applyStalwartBulwarkKnockbackResistanceEffect(double strength){
         LivingEntity livingEntity = (LivingEntity) (Object) this;
 
@@ -321,9 +320,8 @@ public abstract class LivingEntityMixin extends Entity {
         return strength;
     }
 
-    @SuppressWarnings("ModifyVariableMayBeArgsOnly")
     @ModifyVariable(method = "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;" +
-            "Lnet/minecraft/entity/Entity;)Z", at = @At("HEAD"))
+            "Lnet/minecraft/entity/Entity;)Z", at = @At("HEAD"), argsOnly = true)
     private StatusEffectInstance troubadoursCharismaModifyStatusEffect(StatusEffectInstance statusEffectInstance){
 
         LivingEntity livingEntity = (LivingEntity) (Object) this;

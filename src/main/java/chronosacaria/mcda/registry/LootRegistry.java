@@ -229,7 +229,6 @@ public class LootRegistry {
                 }
             }
         });
-
     }
 
     public static void addMysteryArmorSets(FabricLootPoolBuilder poolBuilder, float p) {

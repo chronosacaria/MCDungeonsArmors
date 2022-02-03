@@ -8,10 +8,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.village.TradeOffer;
-import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerProfession;
-
-import static net.minecraft.village.TradeOffers.PROFESSION_TO_LEVELED_TRADE;
 
 public class TradesRegistry {
 
@@ -62,7 +59,7 @@ public class TradesRegistry {
         TradeOfferHelper.registerWanderingTraderOffers(1,
                 factories -> factories.add(new BasicTradeFactory(new TradeOffer(new ItemStack(Items.EMERALD, 16),
                         new ItemStack(ItemsRegistry.items.get(ItemID.OCELOT_PELT),
-                                1), 1, 2, 0.0F))));
+                                1), 4, 2, 0.0F))));
         TradeOfferHelper.registerWanderingTraderOffers(1,
                 factories -> factories.add(new BasicTradeFactory(new TradeOffer(new ItemStack(Items.EMERALD, 24),
                         new ItemStack(ItemsRegistry.items.get(ItemID.OCELOT_PELT_BLACK),
@@ -70,14 +67,14 @@ public class TradesRegistry {
         TradeOfferHelper.registerWanderingTraderOffers(1,
                 factories -> factories.add(new BasicTradeFactory(new TradeOffer(new ItemStack(Items.EMERALD, 16),
                         new ItemStack(ItemsRegistry.items.get(ItemID.WOLF_PELT),
-                                1), 1, 2, 0.0F))));
+                                1), 4, 2, 0.0F))));
         TradeOfferHelper.registerWanderingTraderOffers(1,
                 factories -> factories.add(new BasicTradeFactory(new TradeOffer(new ItemStack(Items.EMERALD, 24),
                         new ItemStack(ItemsRegistry.items.get(ItemID.WOLF_PELT_BLACK),
                                 1), 1, 2, 0.0F))));
         TradeOfferHelper.registerWanderingTraderOffers(1,
-                factories -> factories.add(new BasicTradeFactory(new TradeOffer(new ItemStack(Items.EMERALD, 24),
+                factories -> factories.add(new BasicTradeFactory(new TradeOffer(new ItemStack(Items.EMERALD, 16),
                         new ItemStack(ItemsRegistry.items.get(ItemID.GOAT_PELT),
-                                1), 1, 2, 0.0F))));
+                                1), 4, 2, 0.0F))));
     }
 }

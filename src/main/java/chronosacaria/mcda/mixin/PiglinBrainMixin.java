@@ -18,14 +18,12 @@ import static chronosacaria.mcda.effects.ArmorEffectID.PIGLIN_FOOLING;
 public abstract class PiglinBrainMixin {
 
     @Inject(method = "wearsGoldArmor", at = @At(value = "RETURN"), cancellable = true)
-    private static void onPiglinSelectPlayerToAttack(LivingEntity entity, CallbackInfoReturnable<Boolean> cir){
+    private static void onPiglinSelectPlayerToAttack(LivingEntity livingEntity, CallbackInfoReturnable<Boolean> cir){
         if (!config.enableArmorEffect.get(PIGLIN_FOOLING))
             return;
-        if (entity instanceof PlayerEntity) {
-            if (CleanlinessHelper.hasArmorSet((LivingEntity) entity, ArmorSets.GOLDEN_PIGLIN)){
+        if (livingEntity instanceof PlayerEntity)
+            if (CleanlinessHelper.hasArmorSet(livingEntity, ArmorSets.GOLDEN_PIGLIN))
                 cir.setReturnValue(true);
-            }
-        }
     }
 }
 

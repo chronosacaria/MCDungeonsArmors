@@ -21,14 +21,16 @@ import static chronosacaria.mcda.effects.ArmorEffectID.SWEET_BERRY_BUSH_WALKING;
 
 @Mixin(SweetBerryBushBlock.class)
 public class SweetBerryBushBlockMixin {
+
     @Inject(method = "onEntityCollision", at = @At("HEAD"), cancellable = true)
     public void canWalkThroughSweetBerryBushes(BlockState state, World world, BlockPos pos, Entity entity, CallbackInfo ci){
         if (!McdaConfig.config.enableArmorEffect.get(SWEET_BERRY_BUSH_WALKING))
             return;
 
-        if (!(entity instanceof LivingEntity)) return;
+        if (!(entity instanceof LivingEntity livingEntity))
+            return;
 
-        if (CleanlinessHelper.hasArmorSet((LivingEntity) entity, ArmorSets.FOX) || CleanlinessHelper.hasArmorSet((LivingEntity) entity, ArmorSets.ARCTIC_FOX)){
+        if (CleanlinessHelper.hasArmorSet(livingEntity, ArmorSets.FOX) || CleanlinessHelper.hasArmorSet(livingEntity, ArmorSets.ARCTIC_FOX)){
             ci.cancel();
         }
     }

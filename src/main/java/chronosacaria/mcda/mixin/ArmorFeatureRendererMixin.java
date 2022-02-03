@@ -30,8 +30,8 @@ public class ArmorFeatureRendererMixin {
 
         if (livingEntity instanceof PlayerEntity && livingEntity.isSneaking()){
             if (CleanlinessHelper.hasArmorSet(livingEntity, ArmorSets.THIEF)
-                    || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect((PlayerEntity) livingEntity, ArmorSets.MYSTERY)) == INVISIBILITY)
-                    || (ArmorEffects.PURPLE_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect((PlayerEntity) livingEntity, ArmorSets.PURPLE_MYSTERY)) == INVISIBILITY)){
+                    || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(livingEntity, ArmorSets.MYSTERY)) == INVISIBILITY)
+                    || (ArmorEffects.PURPLE_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(livingEntity, ArmorSets.PURPLE_MYSTERY)) == INVISIBILITY)){
                 info.cancel();
             }
         }

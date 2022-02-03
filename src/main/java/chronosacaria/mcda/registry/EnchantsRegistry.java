@@ -22,89 +22,48 @@ public class EnchantsRegistry {
             if (!config.enableEnchantment.get(enchantID))
                 continue;
 
-            Enchantment enchantment;
-
-            switch (enchantID) {
-                case BAG_OF_SOULS:
-                    enchantment = new BagOfSoulsEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case BURNING:
-                    enchantment = new BurningEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case CHILLING:
-                    enchantment = new ChillingEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case COWARDICE:
-                    enchantment = new CowardiceEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case DEATH_BARTER:
-                    enchantment = new DeathBarterEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case DEFLECT:
-                    enchantment = new DeflectEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case FIRE_FOCUS:
-                    enchantment = new FireFocusEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case FIRE_TRAIL:
-                    enchantment = new FireTrailEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR_FEET,
-                            EquipmentSlot.FEET);
-                    break;
-                case RECKLESS:
-                    enchantment = new RecklessEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case FOOD_RESERVES:
-                    enchantment = new FoodReservesEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case FRENZIED:
-                    enchantment = new FrenziedEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case HEAL_ALLIES:
-                    enchantment = new HealAlliesEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case LUCKY_EXPLORER:
-                    enchantment = new LuckyExplorerEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR_FEET,
-                            EquipmentSlot.FEET);
-                    break;
-                case POISON_FOCUS:
-                    enchantment = new PoisonFocusEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case POTION_BARRIER:
-                    enchantment = new PotionBarrierEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case RECYCLER:
-                    enchantment = new RecyclerEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case SNOWBALL:
-                    enchantment = new SnowballEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case SURPRISE_GIFT:
-                    enchantment = new SurpriseGiftEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-                    break;
-                case SWIFTFOOTED:
-                    enchantment = new SwiftFootedEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR_FEET,
-                            EquipmentSlot.FEET);
-                    break;
-                default:
-                    enchantment = new ArmorEnchantment(enchantID);
-                    break;
-            }
+            Enchantment enchantment = switch (enchantID) {
+                case BAG_OF_SOULS -> new BagOfSoulsEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case BURNING -> new BurningEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case CHILLING -> new ChillingEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case COWARDICE -> new CowardiceEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case DEATH_BARTER -> new DeathBarterEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case DEFLECT -> new DeflectEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case FIRE_FOCUS -> new FireFocusEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case FIRE_TRAIL -> new FireTrailEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR_FEET,
+                        EquipmentSlot.FEET);
+                case RECKLESS -> new RecklessEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case FOOD_RESERVES -> new FoodReservesEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case FRENZIED -> new FrenziedEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case HEAL_ALLIES -> new HealAlliesEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case LUCKY_EXPLORER -> new LuckyExplorerEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR_FEET,
+                        EquipmentSlot.FEET);
+                case POISON_FOCUS -> new PoisonFocusEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case POTION_BARRIER -> new PotionBarrierEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case RECYCLER -> new RecyclerEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case SNOWBALL -> new SnowballEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case SURPRISE_GIFT -> new SurpriseGiftEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
+                        EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+                case SWIFTFOOTED -> new SwiftFootedEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR_FEET,
+                        EquipmentSlot.FEET);
+                //noinspection UnnecessaryDefault
+                default -> new ArmorEnchantment(enchantID);
+            };
 
             enchants.put(enchantID, enchantment);
             registerEnchant(enchantID.toString().toLowerCase(), enchantment);

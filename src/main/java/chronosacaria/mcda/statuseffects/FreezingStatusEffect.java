@@ -28,20 +28,21 @@ public class FreezingStatusEffect extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier){
         if (entity != null && entity.getHealth() > 0.0F){
-            int o = entity.getFrozenTicks();
             boolean bl2 = entity.getType().isIn(EntityTypeTags.FREEZE_HURTS_EXTRA_TYPES);
-            o = bl2 ? 5 : 1;
+            int o = bl2 ? 5 : 1;
             World world = entity.getEntityWorld();
             Random random = world.getRandom();
 
-            if (entity.getHealth() > 0.0F){
+            if (entity.getHealth() > 0.0F)
                 entity.damage(DamageSource.FREEZE, (float)o);
-            }
+
             if (world.isClient) {
                 boolean bl = entity.lastRenderX != entity.getX() || entity.lastRenderZ != entity.getZ();
                 if (bl && random.nextBoolean()) {
-                    world.addParticle(ParticleTypes.SNOWFLAKE, entity.getX(), (double)(entity.getPos().getY() + 1),
-                            entity.getZ(), (double)(MathHelper.nextBetween(random, -1.0F, 1.0F) * 0.083333336F), 0.05000000074505806D, (double)(MathHelper.nextBetween(random, -1.0F, 1.0F) * 0.083333336F));
+                    world.addParticle(ParticleTypes.SNOWFLAKE, entity.getX(), entity.getPos().getY() + 1, entity.getZ(),
+                            MathHelper.nextBetween(random, -1.0F, 1.0F) * 0.083333336F,
+                            0.05000000074505806D,
+                            MathHelper.nextBetween(random, -1.0F, 1.0F) * 0.083333336F);
                 }
             }
         }

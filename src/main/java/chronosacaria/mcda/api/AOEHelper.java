@@ -22,7 +22,7 @@ import static chronosacaria.mcda.enchants.EnchantID.HEAL_ALLIES;
 // TODO: unused
 public class AOEHelper {
 
-    /** Returns targets of an AOE effect from 'attacker' around 'center'. This includes 'center'. */
+    /* Return targets of an AOE effect from 'attacker' around 'center'. This includes 'center'. */
     public static List<LivingEntity> getAoeTargets(LivingEntity center, LivingEntity attacker, float distance) {
         return center.getEntityWorld().getEntitiesByClass(LivingEntity.class,
                 new Box(center.getBlockPos()).expand(distance),
@@ -54,9 +54,7 @@ public class AOEHelper {
     }
 
     public static void healNearbyAllies(LivingEntity healer, float amount) {
-        //if (!(healer instanceof PlayerEntity)) return;
-
-        if (healer.getHealth() <= healer.getMaxHealth())
+        if (healer.getHealth() >= healer.getMaxHealth())
             return;
 
         int healAlliesLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(HEAL_ALLIES), healer);

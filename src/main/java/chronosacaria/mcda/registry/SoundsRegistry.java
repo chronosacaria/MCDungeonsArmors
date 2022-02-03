@@ -7,7 +7,7 @@ import net.minecraft.util.registry.Registry;
 
 public class SoundsRegistry {
     /*
-     *   Sound used for DODGE_SOUND is Bamboo Swing, C3 by InspectorJ
+     *   Sound used for DODGE_SOUND is Bamboo Swing, C3 by InspectorJ,
      *   and it can be found at the following address:
      *   https://freesound.org/people/InspectorJ/sounds/394454/.
      *   It was used under the CC BY 3.0. The License may be

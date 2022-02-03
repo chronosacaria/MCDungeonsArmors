@@ -59,18 +59,15 @@ public class AbilityHelper {
     public static boolean canHealEntity(LivingEntity self, LivingEntity other) {
         if (!self.isAlive() || !other.isAlive())
             return false;
-
-        return isAllyOf(self, other) && self.canSee(other);
+        return isAllyOf(self, other)
+                && self.canSee(other);
     }
 
     public static boolean canFireAtEnemy(LivingEntity self, LivingEntity enemy) {
         if (!self.isAlive() || !enemy.isAlive())
             return false;
-
         return self.canSee(enemy)
                 && !isAllyOf(self, enemy)
                 && isNotAPlayer(enemy);
     }
-
-
 }

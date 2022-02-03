@@ -8,7 +8,6 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Lazy;
 import net.minecraft.util.Rarity;
 
-import java.util.EnumMap;
 import java.util.function.Supplier;
 
 import static chronosacaria.mcda.config.McdaConfig.config;
@@ -35,7 +34,7 @@ public enum ArmorSets implements ArmorMaterial {
      * Netherite = 15
      * Gold = 25
      *
-     * Damage Reduction Amounts (boots, leggings, chestplate, helmet:
+     * Damage Reduction Amounts (boots, leggings, chestplate, helmet):
      * Leather = 1/2/3/1
      * Chain = 1/4/5/2
      * Iron = 2/5/6/2
@@ -384,8 +383,6 @@ public enum ArmorSets implements ArmorMaterial {
     private final int enchantability;
     private final SoundEvent equipSound;
     private final Lazy<Ingredient> repairIngredient;
-
-    EnumMap<EquipmentSlot, Integer> armorMap;
 
     ArmorSets(String textureName, String setName, int enchantability,
               SoundEvent soundEvent, Supplier<Ingredient> repairIngredient) {

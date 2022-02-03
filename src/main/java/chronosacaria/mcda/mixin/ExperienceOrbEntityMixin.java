@@ -9,6 +9,8 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -56,6 +58,15 @@ public abstract class ExperienceOrbEntityMixin extends Entity {
                 }
             }
             if (removalBool)
+                playerEntity.world.playSound(
+                        null,
+                        playerEntity.getX(),
+                        playerEntity.getY(),
+                        playerEntity.getZ(),
+                        SoundEvents.PARTICLE_SOUL_ESCAPE,
+                        SoundCategory.PLAYERS,
+                        1.0F,
+                        1.0F);
                 this.remove(RemovalReason.KILLED);
         }
     }
