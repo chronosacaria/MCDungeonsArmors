@@ -16,7 +16,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.SOULDANCER_EXPERIENCE;
@@ -31,7 +33,7 @@ public abstract class ExperienceOrbEntityMixin extends Entity {
         super(type, world);
     }
 
-    @Inject(method = "onPlayerCollision", at = @At("HEAD"))
+   /* @Inject(method = "onPlayerCollision", at = @At("HEAD"))
     public void applyBagOfSouls(PlayerEntity playerEntity, CallbackInfo ci){
         if (!this.world.isClient) {
             boolean removalBool = false;
@@ -69,5 +71,32 @@ public abstract class ExperienceOrbEntityMixin extends Entity {
                         1.0F);
                 this.remove(RemovalReason.KILLED);
         }
+    } */
+
+    @ModifyArgs(method = "onPlayerCollision", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/entity/ExperienceOrbEntity;repairPlayerGears(Lnet/minecraft/entity/player/PlayerEntity;I)I"))
+    public void realExperienceChange(Args args){
+        int amount = args.get(1);
+        PlayerEntity playerEntity = args.get(0);
+
+        if (config.enableArmorEffect.get(SOULDANCER_EXPERIENCE))
+            if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.SOULDANCER))
+                amount = (int) Math.round(1.5 * amount);
+
+        if (config.enableEnchantment.get(BAG_OF_SOULS)) {
+            int bagOfSoulsLevel = McdaEnchantmentHelper.getBagOfSoulsLevel(EnchantsRegistry.enchants.get(EnchantID.BAG_OF_SOULS),
+                            playerEntity);
+
+            if (bagOfSoulsLevel > 0) {
+                int bagOfSoulsCount = 0;
+                for (ItemStack itemStack : playerEntity.getArmorItems())
+                    if (EnchantmentHelper.getLevel(EnchantsRegistry.enchants.get(BAG_OF_SOULS), itemStack) > 0)
+                        bagOfSoulsCount++;
+
+                // Thank you, Amph
+                amount = (amount * (1 + (bagOfSoulsLevel / 12)) + Math.round(((bagOfSoulsLevel % 12) / 12.0f) * amount)) * bagOfSoulsCount;
+            }
+        }
+        args.set(1, amount);
     }
 }
