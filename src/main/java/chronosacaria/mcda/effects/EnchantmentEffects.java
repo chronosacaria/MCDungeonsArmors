@@ -86,7 +86,7 @@ public class EnchantmentEffects {
         if (!isInstantHealthPotion(playerEntity.getMainHandStack()))
             return;
         int potionBarrierLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POTION_BARRIER), playerEntity);
-        if (potionBarrierLevel != 0)
+        if (potionBarrierLevel == 0)
             return;
         StatusEffectInstance resistance = new StatusEffectInstance(StatusEffects.RESISTANCE, 60 + (20 * potionBarrierLevel), 3);
         playerEntity.addStatusEffect(resistance);
@@ -169,6 +169,14 @@ public class EnchantmentEffects {
         if (poisonFocusLevel > 0) {
             float multiplier = 1 + (0.25F * poisonFocusLevel);
             target.damage(DamageSource.MAGIC, amount * multiplier);
+        }
+    }
+
+    public static void applyChilling(LivingEntity wearer, LivingEntity livingEntity){
+        int chillingLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(CHILLING), wearer);
+        if (chillingLevel > 0){
+            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20 * chillingLevel, chillingLevel * 2 - 1));
+            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 20 * chillingLevel, chillingLevel * 2 - 1));
         }
     }
 

@@ -63,11 +63,12 @@ public class ArmorEffects {
             List.of(MYSTERY_EFFECTS, CURIOUS_TELEPORTATION, FIRE_RESISTANCE, FLUID_FREEZING, FROST_BITE_EFFECT,
                     GHOST_KINDLING, GOURDIANS_HATRED, HASTE, HERO_OF_THE_VILLAGE, INVISIBILITY, LEADER_OF_THE_PACK,
                     LUCK, NIMBLE_TURTLE_EFFECTS, NO_FALL_DAMAGE, RENEGADES_RUSH, SHULKER_LIKE, SLOW_FALLING,
-                    SPIDER_CLIMBING, SPRINTING, STALWART_BULWARK, SYLVAN_PRESENCE, WATER_BREATHING, WEB_WALKING, WITHERED);
+                    SPIDER_CLIMBING, SPRINTING, STALWART_BULWARK, SYLVAN_PRESENCE, WATER_BREATHING, WEB_WALKING,
+                    WITHERED, GHOST_KINDLER_TRAIL);
 
     public static final List<ArmorEffectID> RED_ARMOR_EFFECT_ID_LIST =
             List.of(MYSTERY_EFFECTS, FIRE_RESISTANCE, GHOST_KINDLING, GOURDIANS_HATRED, LEADER_OF_THE_PACK,
-                    RENEGADES_RUSH,STALWART_BULWARK, WITHERED);
+                    RENEGADES_RUSH,STALWART_BULWARK, WITHERED, GHOST_KINDLER_TRAIL);
 
     public static final List<ArmorEffectID> GREEN_ARMOR_EFFECT_ID_LIST =
             List.of(MYSTERY_EFFECTS, HASTE, HERO_OF_THE_VILLAGE, LUCK, NO_FALL_DAMAGE, SYLVAN_PRESENCE);
@@ -634,7 +635,9 @@ public class ArmorEffects {
     }
 
     public static void ghostKindlerTrail(PlayerEntity playerEntity, BlockPos blockPos){
-        if (hasArmorSet(playerEntity, ArmorSets.GHOST_KINDLER)) {
+        if (hasArmorSet(playerEntity, ArmorSets.GHOST_KINDLER)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == GHOST_KINDLER_TRAIL)
+                || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == GHOST_KINDLER_TRAIL)) {
 
             for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(playerEntity, playerEntity, 3.0f)){
                 if (nearbyEntity instanceof Monster){

@@ -267,7 +267,7 @@ public class McdaConfig implements ConfigData {
         setAttackSpeedBoost(0.05, GILDED);
 
         for (ItemSettingsHelper ignored : ItemSettingsHelper.values()){
-            armorsEnabledInLootTables.put(ItemSettingsHelper.ENABLE_ARMOR_IN_LOOT_TABLES, true);
+            armorsEnabledInLootTables.put(ItemSettingsHelper.ENABLE_ARMOR_IN_LOOT_TABLES, false);
         }
 
         for (ItemSettingsHelper ignored : ItemSettingsHelper.values()){
@@ -284,22 +284,22 @@ public class McdaConfig implements ConfigData {
                     "minecraft:chests/nether_bridge",
                     "minecraft:chests/bastion_bridge",
                     "minecraft:chests/bastion_other",
-                    "minecraft:chests/bastion_treasure"));
+                    "minecraft:chests/bastion_treasure",
+                    "minecraft:chests/ruined_portal"));
         }
         for (ItemSettingsHelper ignored : ItemSettingsHelper.values()) {
             rareLootTables.put(ItemSettingsHelper.RARE_LOOT_TABLES, Lists.newArrayList(
                     "minecraft:chests/underwater_ruin_small",
                     "minecraft:chests/underwater_ruin_big",
-                    "minecraft:chests/ruined_portal",
                     "minecraft:chests/simple_dungeon",
-                    "minecraft:chests/igloo_chest"));
+                    "minecraft:chests/igloo_chest",
+                    "minecraft:chests/pillager_outpost"));
         }
         for (ItemSettingsHelper ignored : ItemSettingsHelper.values()) {
             epicLootTables.put(ItemSettingsHelper.EPIC_LOOT_TABLES, Lists.newArrayList(
                     "minecraft:chests/stronghold_corridor",
                     "minecraft:chests/stronghold_crossing",
                     "minecraft:chests/stronghold_library",
-                    "minecraft:chests/pillager_outpost",
                     "minecraft:chests/end_city_treasure"));
         }
 

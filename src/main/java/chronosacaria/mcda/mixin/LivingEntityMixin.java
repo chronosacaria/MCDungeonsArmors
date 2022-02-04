@@ -138,7 +138,7 @@ public abstract class LivingEntityMixin extends Entity {
                     ProjectileEffectHelper.fireShulkerBulletAtNearbyEnemy(playerEntity);
             }
 
-            if (this.lastDamageTaken >= 0) {
+            if (amount > 0) {
                 if (source.getAttacker() instanceof LivingEntity || source.isProjectile()) {
                     if (config.enableArmorEffect.get(SOULDANCER_GRACE)) {
                         if (ArmorEffects.souldancerGraceEffect(playerEntity))
@@ -152,11 +152,13 @@ public abstract class LivingEntityMixin extends Entity {
         // Mixins for Armour and Enchantment Effects on Damage for LivingEntities
         if ((Object) this instanceof LivingEntity livingEntity) {
 
-            if (amount > 0 && source.getAttacker() instanceof LivingEntity) {
+            if (amount > 0 && source.getAttacker() instanceof LivingEntity attackingEntity) {
                 if (config.enableArmorEffect.get(BUZZY_HIVE))
                     ArmorEffects.buzzyHiveEffect(livingEntity);
                 if (config.enableArmorEffect.get(CAULDRONS_OVERFLOW))
                     ArmorEffects.applyCauldronsOverflow(livingEntity);
+                if (config.enableEnchantment.get(CHILLING))
+                    EnchantmentEffects.applyChilling(livingEntity, attackingEntity);
             }
         }
     }

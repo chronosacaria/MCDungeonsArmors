@@ -142,28 +142,102 @@ public class LootRegistry {
             }
 
             if (config.armorsEnabledInLootTables.get(ItemSettingsHelper.ENABLE_ARMOR_IN_LOOT_TABLES)){
-                for (int i = 0; i < COMMON_LOOT_TABLES.size(); i++) {
-                    if (COMMON_LOOT_TABLES.get(i).equals(id.toString())) {
+                for (String commonLootTable : COMMON_LOOT_TABLES) {
+                    if (commonLootTable.equals(id.toString())) {
                         poolBuilder = FabricLootPoolBuilder.builder();
-                        //TODO Determine Common Armours
+                        addArmorSet(poolBuilder, ArmorSets.BATTLE, config.armorLootTableSpawnRates.get(ArmorSets.BATTLE));
+                        addArmorSet(poolBuilder, ArmorSets.BEENEST, config.armorLootTableSpawnRates.get(ArmorSets.BEENEST));
+                        addArmorSet(poolBuilder, ArmorSets.CLIMBING_GEAR, config.armorLootTableSpawnRates.get(ArmorSets.CLIMBING_GEAR));
+                        addArmorSet(poolBuilder, ArmorSets.EVOCATION, config.armorLootTableSpawnRates.get(ArmorSets.EVOCATION));
+                        addArmorSet(poolBuilder, ArmorSets.GHOSTLY, config.armorLootTableSpawnRates.get(ArmorSets.GHOSTLY));
+                        addArmorSet(poolBuilder, ArmorSets.HUNTER, config.armorLootTableSpawnRates.get(ArmorSets.HUNTER));
+                        addArmorSet(poolBuilder, ArmorSets.SCALE_MAIL, config.armorLootTableSpawnRates.get(ArmorSets.SCALE_MAIL));
+                        addArmorSet(poolBuilder, ArmorSets.SNOW, config.armorLootTableSpawnRates.get(ArmorSets.SNOW));
+                        addArmorSet(poolBuilder, ArmorSets.SOUL_ROBE, config.armorLootTableSpawnRates.get(ArmorSets.SOUL_ROBE));
+                        addArmorSet(poolBuilder, ArmorSets.SPELUNKER, config.armorLootTableSpawnRates.get(ArmorSets.SPELUNKER));
+                        addArmorSet(poolBuilder, ArmorSets.SQUID, config.armorLootTableSpawnRates.get(ArmorSets.SQUID));
+                        addArmorSet(poolBuilder, ArmorSets.VANGUARD, config.armorLootTableSpawnRates.get(ArmorSets.VANGUARD));
+                        addArmorSet(poolBuilder, ArmorSets.WOLF, config.armorLootTableSpawnRates.get(ArmorSets.WOLF));
+                        supplier.pool(poolBuilder);
                     }
                 }
-                for (int i = 0; i < UNCOMMON_LOOT_TABLES.size(); i++) {
-                    if (UNCOMMON_LOOT_TABLES.get(i).equals(id.toString())) {
+                for (String uncommonLootTable : UNCOMMON_LOOT_TABLES) {
+                    if (uncommonLootTable.equals(id.toString())) {
                         poolBuilder = FabricLootPoolBuilder.builder();
-                        //TODO Determine Uncommon Armours
+                        addArmorSet(poolBuilder, ArmorSets.CHAMPION, config.armorLootTableSpawnRates.get(ArmorSets.CHAMPION));
+                        addArmorSet(poolBuilder, ArmorSets.EMERALD, config.armorLootTableSpawnRates.get(ArmorSets.EMERALD));
+                        addArmorSet(poolBuilder, ArmorSets.ENTERTAINER, config.armorLootTableSpawnRates.get(ArmorSets.ENTERTAINER));
+                        addArmorSet(poolBuilder, ArmorSets.GOAT, config.armorLootTableSpawnRates.get(ArmorSets.GOAT));
+                        addArmorSet(poolBuilder, ArmorSets.GRIM, config.armorLootTableSpawnRates.get(ArmorSets.GRIM));
+                        addArmorSet(poolBuilder, ArmorSets.GUARDS, config.armorLootTableSpawnRates.get(ArmorSets.GUARDS));
+                        addArmorSet(poolBuilder, ArmorSets.MERCENARY, config.armorLootTableSpawnRates.get(ArmorSets.MERCENARY));
+                        addArmorSet(poolBuilder, ArmorSets.OCELOT, config.armorLootTableSpawnRates.get(ArmorSets.OCELOT));
+                        addArmorSet(poolBuilder, ArmorSets.PHANTOM, config.armorLootTableSpawnRates.get(ArmorSets.PHANTOM));
+                        addArmorSet(poolBuilder, ArmorSets.PIGLIN, config.armorLootTableSpawnRates.get(ArmorSets.PIGLIN));
+                        addArmorSet(poolBuilder, ArmorSets.PLATE, config.armorLootTableSpawnRates.get(ArmorSets.PLATE));
+                        addArmorSet(poolBuilder, ArmorSets.REINFORCED_MAIL, config.armorLootTableSpawnRates.get(ArmorSets.REINFORCED_MAIL));
+                        addArmorSet(poolBuilder, ArmorSets.SWEET_TOOTH, config.armorLootTableSpawnRates.get(ArmorSets.SWEET_TOOTH));
+                        addArmorSet(poolBuilder, ArmorSets.TELEPORTATION, config.armorLootTableSpawnRates.get(ArmorSets.TELEPORTATION));
+                        addArmorSet(poolBuilder, ArmorSets.THIEF, config.armorLootTableSpawnRates.get(ArmorSets.THIEF));
+                        addArmorSet(poolBuilder, ArmorSets.TURTLE, config.armorLootTableSpawnRates.get(ArmorSets.TURTLE));
+                        supplier.pool(poolBuilder);
                     }
                 }
-                for (int i = 0; i < RARE_LOOT_TABLES.size(); i++) {
-                    if (RARE_LOOT_TABLES.get(i).equals(id.toString())) {
+                for (String rareLootTable : RARE_LOOT_TABLES) {
+                    if (rareLootTable.equals(id.toString())) {
                         poolBuilder = FabricLootPoolBuilder.builder();
-                        //TODO Determine Rare Armours
+                        addArmorSet(poolBuilder, ArmorSets.SPLENDID, config.armorLootTableSpawnRates.get(ArmorSets.SPLENDID));
+                        addArmorSet(poolBuilder, ArmorSets.BEEHIVE, config.armorLootTableSpawnRates.get(ArmorSets.BEEHIVE));
+                        addArmorSet(poolBuilder, ArmorSets.RUGGED_CLIMBING_GEAR, config.armorLootTableSpawnRates.get(ArmorSets.RUGGED_CLIMBING_GEAR));
+                        addArmorSet(poolBuilder, ArmorSets.DARK, config.armorLootTableSpawnRates.get(ArmorSets.DARK));
+                        addArmorSet(poolBuilder, ArmorSets.TROUBADOUR, config.armorLootTableSpawnRates.get(ArmorSets.TROUBADOUR));
+                        addArmorSet(poolBuilder, ArmorSets.EMBER, config.armorLootTableSpawnRates.get(ArmorSets.EMBER));
+                        addArmorSet(poolBuilder, ArmorSets.VERDANT, config.armorLootTableSpawnRates.get(ArmorSets.VERDANT));
+                        addArmorSet(poolBuilder, ArmorSets.GHOST_KINDLER, config.armorLootTableSpawnRates.get(ArmorSets.GHOST_KINDLER));
+                        addArmorSet(poolBuilder, ArmorSets.WITHER, config.armorLootTableSpawnRates.get(ArmorSets.WITHER));
+                        addArmorSet(poolBuilder, ArmorSets.ARCHER, config.armorLootTableSpawnRates.get(ArmorSets.ARCHER));
+                        addArmorSet(poolBuilder, ArmorSets.LIVING_VINES, config.armorLootTableSpawnRates.get(ArmorSets.LIVING_VINES));
+                        addArmorSet(poolBuilder, ArmorSets.SPROUT, config.armorLootTableSpawnRates.get(ArmorSets.SPROUT));
+                        addArmorSet(poolBuilder, ArmorSets.RENEGADE, config.armorLootTableSpawnRates.get(ArmorSets.RENEGADE));
+                        addArmorSet(poolBuilder, ArmorSets.GOLDEN_PIGLIN, config.armorLootTableSpawnRates.get(ArmorSets.GOLDEN_PIGLIN));
+                        addArmorSet(poolBuilder, ArmorSets.STALWART_MAIL, config.armorLootTableSpawnRates.get(ArmorSets.STALWART_MAIL));
+                        addArmorSet(poolBuilder, ArmorSets.HIGHLAND, config.armorLootTableSpawnRates.get(ArmorSets.HIGHLAND));
+                        addArmorSet(poolBuilder, ArmorSets.FROST, config.armorLootTableSpawnRates.get(ArmorSets.FROST));
+                        addArmorSet(poolBuilder, ArmorSets.SOULDANCER, config.armorLootTableSpawnRates.get(ArmorSets.SOULDANCER));
+                        addArmorSet(poolBuilder, ArmorSets.CAVE_CRAWLER, config.armorLootTableSpawnRates.get(ArmorSets.CAVE_CRAWLER));
+                        addArmorSet(poolBuilder, ArmorSets.GLOW_SQUID, config.armorLootTableSpawnRates.get(ArmorSets.GLOW_SQUID));
+                        addArmorSet(poolBuilder, ArmorSets.SPIDER, config.armorLootTableSpawnRates.get(ArmorSets.SPIDER));
+                        addArmorSet(poolBuilder, ArmorSets.BLACK_WOLF, config.armorLootTableSpawnRates.get(ArmorSets.BLACK_WOLF));
+                        addArmorSet(poolBuilder, ArmorSets.FOX, config.armorLootTableSpawnRates.get(ArmorSets.FOX));
+                        supplier.pool(poolBuilder);
                     }
                 }
-                for (int i = 0; i < EPIC_LOOT_TABLES.size(); i++) {
-                    if (EPIC_LOOT_TABLES.get(i).equals(id.toString())) {
+                for (String epicLootTable : EPIC_LOOT_TABLES) {
+                    if (epicLootTable.equals(id.toString())) {
                         poolBuilder = FabricLootPoolBuilder.builder();
-                        //TODO Determine Epic Armours
+                        addArmorSet(poolBuilder, ArmorSets.HERO, config.armorLootTableSpawnRates.get(ArmorSets.HERO));
+                        addArmorSet(poolBuilder, ArmorSets.TITAN, config.armorLootTableSpawnRates.get(ArmorSets.TITAN));
+                        addArmorSet(poolBuilder, ArmorSets.ROYAL, config.armorLootTableSpawnRates.get(ArmorSets.ROYAL));
+                        addArmorSet(poolBuilder, ArmorSets.GILDED, config.armorLootTableSpawnRates.get(ArmorSets.GILDED));
+                        addArmorSet(poolBuilder, ArmorSets.OPULENT, config.armorLootTableSpawnRates.get(ArmorSets.OPULENT));
+                        addArmorSet(poolBuilder, ArmorSets.GOURDIAN, config.armorLootTableSpawnRates.get(ArmorSets.GOURDIAN));
+                        addArmorSet(poolBuilder, ArmorSets.CURIOUS, config.armorLootTableSpawnRates.get(ArmorSets.CURIOUS));
+                        addArmorSet(poolBuilder, ArmorSets.HUNGRY_HORROR, config.armorLootTableSpawnRates.get(ArmorSets.HUNGRY_HORROR));
+                        addArmorSet(poolBuilder, ArmorSets.RED_MYSTERY, config.armorLootTableSpawnRates.get(ArmorSets.RED_MYSTERY));
+                        addArmorSet(poolBuilder, ArmorSets.MYSTERY, config.armorLootTableSpawnRates.get(ArmorSets.MYSTERY));
+                        addArmorSet(poolBuilder, ArmorSets.BLUE_MYSTERY, config.armorLootTableSpawnRates.get(ArmorSets.BLUE_MYSTERY));
+                        addArmorSet(poolBuilder, ArmorSets.GREEN_MYSTERY, config.armorLootTableSpawnRates.get(ArmorSets.GREEN_MYSTERY));
+                        addArmorSet(poolBuilder, ArmorSets.PURPLE_MYSTERY, config.armorLootTableSpawnRates.get(ArmorSets.PURPLE_MYSTERY));
+                        addArmorSet(poolBuilder, ArmorSets.SHADOW_WALKER, config.armorLootTableSpawnRates.get(ArmorSets.SHADOW_WALKER));
+                        addArmorSet(poolBuilder, ArmorSets.FROST_BITE, config.armorLootTableSpawnRates.get(ArmorSets.FROST_BITE));
+                        addArmorSet(poolBuilder, ArmorSets.FULL_METAL, config.armorLootTableSpawnRates.get(ArmorSets.FULL_METAL));
+                        addArmorSet(poolBuilder, ArmorSets.CAULDRON, config.armorLootTableSpawnRates.get(ArmorSets.CAULDRON));
+                        addArmorSet(poolBuilder, ArmorSets.SHULKER, config.armorLootTableSpawnRates.get(ArmorSets.SHULKER));
+                        addArmorSet(poolBuilder, ArmorSets.STURDY_SHULKER, config.armorLootTableSpawnRates.get(ArmorSets.STURDY_SHULKER));
+                        addArmorSet(poolBuilder, ArmorSets.UNSTABLE, config.armorLootTableSpawnRates.get(ArmorSets.UNSTABLE));
+                        addArmorSet(poolBuilder, ArmorSets.NIMBLE_TURTLE, config.armorLootTableSpawnRates.get(ArmorSets.NIMBLE_TURTLE));
+                        addArmorSet(poolBuilder, ArmorSets.ARCTIC_FOX, config.armorLootTableSpawnRates.get(ArmorSets.ARCTIC_FOX));
+                        supplier.pool(poolBuilder);
                     }
                 }
             } else {
