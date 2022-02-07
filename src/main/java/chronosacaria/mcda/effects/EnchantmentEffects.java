@@ -1,5 +1,6 @@
 package chronosacaria.mcda.effects;
 
+import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.api.McdaEnchantmentHelper;
 import chronosacaria.mcda.registry.EnchantsRegistry;
@@ -26,7 +27,6 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.enchants.EnchantID.*;
 
 public class EnchantmentEffects {
@@ -215,7 +215,7 @@ public class EnchantmentEffects {
 
     // Effects for ServerPlayerEntityMixin
     public static void applyCowardice(ServerPlayerEntity player) {
-        if (!config.enableEnchantment.get(COWARDICE))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(COWARDICE))
             return;
 
         if (player.getHealth() == player.getMaxHealth()) {
@@ -229,7 +229,7 @@ public class EnchantmentEffects {
     }
 
     public static void applyFrenzied(ServerPlayerEntity player) {
-        if (!config.enableEnchantment.get(FRENZIED))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(FRENZIED))
             return;
 
         if (player.getHealth() <= (0.5F * player.getMaxHealth())) {
@@ -243,7 +243,7 @@ public class EnchantmentEffects {
     }
 
     public static void applyReckless(ServerPlayerEntity player){
-        if (!config.enableEnchantment.get(RECKLESS))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(RECKLESS))
             return;
 
         int recklessLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(RECKLESS), player);
@@ -260,7 +260,7 @@ public class EnchantmentEffects {
     }
 
     public static void applySwiftfooted(ServerPlayerEntity player){
-        if (!config.enableEnchantment.get(SWIFTFOOTED))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(SWIFTFOOTED))
             return;
 
         int swiftfootedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SWIFTFOOTED),player);

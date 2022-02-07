@@ -1,7 +1,9 @@
 package chronosacaria.mcda;
 
+import chronosacaria.mcda.config.McdaConfig;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.*;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.entity.EquipmentSlot;
@@ -23,8 +25,13 @@ public class Mcda implements ModInitializer {
     public static final ItemGroup ARMORS_GROUP = FabricItemGroupBuilder.build(ID( "armor"),
             () -> new ItemStack(ArmorsRegistry.armorItems.get(ArmorSets.SPLENDID).get(EquipmentSlot.CHEST)));
 
+    public static McdaConfig CONFIG;
+
     @Override
     public void onInitialize() {
+        McdaConfig.init();
+        CONFIG = AutoConfig.getConfigHolder(McdaConfig.class).getConfig();
+
         ArmorsRegistry.init();
         EnchantsRegistry.init();
         ItemsRegistry.init();

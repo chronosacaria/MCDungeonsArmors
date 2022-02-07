@@ -1,5 +1,6 @@
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.effects.ArmorEffects;
@@ -26,7 +27,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Random;
 
-import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.MYSTERY_EFFECTS_ON_CRAFTING;
 
 @Mixin(ItemStack.class)
@@ -47,7 +47,7 @@ public abstract class ItemStackMixin {
 
     @Inject(method = "onCraft", at = @At("HEAD"))
     public void applyMysteryArmorNBTDominanceApplication(World world, PlayerEntity player, int amount, CallbackInfo ci){
-        if (isMysteryArmor() && config.enableArmorEffect.get(MYSTERY_EFFECTS_ON_CRAFTING)) {
+        if (isMysteryArmor() && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(MYSTERY_EFFECTS_ON_CRAFTING)) {
             this.getOrCreateNbt().putInt("dominance", random.nextInt(99));
 
             if(CleanlinessHelper.isMysteryArmor(this.item, ArmorSets.MYSTERY)){
@@ -78,7 +78,7 @@ public abstract class ItemStackMixin {
                                         CallbackInfoReturnable<TypedActionResult<ItemStack>> cir){
         ItemStack getMainHandStack = user.getMainHandStack();
 
-        if (config.enableArmorEffect.get(ArmorEffectID.GILDED_HERO) && CleanlinessHelper.hasArmorSet(user, ArmorSets.GILDED)) {
+        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(ArmorEffectID.GILDED_HERO) && CleanlinessHelper.hasArmorSet(user, ArmorSets.GILDED)) {
             if (getMainHandStack.getItem() == Items.EMERALD) {
                 int decrementAmount = 10;
                 if (getMainHandStack.getCount() >= decrementAmount) {

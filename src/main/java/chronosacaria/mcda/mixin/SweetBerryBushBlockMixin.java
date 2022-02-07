@@ -1,15 +1,12 @@
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.CleanlinessHelper;
-import chronosacaria.mcda.config.McdaConfig;
-import chronosacaria.mcda.effects.ArmorEffectID;
-import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.items.ArmorSets;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SweetBerryBushBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -24,7 +21,7 @@ public class SweetBerryBushBlockMixin {
 
     @Inject(method = "onEntityCollision", at = @At("HEAD"), cancellable = true)
     public void canWalkThroughSweetBerryBushes(BlockState state, World world, BlockPos pos, Entity entity, CallbackInfo ci){
-        if (!McdaConfig.config.enableArmorEffect.get(SWEET_BERRY_BUSH_WALKING))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SWEET_BERRY_BUSH_WALKING))
             return;
 
         if (!(entity instanceof LivingEntity livingEntity))

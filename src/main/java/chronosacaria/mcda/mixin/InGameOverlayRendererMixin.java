@@ -1,5 +1,6 @@
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.items.ArmorSets;
@@ -12,7 +13,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.FIRE_RESISTANCE;
 
 @Mixin(InGameOverlayRenderer.class)
@@ -20,7 +20,7 @@ public class InGameOverlayRendererMixin {
     @Inject(method = "renderFireOverlay", at = @At("HEAD"), cancellable = true)
     private static void renderFireOverlayOverride(MinecraftClient minecraftClient, MatrixStack matrixStack,
                                                  CallbackInfo ci) {
-        if (!config.enableArmorEffect.get(FIRE_RESISTANCE))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(FIRE_RESISTANCE))
             return;
 
         PlayerEntity playerEntity = MinecraftClient.getInstance().player;

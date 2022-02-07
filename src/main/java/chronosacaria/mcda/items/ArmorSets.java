@@ -1,5 +1,6 @@
 package chronosacaria.mcda.items;
 
+import chronosacaria.mcda.Mcda;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Items;
@@ -10,7 +11,6 @@ import net.minecraft.util.Rarity;
 
 import java.util.function.Supplier;
 
-import static chronosacaria.mcda.config.McdaConfig.config;
 import static net.minecraft.sound.SoundEvents.*;
 
 public enum ArmorSets implements ArmorMaterial {
@@ -406,12 +406,12 @@ public enum ArmorSets implements ArmorMaterial {
 
     @Override
     public int getDurability(EquipmentSlot slot) {
-        return baseDurability[slot.getEntitySlotId()] * config.armorStats.get(this).durabilityMultiplier;
+        return baseDurability[slot.getEntitySlotId()] * Mcda.CONFIG.mcdaArmorStatsConfig.armorStats.get(this).durabilityMultiplier;
     }
 
     @Override
     public int getProtectionAmount(EquipmentSlot slot) {
-        return config.armorStats.get(this).protection.get(slot);
+        return Mcda.CONFIG.mcdaArmorStatsConfig.armorStats.get(this).protection.get(slot);
     }
 
     @Override
@@ -436,11 +436,11 @@ public enum ArmorSets implements ArmorMaterial {
 
     @Override
     public float getToughness() {
-        return  config.armorStats.get(this).toughness;
+        return  Mcda.CONFIG.mcdaArmorStatsConfig.armorStats.get(this).toughness;
     }
 
     @Override
     public float getKnockbackResistance() {
-        return  config.armorStats.get(this).knockbackRes;
+        return  Mcda.CONFIG.mcdaArmorStatsConfig.armorStats.get(this).knockbackRes;
     }
 }

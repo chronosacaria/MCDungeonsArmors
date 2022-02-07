@@ -1,5 +1,6 @@
 package chronosacaria.mcda.effects;
 
+import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.AOECloudHelper;
 import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.api.AbilityHelper;
@@ -41,7 +42,6 @@ import net.minecraft.world.World;
 import java.util.*;
 
 import static chronosacaria.mcda.api.CleanlinessHelper.*;
-import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
 
 public class ArmorEffects {
@@ -81,7 +81,7 @@ public class ArmorEffects {
                     SOULDANCER_GRACE, SPRINTING, WEB_WALKING);
 
     public static int applyMysteryArmorEffect(LivingEntity livingEntity, ArmorSets armorSets) {
-        if (!config.enableArmorEffect.get(MYSTERY_EFFECTS))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(MYSTERY_EFFECTS))
             return 0;
 
         //Checks Mystery Armor Color
@@ -243,7 +243,7 @@ public class ArmorEffects {
                 ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(true);
                 AOECloudHelper.spawnParticleCloud(playerEntity, playerEntity, 3.0F, 0, ParticleTypes.EXPLOSION);
                 AOEHelper.causeExplosion(playerEntity, playerEntity, 5, 3.0f);
-                if (config.controlledTeleportation){
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.controlledTeleportation){
                     ArmorEffects.controlledTeleportEffect(playerEntity);
                 } else {
                     ArmorEffects.endermanLikeTeleportEffect(playerEntity);
@@ -687,7 +687,7 @@ public class ArmorEffects {
 
     // Effects for ServerPlayerEntityMixin
     public static void applyFireResistance(ServerPlayerEntity playerEntity) {
-        if (!config.enableArmorEffect.get(FIRE_RESISTANCE))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(FIRE_RESISTANCE))
             return;
 
         if (hasArmorSet(playerEntity, ArmorSets.SPROUT) || hasArmorSet(playerEntity, ArmorSets.LIVING_VINES)
@@ -699,7 +699,7 @@ public class ArmorEffects {
     }
 
     public static void applyHaste(ServerPlayerEntity playerEntity){
-        if (!config.enableArmorEffect.get(HASTE))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(HASTE))
             return;
 
         if (playerEntity.getY() < 32.0F) {
@@ -721,12 +721,12 @@ public class ArmorEffects {
     }
 
     public static void applyHeroOfTheVillage(ServerPlayerEntity playerEntity){
-        if (!config.enableArmorEffect.get(HERO_OF_THE_VILLAGE))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(HERO_OF_THE_VILLAGE))
             return;
 
         if (hasArmorSet(playerEntity, ArmorSets.HERO)
                 || (hasArmorSet(playerEntity, ArmorSets.GILDED)
-                    && config.enableArmorEffect.get(GILDED_HERO)
+                    && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(GILDED_HERO)
                     && playerEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE))
                 || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == HERO_OF_THE_VILLAGE)
                 || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.GREEN_MYSTERY)) == HERO_OF_THE_VILLAGE)) {
@@ -736,7 +736,7 @@ public class ArmorEffects {
     }
 
     public static void applyHungerPain(ServerPlayerEntity playerEntity){
-        if (!config.enableArmorEffect.get(HUNGER))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(HUNGER))
             return;
 
         if (hasArmorSet(playerEntity, ArmorSets.HUNGRY_HORROR)) {
@@ -773,7 +773,7 @@ public class ArmorEffects {
     }
 
     public static void applyInvisibility(ServerPlayerEntity playerEntity){
-        if (!config.enableArmorEffect.get(INVISIBILITY))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(INVISIBILITY))
             return;
 
         if (hasArmorSet(playerEntity, ArmorSets.THIEF)
@@ -787,7 +787,7 @@ public class ArmorEffects {
     }
 
     public static void applyLuck(ServerPlayerEntity playerEntity){
-        if (!config.enableArmorEffect.get(LUCK))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(LUCK))
             return;
 
         if (hasArmorSet(playerEntity, ArmorSets.OPULENT)
@@ -799,7 +799,7 @@ public class ArmorEffects {
     }
 
     public static void applySprintingSpeed(ServerPlayerEntity playerEntity){
-        if (!config.enableArmorEffect.get(SPRINTING))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SPRINTING))
             return;
 
         if (hasArmorSet(playerEntity, ArmorSets.SHADOW_WALKER)
@@ -813,7 +813,7 @@ public class ArmorEffects {
     }
 
     public static void applySlowFalling(ServerPlayerEntity playerEntity){
-        if (!config.enableArmorEffect.get(SLOW_FALLING))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SLOW_FALLING))
             return;
 
         if (hasArmorSet(playerEntity, ArmorSets.PHANTOM) || hasArmorSet(playerEntity, ArmorSets.FROST_BITE)
@@ -825,7 +825,7 @@ public class ArmorEffects {
     }
 
     public static void applyStalwartBulwarkResistanceEffect(ServerPlayerEntity playerEntity){
-        if (!config.enableArmorEffect.get(STALWART_BULWARK))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(STALWART_BULWARK))
             return;
 
         if (hasArmorSet(playerEntity, ArmorSets.STALWART_MAIL)
@@ -839,7 +839,7 @@ public class ArmorEffects {
     }
 
     public static void applyWaterBreathing(ServerPlayerEntity playerEntity){
-        if (!config.enableArmorEffect.get(WATER_BREATHING))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(WATER_BREATHING))
             return;
 
         if (hasArmorSet(playerEntity, ArmorSets.GLOW_SQUID)
@@ -853,7 +853,7 @@ public class ArmorEffects {
     }
 
     public static void applyRenegadesRushEffect(ServerPlayerEntity playerEntity){
-        if (!config.enableArmorEffect.get(RENEGADES_RUSH))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(RENEGADES_RUSH))
             return;
 
         if (hasArmorSet(playerEntity, ArmorSets.RENEGADE)
@@ -868,7 +868,7 @@ public class ArmorEffects {
     }
 
     public static void applyLevitationRemoval(ServerPlayerEntity playerEntity){
-        if (!config.enableArmorEffect.get(SHULKER_LIKE))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SHULKER_LIKE))
             return;
 
         if (hasArmorSet(playerEntity, ArmorSets.STURDY_SHULKER)
@@ -880,7 +880,7 @@ public class ArmorEffects {
     }
 
     public static void sweetBerrySpeed(ServerPlayerEntity playerEntity){
-        if (config.enableArmorEffect.get(SWEET_BERRY_SPEED)) {
+        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SWEET_BERRY_SPEED)) {
             if (hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
                 if (playerEntity.getMainHandStack().getItem() == Items.SWEET_BERRIES) {
                     playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 200, 0, false, false));

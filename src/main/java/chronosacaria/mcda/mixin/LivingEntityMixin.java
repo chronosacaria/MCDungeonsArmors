@@ -1,5 +1,6 @@
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.*;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
@@ -24,7 +25,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static chronosacaria.mcda.api.CleanlinessHelper.*;
-import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
 import static chronosacaria.mcda.effects.ArmorEffects.*;
 import static chronosacaria.mcda.enchants.EnchantID.*;
@@ -36,8 +36,6 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow public abstract boolean isAlive();
 
     @Shadow protected abstract int computeFallDamage(float fallDistance, float damageMultiplier);
-
-    @Shadow protected float lastDamageTaken;
 
     @Shadow public abstract boolean damage(DamageSource source, float amount);
 
@@ -54,7 +52,7 @@ public abstract class LivingEntityMixin extends Entity {
         if (!((Object) this instanceof LivingEntity target))
             return;
 
-        if (config.enableArmorEffect.get(LEADER_OF_THE_PACK))
+        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(LEADER_OF_THE_PACK))
             ArmorEffects.leaderOfThePackEffect(target, source, amount);
 
         if(!(source.getAttacker() instanceof PlayerEntity playerEntity))
@@ -63,29 +61,29 @@ public abstract class LivingEntityMixin extends Entity {
             return;
 
         if (amount != 0.0F) {
-            if (config.enableEnchantment.get(FIRE_FOCUS))
+            if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(FIRE_FOCUS))
                 EnchantmentEffects.applyFireFocusDamage(playerEntity, target, amount);
 
             if (source.isMagic()){
-                if (config.enableEnchantment.get(POISON_FOCUS))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(POISON_FOCUS))
                     EnchantmentEffects.applyPoisonFocusDamage(playerEntity, target, amount);
             }
 
             ItemStack mainHandStack = playerEntity.getMainHandStack();
             if (!mainHandStack.isEmpty()) {
-                if (config.enableArmorEffect.get(TITAN_SHROUD_EFFECTS))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(TITAN_SHROUD_EFFECTS))
                     ArmorEffects.applyTitanShroudStatuses(playerEntity, target);
-                if (config.enableArmorEffect.get(FROST_BITE_EFFECT))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(FROST_BITE_EFFECT))
                     ArmorEffects.applyFrostBiteStatus(playerEntity, target);
-                if (config.enableArmorEffect.get(GHOST_KINDLING))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(GHOST_KINDLING))
                     ArmorEffects.applyGhostKindlingEffect(playerEntity, target);
 
                 if(!source.isProjectile()) {
-                    if (config.enableArmorEffect.get(SPLENDID_ATTACK))
+                    if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SPLENDID_ATTACK))
                         ArmorEffects.applySplendidAoEAttackEffect(playerEntity, target);
-                    if (config.enableArmorEffect.get(GILDED_HERO))
+                    if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(GILDED_HERO))
                         ArmorEffects.gildedHeroDamageBuff(playerEntity, target);
-                    if (config.enableArmorEffect.get(ARCTIC_FOX_HIGH_GROUND))
+                    if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(ARCTIC_FOX_HIGH_GROUND))
                         ArmorEffects.arcticFoxesHighGround(playerEntity, target, amount);
                 }
             }
@@ -99,9 +97,9 @@ public abstract class LivingEntityMixin extends Entity {
 
         World world = playerEntity.getEntityWorld();
 
-        if (config.enableEnchantment.get(FIRE_TRAIL))
+        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(FIRE_TRAIL))
             EnchantmentEffects.applyFireTrail(playerEntity, blockPos);
-        if (config.enableArmorEffect.get(GHOST_KINDLER_TRAIL) && world.getTime() % 3 == 0)
+        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(GHOST_KINDLER_TRAIL) && world.getTime() % 3 == 0)
             ArmorEffects.ghostKindlerTrail(playerEntity, blockPos);
 
     }
@@ -114,11 +112,11 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (!playerEntity.isAlive())
             return;
-        if (config.enableEnchantment.get(FOOD_RESERVES))
+        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(FOOD_RESERVES))
             EnchantmentEffects.applyFoodReserves(playerEntity);
-        if (config.enableEnchantment.get(POTION_BARRIER))
+        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(POTION_BARRIER))
             EnchantmentEffects.applyPotionBarrier(playerEntity);
-        if (config.enableEnchantment.get(SURPRISE_GIFT))
+        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(SURPRISE_GIFT))
             EnchantmentEffects.applySurpriseGift(playerEntity);
     }
 
@@ -130,22 +128,22 @@ public abstract class LivingEntityMixin extends Entity {
         if ((Object) this instanceof PlayerEntity playerEntity) {
 
             if (source.getAttacker() instanceof LivingEntity) {
-                if (config.enableEnchantment.get(HEAL_ALLIES))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(HEAL_ALLIES))
                     AOEHelper.healNearbyAllies(playerEntity, amount);
-                if (config.enableArmorEffect.get(WITHERED))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(WITHERED))
                     ArmorEffects.applyWithered(playerEntity, (LivingEntity) source.getAttacker());
-                if (config.enableArmorEffect.get(SHULKER_LIKE))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SHULKER_LIKE))
                     ProjectileEffectHelper.fireShulkerBulletAtNearbyEnemy(playerEntity);
             }
 
             if (amount > 0) {
                 if (source.getAttacker() instanceof LivingEntity || source.isProjectile()) {
-                    if (config.enableArmorEffect.get(SOULDANCER_GRACE)) {
+                    if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SOULDANCER_GRACE)) {
                         if (ArmorEffects.souldancerGraceEffect(playerEntity))
                             cir.cancel();
                     }
                 }
-                if (config.enableArmorEffect.get(NIMBLE_TURTLE_EFFECTS))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(NIMBLE_TURTLE_EFFECTS))
                     ArmorEffects.applyNimbleTurtleEffects(playerEntity);
             }
         }
@@ -153,11 +151,11 @@ public abstract class LivingEntityMixin extends Entity {
         if ((Object) this instanceof LivingEntity livingEntity) {
 
             if (amount > 0 && source.getAttacker() instanceof LivingEntity attackingEntity) {
-                if (config.enableArmorEffect.get(BUZZY_HIVE))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(BUZZY_HIVE))
                     ArmorEffects.buzzyHiveEffect(livingEntity);
-                if (config.enableArmorEffect.get(CAULDRONS_OVERFLOW))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(CAULDRONS_OVERFLOW))
                     ArmorEffects.applyCauldronsOverflow(livingEntity);
-                if (config.enableEnchantment.get(CHILLING))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(CHILLING))
                     EnchantmentEffects.applyChilling(livingEntity, attackingEntity);
             }
         }
@@ -173,7 +171,7 @@ public abstract class LivingEntityMixin extends Entity {
             return;
 
         if (amount != 0.0F) {
-            if (config.enableArmorEffect.get(CURIOUS_TELEPORTATION)) {
+            if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(CURIOUS_TELEPORTATION)) {
                 ArmorEffects.applyCuriousTeleportationEffect(playerEntity, attacker);
             }
         }
@@ -182,7 +180,7 @@ public abstract class LivingEntityMixin extends Entity {
     // Shadow Walker Armor Negate Fall Damage
     @Inject(method = "handleFallDamage", at = @At("HEAD"), cancellable = true)
     public void shadowWalkerArmorNoFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource, CallbackInfoReturnable<Boolean> cir){
-        if (!config.enableArmorEffect.get(NO_FALL_DAMAGE))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(NO_FALL_DAMAGE))
             return;
         if(!((Object) this instanceof PlayerEntity playerEntity)) return;
 
@@ -208,12 +206,12 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (playerEntity.isAlive()){
             // Spider Armour Climbing
-            if (config.enableArmorEffect.get(SPIDER_CLIMBING))
+            if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SPIDER_CLIMBING))
                 if (ArmorEffects.spiderClimbing(playerEntity))
                     cir.setReturnValue(true);
 
             // Rugged Armour Climbing
-            if (config.enableArmorEffect.get(RUGGED_CLIMBING))
+            if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(RUGGED_CLIMBING))
                 if (ArmorEffects.ruggedClimbing(playerEntity))
                     cir.setReturnValue(true);
         }
@@ -225,11 +223,11 @@ public abstract class LivingEntityMixin extends Entity {
         if (!((Object) this instanceof ServerPlayerEntity playerEntity))
             return;
         if (playerEntity != null) {
-            if (config.enableArmorEffect.get(EMBER_JUMP))
+            if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(EMBER_JUMP))
                 ArmorEffects.applyEmberJumpEffect(playerEntity);
-            if (config.enableArmorEffect.get(TELEPORTATION_ROBES_EFFECT))
+            if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(TELEPORTATION_ROBES_EFFECT))
                 ArmorEffects.teleportationRobeTeleport(playerEntity);
-            if (config.enableArmorEffect.get(UNSTABLE_ROBES_EFFECT))
+            if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(UNSTABLE_ROBES_EFFECT))
                 ArmorEffects.unstableRobeTeleport(playerEntity);
         }
     }
@@ -241,7 +239,7 @@ public abstract class LivingEntityMixin extends Entity {
         if(!(source.getAttacker() instanceof LivingEntity user))return;
 
         if (user != null) {
-            if (config.enableArmorEffect.get(GOURDIANS_HATRED))
+            if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(GOURDIANS_HATRED))
                 ArmorEffects.applyGourdiansHatredStatus(user);
         }
     }
@@ -252,7 +250,7 @@ public abstract class LivingEntityMixin extends Entity {
         if ((!((Object) this instanceof PlayerEntity playerEntity)))
             return;
 
-        if (config.enableArmorEffect.get(FOX_POUNCING))
+        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(FOX_POUNCING))
             ArmorEffects.foxPouncing(playerEntity);
     }
 
@@ -263,11 +261,11 @@ public abstract class LivingEntityMixin extends Entity {
         if((Object) this instanceof PlayerEntity playerEntity) {
 
             if(playerEntity.isAlive()) {
-                if (config.enableArmorEffect.get(FLUID_FREEZING))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(FLUID_FREEZING))
                     ArmorEffects.applyFluidFreezing(playerEntity);
-                if (config.enableArmorEffect.get(INVISIBILITY))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(INVISIBILITY))
                     ArmorEffects.applyThiefInvisibilityTick(playerEntity);
-                if (config.enableArmorEffect.get(SYLVAN_PRESENCE))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SYLVAN_PRESENCE))
                     ArmorEffects.applySylvanPresence(playerEntity);
             }
         }
@@ -275,7 +273,7 @@ public abstract class LivingEntityMixin extends Entity {
         if((Object)this instanceof LivingEntity livingEntity) {
 
             if (livingEntity.isAlive()) {
-                if (config.enableEnchantment.get(LUCKY_EXPLORER))
+                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(LUCKY_EXPLORER))
                     EnchantmentEffects.applyLuckyExplorer(livingEntity);
             }
         }
@@ -287,7 +285,7 @@ public abstract class LivingEntityMixin extends Entity {
         // Death Barter
         if(((Object) this instanceof PlayerEntity playerEntity)) {
 
-            if (config.enableEnchantment.get(DEATH_BARTER)) {
+            if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(DEATH_BARTER)) {
                 if (!damageSource.isOutOfWorld()) {
                     if (EnchantmentEffects.deathBarterEffect(playerEntity)) {
                         cir.setReturnValue(true);
@@ -299,7 +297,7 @@ public abstract class LivingEntityMixin extends Entity {
         // Gilded Glory Gilded Hero Effect
         if(((Object) this instanceof LivingEntity livingEntity)) {
 
-            if (config.enableArmorEffect.get(GILDED_HERO)) {
+            if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(GILDED_HERO)) {
                 if (!damageSource.isOutOfWorld()) {
                     if (ArmorEffects.gildedGloryTotemEffect(livingEntity)) {
                         cir.setReturnValue(true);
@@ -328,7 +326,7 @@ public abstract class LivingEntityMixin extends Entity {
 
         LivingEntity livingEntity = (LivingEntity) (Object) this;
 
-        if (livingEntity instanceof ServerPlayerEntity && config.enableArmorEffect.get(TROUBADOURS_CHARISMA)) {
+        if (livingEntity instanceof ServerPlayerEntity && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(TROUBADOURS_CHARISMA)) {
             if (CleanlinessHelper.hasArmorSet(livingEntity, ArmorSets.TROUBADOUR)) {
                 StatusEffect statusEffectType = statusEffectInstance.getEffectType();
 

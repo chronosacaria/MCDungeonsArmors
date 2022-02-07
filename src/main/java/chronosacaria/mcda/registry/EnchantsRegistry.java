@@ -11,15 +11,13 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.EnumMap;
 
-import static chronosacaria.mcda.config.McdaConfig.config;
-
 public class EnchantsRegistry {
     public static final EnumMap<EnchantID, Enchantment> enchants = new EnumMap<>(EnchantID.class);
 
     public static void init() {
         for (EnchantID enchantID : EnchantID.values()) {
 
-            if (!config.enableEnchantment.get(enchantID))
+            if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(enchantID))
                 continue;
 
             Enchantment enchantment = switch (enchantID) {

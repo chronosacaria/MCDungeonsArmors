@@ -1,7 +1,7 @@
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.CleanlinessHelper;
-import chronosacaria.mcda.config.McdaConfig;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.items.ArmorSets;
 import net.minecraft.block.BlockState;
@@ -22,7 +22,7 @@ import static chronosacaria.mcda.effects.ArmorEffectID.WEB_WALKING;
 public class CobwebBlockMixin {
     @Inject(method = "onEntityCollision", at = @At("HEAD"), cancellable = true)
     public void canWalkThroughCobwebs(BlockState state, World world, BlockPos pos, Entity entity, CallbackInfo ci){
-        if (!McdaConfig.config.enableArmorEffect.get(WEB_WALKING))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(WEB_WALKING))
             return;
 
         if (entity instanceof BatEntity)

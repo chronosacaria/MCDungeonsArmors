@@ -1,6 +1,7 @@
 
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.api.ProjectileEffectHelper;
 import chronosacaria.mcda.items.ArmorSets;
@@ -18,7 +19,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Random;
 
-import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.ARCHERS_PROWESS;
 import static chronosacaria.mcda.enchants.EnchantID.*;
 
@@ -27,7 +27,7 @@ public abstract class PersistentProjectileEntityMixin {
 
     @Inject(method = "onEntityHit", at = @At("HEAD"), cancellable = true)
     public void onDeflectHit(EntityHitResult entityHitResult, CallbackInfo ci) {
-        if (!config.enableEnchantment.get(DEFLECT))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(DEFLECT))
             return;
 
         PersistentProjectileEntity persistentProjectileEntity = (PersistentProjectileEntity) (Object) this;
@@ -54,7 +54,7 @@ public abstract class PersistentProjectileEntityMixin {
 
     @Inject(method = "onEntityHit", at = @At("HEAD"))
     public void onArchersProwessHit(EntityHitResult entityHitResult, CallbackInfo ci) {
-        if (!config.enableArmorEffect.get(ARCHERS_PROWESS))
+        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(ARCHERS_PROWESS))
             return;
 
         Random random = new Random();

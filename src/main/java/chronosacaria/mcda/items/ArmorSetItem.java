@@ -21,8 +21,6 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.UUID;
 
-import static chronosacaria.mcda.config.McdaConfig.config;
-
 public class ArmorSetItem extends ArmorItem {
 
     protected static final int MAX_TOOLTIPS = 5;
@@ -54,7 +52,7 @@ public class ArmorSetItem extends ArmorItem {
                     this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION));
         }
 
-        ArmorStats armorStats = config.armorStats.get(set);
+        ArmorStats armorStats = Mcda.CONFIG.mcdaArmorStatsConfig.armorStats.get(set);
 
         builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid,
                 "Armor attack damage boost",

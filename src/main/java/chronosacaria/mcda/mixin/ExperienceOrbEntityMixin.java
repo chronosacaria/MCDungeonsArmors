@@ -1,5 +1,6 @@
 package chronosacaria.mcda.mixin;
 
+import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.api.McdaEnchantmentHelper;
 import chronosacaria.mcda.enchants.EnchantID;
@@ -15,7 +16,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-import static chronosacaria.mcda.config.McdaConfig.config;
 import static chronosacaria.mcda.effects.ArmorEffectID.SOULDANCER_EXPERIENCE;
 import static chronosacaria.mcda.enchants.EnchantID.*;
 
@@ -32,11 +32,11 @@ public abstract class ExperienceOrbEntityMixin extends Entity {
         int amount = args.get(1);
         PlayerEntity playerEntity = args.get(0);
 
-        if (config.enableArmorEffect.get(SOULDANCER_EXPERIENCE))
+        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SOULDANCER_EXPERIENCE))
             if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.SOULDANCER))
                 amount = (int) Math.round(1.5 * amount);
 
-        if (config.enableEnchantment.get(BAG_OF_SOULS)) {
+        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(BAG_OF_SOULS)) {
             int bagOfSoulsLevel = McdaEnchantmentHelper.getBagOfSoulsLevel(EnchantsRegistry.enchants.get(EnchantID.BAG_OF_SOULS),
                             playerEntity);
 
