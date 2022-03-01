@@ -4,7 +4,7 @@ import chronosacaria.mcda.Mcda;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
-import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 
 @Config(name = Mcda.MOD_ID)
@@ -24,6 +24,6 @@ public class McdaConfig extends PartitioningSerializer.GlobalData{
 
     public static void init(){
         AutoConfig.register(McdaConfig.class,
-                PartitioningSerializer.wrap(GsonConfigSerializer::new));
+                PartitioningSerializer.wrap(JanksonConfigSerializer::new));
     }
 }
