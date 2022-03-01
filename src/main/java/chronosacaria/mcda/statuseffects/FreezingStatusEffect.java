@@ -6,7 +6,6 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.tag.EntityTypeTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
@@ -26,22 +25,21 @@ public class FreezingStatusEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier){
-        if (entity != null && entity.getHealth() > 0.0F){
-            boolean bl2 = entity.getType().isIn(EntityTypeTags.FREEZE_HURTS_EXTRA_TYPES);
-            int o = bl2 ? 5 : 1;
-            World world = entity.getEntityWorld();
+    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+
+        if (!entity.isDead()) {
+            int freezingDamage = 3;
+            World world = entity.getWorld();
             Random random = world.getRandom();
 
-            if (entity.getHealth() > 0.0F)
-                entity.damage(DamageSource.FREEZE, (float)o);
+            entity.damage(DamageSource.FREEZE, (float) freezingDamage);
 
-            if (world.isClient) {
+            if (world.isClient()) {
                 boolean bl = entity.lastRenderX != entity.getX() || entity.lastRenderZ != entity.getZ();
                 if (bl && random.nextBoolean()) {
                     world.addParticle(ParticleTypes.SNOWFLAKE, entity.getX(), entity.getPos().getY() + 1, entity.getZ(),
                             MathHelper.nextBetween(random, -1.0F, 1.0F) * 0.083333336F,
-                            0.05000000074505806D,
+                            0.05D,
                             MathHelper.nextBetween(random, -1.0F, 1.0F) * 0.083333336F);
                 }
             }

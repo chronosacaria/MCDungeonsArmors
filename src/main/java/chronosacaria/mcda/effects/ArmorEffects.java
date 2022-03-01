@@ -122,9 +122,9 @@ public class ArmorEffects {
             if (livingEntity.hasVehicle())
                 livingEntity.stopRiding();
 
-            double xpos = livingEntity.getX();
-            double ypos = livingEntity.getY();
-            double zpos = livingEntity.getZ();
+            double xPos = livingEntity.getX();
+            double yPos = livingEntity.getY();
+            double zPos = livingEntity.getZ();
 
             double teleportX;
             double teleportY;
@@ -135,19 +135,19 @@ public class ArmorEffects {
                 double xDiff = (livingEntity.getRandom().nextDouble(0.5D) + 0.5D) * 32.0D;
                 double zDiff = (livingEntity.getRandom().nextDouble(0.5D) + 0.5D) * 32.0D;
                 teleportX = livingEntity.getRandom().nextInt() % 2 == 0 ?
-                        xpos + xDiff :
-                        xpos - xDiff;
+                        xPos + xDiff :
+                        xPos - xDiff;
                 teleportY =
-                        MathHelper.clamp(ypos + (double) (livingEntity.getRandom().nextInt(16) - 8),
+                        MathHelper.clamp(yPos + (double) (livingEntity.getRandom().nextInt(16) - 8),
                                 0.0D, world.getHeight() - 1);
                 teleportZ = livingEntity.getRandom().nextInt() % 2 == 0 ?
-                        zpos + zDiff :
-                        zpos - zDiff;
+                        zPos + zDiff :
+                        zPos - zDiff;
                 i++;
 
             } while (!livingEntity.teleport(teleportX, teleportY, teleportZ, true) && i != 16);
 
-            if (i == 16 && livingEntity.getX() == xpos && livingEntity.getY() == ypos && livingEntity.getZ() == zpos)
+            if (i == 16 && livingEntity.getX() == xPos && livingEntity.getY() == yPos && livingEntity.getZ() == zPos)
                 return;
             SoundEvent soundEvent = livingEntity instanceof FoxEntity ? SoundEvents.ENTITY_FOX_TELEPORT :
                     SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT;
@@ -341,8 +341,10 @@ public class ArmorEffects {
         if (hasArmorSet(playerEntity, ArmorSets.FROST_BITE)
                 || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == FROST_BITE_EFFECT)
                 || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == FROST_BITE_EFFECT)) {
-            target.addStatusEffect(new StatusEffectInstance(StatusEffectsRegistry.FREEZING, 60, 0, true, true,
+            if (percentToOccur(30)) {
+                target.addStatusEffect(new StatusEffectInstance(StatusEffectsRegistry.FREEZING, 60, 0, true, true,
                         false));
+            }
         }
     }
 
@@ -353,8 +355,7 @@ public class ArmorEffects {
         if (hasArmorSet(livingEntity, ArmorSets.GOURDIAN)
                 || (ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(livingEntity, ArmorSets.MYSTERY)) == GOURDIANS_HATRED)
                 || (RED_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect( livingEntity, ArmorSets.RED_MYSTERY)) == GOURDIANS_HATRED)) {
-            float hatredRand = livingEntity.getRandom().nextFloat();
-            if (hatredRand <= 0.15F) {
+            if (percentToOccur(15)) {
                 livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 200, 1));
             }
         }
@@ -365,8 +366,7 @@ public class ArmorEffects {
             return;
 
         if (hasArmorSet(targetedEntity, ArmorSets.CAULDRON)) {
-            float overflowRand = targetedEntity.getRandom().nextFloat();
-            if (overflowRand <= 0.15F) {
+            if (percentToOccur(15)) {
                 ItemStack potionToDrop =
                         CAULDRONS_OVERFLOW_LIST.get(targetedEntity.getRandom().nextInt(CAULDRONS_OVERFLOW_LIST.size()));
                 ItemEntity potion = new ItemEntity(targetedEntity.world, targetedEntity.getX(), targetedEntity.getY(),
@@ -384,9 +384,8 @@ public class ArmorEffects {
         if (hasArmorSet(playerEntity, ArmorSets.CURIOUS)
                 || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == CURIOUS_TELEPORTATION)
                 || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == CURIOUS_TELEPORTATION)) {
-            float teleportationRand = playerEntity.getRandom().nextFloat();
-            if (teleportationRand <= 0.1F) {
-                if (playerEntity.getRandom().nextInt() % 2 == 0)
+            if (percentToOccur(10)) {
+                if (percentToOccur(50))
                     endermanLikeTeleportEffect(playerEntity);
                 else
                     endermanLikeTeleportEffect(target);
@@ -471,8 +470,7 @@ public class ArmorEffects {
         if (!hasRobeSet(playerEntity, ArmorSets.SPLENDID))
             return;
 
-        float splendidRand = playerEntity.getRandom().nextFloat();
-        if (splendidRand <= 0.3f) {
+        if (percentToOccur(30)) {
 
             for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(target, playerEntity, 6.0f)){
                 float damageToBeDone = (float) playerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
@@ -530,8 +528,7 @@ public class ArmorEffects {
         if (!hasArmorSet(playerEntity, ArmorSets.SOULDANCER))
             return false;
 
-        float dodgeRand = playerEntity.getRandom().nextFloat();
-        if (dodgeRand <= 0.3F) {
+        if (percentToOccur(30)) {
             // Dodge the damage
             playerEntity.world.playSound(
                     null,
@@ -569,16 +566,15 @@ public class ArmorEffects {
     }
 
     public static void buzzyHiveEffect(LivingEntity targetedEntity) {
-        float beeSummonChance = 0;
+        int beeSummonChance = 0;
         if (hasArmorSet(targetedEntity, ArmorSets.BEEHIVE))
-            beeSummonChance = 0.3F;
+            beeSummonChance = 30;
         if (hasArmorSet(targetedEntity, ArmorSets.BEENEST))
-            beeSummonChance = 0.1F;
+            beeSummonChance = 10;
 
         if (beeSummonChance == 0)
             return;
-        float beeSummonRand = targetedEntity.getRandom().nextFloat();
-        if (beeSummonRand <= beeSummonChance) {
+        if (percentToOccur(beeSummonChance)) {
             World world = targetedEntity.getEntityWorld();
             SummonedBeeEntity summonedBeeEntity = summonedBee.create(world);
             if (summonedBeeEntity != null) {

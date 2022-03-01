@@ -15,6 +15,8 @@ import net.minecraft.util.math.Vec3d;
 import java.util.Random;
 
 public class CleanlinessHelper {
+    static Random random = new Random();
+
     public static boolean hasArmorSet(LivingEntity livingEntity, ArmorSets armorSets){
         ItemStack headStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
         ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
@@ -193,4 +195,7 @@ public class CleanlinessHelper {
     //    return upperBound > target && target > lowerBound;
     //}
 
+    public static boolean percentToOccur (int chance) {
+        return random.nextInt(100) <= chance;
+    }
 }
