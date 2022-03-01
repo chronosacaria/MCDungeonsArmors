@@ -10,8 +10,11 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.Vec3d;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class CleanlinessHelper {
@@ -98,12 +101,14 @@ public class CleanlinessHelper {
         if (missingBoots)
             index++;
 
-        switch (index){
-            case 0 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.FEET, damagePercentage);
-            case 1 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.LEGS, damagePercentage);
-            case 2 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.CHEST, damagePercentage);
-            case 3 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.HEAD, damagePercentage);
-        }
+        EquipmentSlot equipment = switch (index){
+            case 0 -> EquipmentSlot.FEET;
+            case 1 -> EquipmentSlot.LEGS;
+            case 2 -> EquipmentSlot.CHEST;
+            case 3 -> EquipmentSlot.HEAD;
+            default -> throw new IllegalStateException("Unexpected value: " + index);
+        };
+        mcdaDamageEquipment(livingEntity, equipment, damagePercentage);
     }
 
     public static void mcdaDamageEquipment(LivingEntity livingEntity, EquipmentSlot equipSlot, float damagePercentage) {
@@ -197,5 +202,12 @@ public class CleanlinessHelper {
 
     public static boolean percentToOccur (int chance) {
         return random.nextInt(100) <= chance;
+    }
+
+    public static void playCenteredSound (LivingEntity center, SoundEvent soundEvent, float volume, float pitch) {
+        center.world.playSound(null,
+                center.getX(), center.getY(), center.getZ(),
+                soundEvent, SoundCategory.PLAYERS,
+                volume, pitch);
     }
 }
