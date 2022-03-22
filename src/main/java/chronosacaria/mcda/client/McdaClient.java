@@ -51,7 +51,6 @@ public class McdaClient implements ClientModInitializer {
                 TOGGLE_KEYBIND.toString(), GLFW.GLFW_KEY_SEMICOLON, KEYBIND_CATEGORY));
 
         //McdaC2SPackets.registerC2SReceivers();*/
-        SummonedEntityRegistry.register();
         EntityRendererRegistry.register(SummonedEntityRegistry.SUMMONED_BEE_ENTITY, SummonedBeeRenderer::new);
     }
 }
