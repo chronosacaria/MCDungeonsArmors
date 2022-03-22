@@ -40,5 +40,6 @@ public class Mcda implements ModInitializer {
         StatusEffectsRegistry.init();
         TradesRegistry.registerVillagerOffers();
         TradesRegistry.registerWanderingTrades();
+        SummonedEntityRegistry.register();
     }
 }
