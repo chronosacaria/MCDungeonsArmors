@@ -10,6 +10,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.util.registry.Registry;
 
 import java.util.EnumMap;
+import java.util.Locale;
 
 public class EnchantsRegistry {
     public static final EnumMap<EnchantID, Enchantment> enchants = new EnumMap<>(EnchantID.class);
@@ -64,7 +65,7 @@ public class EnchantsRegistry {
             };
 
             enchants.put(enchantID, enchantment);
-            registerEnchant(enchantID.toString().toLowerCase(), enchantment);
+            registerEnchant(enchantID.toString().toLowerCase(Locale.ROOT), enchantment);
         }
     }
 
