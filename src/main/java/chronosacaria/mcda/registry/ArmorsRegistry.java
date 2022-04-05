@@ -1,13 +1,14 @@
 package chronosacaria.mcda.registry;
 
 import chronosacaria.mcda.Mcda;
-import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.items.ArmorSetItem;
+import chronosacaria.mcda.items.ArmorSets;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.util.registry.Registry;
 
-import java.util.*;
+import java.util.EnumMap;
+import java.util.EnumSet;
 
 import static net.minecraft.entity.EquipmentSlot.*;
 

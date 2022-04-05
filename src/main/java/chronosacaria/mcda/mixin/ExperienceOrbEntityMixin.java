@@ -7,7 +7,9 @@ import chronosacaria.mcda.enchants.EnchantID;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.EnchantsRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -17,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 import static chronosacaria.mcda.effects.ArmorEffectID.SOULDANCER_EXPERIENCE;
-import static chronosacaria.mcda.enchants.EnchantID.*;
+import static chronosacaria.mcda.enchants.EnchantID.BAG_OF_SOULS;
 
 @Mixin(ExperienceOrbEntity.class)
 public abstract class ExperienceOrbEntityMixin extends Entity {

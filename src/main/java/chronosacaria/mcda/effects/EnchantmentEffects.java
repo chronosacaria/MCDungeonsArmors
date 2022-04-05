@@ -9,7 +9,6 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -154,22 +153,23 @@ public class EnchantmentEffects {
         }
     }
 
-    public static void applyFireFocusDamage(PlayerEntity playerEntity, LivingEntity target, float amount){
-        if (McdaEnchantmentHelper.hasFireAspect(playerEntity) || target.isOnFire()) {
-            int fireFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FIRE_FOCUS), playerEntity);
+    public static float applyFireFocusDamage(LivingEntity livingEntity, LivingEntity target){
+        if (McdaEnchantmentHelper.hasFireAspect(livingEntity) || target.isOnFire()) {
+            int fireFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FIRE_FOCUS), livingEntity);
             if (fireFocusLevel > 0) {
-                float multiplier = 1 + (0.25F * fireFocusLevel);
-                target.damage(DamageSource.MAGIC, amount * multiplier);
+                return 1 + (0.25F * fireFocusLevel);
+
             }
         }
+        return 1;
     }
 
-    public static void applyPoisonFocusDamage(PlayerEntity playerEntity, LivingEntity target, float amount){
-        int poisonFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POISON_FOCUS), playerEntity);
+    public static float applyPoisonFocusDamage(LivingEntity livingEntity){
+        int poisonFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POISON_FOCUS), livingEntity);
         if (poisonFocusLevel > 0) {
-            float multiplier = 1 + (0.25F * poisonFocusLevel);
-            target.damage(DamageSource.MAGIC, amount * multiplier);
+            return 1 + (0.25F * poisonFocusLevel);
         }
+        return 1;
     }
 
     public static void applyChilling(LivingEntity wearer, LivingEntity livingEntity){

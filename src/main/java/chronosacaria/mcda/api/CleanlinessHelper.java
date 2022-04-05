@@ -14,7 +14,6 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.Vec3d;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class CleanlinessHelper {

@@ -1,7 +1,5 @@
 package chronosacaria.mcda.enchants.enchantments;
 
-import chronosacaria.mcda.enchants.ArmorEnchantment;
-import chronosacaria.mcda.enchants.EnchantID;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;

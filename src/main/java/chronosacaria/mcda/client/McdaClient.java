@@ -1,22 +1,11 @@
 package chronosacaria.mcda.client;
 
-import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.entities.SummonedBeeRenderer;
-import chronosacaria.mcda.networking.McdaC2SPackets;
-import chronosacaria.mcda.networking.McdaPackets;
 import chronosacaria.mcda.registry.SummonedEntityRegistry;
-import io.netty.buffer.Unpooled;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.impl.client.keybinding.KeyBindingRegistryImpl;
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.util.Identifier;
-import org.lwjgl.glfw.GLFW;
 
 @Environment(EnvType.CLIENT)
 public class McdaClient implements ClientModInitializer {

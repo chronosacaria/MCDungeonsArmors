@@ -9,9 +9,7 @@ import java.util.EnumMap;
 import java.util.EnumSet;
 
 import static chronosacaria.mcda.items.ArmorSets.*;
-import static chronosacaria.mcda.items.ArmorSets.GILDED;
 import static net.minecraft.entity.EquipmentSlot.*;
-import static net.minecraft.entity.EquipmentSlot.FEET;
 
 @Config(name = "mcda_armor_stats")
 public class McdaArmorStatsConfig implements ConfigData {

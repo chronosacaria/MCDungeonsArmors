@@ -1,8 +1,8 @@
 package chronosacaria.mcda.registry;
 
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.items.itemhelpers.DropHelper;
 import chronosacaria.mcda.items.ItemID;
+import chronosacaria.mcda.items.itemhelpers.DropHelper;
 import chronosacaria.mcda.items.itemhelpers.ItemSettingsHelper;
 import chronosacaria.mcda.items.itemhelpers.SpawnHelper;
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;

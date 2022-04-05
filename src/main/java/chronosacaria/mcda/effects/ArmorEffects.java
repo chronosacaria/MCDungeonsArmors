@@ -11,7 +11,10 @@ import chronosacaria.mcda.registry.SoundsRegistry;
 import chronosacaria.mcda.registry.StatusEffectsRegistry;
 import chronosacaria.mcda.registry.SummonedEntityRegistry;
 import net.minecraft.block.*;
-import net.minecraft.entity.*;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -35,11 +38,14 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 
-import java.util.*;
+import java.util.List;
+import java.util.UUID;
 
 import static chronosacaria.mcda.api.CleanlinessHelper.*;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
@@ -329,18 +335,18 @@ public class ArmorEffects {
 
     }
 
-    public static void applyTitanShroudStatuses(PlayerEntity playerEntity, LivingEntity target) {
-        if (hasArmorSet(playerEntity, ArmorSets.TITAN)) {
+    public static void applyTitanShroudStatuses(LivingEntity livingEntity, LivingEntity target) {
+        if (hasArmorSet(livingEntity, ArmorSets.TITAN)) {
             StatusEffect titanStatusEffect =
-                    TITAN_SHROUD_STATUS_EFFECTS_LIST.get(playerEntity.getRandom().nextInt(TITAN_SHROUD_STATUS_EFFECTS_LIST.size()));
+                    TITAN_SHROUD_STATUS_EFFECTS_LIST.get(livingEntity.getRandom().nextInt(TITAN_SHROUD_STATUS_EFFECTS_LIST.size()));
             target.addStatusEffect(new StatusEffectInstance(titanStatusEffect, 60, 0));
         }
     }
 
-    public static void applyFrostBiteStatus(PlayerEntity playerEntity, LivingEntity target) {
-        if (hasArmorSet(playerEntity, ArmorSets.FROST_BITE)
-                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == FROST_BITE_EFFECT)
-                || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == FROST_BITE_EFFECT)) {
+    public static void applyFrostBiteStatus(LivingEntity livingEntity, LivingEntity target) {
+        if (hasArmorSet(livingEntity, ArmorSets.FROST_BITE)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.MYSTERY)) == FROST_BITE_EFFECT)
+                || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.BLUE_MYSTERY)) == FROST_BITE_EFFECT)) {
             if (percentToOccur(30)) {
                 target.addStatusEffect(new StatusEffectInstance(StatusEffectsRegistry.FREEZING, 60, 0, true, true,
                         false));
@@ -393,10 +399,10 @@ public class ArmorEffects {
         }
     }
 
-    public static void applyGhostKindlingEffect(PlayerEntity playerEntity, LivingEntity target) {
-        if (hasArmorSet(playerEntity, ArmorSets.GHOST_KINDLER)
-                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == GHOST_KINDLING)
-                || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == GHOST_KINDLING)) {
+    public static void applyGhostKindlingEffect(LivingEntity livingEntity, LivingEntity target) {
+        if (hasArmorSet(livingEntity, ArmorSets.GHOST_KINDLER)
+                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.MYSTERY)) == GHOST_KINDLING)
+                || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.RED_MYSTERY)) == GHOST_KINDLING)) {
             target.setOnFireFor(4);
         }
     }
@@ -466,18 +472,18 @@ public class ArmorEffects {
         }
     }
 
-    public static void applySplendidAoEAttackEffect(PlayerEntity playerEntity, LivingEntity target) {
-        if (!hasRobeSet(playerEntity, ArmorSets.SPLENDID))
+    public static void applySplendidAoEAttackEffect(LivingEntity livingEntity, LivingEntity target) {
+        if (!hasRobeSet(livingEntity, ArmorSets.SPLENDID))
             return;
 
         if (percentToOccur(30)) {
 
-            for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(target, playerEntity, 6.0f)){
-                float damageToBeDone = (float) playerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+            for (LivingEntity nearbyEntity : AOEHelper.getAoeTargets(target, livingEntity, 6.0f)){
+                float damageToBeDone = (float) livingEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
                 if (nearbyEntity instanceof IllagerEntity){
                     damageToBeDone = damageToBeDone * 1.5f;
                 }
-                if (nearbyEntity instanceof Monster){
+                if (nearbyEntity instanceof Monster && nearbyEntity != target){
                     nearbyEntity.damage(DamageSource.GENERIC, damageToBeDone);
                     nearbyEntity.world.playSound(
                             null,
@@ -495,21 +501,27 @@ public class ArmorEffects {
         }
     }
 
-    public static void gildedHeroDamageBuff(PlayerEntity playerEntity, LivingEntity target) {
-        if ((hasArmorSet(playerEntity, ArmorSets.GILDED))) {
+    public static float gildedHeroDamageBuff(LivingEntity livingEntity, LivingEntity target) {
+        if ((hasArmorSet(livingEntity, ArmorSets.GILDED))) {
             float gildedDamage =
-                    (float) playerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-            if (target instanceof IllagerEntity && playerEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE))
-                gildedDamage *= 1.5f;
-            target.damage(DamageSource.GENERIC, gildedDamage);
+                    (float) livingEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+            if (target instanceof IllagerEntity && livingEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE))
+                return gildedDamage * 0.5f;
         }
+        return 0;
     }
 
-    public static void leaderOfThePackEffect(LivingEntity target, DamageSource source, float amount) {
+    public static float archersProwessDamageBuff(LivingEntity livingEntity) {
+        if ((hasArmorSet(livingEntity, ArmorSets.ARCHER)))
+            return 1.5f;
+        return 1f;
+    }
+
+    public static float leaderOfThePackEffect(DamageSource source) {
         if (!(source.getSource() instanceof TameableEntity petSrc) || !(petSrc.world instanceof ServerWorld serverWorld))
-            return;
+            return 1f;
         if (!(petSrc.getOwner() instanceof PlayerEntity owner))
-            return;
+            return 1f;
 
         if (hasArmorSet(owner, ArmorSets.BLACK_WOLF)
                 || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(owner, ArmorSets.MYSTERY)) == LEADER_OF_THE_PACK)
@@ -518,8 +530,9 @@ public class ArmorEffects {
 
             if (petOwnerUUID != null)
                 if (serverWorld.getEntity(petOwnerUUID) instanceof LivingEntity)
-                    target.damage(DamageSource.GENERIC, 1.5f * amount);
+                    return 1.5f;
         }
+        return 1f;
     }
 
     public static boolean souldancerGraceEffect(PlayerEntity playerEntity) {
@@ -621,13 +634,14 @@ public class ArmorEffects {
         return false;
     }
 
-    public static void arcticFoxesHighGround(PlayerEntity playerEntity, LivingEntity target, float amount){
-        if (hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
-            if (playerEntity.getVelocity().y < 0
-                    && !playerEntity.isOnGround()
-                    && !playerEntity.isHoldingOntoLadder())
-                target.damage(DamageSource.GENERIC, 1.2f * amount);
+    public static float arcticFoxesHighGround(LivingEntity livingEntity){
+        if (hasArmorSet(livingEntity, ArmorSets.ARCTIC_FOX)) {
+            if (livingEntity.getVelocity().y < 0
+                    && !livingEntity.isOnGround()
+                    && !livingEntity.isHoldingOntoLadder())
+                return 1.2f;
         }
+        return 1f;
     }
 
     public static void ghostKindlerTrail(PlayerEntity playerEntity, BlockPos blockPos){

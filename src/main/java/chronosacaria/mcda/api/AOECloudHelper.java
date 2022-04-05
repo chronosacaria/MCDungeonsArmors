@@ -3,7 +3,6 @@ package chronosacaria.mcda.api;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
 
 public class AOECloudHelper {
 

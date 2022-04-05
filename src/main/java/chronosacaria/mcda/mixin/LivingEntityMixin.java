@@ -1,16 +1,23 @@
 package chronosacaria.mcda.mixin;
 
 import chronosacaria.mcda.Mcda;
-import chronosacaria.mcda.api.*;
+import chronosacaria.mcda.api.AOEHelper;
+import chronosacaria.mcda.api.CleanlinessHelper;
+import chronosacaria.mcda.api.ProjectileEffectHelper;
+import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.effects.EnchantmentEffects;
+import chronosacaria.mcda.enchants.EnchantID;
 import chronosacaria.mcda.items.ArmorSets;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
@@ -24,7 +31,9 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static chronosacaria.mcda.api.CleanlinessHelper.*;
+import java.util.EnumMap;
+
+import static chronosacaria.mcda.api.CleanlinessHelper.hasArmorSet;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
 import static chronosacaria.mcda.effects.ArmorEffects.*;
 import static chronosacaria.mcda.enchants.EnchantID.*;
@@ -43,48 +52,70 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow public abstract void setOnGround(boolean onGround);
 
+    EnumMap<ArmorEffectID, Boolean> ARMOR_CONFIG = Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect;
+    EnumMap<EnchantID, Boolean> ENCHANT_CONFIG = Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment;
+
     public LivingEntityMixin(EntityType<?> type, World world) {super(type, world);}
+
+    // Mixins for damage modifying Effects and Enchantments
+    @ModifyVariable(method = "damage", at = @At(value = "HEAD"), argsOnly = true)
+    public float mcda$damageModifiers(float amount, DamageSource source) {
+
+        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(LEADER_OF_THE_PACK))
+            amount *= ArmorEffects.leaderOfThePackEffect(source);
+
+        LivingEntity target = (LivingEntity) (Object) this;
+        if(!(source.getAttacker() instanceof LivingEntity livingEntity))
+            return amount;
+
+        if (amount != 0.0F) {
+            if (ENCHANT_CONFIG.get(FIRE_FOCUS))
+                amount *= EnchantmentEffects.applyFireFocusDamage(livingEntity, target);
+
+            if (source.isMagic()){
+                if (ENCHANT_CONFIG.get(POISON_FOCUS))
+                    amount *= EnchantmentEffects.applyPoisonFocusDamage(livingEntity);
+            }
+
+            ItemStack mainHandStack = livingEntity.getMainHandStack();
+            if (!mainHandStack.isEmpty()) {
+
+                if(!source.isProjectile()) {
+                    if (ARMOR_CONFIG.get(ARCTIC_FOX_HIGH_GROUND))
+                        amount *= ArmorEffects.arcticFoxesHighGround(livingEntity);
+                    if (ARMOR_CONFIG.get(GILDED_HERO))
+                        amount += ArmorEffects.gildedHeroDamageBuff(livingEntity, target);
+                } else if (source.getSource() instanceof PersistentProjectileEntity) {
+                    if (ARMOR_CONFIG.get(ARCHERS_PROWESS))
+                        amount *= ArmorEffects.archersProwessDamageBuff(livingEntity);
+                }
+            }
+        }
+        return amount;
+    }
 
     // Mixins for apply damage Effects and Enchantments
     @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
     public void mcdaApplyDamageEffects(DamageSource source, float amount, CallbackInfo info) {
 
-        if (!((Object) this instanceof LivingEntity target))
-            return;
-
-        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(LEADER_OF_THE_PACK))
-            ArmorEffects.leaderOfThePackEffect(target, source, amount);
-
-        if(!(source.getAttacker() instanceof PlayerEntity playerEntity))
-            return;
-        if (!(source.getSource() instanceof PlayerEntity))
+        LivingEntity target = (LivingEntity) (Object) this;
+        if(!(source.getAttacker() instanceof LivingEntity livingEntity))
             return;
 
         if (amount != 0.0F) {
-            if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(FIRE_FOCUS))
-                EnchantmentEffects.applyFireFocusDamage(playerEntity, target, amount);
 
-            if (source.isMagic()){
-                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(POISON_FOCUS))
-                    EnchantmentEffects.applyPoisonFocusDamage(playerEntity, target, amount);
-            }
-
-            ItemStack mainHandStack = playerEntity.getMainHandStack();
+            ItemStack mainHandStack = livingEntity.getMainHandStack();
             if (!mainHandStack.isEmpty()) {
-                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(TITAN_SHROUD_EFFECTS))
-                    ArmorEffects.applyTitanShroudStatuses(playerEntity, target);
-                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(FROST_BITE_EFFECT))
-                    ArmorEffects.applyFrostBiteStatus(playerEntity, target);
-                if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(GHOST_KINDLING))
-                    ArmorEffects.applyGhostKindlingEffect(playerEntity, target);
+                if (ARMOR_CONFIG.get(TITAN_SHROUD_EFFECTS))
+                    ArmorEffects.applyTitanShroudStatuses(livingEntity, target);
+                if (ARMOR_CONFIG.get(FROST_BITE_EFFECT))
+                    ArmorEffects.applyFrostBiteStatus(livingEntity, target);
+                if (ARMOR_CONFIG.get(GHOST_KINDLING))
+                    ArmorEffects.applyGhostKindlingEffect(livingEntity, target);
 
                 if(!source.isProjectile()) {
-                    if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SPLENDID_ATTACK))
-                        ArmorEffects.applySplendidAoEAttackEffect(playerEntity, target);
-                    if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(GILDED_HERO))
-                        ArmorEffects.gildedHeroDamageBuff(playerEntity, target);
-                    if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(ARCTIC_FOX_HIGH_GROUND))
-                        ArmorEffects.arcticFoxesHighGround(playerEntity, target, amount);
+                    if (ARMOR_CONFIG.get(SPLENDID_ATTACK))
+                        ArmorEffects.applySplendidAoEAttackEffect(livingEntity, target);
                 }
             }
         }

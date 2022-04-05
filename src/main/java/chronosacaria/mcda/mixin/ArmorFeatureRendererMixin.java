@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static chronosacaria.mcda.effects.ArmorEffectID.*;
+import static chronosacaria.mcda.effects.ArmorEffectID.INVISIBILITY;
 
 @Mixin(ArmorFeatureRenderer.class)
 public class ArmorFeatureRendererMixin {

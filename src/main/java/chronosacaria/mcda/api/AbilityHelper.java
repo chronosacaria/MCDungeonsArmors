@@ -1,7 +1,9 @@
 package chronosacaria.mcda.api;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.passive.*;
+import net.minecraft.entity.passive.IronGolemEntity;
+import net.minecraft.entity.passive.TameableEntity;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Box;
 
