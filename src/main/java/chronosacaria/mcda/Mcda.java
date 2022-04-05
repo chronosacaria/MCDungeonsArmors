@@ -2,6 +2,7 @@ package chronosacaria.mcda;
 
 import chronosacaria.mcda.config.McdaConfig;
 import chronosacaria.mcda.items.ArmorSets;
+import chronosacaria.mcda.networking.McdaC2SPackets;
 import chronosacaria.mcda.registry.*;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.api.ModInitializer;
@@ -41,5 +42,6 @@ public class Mcda implements ModInitializer {
         TradesRegistry.registerVillagerOffers();
         TradesRegistry.registerWanderingTrades();
         SummonedEntityRegistry.register();
+        McdaC2SPackets.registerC2SReceivers();
     }
 }

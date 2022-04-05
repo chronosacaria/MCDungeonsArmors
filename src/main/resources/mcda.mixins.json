@@ -10,6 +10,7 @@
     "ItemEntryMixin",
     "ItemStackMixin",
     "LivingEntityMixin",
+    "MixinPlayer",
     "PersistentProjectileEntityMixin",
     "PiglinBrainMixin",
     "PlayerTeleportationStateAccessor",

@@ -736,6 +736,11 @@
   "enchantment.mcda.recycler.desc":               "当你被箭射中时，你有可能抓住被射中的箭。",
   "enchantment.mcda.snowball.desc":               "当被两个或两个以上攻击者攻击时，会向其中一个攻击者投掷魔法雪球，将其击退。",
   "enchantment.mcda.surprise_gift.desc":          "饮用治疗药水时，你会从一组选项中获得另一种药水。",
-  "enchantment.mcda.swiftfooted.desc":            "跳跃时，你获得几秒的速度。"
+  "enchantment.mcda.swiftfooted.desc":            "跳跃时，你获得几秒的速度。",
 
+  "activity.mcda.firetrail.enabled":              "焰尾已启用。",
+  "activity.mcda.firetrail.disabled":             "焰尾被禁用。",
+
+  "key.mcda.firetrail.toggle":                    "切换的焰尾",
+  "key.category.mcda":                            "我的世界: 地下城 盔甲"
 }

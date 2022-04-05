@@ -1,6 +1,7 @@
 package chronosacaria.mcda.effects;
 
 import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.api.BooleanHelper;
 import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.api.McdaEnchantmentHelper;
 import chronosacaria.mcda.registry.EnchantsRegistry;
@@ -62,7 +63,7 @@ public class EnchantmentEffects {
         BlockPos placeFireTrail = blockPos.offset(player.getMovementDirection().getOpposite(), 2);
         ItemStack feetStack = player.getEquippedStack(EquipmentSlot.FEET);
         if (player.world.getBlockState(placeFireTrail).isAir() && player.isOnGround() && !player.isSneaking()
-            /*feetStack.getOrCreateNbt().getBoolean("is_fire_trail_enabled")*/)
+                && BooleanHelper.isFireTrailEnabled(player))
             player.world.setBlockState(placeFireTrail, Blocks.FIRE.getDefaultState());
 
     }

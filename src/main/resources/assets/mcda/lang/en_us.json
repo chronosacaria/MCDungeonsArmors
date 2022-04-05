@@ -738,6 +738,11 @@
   "enchantment.mcda.recycler.desc":               "There is a chance when shot with an arrow that you will gain an arrow, having caught or picked up the arrow you were shot with.",
   "enchantment.mcda.snowball.desc":               "When being attacked by two or more attackers, a magical snowball will be thrown at one of the attackers, knocking them back.",
   "enchantment.mcda.surprise_gift.desc":          "When drinking an Instant Health potion, you receive another potion from a pool of options.",
-  "enchantment.mcda.swiftfooted.desc":            "When jumping, you gain several seconds of speed boost."
+  "enchantment.mcda.swiftfooted.desc":            "When jumping, you gain several seconds of speed boost.",
 
+  "activity.mcda.firetrail.enabled":              "Fire Trail is enabled.",
+  "activity.mcda.firetrail.disabled":             "Fire Trail is disabled.",
+
+  "key.mcda.firetrail.toggle":                    "Fire Trail Toggle",
+  "key.category.mcda":                            "MC Dungeons Armor"
 }
