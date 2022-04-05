@@ -4,6 +4,7 @@ import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.AOECloudHelper;
 import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.api.AbilityHelper;
+import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.entities.SummonedBeeEntity;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.mixin.PlayerTeleportationStateAccessor;
@@ -485,16 +486,8 @@ public class ArmorEffects {
                 }
                 if (nearbyEntity instanceof Monster && nearbyEntity != target){
                     nearbyEntity.damage(DamageSource.GENERIC, damageToBeDone);
-                    nearbyEntity.world.playSound(
-                            null,
-                            nearbyEntity.getX(),
-                            nearbyEntity.getY(),
-                            nearbyEntity.getZ(),
-                            SoundEvents.ENTITY_VEX_CHARGE,
-                            SoundCategory.PLAYERS,
-                            1.0f,
-                            1.0f
-                    );
+
+                    CleanlinessHelper.playCenteredSound(nearbyEntity, SoundEvents.ENTITY_VEX_CHARGE, 1f, 1f);
                     AOEHelper.addParticlesToBlock((ServerWorld) nearbyEntity.world, nearbyEntity.getBlockPos(), ParticleTypes.ENCHANTED_HIT);
                 }
             }
@@ -543,15 +536,7 @@ public class ArmorEffects {
 
         if (percentToOccur(30)) {
             // Dodge the damage
-            playerEntity.world.playSound(
-                    null,
-                    playerEntity.getX(),
-                    playerEntity.getY(),
-                    playerEntity.getZ(),
-                    SoundsRegistry.DODGE_SOUND_EVENT,
-                    SoundCategory.PLAYERS,
-                    1.0F,
-                    1.0F);
+            CleanlinessHelper.playCenteredSound(playerEntity, SoundsRegistry.DODGE_SOUND_EVENT, 1f, 1f);
             AOECloudHelper.spawnParticleCloud(playerEntity, playerEntity, 0.5F, 0, ParticleTypes.CLOUD);
             // Apply Speed after dodge
             playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 42, 0, false, false));
@@ -565,14 +550,15 @@ public class ArmorEffects {
                 && livingEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)) {
 
             int index = mcdaFindHighestDurabilityEquipment(livingEntity);
-            float damageAmount = 0.50f;
-            switch (index) {
-                case 0 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.FEET, damageAmount);
-                case 1 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.LEGS, damageAmount);
-                case 2 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.CHEST, damageAmount);
-                case 3 -> mcdaDamageEquipment(livingEntity, EquipmentSlot.HEAD, damageAmount);
-            }
-            onTotemDeathEffects(livingEntity);
+            EquipmentSlot equipmentSlot = switch (index) {
+                case 0 -> EquipmentSlot.FEET;
+                case 1 -> EquipmentSlot.LEGS;
+                case 2 -> EquipmentSlot.CHEST;
+                case 3 -> EquipmentSlot.HEAD;
+                // Never reached but make Java happy
+                default -> throw new IllegalStateException("Unexpected value: " + index);
+            };
+            mcdaDamageEquipment(livingEntity,equipmentSlot, 0.5f);
             return true;
         }
         return false;
