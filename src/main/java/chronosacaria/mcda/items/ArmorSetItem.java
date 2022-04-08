@@ -23,7 +23,7 @@ import java.util.UUID;
 
 public class ArmorSetItem extends ArmorItem {
 
-    protected static final int MAX_TOOLTIPS = 5;
+    protected static final int MAX_TOOLTIPS = 6;
 
     protected static final UUID[] ARMOR_MODIFIERS = new UUID[] {
             UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"),
