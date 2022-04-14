@@ -16,6 +16,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
@@ -96,7 +97,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     // Mixins for apply damage Effects and Enchantments
     @Inject(method = "applyDamage(Lnet/minecraft/entity/damage/DamageSource;F)V", at = @At("HEAD"))
-    public void mcdaApplyDamageEffects(DamageSource source, float amount, CallbackInfo info) {
+    public void mcda$applyDamage(DamageSource source, float amount, CallbackInfo info) {
 
         LivingEntity target = (LivingEntity) (Object) this;
         if(!(source.getAttacker() instanceof LivingEntity livingEntity))
@@ -123,7 +124,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     // Mixins for apply movement Effects and Enchantments. Only Fire Trail rn
     @Inject(method = "applyMovementEffects", at = @At("HEAD"))
-    protected void applyFireTrailEffects(BlockPos blockPos, CallbackInfo ci) {
+    protected void mcda$movementEffects(BlockPos blockPos, CallbackInfo ci) {
         if(!((Object) this instanceof PlayerEntity playerEntity)) return;
 
         World world = playerEntity.getEntityWorld();
@@ -137,7 +138,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     // Mixins for enchants related to consuming an item. Only potions rn
     @Inject(method = "consumeItem", at = @At("HEAD"))
-    public void consumeItem(CallbackInfo ci) {
+    public void mcda$consumeItem(CallbackInfo ci) {
         if (!((Object) this instanceof PlayerEntity playerEntity))
             return;
 
@@ -153,7 +154,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     // Mixins for Armor and Enchantment Effects on Damage at HEAD
     @Inject(method = "damage", at = @At("HEAD"), cancellable = true)
-    public void onMCDADamageEffects(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+    public void mcda$damageAtHead(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
 
         // Mixins for Armour and Enchantment Effects on Damage for PlayerEntities
         if ((Object) this instanceof PlayerEntity playerEntity) {
@@ -194,7 +195,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     // Mixins for Armor and Enchantment Effects on Damage at TAIL only Curious rn
     @Inject(method = "damage", at = @At("TAIL"))
-    public void applyCuriousTeleportation(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+    public void mcda$damageAtTail(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
 
         if(!((Object) this instanceof PlayerEntity playerEntity)) return;
 
@@ -210,7 +211,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     // Shadow Walker Armor Negate Fall Damage
     @Inject(method = "handleFallDamage", at = @At("HEAD"), cancellable = true)
-    public void shadowWalkerArmorNoFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource, CallbackInfoReturnable<Boolean> cir){
+    public void mcda$fallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource, CallbackInfoReturnable<Boolean> cir){
         if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(NO_FALL_DAMAGE))
             return;
         if(!((Object) this instanceof PlayerEntity playerEntity)) return;
@@ -232,7 +233,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     // Mixins for climbing effects
     @Inject(method = "isClimbing", at = @At("HEAD"), cancellable = true)
-    private void mcdaArmorClimbing(CallbackInfoReturnable<Boolean> cir){
+    private void mcda$climbingEffects(CallbackInfoReturnable<Boolean> cir){
         if(!((Object) this instanceof PlayerEntity playerEntity)) return;
 
         if (playerEntity.isAlive()){
@@ -250,7 +251,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     // Mixin for Jump Effects
     @Inject(method = "jump", at = @At("HEAD"))
-    public void onMCDAJumpEffects(CallbackInfo ci){
+    public void mcda$onJumpEffects(CallbackInfo ci){
         if (!((Object) this instanceof ServerPlayerEntity playerEntity))
             return;
         if (playerEntity != null) {
@@ -265,7 +266,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     // Mixin for on death Effects and Enchantments. Only Gourdian's Hatred rn
     @Inject(method = "onDeath", at = @At("HEAD"))
-    public void onGourdiansHatredKill(DamageSource source, CallbackInfo ci) {
+    public void mdca$onDeathEffects(DamageSource source, CallbackInfo ci) {
 
         if(!(source.getAttacker() instanceof LivingEntity user))return;
 
@@ -277,7 +278,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     // Mixin for Swing Hand. Only Fox Pounce rn
     @Inject(method = "swingHand(Lnet/minecraft/util/Hand;)V", at = @At("HEAD"))
-    public void onMCDAFoxPounce(Hand hand, CallbackInfo ci){
+    public void mcda$swingHandEffects(Hand hand, CallbackInfo ci){
         if ((!((Object) this instanceof PlayerEntity playerEntity)))
             return;
 
@@ -287,7 +288,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     // Mixins for Armor and Enchantment Effects on Tick
     @Inject(method = "tick", at = @At("HEAD"))
-    private void onMCDATickEffects(CallbackInfo ci){
+    private void mcda$livingEntTick(CallbackInfo ci){
         // Mixins for Armour and Enchantment Effects on Tick for PlayerEntities
         if((Object) this instanceof PlayerEntity playerEntity) {
 
@@ -312,7 +313,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     // Mixin for MCDA Totem Deaths
     @Inject(method = "tryUseTotem", at = @At("HEAD"), cancellable = true)
-    public void onMCDATotemDeaths(DamageSource damageSource, CallbackInfoReturnable<Boolean> cir){
+    public void mcda$tryTotem(DamageSource damageSource, CallbackInfoReturnable<Boolean> cir){
         // Death Barter
         if(((Object) this instanceof PlayerEntity playerEntity)) {
 
@@ -340,7 +341,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     // Mixin for Knockback Resistance for Stalwart Bulwark Effect
     @ModifyVariable(method = "takeKnockback", at = @At("HEAD"), ordinal = 0, argsOnly = true)
-    private double applyStalwartBulwarkKnockbackResistanceEffect(double strength){
+    private double mcda$knockbackEffects(double strength){
         LivingEntity livingEntity = (LivingEntity) (Object) this;
 
         if (this.isAlive() && this.isSneaking() && (hasArmorSet(livingEntity, ArmorSets.STALWART_MAIL)
@@ -353,33 +354,43 @@ public abstract class LivingEntityMixin extends Entity {
 
     @ModifyVariable(method = "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;" +
             "Lnet/minecraft/entity/Entity;)Z", at = @At("HEAD"), argsOnly = true)
-    private StatusEffectInstance troubadoursCharismaModifyStatusEffect(StatusEffectInstance statusEffectInstance){
+    private StatusEffectInstance mcda$modifyStatusEffect(StatusEffectInstance statusEffectInstance){
 
         LivingEntity livingEntity = (LivingEntity) (Object) this;
 
-        if (livingEntity instanceof ServerPlayerEntity && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(TROUBADOURS_CHARISMA)) {
-            if (CleanlinessHelper.hasArmorSet(livingEntity, ArmorSets.TROUBADOUR)) {
-                StatusEffect statusEffectType = statusEffectInstance.getEffectType();
-
-                int interceptedDuration = statusEffectInstance.getDuration();
-
-                int newDuration = statusEffectInstance.getDuration();
-                if (statusEffectType.isBeneficial()) {
-                    newDuration *= 2;
+        if (livingEntity instanceof ServerPlayerEntity) {
+            StatusEffect statusEffectType = statusEffectInstance.getEffectType();
+            if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SHULKER_LIKE)) {
+                if (hasArmorSet(livingEntity, ArmorSets.STURDY_SHULKER)
+                        || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.MYSTERY)) == SHULKER_LIKE)
+                        || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.PURPLE_MYSTERY)) == SHULKER_LIKE)) {
+                    if (statusEffectType == StatusEffects.LEVITATION)
+                        return new StatusEffectInstance(StatusEffects.LEVITATION, 0);
                 }
-                if (statusEffectType.getCategory() == StatusEffectCategory.HARMFUL) {
-                    newDuration /= 2;
-                }
+            }
+            if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(TROUBADOURS_CHARISMA)) {
+                if (CleanlinessHelper.hasArmorSet(livingEntity, ArmorSets.TROUBADOUR)) {
 
-                if (newDuration != interceptedDuration) {
-                    return new StatusEffectInstance(
-                            statusEffectType,
-                            newDuration,
-                            statusEffectInstance.getAmplifier(),
-                            statusEffectInstance.isAmbient(),
-                            statusEffectInstance.shouldShowParticles(),
-                            statusEffectInstance.shouldShowIcon()
-                    );
+                    int interceptedDuration = statusEffectInstance.getDuration();
+
+                    int newDuration = statusEffectInstance.getDuration();
+                    if (statusEffectType.isBeneficial()) {
+                        newDuration *= 2;
+                    }
+                    if (statusEffectType.getCategory() == StatusEffectCategory.HARMFUL) {
+                        newDuration /= 2;
+                    }
+
+                    if (newDuration != interceptedDuration) {
+                        return new StatusEffectInstance(
+                                statusEffectType,
+                                newDuration,
+                                statusEffectInstance.getAmplifier(),
+                                statusEffectInstance.isAmbient(),
+                                statusEffectInstance.shouldShowParticles(),
+                                statusEffectInstance.shouldShowIcon()
+                        );
+                    }
                 }
             }
         }

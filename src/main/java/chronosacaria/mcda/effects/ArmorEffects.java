@@ -158,15 +158,7 @@ public class ArmorEffects {
                 return;
             SoundEvent soundEvent = livingEntity instanceof FoxEntity ? SoundEvents.ENTITY_FOX_TELEPORT :
                     SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT;
-            livingEntity.world.playSound(
-                    null,
-                    livingEntity.getX(),
-                    livingEntity.getY(),
-                    livingEntity.getZ(),
-                    soundEvent,
-                    SoundCategory.PLAYERS,
-                    1.0F,
-                    1.0F);
+            CleanlinessHelper.playCenteredSound(livingEntity, soundEvent, 1f, 1f);
         }
     }
 
@@ -181,15 +173,7 @@ public class ArmorEffects {
             if (livingEntity.teleport(target.x, target.y, target.z, true)) {
                 SoundEvent soundEvent = livingEntity instanceof FoxEntity ? SoundEvents.ENTITY_FOX_TELEPORT :
                         SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT;
-                livingEntity.world.playSound(
-                        null,
-                        livingEntity.getX(),
-                        livingEntity.getY(),
-                        livingEntity.getZ(),
-                        soundEvent,
-                        SoundCategory.PLAYERS,
-                        1.0F,
-                        1.0F);
+                CleanlinessHelper.playCenteredSound(livingEntity, soundEvent, 1f, 1f);
             }
         }
     }
@@ -460,16 +444,7 @@ public class ArmorEffects {
         if (playFireSound) {
             if (mcdaCooldownCheck(livingEntity, 40))
                 mcdaRandomArmorDamage(livingEntity, 0.10f, 3, true);
-            livingEntity.world.playSound(
-                    null,
-                    livingEntity.getX(),
-                    livingEntity.getY(),
-                    livingEntity.getZ(),
-                    SoundEvents.ENTITY_BLAZE_SHOOT,
-                    SoundCategory.PLAYERS,
-                    1.0f,
-                    1.0f
-            );
+            CleanlinessHelper.playCenteredSound(livingEntity, SoundEvents.ENTITY_BLAZE_SHOOT, 1f, 1f);
         }
     }
 
@@ -860,18 +835,6 @@ public class ArmorEffects {
                         false);
                 playerEntity.addStatusEffect(strength);
             }
-        }
-    }
-
-    public static void applyLevitationRemoval(ServerPlayerEntity playerEntity){
-        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SHULKER_LIKE))
-            return;
-
-        if (hasArmorSet(playerEntity, ArmorSets.STURDY_SHULKER)
-                || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == SHULKER_LIKE)
-                || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.PURPLE_MYSTERY)) == SHULKER_LIKE)){
-            if (playerEntity.hasStatusEffect(StatusEffects.LEVITATION))
-                playerEntity.removeStatusEffect(StatusEffects.LEVITATION);
         }
     }
 
