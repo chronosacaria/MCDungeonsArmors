@@ -14,7 +14,6 @@ import chronosacaria.mcda.registry.SummonedEntityRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -34,7 +33,6 @@ import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
@@ -101,20 +99,16 @@ public class ArmorEffects {
 
             int[] domArr = {0,0,0,0};
 
-            if (helmetStack.getNbt().get("dominance") != null)
-                domArr[0] = helmetStack.getNbt().getInt("dominance");
-            if (chestplateStack.getNbt().get("dominance") != null)
-                domArr[1] = chestplateStack.getNbt().getInt("dominance");
-            if (leggingsStack.getNbt().get("dominance") != null)
-                domArr[2] = leggingsStack.getNbt().getInt("dominance");
-            if (bootsStack.getNbt().get("dominance") != null)
-                domArr[3] = bootsStack.getNbt().getInt("dominance");
+            domArr[0] = helmetStack.getOrCreateNbt().getInt("dominance");
+            domArr[1] = chestplateStack.getOrCreateNbt().getInt("dominance");
+            domArr[2] = leggingsStack.getOrCreateNbt().getInt("dominance");
+            domArr[3] = bootsStack.getOrCreateNbt().getInt("dominance");
 
             switch (mcdaIndexOfLargestElementInArray(domArr)) {
-                case 0: return helmetStack.getNbt().getInt("mystery_effect");
-                case 1: return chestplateStack.getNbt().getInt("mystery_effect");
-                case 2: return leggingsStack.getNbt().getInt("mystery_effect");
-                case 3: return bootsStack.getNbt().getInt("mystery_effect");
+                case 0: return helmetStack.getOrCreateNbt().getInt("mystery_effect");
+                case 1: return chestplateStack.getOrCreateNbt().getInt("mystery_effect");
+                case 2: return leggingsStack.getOrCreateNbt().getInt("mystery_effect");
+                case 3: return bootsStack.getOrCreateNbt().getInt("mystery_effect");
             }
         }
         return 0;
@@ -360,9 +354,7 @@ public class ArmorEffects {
             if (percentToOccur(15)) {
                 ItemStack potionToDrop =
                         CAULDRONS_OVERFLOW_LIST.get(targetedEntity.getRandom().nextInt(CAULDRONS_OVERFLOW_LIST.size()));
-                ItemEntity potion = new ItemEntity(targetedEntity.world, targetedEntity.getX(), targetedEntity.getY(),
-                        targetedEntity.getZ(), potionToDrop);
-                targetedEntity.world.spawnEntity(potion);
+                CleanlinessHelper.mcda$dropItem(targetedEntity, potionToDrop);
             }
         }
 

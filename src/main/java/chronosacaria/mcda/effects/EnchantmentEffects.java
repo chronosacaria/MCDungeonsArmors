@@ -1,9 +1,9 @@
 package chronosacaria.mcda.effects;
 
 import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.api.BooleanHelper;
 import chronosacaria.mcda.api.CleanlinessHelper;
-import chronosacaria.mcda.api.McdaEnchantmentHelper;
 import chronosacaria.mcda.registry.EnchantsRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -98,17 +98,14 @@ public class EnchantmentEffects {
         int surpriseGiftLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SURPRISE_GIFT), playerEntity);
         if (surpriseGiftLevel == 0) return;
 
-        float surpriseGiftChance = 0.5F * surpriseGiftLevel;
+        int surpriseGiftChance = 50 * surpriseGiftLevel;
 
         while (surpriseGiftChance > 0) {
-            float surpriseGiftRand = playerEntity.getRandom().nextFloat();
-            if (surpriseGiftRand <= surpriseGiftChance) {
+            if (CleanlinessHelper.percentToOccur(surpriseGiftChance)) {
                 ItemStack potionToDrop = SURPRISE_GIFT_LIST.get(playerEntity.getRandom().nextInt(SURPRISE_GIFT_LIST.size()));
-                ItemEntity surpriseGift = new ItemEntity(playerEntity.world, playerEntity.getX(),
-                        playerEntity.getY(), playerEntity.getZ(), potionToDrop);
-                playerEntity.world.spawnEntity(surpriseGift);
+                CleanlinessHelper.mcda$dropItem(playerEntity, potionToDrop);
             }
-            surpriseGiftChance -= 1.0F;
+            surpriseGiftChance -= 100;
         }
     }
 
@@ -129,23 +126,21 @@ public class EnchantmentEffects {
                 double currentXCoord = livingEntity.getPos().getX();
                 double currentZCoord = livingEntity.getPos().getZ();
 
-                if (feetStack.getNbt().get("x-coord") == null) {
+                if (!feetStack.getOrCreateNbt().contains("x-coord")) {
                     feetStack.getOrCreateNbt().putDouble("x-coord", currentXCoord);
                     feetStack.getOrCreateNbt().putDouble("z-coord", currentZCoord);
                     return;
                 }
 
-                double storedXCoord = feetStack.getNbt().getDouble("x-coord");
-                double storedZCoord = feetStack.getNbt().getDouble("z-coord");
+                double storedXCoord = feetStack.getOrCreateNbt().getDouble("x-coord");
+                double storedZCoord = feetStack.getOrCreateNbt().getDouble("z-coord");
 
                 Vec3d vec3d = new Vec3d(storedXCoord, 0, storedZCoord);
 
                 double distanceBetween = Math.sqrt(vec3d.squaredDistanceTo(currentXCoord, 0, currentZCoord));
 
                 if (distanceBetween >= 20) {
-                    ItemEntity emerald = new ItemEntity(livingEntity.world, currentXCoord,
-                            livingEntity.getY(), currentZCoord, Items.EMERALD.getDefaultStack());
-                    livingEntity.world.spawnEntity(emerald);
+                    CleanlinessHelper.mcda$dropItem(livingEntity, Items.EMERALD);
 
                     feetStack.getOrCreateNbt().putDouble("x-coord", currentXCoord);
                     feetStack.getOrCreateNbt().putDouble("z-coord", currentZCoord);
@@ -154,21 +149,22 @@ public class EnchantmentEffects {
         }
     }
 
-    public static float applyFireFocusDamage(LivingEntity livingEntity, LivingEntity target){
-        if (McdaEnchantmentHelper.hasFireAspect(livingEntity) || target.isOnFire()) {
-            int fireFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FIRE_FOCUS), livingEntity);
+    public static float applyFireFocusDamage(LivingEntity target){
+        for (LivingEntity nearbyEntity : AOEHelper.getAttackersOfEntities(target, 6.0f)) {
+            int fireFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FIRE_FOCUS), nearbyEntity);
             if (fireFocusLevel > 0) {
                 return 1 + (0.25F * fireFocusLevel);
-
             }
         }
         return 1;
     }
 
-    public static float applyPoisonFocusDamage(LivingEntity livingEntity){
-        int poisonFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POISON_FOCUS), livingEntity);
-        if (poisonFocusLevel > 0) {
-            return 1 + (0.25F * poisonFocusLevel);
+    public static float applyPoisonFocusDamage(LivingEntity target){
+        for (LivingEntity nearbyEntity : AOEHelper.getAttackersOfEntities(target, 6.0f)) {
+            int poisonFocusLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POISON_FOCUS), nearbyEntity);
+            if (poisonFocusLevel > 0) {
+                return 1 + (0.25F * poisonFocusLevel);
+            }
         }
         return 1;
     }

@@ -19,7 +19,6 @@ import java.util.Random;
 import static chronosacaria.mcda.Mcda.random;
 import static chronosacaria.mcda.enchants.EnchantID.HEAL_ALLIES;
 
-// TODO: unused
 public class AOEHelper {
 
     /* Return targets of an AOE effect from 'attacker' around 'center'. This includes 'center'. */
@@ -27,6 +26,13 @@ public class AOEHelper {
         return center.getEntityWorld().getEntitiesByClass(LivingEntity.class,
                 new Box(center.getBlockPos()).expand(distance),
                 (nearbyEntity) -> AbilityHelper.isAoeTarget(nearbyEntity, attacker, center)
+        );
+    }
+
+    public static List<LivingEntity> getAttackersOfEntities(LivingEntity affectedEntity, float distance) {
+        return affectedEntity.getEntityWorld().getEntitiesByClass(LivingEntity.class,
+                new Box(affectedEntity.getBlockPos()).expand(distance),
+                (nearbyEntity) -> nearbyEntity.getAttacking() == affectedEntity
         );
     }
 

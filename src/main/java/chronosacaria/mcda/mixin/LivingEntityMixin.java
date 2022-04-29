@@ -43,15 +43,7 @@ import static chronosacaria.mcda.enchants.EnchantID.*;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
 
-    @Shadow public abstract boolean isAlive();
-
     @Shadow protected abstract int computeFallDamage(float fallDistance, float damageMultiplier);
-
-    @Shadow public abstract boolean damage(DamageSource source, float amount);
-
-    @Shadow public abstract int getArmor();
-
-    @Shadow public abstract void setOnGround(boolean onGround);
 
     EnumMap<ArmorEffectID, Boolean> ARMOR_CONFIG = Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect;
     EnumMap<EnchantID, Boolean> ENCHANT_CONFIG = Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment;
@@ -66,17 +58,20 @@ public abstract class LivingEntityMixin extends Entity {
             amount *= ArmorEffects.leaderOfThePackEffect(source);
 
         LivingEntity target = (LivingEntity) (Object) this;
+
+        if (source == DamageSource.ON_FIRE)
+            if (ENCHANT_CONFIG.get(FIRE_FOCUS))
+                amount *= EnchantmentEffects.applyFireFocusDamage(target);
+
+        if (source.isMagic()){
+            if (ENCHANT_CONFIG.get(POISON_FOCUS))
+                amount *= EnchantmentEffects.applyPoisonFocusDamage(target);
+        }
+
         if(!(source.getAttacker() instanceof LivingEntity livingEntity))
             return amount;
 
         if (amount != 0.0F) {
-            if (ENCHANT_CONFIG.get(FIRE_FOCUS))
-                amount *= EnchantmentEffects.applyFireFocusDamage(livingEntity, target);
-
-            if (source.isMagic()){
-                if (ENCHANT_CONFIG.get(POISON_FOCUS))
-                    amount *= EnchantmentEffects.applyPoisonFocusDamage(livingEntity);
-            }
 
             ItemStack mainHandStack = livingEntity.getMainHandStack();
             if (!mainHandStack.isEmpty()) {
@@ -153,6 +148,7 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     // Mixins for Armor and Enchantment Effects on Damage at HEAD
+    @SuppressWarnings("CancellableInjectionUsage")
     @Inject(method = "damage", at = @At("HEAD"), cancellable = true)
     public void mcda$damageAtHead(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
 

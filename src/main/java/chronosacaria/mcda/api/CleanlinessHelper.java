@@ -4,6 +4,7 @@ import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.registry.ArmorsRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -131,11 +132,11 @@ public class CleanlinessHelper {
 
         long currentTime = livingEntity.world.getTime();
 
-        if (chestStack.getNbt().get("time-check") == null) {
+        if (!chestStack.getOrCreateNbt().contains("time-check")) {
             chestStack.getOrCreateNbt().putLong("time-check", currentTime);
             return false;
         }
-        long storedTime = chestStack.getNbt().getLong("time-check");
+        long storedTime = chestStack.getOrCreateNbt().getLong("time-check");
 
         return Math.abs(currentTime - storedTime) > ticks;
     }
@@ -161,19 +162,6 @@ public class CleanlinessHelper {
                         .add(perpHorTargetDist.multiply(-target.getWidth()));
         double playerEyeHeight = playerEntity.getEyeY() - playerEntity.getBlockPos().getY();
 
-        //return mcdaDoubleInequalityBoundsCheck(playerVec.normalize().x,
-        //        Math.min(leftSideVec.normalize().x, rightSideVec.normalize().x),
-        //        Math.max(leftSideVec.normalize().x, rightSideVec.normalize().x),
-        //        true, true)
-        //        && mcdaDoubleInequalityBoundsCheck(playerVec.normalize().z,
-        //        Math.min(leftSideVec.normalize().z, rightSideVec.normalize().z),
-        //        Math.max(leftSideVec.normalize().z, rightSideVec.normalize().z),
-        //        true, true)
-        //        && mcdaDoubleInequalityBoundsCheck(playerVec.y,
-        //        -Math.atan(playerEyeHeight / horizontalDistanceToTarget),
-        //        Math.atan((target.getHeight() - playerEyeHeight) / horizontalDistanceToTarget),
-        //        true, true);
-
                 return Math.max(leftSideVec.normalize().x, rightSideVec.normalize().x) >= playerVec.normalize().x
                 && Math.min(leftSideVec.normalize().x, rightSideVec.normalize().x) <= playerVec.normalize().x
                 && Math.max(leftSideVec.normalize().z, rightSideVec.normalize().z) >= playerVec.normalize().z
@@ -189,16 +177,6 @@ public class CleanlinessHelper {
         return horVelocity > magnitude;
     }
 
-    //public static boolean mcdaDoubleInequalityBoundsCheck(double target, double lowerBound, double upperBound, boolean lowerInclusive, boolean upperInclusive) {
-    //    if (lowerBound == upperBound)
-    //        return target == lowerBound && (lowerInclusive || upperInclusive);
-    //    if (target == lowerBound)
-    //        return lowerInclusive;
-    //    if (target == upperBound)
-    //        return upperInclusive;
-    //    return upperBound > target && target > lowerBound;
-    //}
-
     public static boolean percentToOccur (int chance) {
         return random.nextInt(100) <= chance;
     }
@@ -208,5 +186,20 @@ public class CleanlinessHelper {
                 center.getX(), center.getY(), center.getZ(),
                 soundEvent, SoundCategory.PLAYERS,
                 volume, pitch);
+    }
+
+    public static void mcda$dropItem(LivingEntity le, Item item) {
+        mcda$dropItem(le, item, 1);
+    }
+
+    public static void mcda$dropItem(LivingEntity le, ItemStack itemStack) {
+        mcda$dropItem(le, itemStack.getItem(), itemStack.getCount());
+    }
+
+    public static void mcda$dropItem(LivingEntity le, Item item, int amount) {
+        ItemEntity it = new ItemEntity(
+                le.world, le.getX(), le.getY(), le.getZ(),
+                new ItemStack(item, amount));
+        le.world.spawnEntity(it);
     }
 }
