@@ -1,0 +1,743 @@
+{
+  "itemGroup.mcda.armor":                         "MC Dungeons Armors",
+
+  "item.mcda.archers_helmet":                     "Капюшон лучника",
+  "item.mcda.archers_chestplate":                 "Жилет лучника",
+  "item.mcda.archers_leggings":                   "Поножи лучника",
+  "item.mcda.archers_boots":                      "Ботинки лучника",
+
+  "item.mcda.archers.tooltip_1":                  "Облюбованный скромными воинами, он дешевый",
+  "item.mcda.archers.tooltip_2":                  "чтобы сделать его и все ещё останавливает меч.",
+
+  "item.mcda.beehive_armor_helmet":               "Шлем улья",
+  "item.mcda.beehive_armor_chestplate":           "Нагрудник улья",
+  "item.mcda.beehive_armor_leggings":             "Поножи улья",
+  "item.mcda.beehive_armor_boots":                "Ботинки улья",
+
+  "item.mcda.beehive_armor.tooltip_1":            "Броня улья гудит вместе с",
+  "item.mcda.beehive_armor.tooltip_2":            "сосредоточенной силой бесчисленных пчел.",
+
+  "item.mcda.beenest_armor_helmet":               "Шлем пчелиного гнезда",
+  "item.mcda.beenest_armor_chestplate":           "Нагрудник пчелиного гнезда",
+  "item.mcda.beenest_armor_leggings":             "Поножи пчелиного гнезда",
+  "item.mcda.beenest_armor_boots":                "Ботинки пчелиного гнезда",
+
+  "item.mcda.beenest_armor.tooltip_1":            "Кажется, вокруг брони пчелиного гнезда всегда",
+  "item.mcda.beenest_armor.tooltip_2":            "слышится легкое жужжание.",
+  "item.mcda.beenest_armor.tooltip_3":            "Или, может быть, жужжание исходит изнутри?",
+
+  "item.mcda.hunters_chestplate":                 "Охотничий жилет",
+
+  "item.mcda.hunters.tooltip_1":                  "Возможно, он не подходит для рыцаря",
+  "item.mcda.hunters.tooltip_2":                  "но всё ещё способен оставновить меч.",
+
+  "item.mcda.splendid_robe_chestplate":           "Великолепное одеяние",
+  "item.mcda.splendid_robe_leggings":             "Великолепные поножи",
+
+  "item.mcda.splendid_robe.tooltip_1":            "Эту выдающуюся мантию носят",
+  "item.mcda.splendid_robe.tooltip_2":            "закаленные деревенские воины,",
+  "item.mcda.splendid_robe.tooltip_3":            "защищающие от архи-поборников.",
+
+  "item.mcda.battle_robe_chestplate":             "Боевая мантия",
+  "item.mcda.battle_robe_leggings":               "Боевые поножи",
+
+  "item.mcda.battle_robe.tooltip_1":              "Носил выдающийся поборник",
+  "item.mcda.battle_robe.tooltip_2":              "Вызывает воспоминания о архи-поборников.",
+
+  "item.mcda.champions_armor_helmet":             "Шлем чемпиона",
+  "item.mcda.champions_armor_chestplate":         "Нагрудник чемпиона",
+  "item.mcda.champions_armor_leggings":           "Поножи чемпиона",
+  "item.mcda.champions_armor_boots":              "Ботинки чемпиона",
+
+  "item.mcda.champions_armor.tooltip_1":          "Подаренные чемпионам Верхнего Мира",
+  "item.mcda.champions_armor.tooltip_2":          "освобождёнными жителями деревни ",
+  "item.mcda.champions_armor.tooltip_3":          "в знак их благодарности за",
+  "item.mcda.champions_armor.tooltip_4":          "многолетнюю защиту и помощь. ",
+  "item.mcda.champions_armor.tooltip_5":          "Признак настоящего героя.",
+
+  "item.mcda.heros_armor_helmet":                 "Шлем героя",
+  "item.mcda.heros_armor_chestplate":             "Нагрудник героя",
+  "item.mcda.heros_armor_leggings":               "Поножи героя",
+  "item.mcda.heros_armor_boots":                  "Ботинки героя",
+
+  "item.mcda.heros_armor.tooltip_1":              "Эта броня, данная только",
+  "item.mcda.heros_armor.tooltip_2":              "героям самого высокого уровня, является",
+  "item.mcda.heros_armor.tooltip_3":              "драгоценным подарком от жителей деревни.",
+  "attribute.name.healthPotionsHealNearbyAllies": "Зелья здоровья исцеляют  ближайших союзников.",
+
+  "item.mcda.titans_shroud_helmet":               "Шлем титана пелены",
+  "item.mcda.titans_shroud_chestplate":           "Нагрудник титана пелены",
+  "item.mcda.titans_shroud_leggings":             "Поножи титана пелены",
+  "item.mcda.titans_shroud_boots":                "Ботинки титана пелены",
+
+  "item.mcda.titans_shroud.tooltip_1":            "Эта броня проходила через руки зла",
+  "item.mcda.titans_shroud.tooltip_2":            "на протяжении многих поколений.",
+
+  "item.mcda.dark_armor_helmet":                  "Шлем тьмы",
+  "item.mcda.dark_armor_chestplate":              "Нагрудник тьмы",
+  "item.mcda.dark_armor_leggings":                "Поножи тьмы",
+  "item.mcda.dark_armor_boots":                   "Ботинки тьмы",
+
+  "item.mcda.dark_armor.tooltip_1":               "Эту броню, изготовленную в",
+  "item.mcda.dark_armor.tooltip_2":               "в самых черных глубинах Огненной Кузницы,",
+  "item.mcda.dark_armor.tooltip_3":               "её носят поборники королевской гвардии.",
+
+  "item.mcda.royal_guard_armor_helmet":           "Шлем королевской гвардии",
+  "item.mcda.royal_guard_armor_chestplate":       "Нагрудник королевской гвардии",
+  "item.mcda.royal_guard_armor_leggings":         "Поножи королевской гвардии",
+  "item.mcda.royal_guard_armor_boots":            "Ботинки королевской гвардии",
+
+  "item.mcda.royal_guard_armor.tooltip_1":        "Эту броню, изготовленную в",
+  "item.mcda.royal_guard_armor.tooltip_2":        "в самых черных глубинах Огненной Кузницы,",
+  "item.mcda.royal_guard_armor.tooltip_3":        "её носят поборники королевской гвардии.",
+
+  "item.mcda.evocation_robe_helmet":              "Вызывающая шляпа",
+  "item.mcda.evocation_robe_chestplate":          "Вызывающая мантия",
+  "item.mcda.evocation_robe_leggings":            "Вызывающие штаны",
+
+  "item.mcda.evocation_robe.tooltip_1":           "Могущественные магические руны ",
+  "item.mcda.evocation_robe.tooltip_2":           "вплетены в ткань ",
+  "item.mcda.evocation_robe.tooltip_3":           "этих одежд",
+  "item.mcda.evocation_robe.tooltip_4":           "происхождение и сила",
+  "item.mcda.evocation_robe.tooltip_5":           "окутаны тайной.",
+
+  "item.mcda.ember_robe_helmet":                  "Тлеющая шляпа",
+  "item.mcda.ember_robe_chestplate":              "Тлеющая мантия",
+  "item.mcda.ember_robe_leggings":                "Тлеющие штаны",
+
+  "item.mcda.ember_robe.tooltip_1":               "Мантия созданная Поборником",
+  "item.mcda.ember_robe.tooltip_2":               "призывает отличить себя",
+  "item.mcda.ember_robe.tooltip_3":               "от обычной стражи.",
+
+  "item.mcda.verdant_robe_helmet":                "Зеленеющая шляпа",
+  "item.mcda.verdant_robe_chestplate":            "Зеленеющая мантия",
+  "item.mcda.verdant_robe_leggings":              "Зеленеющие штаны",
+
+  "item.mcda.verdant_robe.tooltip_1":             "Те, кто надевает это одеяние, вскоре обнаруживают,",
+  "item.mcda.verdant_robe.tooltip_2":             "что могут общаться с большим количеством душ,",
+  "item.mcda.verdant_robe.tooltip_3":             "чем когда-либо прежде.",
+
+  "item.mcda.grim_armor_helmet":                  "Мрачный шлем",
+  "item.mcda.grim_armor_chestplate":              "Мрачный нагрудник",
+  "item.mcda.grim_armor_leggings":                "Мрачные поножи",
+  "item.mcda.grim_armor_boots":                   "Мрачные ботинки",
+
+  "item.mcda.grim_armor.tooltip_1":               "Эта броня вызывает чувство страха у того,",
+  "item.mcda.grim_armor.tooltip_2":               "кто ее носит, и у тех,",
+  "item.mcda.grim_armor.tooltip_3":               "кто сталкивается с ней в бою.",
+
+  "item.mcda.wither_armor_helmet":                "Шлем визера",
+  "item.mcda.wither_armor_chestplate":            "Нагрудник визера",
+  "item.mcda.wither_armor_leggings":              "Поножи визера",
+  "item.mcda.wither_armor_boots":                 "Ботинки визера",
+
+  "item.mcda.wither_armor.tooltip_1":             "Созданный из частей убитых врагов,",
+  "item.mcda.wither_armor.tooltip_2":             "он был создан для того, ",
+  "item.mcda.wither_armor.tooltip_3":             "чтобы наводить ужас на врагов владельца.",
+
+  "item.mcda.guards_armor_helmet":                "Шлем гвардийца",
+  "item.mcda.guards_armor_chestplate":            "Нагрудник гвардийца",
+  "item.mcda.guards_armor_leggings":              "Поножи гвардийца",
+  "item.mcda.guards_armor_boots":                 "Ботинки гвардийца",
+
+  "item.mcda.guards_armor.tooltip_1":             "Дешевая броня, изготовленная оптом,",
+  "item.mcda.guards_armor.tooltip_2":             "совершенно обычно видеть её",
+  "item.mcda.guards_armor.tooltip_3":             "в деревнях Верхнего Мира",
+
+  "item.mcda.curious_armor_helmet":               "Любопытный шлем",
+  "item.mcda.curious_armor_chestplate":           "Любопытный нагрудник",
+  "item.mcda.curious_armor_leggings":             "Любопытные поножи",
+  "item.mcda.curious_armor_boots":                "Любопытные ботинки",
+
+  "item.mcda.curious_armor.tooltip_1":            "Никто не знает, откуда взялась эта",
+  "item.mcda.curious_armor.tooltip_2":            "странная броня,",
+  "item.mcda.curious_armor.tooltip_3":            "но она кажется вам знакомой.",
+
+  "item.mcda.mercenary_armor_helmet":             "Шлем наемника",
+  "item.mcda.mercenary_armor_chestplate":         "Нагрудник наемника",
+  "item.mcda.mercenary_armor_leggings":           "Поножи наемника",
+  "item.mcda.mercenary_armor_boots":              "Ботинки наемника",
+
+  "item.mcda.mercenary_armor.tooltip_1":          "Пользуется популярностью у тех, ",
+  "item.mcda.mercenary_armor.tooltip_2":          "кто хочет сэкономить немного денег.",
+  "item.mcda.mercenary_armor.tooltip_3":          "Им не хватает чутья, но они выполняют свою работу.",
+
+  "item.mcda.renegade_armor_helmet":              "Шлем отступника",
+  "item.mcda.renegade_armor_chestplate":          "Нагрудник отступника",
+  "item.mcda.renegade_armor_leggings":            "Поножи отступника",
+  "item.mcda.renegade_armor_boots":               "Ботинки отступника",
+
+  "item.mcda.renegade_armor.tooltip_1":           "Эта броня была прекрасной платой",
+  "item.mcda.renegade_armor.tooltip_2":           "для наемников, нанятых для защиты",
+  "item.mcda.renegade_armor.tooltip_3":           "деревень от жителей деревни.",
+
+  "item.mcda.hungry_horror_helmet":               "Шлем голодного ужаса",
+  "item.mcda.hungry_horror_chestplate":           "Нагрудник голодного ужаса",
+  "item.mcda.hungry_horror_leggings":             "Поножи голодного ужаса",
+  "item.mcda.hungry_horror_boots":                "Ботинки голодного ужаса",
+
+  "item.mcda.hungry_horror.tooltip_1":            "Когда вы носите эту броню,",
+  "item.mcda.hungry_horror.tooltip_2":            "звуки криков наполняют воздух.",
+  "item.mcda.hungry_horror.tooltip_3":            "Но ваши ли это крики",
+  "item.mcda.hungry_horror.tooltip_4":            "или ваших врагов?",
+
+  "item.mcda.ocelot_armor_helmet":                "Шлем оцелота",
+  "item.mcda.ocelot_armor_chestplate":            "Нагрудник оцелота",
+  "item.mcda.ocelot_armor_leggings":              "Поножи оцелота",
+  "item.mcda.ocelot_armor_boots":                 "Ботинки оцелота",
+
+  "item.mcda.ocelot_armor.tooltip_1":             "Вы чувствуете прилив чистого",
+  "item.mcda.ocelot_armor.tooltip_2":             "адреналина в своем теле,",
+  "item.mcda.ocelot_armor.tooltip_3":             "когда надеваете эту",
+  "item.mcda.ocelot_armor.tooltip_4":             "броню оцелота.",
+
+  "item.mcda.shadow_walker_armor_helmet":         "Шлем теневого ходока",
+  "item.mcda.shadow_walker_armor_chestplate":     "Нагрудник теневого ходока",
+  "item.mcda.shadow_walker_armor_leggings":       "Поножи теневого ходока",
+  "item.mcda.shadow_walker_armor_boots":          "Ботинки теневого ходока",
+
+  "item.mcda.shadow_walker_armor.tooltip_1":      "Легендарный черный оцелот был столь же грациозен,",
+  "item.mcda.shadow_walker_armor.tooltip_2":      "сколь и смертоносен.",
+  "item.mcda.shadow_walker_armor.tooltip_3":      "Когда вы носите его броню,",
+  "item.mcda.shadow_walker_armor.tooltip_4":      "вы чувствуете, что ваши враги",
+  "item.mcda.shadow_walker_armor.tooltip_5":      "продолжают преследовать вашу тень.",
+
+  "item.mcda.phantom_armor_helmet":               "Шлем фантома",
+  "item.mcda.phantom_armor_chestplate":           "Нагрудник фантома",
+  "item.mcda.phantom_armor_leggings":             "Поножи фантома",
+  "item.mcda.phantom_armor_boots":                "Ботинки фантома",
+
+  "item.mcda.phantom_armor.tooltip_1":            "Эта броня, изготовленная из костей Фантомов,",
+  "item.mcda.phantom_armor.tooltip_2":            "представляет собой устрашающее зрелище",
+  "item.mcda.phantom_armor.tooltip_3":            "на поле боя.",
+
+  "item.mcda.frost_bite_armor_helmet":            "Шлем укуса мороза",
+  "item.mcda.frost_bite_armor_chestplate":        "Нагрудник укуса мороза",
+  "item.mcda.frost_bite_armor_leggings":          "Поножи укуса мороза",
+  "item.mcda.frost_bite_armor_boots":             "Ботинки укуса мороза",
+
+  "item.mcda.frost_bite_armor.tooltip_1":         "Укус Мороза помнит ледяные ветры,",
+  "item.mcda.frost_bite_armor.tooltip_2":         "которые когда-то проносились под крыльями",
+  "item.mcda.frost_bite_armor.tooltip_3":         "ночных Фантомов",
+
+  "item.mcda.plate_armor_helmet":                 "Шлем из плитки",
+  "item.mcda.plate_armor_chestplate":             "Нагрудник из плитки",
+  "item.mcda.plate_armor_leggings":               "Поножи из плитки",
+  "item.mcda.plate_armor_boots":                  "Ботинки из плитки",
+
+  "item.mcda.plate_armor.tooltip_1":              "Плиточная броня превращает обычного солдата",
+  "item.mcda.plate_armor.tooltip_2":              "в крепость, но имеет ограниченную",
+  "item.mcda.plate_armor.tooltip_3":              "мобильность.",
+
+  "item.mcda.full_metal_armor_helmet":            "Цельнометаллический шлем",
+  "item.mcda.full_metal_armor_chestplate":        "Цельнометаллический нагрудник",
+  "item.mcda.full_metal_armor_leggings":          "Цельнометаллические поножи",
+  "item.mcda.full_metal_armor_boots":             "Цельнометаллические ботинки",
+
+  "item.mcda.full_metal_armor.tooltip_1":         "Цельнометаллическая броня предназначена ",
+  "item.mcda.full_metal_armor.tooltip_2":         "для великих защитников Верхнего Мира.",
+
+  "item.mcda.reinforced_mail_helmet":             "Усиленный кольчужный шлем",
+  "item.mcda.reinforced_mail_chestplate":         "Усиленный кольчужный нагрудник",
+  "item.mcda.reinforced_mail_leggings":           "Усиленные кольчужные поножи",
+  "item.mcda.reinforced_mail_boots":              "Усиленные кольчужные ботинки",
+
+  "item.mcda.reinforced_mail.tooltip_1":          "Усиленная кольчуга,",
+  "item.mcda.reinforced_mail.tooltip_2":          "которую носят в основном случайные искатели приключений,",
+  "item.mcda.reinforced_mail.tooltip_3":          "является обычным явлением по всему миру.",
+
+  "item.mcda.stalwart_armor_helmet":              "Крепкий шлем",
+  "item.mcda.stalwart_armor_chestplate":          "Крепкий нагрудник",
+  "item.mcda.stalwart_armor_leggings":            "Крепкие поножи",
+  "item.mcda.stalwart_armor_boots":               "Крепкие ботинки",
+
+  "item.mcda.stalwart_armor.tooltip_1":           "Эта надежная броня достаточно прочна,",
+  "item.mcda.stalwart_armor.tooltip_2":           "чтобы передаваться из поколения в поколение.",
+
+  "item.mcda.ghostly_armor_helmet":               "Призрачный шлем",
+  "item.mcda.ghostly_armor_chestplate":           "Призрачный нагрудник",
+  "item.mcda.ghostly_armor_leggings":             "Призрачные поножи",
+  "item.mcda.ghostly_armor_boots":                "Призрачные ботинки",
+
+  "item.mcda.ghostly_armor.tooltip_1":            "Те, кто носит Призрачную Броню, могут почувствовать,",
+  "item.mcda.ghostly_armor.tooltip_2":            "что их тела ненадолго отключаются",
+  "item.mcda.ghostly_armor.tooltip_3":            "от физического мира,",
+  "item.mcda.ghostly_armor.tooltip_4":            "но быстро возвращаются к реальности.",
+
+  "item.mcda.ghost_kindler_helmet":               "Шлем призрачного поджигателя",
+  "item.mcda.ghost_kindler_chestplate":           "Нагрудник призрачного поджигателя",
+  "item.mcda.ghost_kindler_leggings":             "Поножи призрачного поджигателя",
+  "item.mcda.ghost_kindler_boots":                "Ботинки призрачного поджигателя",
+
+  "item.mcda.ghost_kindler.tooltip_1":            "Странное пламя следует за изменяющейся формой тех,",
+  "item.mcda.ghost_kindler.tooltip_2":            "кто носит броню",
+  "item.mcda.ghost_kindler.tooltip_3":            "Призрачного Поджигателя.",
+
+  "item.mcda.white_mystery_armor_helmet":         "Белый таинственный шлем",
+  "item.mcda.white_mystery_armor_chestplate":     "Белый таинственный нагрудник",
+  "item.mcda.white_mystery_armor_leggings":       "Белые таинственные поножи",
+  "item.mcda.white_mystery_armor_boots":          "Белые таинственные ботинки",
+
+  "item.mcda.mystery_armor.tooltip_1":            "Некоторые кузнецы видят влияние дизайна",
+  "item.mcda.mystery_armor.tooltip_2":            "Железных големов в этой",
+  "item.mcda.mystery_armor.tooltip_3":            "изменяющей свойства броне.",
+
+  "item.mcda.blue_mystery_armor_helmet":          "Синий таинственный шлем",
+  "item.mcda.blue_mystery_armor_chestplate":      "Синий таинственный нагрудник",
+  "item.mcda.blue_mystery_armor_leggings":        "Синие таинственные поножи",
+  "item.mcda.blue_mystery_armor_boots":           "Синие таинственные ботинки",
+
+  "item.mcda.green_mystery_armor_helmet":         "Зеленый таинственный шлем",
+  "item.mcda.green_mystery_armor_chestplate":     "Зеленый таинственный нагрудник",
+  "item.mcda.green_mystery_armor_leggings":       "Зеленые таинственные поножи",
+  "item.mcda.green_mystery_armor_boots":          "Зеленые таинственные ботинки",
+
+  "item.mcda.purple_mystery_armor_helmet":        "Фиолетовый таинственный шлем",
+  "item.mcda.purple_mystery_armor_chestplate":    "Фиолетовый таинственный нагрудник",
+  "item.mcda.purple_mystery_armor_leggings":      "Фиолетовые таинственные поножи",
+  "item.mcda.purple_mystery_armor_boots":         "Фиолетовые таинственные ботинки",
+
+  "item.mcda.red_mystery_armor_helmet":           "Красный таинственный шлем",
+  "item.mcda.red_mystery_armor_chestplate":       "Красный таинственный нагрудник",
+  "item.mcda.red_mystery_armor_leggings":         "Красные таинственные поножи",
+  "item.mcda.red_mystery_armor_boots":            "Красные таинственные ботинки",
+
+  "item.mcda.scale_mail_chestplate":              "Чешуйчатая кольчуга",
+  "item.mcda.scale_mail_leggings":                "Чешуйчатые поножи",
+  "item.mcda.scale_mail_boots":                   "Чешуйчатые ботинки",
+
+  "item.mcda.scale_mail.tooltip_1":               "Эта броня, изготовленная у берегов",
+  "item.mcda.scale_mail.tooltip_2":               "великого моря, создание её было",
+  "item.mcda.scale_mail.tooltip_3":               "вдохновлено красотой чешуи рыбы.",
+
+  "item.mcda.highland_armor_helmet":              "Горный шлем",
+  "item.mcda.highland_armor_chestplate":          "Горный нагрудник",
+  "item.mcda.highland_armor_leggings":            "Горные поножи",
+  "item.mcda.highland_armor_boots":               "Горные ботинки",
+
+  "item.mcda.highland_armor.tooltip_1":           "Мудрый оружейник сделал эту броню с особой тщательностью,",
+  "item.mcda.highland_armor.tooltip_2":           "в ней есть элементы горных жителей деревни.",
+
+  "item.mcda.snow_armor_helmet":                  "Снежный шлем",
+  "item.mcda.snow_armor_chestplate":              "Снежный нагрудник",
+  "item.mcda.snow_armor_leggings":                "Снежные поножи",
+  "item.mcda.snow_armor_boots":                   "Снежные ботинки",
+
+  "item.mcda.snow_armor.tooltip_1":               "Доспехи, закаленные в таянии снега,",
+  "item.mcda.snow_armor.tooltip_2":               "защищающие владельца от",
+  "item.mcda.snow_armor.tooltip_3":               "сурового холода тундры.",
+
+  "item.mcda.frost_armor_helmet":                 "Морозный шлем",
+  "item.mcda.frost_armor_chestplate":             "Морозный нагрудник",
+  "item.mcda.frost_armor_leggings":               "Морозные поножи",
+  "item.mcda.frost_armor_boots":                  "Морозные ботинки",
+
+  "item.mcda.frost_armor.tooltip_1":              "Эта легендарная броня, выкованная из льда,",
+  "item.mcda.frost_armor.tooltip_2":              "который никогда не тает,",
+  "item.mcda.frost_armor.tooltip_3":              "заставляет владельца чувствовать себя единым целым с зимой.",
+
+  "item.mcda.soul_robe_helmet":                   "Капюшон душ",
+  "item.mcda.soul_robe_chestplate":               "Мантия душ",
+  "item.mcda.soul_robe_leggings":                 "Поножи душ",
+  "item.mcda.soul_robe_boots":                    "Ботинки душ",
+
+  "item.mcda.soul_robe.tooltip_1":                "В особом свете души,",
+  "item.mcda.soul_robe.tooltip_2":                "вплетенные в ткань Одеяния Душ,",
+  "item.mcda.soul_robe.tooltip_3":                "мерцают силой.",
+
+  "item.mcda.souldancer_robe_helmet":             "Капюшон танца душ",
+  "item.mcda.souldancer_robe_chestplate":         "Мантия танца душ",
+  "item.mcda.souldancer_robe_leggings":           "Поножи танца душ",
+  "item.mcda.souldancer_robe_boots":              "Ботинки танца душ",
+
+  "item.mcda.souldancer_robe.tooltip_1":          "Мантия танца душ оживает всё",
+  "item.mcda.souldancer_robe.tooltip_2":          "в свете, как будто",
+  "item.mcda.souldancer_robe.tooltip_3":          "души внутри танцуют целую вечность.",
+
+  "item.mcda.spelunker_armor_helmet":             "Шлем спелеолога",
+  "item.mcda.spelunker_armor_chestplate":         "Нагрудник спелеолога",
+  "item.mcda.spelunker_armor_leggings":           "Поножи спелеолога",
+  "item.mcda.spelunker_armor_boots":              "Ботинки спелеолога",
+
+  "item.mcda.spelunker_armor.tooltip_1":          "Доспехи спелеолога носят те,",
+  "item.mcda.spelunker_armor.tooltip_2":          "кто отваживается на самые темные глубины",
+  "item.mcda.spelunker_armor.tooltip_3":          "Верхнего Мира.",
+
+  "item.mcda.cave_crawler_helmet":                "Шлем пещерного кравлера",
+  "item.mcda.cave_crawler_chestplate":            "Нагрудник пещерного кравлера",
+  "item.mcda.cave_crawler_leggings":              "Поножи пещерного кравлера",
+  "item.mcda.cave_crawler_boots":                 "Ботинки пещерного кравлера",
+
+  "item.mcda.cave_crawler.tooltip_1":             "Броня пещерного кравлера передавалась",
+  "item.mcda.cave_crawler.tooltip_2":             "из поколения в поколение отважными",
+  "item.mcda.cave_crawler.tooltip_3":             "спелеологами и шахтерами.",
+
+  "item.mcda.thief_armor_helmet":                 "Маска вора",
+  "item.mcda.thief_armor_chestplate":             "Нагрудник вора",
+  "item.mcda.thief_armor_leggings":               "Поножи вора",
+  "item.mcda.thief_armor_boots":                  "Ботинки вора",
+
+  "item.mcda.thief_armor.tooltip_1":              "Эта броня легкая, маневренная и",
+  "item.mcda.thief_armor.tooltip_2":              "слегка пахнет серой.",
+
+  "item.mcda.spider_armor_helmet":                "Маска паука",
+  "item.mcda.spider_armor_chestplate":            "Жилет паука",
+  "item.mcda.spider_armor_leggings":              "Поножи паука",
+  "item.mcda.spider_armor_boots":                 "Ботинки паука",
+
+  "item.mcda.spider_armor.tooltip_1":             "Паучья броня, созданная мастером воров,",
+  "item.mcda.spider_armor.tooltip_2":             "вдохновлена ловкими",
+  "item.mcda.spider_armor.tooltip_3":             "талантами Пауков.",
+
+  "item.mcda.wolf_armor_helmet":                  "Волчий капюшон",
+  "item.mcda.wolf_armor_chestplate":              "Волчий жилет",
+  "item.mcda.wolf_armor_leggings":                "Волчьи поножи",
+  "item.mcda.wolf_armor_boots":                   "Волчьи ботинки",
+
+  "item.mcda.wolf_armor.tooltip_1":               "Многие воины надевают на битву",
+  "item.mcda.wolf_armor.tooltip_2":               "волчьи головы, чтобы вселить",
+  "item.mcda.wolf_armor.tooltip_3":               "страх в сердца своих врагов.",
+
+  "item.mcda.black_wolf_armor_helmet":            "Черный волчий капюшон",
+  "item.mcda.black_wolf_armor_chestplate":        "Черный волчий жилет",
+  "item.mcda.black_wolf_armor_leggings":          "Черные волчьи поножи",
+  "item.mcda.black_wolf_armor_boots":             "Черные волчьи ботинки",
+
+  "item.mcda.black_wolf_armor.tooltip_1":         "Волк, что нападает из тени,",
+  "item.mcda.black_wolf_armor.tooltip_2":         "живет, чтобы рассказать эту историю.",
+
+  "item.mcda.fox_armor_helmet":                   "Лисий капюшон",
+  "item.mcda.fox_armor_chestplate":               "Лисий жилет",
+  "item.mcda.fox_armor_leggings":                 "Лисьи поножи",
+  "item.mcda.fox_armor_boots":                    "Лисьи ботинки",
+
+  "item.mcda.fox_armor.tooltip_1":                "Древние деревенские племена создали эту броню",
+  "item.mcda.fox_armor.tooltip_2":                "в честь лиса, который является",
+  "item.mcda.fox_armor.tooltip_3":                "великим и ловким воином.",
+  "item.mcda.fox_armor.tooltip_4":                "Эта штука вселяет ужас в сердца многих врагов,",
+  "item.mcda.fox_armor.tooltip_5":                "так как имеет репутацию",
+  "item.mcda.fox_armor.tooltip_6":                "довольно труднопробиваемой.",
+
+  "item.mcda.arctic_fox_armor_helmet":            "Капюшон песца",
+  "item.mcda.arctic_fox_armor_chestplate":        "Жилет песца",
+  "item.mcda.arctic_fox_armor_leggings":          "Поножи песца",
+  "item.mcda.arctic_fox_armor_boots":             "Ботинки песца",
+
+  "item.mcda.arctic_fox_armor.tooltip_1":         "Если вы хотите стильно выжить в ледяной тундре,",
+  "item.mcda.arctic_fox_armor.tooltip_2":         "доспехи из песца",
+  "item.mcda.arctic_fox_armor.tooltip_3":         "лучший выбор в этом сезоне.",
+
+  "item.mcda.emerald_gear_helmet":                "Шлем с изумрудной амуницией",
+  "item.mcda.emerald_gear_chestplate":            "Нагрудник с изумрудной амуницией",
+  "item.mcda.emerald_gear_leggings":              "Поножи с изумрудной амуницией",
+  "item.mcda.emerald_gear_boots":                 "Ботинки с изумрудной амуницией",
+
+  "item.mcda.emerald_gear.tooltip_1":             "Когда вы носите Изумрудную броню",
+  "item.mcda.emerald_gear.tooltip_2":             "во время своих приключений,",
+  "item.mcda.emerald_gear.tooltip_3":             "она как бы случайно привлекает к вам другие изумруды.",
+
+  "item.mcda.opulent_armor_helmet":               "Роскошный бронированный шлем",
+  "item.mcda.opulent_armor_chestplate":           "Роскошный бронированный нагрудник",
+  "item.mcda.opulent_armor_leggings":             "Роскошные бронированные поножи",
+  "item.mcda.opulent_armor_boots":                "Роскошные бронированные ботинки",
+
+  "item.mcda.opulent_armor.tooltip_1":            "Роскошные доспехи, изначально предназначенные скорее ",
+  "item.mcda.opulent_armor.tooltip_2":            "для показа, чем для боя,",
+  "item.mcda.opulent_armor.tooltip_3":            "процветают в присутствии изумрудов.",
+
+  "item.mcda.gilded_glory_helmet":                "Позолоченный шлем славы",
+  "item.mcda.gilded_glory_chestplate":            "Позолоченный нагрудник славы",
+  "item.mcda.gilded_glory_leggings":              "Позолоченные поножи славы",
+  "item.mcda.gilded_glory_boots":                 "Позолоченный ботинки славы",
+
+  "item.mcda.gilded_glory.tooltip_1":             "Даже сама смерть вынуждена остановиться",
+  "item.mcda.gilded_glory.tooltip_2":             "и полюбоваться очарованием легендарных",
+  "item.mcda.gilded_glory.tooltip_3":             "Позолоченных доспехов Славы.",
+
+  "item.mcda.climbing_gear_helmet":               "Капюшон альпиниста",
+  "item.mcda.climbing_gear_chestplate":           "Куртка альпиниста",
+  "item.mcda.climbing_gear_leggings":             "Поножи альпиниста",
+  "item.mcda.climbing_gear_boots":                "Ботинки альпиниста",
+
+  "item.mcda.climbing_gear.tooltip_1":            "Это учебное альпинистское снаряжение идеально",
+  "item.mcda.climbing_gear.tooltip_2":            "подходит для того, чтобы противостоять обжигающему",
+  "item.mcda.climbing_gear.tooltip_3":            "холоду ледяного склона горы.",
+
+  "item.mcda.rugged_climbing_gear_helmet":        "Прочный капюшон альпиниста",
+  "item.mcda.rugged_climbing_gear_chestplate":    "Прочная куртка альпиниста",
+  "item.mcda.rugged_climbing_gear_leggings":      "Прочные поножи альпиниста",
+  "item.mcda.rugged_climbing_gear_boots":         "Прочные ботинки альпиниста",
+
+  "item.mcda.rugged_climbing_gear.tooltip_1":     "Примите на себя самое худшее, что может бросить вам",
+  "item.mcda.rugged_climbing_gear.tooltip_2":     "природа в этой прочной броне.",
+
+  "item.mcda.goat_gear_helmet":                   "Козий капюшон",
+  "item.mcda.goat_gear_chestplate":               "Козья куртка",
+  "item.mcda.goat_gear_leggings":                 "Козьи поножи",
+  "item.mcda.goat_gear_boots":                    "Козьи ботинки",
+
+  "item.mcda.goat_gear.tooltip_1":                "Сшитое из шкур горных козлов,",
+  "item.mcda.goat_gear.tooltip_2":                "вам захочется перепрыгивать с вершины на вершину",
+  "item.mcda.goat_gear.tooltip_3":                "в этом козьем снаряжении.",
+
+  "item.mcda.sprout_armor_boots":                 "Сапоги-ростки",
+  "item.mcda.sprout_armor_leggings":              "Поножи-ростки",
+  "item.mcda.sprout_armor_chestplate":            "Нагрудник-росток",
+  "item.mcda.sprout_armor_helmet":                "Шапка-росток",
+
+  "item.mcda.sprout_armor.tooltip_1":             "Темные лозы Брони-ростки",
+  "item.mcda.sprout_armor.tooltip_2":             "продолжают расти даже",
+  "item.mcda.sprout_armor.tooltip_3":             "в полной темноте.",
+
+  "item.mcda.living_vines_armor_boots":           "Сапоги из живой лозы",
+  "item.mcda.living_vines_armor_leggings":        "Поножи из живой лозы",
+  "item.mcda.living_vines_armor_chestplate":      "Куртка из живой лозы",
+  "item.mcda.living_vines_armor_helmet":          "Шлем из живой лозы",
+
+  "item.mcda.living_vines_armor.tooltip_1":       "Эта броня сделана из живых лоз",
+  "item.mcda.living_vines_armor.tooltip_2":       "растения, которое растет",
+  "item.mcda.living_vines_armor.tooltip_3":       "только на полях сражений.",
+
+  "item.mcda.piglin_armor_boots":                 "Ботинки пиглина",
+  "item.mcda.piglin_armor_leggings":              "Поножи пиглина",
+  "item.mcda.piglin_armor_chestplate":            "Нагрудник пиглина",
+  "item.mcda.piglin_armor_helmet":                "Шлем пиглина",
+
+  "item.mcda.piglin_armor.tooltip_1":             "Ношения доспехов Пиглина",
+  "item.mcda.piglin_armor.tooltip_2":             "почти достаточно, чтобы почувствовать",
+  "item.mcda.piglin_armor.tooltip_3":             "себя в Незере как дома. Почти.",
+
+  "item.mcda.golden_piglin_armor_boots":          "Золотые ботинки пиглина",
+  "item.mcda.golden_piglin_armor_leggings":       "Золотные поножи пиглина",
+  "item.mcda.golden_piglin_armor_chestplate":     "Золотой нагрудник пиглина",
+  "item.mcda.golden_piglin_armor_helmet":         "Золотой шлем пиглина",
+
+  "item.mcda.golden_piglin_armor.tooltip_1":      "Золотая броня Пиглина сочетает в",
+  "item.mcda.golden_piglin_armor.tooltip_2":      "себе две любимые вещи пиглина: ",
+  "item.mcda.golden_piglin_armor.tooltip_3":      "не умирать и золото.",
+
+  "item.mcda.squid_armor_boots":                  "Сапоги кальмара",
+  "item.mcda.squid_armor_leggings":               "Поножи кальмара",
+  "item.mcda.squid_armor_chestplate":             "Нагрудник кальмара",
+  "item.mcda.squid_armor_helmet":                 "Шлем кальмара",
+
+  "item.mcda.squid_armor.tooltip_1":              "Было легко заставить эту черную как",
+  "item.mcda.squid_armor.tooltip_2":              "смоль броню выглядеть круто.",
+  "item.mcda.squid_armor.tooltip_3":              "Самым трудным было закрепить мешочки с чернилами.",
+
+  "item.mcda.glow_squid_armor_boots":             "Сапоги светящегося кальмара",
+  "item.mcda.glow_squid_armor_leggings":          "Поножи светящегося кальмара",
+  "item.mcda.glow_squid_armor_chestplate":        "Нагрудник светящегося кальмара",
+  "item.mcda.glow_squid_armor_helmet":            "Шлем светящегося кальмара",
+
+  "item.mcda.glow_squid_armor.tooltip_1":         "Те, кто охотится на неуловимых",
+  "item.mcda.glow_squid_armor.tooltip_2":         "светящихся кальмаров, носят эту броню,",
+  "item.mcda.glow_squid_armor.tooltip_3":         "чтобы слиться со своей прекрасной добычей.",
+
+  "item.mcda.turtle_armor_boots":                 "Сапоги черепахи",
+  "item.mcda.turtle_armor_leggings":              "Поножи черепахи",
+  "item.mcda.turtle_armor_chestplate":            "Нагрудник черепахи",
+  "item.mcda.turtle_armor_helmet":                "Шлем черепахи",
+
+  "item.mcda.turtle_armor.tooltip_1":             "Черепашья броня вдохновлена",
+  "item.mcda.turtle_armor.tooltip_2":             "выносливым и защитным панцирем",
+  "item.mcda.turtle_armor.tooltip_3":             "скромной черепахи.",
+
+  "item.mcda.nimble_turtle_armor_boots":          "Проворные сапоги черепахи",
+  "item.mcda.nimble_turtle_armor_leggings":       "Проворные поножи черепахи",
+  "item.mcda.nimble_turtle_armor_chestplate":     "Проворный нагрудник черепахи",
+  "item.mcda.nimble_turtle_armor_helmet":         "Проворный шлем черепахи",
+
+  "item.mcda.nimble_turtle_armor.tooltip_1":      "Эта броня сделана из плотных",
+  "item.mcda.nimble_turtle_armor.tooltip_2":      "(но удивительно легких) панцирей черепах,",
+  "item.mcda.nimble_turtle_armor.tooltip_3":      "которые жили на гигатских глубинах.",
+
+  "item.mcda.entertainer_garb_helmet":            "Шляпа конферансье",
+  "item.mcda.entertainer_garb_chestplate":        "Нагрудник конферансье",
+  "item.mcda.entertainer_garb_leggings":          "Штаны конферансье",
+  "item.mcda.entertainer_garb_boots":             "Ботинки конферансье",
+
+  "item.mcda.entertainer_garb.tooltip_1":         "Защищаться? Конечно. Потрясающе? АБСОЛЮТНО.",
+
+  "item.mcda.troubadour_armor_helmet":            "Шляпа трубадура",
+  "item.mcda.troubadour_armor_chestplate":        "Нагрудник трубадура",
+  "item.mcda.troubadour_armor_leggings":          "Штаны трубадура",
+  "item.mcda.troubadour_armor_boots":             "Ботинки трубадура",
+
+  "item.mcda.troubadour_armor.tooltip_1":         "Зачем заставлять своих обожающих",
+  "item.mcda.troubadour_armor.tooltip_2":         "поклонников желать большего, когда вы можете",
+  "item.mcda.troubadour_armor.tooltip_3":         "поразить их этим вдохновляющим нарядом?",
+
+  "item.mcda.teleportation_robe_helmet":          "Капюшон телепортации",
+  "item.mcda.teleportation_robe_chestplate":      "Мантия телепортации",
+  "item.mcda.teleportation_robe_leggings":        "Пояс телепортации",
+  "item.mcda.teleportation_robe_boots":           "Ботинки телепортации",
+
+  "item.mcda.teleportation_robe.tooltip_1":       "Мантии для телепортации были сделаны теми,",
+  "item.mcda.teleportation_robe.tooltip_2":       "кто посвятил свою жизнь",
+  "item.mcda.teleportation_robe.tooltip_3":       "изучению загадок Эндер-мира.",
+
+  "item.mcda.unstable_robe_helmet":               "Неустойчивый капюшон",
+  "item.mcda.unstable_robe_chestplate":           "Неустойчивая мантия",
+  "item.mcda.unstable_robe_leggings":             "Неустойчивые поножи",
+  "item.mcda.unstable_robe_boots":                "Неустойчивый ботинки",
+
+  "item.mcda.unstable_robe.tooltip_1":            "Эта броня искрится статическим электричеством",
+  "item.mcda.unstable_robe.tooltip_2":            "когда вы плавно перемещаетесь по полю боя.",
+
+  "item.mcda.shulker_armor_helmet":               "Шлем шалкера",
+  "item.mcda.shulker_armor_chestplate":           "Нагрудник шалкера",
+  "item.mcda.shulker_armor_leggings":             "Поножи шалкера",
+  "item.mcda.shulker_armor_boots":                "Ботинки шалкера",
+
+  "item.mcda.shulker_armor.tooltip_1":            "Броня шалкера соперничает даже",
+  "item.mcda.shulker_armor.tooltip_2":            "самой прочной стальной пластиной.",
+
+  "item.mcda.sturdy_shulker_armor_helmet":        "Прочный шлем шалкера",
+  "item.mcda.sturdy_shulker_armor_chestplate":    "Прочный нагрудник шалкера",
+  "item.mcda.sturdy_shulker_armor_leggings":      "Прочные поножи шалкера",
+  "item.mcda.sturdy_shulker_armor_boots":         "Прочные ботинки шалкера",
+
+  "item.mcda.sturdy_shulker_armor.tooltip_1":     "Говорят, лучшая защита - это хорошее",
+  "item.mcda.sturdy_shulker_armor.tooltip_2":     "нападение, но удачи вам в",
+  "item.mcda.sturdy_shulker_armor.tooltip_3":     "прорыве через этот бастион.",
+
+  "item.mcda.gourdian_armor_helmet":              "Тыквенный шлем",
+  "item.mcda.gourdian_armor_chestplate":          "Тыквенный нагрудник",
+  "item.mcda.gourdian_armor_leggings":            "Тыквенные поножи",
+  "item.mcda.gourdian_armor_boots":               "Тыквенные ботинки",
+
+  "item.mcda.gourdian_armor.tooltip_1":           "Те, кто носит мантию",
+  "item.mcda.gourdian_armor.tooltip_2":           "Жуткой Тыквы, становятся легендарным",
+  "item.mcda.gourdian_armor.tooltip_3":           "ужасом Тыквенных",
+  "item.mcda.gourdian_armor.tooltip_4":           "Пастбищ.",
+
+  "item.mcda.cauldron_armor_helmet":              "Шлем-котёл",
+  "item.mcda.cauldron_armor_chestplate":          "Нагрудник-котёл",
+  "item.mcda.cauldron_armor_leggings":            "Поножи-котёл",
+  "item.mcda.cauldron_armor_boots":               "Ботинки-котёл",
+
+  "item.mcda.cauldron_armor.tooltip_1":           "Броня котла была создана с учетом камуфляжа,",
+  "item.mcda.cauldron_armor.tooltip_2":           "но то, чего ей не хватает",
+  "item.mcda.cauldron_armor.tooltip_3":           "в скрытности, она компенсирует",
+  "item.mcda.cauldron_armor.tooltip_4":           "игристым очарованием.",
+
+  "item.mcda.sweet_tooth_helmet":                 "Шлем сладкоежек",
+  "item.mcda.sweet_tooth_chestplate":             "Нагрудник сладкоежки",
+  "item.mcda.sweet_tooth_leggings":               "Поножи сладкоежки",
+  "item.mcda.sweet_tooth_boots":                  "Ботинки сладкоежки",
+
+  "item.mcda.sweet_tooth.tooltip_1":              "Эта броня может показаться вашим врагам",
+  "item.mcda.sweet_tooth.tooltip_2":              "сущим пустяком, но она",
+  "item.mcda.sweet_tooth.tooltip_3":              "удивительно прочна в бою.",
+  "item.mcda.sweet_tooth.tooltip_4":              "Должно быть, это помадка.",
+
+  "item.mcda.vanguard_armor_helmet":                 "Шлем авангарда",
+  "item.mcda.vanguard_armor_chestplate":             "Нагрудник авангарда",
+  "item.mcda.vanguard_armor_leggings":               "Поножи авангарда",
+
+  "item.mcda.bone_rib_cage":                      "Костная грудная клетка",
+  "item.mcda.phantom_bones":                      "Призрачные кости",
+  "item.mcda.phantom_skin":                       "Фантомная кожа",
+  "item.mcda.ocelot_pelt":                        "Шкура оцелота",
+  "item.mcda.ocelot_pelt_black":                  "Шкура черного оцелота",
+  "item.mcda.wolf_pelt":                          "Волчья шкура",
+  "item.mcda.wolf_pelt_black":                    "Черная волчья шкура",
+  "item.mcda.fox_pelt":                           "Лисья шкура",
+  "item.mcda.fox_pelt_arctic":                    "Шкура песца",
+  "item.mcda.goat_pelt":                          "Козья шкура",
+  "item.mcda.frost_crystal":                      "Морозный кристалл",
+  "item.mcda.glut_charm":                         "Очарование избытка",
+  "item.mcda.iron_plate":                         "Железная пластина",
+  "item.mcda.iron_scale":                         "Железная окалина",
+  "item.mcda.fabric_bolt_white":                  "Белый рулон ткани",
+  "item.mcda.fabric_bolt_orange":                 "Оранжевый рулон ткани",
+  "item.mcda.fabric_bolt_magenta":                "Пурпурный рулон ткани",
+  "item.mcda.fabric_bolt_light_blue":             "Светло-голубой рулон ткани",
+  "item.mcda.fabric_bolt_yellow":                 "Желтый рулон ткани",
+  "item.mcda.fabric_bolt_lime":                   "Лаймовый рулон ткани",
+  "item.mcda.fabric_bolt_pink":                   "Розовый рулон ткани",
+  "item.mcda.fabric_bolt_gray":                   "Серый рулон ткани",
+  "item.mcda.fabric_bolt_light_gray":             "Светло-серый рулон ткани",
+  "item.mcda.fabric_bolt_cyan":                   "Голубой рулон ткани",
+  "item.mcda.fabric_bolt_purple":                 "Фиолетовый рулон ткани",
+  "item.mcda.fabric_bolt_blue":                   "Синий рулон ткани",
+  "item.mcda.fabric_bolt_brown":                  "Коричневый рулон ткани",
+  "item.mcda.fabric_bolt_green":                  "Зелёный рулон ткани",
+  "item.mcda.fabric_bolt_red":                    "Красный рулон ткани",
+  "item.mcda.fabric_bolt_black":                  "Чёрный рулон ткани",
+
+  "item.mcda.upgrade_core":                       "Обновление ядра - базовый",
+  "item.mcda.upgrade_core_archer":                "Обновление ядра - лучник",
+  "item.mcda.upgrade_core_depth":                 "Обновление ядра - глубина",
+  "item.mcda.upgrade_core_ember":                 "Обновление ядра - уголёк",
+  "item.mcda.upgrade_core_fox":                   "Обновление ядра - лиса",
+  "item.mcda.upgrade_core_frost":                 "Обновление ядра - мороз",
+  "item.mcda.upgrade_core_glut":                  "Обновление ядра - избыток",
+  "item.mcda.upgrade_core_golden":                "Обновление ядра - золотой",
+  "item.mcda.upgrade_core_highland":              "Обновление ядра - нагорье",
+  "item.mcda.upgrade_core_hive":                  "Обновление ядра - улей",
+  "item.mcda.upgrade_core_magicked":              "Обновление ядра - заколдованный",
+  "item.mcda.upgrade_core_metal":                 "Обновление ядра - металлический",
+  "item.mcda.upgrade_core_oceanic":               "Обновление ядра - океанический",
+  "item.mcda.upgrade_core_shadows":               "Обновление ядра - теневой",
+  "item.mcda.upgrade_core_spider":                "Обновление ядра - паук",
+  "item.mcda.upgrade_core_soul":                  "Обновление ядра - душа",
+  "item.mcda.upgrade_core_verdant":               "Обновление ядра - зеленеющий",
+  "item.mcda.upgrade_core_void":                  "Обновление ядра - бездна",
+  "item.mcda.upgrade_core_wither":                "Обновление ядра - визер",
+  "item.mcda.upgrade_core_wolf":                  "Обновление ядра - волк",
+
+  "item.mcda.gemstone_white":                     "Драгоценный камень из кварца",
+  "item.mcda.gemstone_blue":                      "Драгоценный камень из лазурита",
+  "item.mcda.gemstone_green":                     "Драгоценный камень из изумруда",
+  "item.mcda.gemstone_purple":                    "Драгоценный камень из аметиста",
+  "item.mcda.gemstone_red":                       "Драгоценный камень из красного камня",
+
+
+
+  "enchantment.mcda.bag_of_souls":                "Мешок душ",
+  "enchantment.mcda.burning":                     "Сжигание",
+  "enchantment.mcda.chilling":                    "Охлаждение",
+  "enchantment.mcda.cowardice":                   "Трусость",
+  "enchantment.mcda.death_barter":                "Смертный обмен",
+  "enchantment.mcda.deflect":                     "Отклонение",
+  "enchantment.mcda.fire_focus":                  "Фокус огня",
+  "enchantment.mcda.fire_trail":                  "Огненный след",
+  "enchantment.mcda.food_reserves":               "Запасы продовольствия",
+  "enchantment.mcda.frenzied":                    "Бешеный",
+  "enchantment.mcda.heal_allies":                 "Исцелять союзников",
+  "enchantment.mcda.lucky_explorer":              "Удачливый исследователь",
+  "enchantment.mcda.poison_focus":                "Ядовитый фокус",
+  "enchantment.mcda.potion_barrier":              "Барьер от зелий",
+  "enchantment.mcda.reckless":                    "Безрассудный",
+  "enchantment.mcda.recycler":                    "Утилизатор",
+  "enchantment.mcda.snowball":                    "Снежок",
+  "enchantment.mcda.surprise_gift":               "Подарок-сюрприз",
+  "enchantment.mcda.swiftfooted":                 "Быстроногий",
+
+  "effect.mcda.freezing":                         "Заморозка",
+
+  "subtitles.mcda.player_dodged":                 "Игрок увернулся",
+
+  "enchantment.mcda.bag_of_souls.desc":           "Увеличивает количество получаемого вами опыта относительно уровня заклинания.",
+  "enchantment.mcda.burning.desc":                "Огненная версия шипов.",
+  "enchantment.mcda.chilling.desc":               "Замедляет и наносит атакующему усталость.",
+  "enchantment.mcda.cowardice.desc":              "Когда вы полностью здоровы, вы получаете эффект силы.",
+  "enchantment.mcda.death_barter.desc":           "Когда ты умрешь, ты сможешь заплатить за свое возраждение изумрудами.",
+  "enchantment.mcda.deflect.desc":                "Когда в вас стреляют стрелой, есть вероятность, что стрела нанесет половину урона и может быть отброшена от вас.",
+  "enchantment.mcda.fire_focus.desc":             "Увеличивает количество урона, наносимого огненными атаками, особенно огненным аспектом.",
+  "enchantment.mcda.fire_trail.desc":             "Огненный след следует за игроком.",
+  "enchantment.mcda.food_reserves.desc":          "Когда вы пьете зелье мгновенного здоровья, вы получаете какую-то форму пищи.",
+  "enchantment.mcda.frenzied.desc":               "Когда ваше здоровье падает ниже 50%, вы получаете эффект спешки.",
+  "enchantment.mcda.heal_allies.desc":            "Союзники (жители деревни, домашние животные, големы и другие игроки) исцеляются при получении урона.",
+  "enchantment.mcda.lucky_explorer.desc":         "Шанс создавать изумруды с каждым исследованным блоком.",
+  "enchantment.mcda.poison_focus.desc":           "Увеличивает количество урона, наносимого ядовитыми атаками.",
+  "enchantment.mcda.potion_barrier.desc":         "Когда вы пьете зелье мгновенного здоровья, вы получаете эффект сопротивления.",
+  "enchantment.mcda.reckless.desc":               "Ваше здоровье уменьшается до 60%, но вы получаете эффект силы относительно уровня заклинания.",
+  "enchantment.mcda.recycler.desc":               "При выстреле в вас стрелой есть шанс, что вы получите стрелу, поймав или подобрав стрелу.",
+  "enchantment.mcda.snowball.desc":               "При нападении двух или более нападающих в одного из нападающих будет брошен волшебный снежок, отбрасывающий его назад.",
+  "enchantment.mcda.surprise_gift.desc":          "Выпивая зелье мгновенного здоровья, вы получаете другое зелье из набора опций.",
+  "enchantment.mcda.swiftfooted.desc":            "При прыжке вы получаете несколько секунд увеличения скорости."
+
+}
