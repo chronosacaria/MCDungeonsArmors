@@ -15,6 +15,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Rarity;
 import net.minecraft.world.World;
 
@@ -82,16 +83,23 @@ public class ArmorSetItem extends ArmorItem {
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         super.appendTooltip(itemStack, world, tooltip, tooltipContext);
 
+        String setId = switch (set) {
+            case MYSTERY, BLUE_MYSTERY, GREEN_MYSTERY, PURPLE_MYSTERY, RED_MYSTERY -> "mystery_armor";
+            default -> set.getSetName();
+        };
+
         for (int i = 1; i <= MAX_TOOLTIPS; i++) {
-            String setId = switch (set) {
-                case MYSTERY, BLUE_MYSTERY, GREEN_MYSTERY, PURPLE_MYSTERY, RED_MYSTERY -> "mystery_armor";
-                default -> set.getSetName();
-            };
 
             String translationKey = String.format("item.mcda.%s.tooltip_%d", setId, i);
 
             if (I18n.hasTranslation(translationKey))
                 tooltip.add(new TranslatableText(translationKey));
+        }
+
+        //String translationKey = String.format("item.mcda.%s.effect.tooltip_%d", setId, i);
+
+        if (slot == EquipmentSlot.FEET && (set == ArmorSets.RUGGED_CLIMBING_GEAR || set == ArmorSets.SNOW || set == ArmorSets.GOAT)) {
+            tooltip.add(new TranslatableText("Lightfooted").formatted(Formatting.AQUA));
         }
 
         // "attribute.name.healthPotionsHealNearbyAllies"
