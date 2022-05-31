@@ -9,6 +9,8 @@
   "item.mcda.archers.tooltip_1":                  "Favored by humble warriors, it's cheap",
   "item.mcda.archers.tooltip_2":                  "to make and still stops a blade.",
 
+  "item.mcda.archers.effect.tooltip_1":           "Archer's Prowess",
+
   "item.mcda.beehive_armor_helmet":               "Beehive Helmet",
   "item.mcda.beehive_armor_chestplate":           "Beehive Chestplate",
   "item.mcda.beehive_armor_leggings":             "Beehive Leggings",
@@ -16,6 +18,8 @@
 
   "item.mcda.beehive_armor.tooltip_1":            "The Beehive Armor hums with the",
   "item.mcda.beehive_armor.tooltip_2":            "focused power of countless bees.",
+
+  "item.mcda.beehive_armor.effect.tooltip_1":     "Buzzy Hive",
 
   "item.mcda.beenest_armor_helmet":               "Beenest Helmet",
   "item.mcda.beenest_armor_chestplate":           "Beenest Chestplate",
@@ -25,6 +29,8 @@
   "item.mcda.beenest_armor.tooltip_1":            "There always seems to be a slight",
   "item.mcda.beenest_armor.tooltip_2":            "buzz around the Beenest Armor. Or",
   "item.mcda.beenest_armor.tooltip_3":            "maybe the buzz is coming from within?",
+
+  "item.mcda.beenest_armor.effect.tooltip_1":     "Buzzy Hive",
 
   "item.mcda.hunters_chestplate":                 "Hunter's Vest",
 
@@ -37,6 +43,8 @@
   "item.mcda.splendid_robe.tooltip_1":            "This distinguished robe",
   "item.mcda.splendid_robe.tooltip_2":            "is worn by the hardened Illager",
   "item.mcda.splendid_robe.tooltip_3":            "warriors who protect the Arch-Illager.",
+
+  "item.mcda.splendid_robe.effect.tooltip_1":     "Splendid Attack",
 
   "item.mcda.battle_robe_chestplate":             "Battle Robe",
   "item.mcda.battle_robe_leggings":               "Battle Pants",
@@ -63,7 +71,8 @@
   "item.mcda.heros_armor.tooltip_1":              "Only given to the highest caliber of",
   "item.mcda.heros_armor.tooltip_2":              "heroes, this armor is a precious gift",
   "item.mcda.heros_armor.tooltip_3":              "from the Villagers.",
-  "attribute.name.healthPotionsHealNearbyAllies": "Health Potions heal nearby allies.",
+
+  "item.mcda.heros_armor.effect.tooltip_1":       "Hero of the Village",
 
   "item.mcda.titans_shroud_helmet":               "Titan's Shroud Helmet",
   "item.mcda.titans_shroud_chestplate":           "Titan's Shroud Chestplate",
@@ -72,6 +81,8 @@
 
   "item.mcda.titans_shroud.tooltip_1":            "This armor has passed through",
   "item.mcda.titans_shroud.tooltip_2":            "the hands of evil for generations.",
+
+  "item.mcda.titans_shroud.effect.tooltip_1":     "Titan's Shroud",
 
   "item.mcda.dark_armor_helmet":                  "Dark Helmet",
   "item.mcda.dark_armor_chestplate":              "Dark Chestplate",
@@ -109,6 +120,8 @@
   "item.mcda.ember_robe.tooltip_2":               "Evokers to distinguish themselves",
   "item.mcda.ember_robe.tooltip_3":               "from the common guard.",
 
+  "item.mcda.ember_robe.effect.tooltip_1":        "Ember Jump",
+
   "item.mcda.verdant_robe_helmet":                "Verdant Hat",
   "item.mcda.verdant_robe_chestplate":            "Verdant Robe",
   "item.mcda.verdant_robe_leggings":              "Verdant Pants",
@@ -116,6 +129,8 @@
   "item.mcda.verdant_robe.tooltip_1":             "Those who don this robe soon find",
   "item.mcda.verdant_robe.tooltip_2":             "that they can commune with more souls",
   "item.mcda.verdant_robe.tooltip_3":             "than ever before.",
+
+  "item.mcda.verdant_robe.effect.tooltip_1":      "Sylvan Presence",
 
   "item.mcda.grim_armor_helmet":                  "Grim Helmet",
   "item.mcda.grim_armor_chestplate":              "Grim Chestplate",
@@ -135,6 +150,8 @@
   "item.mcda.wither_armor.tooltip_2":             "enemies, was made to terrify",
   "item.mcda.wither_armor.tooltip_3":             "the wearer's enemies.",
 
+  "item.mcda.wither_armor.effect.tooltip_1":      "Withered",
+
   "item.mcda.guards_armor_helmet":                "Guard's Helmet",
   "item.mcda.guards_armor_chestplate":            "Guard's Chestplate",
   "item.mcda.guards_armor_leggings":              "Guard's Leggings",
@@ -152,6 +169,8 @@
   "item.mcda.curious_armor.tooltip_1":            "No one knows where this strange",
   "item.mcda.curious_armor.tooltip_2":            "armor came from, but it seems",
   "item.mcda.curious_armor.tooltip_3":            "familiar to you.",
+
+  "item.mcda.curious_armor.effect.tooltip_1":     "Curious Teleportation",
 
   "item.mcda.mercenary_armor_helmet":             "Mercenary Helmet",
   "item.mcda.mercenary_armor_chestplate":         "Mercenary Chestplate",
@@ -171,6 +190,8 @@
   "item.mcda.renegade_armor.tooltip_2":           "for mercenaries hired to protect",
   "item.mcda.renegade_armor.tooltip_3":           "the villages against Illagers.",
 
+  "item.mcda.renegade_armor.effect.tooltip_1":    "Renegade's Rush",
+
   "item.mcda.hungry_horror_helmet":               "Hungry Horror Helmet",
   "item.mcda.hungry_horror_chestplate":           "Hungry Horror Chestplate",
   "item.mcda.hungry_horror_leggings":             "Hungry Horror Leggings",
@@ -180,6 +201,9 @@
   "item.mcda.hungry_horror.tooltip_2":            "the sounds of screams fill",
   "item.mcda.hungry_horror.tooltip_3":            "the air. But are the screams",
   "item.mcda.hungry_horror.tooltip_4":            "yours, or your enemies?",
+
+  "item.mcda.hungry_horror.effect.tooltip_1":     "Hunger",
+  "item.mcda.hungry_horror.effect.tooltip_2":     "Hunger Pains",
 
   "item.mcda.ocelot_armor_helmet":                "Ocelot Helmet",
   "item.mcda.ocelot_armor_chestplate":            "Ocelot Chestplate",
@@ -202,6 +226,9 @@
   "item.mcda.shadow_walker_armor.tooltip_4":      "like your enemies are left chasing",
   "item.mcda.shadow_walker_armor.tooltip_5":      "your shadow.",
 
+  "item.mcda.shadow_walker_armor.effect.tooltip_1":   "No Fall Damage",
+  "item.mcda.shadow_walker_armor.effect.tooltip_2":   "Sprinting",
+
   "item.mcda.phantom_armor_helmet":               "Phantom Helmet",
   "item.mcda.phantom_armor_chestplate":           "Phantom Chestplate",
   "item.mcda.phantom_armor_leggings":             "Phantom Leggings",
@@ -211,6 +238,8 @@
   "item.mcda.phantom_armor.tooltip_2":            "of Phantoms, is a terrifying sight",
   "item.mcda.phantom_armor.tooltip_3":            "on the battlefield.",
 
+  "item.mcda.phantom_armor.effect.tooltip_1":     "Slow Falling",
+
   "item.mcda.frost_bite_armor_helmet":            "Frost Bite Helmet",
   "item.mcda.frost_bite_armor_chestplate":        "Frost Bite Chestplate",
   "item.mcda.frost_bite_armor_leggings":          "Frost Bite Leggings",
@@ -219,6 +248,9 @@
   "item.mcda.frost_bite_armor.tooltip_1":         "Frost Bite remembers the icy winds",
   "item.mcda.frost_bite_armor.tooltip_2":         "which once flowed beneath the wings",
   "item.mcda.frost_bite_armor.tooltip_3":         "of the night Phantoms.",
+
+  "item.mcda.frost_bite_armor.effect.tooltip_1":  "Slow Falling",
+  "item.mcda.frost_bite_armor.effect.tooltip_2":  "Frost Bite",
 
   "item.mcda.plate_armor_helmet":                 "Plate Helmet",
   "item.mcda.plate_armor_chestplate":             "Plate Chestplate",
@@ -254,6 +286,8 @@
   "item.mcda.stalwart_armor.tooltip_1":           "This reliable armor is sturdy enough",
   "item.mcda.stalwart_armor.tooltip_2":           "to be passed down for generations.",
 
+  "item.mcda.stalwart_armor.effect.tooltip_1":    "Stalwart Bulwark",
+
   "item.mcda.ghostly_armor_helmet":               "Ghostly Helmet",
   "item.mcda.ghostly_armor_chestplate":           "Ghostly Gambison",
   "item.mcda.ghostly_armor_leggings":             "Ghostly Leggings",
@@ -273,6 +307,9 @@
   "item.mcda.ghost_kindler.tooltip_2":            "form of those who wear the Ghost",
   "item.mcda.ghost_kindler.tooltip_3":            "Kindler armor.",
 
+  "item.mcda.ghost_kindler.effect.tooltip_1":     "Ghost Kindling",
+  "item.mcda.ghost_kindler.effect.tooltip_2":     "Ghost Kindler Trail",
+
   "item.mcda.white_mystery_armor_helmet":         "White Mystery Helmet",
   "item.mcda.white_mystery_armor_chestplate":     "White Mystery Chestplate",
   "item.mcda.white_mystery_armor_leggings":       "White Mystery Leggings",
@@ -281,6 +318,8 @@
   "item.mcda.mystery_armor.tooltip_1":            "Some blacksmiths see the design",
   "item.mcda.mystery_armor.tooltip_2":            "influence of Iron Golems in this",
   "item.mcda.mystery_armor.tooltip_3":            "property-shifting armor.",
+
+  "item.mcda.mystery_armor.effect.tooltip_1":     "Mystery Effect",
 
   "item.mcda.blue_mystery_armor_helmet":          "Blue Mystery Helmet",
   "item.mcda.blue_mystery_armor_chestplate":      "Blue Mystery Chestplate",
@@ -318,6 +357,8 @@
   "item.mcda.highland_armor.tooltip_1":           "A wise armorer made this armor with care,",
   "item.mcda.highland_armor.tooltip_2":           "it has elements of the mountain Villagers.",
 
+  "item.mcda.highland_armor.effect.tooltip_1":    "Haste",
+
   "item.mcda.snow_armor_helmet":                  "Snow Helmet",
   "item.mcda.snow_armor_chestplate":              "Snow Chestplate",
   "item.mcda.snow_armor_leggings":                "Snow Leggings",
@@ -335,6 +376,8 @@
   "item.mcda.frost_armor.tooltip_1":              "This legendary armor, forged from ice",
   "item.mcda.frost_armor.tooltip_2":              "that never melts, makes the wearer",
   "item.mcda.frost_armor.tooltip_3":              "feel as if they are one with winter.",
+
+  "item.mcda.frost_armor.effect.tooltip_1":       "Fluid Freezing",
 
   "item.mcda.soul_robe_helmet":                   "Soul Hood",
   "item.mcda.soul_robe_chestplate":               "Soul Robe",
@@ -354,6 +397,9 @@
   "item.mcda.souldancer_robe.tooltip_2":          "in the light, as if the souls",
   "item.mcda.souldancer_robe.tooltip_3":          "within are dancing for all eternity.",
 
+  "item.mcda.souldancer_robe.effect.tooltip_1":   "Souldancer's Grace",
+  "item.mcda.souldancer_robe.effect.tooltip_2":   "Souldancer Experience",
+
   "item.mcda.spelunker_armor_helmet":             "Spelunker Helmet",
   "item.mcda.spelunker_armor_chestplate":         "Spelunker Vest",
   "item.mcda.spelunker_armor_leggings":           "Spelunker Leggings",
@@ -372,6 +418,8 @@
   "item.mcda.cave_crawler.tooltip_2":             "down through generations of brave",
   "item.mcda.cave_crawler.tooltip_3":             "spelunkers and miners.",
 
+  "item.mcda.cave_crawler.effect.tooltip_1":      "Haste",
+
   "item.mcda.thief_armor_helmet":                 "Thief Mask",
   "item.mcda.thief_armor_chestplate":             "Thief Vest",
   "item.mcda.thief_armor_leggings":               "Thief Leggings",
@@ -379,6 +427,8 @@
 
   "item.mcda.thief_armor.tooltip_1":              "This armor is light, nimble, and",
   "item.mcda.thief_armor.tooltip_2":              "smells faintly of sulfur.",
+
+  "item.mcda.thief_armor.effect.tooltip_1":       "Invisibility",
 
   "item.mcda.spider_armor_helmet":                "Spider Mask",
   "item.mcda.spider_armor_chestplate":            "Spider Vest",
@@ -388,6 +438,9 @@
   "item.mcda.spider_armor.tooltip_1":             "Spider Armor, created by master",
   "item.mcda.spider_armor.tooltip_2":             "thieves, is inspired by the agile",
   "item.mcda.spider_armor.tooltip_3":             "talents of the Spider.",
+
+  "item.mcda.spider_armor.effect.tooltip_1":      "Wall Climbing",
+  "item.mcda.spider_armor.effect.tooltip_2":      "Cobweb Walking",
 
   "item.mcda.wolf_armor_helmet":                  "Wolf Hood",
   "item.mcda.wolf_armor_chestplate":              "Wolf Vest",
@@ -406,6 +459,8 @@
   "item.mcda.black_wolf_armor.tooltip_1":         "The wolf who strikes from the",
   "item.mcda.black_wolf_armor.tooltip_2":         "shadows lives to tell the tale.",
 
+  "item.mcda.black_wolf_armor.effect.tooltip_1":  "Leader of the Pack",
+
   "item.mcda.fox_armor_helmet":                   "Fox Hood",
   "item.mcda.fox_armor_chestplate":               "Fox Vest",
   "item.mcda.fox_armor_leggings":                 "Fox Leggings",
@@ -418,6 +473,9 @@
   "item.mcda.fox_armor.tooltip_5":                "as it has a reputation for being quite",
   "item.mcda.fox_armor.tooltip_6":                "difficult to pierce.",
 
+  "item.mcda.fox_armor.effect.tooltip_1":         "Bush Walking",
+  "item.mcda.fox_armor.effect.tooltip_2":         "Fox's Pounce",
+
   "item.mcda.arctic_fox_armor_helmet":            "Arctic Fox Hood",
   "item.mcda.arctic_fox_armor_chestplate":        "Arctic Fox Vest",
   "item.mcda.arctic_fox_armor_leggings":          "Arctic Fox Leggings",
@@ -426,6 +484,11 @@
   "item.mcda.arctic_fox_armor.tooltip_1":         "If you want to survive in the icy",
   "item.mcda.arctic_fox_armor.tooltip_2":         "tundra in style, the Arctic Fox Armor",
   "item.mcda.arctic_fox_armor.tooltip_3":         "is the best choice this season.",
+
+  "item.mcda.arctic_fox_armor.effect.tooltip_1":  "Bush Walking",
+  "item.mcda.arctic_fox_armor.effect.tooltip_2":  "Fox's Pounce",
+  "item.mcda.arctic_fox_armor.effect.tooltip_3":  "Arctic High Ground",
+  "item.mcda.arctic_fox_armor.effect.tooltip_4":  "Sweet Berry Speed",
 
   "item.mcda.emerald_gear_helmet":                "Emerald Gear Helmet",
   "item.mcda.emerald_gear_chestplate":            "Emerald Gear Chestplate",
@@ -445,6 +508,8 @@
   "item.mcda.opulent_armor.tooltip_2":            "for show than combat, thrives in the",
   "item.mcda.opulent_armor.tooltip_3":            "presence of emeralds.",
 
+  "item.mcda.opulent_armor.effect.tooltip_1":     "Luck",
+
   "item.mcda.gilded_glory_helmet":                "Gilded Glory Helmet",
   "item.mcda.gilded_glory_chestplate":            "Gilded Glory Chestplate",
   "item.mcda.gilded_glory_leggings":              "Gilded Glory Leggings",
@@ -453,6 +518,11 @@
   "item.mcda.gilded_glory.tooltip_1":             "Even death itself has to pause and",
   "item.mcda.gilded_glory.tooltip_2":             "admire the charms of the legendary",
   "item.mcda.gilded_glory.tooltip_3":             "Gilded Glory armor.",
+
+  "item.mcda.gilded_glory.effect.tooltip_1":      "Hero of the Village",
+  "item.mcda.gilded_glory.effect.tooltip_2":      "Gilded Totem",
+  "item.mcda.gilded_glory.effect.tooltip_3":      "Gilded Damage",
+  "item.mcda.gilded_glory.effect.tooltip_4":      "False Idol",
 
   "item.mcda.climbing_gear_helmet":               "Climbing Gear Hood",
   "item.mcda.climbing_gear_chestplate":           "Climbing Gear Jacket",
@@ -470,6 +540,8 @@
 
   "item.mcda.rugged_climbing_gear.tooltip_1":     "Take on the worst that nature can",
   "item.mcda.rugged_climbing_gear.tooltip_2":     "throw at you in this rugged armor.",
+
+  "item.mcda.rugged_climbing_gear.effect.tooltip_1":  "Rugged Climbing",
 
   "item.mcda.goat_gear_helmet":                   "Goat Gear Hood",
   "item.mcda.goat_gear_chestplate":               "Goat Gear Jacket",
@@ -489,6 +561,8 @@
   "item.mcda.sprout_armor.tooltip_2":             "continue to grow, even in complete",
   "item.mcda.sprout_armor.tooltip_3":             "darkness.",
 
+  "item.mcda.sprout_armor.effect.tooltip_1":      "Fire Resistance",
+
   "item.mcda.living_vines_armor_boots":           "Living Vines Boots",
   "item.mcda.living_vines_armor_leggings":        "Living Vines Pants",
   "item.mcda.living_vines_armor_chestplate":      "Living Vines Robe",
@@ -497,6 +571,8 @@
   "item.mcda.living_vines_armor.tooltip_1":       "This armor is made from the living",
   "item.mcda.living_vines_armor.tooltip_2":       "vines of a plant which grows only",
   "item.mcda.living_vines_armor.tooltip_3":       "on battlefields.",
+
+  "item.mcda.living_vines_armor.effect.tooltip_1":   "Fire Resistance",
 
   "item.mcda.piglin_armor_boots":                 "Piglin Boots",
   "item.mcda.piglin_armor_leggings":              "Piglin Leggings",
@@ -516,6 +592,8 @@
   "item.mcda.golden_piglin_armor.tooltip_2":      "a piglin's two favorite things:",
   "item.mcda.golden_piglin_armor.tooltip_3":      "not dying and gold.",
 
+  "item.mcda.golden_piglin_armor.effect.tooltip_1":   "Piglin Fooling",
+
   "item.mcda.squid_armor_boots":                  "Squid Boots",
   "item.mcda.squid_armor_leggings":               "Squid Leggings",
   "item.mcda.squid_armor_chestplate":             "Squid Chestplate",
@@ -533,6 +611,8 @@
   "item.mcda.glow_squid_armor.tooltip_1":         "Those who hunt elusive glow squids",
   "item.mcda.glow_squid_armor.tooltip_2":         "wear this armor to blend in with",
   "item.mcda.glow_squid_armor.tooltip_3":         "their beautiful prey.",
+
+  "item.mcda.glow_squid_armor.effect.tooltip_1":  "Water Breathing",
 
   "item.mcda.turtle_armor_boots":                 "Turtle Boots",
   "item.mcda.turtle_armor_leggings":              "Turtle Leggings",
@@ -552,6 +632,8 @@
   "item.mcda.nimble_turtle_armor.tooltip_2":      "(but surprisingly light) shells of",
   "item.mcda.nimble_turtle_armor.tooltip_3":      "turtles who lived at crushing depths.",
 
+  "item.mcda.nimble_turtle_armor.effect.tooltip_1":  "Nimble Turtle Resilience",
+
   "item.mcda.entertainer_garb_helmet":            "Entertainer's Hat",
   "item.mcda.entertainer_garb_chestplate":        "Entertainer's Vest",
   "item.mcda.entertainer_garb_leggings":          "Entertainer's Pants",
@@ -568,6 +650,8 @@
   "item.mcda.troubadour_armor.tooltip_2":         "more when you can wow them with this",
   "item.mcda.troubadour_armor.tooltip_3":         "inspirational outfit?",
 
+  "item.mcda.troubadour_armor.effect.tooltip_1":  "Troubadour's Charisma",
+
   "item.mcda.teleportation_robe_helmet":          "Teleportation Hood",
   "item.mcda.teleportation_robe_chestplate":      "Teleportation Robe",
   "item.mcda.teleportation_robe_leggings":        "Teleportation Sash",
@@ -577,6 +661,8 @@
   "item.mcda.teleportation_robe.tooltip_2":       "those who devoted their lives to studying",
   "item.mcda.teleportation_robe.tooltip_3":       "the enigmas of the End.",
 
+  "item.mcda.teleportation_robe.effect.tooltip_1":  "Teleportation",
+
   "item.mcda.unstable_robe_helmet":               "Unstable Hood",
   "item.mcda.unstable_robe_chestplate":           "Unstable Robe",
   "item.mcda.unstable_robe_leggings":             "Unstable Sash",
@@ -584,6 +670,8 @@
 
   "item.mcda.unstable_robe.tooltip_1":            "This Enderobe sparks with static as you",
   "item.mcda.unstable_robe.tooltip_2":            "sashay across the battlefield.",
+
+  "item.mcda.unstable_robe.effect.tooltip_1":     "Unstable Teleportation",
 
   "item.mcda.shulker_armor_helmet":               "Shulker Helmet",
   "item.mcda.shulker_armor_chestplate":           "Shulker Chestplate",
@@ -602,6 +690,9 @@
   "item.mcda.sturdy_shulker_armor.tooltip_2":     "a good offense, but good luck",
   "item.mcda.sturdy_shulker_armor.tooltip_3":     "breaking through this bulwark.",
 
+  "item.mcda.sturdy_shulker_armor.effect.tooltip_1":  "Levitation Immunity",
+  "item.mcda.sturdy_shulker_armor.effect.tooltip_2":  "Shulker Bullets",
+
   "item.mcda.gourdian_armor_helmet":              "Gourdian Helmet",
   "item.mcda.gourdian_armor_chestplate":          "Gourdian Chestplate",
   "item.mcda.gourdian_armor_leggings":            "Gourdian Leggings",
@@ -612,6 +703,8 @@
   "item.mcda.gourdian_armor.tooltip_3":           "legendary terror of the Pumpkin",
   "item.mcda.gourdian_armor.tooltip_4":           "Pastures.",
 
+  "item.mcda.gourdian_armor.effect.tooltip_1":    "Gourdian's Hatred",
+
   "item.mcda.cauldron_armor_helmet":              "Cauldron Helmet",
   "item.mcda.cauldron_armor_chestplate":          "Cauldron Chestplate",
   "item.mcda.cauldron_armor_leggings":            "Cauldron Poleyns",
@@ -621,6 +714,8 @@
   "item.mcda.cauldron_armor.tooltip_2":           "with camouflage in mind, but what",
   "item.mcda.cauldron_armor.tooltip_3":           "it lacks in stealth, it makes up",
   "item.mcda.cauldron_armor.tooltip_4":           "for in bubbly charm.",
+
+  "item.mcda.cauldron_armor.effect.tooltip_1":    "Cauldron's Overflow",
 
   "item.mcda.sweet_tooth_helmet":                 "Sweet Tooth Helmet",
   "item.mcda.sweet_tooth_chestplate":             "Sweet Tooth Chestplate",

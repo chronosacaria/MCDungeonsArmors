@@ -24,8 +24,6 @@ import java.util.UUID;
 
 public class ArmorSetItem extends ArmorItem {
 
-    protected static final int MAX_TOOLTIPS = 6;
-
     protected static final UUID[] ARMOR_MODIFIERS = new UUID[] {
             UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"),
             UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"),
@@ -88,44 +86,38 @@ public class ArmorSetItem extends ArmorItem {
             default -> set.getSetName();
         };
 
-        for (int i = 1; i <= MAX_TOOLTIPS; i++) {
+        String translationKey = String.format("item.mcda.%s.tooltip_", setId);
+        int i = 1;
 
-            String translationKey = String.format("item.mcda.%s.tooltip_%d", setId, i);
-
-            if (I18n.hasTranslation(translationKey))
-                tooltip.add(new TranslatableText(translationKey));
+        while (I18n.hasTranslation(translationKey + i)) {
+            tooltip.add(new TranslatableText(translationKey + i).formatted(Formatting.ITALIC));
+            i++;
         }
 
-        //String translationKey = String.format("item.mcda.%s.effect.tooltip_%d", setId, i);
+        translationKey = String.format("item.mcda.%s.effect.tooltip_", setId);
+        i = 1;
+
+        while (I18n.hasTranslation(translationKey + i)) {
+            tooltip.add(new TranslatableText(translationKey + i).formatted(
+                    switch (set) {
+                        case MYSTERY -> Formatting.WHITE;
+                        case BLUE_MYSTERY, FROST, PHANTOM, FROST_BITE, NIMBLE_TURTLE, GLOW_SQUID -> Formatting.DARK_AQUA;
+                        case GREEN_MYSTERY, HIGHLAND, CAVE_CRAWLER, HERO, OPULENT, VERDANT -> Formatting.GREEN;
+                        case PURPLE_MYSTERY, CURIOUS, THIEF -> Formatting.LIGHT_PURPLE;
+                        case RED_MYSTERY, LIVING_VINES, SPROUT, GHOST_KINDLER, GOURDIAN, BLACK_WOLF, RENEGADE, STALWART_MAIL, WITHER -> Formatting.RED;
+                        case STURDY_SHULKER, SPIDER, SOULDANCER -> i == 1 ? Formatting.LIGHT_PURPLE : Formatting.GRAY;
+                        case SHADOW_WALKER -> i == 1 ? Formatting.GREEN : Formatting.LIGHT_PURPLE;
+                        case CAULDRON, TITAN, SPLENDID, TROUBADOUR -> Formatting.BOLD;
+                        default -> Formatting.GRAY;
+                    }
+            ));
+            i++;
+        }
+
 
         if (slot == EquipmentSlot.FEET && (set == ArmorSets.RUGGED_CLIMBING_GEAR || set == ArmorSets.SNOW || set == ArmorSets.GOAT)) {
             tooltip.add(new TranslatableText("Lightfooted").formatted(Formatting.AQUA));
         }
 
-        // "attribute.name.healthPotionsHealNearbyAllies"
     }
-
-    /*
-    public int getMagicDamage() {
-        if (this.unique) return 25;
-        else return 0;
-    }
-
-    public double getArtifactCooldown() {
-        return 12.5D;
-    }*/
-
-    /*
-    public boolean doHealthPotionsHealNearbyAllies() {
-        return this.unique;
-    }
-
-    public double getHealthPotionBoost() {
-        return 1;
-    }*/
-
-    /*
-    public double getSoulsGathered() {
-        return 50;
-    }*/
 }
