@@ -31,6 +31,9 @@ public class McdaArmorStatsConfig implements ConfigData {
         return armorStats.get(set).setMovementSpeedBoost(value);
     }
 
+    public boolean setBonusTooltips = true;
+    public boolean setBonusTooltipColors = true;
+
     public McdaArmorStatsConfig(){
         for (ArmorSets armorSet : ArmorSets.values())
             armorStats.put(armorSet, new ArmorStats());

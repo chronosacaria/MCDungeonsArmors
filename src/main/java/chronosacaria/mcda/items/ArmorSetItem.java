@@ -2,6 +2,7 @@ package chronosacaria.mcda.items;
 
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.config.ArmorStats;
+import chronosacaria.mcda.config.McdaArmorStatsConfig;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
@@ -94,29 +95,33 @@ public class ArmorSetItem extends ArmorItem {
             i++;
         }
 
-        translationKey = String.format("item.mcda.%s.effect.tooltip_", setId);
-        i = 1;
+        if (Mcda.CONFIG.mcdaArmorStatsConfig.setBonusTooltips) {
+            translationKey = String.format("item.mcda.%s.effect.tooltip_", setId);
+            i = 1;
 
-        while (I18n.hasTranslation(translationKey + i)) {
-            tooltip.add(new TranslatableText(translationKey + i).formatted(
-                    switch (set) {
-                        case MYSTERY -> Formatting.WHITE;
-                        case BLUE_MYSTERY, FROST, PHANTOM, FROST_BITE, NIMBLE_TURTLE, GLOW_SQUID -> Formatting.DARK_AQUA;
-                        case GREEN_MYSTERY, HIGHLAND, CAVE_CRAWLER, HERO, OPULENT, VERDANT -> Formatting.GREEN;
-                        case PURPLE_MYSTERY, CURIOUS, THIEF -> Formatting.LIGHT_PURPLE;
-                        case RED_MYSTERY, LIVING_VINES, SPROUT, GHOST_KINDLER, GOURDIAN, BLACK_WOLF, RENEGADE, STALWART_MAIL, WITHER -> Formatting.RED;
-                        case STURDY_SHULKER, SPIDER, SOULDANCER -> i == 1 ? Formatting.LIGHT_PURPLE : Formatting.GRAY;
-                        case SHADOW_WALKER -> i == 1 ? Formatting.GREEN : Formatting.LIGHT_PURPLE;
-                        case CAULDRON, TITAN, SPLENDID, TROUBADOUR -> Formatting.BOLD;
-                        default -> Formatting.GRAY;
-                    }
-            ));
-            i++;
-        }
+            while (I18n.hasTranslation(translationKey + i)) {
+                tooltip.add(new TranslatableText(translationKey + i).formatted(
+                        Mcda.CONFIG.mcdaArmorStatsConfig.setBonusTooltipColors ?
+                                switch (set) {
+                                    case MYSTERY -> Formatting.WHITE;
+                                    case BLUE_MYSTERY, FROST, PHANTOM, FROST_BITE, NIMBLE_TURTLE, GLOW_SQUID -> Formatting.DARK_AQUA;
+                                    case GREEN_MYSTERY, HIGHLAND, CAVE_CRAWLER, HERO, OPULENT, VERDANT -> Formatting.GREEN;
+                                    case PURPLE_MYSTERY, CURIOUS, THIEF -> Formatting.LIGHT_PURPLE;
+                                    case RED_MYSTERY, LIVING_VINES, SPROUT, GHOST_KINDLER, GOURDIAN, BLACK_WOLF, RENEGADE, STALWART_MAIL, WITHER -> Formatting.RED;
+                                    case STURDY_SHULKER, SPIDER, SOULDANCER -> i == 1 ? Formatting.LIGHT_PURPLE : Formatting.GRAY;
+                                    case SHADOW_WALKER -> i == 1 ? Formatting.GREEN : Formatting.LIGHT_PURPLE;
+                                    case CAULDRON, TITAN, SPLENDID, TROUBADOUR -> Formatting.BOLD;
+                                    default -> Formatting.GRAY;
+                                } : Formatting.GRAY
+                ));
+                i++;
+            }
 
 
-        if (slot == EquipmentSlot.FEET && (set == ArmorSets.RUGGED_CLIMBING_GEAR || set == ArmorSets.SNOW || set == ArmorSets.GOAT)) {
-            tooltip.add(new TranslatableText("Lightfooted").formatted(Formatting.AQUA));
+            if (slot == EquipmentSlot.FEET && (set == ArmorSets.RUGGED_CLIMBING_GEAR || set == ArmorSets.SNOW || set == ArmorSets.GOAT)) {
+                tooltip.add(new TranslatableText("Lightfooted").formatted(
+                        Mcda.CONFIG.mcdaArmorStatsConfig.setBonusTooltipColors ? Formatting.AQUA : Formatting.GRAY));
+            }
         }
 
     }
