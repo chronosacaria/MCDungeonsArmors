@@ -13,14 +13,15 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-import static chronosacaria.mcda.Mcda.random;
 import static chronosacaria.mcda.api.CleanlinessHelper.hasArmorSet;
+import static chronosacaria.mcda.api.CleanlinessHelper.random;
 
 public class ProjectileEffectHelper {
 
@@ -50,6 +51,8 @@ public class ProjectileEffectHelper {
             return;
 
         World world = user.getEntityWorld();
+        Random random = user.getRandom();
+
         int distance = 10;
         List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class,
                 new Box(user.getX() - distance, user.getY() - distance, user.getZ() - distance,
@@ -58,6 +61,7 @@ public class ProjectileEffectHelper {
         if (nearbyEntities.size() < 2) return;
         Optional<LivingEntity> nearest = nearbyEntities.stream().min(Comparator.comparingDouble(e -> e.squaredDistanceTo(user)));
         LivingEntity target = nearest.get();
+
         ShulkerBulletEntity shulkerBulletEntity = new ShulkerBulletEntity(world, user, target,
                 Direction.Axis.pickRandomAxis(random));
         // borrowed from AbstractSkeletonEntity

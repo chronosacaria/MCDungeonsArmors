@@ -133,8 +133,9 @@ public class ArmorEffects {
             int i = 0;
 
             do {
-                double xDiff = (livingEntity.getRandom().nextDouble(0.5D) + 0.5D) * 32.0D;
-                double zDiff = (livingEntity.getRandom().nextDouble(0.5D) + 0.5D) * 32.0D;
+                // TODO TEST TELEPORTATION FOR GRANULARITY AND ACCURACY
+                double xDiff = ((livingEntity.getRandom().nextDouble() / 2) + 0.5D) * 32.0D;
+                double zDiff = ((livingEntity.getRandom().nextDouble() / 2) + 0.5D) * 32.0D;
                 teleportX = livingEntity.getRandom().nextInt() % 2 == 0 ?
                         xPos + xDiff :
                         xPos - xDiff;

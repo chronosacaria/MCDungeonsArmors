@@ -11,12 +11,11 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 import java.util.List;
-import java.util.Random;
 
-import static chronosacaria.mcda.Mcda.random;
 import static chronosacaria.mcda.enchants.EnchantID.HEAL_ALLIES;
 
 public class AOEHelper {
@@ -113,6 +112,7 @@ public class AOEHelper {
         double startZ = nearbyEntity.getZ() - .275f;
 
         for (int i = 0; i < 10; i++) {
+            Random random = world.getRandom();
             double frontX = .5f * random.nextDouble();
             world.spawnParticles(particleEffect, startX + frontX, startY + random.nextDouble() * .5, startZ + .5f,
                     1,velX, velY, velZ, 0);
@@ -141,7 +141,7 @@ public class AOEHelper {
         double startZ = blockPos.getZ() - .275f;
 
         for (int i = 0; i < 10; i++) {
-            Random random = new Random();
+            Random random = world.getRandom();
             double frontX = .5f * random.nextDouble();
             world.spawnParticles(particleEffect, startX + frontX, startY + random.nextDouble() * .5, startZ + .5f,
                     1, velX, velY, velZ, 0);

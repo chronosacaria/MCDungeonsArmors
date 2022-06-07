@@ -9,6 +9,8 @@
   "item.mcda.archers.tooltip_1":                  "弓箭手盔甲，受到武士们的青睐，",
   "item.mcda.archers.tooltip_2":                  "制造成本低廉，但能防御刀的伤害。",
 
+  "item.mcda.archers.effect.tooltip_1":           "弓箭手的实力",
+
   "item.mcda.beehive_armor_helmet":               "蜂箱头盔",
   "item.mcda.beehive_armor_chestplate":           "蜂箱胸甲",
   "item.mcda.beehive_armor_leggings":             "蜂箱护腿",
@@ -16,6 +18,8 @@
 
   "item.mcda.beehive_armor.tooltip_1":            "蜂箱护甲在无数蜜蜂的齐心协力下",
   "item.mcda.beehive_armor.tooltip_2":            "嗡嗡作响。",
+
+  "item.mcda.beehive_armor.effect.tooltip_1":     "嗡嗡的蜂巢",
 
   "item.mcda.beenest_armor_helmet":               "蜂巢头盔",
   "item.mcda.beenest_armor_chestplate":           "蜂巢胸甲",
@@ -25,6 +29,8 @@
   "item.mcda.beenest_armor.tooltip_1":            "蜂巢护甲的周围似乎总有轻微的嗡嗡声。",
   "item.mcda.beenest_armor.tooltip_2":            "又或者，",
   "item.mcda.beenest_armor.tooltip_3":            "这种嗡嗡声其实来自于护甲内部？",
+
+  "item.mcda.beenest_armor.effect.tooltip_1":     "嗡嗡的蜂巢",
 
   "item.mcda.hunters_chestplate":                 "猎人之甲",
 
@@ -37,6 +43,8 @@
   "item.mcda.splendid_robe.tooltip_1":            "卓著的华丽长袍",
   "item.mcda.splendid_robe.tooltip_2":            "是保护奇厄教主的重型灾厄武士",
   "item.mcda.splendid_robe.tooltip_3":            "穿戴的装备。",
+
+  "item.mcda.splendid_robe.effect.tooltip_1":     "华丽的攻击",
 
   "item.mcda.battle_robe_chestplate":             "战斗长袍",
   "item.mcda.battle_robe_leggings":               "战斗短裤",
@@ -55,14 +63,16 @@
   "item.mcda.champions_armor.tooltip_4":          "保护和帮助。",
   "item.mcda.champions_armor.tooltip_5":          "真正的英雄才配有此物。",
 
-  "item.mcda.heros_armor_helmet":                 "Hero's头盔",
-  "item.mcda.heros_armor_chestplate":             "Hero's胸甲",
-  "item.mcda.heros_armor_leggings":               "Hero's护腿",
-  "item.mcda.heros_armor_boots":                  "Hero's护膝",
+  "item.mcda.heros_armor_helmet":                 "英雄之头盔",
+  "item.mcda.heros_armor_chestplate":             "英雄之胸甲",
+  "item.mcda.heros_armor_leggings":               "英雄之护腿",
+  "item.mcda.heros_armor_boots":                  "英雄之护膝",
 
   "item.mcda.heros_armor.tooltip_1":              "英雄之甲是",
   "item.mcda.heros_armor.tooltip_2":              "村民们的珍贵礼物",
   "item.mcda.heros_armor.tooltip_3":              "只有能力最高的英雄们",
+
+  "item.mcda.heros_armor.effect.tooltip_1":       "村庄英雄",
 
   "item.mcda.titans_shroud_helmet":               "泰坦头盔",
   "item.mcda.titans_shroud_chestplate":           "泰坦胸甲",
@@ -71,6 +81,8 @@
 
   "item.mcda.titans_shroud.tooltip_1":            "关于泰坦钢盔的励志故事，",
   "item.mcda.titans_shroud.tooltip_2":            "已经在南瓜牧场上流传了好几代。",
+
+  "item.mcda.titans_shroud.effect.tooltip_1":     "泰坦面纱",
 
   "item.mcda.dark_armor_helmet":                  "暗黑头盔",
   "item.mcda.dark_armor_chestplate":              "暗黑胸甲",
@@ -108,6 +120,8 @@
   "item.mcda.ember_robe.tooltip_2":               "为了区别于其他灾厄村民",
   "item.mcda.ember_robe.tooltip_3":               "而创造的。",
 
+  "item.mcda.ember_robe.effect.tooltip_1":        "余烬跳跃",
+
   "item.mcda.verdant_robe_helmet":                "碧绿帽子",
   "item.mcda.verdant_robe_chestplate":            "碧绿长袍",
   "item.mcda.verdant_robe_leggings":              "碧绿短裤",
@@ -115,6 +129,8 @@
   "item.mcda.verdant_robe.tooltip_1":             "穿着翠绿长袍的人",
   "item.mcda.verdant_robe.tooltip_2":             "很快就会发现，",
   "item.mcda.verdant_robe.tooltip_3":             "他们可以与更多的灵魂进行沟通。",
+
+  "item.mcda.verdant_robe.effect.tooltip_1":      "森林之心",
 
   "item.mcda.grim_armor_helmet":                  "冷酷头盔",
   "item.mcda.grim_armor_chestplate":              "冷酷胸甲",
@@ -134,6 +150,8 @@
   "item.mcda.wither_armor.tooltip_2":             "所制成的盔甲，",
   "item.mcda.wither_armor.tooltip_3":             "可以有效震慑穿戴者的敌人。",
 
+  "item.mcda.wither_armor.effect.tooltip_1":      "凋零",
+
   "item.mcda.guards_armor_helmet":                "守卫头盔",
   "item.mcda.guards_armor_chestplate":            "守卫胸甲",
   "item.mcda.guards_armor_leggings":              "守卫护腿",
@@ -151,6 +169,8 @@
   "item.mcda.curious_armor.tooltip_1":            "没有人知道",
   "item.mcda.curious_armor.tooltip_2":            "这种奇怪的盔甲来自何方，",
   "item.mcda.curious_armor.tooltip_3":            "但你似乎对它有种亲切感。",
+
+  "item.mcda.curious_armor.effect.tooltip_1":     "Curious Teleportation",
 
   "item.mcda.mercenary_armor_helmet":             "雇佣兵头盔",
   "item.mcda.mercenary_armor_chestplate":         "雇佣兵胸甲",
@@ -170,6 +190,8 @@
   "item.mcda.renegade_armor.tooltip_2":           "请来保护村庄免受灾厄村民侵扰的",
   "item.mcda.renegade_armor.tooltip_3":           "雇佣军的报酬",
 
+  "item.mcda.renegade_armor.effect.tooltip_1":    "叛徒的冲刺",
+
   "item.mcda.hungry_horror_helmet":               "饥饿怖鬼头盔",
   "item.mcda.hungry_horror_chestplate":           "饥饿怖鬼胸甲",
   "item.mcda.hungry_horror_leggings":             "饥饿怖鬼护腿",
@@ -179,6 +201,9 @@
   "item.mcda.hungry_horror.tooltip_2":            "会感觉到空气中充满尖叫声。",
   "item.mcda.hungry_horror.tooltip_3":            "但这个声音是敌人的，",
   "item.mcda.hungry_horror.tooltip_4":            "还是你的？",
+
+  "item.mcda.hungry_horror.effect.tooltip_1":     "饥饿",
+  "item.mcda.hungry_horror.effect.tooltip_2":     "饥饿的痛苦",
 
   "item.mcda.ocelot_armor_helmet":                "豹猫头盔",
   "item.mcda.ocelot_armor_chestplate":            "豹猫胸甲",
@@ -201,6 +226,9 @@
   "item.mcda.shadow_walker_armor.tooltip_4":      "你会觉得敌人远被你甩在身后",
   "item.mcda.shadow_walker_armor.tooltip_5":      "只能追着你的阴影。",
 
+  "item.mcda.shadow_walker_armor.effect.tooltip_1":   "无坠落伤害",
+  "item.mcda.shadow_walker_armor.effect.tooltip_2":   "疾跑",
+
   "item.mcda.phantom_armor_helmet":               "幻翼头盔",
   "item.mcda.phantom_armor_chestplate":           "幻翼胸甲",
   "item.mcda.phantom_armor_leggings":             "幻翼护腿",
@@ -210,6 +238,8 @@
   "item.mcda.phantom_armor.tooltip_2":            "制成的盔甲，",
   "item.mcda.phantom_armor.tooltip_3":            "在战场上令人恐惧。",
 
+  "item.mcda.phantom_armor.effect.tooltip_1":     "缓降",
+
   "item.mcda.frost_bite_armor_helmet":            "冰霜之吻头盔",
   "item.mcda.frost_bite_armor_chestplate":        "冰霜之吻胸甲",
   "item.mcda.frost_bite_armor_leggings":          "冰霜之吻护腿",
@@ -218,6 +248,9 @@
   "item.mcda.frost_bite_armor.tooltip_1":         "冰霜之吻令人忆起",
   "item.mcda.frost_bite_armor.tooltip_2":         "强大的幻翼翅膀下",
   "item.mcda.frost_bite_armor.tooltip_3":         "曾卷起的刺骨寒风。",
+
+  "item.mcda.frost_bite_armor.effect.tooltip_1":  "缓降",
+  "item.mcda.frost_bite_armor.effect.tooltip_2":  "冻疮",
 
   "item.mcda.plate_armor_helmet":                 "板甲头盔",
   "item.mcda.plate_armor_chestplate":             "板甲胸甲",
@@ -253,6 +286,8 @@
   "item.mcda.stalwart_armor.tooltip_1":           "这可靠的盔甲",
   "item.mcda.stalwart_armor.tooltip_2":           "足以当个传家宝。",
 
+  "item.mcda.stalwart_armor.effect.tooltip_1":    "坚定的堡垒",
+
   "item.mcda.ghostly_armor_helmet":               "幽灵头盔",
   "item.mcda.ghostly_armor_chestplate":           "幽灵胸甲",
   "item.mcda.ghostly_armor_leggings":             "幽灵护腿",
@@ -272,6 +307,9 @@
   "item.mcda.ghost_kindler.tooltip_2":            "会随穿戴者身形",
   "item.mcda.ghost_kindler.tooltip_3":            "而贴身变化。",
 
+  "item.mcda.ghost_kindler.effect.tooltip_1":     "幽灵亲和者",
+  "item.mcda.ghost_kindler.effect.tooltip_2":     "幽灵亲和者踪迹",
+
   "item.mcda.white_mystery_armor_helmet":         "白色神秘头盔",
   "item.mcda.white_mystery_armor_chestplate":     "白色神秘胸甲",
   "item.mcda.white_mystery_armor_leggings":       "白色神秘护腿",
@@ -280,6 +318,8 @@
   "item.mcda.mystery_armor.tooltip_1":            "一些铁匠认为",
   "item.mcda.mystery_armor.tooltip_2":            "他的设计与铁傀儡",
   "item.mcda.mystery_armor.tooltip_3":            "有相似之处。",
+
+  "item.mcda.mystery_armor.effect.tooltip_1":     "随机效应",
 
   "item.mcda.blue_mystery_armor_helmet":          "蓝色神秘头盔",
   "item.mcda.blue_mystery_armor_chestplate":      "蓝色神秘胸甲",
@@ -317,6 +357,8 @@
   "item.mcda.highland_armor.tooltip_1":           "一个聪明的军械师",
   "item.mcda.highland_armor.tooltip_2":           "精心制作了这件盔甲。",
 
+  "item.mcda.highland_armor.effect.tooltip_1":    "急迫",
+
   "item.mcda.snow_armor_helmet":                  "雪之头盔",
   "item.mcda.snow_armor_chestplate":              "雪之胸甲",
   "item.mcda.snow_armor_leggings":                "雪之护腿",
@@ -334,6 +376,8 @@
   "item.mcda.frost_armor.tooltip_1":              "这件传奇盔甲由",
   "item.mcda.frost_armor.tooltip_2":              "永不融化的冰块锻造而成，",
   "item.mcda.frost_armor.tooltip_3":              "让穿戴者感觉仿佛与冬天融为一体。",
+
+  "item.mcda.frost_armor.effect.tooltip_1":       "液体冷冻",
 
   "item.mcda.soul_robe_helmet":                   "灵魂兜帽",
   "item.mcda.soul_robe_chestplate":               "灵魂长袍",
@@ -353,6 +397,9 @@
   "item.mcda.souldancer_robe.tooltip_2":          "显得活力十足，",
   "item.mcda.souldancer_robe.tooltip_3":          "好像里面的灵魂永远在舞动。",
 
+  "item.mcda.souldancer_robe.effect.tooltip_1":   "灵魂舞者的恩典",
+  "item.mcda.souldancer_robe.effect.tooltip_2":   "灵魂舞者的XP",
+
   "item.mcda.spelunker_armor_helmet":             "探穴者头盔",
   "item.mcda.spelunker_armor_chestplate":         "探穴者背心",
   "item.mcda.spelunker_armor_leggings":           "探穴者护腿",
@@ -371,6 +418,8 @@
   "item.mcda.cave_crawler.tooltip_2":             "已经被一代又一代勇敢的",
   "item.mcda.cave_crawler.tooltip_3":             "洞穴探险者和矿工传承下来。",
 
+  "item.mcda.cave_crawler.effect.tooltip_1":      "急迫",
+
   "item.mcda.thief_armor_helmet":                 "窃贼面罩",
   "item.mcda.thief_armor_chestplate":             "窃贼背心",
   "item.mcda.thief_armor_leggings":               "窃贼护腿",
@@ -378,6 +427,8 @@
 
   "item.mcda.thief_armor.tooltip_1":              "这件护甲很轻巧，",
   "item.mcda.thief_armor.tooltip_2":              "散发着淡淡的硫磺味。",
+
+  "item.mcda.thief_armor.effect.tooltip_1":       "隐身",
 
   "item.mcda.spider_armor_helmet":                "蜘蛛面罩",
   "item.mcda.spider_armor_chestplate":            "蜘蛛背心",
@@ -387,6 +438,9 @@
   "item.mcda.spider_armor.tooltip_1":             "由盗贼大师所作，",
   "item.mcda.spider_armor.tooltip_2":             "灵感来自蜘蛛的",
   "item.mcda.spider_armor.tooltip_3":             "敏捷天赋。",
+
+  "item.mcda.spider_armor.effect.tooltip_1":      "攀墙",
+  "item.mcda.spider_armor.effect.tooltip_2":      "蛛网行走",
 
   "item.mcda.wolf_armor_helmet":                  "狼甲兜帽",
   "item.mcda.wolf_armor_chestplate":              "狼甲背心",
@@ -405,6 +459,8 @@
   "item.mcda.black_wolf_armor.tooltip_1":         "这个盔甲讲述了一头狼",
   "item.mcda.black_wolf_armor.tooltip_2":         "从阴影中活着走出来的故事。",
 
+  "item.mcda.black_wolf_armor.effect.tooltip_1":  "狼群领袖",
+
   "item.mcda.fox_armor_helmet":                   "狐狸兜帽",
   "item.mcda.fox_armor_chestplate":               "狐狸背心",
   "item.mcda.fox_armor_leggings":                 "狐狸护腿",
@@ -417,6 +473,9 @@
   "item.mcda.fox_armor.tooltip_5":                "伟大而敏捷的",
   "item.mcda.fox_armor.tooltip_6":                "狐狸战士。",
 
+  "item.mcda.fox_armor.effect.tooltip_1":         "甜浆果丛行走",
+  "item.mcda.fox_armor.effect.tooltip_2":         "狐狸的扑腾",
+
   "item.mcda.arctic_fox_armor_helmet":            "北极狐兜帽",
   "item.mcda.arctic_fox_armor_chestplate":        "北极狐背心",
   "item.mcda.arctic_fox_armor_leggings":          "北极狐护腿",
@@ -425,6 +484,11 @@
   "item.mcda.arctic_fox_armor.tooltip_1":         "如果你想在冰原上过的风光，",
   "item.mcda.arctic_fox_armor.tooltip_2":         "北极狐护甲",
   "item.mcda.arctic_fox_armor.tooltip_3":         "是最佳的选择。",
+
+  "item.mcda.arctic_fox_armor.effect.tooltip_1":  "甜浆果丛行走",
+  "item.mcda.arctic_fox_armor.effect.tooltip_2":  "狐狸的扑腾",
+  "item.mcda.arctic_fox_armor.effect.tooltip_3":  "北极高地优势",
+  "item.mcda.arctic_fox_armor.effect.tooltip_4":  "甜浆果速度",
 
   "item.mcda.emerald_gear_helmet":                "绿宝石头盔",
   "item.mcda.emerald_gear_chestplate":            "绿宝石胸甲",
@@ -444,6 +508,8 @@
   "item.mcda.opulent_armor.tooltip_2":            "是为了展示而不是战斗，",
   "item.mcda.opulent_armor.tooltip_3":            "但在绿宝石的影响下逐渐发生变化。",
 
+  "item.mcda.opulent_armor.effect.tooltip_1":     "幸运",
+
   "item.mcda.gilded_glory_helmet":                "镶金荣光头盔",
   "item.mcda.gilded_glory_chestplate":            "镶金荣光胸甲",
   "item.mcda.gilded_glory_leggings":              "镶金荣光护腿",
@@ -452,6 +518,11 @@
   "item.mcda.gilded_glory.tooltip_1":             "即便是死亡本身",
   "item.mcda.gilded_glory.tooltip_2":             "也经不住这件传奇盔甲的魅力",
   "item.mcda.gilded_glory.tooltip_3":             "而驻足观赏。",
+
+  "item.mcda.gilded_glory.effect.tooltip_1":      "村庄英雄",
+  "item.mcda.gilded_glory.effect.tooltip_2":      "镀金图腾",
+  "item.mcda.gilded_glory.effect.tooltip_3":      "镀金攻击",
+  "item.mcda.gilded_glory.effect.tooltip_4":      "假图腾",
 
   "item.mcda.climbing_gear_helmet":               "登山装兜帽",
   "item.mcda.climbing_gear_chestplate":           "登山装外套",
@@ -469,6 +540,8 @@
 
   "item.mcda.rugged_climbing_gear.tooltip_1":     "穿上这套坚固的护甲，",
   "item.mcda.rugged_climbing_gear.tooltip_2":     "去迎接大自然的凶极险恶吧。",
+
+  "item.mcda.rugged_climbing_gear.effect.tooltip_1":  "坚固的攀爬",
 
   "item.mcda.goat_gear_helmet":                   "山羊装兜帽",
   "item.mcda.goat_gear_chestplate":               "山羊装外套",
@@ -488,6 +561,8 @@
   "item.mcda.sprout_armor.tooltip_2":             "在暗无天日的环境下",
   "item.mcda.sprout_armor.tooltip_3":             "也能生长。",
 
+  "item.mcda.sprout_armor.effect.tooltip_1":      "防火",
+
   "item.mcda.living_vines_armor_boots":           "活藤靴子",
   "item.mcda.living_vines_armor_leggings":        "活藤短裤",
   "item.mcda.living_vines_armor_chestplate":      "活藤长袍",
@@ -496,6 +571,8 @@
   "item.mcda.living_vines_armor.tooltip_1":       "这件护甲仅用",
   "item.mcda.living_vines_armor.tooltip_2":       "生长在战场上的藤蔓",
   "item.mcda.living_vines_armor.tooltip_3":       "活制而成。",
+
+  "item.mcda.living_vines_armor.effect.tooltip_1": "防火",
 
   "item.mcda.piglin_armor_boots":                 "猪灵靴子",
   "item.mcda.piglin_armor_leggings":              "猪灵护腿",
@@ -515,6 +592,8 @@
   "item.mcda.golden_piglin_armor.tooltip_2":      "融合了猪灵的两种喜好：",
   "item.mcda.golden_piglin_armor.tooltip_3":      "不死和黄金。",
 
+  "item.mcda.golden_piglin_armor.effect.tooltip_1":   "猪灵愚弄",
+
   "item.mcda.squid_armor_boots":                  "鱿鱼靴子",
   "item.mcda.squid_armor_leggings":               "鱿鱼护腿",
   "item.mcda.squid_armor_chestplate":             "鱿鱼胸甲",
@@ -532,6 +611,8 @@
   "item.mcda.glow_squid_armor.tooltip_1":         "那些追捕难以捉摸的发光鱿鱼",
   "item.mcda.glow_squid_armor.tooltip_2":         "的人穿上这件盔甲与",
   "item.mcda.glow_squid_armor.tooltip_3":         "美丽的猎物融为一体。",
+
+  "item.mcda.glow_squid_armor.effect.tooltip_1":  "水下呼吸",
 
   "item.mcda.turtle_armor_boots":                 "海龟靴子",
   "item.mcda.turtle_armor_leggings":              "海龟护腿",
@@ -551,6 +632,9 @@
   "item.mcda.nimble_turtle_armor.tooltip_2":      "中的海龟的密集但出奇的",
   "item.mcda.nimble_turtle_armor.tooltip_3":      "轻的贝壳制成的。",
 
+  "item.mcda.nimble_turtle_armor.effect.tooltip_1":  "敏捷海龟的韧性",
+
+
   "item.mcda.entertainer_garb_helmet":            "演出帽子",
   "item.mcda.entertainer_garb_chestplate":        "演出背心",
   "item.mcda.entertainer_garb_leggings":          "演出绑腿",
@@ -567,6 +651,8 @@
   "item.mcda.troubadour_armor.tooltip_2":         "服装让他们惊叹时，为什么",
   "item.mcda.troubadour_armor.tooltip_3":         "要让你崇拜的粉丝想要更多呢？",
 
+  "item.mcda.troubadour_armor.effect.tooltip_1":  "游吟诗人的魅力",
+
   "item.mcda.teleportation_robe_helmet":          "传送兜帽",
   "item.mcda.teleportation_robe_chestplate":      "传送长袍",
   "item.mcda.teleportation_robe_leggings":        "传送腰带",
@@ -576,6 +662,8 @@
   "item.mcda.teleportation_robe.tooltip_2":       "致力于研究末地之",
   "item.mcda.teleportation_robe.tooltip_3":       "谜的人制作的。",
 
+  "item.mcda.teleportation_robe.effect.tooltip_1":  "瞬移",
+
   "item.mcda.unstable_robe_helmet":               "不稳定兜帽",
   "item.mcda.unstable_robe_chestplate":           "不稳定长袍",
   "item.mcda.unstable_robe_leggings":             "不稳定腰带",
@@ -584,6 +672,8 @@
   "item.mcda.unstable_robe.tooltip_1":            "这件长袍会在你穿越",
   "item.mcda.unstable_robe.tooltip_2":            "战场时发出静电火花。",
 
+  "item.mcda.unstable_robe.effect.tooltip_1":     "不稳定瞬移",
+
   "item.mcda.shulker_armor_helmet":               "潜影贝头盔",
   "item.mcda.shulker_armor_chestplate":           "潜影贝胸甲",
   "item.mcda.shulker_armor_leggings":             "潜影贝护腿",
@@ -591,6 +681,9 @@
 
   "item.mcda.shulker_armor.tooltip_1":            "潜影贝盔甲可以匹敌",
   "item.mcda.shulker_armor.tooltip_2":            "最坚硬的钢板。",
+
+  "item.mcda.sturdy_shulker_armor.effect.tooltip_1":  "浮动免疫",
+  "item.mcda.sturdy_shulker_armor.effect.tooltip_2":  "潜影弹",
 
   "item.mcda.sturdy_shulker_armor_helmet":        "坚固潜影贝头盔",
   "item.mcda.sturdy_shulker_armor_chestplate":    "坚固潜影贝胸甲",
@@ -611,6 +704,8 @@
   "item.mcda.gourdian_armor.tooltip_3":           "牧场上的传奇",
   "item.mcda.gourdian_armor.tooltip_4":           "恐怖之源！",
 
+  "item.mcda.gourdian_armor.effect.tooltip_1":    "南瓜的仇恨",
+
   "item.mcda.cauldron_armor_helmet":              "锅釜怪头盔",
   "item.mcda.cauldron_armor_chestplate":          "锅釜怪胸甲",
   "item.mcda.cauldron_armor_leggings":            "锅釜怪护腿",
@@ -620,6 +715,8 @@
   "item.mcda.cauldron_armor.tooltip_2":           "就着眼于伪装的功效，",
   "item.mcda.cauldron_armor.tooltip_3":           "而潜行方面的笨重恰巧",
   "item.mcda.cauldron_armor.tooltip_4":           "可以让美到冒泡的魅力来弥补。",
+
+  "item.mcda.cauldron_armor.effect.tooltip_1":    "溢出的大锅",
 
   "item.mcda.sweet_tooth_helmet":                 "嗜甜之甲头盔",
   "item.mcda.sweet_tooth_chestplate":             "嗜甜之甲胸甲",
@@ -631,9 +728,9 @@
   "item.mcda.sweet_tooth.tooltip_3":              "中却意外坚固。不用想，",
   "item.mcda.sweet_tooth.tooltip_4":              "肯定是翻糖外壳的功劳。",
 
-  "item.mcda.vanguard_armor_helmet":                 "先锋头盔",
-  "item.mcda.vanguard_armor_chestplate":             "先锋胸甲",
-  "item.mcda.vanguard_armor_leggings":               "先锋绑腿",
+  "item.mcda.vanguard_armor_helmet":              "先锋头盔",
+  "item.mcda.vanguard_armor_chestplate":          "先锋胸甲",
+  "item.mcda.vanguard_armor_leggings":            "先锋绑腿",
 
   "item.mcda.bone_rib_cage":                      "骨肋笼",
   "item.mcda.phantom_bones":                      "幻翼骨",

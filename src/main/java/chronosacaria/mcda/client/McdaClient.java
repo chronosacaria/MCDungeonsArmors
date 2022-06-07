@@ -14,7 +14,7 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
 @Environment(EnvType.CLIENT)
@@ -47,9 +47,9 @@ public class McdaClient implements ClientModInitializer {
                     String affirmativeKey = "activity.mcda.firetrail.enabled";
                     String negativeKey = "activity.mcda.firetrail.disabled";
                     if (isFireTrailEnabled())
-                        client.player.sendMessage(new TranslatableText(affirmativeKey), true);
+                        client.player.sendMessage(Text.translatable(affirmativeKey), true);
                     else
-                        client.player.sendMessage(new TranslatableText(negativeKey), true);
+                        client.player.sendMessage(Text.translatable(negativeKey), true);
                 }
                 PacketByteBuf buf = PacketByteBufs.create();
                 buf.writeBoolean(isFireTrailEnabled());

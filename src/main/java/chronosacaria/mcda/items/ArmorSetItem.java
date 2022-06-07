@@ -2,7 +2,6 @@ package chronosacaria.mcda.items;
 
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.config.ArmorStats;
-import chronosacaria.mcda.config.McdaArmorStatsConfig;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
@@ -15,7 +14,7 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.TranslatableTextContent;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Rarity;
 import net.minecraft.world.World;
@@ -91,7 +90,7 @@ public class ArmorSetItem extends ArmorItem {
         int i = 1;
 
         while (I18n.hasTranslation(translationKey + i)) {
-            tooltip.add(new TranslatableText(translationKey + i).formatted(Formatting.ITALIC));
+            tooltip.add(Text.translatable(translationKey + i).formatted(Formatting.ITALIC));
             i++;
         }
 
@@ -100,7 +99,7 @@ public class ArmorSetItem extends ArmorItem {
             i = 1;
 
             while (I18n.hasTranslation(translationKey + i)) {
-                tooltip.add(new TranslatableText(translationKey + i).formatted(
+                tooltip.add(Text.translatable(translationKey + i).formatted(
                         Mcda.CONFIG.mcdaArmorStatsConfig.setBonusTooltipColors ?
                                 switch (set) {
                                     case MYSTERY -> Formatting.WHITE;
@@ -119,8 +118,7 @@ public class ArmorSetItem extends ArmorItem {
 
 
             if (slot == EquipmentSlot.FEET && (set == ArmorSets.RUGGED_CLIMBING_GEAR || set == ArmorSets.SNOW || set == ArmorSets.GOAT)) {
-                tooltip.add(new TranslatableText("Lightfooted").formatted(
-                        Mcda.CONFIG.mcdaArmorStatsConfig.setBonusTooltipColors ? Formatting.AQUA : Formatting.GRAY));
+                tooltip.add(Text.translatable("Lightfooted").formatted(Mcda.CONFIG.mcdaArmorStatsConfig.setBonusTooltipColors ? Formatting.AQUA : Formatting.GRAY));
             }
         }
 
