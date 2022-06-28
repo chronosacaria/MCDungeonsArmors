@@ -106,7 +106,7 @@ public class McdaArmorStatsConfig implements ConfigData {
         setProtection(2, 5, 4, 2, VANGUARD).setDurabilityMultiplier(14);
 
         // Medium Plate Armor
-        setProtection(3, 6, 4, 3, REINFORCED_MAIL).setDurabilityMultiplier(30)
+        setProtection(3, 6, 5, 3, REINFORCED_MAIL).setDurabilityMultiplier(30)
                 .setToughness(1.0F);
         setProtection(3, 7, 5, 3, STALWART_MAIL).setDurabilityMultiplier(30)
                 .setToughness(1.0F);
