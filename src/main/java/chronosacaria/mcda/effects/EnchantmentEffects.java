@@ -103,7 +103,16 @@ public class EnchantmentEffects {
         while (surpriseGiftChance > 0) {
             if (CleanlinessHelper.percentToOccur(surpriseGiftChance)) {
                 ItemStack potionToDrop = SURPRISE_GIFT_LIST.get(playerEntity.getRandom().nextInt(SURPRISE_GIFT_LIST.size()));
+                // TODO Find why CleanlinessHelper#mcda$dropItem method is causing an uncraftable potion to drop
+                // This code causes a problem
                 CleanlinessHelper.mcda$dropItem(playerEntity, potionToDrop);
+
+                // This code works
+                /*
+                ItemEntity surpriseGift = new ItemEntity(playerEntity.world, playerEntity.getX(),
+                        playerEntity.getY(), playerEntity.getZ(), potionToDrop);
+                playerEntity.world.spawnEntity(surpriseGift);
+                */
             }
             surpriseGiftChance -= 100;
         }
