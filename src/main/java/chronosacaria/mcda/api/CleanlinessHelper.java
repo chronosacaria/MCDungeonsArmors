@@ -193,13 +193,13 @@ public class CleanlinessHelper {
     }
 
     public static void mcda$dropItem(LivingEntity le, ItemStack itemStack) {
-        mcda$dropItem(le, itemStack.getItem(), itemStack.getCount());
+        ItemEntity it = new ItemEntity(
+                le.world, le.getX(), le.getY(), le.getZ(),
+                itemStack);
+        le.world.spawnEntity(it);
     }
 
     public static void mcda$dropItem(LivingEntity le, Item item, int amount) {
-        ItemEntity it = new ItemEntity(
-                le.world, le.getX(), le.getY(), le.getZ(),
-                new ItemStack(item, amount));
-        le.world.spawnEntity(it);
+        mcda$dropItem(le, new ItemStack(item, amount));
     }
 }
