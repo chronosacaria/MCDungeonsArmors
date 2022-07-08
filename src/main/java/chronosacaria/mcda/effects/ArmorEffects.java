@@ -526,6 +526,7 @@ public class ArmorEffects {
                 default -> throw new IllegalStateException("Unexpected value: " + index);
             };
             mcdaDamageEquipment(livingEntity,equipmentSlot, 0.5f);
+            CleanlinessHelper.onTotemDeathEffects(livingEntity);
             return true;
         }
         return false;
