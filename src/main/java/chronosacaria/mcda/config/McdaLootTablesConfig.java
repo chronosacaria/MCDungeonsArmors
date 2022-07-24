@@ -2,7 +2,6 @@ package chronosacaria.mcda.config;
 
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.items.itemhelpers.ItemSettingsHelper;
-import chronosacaria.mcda.items.itemhelpers.SpawnHelper;
 import com.google.common.collect.Lists;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
@@ -20,7 +19,7 @@ public class McdaLootTablesConfig implements ConfigData {
     public LinkedHashMap<ItemSettingsHelper, Boolean> enableTieredLootTables = new LinkedHashMap<>();
 
     @Comment("Default, non-tiered armour spawn rates.")
-    public EnumMap<SpawnHelper, Float> armorSpawnRates = new EnumMap<>(SpawnHelper.class);
+    public EnumMap<ArmorSets, Float> armorSpawnRates = new EnumMap<>(ArmorSets.class);
 
     @Comment("Chests for tiered spawning.")
     public LinkedHashMap<ItemSettingsHelper, ArrayList<String>> commonLootTables = new LinkedHashMap<>();
@@ -33,30 +32,34 @@ public class McdaLootTablesConfig implements ConfigData {
 
     public McdaLootTablesConfig(){
 
-        armorSpawnRates.put(SpawnHelper.GHOSTLY, 0.05f);
-        armorSpawnRates.put(SpawnHelper.GHOST_KINDLER, 0.01f);
-        armorSpawnRates.put(SpawnHelper.GRIM, 0.05f);
-        armorSpawnRates.put(SpawnHelper.DARK, 0.1f);
-        armorSpawnRates.put(SpawnHelper.ROYAL, 0.05f);
-        armorSpawnRates.put(SpawnHelper.TITAN, 0.025f);
-        armorSpawnRates.put(SpawnHelper.THIEF, 0.1f);
-        armorSpawnRates.put(SpawnHelper.PLATE, 0.05f);
-        armorSpawnRates.put(SpawnHelper.FULL_METAL, 0.01f);
-        armorSpawnRates.put(SpawnHelper.SNOW, 0.03f);
-        armorSpawnRates.put(SpawnHelper.WOLF, 0.05f);
-        armorSpawnRates.put(SpawnHelper.FOX, 0.01f);
-        armorSpawnRates.put(SpawnHelper.REINFORCED, 0.05f);
-        armorSpawnRates.put(SpawnHelper.STALWART, 0.01f);
-        armorSpawnRates.put(SpawnHelper.SCALE, 0.05f);
-        armorSpawnRates.put(SpawnHelper.MERCENARY, 0.05f);
-        armorSpawnRates.put(SpawnHelper.SPELUNKER, 0.05f);
-        armorSpawnRates.put(SpawnHelper.CAVE_CRAWLER, 0.01f);
-        armorSpawnRates.put(SpawnHelper.HERO, 0.1f);
-        armorSpawnRates.put(SpawnHelper.GILDED, 0.1f);
-        armorSpawnRates.put(SpawnHelper.TELEPORTATION, 0.1f);
-        armorSpawnRates.put(SpawnHelper.UNSTABLE, 0.01f);
-        armorSpawnRates.put(SpawnHelper.MYSTERY, 0.05f);
-        armorSpawnRates.put(SpawnHelper.VANGUARD, 0.05f);
+        armorSpawnRates.put(GHOSTLY, 0.05f);
+        armorSpawnRates.put(GHOST_KINDLER, 0.01f);
+        armorSpawnRates.put(GRIM, 0.05f);
+        armorSpawnRates.put(DARK, 0.1f);
+        armorSpawnRates.put(ROYAL, 0.05f);
+        armorSpawnRates.put(TITAN, 0.025f);
+        armorSpawnRates.put(THIEF, 0.1f);
+        armorSpawnRates.put(PLATE, 0.05f);
+        armorSpawnRates.put(FULL_METAL, 0.01f);
+        armorSpawnRates.put(SNOW, 0.03f);
+        armorSpawnRates.put(WOLF, 0.05f);
+        armorSpawnRates.put(FOX, 0.01f);
+        armorSpawnRates.put(REINFORCED_MAIL, 0.05f);
+        armorSpawnRates.put(STALWART_MAIL, 0.01f);
+        armorSpawnRates.put(SCALE_MAIL, 0.05f);
+        armorSpawnRates.put(MERCENARY, 0.05f);
+        armorSpawnRates.put(SPELUNKER, 0.05f);
+        armorSpawnRates.put(CAVE_CRAWLER, 0.01f);
+        armorSpawnRates.put(HERO, 0.1f);
+        armorSpawnRates.put(GILDED, 0.1f);
+        armorSpawnRates.put(TELEPORTATION, 0.1f);
+        armorSpawnRates.put(UNSTABLE, 0.01f);
+        armorSpawnRates.put(MYSTERY, 0.05f);
+        armorSpawnRates.put(GREEN_MYSTERY, 0.05f);
+        armorSpawnRates.put(BLUE_MYSTERY, 0.05f);
+        armorSpawnRates.put(PURPLE_MYSTERY, 0.05f);
+        armorSpawnRates.put(RED_MYSTERY, 0.05f);
+        armorSpawnRates.put(VANGUARD, 0.05f);
 
         for (ItemSettingsHelper ignored : ItemSettingsHelper.values()){
             enableTieredLootTables.put(ItemSettingsHelper.ENABLE_TIERED_LOOT_TABLES, false);
