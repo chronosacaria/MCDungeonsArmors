@@ -4,7 +4,6 @@
   "package": "chronosacaria.mcda.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ArmorFeatureRendererMixin",
     "CobwebBlockMixin",
     "ExperienceOrbEntityMixin",
     "ItemEntryMixin",
@@ -19,6 +18,7 @@
     "SweetBerryBushBlockMixin"
   ],
   "client": [
+    "ArmorFeatureRendererMixin",
     "InGameOverlayRendererMixin"
   ],
   "injectors": {
