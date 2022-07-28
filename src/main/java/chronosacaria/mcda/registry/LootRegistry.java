@@ -68,186 +68,144 @@ public class LootRegistry {
     public static void init() {
         LootTableEvents.MODIFY.register(((resourceManager, lootManager, id, tableBuilder, source) -> {
 
-
+            LootPool.Builder lootPoolBuilder = LootPool.builder();
 
             if (EntityType.PHANTOM.getLootTableId().equals(id) && source.isBuiltin()) {
-                LootPool.Builder lootPoolBuilder = LootPool.builder();
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.PHANTOM_BONES),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.PHANTOM_BONES).intValue(),
                         0.35f);
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.PHANTOM_SKIN),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.PHANTOM_SKIN).intValue(),
                         0.20f);
-                tableBuilder.pool(lootPoolBuilder.build());
             }
             if (EntityType.OCELOT.getLootTableId().equals(id) && source.isBuiltin()) {
-                LootPool.Builder lootPoolBuilder = LootPool.builder();
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.OCELOT_PELT),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.OCELOT_PELT).intValue(),
                         0.35f);
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.OCELOT_PELT_BLACK),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.BLACK_OCELOT_PELT).intValue(),
                         0.20f);
-                tableBuilder.pool(lootPoolBuilder.build());
             }
             if (EntityType.SKELETON.getLootTableId().equals(id) && source.isBuiltin()) {
-                LootPool.Builder lootPoolBuilder = LootPool.builder();
                 addItemDrop(lootPoolBuilder, Items.SKELETON_SKULL,
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.SKELETON_SKULL).intValue(),
                         0.20f);
-                tableBuilder.pool(lootPoolBuilder.build());
             }
             if (EntityType.WOLF.getLootTableId().equals(id) && source.isBuiltin()) {
-                LootPool.Builder lootPoolBuilder = LootPool.builder();
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.WOLF_PELT),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.WOLF_PELT).intValue(),
                         0.25f);
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.WOLF_PELT_BLACK),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.BLACK_WOLF_PELT).intValue(),
                         0.08f);
-                tableBuilder.pool(lootPoolBuilder.build());
             }
             if (EntityType.FOX.getLootTableId().equals(id) && source.isBuiltin()) {
-                LootPool.Builder lootPoolBuilder = LootPool.builder();
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.FOX_PELT),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.FOX_PELT).intValue(),
                         0.25f);
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.FOX_PELT_ARCTIC),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.ARCTIC_FOX_PELT).intValue(),
                         0.10f);
-                tableBuilder.pool(lootPoolBuilder.build());
             }
             if (EntityType.EVOKER.getLootTableId().equals(id) && source.isBuiltin()) {
-                LootPool.Builder lootPoolBuilder = LootPool.builder();
-                ArmorsRegistry.armorItems.get(ArmorSets.EVOCATION).values()
-                        .forEach((item -> addItemDrop(lootPoolBuilder, item,
-                                CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.EVOCATION_ROBE).intValue(),
-                                0.20F)));
-                tableBuilder.pool(lootPoolBuilder.build());
+                addArmorSet(lootPoolBuilder, ArmorSets.EVOCATION,
+                        CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.EVOCATION_ROBE).intValue(),
+                        0.20F);
             }
             if (EntityType.GOAT.getLootTableId().equals(id) && source.isBuiltin()) {
-                LootPool.Builder lootPoolBuilder = LootPool.builder();
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.GOAT_PELT),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.GOAT_PELT).intValue(),
                         0.50F);
-                tableBuilder.pool(lootPoolBuilder.build());
             }
             if (Blocks.BLUE_ICE.getLootTableId().equals(id) && source.isBuiltin()) {
-                LootPool.Builder lootPoolBuilder = LootPool.builder();
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.FROST_CRYSTAL),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.FROST_CRYSTAL).intValue(),
                         0.20F);
                 lootPoolBuilder.conditionally(WITHOUT_SILK_TOUCH);
-                tableBuilder.pool(lootPoolBuilder.build());
             }
 
             if (CONFIG.mcdaLootTablesConfig.enableTieredLootTables.get(ItemSettingsHelper.ENABLE_TIERED_LOOT_TABLES)) {
                 if (COMMON_LOOT_TABLES.contains(id.toString())) {
-                    LootPool.Builder lootPoolBuilder = LootPool.builder();
                     for (ArmorSets armorSets : List.of(ArmorSets.BATTLE, ArmorSets.BEENEST, ArmorSets.CLIMBING_GEAR, ArmorSets.EVOCATION,
                             ArmorSets.GHOSTLY, ArmorSets.HUNTER, ArmorSets.SCALE_MAIL, ArmorSets.SNOW, ArmorSets.SOUL_ROBE, ArmorSets.SPELUNKER,
                             ArmorSets.SQUID, ArmorSets.VANGUARD, ArmorSets.WOLF)) {
                         addArmorSet(lootPoolBuilder, armorSets);
                     }
-                    tableBuilder.pool(lootPoolBuilder.build());
                 }
                 if (UNCOMMON_LOOT_TABLES.contains(id.toString())) {
-                    LootPool.Builder lootPoolBuilder = LootPool.builder();
                     for (ArmorSets armorSets : List.of(ArmorSets.CHAMPION, ArmorSets.EMERALD, ArmorSets.ENTERTAINER, ArmorSets.GOAT, ArmorSets.GRIM,
                             ArmorSets.GUARDS, ArmorSets.MERCENARY, ArmorSets.OCELOT, ArmorSets.PHANTOM, ArmorSets.PIGLIN, ArmorSets.PLATE, ArmorSets.REINFORCED_MAIL,
                             ArmorSets.SWEET_TOOTH, ArmorSets.TELEPORTATION, ArmorSets.THIEF, ArmorSets.TURTLE)) {
                         addArmorSet(lootPoolBuilder, armorSets);
                     }
-                    tableBuilder.pool(lootPoolBuilder.build());
                 }
                 if (RARE_LOOT_TABLES.contains(id.toString())) {
-                    LootPool.Builder lootPoolBuilder = LootPool.builder();
                     for (ArmorSets armorSets : List.of(ArmorSets.SPLENDID, ArmorSets.BEEHIVE, ArmorSets.RUGGED_CLIMBING_GEAR, ArmorSets.DARK, ArmorSets.TROUBADOUR,
-                        ArmorSets.EMBER, ArmorSets.VERDANT, ArmorSets.GHOST_KINDLER, ArmorSets.WITHER, ArmorSets.ARCHER, ArmorSets.LIVING_VINES, ArmorSets.SPROUT, ArmorSets.RENEGADE,
-                        ArmorSets.GOLDEN_PIGLIN, ArmorSets.STALWART_MAIL, ArmorSets.HIGHLAND, ArmorSets.FROST, ArmorSets.SOULDANCER, ArmorSets.CAVE_CRAWLER, ArmorSets.GLOW_SQUID,
-                        ArmorSets.SPIDER, ArmorSets.BLACK_WOLF, ArmorSets.FOX)) {
+                            ArmorSets.EMBER, ArmorSets.VERDANT, ArmorSets.GHOST_KINDLER, ArmorSets.WITHER, ArmorSets.ARCHER, ArmorSets.LIVING_VINES, ArmorSets.SPROUT, ArmorSets.RENEGADE,
+                            ArmorSets.GOLDEN_PIGLIN, ArmorSets.STALWART_MAIL, ArmorSets.HIGHLAND, ArmorSets.FROST, ArmorSets.SOULDANCER, ArmorSets.CAVE_CRAWLER, ArmorSets.GLOW_SQUID,
+                            ArmorSets.SPIDER, ArmorSets.BLACK_WOLF, ArmorSets.FOX)) {
                         addArmorSet(lootPoolBuilder, armorSets);
                     }
-                    tableBuilder.pool(lootPoolBuilder.build());
                 }
                 if (EPIC_LOOT_TABLES.contains(id.toString())) {
-                    LootPool.Builder lootPoolBuilder = LootPool.builder();
                     for (ArmorSets armorSets : List.of(ArmorSets.HERO, ArmorSets.TITAN, ArmorSets.ROYAL, ArmorSets.GILDED, ArmorSets.OPULENT, ArmorSets.GOURDIAN,
                             ArmorSets.CURIOUS, ArmorSets.HUNGRY_HORROR, ArmorSets.RED_MYSTERY, ArmorSets.MYSTERY, ArmorSets.BLUE_MYSTERY, ArmorSets.GREEN_MYSTERY,
                             ArmorSets.PURPLE_MYSTERY, ArmorSets.SHADOW_WALKER, ArmorSets.FROST_BITE, ArmorSets.FULL_METAL, ArmorSets.CAULDRON, ArmorSets.SHULKER,
                             ArmorSets.STURDY_SHULKER, ArmorSets.UNSTABLE, ArmorSets.NIMBLE_TURTLE, ArmorSets.ARCTIC_FOX)) {
                         addArmorSet(lootPoolBuilder, armorSets);
                     }
-                    tableBuilder.pool(lootPoolBuilder.build());
                 }
             } else {
                 if (BASTION_LOOT_TABLES.contains(id)) {
-                    LootPool.Builder lootPoolBuilder = LootPool.builder();
                     for (ArmorSets armorSets : List.of(ArmorSets.MYSTERY, ArmorSets.BLUE_MYSTERY, ArmorSets.GREEN_MYSTERY, ArmorSets.PURPLE_MYSTERY, ArmorSets.RED_MYSTERY,
                             ArmorSets.GHOSTLY, ArmorSets.GHOST_KINDLER)) {
                         addArmorSet(lootPoolBuilder, armorSets);
                     }
-                    tableBuilder.pool(lootPoolBuilder.build());
                 }
                 else if (PIGLIN_TRADING_LOOT_TABLES.contains(id)) {
-                    LootPool.Builder lootPoolBuilder = LootPool.builder();
                     for (ItemID itemID : List.of(ItemID.GEMSTONE_WHITE, ItemID.GEMSTONE_RED, ItemID.GEMSTONE_GREEN, ItemID.GEMSTONE_BLUE, ItemID.GEMSTONE_PURPLE)) {
                         addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(itemID), 1, 0.01F);
                     }
-                    tableBuilder.pool(lootPoolBuilder.build());
                 }
                 else if (NETHER_FORTRESS_LOOT_TABLES.contains(id)) {
-                    LootPool.Builder lootPoolBuilder = LootPool.builder();
                     for (ArmorSets armorSets : List.of(ArmorSets.MYSTERY, ArmorSets.BLUE_MYSTERY, ArmorSets.GREEN_MYSTERY, ArmorSets.PURPLE_MYSTERY, ArmorSets.RED_MYSTERY,
                             ArmorSets.GRIM, ArmorSets.VANGUARD)) {
                         addArmorSet(lootPoolBuilder, armorSets);
                     }
-                    tableBuilder.pool(lootPoolBuilder.build());
                 }
                 else if (PILLAGER_TOWER_LOOT_TABLES.contains(id)) {
-                    LootPool.Builder lootPoolBuilder = LootPool.builder();
                     for (ArmorSets armorSets : List.of(ArmorSets.DARK, ArmorSets.THIEF, ArmorSets.ROYAL, ArmorSets.TITAN)) {
                         addArmorSet(lootPoolBuilder, armorSets);
                     }
-                    tableBuilder.pool(lootPoolBuilder.build());
                 }
                 else if (VILLAGE_SMITH_LOOT_TABLES.contains(id)) {
-                    LootPool.Builder lootPoolBuilder = LootPool.builder();
                     for (ArmorSets armorSets : List.of(ArmorSets.PLATE, ArmorSets.FULL_METAL, ArmorSets.SNOW, ArmorSets.WOLF, ArmorSets.FOX, ArmorSets.REINFORCED_MAIL,
                             ArmorSets.STALWART_MAIL)) {
                         addArmorSet(lootPoolBuilder, armorSets);
                     }
-                    tableBuilder.pool(lootPoolBuilder.build());
                 }
                 else if (SUNKEN_SHIP_LOOT_TABLES.contains(id)) {
-                    LootPool.Builder lootPoolBuilder = LootPool.builder();
                     for (ArmorSets armorSets : List.of(ArmorSets.MYSTERY, ArmorSets.BLUE_MYSTERY, ArmorSets.GREEN_MYSTERY, ArmorSets.PURPLE_MYSTERY, ArmorSets.RED_MYSTERY,
                             ArmorSets.SCALE_MAIL, ArmorSets.MERCENARY)) {
                         addArmorSet(lootPoolBuilder, armorSets);
                     }
-                    tableBuilder.pool(lootPoolBuilder.build());
                 }
                 else if (MINESHAFT_LOOT_TABLES.contains(id)) {
-                    LootPool.Builder lootPoolBuilder = LootPool.builder();
                     for (ArmorSets armorSets : List.of(ArmorSets.MYSTERY, ArmorSets.BLUE_MYSTERY, ArmorSets.GREEN_MYSTERY, ArmorSets.PURPLE_MYSTERY, ArmorSets.RED_MYSTERY,
                             ArmorSets.SPELUNKER, ArmorSets.CAVE_CRAWLER)) {
                         addArmorSet(lootPoolBuilder, armorSets);
                     }
-                    tableBuilder.pool(lootPoolBuilder.build());
                 }
                 else if (HERO_OF_THE_VILLAGE_LOOT_TABLES.contains(id)) {
-                    LootPool.Builder lootPoolBuilder = LootPool.builder();
                     addArmorSet(lootPoolBuilder, ArmorSets.HERO);
                     addArmorSet(lootPoolBuilder, ArmorSets.GILDED);
-                    tableBuilder.pool(lootPoolBuilder.build());
                 }
                 else if (STRONGHOLD_LOOT_TABLES.contains(id)) {
-                    LootPool.Builder lootPoolBuilder = LootPool.builder();
                     addArmorSet(lootPoolBuilder, ArmorSets.TELEPORTATION);
                     addArmorSet(lootPoolBuilder, ArmorSets.UNSTABLE);
-                    tableBuilder.pool(lootPoolBuilder.build());
                 }
             }
+            tableBuilder.pool(lootPoolBuilder.build());
         }));
     }
 
@@ -255,9 +213,13 @@ public class LootRegistry {
         float p = CONFIG.mcdaLootTablesConfig.enableTieredLootTables.get(ItemSettingsHelper.ENABLE_TIERED_LOOT_TABLES) ?
                 CONFIG.mcdaLootTablesConfig.armorLootTableSpawnRates.get(set) :
                 CONFIG.mcdaLootTablesConfig.armorSpawnRates.get(set);
+        addArmorSet(poolBuilder, set, 1, p);
+    }
+
+    public static void addArmorSet(LootPool.Builder poolBuilder, ArmorSets set, int n, float p) {
         ArmorsRegistry.armorItems.get(set).values()
                 .forEach((item -> {
-                    poolBuilder.rolls(BinomialLootNumberProvider.create(1, p));
+                    poolBuilder.rolls(BinomialLootNumberProvider.create(n, p));
                     poolBuilder.with(ItemEntry.builder(item));
                 }));
     }
@@ -269,10 +231,10 @@ public class LootRegistry {
 
     static {
         WITHOUT_SILK_TOUCH = MatchToolLootCondition.builder(
-                ItemPredicate.Builder.create()
-                        .enchantment(
-                                new EnchantmentPredicate(
-                                        Enchantments.SILK_TOUCH, NumberRange.IntRange.atLeast(1))))
+                        ItemPredicate.Builder.create()
+                                .enchantment(
+                                        new EnchantmentPredicate(
+                                                Enchantments.SILK_TOUCH, NumberRange.IntRange.atLeast(1))))
                 .invert();
     }
 }
