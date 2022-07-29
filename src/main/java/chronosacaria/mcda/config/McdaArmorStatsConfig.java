@@ -117,7 +117,7 @@ public class McdaArmorStatsConfig implements ConfigData {
                 .setToughness(2.0F);
         setProtection(3, 7, 5, 3, FROST).setDurabilityMultiplier(30)
                 .setToughness(2.0F);
-        setProtection(3, 5, 4, 3, MERCENARY).setDurabilityMultiplier(30)
+        setProtection(3, 6, 5, 3, MERCENARY).setDurabilityMultiplier(30)
                 .setToughness(1.5F);
         setProtection(3, 6, 5, 3, RENEGADE).setDurabilityMultiplier(30)
                 .setToughness(1.75F);
