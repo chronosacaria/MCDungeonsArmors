@@ -16,8 +16,14 @@ public class McdaLootTablesConfig implements ConfigData {
     @Comment("Choose whether to use tiered loot system. Default = false")
     public LinkedHashMap<ItemSettingsHelper, Boolean> enableTieredLootTables = new LinkedHashMap<>();
 
+    @Comment("Chance to get an armor piece from chests. Default = 0.10f")
+    public Float findArmorChance = 0.10f;
+
+    @Comment("Higher Number makes Luck give you potential for extra MCDA loot. Default = 1.2f")
+    public Float bonusRollsWithLuck = 1.2f;
+
     @Comment("Default, non-tiered armour spawn rates.")
-    public EnumMap<ArmorSets, Float> armorSpawnRates = new EnumMap<>(ArmorSets.class);
+    public EnumMap<ArmorSets, Integer> armorSpawnRates = new EnumMap<>(ArmorSets.class);
 
     @Comment("Chests for tiered spawning.")
     public LinkedHashMap<ItemSettingsHelper, String[]> commonLootTables = new LinkedHashMap<>();
@@ -26,38 +32,38 @@ public class McdaLootTablesConfig implements ConfigData {
     public LinkedHashMap<ItemSettingsHelper, String[]> epicLootTables = new LinkedHashMap<>();
 
     @Comment("Tiered armour spawn rates.")
-    public LinkedHashMap<ArmorSets, Float> armorLootTableSpawnRates = new LinkedHashMap<>();
+    public LinkedHashMap<ArmorSets, Integer> armorLootTableSpawnRates = new LinkedHashMap<>();
 
     public McdaLootTablesConfig(){
 
-        armorSpawnRates.put(GHOSTLY, 0.05f);
-        armorSpawnRates.put(GHOST_KINDLER, 0.01f);
-        armorSpawnRates.put(GRIM, 0.05f);
-        armorSpawnRates.put(DARK, 0.1f);
-        armorSpawnRates.put(ROYAL, 0.05f);
-        armorSpawnRates.put(TITAN, 0.025f);
-        armorSpawnRates.put(THIEF, 0.1f);
-        armorSpawnRates.put(PLATE, 0.05f);
-        armorSpawnRates.put(FULL_METAL, 0.01f);
-        armorSpawnRates.put(SNOW, 0.03f);
-        armorSpawnRates.put(WOLF, 0.05f);
-        armorSpawnRates.put(FOX, 0.01f);
-        armorSpawnRates.put(REINFORCED_MAIL, 0.05f);
-        armorSpawnRates.put(STALWART_MAIL, 0.01f);
-        armorSpawnRates.put(SCALE_MAIL, 0.05f);
-        armorSpawnRates.put(MERCENARY, 0.05f);
-        armorSpawnRates.put(SPELUNKER, 0.05f);
-        armorSpawnRates.put(CAVE_CRAWLER, 0.01f);
-        armorSpawnRates.put(HERO, 0.1f);
-        armorSpawnRates.put(GILDED, 0.1f);
-        armorSpawnRates.put(TELEPORTATION, 0.1f);
-        armorSpawnRates.put(UNSTABLE, 0.01f);
-        armorSpawnRates.put(MYSTERY, 0.05f);
-        armorSpawnRates.put(GREEN_MYSTERY, 0.05f);
-        armorSpawnRates.put(BLUE_MYSTERY, 0.05f);
-        armorSpawnRates.put(PURPLE_MYSTERY, 0.05f);
-        armorSpawnRates.put(RED_MYSTERY, 0.05f);
-        armorSpawnRates.put(VANGUARD, 0.05f);
+        armorSpawnRates.put(GHOSTLY, 5);
+        armorSpawnRates.put(GHOST_KINDLER, 1);
+        armorSpawnRates.put(GRIM, 5);
+        armorSpawnRates.put(DARK, 10);
+        armorSpawnRates.put(ROYAL, 5);
+        armorSpawnRates.put(TITAN, 3);
+        armorSpawnRates.put(THIEF, 10);
+        armorSpawnRates.put(PLATE, 5);
+        armorSpawnRates.put(FULL_METAL, 1);
+        armorSpawnRates.put(SNOW, 3);
+        armorSpawnRates.put(WOLF, 5);
+        armorSpawnRates.put(FOX, 1);
+        armorSpawnRates.put(REINFORCED_MAIL, 5);
+        armorSpawnRates.put(STALWART_MAIL, 1);
+        armorSpawnRates.put(SCALE_MAIL, 5);
+        armorSpawnRates.put(MERCENARY, 5);
+        armorSpawnRates.put(SPELUNKER, 5);
+        armorSpawnRates.put(CAVE_CRAWLER, 1);
+        armorSpawnRates.put(HERO, 10);
+        armorSpawnRates.put(GILDED, 10);
+        armorSpawnRates.put(TELEPORTATION, 10);
+        armorSpawnRates.put(UNSTABLE, 1);
+        armorSpawnRates.put(MYSTERY, 5);
+        armorSpawnRates.put(GREEN_MYSTERY, 5);
+        armorSpawnRates.put(BLUE_MYSTERY, 5);
+        armorSpawnRates.put(PURPLE_MYSTERY, 5);
+        armorSpawnRates.put(RED_MYSTERY, 5);
+        armorSpawnRates.put(VANGUARD, 5);
 
 
         enableTieredLootTables.put(ItemSettingsHelper.ENABLE_TIERED_LOOT_TABLES, false);
@@ -91,48 +97,48 @@ public class McdaLootTablesConfig implements ConfigData {
                 "minecraft:chests/end_city_treasure"});
 
         for (ArmorSets armorSets : ArmorSets.values()){
-            armorLootTableSpawnRates.put(armorSets, 0.10f);
+            armorLootTableSpawnRates.put(armorSets, 10);
         }
-        armorLootTableSpawnRates.replace(SPLENDID, 0.05f);
-        armorLootTableSpawnRates.replace(BEEHIVE, 0.05f);
-        armorLootTableSpawnRates.replace(HERO, 0.01f);
-        armorLootTableSpawnRates.replace(RUGGED_CLIMBING_GEAR, 0.05f);
-        armorLootTableSpawnRates.replace(TITAN, 0.01f);
-        armorLootTableSpawnRates.replace(ROYAL, 0.05f);
-        armorLootTableSpawnRates.replace(OPULENT, 0.05f);
-        armorLootTableSpawnRates.replace(GILDED, 0.01f);
-        armorLootTableSpawnRates.replace(TROUBADOUR, 0.00f);
-        armorLootTableSpawnRates.replace(EMBER, 0.05f);
-        armorLootTableSpawnRates.replace(VERDANT, 0.05f);
-        armorLootTableSpawnRates.replace(GHOST_KINDLER, 0.05f);
-        armorLootTableSpawnRates.replace(WITHER, 0.05f);
-        armorLootTableSpawnRates.replace(GOURDIAN, 0.05f);
-        armorLootTableSpawnRates.replace(CURIOUS, 0.05f);
-        armorLootTableSpawnRates.replace(ARCHER, 0.05f);
-        armorLootTableSpawnRates.replace(RENEGADE, 0.05f);
-        armorLootTableSpawnRates.replace(HUNGRY_HORROR, 0.01f);
-        armorLootTableSpawnRates.replace(RED_MYSTERY, 0.00f);
-        armorLootTableSpawnRates.replace(MYSTERY, 0.00f);
-        armorLootTableSpawnRates.replace(GREEN_MYSTERY, 0.00f);
-        armorLootTableSpawnRates.replace(BLUE_MYSTERY, 0.00f);
-        armorLootTableSpawnRates.replace(PURPLE_MYSTERY, 0.00f);
-        armorLootTableSpawnRates.replace(SHADOW_WALKER, 0.05f);
-        armorLootTableSpawnRates.replace(FROST_BITE, 0.05f);
-        armorLootTableSpawnRates.replace(GOLDEN_PIGLIN, 0.05f);
-        armorLootTableSpawnRates.replace(FULL_METAL, 0.05f);
-        armorLootTableSpawnRates.replace(CAULDRON, 0.05f);
-        armorLootTableSpawnRates.replace(STALWART_MAIL, 0.05f);
-        armorLootTableSpawnRates.replace(HIGHLAND, 0.05f);
-        armorLootTableSpawnRates.replace(STURDY_SHULKER, 0.05f);
-        armorLootTableSpawnRates.replace(FROST, 0.05f);
-        armorLootTableSpawnRates.replace(SOULDANCER, 0.05f);
-        armorLootTableSpawnRates.replace(CAVE_CRAWLER, 0.05f);
-        armorLootTableSpawnRates.replace(GLOW_SQUID, 0.05f);
-        armorLootTableSpawnRates.replace(UNSTABLE, 0.05f);
-        armorLootTableSpawnRates.replace(SPIDER, 0.05f);
-        armorLootTableSpawnRates.replace(NIMBLE_TURTLE, 0.05f);
-        armorLootTableSpawnRates.replace(BLACK_WOLF, 0.05f);
-        armorLootTableSpawnRates.replace(FOX, 0.01f);
-        armorLootTableSpawnRates.replace(ARCTIC_FOX, 0.01f);
+        armorLootTableSpawnRates.replace(SPLENDID, 5);
+        armorLootTableSpawnRates.replace(BEEHIVE, 5);
+        armorLootTableSpawnRates.replace(HERO, 1);
+        armorLootTableSpawnRates.replace(RUGGED_CLIMBING_GEAR, 5);
+        armorLootTableSpawnRates.replace(TITAN, 1);
+        armorLootTableSpawnRates.replace(ROYAL, 5);
+        armorLootTableSpawnRates.replace(OPULENT, 5);
+        armorLootTableSpawnRates.replace(GILDED, 1);
+        armorLootTableSpawnRates.replace(TROUBADOUR, 0);
+        armorLootTableSpawnRates.replace(EMBER, 5);
+        armorLootTableSpawnRates.replace(VERDANT, 5);
+        armorLootTableSpawnRates.replace(GHOST_KINDLER, 5);
+        armorLootTableSpawnRates.replace(WITHER, 5);
+        armorLootTableSpawnRates.replace(GOURDIAN, 5);
+        armorLootTableSpawnRates.replace(CURIOUS, 5);
+        armorLootTableSpawnRates.replace(ARCHER, 5);
+        armorLootTableSpawnRates.replace(RENEGADE, 5);
+        armorLootTableSpawnRates.replace(HUNGRY_HORROR, 1);
+        armorLootTableSpawnRates.replace(RED_MYSTERY, 0);
+        armorLootTableSpawnRates.replace(MYSTERY, 0);
+        armorLootTableSpawnRates.replace(GREEN_MYSTERY, 0);
+        armorLootTableSpawnRates.replace(BLUE_MYSTERY, 0);
+        armorLootTableSpawnRates.replace(PURPLE_MYSTERY, 0);
+        armorLootTableSpawnRates.replace(SHADOW_WALKER, 5);
+        armorLootTableSpawnRates.replace(FROST_BITE, 5);
+        armorLootTableSpawnRates.replace(GOLDEN_PIGLIN, 5);
+        armorLootTableSpawnRates.replace(FULL_METAL, 5);
+        armorLootTableSpawnRates.replace(CAULDRON, 5);
+        armorLootTableSpawnRates.replace(STALWART_MAIL, 5);
+        armorLootTableSpawnRates.replace(HIGHLAND, 5);
+        armorLootTableSpawnRates.replace(STURDY_SHULKER, 5);
+        armorLootTableSpawnRates.replace(FROST, 5);
+        armorLootTableSpawnRates.replace(SOULDANCER, 5);
+        armorLootTableSpawnRates.replace(CAVE_CRAWLER, 5);
+        armorLootTableSpawnRates.replace(GLOW_SQUID, 5);
+        armorLootTableSpawnRates.replace(UNSTABLE, 5);
+        armorLootTableSpawnRates.replace(SPIDER, 5);
+        armorLootTableSpawnRates.replace(NIMBLE_TURTLE, 5);
+        armorLootTableSpawnRates.replace(BLACK_WOLF, 5);
+        armorLootTableSpawnRates.replace(FOX, 1);
+        armorLootTableSpawnRates.replace(ARCTIC_FOX, 1);
     }
 }

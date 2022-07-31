@@ -16,6 +16,7 @@ import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.MatchToolLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.provider.number.BinomialLootNumberProvider;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.predicate.NumberRange;
 import net.minecraft.predicate.item.EnchantmentPredicate;
 import net.minecraft.predicate.item.ItemPredicate;
@@ -29,7 +30,7 @@ public class LootRegistry {
 
     private static final LootCondition.Builder WITHOUT_SILK_TOUCH;
 
-    public static final Collection<Identifier> BASTION_LOOT_TABLES = Set.of(LootTables.BASTION_BRIDGE_CHEST,
+    public static final Collection<Identifier> BASTION_LOOT_TABLES = List.of(LootTables.BASTION_BRIDGE_CHEST,
             LootTables.BASTION_HOGLIN_STABLE_CHEST, LootTables.BASTION_OTHER_CHEST, LootTables.BASTION_TREASURE_CHEST);
 
     public static final Collection<Identifier> PIGLIN_TRADING_LOOT_TABLES = Collections.singletonList(
@@ -38,7 +39,7 @@ public class LootRegistry {
     public static final Collection<Identifier> NETHER_FORTRESS_LOOT_TABLES = Collections.singletonList(
             LootTables.NETHER_BRIDGE_CHEST);
 
-    public static final Collection<Identifier> PILLAGER_TOWER_LOOT_TABLES = Set.of(LootTables.PILLAGER_OUTPOST_CHEST,
+    public static final Collection<Identifier> PILLAGER_TOWER_LOOT_TABLES = List.of(LootTables.PILLAGER_OUTPOST_CHEST,
             LootTables.WOODLAND_MANSION_CHEST);
 
     public static final Collection<Identifier> VILLAGE_SMITH_LOOT_TABLES = List.of(LootTables.VILLAGE_TOOLSMITH_CHEST,
@@ -68,62 +69,87 @@ public class LootRegistry {
     public static void init() {
         LootTableEvents.MODIFY.register(((resourceManager, lootManager, id, tableBuilder, source) -> {
 
-            LootPool.Builder lootPoolBuilder = LootPool.builder();
-
             if (EntityType.PHANTOM.getLootTableId().equals(id) && source.isBuiltin()) {
+                LootPool.Builder lootPoolBuilder = LootPool.builder();
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.PHANTOM_BONES),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.PHANTOM_BONES).intValue(),
                         0.35f);
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.PHANTOM_SKIN),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.PHANTOM_SKIN).intValue(),
                         0.20f);
+                lootPoolBuilder.bonusRolls(ConstantLootNumberProvider.create(CONFIG.mcdaLootTablesConfig.bonusRollsWithLuck));
+                tableBuilder.pool(lootPoolBuilder.build());
             }
             if (EntityType.OCELOT.getLootTableId().equals(id) && source.isBuiltin()) {
+                LootPool.Builder lootPoolBuilder = LootPool.builder();
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.OCELOT_PELT),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.OCELOT_PELT).intValue(),
                         0.35f);
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.OCELOT_PELT_BLACK),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.BLACK_OCELOT_PELT).intValue(),
                         0.20f);
+                lootPoolBuilder.bonusRolls(ConstantLootNumberProvider.create(CONFIG.mcdaLootTablesConfig.bonusRollsWithLuck));
+                tableBuilder.pool(lootPoolBuilder.build());
             }
             if (EntityType.SKELETON.getLootTableId().equals(id) && source.isBuiltin()) {
+                LootPool.Builder lootPoolBuilder = LootPool.builder();
                 addItemDrop(lootPoolBuilder, Items.SKELETON_SKULL,
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.SKELETON_SKULL).intValue(),
                         0.20f);
+                lootPoolBuilder.bonusRolls(ConstantLootNumberProvider.create(CONFIG.mcdaLootTablesConfig.bonusRollsWithLuck));
+                tableBuilder.pool(lootPoolBuilder.build());
             }
             if (EntityType.WOLF.getLootTableId().equals(id) && source.isBuiltin()) {
+                LootPool.Builder lootPoolBuilder = LootPool.builder();
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.WOLF_PELT),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.WOLF_PELT).intValue(),
                         0.25f);
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.WOLF_PELT_BLACK),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.BLACK_WOLF_PELT).intValue(),
                         0.08f);
+                lootPoolBuilder.bonusRolls(ConstantLootNumberProvider.create(CONFIG.mcdaLootTablesConfig.bonusRollsWithLuck));
+                tableBuilder.pool(lootPoolBuilder.build());
             }
             if (EntityType.FOX.getLootTableId().equals(id) && source.isBuiltin()) {
+                LootPool.Builder lootPoolBuilder = LootPool.builder();
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.FOX_PELT),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.FOX_PELT).intValue(),
                         0.25f);
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.FOX_PELT_ARCTIC),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.ARCTIC_FOX_PELT).intValue(),
                         0.10f);
+                lootPoolBuilder.bonusRolls(ConstantLootNumberProvider.create(CONFIG.mcdaLootTablesConfig.bonusRollsWithLuck));
+                tableBuilder.pool(lootPoolBuilder.build());
             }
             if (EntityType.EVOKER.getLootTableId().equals(id) && source.isBuiltin()) {
-                addArmorSet(lootPoolBuilder, ArmorSets.EVOCATION,
-                        CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.EVOCATION_ROBE).intValue(),
-                        0.20F);
+                LootPool.Builder lootPoolBuilder = LootPool.builder();
+                lootPoolBuilder.rolls(BinomialLootNumberProvider.create(
+                        CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.EVOCATION_ROBE).intValue(), .20f));
+                addArmorSet(lootPoolBuilder, ArmorSets.EVOCATION, 1); // weight value doesn't matter here but things are dumb
+                lootPoolBuilder.bonusRolls(ConstantLootNumberProvider.create(CONFIG.mcdaLootTablesConfig.bonusRollsWithLuck));
+                tableBuilder.pool(lootPoolBuilder.build());
             }
             if (EntityType.GOAT.getLootTableId().equals(id) && source.isBuiltin()) {
+                LootPool.Builder lootPoolBuilder = LootPool.builder();
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.GOAT_PELT),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.GOAT_PELT).intValue(),
                         0.50F);
+                lootPoolBuilder.bonusRolls(ConstantLootNumberProvider.create(CONFIG.mcdaLootTablesConfig.bonusRollsWithLuck));
+                tableBuilder.pool(lootPoolBuilder.build());
             }
             if (Blocks.BLUE_ICE.getLootTableId().equals(id) && source.isBuiltin()) {
+                LootPool.Builder lootPoolBuilder = LootPool.builder();
                 addItemDrop(lootPoolBuilder, ItemsRegistry.items.get(ItemID.FROST_CRYSTAL),
                         CONFIG.mcdaItemDropsConfig.maxDropAmounts.get(DropHelper.FROST_CRYSTAL).intValue(),
                         0.20F);
                 lootPoolBuilder.conditionally(WITHOUT_SILK_TOUCH);
+                lootPoolBuilder.bonusRolls(ConstantLootNumberProvider.create(CONFIG.mcdaLootTablesConfig.bonusRollsWithLuck));
+                tableBuilder.pool(lootPoolBuilder.build());
             }
 
+            LootPool.Builder lootPoolBuilder = LootPool.builder();
+            lootPoolBuilder.rolls(BinomialLootNumberProvider.create(1, CONFIG.mcdaLootTablesConfig.findArmorChance));
+            lootPoolBuilder.bonusRolls(ConstantLootNumberProvider.create(CONFIG.mcdaLootTablesConfig.bonusRollsWithLuck));
             if (CONFIG.mcdaLootTablesConfig.enableTieredLootTables.get(ItemSettingsHelper.ENABLE_TIERED_LOOT_TABLES)) {
                 if (COMMON_LOOT_TABLES.contains(id.toString())) {
                     for (ArmorSets armorSets : List.of(ArmorSets.BATTLE, ArmorSets.BEENEST, ArmorSets.CLIMBING_GEAR, ArmorSets.EVOCATION,
@@ -210,18 +236,15 @@ public class LootRegistry {
     }
 
     public static void addArmorSet(LootPool.Builder poolBuilder, ArmorSets set) {
-        float p = CONFIG.mcdaLootTablesConfig.enableTieredLootTables.get(ItemSettingsHelper.ENABLE_TIERED_LOOT_TABLES) ?
+        int weight = CONFIG.mcdaLootTablesConfig.enableTieredLootTables.get(ItemSettingsHelper.ENABLE_TIERED_LOOT_TABLES) ?
                 CONFIG.mcdaLootTablesConfig.armorLootTableSpawnRates.get(set) :
                 CONFIG.mcdaLootTablesConfig.armorSpawnRates.get(set);
-        addArmorSet(poolBuilder, set, 1, p);
+        addArmorSet(poolBuilder, set, weight);
     }
 
-    public static void addArmorSet(LootPool.Builder poolBuilder, ArmorSets set, int n, float p) {
+    public static void addArmorSet(LootPool.Builder poolBuilder, ArmorSets set, int weight) {
         ArmorsRegistry.armorItems.get(set).values()
-                .forEach((item -> {
-                    poolBuilder.rolls(BinomialLootNumberProvider.create(n, p));
-                    poolBuilder.with(ItemEntry.builder(item));
-                }));
+                .forEach((item -> poolBuilder.with(ItemEntry.builder(item).weight(weight))));
     }
 
     public static void addItemDrop(LootPool.Builder poolBuilder, Item item, int n, float p){
