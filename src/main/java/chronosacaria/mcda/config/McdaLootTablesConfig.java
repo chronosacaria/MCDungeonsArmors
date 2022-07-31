@@ -2,12 +2,10 @@ package chronosacaria.mcda.config;
 
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.items.itemhelpers.ItemSettingsHelper;
-import com.google.common.collect.Lists;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 
-import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.LinkedHashMap;
 
@@ -22,10 +20,10 @@ public class McdaLootTablesConfig implements ConfigData {
     public EnumMap<ArmorSets, Float> armorSpawnRates = new EnumMap<>(ArmorSets.class);
 
     @Comment("Chests for tiered spawning.")
-    public LinkedHashMap<ItemSettingsHelper, ArrayList<String>> commonLootTables = new LinkedHashMap<>();
-    public LinkedHashMap<ItemSettingsHelper, ArrayList<String>> uncommonLootTables = new LinkedHashMap<>();
-    public LinkedHashMap<ItemSettingsHelper, ArrayList<String>> rareLootTables = new LinkedHashMap<>();
-    public LinkedHashMap<ItemSettingsHelper, ArrayList<String>> epicLootTables = new LinkedHashMap<>();
+    public LinkedHashMap<ItemSettingsHelper, String[]> commonLootTables = new LinkedHashMap<>();
+    public LinkedHashMap<ItemSettingsHelper, String[]> uncommonLootTables = new LinkedHashMap<>();
+    public LinkedHashMap<ItemSettingsHelper, String[]> rareLootTables = new LinkedHashMap<>();
+    public LinkedHashMap<ItemSettingsHelper, String[]> epicLootTables = new LinkedHashMap<>();
 
     @Comment("Tiered armour spawn rates.")
     public LinkedHashMap<ArmorSets, Float> armorLootTableSpawnRates = new LinkedHashMap<>();
@@ -61,42 +59,36 @@ public class McdaLootTablesConfig implements ConfigData {
         armorSpawnRates.put(RED_MYSTERY, 0.05f);
         armorSpawnRates.put(VANGUARD, 0.05f);
 
-        for (ItemSettingsHelper ignored : ItemSettingsHelper.values()){
-            enableTieredLootTables.put(ItemSettingsHelper.ENABLE_TIERED_LOOT_TABLES, false);
-        }
 
-        for (ItemSettingsHelper ignored : ItemSettingsHelper.values()){
-            commonLootTables.put(ItemSettingsHelper.COMMON_LOOT_TABLES, Lists.newArrayList(
-                    "minecraft:chests/abandoned_mineshaft",
-                    "minecraft:chests/shipwreck_supply",
-                    "minecraft:chests/shipwreck_treasure",
-                    "minecraft:chests/desert_pyramid",
-                    "minecraft:chests/village/village_weaponsmith"));
-        }
-        for (ItemSettingsHelper ignored : ItemSettingsHelper.values()) {
-            uncommonLootTables.put(ItemSettingsHelper.UNCOMMON_LOOT_TABLES, Lists.newArrayList(
-                    "minecraft:chests/jungle_temple",
-                    "minecraft:chests/nether_bridge",
-                    "minecraft:chests/bastion_bridge",
-                    "minecraft:chests/bastion_other",
-                    "minecraft:chests/bastion_treasure",
-                    "minecraft:chests/ruined_portal"));
-        }
-        for (ItemSettingsHelper ignored : ItemSettingsHelper.values()) {
-            rareLootTables.put(ItemSettingsHelper.RARE_LOOT_TABLES, Lists.newArrayList(
-                    "minecraft:chests/underwater_ruin_small",
-                    "minecraft:chests/underwater_ruin_big",
-                    "minecraft:chests/simple_dungeon",
-                    "minecraft:chests/igloo_chest",
-                    "minecraft:chests/pillager_outpost"));
-        }
-        for (ItemSettingsHelper ignored : ItemSettingsHelper.values()) {
-            epicLootTables.put(ItemSettingsHelper.EPIC_LOOT_TABLES, Lists.newArrayList(
-                    "minecraft:chests/stronghold_corridor",
-                    "minecraft:chests/stronghold_crossing",
-                    "minecraft:chests/stronghold_library",
-                    "minecraft:chests/end_city_treasure"));
-        }
+        enableTieredLootTables.put(ItemSettingsHelper.ENABLE_TIERED_LOOT_TABLES, false);
+
+        commonLootTables.put(ItemSettingsHelper.COMMON_LOOT_TABLES, new String[] {
+                "minecraft:chests/abandoned_mineshaft",
+                "minecraft:chests/shipwreck_supply",
+                "minecraft:chests/shipwreck_treasure",
+                "minecraft:chests/desert_pyramid",
+                "minecraft:chests/village/village_weaponsmith"});
+
+        uncommonLootTables.put(ItemSettingsHelper.UNCOMMON_LOOT_TABLES, new String[] {
+                "minecraft:chests/jungle_temple",
+                "minecraft:chests/nether_bridge",
+                "minecraft:chests/bastion_bridge",
+                "minecraft:chests/bastion_other",
+                "minecraft:chests/bastion_treasure",
+                "minecraft:chests/ruined_portal"});
+
+        rareLootTables.put(ItemSettingsHelper.RARE_LOOT_TABLES, new String[] {
+                "minecraft:chests/underwater_ruin_small",
+                "minecraft:chests/underwater_ruin_big",
+                "minecraft:chests/simple_dungeon",
+                "minecraft:chests/igloo_chest",
+                "minecraft:chests/pillager_outpost"});
+
+        epicLootTables.put(ItemSettingsHelper.EPIC_LOOT_TABLES, new String[] {
+                "minecraft:chests/stronghold_corridor",
+                "minecraft:chests/stronghold_crossing",
+                "minecraft:chests/stronghold_library",
+                "minecraft:chests/end_city_treasure"});
 
         for (ArmorSets armorSets : ArmorSets.values()){
             armorLootTableSpawnRates.put(armorSets, 0.10f);

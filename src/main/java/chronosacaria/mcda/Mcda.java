@@ -1,26 +1,16 @@
 package chronosacaria.mcda;
 
-import chronosacaria.mcda.api.CleanlinessHelper;
-import chronosacaria.mcda.api.McdaEnchantmentHelper;
 import chronosacaria.mcda.config.McdaConfig;
-import chronosacaria.mcda.enchants.EnchantID;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.networking.McdaC2SPackets;
 import chronosacaria.mcda.registry.*;
-import com.blamejared.clumps.api.events.ClumpsEvents;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-
-import static chronosacaria.mcda.effects.ArmorEffectID.SOULDANCER_EXPERIENCE;
-import static chronosacaria.mcda.enchants.EnchantID.BAG_OF_SOULS;
 
 
 public class Mcda implements ModInitializer {
