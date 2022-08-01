@@ -1,5 +1,7 @@
 package chronosacaria.mcda.enchants.enchantments;
 
+import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.enchants.EnchantID;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
@@ -10,13 +12,25 @@ public class CowardiceEnchantment extends Enchantment {
     }
 
     @Override
+    protected boolean canAccept(Enchantment other){
+        return !(other instanceof RecklessEnchantment);
+    }
+
+    @Override
     public int getMaxLevel() {
         return 3;
     }
 
     @Override
-    protected boolean canAccept(Enchantment other){
-        return !(other instanceof RecklessEnchantment);
+    public boolean isAvailableForRandomSelection() {
+        return Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(EnchantID.COWARDICE)
+                && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantmentForRandomSelection.get(EnchantID.COWARDICE);
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(EnchantID.COWARDICE)
+                && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantmentForVillagerTrade.get(EnchantID.COWARDICE);
     }
 
     @Override

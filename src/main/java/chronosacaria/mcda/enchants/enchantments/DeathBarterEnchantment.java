@@ -1,5 +1,7 @@
 package chronosacaria.mcda.enchants.enchantments;
 
+import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.enchants.EnchantID;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
@@ -13,6 +15,18 @@ public class DeathBarterEnchantment extends Enchantment {
     @Override
     public int getMaxLevel() {
         return 3;
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(EnchantID.DEATH_BARTER)
+                && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantmentForRandomSelection.get(EnchantID.DEATH_BARTER);
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(EnchantID.DEATH_BARTER)
+                && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantmentForVillagerTrade.get(EnchantID.DEATH_BARTER);
     }
 
     @Override

@@ -1,6 +1,8 @@
 package chronosacaria.mcda.enchants.enchantments;
 
+import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.ProjectileEffectHelper;
+import chronosacaria.mcda.enchants.EnchantID;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
@@ -22,6 +24,18 @@ public class SnowballEnchantment extends Enchantment {
         if (attacker != null) {
             ProjectileEffectHelper.fireSnowballAtNearbyEnemy(user, 10);
         }
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(EnchantID.SNOWBALL)
+                && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantmentForRandomSelection.get(EnchantID.SNOWBALL);
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(EnchantID.SNOWBALL)
+                && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantmentForVillagerTrade.get(EnchantID.SNOWBALL);
     }
 
     @Override

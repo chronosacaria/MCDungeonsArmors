@@ -1,5 +1,7 @@
 package chronosacaria.mcda.enchants.enchantments;
 
+import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.enchants.EnchantID;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -44,6 +46,23 @@ public class BurningEnchantment extends Enchantment {
     }
 
     @Override
+    public int getMaxLevel() {
+        return 3;
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(EnchantID.BURNING)
+                && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantmentForRandomSelection.get(EnchantID.BURNING);
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(EnchantID.BURNING)
+                && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantmentForVillagerTrade.get(EnchantID.BURNING);
+    }
+
+    @Override
     public int getMinPower(int level) {
         return 1 + level * 10;
     }
@@ -51,10 +70,5 @@ public class BurningEnchantment extends Enchantment {
     @Override
     public int getMaxPower(int level) {
         return this.getMinPower(level) + 5;
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return 3;
     }
 }

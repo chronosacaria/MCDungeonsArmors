@@ -12,6 +12,8 @@ import java.util.EnumMap;
 public class McdaEnableEnchantAndEffectConfig implements ConfigData {
 
     public EnumMap<EnchantID, Boolean> enableEnchantment = new EnumMap<>(EnchantID.class);
+    public EnumMap<EnchantID, Boolean> enableEnchantmentForVillagerTrade = new EnumMap<>(EnchantID.class);
+    public EnumMap<EnchantID, Boolean> enableEnchantmentForRandomSelection = new EnumMap<>(EnchantID.class);
     public EnumMap<ArmorEffectID, Boolean> enableArmorEffect = new EnumMap<>(ArmorEffectID.class);
     @Comment("Controlled Teleportation for Unstable Robes, default = true")
     public boolean controlledTeleportation = true;
@@ -19,6 +21,12 @@ public class McdaEnableEnchantAndEffectConfig implements ConfigData {
     public McdaEnableEnchantAndEffectConfig(){
         for (EnchantID enchantID : EnchantID.values())
             enableEnchantment.put(enchantID, true);
+
+        for (EnchantID enchantID : EnchantID.values())
+            enableEnchantmentForVillagerTrade.put(enchantID, true);
+
+        for (EnchantID enchantID : EnchantID.values())
+            enableEnchantmentForRandomSelection.put(enchantID, true);
 
         for (ArmorEffectID armorEffectID : ArmorEffectID.values())
             enableArmorEffect.put(armorEffectID, true);

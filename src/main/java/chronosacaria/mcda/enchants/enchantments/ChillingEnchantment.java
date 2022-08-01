@@ -1,5 +1,7 @@
 package chronosacaria.mcda.enchants.enchantments;
 
+import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.enchants.EnchantID;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
@@ -15,6 +17,23 @@ public class ChillingEnchantment extends Enchantment {
     }
 
     @Override
+    public int getMaxLevel() {
+        return 3;
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(EnchantID.CHILLING)
+                && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantmentForRandomSelection.get(EnchantID.CHILLING);
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(EnchantID.CHILLING)
+                && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantmentForVillagerTrade.get(EnchantID.CHILLING);
+    }
+
+    @Override
     public int getMinPower(int level) {
         return 1 + level * 10;
     }
@@ -24,8 +43,5 @@ public class ChillingEnchantment extends Enchantment {
         return this.getMinPower(level) + 5;
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 3;
-    }
+
 }

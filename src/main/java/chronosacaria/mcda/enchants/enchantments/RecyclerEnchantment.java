@@ -1,6 +1,8 @@
 package chronosacaria.mcda.enchants.enchantments;
 
+import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.CleanlinessHelper;
+import chronosacaria.mcda.enchants.EnchantID;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
@@ -26,6 +28,23 @@ public class RecyclerEnchantment extends Enchantment {
     }
 
     @Override
+    public int getMaxLevel() {
+        return 3;
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(EnchantID.RECYCLER)
+                && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantmentForRandomSelection.get(EnchantID.RECYCLER);
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(EnchantID.RECYCLER)
+                && Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantmentForVillagerTrade.get(EnchantID.RECYCLER);
+    }
+
+    @Override
     public int getMinPower(int level) {
         return 1 + level * 10;
     }
@@ -33,11 +52,6 @@ public class RecyclerEnchantment extends Enchantment {
     @Override
     public int getMaxPower(int level) {
         return this.getMinPower(level) + 5;
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return 3;
     }
 
 }
