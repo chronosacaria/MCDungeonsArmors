@@ -25,8 +25,6 @@ public class CobwebBlockMixin {
         if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(WEB_WALKING))
             return;
 
-        if (entity instanceof BatEntity)
-            return;
         if (!(entity instanceof LivingEntity livingEntity))
             return;
 

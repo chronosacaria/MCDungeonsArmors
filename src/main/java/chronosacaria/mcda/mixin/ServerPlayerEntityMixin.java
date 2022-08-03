@@ -26,9 +26,6 @@ public class ServerPlayerEntityMixin {
             EnchantmentEffects.applyFrenzied(playerEntity);
             EnchantmentEffects.applyReckless(playerEntity);
         }
-        if (world.getTime() % 10 == 0) {
-            EnchantmentEffects.applySwiftfooted(playerEntity);
-        }
 
         // Effects from Armor Sets every 30 ticks
         if (world.getTime() % 30 == 0) {

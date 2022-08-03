@@ -835,7 +835,7 @@ public class ArmorEffects {
     public static void sweetBerrySpeed(ServerPlayerEntity playerEntity){
         if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SWEET_BERRY_SPEED)) {
             if (hasArmorSet(playerEntity, ArmorSets.ARCTIC_FOX)) {
-                if (playerEntity.getMainHandStack().getItem() == Items.SWEET_BERRIES) {
+                if (playerEntity.getActiveItem().isOf(Items.SWEET_BERRIES)) {
                     playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 200, 0, false, false));
                 }
             }

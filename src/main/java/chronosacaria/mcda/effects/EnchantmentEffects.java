@@ -69,7 +69,7 @@ public class EnchantmentEffects {
     }
 
     public static void applyFoodReserves(PlayerEntity playerEntity) {
-        if (!isInstantHealthPotion(playerEntity.getMainHandStack()))
+        if (!isInstantHealthPotion(playerEntity.getActiveItem()))
             return;
         int foodReserveLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(FOOD_RESERVES), playerEntity);
 
@@ -83,7 +83,7 @@ public class EnchantmentEffects {
     }
 
     public static void applyPotionBarrier(PlayerEntity playerEntity) {
-        if (!isInstantHealthPotion(playerEntity.getMainHandStack()))
+        if (!isInstantHealthPotion(playerEntity.getActiveItem()))
             return;
         int potionBarrierLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(POTION_BARRIER), playerEntity);
         if (potionBarrierLevel == 0)
@@ -93,7 +93,7 @@ public class EnchantmentEffects {
     }
 
     public static void applySurpriseGift(PlayerEntity playerEntity) {
-        if (!isInstantHealthPotion(playerEntity.getMainHandStack()))
+        if (!isInstantHealthPotion(playerEntity.getActiveItem()))
             return;
         int surpriseGiftLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SURPRISE_GIFT), playerEntity);
         if (surpriseGiftLevel == 0) return;
@@ -266,17 +266,12 @@ public class EnchantmentEffects {
     }
 
     public static void applySwiftfooted(ServerPlayerEntity player){
-        if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(SWIFTFOOTED))
-            return;
-
         int swiftfootedLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(SWIFTFOOTED),player);
         if (swiftfootedLevel == 0)
             return;
 
-        if (!player.isOnGround()){
-            StatusEffectInstance swiftfooted = new StatusEffectInstance(StatusEffects.SPEED, 60, swiftfootedLevel - 1,
-                    false, false);
-            player.addStatusEffect(swiftfooted);
-        }
+        StatusEffectInstance swiftfooted = new StatusEffectInstance(StatusEffects.SPEED, 60, swiftfootedLevel - 1,
+                false, false);
+        player.addStatusEffect(swiftfooted);
     }
 }

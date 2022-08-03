@@ -5,6 +5,7 @@ import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.effects.ArmorEffectID;
 import chronosacaria.mcda.effects.ArmorEffects;
 import chronosacaria.mcda.items.ArmorSets;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -74,27 +75,19 @@ public abstract class ItemStackMixin {
     }
 
     @Inject(method = "use", at = @At("HEAD"))
-    public void useEmeraldToChargeArmor(World world, PlayerEntity user, Hand hand,
+    private void mcda$useEmeraldToChargeArmor(World world, PlayerEntity user, Hand hand,
                                         CallbackInfoReturnable<TypedActionResult<ItemStack>> cir){
         ItemStack getMainHandStack = user.getMainHandStack();
 
         if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(ArmorEffectID.GILDED_HERO) && CleanlinessHelper.hasArmorSet(user, ArmorSets.GILDED)) {
-            if (getMainHandStack.getItem() == Items.EMERALD) {
+            if (getMainHandStack.getItem() == Items.EMERALD && !user.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)) {
                 int decrementAmount = 10;
                 if (getMainHandStack.getCount() >= decrementAmount) {
                     getMainHandStack.decrement(decrementAmount);
                     StatusEffectInstance hov = new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 42, 0, false,
                             false);
                     user.addStatusEffect(hov);
-                    user.world.playSound(
-                            null,
-                            user.getX(),
-                            user.getY(),
-                            user.getZ(),
-                            SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP,
-                            SoundCategory.PLAYERS,
-                            0.8F,
-                            0.8F);
+                    CleanlinessHelper.playCenteredSound(user, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP,0.8f, 0.8f);
                 }
             }
         }

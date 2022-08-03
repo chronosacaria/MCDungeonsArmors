@@ -257,6 +257,8 @@ public abstract class LivingEntityMixin extends Entity {
                 ArmorEffects.teleportationRobeTeleport(playerEntity);
             if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(UNSTABLE_ROBES_EFFECT))
                 ArmorEffects.unstableRobeTeleport(playerEntity);
+            if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(SWIFTFOOTED))
+                EnchantmentEffects.applySwiftfooted(playerEntity);
         }
     }
 
