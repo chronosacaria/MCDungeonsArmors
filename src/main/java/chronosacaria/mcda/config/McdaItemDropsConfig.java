@@ -8,11 +8,11 @@ import java.util.EnumMap;
 
 @Config(name = "mcda_item_drops")
 public class McdaItemDropsConfig implements ConfigData {
-    public EnumMap<DropHelper, Float> maxDropAmounts = new EnumMap<>(DropHelper.class);
+    public EnumMap<DropHelper, Integer> dropAmounts = new EnumMap<>(DropHelper.class);
 
     public McdaItemDropsConfig(){
         for (DropHelper dropHelper : DropHelper.values())
-            maxDropAmounts.put(dropHelper, 1.0F);
-        maxDropAmounts.replace(DropHelper.GOAT_PELT, 2.0F);
+            dropAmounts.put(dropHelper, 1);
+        dropAmounts.replace(DropHelper.GOAT_PELT, 2);
     }
 }
