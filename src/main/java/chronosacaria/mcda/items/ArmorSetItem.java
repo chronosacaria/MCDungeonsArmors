@@ -4,6 +4,7 @@ import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.config.ArmorStats;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.entity.EquipmentSlot;
@@ -117,9 +118,15 @@ public class ArmorSetItem extends ArmorItem {
 
 
             if (slot == EquipmentSlot.FEET && (set == ArmorSets.RUGGED_CLIMBING_GEAR || set == ArmorSets.SNOW || set == ArmorSets.GOAT)) {
-                tooltip.add(Text.translatable("Lightfooted").formatted(Mcda.CONFIG.mcdaArmorStatsConfig.setBonusTooltipColors ? Formatting.AQUA : Formatting.GRAY));
+                tooltip.add(Text.translatable("item.mcda.effect.lightfooted").formatted(Mcda.CONFIG.mcdaArmorStatsConfig.setBonusTooltipColors ? Formatting.AQUA : Formatting.GRAY));
+            }
+
+            if (FabricLoader.getInstance().isModLoaded("environmentz")) {
+                if (set == ArmorSets.SNOW || set == ArmorSets.FROST || set == ArmorSets.FROST_BITE || set == ArmorSets.FOX || set == ArmorSets.ARCTIC_FOX || set == ArmorSets.WOLF
+                        || set == ArmorSets.BLACK_WOLF || set == ArmorSets.GOAT || set == ArmorSets.CLIMBING_GEAR || set == ArmorSets.RUGGED_CLIMBING_GEAR || set == ArmorSets.GHOST_KINDLER) {
+                    tooltip.add(Text.translatable("item.mcda.effect.freezing_protection").formatted(Mcda.CONFIG.mcdaArmorStatsConfig.setBonusTooltipColors ? Formatting.YELLOW : Formatting.GRAY));
+                }
             }
         }
-
     }
 }

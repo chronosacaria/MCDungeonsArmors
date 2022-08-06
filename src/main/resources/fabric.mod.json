@@ -11,7 +11,11 @@
     "SattesKrokodil (Art)",
     "Patreons (Support)"
   ],
-  "contact": {},
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/mcda",
+    "sources": "https://github.com/chronosacaria/MCDungeonsArmors",
+    "issues": "https://github.com/chronosacaria/MCDungeonsArmors/issues"
+  },
   "license": "MIT",
   "icon": "assets/mcda/icon.png",
   "environment": "*",

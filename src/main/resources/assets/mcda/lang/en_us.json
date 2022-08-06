@@ -727,9 +727,12 @@
   "item.mcda.sweet_tooth.tooltip_3":              "is surprisingly durable in battle.",
   "item.mcda.sweet_tooth.tooltip_4":              "Must be the fondant.",
 
-  "item.mcda.vanguard_armor_helmet":                 "Vanguard Helmet",
-  "item.mcda.vanguard_armor_chestplate":             "Vanguard Chestplate",
-  "item.mcda.vanguard_armor_leggings":               "Vanguard Belt",
+  "item.mcda.vanguard_armor_helmet":              "Vanguard Helmet",
+  "item.mcda.vanguard_armor_chestplate":          "Vanguard Chestplate",
+  "item.mcda.vanguard_armor_leggings":            "Vanguard Belt",
+
+  "item.mcda.effect.lightfooted":                 "Lightfooted",
+  "item.mcda.effect.freezing_protection":         "Protection from Freezing Weather",
 
   "item.mcda.bone_rib_cage":                      "Bone Rib Cage",
   "item.mcda.phantom_bones":                      "Phantom Bones",

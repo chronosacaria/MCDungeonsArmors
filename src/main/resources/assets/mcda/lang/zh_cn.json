@@ -732,6 +732,9 @@
   "item.mcda.vanguard_armor_chestplate":          "先锋胸甲",
   "item.mcda.vanguard_armor_leggings":            "先锋绑腿",
 
+  "item.mcda.effect.lightfooted":                 "轻的脚",
+  "item.mcda.effect.freezing_protection":         "绝缘從中寒冷的天气",
+
   "item.mcda.bone_rib_cage":                      "骨肋笼",
   "item.mcda.phantom_bones":                      "幻翼骨",
   "item.mcda.phantom_skin":                       "幻翼皮",
