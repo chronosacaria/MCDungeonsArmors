@@ -61,7 +61,6 @@ public class EnchantmentEffects {
         if (fireTrailLevel == 0) return;
 
         BlockPos placeFireTrail = blockPos.offset(player.getMovementDirection().getOpposite(), 2);
-        ItemStack feetStack = player.getEquippedStack(EquipmentSlot.FEET);
         if (player.world.getBlockState(placeFireTrail).isAir() && player.isOnGround() && !player.isSneaking()
                 && BooleanHelper.isFireTrailEnabled(player))
             player.world.setBlockState(placeFireTrail, Blocks.FIRE.getDefaultState());
@@ -148,7 +147,7 @@ public class EnchantmentEffects {
 
                 double distanceBetween = Math.sqrt(vec3d.squaredDistanceTo(currentXCoord, 0, currentZCoord));
 
-                if (distanceBetween >= 20) {
+                if (distanceBetween >= 100) {
                     CleanlinessHelper.mcda$dropItem(livingEntity, Items.EMERALD);
 
                     feetStack.getOrCreateNbt().putDouble("x-coord", currentXCoord);
