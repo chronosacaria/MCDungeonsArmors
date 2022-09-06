@@ -219,7 +219,6 @@ public class ArmorEffects {
                     mcdaRandomArmorDamage(playerEntity, 0.10f, 4, false);
 
             } else ((PlayerTeleportationStateAccessor)playerEntity).setInTeleportationState(false);
-
         }
     }
 

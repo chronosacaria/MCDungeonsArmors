@@ -42,6 +42,9 @@ public class ArmorsRegistry {
 
     public static void init() {
         for (ArmorSets set : ArmorSets.values()) {
+            if (!Mcda.CONFIG.mcdaEnableArmorsConfig.ARMORS_SETS_ENABLED.get(set))
+                continue;
+
             EnumSet<EquipmentSlot> slots = switch (set) {
                 case BATTLE, SPLENDID -> EnumSet.of(CHEST, LEGS);
                 case EVOCATION, EMBER, VERDANT, VANGUARD -> EnumSet.of(HEAD, CHEST, LEGS);

@@ -211,8 +211,10 @@ public class LootRegistry {
         int weight = CONFIG.mcdaLootTablesConfig.enableTieredLootTables.get(ItemSettingsHelper.ENABLE_TIERED_LOOT_TABLES) ?
                 CONFIG.mcdaLootTablesConfig.armorLootTableSpawnRates.get(set) :
                 CONFIG.mcdaLootTablesConfig.armorSpawnRates.get(set);
-        ArmorsRegistry.armorItems.get(set).values()
-                .forEach((item -> poolBuilder.with(ItemEntry.builder(item).weight(weight))));
+        if (CONFIG.mcdaEnableArmorsConfig.ARMORS_SETS_ENABLED.get(set)) {
+            ArmorsRegistry.armorItems.get(set).values()
+                    .forEach((item -> poolBuilder.with(ItemEntry.builder(item).weight(weight))));
+        }
     }
 
     private static void addItemLootPool(LootTable.Builder tableBuilder, Item item, DropHelper dropHelper, float lootingProviderMax) {

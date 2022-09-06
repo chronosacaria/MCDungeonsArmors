@@ -10,11 +10,9 @@ public class ArmorStats {
     public EnumMap<EquipmentSlot, Integer> protection = new EnumMap<>(EquipmentSlot.class);
     public float toughness;
     public float knockbackRes;
-
     public double attackDamageBoost;
     public double attackSpeedBoost;
     public double movementSpeedBoost;
-
     public int durabilityMultiplier;
 
     public ArmorStats setProtection(int head, int chest, int legs, int feet) {

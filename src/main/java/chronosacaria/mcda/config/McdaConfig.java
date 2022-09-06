@@ -22,6 +22,9 @@ public class McdaConfig extends PartitioningSerializer.GlobalData{
     @ConfigEntry.Category("mcda_item_drops")
     public McdaItemDropsConfig mcdaItemDropsConfig = new McdaItemDropsConfig();
 
+    @ConfigEntry.Category("mcda_enable_armors")
+    public McdaEnableArmorsConfig mcdaEnableArmorsConfig = new McdaEnableArmorsConfig();
+
     public static void init(){
         AutoConfig.register(McdaConfig.class,
                 PartitioningSerializer.wrap(JanksonConfigSerializer::new));
