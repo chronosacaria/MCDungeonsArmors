@@ -1,0 +1,844 @@
+{
+  "itemGroup.mcda.armor":                         "MC Dungeons Armors",
+
+  "item.mcda.archers_helmet":                     "궁수의 후드",
+  "item.mcda.archers_chestplate":                 "궁수의 조끼",
+  "item.mcda.archers_leggings":                   "궁수의 바지",
+  "item.mcda.archers_boots":                      "궁수의 벨트",
+
+  "item.mcda.archers.tooltip_1":                  "가난한 전사들에게 사랑받는 장비입니다.",
+  "item.mcda.archers.tooltip_2":                  "가격이 저렴하고 칼을 막을 순 있습니다.",
+
+  "item.mcda.archers.effect.tooltip_1":           "궁수의 기량",
+
+  "item.mcda.beehive_armor_helmet":               "벌통 헬멧",
+  "item.mcda.beehive_armor_chestplate":           "벌통 흉갑",
+  "item.mcda.beehive_armor_leggings":             "벌통 레깅스",
+  "item.mcda.beehive_armor_boots":                "벌통 태셋",
+
+  "item.mcda.beehive_armor.tooltip_1":            "벌통 방어구는 수 많은 벌들의",
+  "item.mcda.beehive_armor.tooltip_2":            "힘이 모여 윙윙거립니다.",
+
+  "item.mcda.beehive_armor.effect.tooltip_1":     "벌이 위윙거림",
+
+  "item.mcda.beenest_armor_helmet":               "벌집 헬멧",
+  "item.mcda.beenest_armor_chestplate":           "벌집 흉갑",
+  "item.mcda.beenest_armor_leggings":             "벌집 레깅스",
+  "item.mcda.beenest_armor_boots":                "벌집 태셋",
+
+  "item.mcda.beenest_armor.tooltip_1":            "벌집 방어구 주변에선 항상",
+  "item.mcda.beenest_armor.tooltip_2":            "윙윙거리는 소리가 나는 것 같습니다.",
+  "item.mcda.beenest_armor.tooltip_3":            "어쩌면 방어구 안에서 나는 소리일까요?",
+
+  "item.mcda.beenest_armor.effect.tooltip_1":     "벌이 위윙거",
+
+  "item.mcda.hunters_chestplate":                 "헌터의 조끼",
+
+  "item.mcda.hunters.tooltip_1":                  "기사에겐 적합하지 않지만",
+  "item.mcda.hunters.tooltip_2":                  "칼을 막을 순 있습니다.",
+
+  "item.mcda.splendid_robe_chestplate":           "훌륭한 로브",
+  "item.mcda.splendid_robe_leggings":             "훌륭한 바지",
+
+  "item.mcda.splendid_robe.tooltip_1":            "우민왕을 지키는",
+  "item.mcda.splendid_robe.tooltip_2":            "우민 전사들이 입는",
+  "item.mcda.splendid_robe.tooltip_3":            "뛰어난 로브입니다.",
+
+  "item.mcda.splendid_robe.effect.tooltip_1":     "훌륭한 공격",
+
+  "item.mcda.battle_robe_chestplate":             "전투 로브",
+  "item.mcda.battle_robe_leggings":               "전투 바지",
+
+  "item.mcda.battle_robe.tooltip_1":              "우민왕의 궁궐에 있는",
+  "item.mcda.battle_robe.tooltip_2":              "우민 소환사들이 입는 뛰어난 옷입니다.",
+
+  "item.mcda.champions_armor_helmet":             "챔피언의 헬멧",
+  "item.mcda.champions_armor_chestplate":         "챔피언의 흉갑",
+  "item.mcda.champions_armor_leggings":           "챔피언의 레깅스",
+  "item.mcda.champions_armor_boots":              "챔피언의 폴린",
+
+  "item.mcda.champions_armor.tooltip_1":          "긴 기간 동안 보호해주고",
+  "item.mcda.champions_armor.tooltip_2":          "도와준 것에 대한 감사의 표시로",
+  "item.mcda.champions_armor.tooltip_3":          "주민들이 오버월드의 챔피언에게",
+  "item.mcda.champions_armor.tooltip_4":          "주는 방어구입니다.",
+  "item.mcda.champions_armor.tooltip_5":          "진정한 영웅의 표식입니다.",
+
+  "item.mcda.heros_armor_helmet":                 "영웅의 헬멧",
+  "item.mcda.heros_armor_chestplate":             "영웅의 흉갑",
+  "item.mcda.heros_armor_leggings":               "영웅의 레깅스",
+  "item.mcda.heros_armor_boots":                  "영웅의 폴린",
+
+  "item.mcda.heros_armor.tooltip_1":              "주민들이 주는 귀중한 선물로써,",
+  "item.mcda.heros_armor.tooltip_2":              "가장 뛰어난 수준의",
+  "item.mcda.heros_armor.tooltip_3":              "영웅에게만 방어구입니다.",
+
+  "item.mcda.heros_armor.effect.tooltip_1":       "마을의 영웅",
+
+  "item.mcda.titans_shroud_helmet":               "타이탄의 수의 헬멧",
+  "item.mcda.titans_shroud_chestplate":           "타이탄의 수의 흉갑",
+  "item.mcda.titans_shroud_leggings":             "타이탄의 수의 레깅스",
+  "item.mcda.titans_shroud_boots":                "타이탄의 수의 부츠",
+
+  "item.mcda.titans_shroud.tooltip_1":            "대대로 악마의 손을",
+  "item.mcda.titans_shroud.tooltip_2":            "거쳐 온 방어구입니다.",
+
+  "item.mcda.titans_shroud.effect.tooltip_1":     "타이탄의 수의",
+
+  "item.mcda.dark_armor_helmet":                  "어두운 헬멧",
+  "item.mcda.dark_armor_chestplate":              "어두운 흉갑",
+  "item.mcda.dark_armor_leggings":                "어두운 레깅스",
+  "item.mcda.dark_armor_boots":                   "어두운 부츠",
+
+  "item.mcda.dark_armor.tooltip_1":               "우민 왕실 경비대가 사용하는 방어구로,",
+  "item.mcda.dark_armor.tooltip_2":               "불의 용광로의 가장 어두운 곳에서",
+  "item.mcda.dark_armor.tooltip_3":               "만들어졌습니다.",
+
+  "item.mcda.royal_guard_armor_helmet":           "왕실 경비대 헬멧",
+  "item.mcda.royal_guard_armor_chestplate":       "왕실 경비대 흉갑",
+  "item.mcda.royal_guard_armor_leggings":         "왕실 경비대 레깅스",
+  "item.mcda.royal_guard_armor_boots":            "왕실 경비대 부츠",
+
+  "item.mcda.royal_guard_armor.tooltip_1":        "우민 왕실 경비대가 사용하는 방어구로,",
+  "item.mcda.royal_guard_armor.tooltip_2":        "불의 용광로의 가장 어두운 곳에서",
+  "item.mcda.royal_guard_armor.tooltip_3":        "만들어졌습니다.",
+
+  "item.mcda.evocation_robe_helmet":              "강신 모자",
+  "item.mcda.evocation_robe_chestplate":          "강신 로브",
+  "item.mcda.evocation_robe_leggings":            "강신 바지",
+
+  "item.mcda.evocation_robe.tooltip_1":           "이 로브의 천에",
+  "item.mcda.evocation_robe.tooltip_2":           "강력한 마법의",
+  "item.mcda.evocation_robe.tooltip_3":           "룬의 기운이 깃들어있습니다.",
+  "item.mcda.evocation_robe.tooltip_4":           "이것의 기원과 힘은 아직까지",
+  "item.mcda.evocation_robe.tooltip_5":           "수수께끼로 남아있습니다.",
+
+  "item.mcda.ember_robe_helmet":                  "엠버 모자",
+  "item.mcda.ember_robe_chestplate":              "엠버 로브",
+  "item.mcda.ember_robe_leggings":                "엠버 바지",
+
+  "item.mcda.ember_robe.tooltip_1":               "일반 경비대를",
+  "item.mcda.ember_robe.tooltip_2":               "구분하기 위해",
+  "item.mcda.ember_robe.tooltip_3":               "우민 소환사가 만든 로브입니다.",
+
+  "item.mcda.ember_robe.effect.tooltip_1":        "엠버 점프",
+
+  "item.mcda.verdant_robe_helmet":                "신록의 모자",
+  "item.mcda.verdant_robe_chestplate":            "신록의 로브",
+  "item.mcda.verdant_robe_leggings":              "신록의 바지",
+
+  "item.mcda.verdant_robe.tooltip_1":             "이 로브를 입자마자",
+  "item.mcda.verdant_robe.tooltip_2":             "그 어느 때보다도 더 많은 영혼들과",
+  "item.mcda.verdant_robe.tooltip_3":             "이야기할 수 있다는 것을 알게 됩니다.",
+
+  "item.mcda.verdant_robe.effect.tooltip_1":      "숲의 영혼",
+
+  "item.mcda.grim_armor_helmet":                  "음침한 헬멧",
+  "item.mcda.grim_armor_chestplate":              "음침한 흉갑",
+  "item.mcda.grim_armor_leggings":                "음침한 레깅스",
+  "item.mcda.grim_armor_boots":                   "음침한 보호대",
+
+  "item.mcda.grim_armor.tooltip_1":               "이 장비는 착용자와 전투에서",
+  "item.mcda.grim_armor.tooltip_2":               "맞닥뜨린 상대에게",
+  "item.mcda.grim_armor.tooltip_3":               "공포감을 불러일으킵니다.",
+
+  "item.mcda.wither_armor_helmet":                "위더 헬멧",
+  "item.mcda.wither_armor_chestplate":            "위더 흉갑",
+  "item.mcda.wither_armor_leggings":              "위더 레깅스",
+  "item.mcda.wither_armor_boots":                 "위더 보호대",
+
+  "item.mcda.wither_armor.tooltip_1":             "죽은 적들의 신체로 만들어졌으며,",
+  "item.mcda.wither_armor.tooltip_2":             "착용자의 적을",
+  "item.mcda.wither_armor.tooltip_3":             "위협하기 위해 만들어졌습니다.",
+
+  "item.mcda.wither_armor.effect.tooltip_1":      "시듦",
+
+  "item.mcda.guards_armor_helmet":                "경비대 헬멧",
+  "item.mcda.guards_armor_chestplate":            "경비대 흉갑",
+  "item.mcda.guards_armor_leggings":              "경비대 레깅스",
+  "item.mcda.guards_armor_boots":                 "경비대 쿠이스",
+
+  "item.mcda.guards_armor.tooltip_1":             "대량으로 만들어진 값싼 장비입니다.",
+  "item.mcda.guards_armor.tooltip_2":             "오버월드의 마을에서",
+  "item.mcda.guards_armor.tooltip_3":             "흔히 볼 수 있는 장비입니다.",
+
+  "item.mcda.curious_armor_helmet":               "신비한 헬멧",
+  "item.mcda.curious_armor_chestplate":           "신비한 흉갑",
+  "item.mcda.curious_armor_leggings":             "신비한 레깅스",
+  "item.mcda.curious_armor_boots":                "신비한 쿠이스",
+
+  "item.mcda.curious_armor.tooltip_1":            "이 이상한 갑옷이",
+  "item.mcda.curious_armor.tooltip_2":            "어디서 왔는지 아무도 모릅니다.",
+  "item.mcda.curious_armor.tooltip_3":            "하지만, 당신에겐 익숙한 것 같습니다.",
+
+  "item.mcda.curious_armor.effect.tooltip_1":     "신비한 순간 이동",
+
+  "item.mcda.mercenary_armor_helmet":             "용병 헬멧",
+  "item.mcda.mercenary_armor_chestplate":         "용병 흉갑",
+  "item.mcda.mercenary_armor_leggings":           "용병 레깅스",
+  "item.mcda.mercenary_armor_boots":              "용병 폴린",
+
+  "item.mcda.mercenary_armor.tooltip_1":          "돈을 좀 아끼려는 사람들에게",
+  "item.mcda.mercenary_armor.tooltip_2":          "인기가 있는 장비입니다.",
+  "item.mcda.mercenary_armor.tooltip_3":          "뛰어나진 않지만 제 역할은 합니다.",
+
+  "item.mcda.renegade_armor_helmet":              "변절자 헬멧",
+  "item.mcda.renegade_armor_chestplate":          "변절자 흉갑",
+  "item.mcda.renegade_armor_leggings":            "변절자 레깅스",
+  "item.mcda.renegade_armor_boots":               "변절자 폴린",
+
+  "item.mcda.renegade_armor.tooltip_1":           "우민으로부터 마을을 보호하기 위해",
+  "item.mcda.renegade_armor.tooltip_2":           "고용된 용병들에대한",
+  "item.mcda.renegade_armor.tooltip_3":           "상당한 보답으로 만들어진 장비입니다.",
+
+  "item.mcda.renegade_armor.effect.tooltip_1":    "변절자의 돌격",
+
+  "item.mcda.hungry_horror_helmet":               "굶주린 공포의 헬멧",
+  "item.mcda.hungry_horror_chestplate":           "굶주린 공포의 흉갑",
+  "item.mcda.hungry_horror_leggings":             "굶주린 공포의 레깅스",
+  "item.mcda.hungry_horror_boots":                "굶주린 공포의 보호대",
+
+  "item.mcda.hungry_horror.tooltip_1":            "이 장비를 입으면,",
+  "item.mcda.hungry_horror.tooltip_2":            "대기가 비명소리로 가득 찹니다.",
+  "item.mcda.hungry_horror.tooltip_3":            "이 비명소리는 당신의 것인가요,",
+  "item.mcda.hungry_horror.tooltip_4":            "아니면 적들의 것인가요?",
+
+  "item.mcda.hungry_horror.effect.tooltip_1":     "굶주림",
+  "item.mcda.hungry_horror.effect.tooltip_2":     "배고픔",
+
+  "item.mcda.ocelot_armor_helmet":                "오셀롯 헬멧",
+  "item.mcda.ocelot_armor_chestplate":            "오셀롯 흉갑",
+  "item.mcda.ocelot_armor_leggings":              "오셀롯 레깅스",
+  "item.mcda.ocelot_armor_boots":                 "오셀롯 부츠",
+
+  "item.mcda.ocelot_armor.tooltip_1":             "이 오셀롯 가죽을 입으면",
+  "item.mcda.ocelot_armor.tooltip_2":             "순수한 아드레날린이",
+  "item.mcda.ocelot_armor.tooltip_3":             "온몸으로 솟구치는 것을",
+  "item.mcda.ocelot_armor.tooltip_4":             "느낄 수 있습니다.",
+
+  "item.mcda.shadow_walker_armor_helmet":         "그늘 방랑자 헬멧",
+  "item.mcda.shadow_walker_armor_chestplate":     "그늘 방랑자 흉갑",
+  "item.mcda.shadow_walker_armor_leggings":       "그늘 방랑자 레깅스",
+  "item.mcda.shadow_walker_armor_boots":          "그늘 방랑자 부츠",
+
+  "item.mcda.shadow_walker_armor.tooltip_1":      "전설의 검은 오셀롯은",
+  "item.mcda.shadow_walker_armor.tooltip_2":      "치명적일 정도로 우아했습니다.",
+  "item.mcda.shadow_walker_armor.tooltip_3":      "검은 오셀롯의 가죽을 입는다면,",
+  "item.mcda.shadow_walker_armor.tooltip_4":      "적들은 착용자의 그림자가 자신들을",
+  "item.mcda.shadow_walker_armor.tooltip_5":      "쫓고 있는 느낌을 받게 됩니다.",
+
+  "item.mcda.shadow_walker_armor.effect.tooltip_1":   "낙하 피해 없음",
+  "item.mcda.shadow_walker_armor.effect.tooltip_2":   "질주",
+
+  "item.mcda.phantom_armor_helmet":               "팬텀 헬멧",
+  "item.mcda.phantom_armor_chestplate":           "팬텀 흉갑",
+  "item.mcda.phantom_armor_leggings":             "팬텀 레깅스",
+  "item.mcda.phantom_armor_boots":                "팬텀 보호대",
+
+  "item.mcda.phantom_armor.tooltip_1":            "팬텀의 뼈로 만든",
+  "item.mcda.phantom_armor.tooltip_2":            "이 장비는 전쟁터에선",
+  "item.mcda.phantom_armor.tooltip_3":            "무시무시하게 보입니다.",
+
+  "item.mcda.phantom_armor.effect.tooltip_1":     "천천히 떨어짐",
+
+  "item.mcda.frost_bite_armor_helmet":            "차가운 이빨 헬멧",
+  "item.mcda.frost_bite_armor_chestplate":        "차가운 이빨 흉갑",
+  "item.mcda.frost_bite_armor_leggings":          "차가운 이빨 레깅스",
+  "item.mcda.frost_bite_armor_boots":             "차가운 이빨 보호대",
+
+  "item.mcda.frost_bite_armor.tooltip_1":         "차가운 이빨은 밤에 있던",
+  "item.mcda.frost_bite_armor.tooltip_2":         "팬텀의 날개 아래로 흘러내렸던",
+  "item.mcda.frost_bite_armor.tooltip_3":         "차가운 바람을 기억하고 있습니다.",
+
+  "item.mcda.frost_bite_armor.effect.tooltip_1":  "천천히 떨어짐",
+  "item.mcda.frost_bite_armor.effect.tooltip_2":  "차가운 이빨",
+
+  "item.mcda.plate_armor_helmet":                 "판 헬멧",
+  "item.mcda.plate_armor_chestplate":             "판 흉갑",
+  "item.mcda.plate_armor_leggings":               "판 레깅스",
+  "item.mcda.plate_armor_boots":                  "판 쿠이스",
+
+  "item.mcda.plate_armor.tooltip_1":              "판 방어구는 일반 병사들도",
+  "item.mcda.plate_armor.tooltip_2":              "마치 요새처럼 느껴지게 만들지만",
+  "item.mcda.plate_armor.tooltip_3":              "기동성이 떨어집니다.",
+
+  "item.mcda.full_metal_armor_helmet":            "강철 헬멧",
+  "item.mcda.full_metal_armor_chestplate":        "강철 흉갑",
+  "item.mcda.full_metal_armor_leggings":          "강철 레깅스",
+  "item.mcda.full_metal_armor_boots":             "강철 쿠이스",
+
+  "item.mcda.full_metal_armor.tooltip_1":         "강철 방어구는 오버월드의",
+  "item.mcda.full_metal_armor.tooltip_2":         "위대한 수호자들을 위한 장비입니다.",
+
+  "item.mcda.reinforced_mail_helmet":             "강화 헬멧",
+  "item.mcda.reinforced_mail_chestplate":         "강화 흉갑",
+  "item.mcda.reinforced_mail_leggings":           "강화 레깅스",
+  "item.mcda.reinforced_mail_boots":              "강화 폴린",
+
+  "item.mcda.reinforced_mail.tooltip_1":          "주로 캐주얼한 모험가들이",
+  "item.mcda.reinforced_mail.tooltip_2":          "입는 강화 장비로,",
+  "item.mcda.reinforced_mail.tooltip_3":          "여기저기서 흔히 볼 수 있습니다.",
+
+  "item.mcda.stalwart_armor_helmet":              "충성스런 헬멧",
+  "item.mcda.stalwart_armor_chestplate":          "충성스런 흉갑",
+  "item.mcda.stalwart_armor_leggings":            "충성스런 레깅스",
+  "item.mcda.stalwart_armor_boots":               "충성스런 폴린",
+
+  "item.mcda.stalwart_armor.tooltip_1":           "대대로 물려줄 만큼",
+  "item.mcda.stalwart_armor.tooltip_2":           "튼튼한 믿을 수 있는 방어구입니다.",
+
+  "item.mcda.stalwart_armor.effect.tooltip_1":    "굳건한 성채",
+
+  "item.mcda.ghostly_armor_helmet":               "유령 헬멧",
+  "item.mcda.ghostly_armor_chestplate":           "유령 갬비슨",
+  "item.mcda.ghostly_armor_leggings":             "유령 레깅스",
+  "item.mcda.ghostly_armor_boots":                "유령 부츠",
+
+  "item.mcda.ghostly_armor.tooltip_1":            "유령 방어구를 착용한 사람들은",
+  "item.mcda.ghostly_armor.tooltip_2":            "자신들의 신체가 물리 세계와",
+  "item.mcda.ghostly_armor.tooltip_3":            "잠시 단절되어 있다고 느낄지도 모르겠지만,",
+  "item.mcda.ghostly_armor.tooltip_4":            "다시 빠르게 현실로 돌아옵니다.",
+
+  "item.mcda.ghost_kindler_helmet":               "유령 킨들러 헬멧",
+  "item.mcda.ghost_kindler_chestplate":           "유령 킨들러 갬비슨",
+  "item.mcda.ghost_kindler_leggings":             "유령 킨들러 레깅스",
+  "item.mcda.ghost_kindler_boots":                "유령 킨들러 부츠",
+
+  "item.mcda.ghost_kindler.tooltip_1":            "유령 킨들러 방어구를",
+  "item.mcda.ghost_kindler.tooltip_2":            "착용한 사람들의 변화하는 모습을",
+  "item.mcda.ghost_kindler.tooltip_3":            "이상한 불꽃이 뒤따릅니다.",
+
+  "item.mcda.ghost_kindler.effect.tooltip_1":     "유령 킨들링",
+  "item.mcda.ghost_kindler.effect.tooltip_2":     "유령 킨들러 꼬리",
+
+  "item.mcda.white_mystery_armor_helmet":         "하얀색 미스터리 헬멧",
+  "item.mcda.white_mystery_armor_chestplate":     "하얀색 미스터리 흉갑",
+  "item.mcda.white_mystery_armor_leggings":       "하얀색 미스터리 레깅스",
+  "item.mcda.white_mystery_armor_boots":          "하얀색 미스터리 쿠이스",
+
+  "item.mcda.mystery_armor.tooltip_1":            "몇몇 대장장이들은",
+  "item.mcda.mystery_armor.tooltip_2":            "이 소유권이 바뀌는 방어구를 보면서",
+  "item.mcda.mystery_armor.tooltip_3":            "철골렘의 디자인적 영향을 떠올립니다.",
+
+  "item.mcda.mystery_armor.effect.tooltip_1":     "수수께끼 효과",
+
+  "item.mcda.blue_mystery_armor_helmet":          "파란색 미스터리 헬멧",
+  "item.mcda.blue_mystery_armor_chestplate":      "파란색 미스터리 흉갑",
+  "item.mcda.blue_mystery_armor_leggings":        "파란색 미스터리 레깅스",
+  "item.mcda.blue_mystery_armor_boots":           "파란색 미스터리 쿠이스",
+
+  "item.mcda.green_mystery_armor_helmet":         "초록색 미스터리 헬멧",
+  "item.mcda.green_mystery_armor_chestplate":     "초록색 미스터리 흉갑",
+  "item.mcda.green_mystery_armor_leggings":       "초록색 미스터리 레깅스",
+  "item.mcda.green_mystery_armor_boots":          "초록색 미스터리 쿠이스",
+
+  "item.mcda.purple_mystery_armor_helmet":        "보라색 미스터리 헬멧",
+  "item.mcda.purple_mystery_armor_chestplate":    "보라색 미스터리 흉갑",
+  "item.mcda.purple_mystery_armor_leggings":      "보라색 미스터리 레깅스",
+  "item.mcda.purple_mystery_armor_boots":         "보라색 미스터리 쿠이스",
+
+  "item.mcda.red_mystery_armor_helmet":           "빨간색 미스터리 헬멧",
+  "item.mcda.red_mystery_armor_chestplate":       "빨간색 미스터리 흉갑",
+  "item.mcda.red_mystery_armor_leggings":         "빨간색 미스터리 레깅스",
+  "item.mcda.red_mystery_armor_boots":            "빨간색 미스터리 쿠이스",
+
+  "item.mcda.scale_mail_chestplate":              "비늘 메일 흉갑",
+  "item.mcda.scale_mail_leggings":                "비늘 메일 레깅스",
+  "item.mcda.scale_mail_boots":                   "비늘 메일 태셋",
+
+  "item.mcda.scale_mail.tooltip_1":               "거대한 바다의 해안 근처에서 만들어진",
+  "item.mcda.scale_mail.tooltip_2":               "이 방어구는 물고기의 비늘에서",
+  "item.mcda.scale_mail.tooltip_3":               "영감을 받았습니다.",
+
+  "item.mcda.highland_armor_helmet":              "산악 헬멧",
+  "item.mcda.highland_armor_chestplate":          "산악 흉갑",
+  "item.mcda.highland_armor_leggings":            "산악 레깅스",
+  "item.mcda.highland_armor_boots":               "산악 태셋",
+
+  "item.mcda.highland_armor.tooltip_1":           "현명한 갑옷 제조인이 정성껏 만든 방어구는",
+  "item.mcda.highland_armor.tooltip_2":           "산골 마을 주민들의 요소를 가지고 있습니다.",
+
+  "item.mcda.highland_armor.effect.tooltip_1":    "성급함",
+
+  "item.mcda.snow_armor_helmet":                  "눈 헬멧",
+  "item.mcda.snow_armor_chestplate":              "눈 흉갑",
+  "item.mcda.snow_armor_leggings":                "눈 레깅스",
+  "item.mcda.snow_armor_boots":                   "눈 부츠",
+
+  "item.mcda.snow_armor.tooltip_1":               "툰드라의 혹독한 추위로부터",
+  "item.mcda.snow_armor.tooltip_2":               "착용자를 보호하기 위해",
+  "item.mcda.snow_armor.tooltip_3":               "눈을 녹여 강화한 방어구입니다.",
+
+  "item.mcda.frost_armor_helmet":                 "서리 헬멧",
+  "item.mcda.frost_armor_chestplate":             "서리 흉갑",
+  "item.mcda.frost_armor_leggings":               "서리 레깅스",
+  "item.mcda.frost_armor_boots":                  "서리 부츠",
+
+  "item.mcda.frost_armor.tooltip_1":              "녹지 않는 얼음으로 만들어진 이 전설의 방어구는",
+  "item.mcda.frost_armor.tooltip_2":              "착용자가 겨울과 하나가 된 것처럼",
+  "item.mcda.frost_armor.tooltip_3":              "느껴지게 합니다.",
+
+  "item.mcda.frost_armor.effect.tooltip_1":       "유체 동결",
+
+  "item.mcda.soul_robe_helmet":                   "영혼의 후드",
+  "item.mcda.soul_robe_chestplate":               "영혼의 로브",
+  "item.mcda.soul_robe_leggings":                 "영혼의 레깅스",
+  "item.mcda.soul_robe_boots":                    "영혼의 벨트",
+
+  "item.mcda.soul_robe.tooltip_1":                "특별한 빛으로,",
+  "item.mcda.soul_robe.tooltip_2":                "영혼의 로브의 천에 깃든",
+  "item.mcda.soul_robe.tooltip_3":                "영혼의 힘으로 반짝입니다.",
+
+  "item.mcda.souldancer_robe_helmet":             "소울댄서 후드",
+  "item.mcda.souldancer_robe_chestplate":         "소울댄서 로브",
+  "item.mcda.souldancer_robe_leggings":           "소울댄서 레깅스",
+  "item.mcda.souldancer_robe_boots":              "소울댄서 벨트",
+
+  "item.mcda.souldancer_robe.tooltip_1":          "마치 영혼이 영원히 춤추는 것처럼",
+  "item.mcda.souldancer_robe.tooltip_2":          "빛 속에서 존재하는",
+  "item.mcda.souldancer_robe.tooltip_3":          "소울댄서 로브입니다.",
+
+  "item.mcda.souldancer_robe.effect.tooltip_1":   "소울댄서의 품위",
+  "item.mcda.souldancer_robe.effect.tooltip_2":   "소울댄서의 경험",
+
+  "item.mcda.spelunker_armor_helmet":             "탐험가 헬멧",
+  "item.mcda.spelunker_armor_chestplate":         "탐험가 조끼",
+  "item.mcda.spelunker_armor_leggings":           "탐험가 레깅스",
+  "item.mcda.spelunker_armor_boots":              "탐험가 브레이시즈",
+
+  "item.mcda.spelunker_armor.tooltip_1":          "탐험가 방어구는",
+  "item.mcda.spelunker_armor.tooltip_2":          "오버월드의 가장 어두운 깊이에서",
+  "item.mcda.spelunker_armor.tooltip_3":          "용감하게 싸우는 자들이 착용합니다.",
+
+  "item.mcda.cave_crawler_helmet":                "동굴 크롤러 헬멧",
+  "item.mcda.cave_crawler_chestplate":            "동굴 크롤러 조끼",
+  "item.mcda.cave_crawler_leggings":              "동굴 크롤러 레깅스",
+  "item.mcda.cave_crawler_boots":                 "동굴 크롤러 부츠",
+
+  "item.mcda.cave_crawler.tooltip_1":             "동굴 크롤러 장비는",
+  "item.mcda.cave_crawler.tooltip_2":             "용감한 탐험가와 광부들로부터",
+  "item.mcda.cave_crawler.tooltip_3":             "대대로 전해져 내려온 장비입니다.",
+
+  "item.mcda.cave_crawler.effect.tooltip_1":      "성급함",
+
+  "item.mcda.thief_armor_helmet":                 "도둑 마스크",
+  "item.mcda.thief_armor_chestplate":             "도둑 조끼",
+  "item.mcda.thief_armor_leggings":               "도둑 레깅스",
+  "item.mcda.thief_armor_boots":                  "도둑 벨트",
+
+  "item.mcda.thief_armor.tooltip_1":              "가볍고, 민첩하며, 희미하게 유황 냄새가 나는",
+  "item.mcda.thief_armor.tooltip_2":              "장비입니다.",
+
+  "item.mcda.thief_armor.effect.tooltip_1":       "투명성",
+
+  "item.mcda.spider_armor_helmet":                "거미 마스크",
+  "item.mcda.spider_armor_chestplate":            "거미 조끼",
+  "item.mcda.spider_armor_leggings":              "거미 레깅스",
+  "item.mcda.spider_armor_boots":                 "거미 벨트",
+
+  "item.mcda.spider_armor.tooltip_1":             "마스터 도둑들이 만든",
+  "item.mcda.spider_armor.tooltip_2":             "거미 방어구는 거미의 민첩한 움직임에서",
+  "item.mcda.spider_armor.tooltip_3":             "영감을 받은 장비입니다.",
+
+  "item.mcda.spider_armor.effect.tooltip_1":      "벽 오르기",
+  "item.mcda.spider_armor.effect.tooltip_2":      "거미줄 이동",
+
+  "item.mcda.wolf_armor_helmet":                  "늑대 후드",
+  "item.mcda.wolf_armor_chestplate":              "늑대 조끼",
+  "item.mcda.wolf_armor_leggings":                "늑대 레깅스",
+  "item.mcda.wolf_armor_boots":                   "늑대 부츠",
+
+  "item.mcda.wolf_armor.tooltip_1":               "많은 전사들이 적들의 마음에",
+  "item.mcda.wolf_armor.tooltip_2":               "두려움을 심어 주기 위해",
+  "item.mcda.wolf_armor.tooltip_3":               "늑대의 머리를 쓰고 전투에 임합니다.",
+
+  "item.mcda.black_wolf_armor_helmet":            "검은 늑대 후드",
+  "item.mcda.black_wolf_armor_chestplate":        "검은 늑대 조끼",
+  "item.mcda.black_wolf_armor_leggings":          "검은 늑대 레깅스",
+  "item.mcda.black_wolf_armor_boots":             "검은 늑대 부츠",
+
+  "item.mcda.black_wolf_armor.tooltip_1":         "그림자를 뚫고 나온 늑대는",
+  "item.mcda.black_wolf_armor.tooltip_2":         "살아 남아 그 이야기를 전합니다.",
+
+  "item.mcda.black_wolf_armor.effect.tooltip_1":  "집단의 우두머리",
+
+  "item.mcda.fox_armor_helmet":                   "여우 후드",
+  "item.mcda.fox_armor_chestplate":               "여우 조끼",
+  "item.mcda.fox_armor_leggings":                 "여우 레깅스",
+  "item.mcda.fox_armor_boots":                    "여우 부츠",
+
+  "item.mcda.fox_armor.tooltip_1":                "고대 마을 주민들은",
+  "item.mcda.fox_armor.tooltip_2":                "위대하고 민첩한 전사인",
+  "item.mcda.fox_armor.tooltip_3":                "여우를 기리기 위해 이 방어구를 만들었습니다.",
+  "item.mcda.fox_armor.tooltip_4":                "이 장비는 꿰뚫기 힘들다는 평가를 받으며,",
+  "item.mcda.fox_armor.tooltip_5":                "많은 적들을",
+  "item.mcda.fox_armor.tooltip_6":                "공포에 떨게 만듭니다.",
+
+  "item.mcda.fox_armor.effect.tooltip_1":         "덤불 이동",
+  "item.mcda.fox_armor.effect.tooltip_2":         "여우의 습격",
+
+  "item.mcda.arctic_fox_armor_helmet":            "북극여우 후드",
+  "item.mcda.arctic_fox_armor_chestplate":        "북극여우 조끼",
+  "item.mcda.arctic_fox_armor_leggings":          "북극여우 레깅스",
+  "item.mcda.arctic_fox_armor_boots":             "북극여우 부츠",
+
+  "item.mcda.arctic_fox_armor.tooltip_1":         "얼음으로 뒤덮인 툰드라 지형에서 살아남고 싶다면",
+  "item.mcda.arctic_fox_armor.tooltip_2":         "북극여우 방어구가",
+  "item.mcda.arctic_fox_armor.tooltip_3":         "이번 시즌 최고의 선택입니다.",
+
+  "item.mcda.arctic_fox_armor.effect.tooltip_1":  "덤불 이동",
+  "item.mcda.arctic_fox_armor.effect.tooltip_2":  "여우의 습격",
+  "item.mcda.arctic_fox_armor.effect.tooltip_3":  "북극 고지대",
+  "item.mcda.arctic_fox_armor.effect.tooltip_4":  "달콤한 열매 빠른 이동",
+
+  "item.mcda.emerald_gear_helmet":                "에메랄드 장비 헬멧",
+  "item.mcda.emerald_gear_chestplate":            "에메랄드 장비 흉갑",
+  "item.mcda.emerald_gear_leggings":              "에메랄드 장비 레깅스",
+  "item.mcda.emerald_gear_boots":                 "에메랄드 장비 부츠",
+
+  "item.mcda.emerald_gear.tooltip_1":             "모험 중에 에메랄드 방어구를 입으면",
+  "item.mcda.emerald_gear.tooltip_2":             "마치 우연처럼",
+  "item.mcda.emerald_gear.tooltip_3":             "다른 에메랄드를 불러옵니다.",
+
+  "item.mcda.opulent_armor_helmet":               "풍족한 방어구 헬멧",
+  "item.mcda.opulent_armor_chestplate":           "풍족한 방어구 흉갑",
+  "item.mcda.opulent_armor_leggings":             "풍족한 방어구 레깅스",
+  "item.mcda.opulent_armor_boots":                "풍족한 방어구 부츠",
+
+  "item.mcda.opulent_armor.tooltip_1":            "전투보다는 과시하는 용도로 만들어진",
+  "item.mcda.opulent_armor.tooltip_2":            "풍족한 방어구는 에메랄드가 있는 곳에서",
+  "item.mcda.opulent_armor.tooltip_3":            "번창합니다.",
+
+  "item.mcda.opulent_armor.effect.tooltip_1":     "행운",
+
+  "item.mcda.gilded_glory_helmet":                "화려한 영광의 헬멧",
+  "item.mcda.gilded_glory_chestplate":            "화려한 영광의 흉갑",
+  "item.mcda.gilded_glory_leggings":              "화려한 영광의 레깅스",
+  "item.mcda.gilded_glory_boots":                 "화려한 영광의 부츠",
+
+  "item.mcda.gilded_glory.tooltip_1":             "다가오는 죽음조차도",
+  "item.mcda.gilded_glory.tooltip_2":             "잠시 멈추고 전설적인 화려한",
+  "item.mcda.gilded_glory.tooltip_3":             "영광의 방어구의 매력에 감탄합니다.",
+
+  "item.mcda.gilded_glory.effect.tooltip_1":      "마을의 영웅",
+  "item.mcda.gilded_glory.effect.tooltip_2":      "화려한 토템",
+  "item.mcda.gilded_glory.effect.tooltip_3":      "화려한 공격력",
+  "item.mcda.gilded_glory.effect.tooltip_4":      "거짓된 우상",
+
+  "item.mcda.climbing_gear_helmet":               "등반기어 후드",
+  "item.mcda.climbing_gear_chestplate":           "등반기어 재킷",
+  "item.mcda.climbing_gear_leggings":             "등반기어 레깅스",
+  "item.mcda.climbing_gear_boots":                "등반기어 부츠",
+
+  "item.mcda.climbing_gear.tooltip_1":            "이 연구용 클라이밍 장비는",
+  "item.mcda.climbing_gear.tooltip_2":            "얼음으로 뒤덮인 산의 맹렬한 추위를",
+  "item.mcda.climbing_gear.tooltip_3":            "이겨내기에 적합한 장비입니다.",
+
+  "item.mcda.rugged_climbing_gear_helmet":        "견고한 등반기어 후드",
+  "item.mcda.rugged_climbing_gear_chestplate":    "견고한 등반기어 재킷",
+  "item.mcda.rugged_climbing_gear_leggings":      "견고한 등반기어 레깅스",
+  "item.mcda.rugged_climbing_gear_boots":         "견고한 등반기어 부츠",
+
+  "item.mcda.rugged_climbing_gear.tooltip_1":     "이 견고한 장비를 입고",
+  "item.mcda.rugged_climbing_gear.tooltip_2":     "당신에게 닥칠 수 있는 최악의 자연을 내던지세요.",
+
+  "item.mcda.rugged_climbing_gear.effect.tooltip_1":  "견고한 등반기어",
+
+  "item.mcda.goat_gear_helmet":                   "염소 후드",
+  "item.mcda.goat_gear_chestplate":               "염소 재킷",
+  "item.mcda.goat_gear_leggings":                 "염소 레깅스",
+  "item.mcda.goat_gear_boots":                    "염소 부츠",
+
+  "item.mcda.goat_gear.tooltip_1":                "산양의 가죽으로 만든 이 염소 장비를 착용하면",
+  "item.mcda.goat_gear.tooltip_2":                "산 정상에서 다른 정상으로",
+  "item.mcda.goat_gear.tooltip_3":                "건너뛰고 싶은 기분이 들 겁니다.",
+
+  "item.mcda.sprout_armor_boots":                 "새싹 부츠",
+  "item.mcda.sprout_armor_leggings":              "새싹 바지",
+  "item.mcda.sprout_armor_chestplate":            "새싹 로브",
+  "item.mcda.sprout_armor_helmet":                "새싹 후드",
+
+  "item.mcda.sprout_armor.tooltip_1":             "새싹 방어구의 검은 덩굴은",
+  "item.mcda.sprout_armor.tooltip_2":             "완전한 어둠 속에서도",
+  "item.mcda.sprout_armor.tooltip_3":             "계속 자랍니다.",
+
+  "item.mcda.sprout_armor.effect.tooltip_1":      "화염 저항",
+
+  "item.mcda.living_vines_armor_boots":           "살아있는 덩굴 부츠",
+  "item.mcda.living_vines_armor_leggings":        "살아있는 덩굴 바지",
+  "item.mcda.living_vines_armor_chestplate":      "살아있는 덩굴 로브",
+  "item.mcda.living_vines_armor_helmet":          "살아있는 덩굴 후드",
+
+  "item.mcda.living_vines_armor.tooltip_1":       "전장에서만 자라는",
+  "item.mcda.living_vines_armor.tooltip_2":       "식물의 살아있는 덩굴로",
+  "item.mcda.living_vines_armor.tooltip_3":       "만들어진 방어구입니다.",
+
+  "item.mcda.living_vines_armor.effect.tooltip_1":   "화염 저항",
+
+  "item.mcda.piglin_armor_boots":                 "피글린 부츠",
+  "item.mcda.piglin_armor_leggings":              "피글린 레깅스",
+  "item.mcda.piglin_armor_chestplate":            "피글린 흉갑",
+  "item.mcda.piglin_armor_helmet":                "피글린 헬멧",
+
+  "item.mcda.piglin_armor.tooltip_1":             "피글린 갑옷을 입으면 네더에서",
+  "item.mcda.piglin_armor.tooltip_2":             "집에 있는 것과 같은 편암함을 느끼기에 충분합니다.",
+  "item.mcda.piglin_armor.tooltip_3":             "거의요.",
+
+  "item.mcda.golden_piglin_armor_boots":          "황금 피글린 부츠",
+  "item.mcda.golden_piglin_armor_leggings":       "황금 피글린 레깅스",
+  "item.mcda.golden_piglin_armor_chestplate":     "황금 피글린 흉갑",
+  "item.mcda.golden_piglin_armor_helmet":         "황금 피글린 헬멧",
+
+  "item.mcda.golden_piglin_armor.tooltip_1":      "황금 피글린 방어구는 피글린이",
+  "item.mcda.golden_piglin_armor.tooltip_2":      "가장 좋아하는 두 가지인 죽지 않는 것과 황금을",
+  "item.mcda.golden_piglin_armor.tooltip_3":      "합친 장비입니다.",
+
+  "item.mcda.golden_piglin_armor.effect.tooltip_1":   "피글린의 장난",
+
+  "item.mcda.squid_armor_boots":                  "오징어 부츠",
+  "item.mcda.squid_armor_leggings":               "오징어 레깅스",
+  "item.mcda.squid_armor_chestplate":             "오징어 흉갑",
+  "item.mcda.squid_armor_helmet":                 "오징어 헬멧",
+
+  "item.mcda.squid_armor.tooltip_1":              "이 칠흑 같은 방어구를 멋있게 보이도록",
+  "item.mcda.squid_armor.tooltip_2":              "만드는 건 쉬웠습니다.",
+  "item.mcda.squid_armor.tooltip_3":              "어려웠던 건 잉크 주머니를 고정하는 거였죠.",
+
+  "item.mcda.glow_squid_armor_boots":             "발광 오징어 부츠",
+  "item.mcda.glow_squid_armor_leggings":          "발광 오징어 레깅스",
+  "item.mcda.glow_squid_armor_chestplate":        "발광 오징어 흉갑",
+  "item.mcda.glow_squid_armor_helmet":            "발광 오징어 헬멧",
+
+  "item.mcda.glow_squid_armor.tooltip_1":         "발견하기 어려운 발광 오징어를",
+  "item.mcda.glow_squid_armor.tooltip_2":         "사냥하는 사람들은 이 방어구를 통해",
+  "item.mcda.glow_squid_armor.tooltip_3":         "아름다운 먹이와의 조화를 이룹니다.",
+
+  "item.mcda.glow_squid_armor.effect.tooltip_1":  "수중 호흡",
+
+  "item.mcda.turtle_armor_boots":                 "거북이 부츠",
+  "item.mcda.turtle_armor_leggings":              "거북이 레깅스",
+  "item.mcda.turtle_armor_chestplate":            "거북이 흉갑",
+  "item.mcda.turtle_armor_helmet":                "거북이 헬멧",
+
+  "item.mcda.turtle_armor.tooltip_1":             "거북이 방어구는 나약한 거북이를",
+  "item.mcda.turtle_armor.tooltip_2":             "강인하게 보호하는",
+  "item.mcda.turtle_armor.tooltip_3":             "등껍질에 영감을 받았습니다.",
+
+  "item.mcda.nimble_turtle_armor_boots":          "민첩한 거북이 부츠",
+  "item.mcda.nimble_turtle_armor_leggings":       "민첩한 거북이 레깅스",
+  "item.mcda.nimble_turtle_armor_chestplate":     "민첩한 거북이 흉갑",
+  "item.mcda.nimble_turtle_armor_helmet":         "민첩한 거북이 헬멧",
+
+  "item.mcda.nimble_turtle_armor.tooltip_1":      "깊은 곳에서 사는 거북이의 농밀한",
+  "item.mcda.nimble_turtle_armor.tooltip_2":      "(하지만 놀라울 정도로 가벼운)",
+  "item.mcda.nimble_turtle_armor.tooltip_3":      "등껍질로 만들어진 방어구입니다.",
+
+  "item.mcda.nimble_turtle_armor.effect.tooltip_1":  "민첩한 거북이의 탄성",
+
+  "item.mcda.entertainer_garb_helmet":            "유명인 모자",
+  "item.mcda.entertainer_garb_chestplate":        "유명인 조끼",
+  "item.mcda.entertainer_garb_leggings":          "유명인 바지",
+  "item.mcda.entertainer_garb_boots":             "유명인 보호대",
+
+  "item.mcda.entertainer_garb.tooltip_1":         "방어요? 물론이죠. 굉장하다구요? 물론이죠.",
+
+  "item.mcda.troubadour_armor_helmet":            "음유 시인의 모자",
+  "item.mcda.troubadour_armor_chestplate":        "음유 시인의 조끼",
+  "item.mcda.troubadour_armor_leggings":          "음유 시인의 바지",
+  "item.mcda.troubadour_armor_boots":             "음유 시인의 보호대",
+
+  "item.mcda.troubadour_armor.tooltip_1":         "이 영감을 주는 의상을 이용해",
+  "item.mcda.troubadour_armor.tooltip_2":         "놀라움을 선사할 수 있는데 왜 열광하는 팬들이",
+  "item.mcda.troubadour_armor.tooltip_3":         "더 많은 걸 원하도록 내버려 두나요?",
+
+  "item.mcda.troubadour_armor.effect.tooltip_1":  "음유 시인의 카리스마",
+
+  "item.mcda.teleportation_robe_helmet":          "순간 이동 후드",
+  "item.mcda.teleportation_robe_chestplate":      "순간 이동 로브",
+  "item.mcda.teleportation_robe_leggings":        "순간 이동 새시",
+  "item.mcda.teleportation_robe_boots":           "순간 이동 신발",
+
+  "item.mcda.teleportation_robe.tooltip_1":       "순간 이동 로브는",
+  "item.mcda.teleportation_robe.tooltip_2":       "종말의 수수께끼를 연구하는 데",
+  "item.mcda.teleportation_robe.tooltip_3":       "그들의 삶을 바친 사람들이 만들었습니다.",
+
+  "item.mcda.teleportation_robe.effect.tooltip_1":  "순간 이동",
+
+  "item.mcda.unstable_robe_helmet":               "불안정한 후드",
+  "item.mcda.unstable_robe_chestplate":           "불안정한 로브",
+  "item.mcda.unstable_robe_leggings":             "불안정한 새시",
+  "item.mcda.unstable_robe_boots":                "불안정한 신발",
+
+  "item.mcda.unstable_robe.tooltip_1":            "이 엔더 로브는 착용자가 전장을 가로지를 때",
+  "item.mcda.unstable_robe.tooltip_2":            "정전기 불꽃을 발산합니다.",
+
+  "item.mcda.unstable_robe.effect.tooltip_1":     "불안정한 순간 이동",
+
+  "item.mcda.shulker_armor_helmet":               "셜커 헬멧",
+  "item.mcda.shulker_armor_chestplate":           "셜커 흉갑",
+  "item.mcda.shulker_armor_leggings":             "셜커 폴린",
+  "item.mcda.shulker_armor_boots":                "셜커 쿠이스",
+
+  "item.mcda.shulker_armor.tooltip_1":            "셜커 방어구는 가장 단단한 강철 플레이트와도",
+  "item.mcda.shulker_armor.tooltip_2":            "견줄 수 있습니다.",
+
+  "item.mcda.sturdy_shulker_armor_helmet":        "튼튼한 셜커 헬멧",
+  "item.mcda.sturdy_shulker_armor_chestplate":    "튼튼한 셜커 흉갑",
+  "item.mcda.sturdy_shulker_armor_leggings":      "튼튼한 셜커 폴린",
+  "item.mcda.sturdy_shulker_armor_boots":         "튼튼한 셜커 쿠이스",
+
+  "item.mcda.sturdy_shulker_armor.tooltip_1":     "사람들은 최고의 방어는 좋은 공격이라고 말합니다.",
+  "item.mcda.sturdy_shulker_armor.tooltip_2":     "이 방벽을 뚫을 수 있는 운이",
+  "item.mcda.sturdy_shulker_armor.tooltip_3":     "따르길 바랍니다.",
+
+  "item.mcda.sturdy_shulker_armor.effect.tooltip_1":  "공중 부양 면역",
+  "item.mcda.sturdy_shulker_armor.effect.tooltip_2":  "셜커 탄알",
+
+  "item.mcda.gourdian_armor_helmet":              "고르디안 헬멧",
+  "item.mcda.gourdian_armor_chestplate":          "고르디안 흉갑",
+  "item.mcda.gourdian_armor_leggings":            "고르디안 레깅스",
+  "item.mcda.gourdian_armor_boots":               "고르디안 부츠",
+
+  "item.mcda.gourdian_armor.tooltip_1":           "으스스한 고르디안의 꺼풀을",
+  "item.mcda.gourdian_armor.tooltip_2":           "덮고 있는 사람들은 호박 목장에서",
+  "item.mcda.gourdian_armor.tooltip_3":           "전설적인 공포의",
+  "item.mcda.gourdian_armor.tooltip_4":           "존재가 됩니다.",
+
+  "item.mcda.gourdian_armor.effect.tooltip_1":    "고르디안의 증오",
+
+  "item.mcda.cauldron_armor_helmet":              "가마솥 헬멧",
+  "item.mcda.cauldron_armor_chestplate":          "가마솥 흉갑",
+  "item.mcda.cauldron_armor_leggings":            "가마솥 폴린",
+  "item.mcda.cauldron_armor_boots":               "가마솥 쿠이스",
+
+  "item.mcda.cauldron_armor.tooltip_1":           "가마솥 방어구는 위장을 목적으로 만들어졌지만,",
+  "item.mcda.cauldron_armor.tooltip_2":           "은신 목적에는 조금 부족합니다.",
+  "item.mcda.cauldron_armor.tooltip_3":           "이러한 점을 생동감 넘치는",
+  "item.mcda.cauldron_armor.tooltip_4":           "매력이 보완합니다.",
+
+  "item.mcda.cauldron_armor.effect.tooltip_1":    "가마솥 범람",
+
+  "item.mcda.sweet_tooth_helmet":                 "스윗투쓰 헬멧",
+  "item.mcda.sweet_tooth_chestplate":             "스윗투쓰 흉갑",
+  "item.mcda.sweet_tooth_leggings":               "스윗투쓰 레깅스",
+  "item.mcda.sweet_tooth_boots":                  "스윗투쓰 부츠",
+
+  "item.mcda.sweet_tooth.tooltip_1":              "적들에게 케이크 조각처럼 보일 수 있는 방어구지만,",
+  "item.mcda.sweet_tooth.tooltip_2":              "전투 측면에선 놀라울 정도로",
+  "item.mcda.sweet_tooth.tooltip_3":              "내구성이 좋습니다.",
+  "item.mcda.sweet_tooth.tooltip_4":              "퐁당 과자가 틀림없습니다.",
+
+  "item.mcda.vanguard_armor_helmet":              "뱅가드 헬멧",
+  "item.mcda.vanguard_armor_chestplate":          "뱅가드 흉갑",
+  "item.mcda.vanguard_armor_leggings":            "뱅가드 벨트",
+
+  "item.mcda.effect.lightfooted":                 "민첩함",
+  "item.mcda.effect.freezing_protection":         "추운 날씨로부터 보호",
+
+  "item.mcda.bone_rib_cage":                      "갈비뼈 케이지",
+  "item.mcda.phantom_bones":                      "팬텀 뼈",
+  "item.mcda.phantom_skin":                       "팬텀 가죽",
+  "item.mcda.ocelot_pelt":                        "오셀롯 가죽",
+  "item.mcda.ocelot_pelt_black":                  "블랙 오셀롯 가죽",
+  "item.mcda.wolf_pelt":                          "늑대 가죽",
+  "item.mcda.wolf_pelt_black":                    "검은 늑대 가죽",
+  "item.mcda.fox_pelt":                           "여우 가죽",
+  "item.mcda.fox_pelt_arctic":                    "북극여우 가죽",
+  "item.mcda.goat_pelt":                          "염소 가죽",
+  "item.mcda.frost_crystal":                      "냉기의 크리스털",
+  "item.mcda.glut_charm":                         "과잉 부적",
+  "item.mcda.iron_plate":                         "철판",
+  "item.mcda.iron_scale":                         "철 사슬",
+  "item.mcda.fabric_bolt_white":                  "하얀색 패브릭 볼트",
+  "item.mcda.fabric_bolt_orange":                 "주황색 패브릭 볼트",
+  "item.mcda.fabric_bolt_magenta":                "자홍색 패브릭 볼트",
+  "item.mcda.fabric_bolt_light_blue":             "하늘색 패브릭 볼트",
+  "item.mcda.fabric_bolt_yellow":                 "노란색 패브릭 볼트",
+  "item.mcda.fabric_bolt_lime":                   "연두색 패브릭 볼트",
+  "item.mcda.fabric_bolt_pink":                   "분홍색 패브릭 볼트",
+  "item.mcda.fabric_bolt_gray":                   "회색 패브릭 볼트",
+  "item.mcda.fabric_bolt_light_gray":             "회백색 패브릭 볼트",
+  "item.mcda.fabric_bolt_cyan":                   "청록색 패브릭 볼트",
+  "item.mcda.fabric_bolt_purple":                 "보라색 패브릭 볼트",
+  "item.mcda.fabric_bolt_blue":                   "파란색 패브릭 볼트",
+  "item.mcda.fabric_bolt_brown":                  "갈색 패브릭 볼트",
+  "item.mcda.fabric_bolt_green":                  "초록색 패브릭 볼트",
+  "item.mcda.fabric_bolt_red":                    "빨간색 패브릭 볼트",
+  "item.mcda.fabric_bolt_black":                  "검은색 패브릭 볼트",
+
+  "item.mcda.upgrade_core":                       "업그레이드 코어 - 기본",
+  "item.mcda.upgrade_core_archer":                "업그레이드 코어 - 궁수",
+  "item.mcda.upgrade_core_depth":                 "업그레이드 코어 - 깊이",
+  "item.mcda.upgrade_core_ember":                 "업그레이드 코어 - 엠버",
+  "item.mcda.upgrade_core_fox":                   "업그레이드 코어 - 여우",
+  "item.mcda.upgrade_core_frost":                 "업그레이드 코어 - 서리",
+  "item.mcda.upgrade_core_glut":                  "업그레이드 코어 - 과잉",
+  "item.mcda.upgrade_core_golden":                "업그레이드 코어 - 황금",
+  "item.mcda.upgrade_core_highland":              "업그레이드 코어 - 산악",
+  "item.mcda.upgrade_core_hive":                  "업그레이드 코어 - 둥지",
+  "item.mcda.upgrade_core_magicked":              "업그레이드 코어 - 마법",
+  "item.mcda.upgrade_core_metal":                 "업그레이드 코어 - 금속",
+  "item.mcda.upgrade_core_oceanic":               "업그레이드 코어 - 대양",
+  "item.mcda.upgrade_core_shadows":               "업그레이드 코어 - 그림자",
+  "item.mcda.upgrade_core_spider":                "업그레이드 코어 - 거미",
+  "item.mcda.upgrade_core_soul":                  "업그레이드 코어 - 영혼",
+  "item.mcda.upgrade_core_verdant":               "업그레이드 코어 - 신록",
+  "item.mcda.upgrade_core_void":                  "업그레이드 코어 - 공허",
+  "item.mcda.upgrade_core_wither":                "업그레이드 코어 - 위더",
+  "item.mcda.upgrade_core_wolf":                  "업그레이드 코어 - 늑대",
+
+  "item.mcda.gemstone_white":                     "석영 보석",
+  "item.mcda.gemstone_blue":                      "청금 보석",
+  "item.mcda.gemstone_green":                     "에메랄드 보석",
+  "item.mcda.gemstone_purple":                    "자수정 보석",
+  "item.mcda.gemstone_red":                       "레드스톤 보석",
+
+  "enchantment.mcda.bag_of_souls":                "영혼의 가방",
+  "enchantment.mcda.burning":                     "화상",
+  "enchantment.mcda.chilling":                    "냉기",
+  "enchantment.mcda.cowardice":                   "겁먹음",
+  "enchantment.mcda.death_barter":                "데스 물물교환",
+  "enchantment.mcda.deflect":                     "방향 전환",
+  "enchantment.mcda.fire_focus":                  "파이어 포커스",
+  "enchantment.mcda.fire_trail":                  "불의 흔적",
+  "enchantment.mcda.food_reserves":               "예비 식량",
+  "enchantment.mcda.frenzied":                    "광분",
+  "enchantment.mcda.heal_allies":                 "아군 치유",
+  "enchantment.mcda.lucky_explorer":              "운 좋은 모험가",
+  "enchantment.mcda.poison_focus":                "포이즌 포커스",
+  "enchantment.mcda.potion_barrier":              "포션 방벽",
+  "enchantment.mcda.reckless":                    "난폭",
+  "enchantment.mcda.recycler":                    "재활용",
+  "enchantment.mcda.snowball":                    "눈덩이",
+  "enchantment.mcda.surprise_gift":               "깜짝 선물",
+  "enchantment.mcda.swiftfooted":                 "빠른 발",
+
+  "effect.mcda.freezing":                         "빙결",
+
+  "subtitles.mcda.player_dodged":                 "플레이어가 피함",
+
+  "enchantment.mcda.bag_of_souls.desc":           "마법 부여 레벨에 비례하여 획득하는 경험치의 양이 증가합니다.",
+  "enchantment.mcda.burning.desc":                "가시 마법의 화염 버전입니다.",
+  "enchantment.mcda.chilling.desc":               "공격자를 느리게 만들고 채굴 피로 효과를 적용시킵니다.",
+  "enchantment.mcda.cowardice.desc":              "체력이 가득 찬 상태에서 힘 효과를 받습니다.",
+  "enchantment.mcda.death_barter.desc":           "사망했을 때, 에메랄드를 이용해서 죽음에서 벗어날 수 있습니다.",
+  "enchantment.mcda.deflect.desc":                "화살에 맞았을 때, 확률적으로 절반의 피해량을 받고 플레이어 주변에 떨어집니다.",
+  "enchantment.mcda.fire_focus.desc":             "화염 공격 특히 발화의 피해량이 증가합니다.",
+  "enchantment.mcda.fire_trail.desc":             "불의 흔적이 플레이어를 따라다닙니다.",
+  "enchantment.mcda.food_reserves.desc":          "치유의 물약을 마시면 음식을 획득합니다.",
+  "enchantment.mcda.frenzied.desc":               "생명력이 50% 미만으로 떨어지면 성급함 효과를 얻습니다.",
+  "enchantment.mcda.heal_allies.desc":            "아군 (주민, 애완동물, 골렘, 기타 플레이어)이 피해를 받을 때 치유합니다.",
+  "enchantment.mcda.lucky_explorer.desc":         "블록을 탐색할 때마다 에메랄드가 생성될 확률이 생깁니다.",
+  "enchantment.mcda.poison_focus.desc":           "독 공격의 피해량이 증가합니다.",
+  "enchantment.mcda.potion_barrier.desc":         "치유의 물약을 마시면 저항 효과를 얻습니다.",
+  "enchantment.mcda.reckless.desc":               "체력이 60%까지 감소하면 마법 부여 레벨에 비례하여 힘 효과를 얻습니다.",
+  "enchantment.mcda.recycler.desc":               "랜덤으로 화살을 쏘거나 맞았을 때 화살을 잡거나 주워 화살을 획득합니다.",
+  "enchantment.mcda.snowball.desc":               "2명 이상의 공격자에게 공격당하면, 마법의 눈덩이가 공격자 중 한 명에게 날아가 대상을 뒤로 밀어냅니다.",
+  "enchantment.mcda.surprise_gift.desc":          "치유의 물약을 마시면 다른 효과를 가진 물약 효과를 받습니다.",
+  "enchantment.mcda.swiftfooted.desc":            "점프할 때 일시적으로 이동 속도 향상 효과를 얻습니다.",
+
+  "activity.mcda.firetrail.enabled":              "불의 흔적이 활성화됨.",
+  "activity.mcda.firetrail.disabled":             "불의 흔적이 비활성화됨.",
+
+  "key.mcda.firetrail.toggle":                    "불의 흔적 토글",
+  "key.category.mcda":                            "MC Dungeons Armor"
+}
