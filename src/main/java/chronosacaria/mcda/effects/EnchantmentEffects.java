@@ -10,6 +10,8 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -26,10 +28,12 @@ import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static chronosacaria.mcda.enchants.EnchantID.*;
 
 public class EnchantmentEffects {
+    private static final UUID RECKLESS_UUID = UUID.fromString("c131aecf-3b88-43c9-9df3-16f791077d41");
 
     public static final List<Item> FOOD_RESERVE_LIST = List.of(Items.APPLE, Items.BREAD, Items.COOKED_SALMON,
             Items.COOKED_PORKCHOP, Items.COOKED_MUTTON, Items.COOKED_COD, Items.COOKED_COD, Items.COOKED_RABBIT,
@@ -252,16 +256,24 @@ public class EnchantmentEffects {
             return;
 
         int recklessLevel = EnchantmentHelper.getEquipmentLevel(EnchantsRegistry.enchants.get(RECKLESS), player);
-        if (recklessLevel == 0)
-            return;
+        player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).removeModifier(RECKLESS_UUID);
+        if (recklessLevel > 0) {
+            if (player.getAttributes().hasAttribute(EntityAttributes.GENERIC_MAX_HEALTH)) {
+                float previousMaxHealth = player.getMaxHealth();
+                player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).addTemporaryModifier(
+                        new EntityAttributeModifier(RECKLESS_UUID,
+                                "reckless modifier",
+                                -0.6,
+                                EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
+                float afterMaxHealth = player.getMaxHealth();
+                if (afterMaxHealth != previousMaxHealth) {
+                    player.setHealth(player.getHealth());
+                }
+            }
 
-        float recklessHealth = player.getMaxHealth() * 0.4F;
-        if (player.getHealth() >= recklessHealth)
-            player.setHealth(recklessHealth);
-
-        StatusEffectInstance reckless = new StatusEffectInstance(StatusEffects.STRENGTH, 40, recklessLevel - 1,false, false);
-        player.addStatusEffect(reckless);
-
+            StatusEffectInstance reckless = new StatusEffectInstance(StatusEffects.STRENGTH, 40, recklessLevel - 1, false, false);
+            player.addStatusEffect(reckless);
+        }
     }
 
     public static void applySwiftfooted(ServerPlayerEntity player){

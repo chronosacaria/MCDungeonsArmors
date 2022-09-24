@@ -19,14 +19,11 @@ public class McdaEnableEnchantAndEffectConfig implements ConfigData {
     public boolean controlledTeleportation = true;
 
     public McdaEnableEnchantAndEffectConfig(){
-        for (EnchantID enchantID : EnchantID.values())
+        for (EnchantID enchantID : EnchantID.values()) {
             enableEnchantment.put(enchantID, true);
-
-        for (EnchantID enchantID : EnchantID.values())
             enableEnchantmentForVillagerTrade.put(enchantID, true);
-
-        for (EnchantID enchantID : EnchantID.values())
             enableEnchantmentForRandomSelection.put(enchantID, true);
+        }
 
         for (ArmorEffectID armorEffectID : ArmorEffectID.values())
             enableArmorEffect.put(armorEffectID, true);
