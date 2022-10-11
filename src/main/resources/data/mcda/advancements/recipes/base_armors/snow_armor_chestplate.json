@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_iron_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:iron_chestplate"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_snow_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:snow_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mcda:snow_armor_chestplate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_iron_chestplate",
+      "has_snow_block",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mcda:snow_armor_chestplate"
+    ]
+  }
+}

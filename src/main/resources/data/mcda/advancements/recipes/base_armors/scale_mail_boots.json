@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_iron_scale": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:iron_scale"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_leather_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:leather_boots"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mcda:scale_mail_boots"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_iron_scale",
+      "has_leather_boots",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mcda:scale_mail_boots"
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blue_fabric_bolt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:fabric_bolt_blue"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_red_fabric_bolt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:fabric_bolt_red"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_leather_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:leather_chestplate"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_goat_pelt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:goat_pelt"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mcda:goat_gear_chestplate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_blue_fabric_bolt",
+      "has_red_fabric_bolt",
+      "has_leather_chestplate",
+      "has_goat_pelt",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mcda:goat_gear_chestplate"
+    ]
+  }
+}

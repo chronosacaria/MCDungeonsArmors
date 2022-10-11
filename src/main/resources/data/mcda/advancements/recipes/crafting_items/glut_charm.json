@@ -1,0 +1,125 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_beef": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:beef"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_porkchop": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:porkchop"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_chicken": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:chicken"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_rotten_flesh": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:rotten_flesh"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_spider_eye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:spider_eye"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mutton": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:mutton"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pufferfish": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:pufferfish"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_chorus_fruit": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:chorus_fruit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mcda:glut_charm"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_beef",
+      "has_porkchop",
+      "has_chicken",
+      "has_rotten_flesh",
+      "has_spider_eye",
+      "has_mutton",
+      "has_pufferfish",
+      "has_chorus_fruit",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mcda:glut_charm"
+    ]
+  }
+}

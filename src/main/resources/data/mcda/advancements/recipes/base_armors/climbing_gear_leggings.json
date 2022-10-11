@@ -1,0 +1,60 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_leather_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:leather_leggings"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_blue_fabric_bolt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:fabric_bolt_blue"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_gray_fabric_bolt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:fabric_bolt_gray"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mcda:climbing_gear_leggings"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_leather_leggings",
+      "has_blue_fabric_bolt",
+      "has_gray_fabric_bolt",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mcda:climbing_gear_leggings"
+    ]
+  }
+}

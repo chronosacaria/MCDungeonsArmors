@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_arctic_fox_pelt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:fox_pelt_arctic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fox_armor_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:fox_armor_boots"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mcda:fox_armor_boots"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_arctic_fox_pelt",
+      "has_fox_armor_boots",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mcda:fox_armor_boots"
+    ]
+  }
+}
