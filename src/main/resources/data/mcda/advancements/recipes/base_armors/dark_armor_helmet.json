@@ -60,6 +60,7 @@
     [
       "has_iron_ingot",
       "has_netherite_scrap",
+      "has_black_fabric_bolt",
       "has_redstone_block",
       "has_the_recipe"
     ]
