@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:upgrade_core_shadow"
+        "recipe": "mcda:upgrade_core_shadows"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +41,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:upgrade_core_shadow"
+      "mcda:upgrade_core_shadows"
     ]
   }
 }
