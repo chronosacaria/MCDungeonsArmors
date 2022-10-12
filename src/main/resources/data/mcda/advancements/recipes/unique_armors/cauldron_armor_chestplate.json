@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:cauldron_armor_chestplate"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_upgrade_core": {
@@ -13,12 +21,12 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_plate_armor_chestplate": {
+    "has_cauldron": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mcda:plate_armor_chestplate"
+              "minecraft:cauldron"
             ]
           }
         ]
@@ -35,7 +43,7 @@
   "requirements": [
     [
       "has_upgrade_core",
-      "has_plate_armor_chestplate",
+      "has_cauldron",
       "has_the_recipe"
     ]
   ],

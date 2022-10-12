@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:ghostly_armor_leggings"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_black_fabric_bolt": {

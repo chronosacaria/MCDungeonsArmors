@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:ghostly_armor_chestplate"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_blue_fabric_bolt": {

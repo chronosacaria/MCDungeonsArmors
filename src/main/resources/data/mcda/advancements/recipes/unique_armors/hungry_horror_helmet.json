@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:mercenary_armor_helmet",
+        "mcda:hungry_horror_helmet"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_upgrade_core": {

@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:climbing_gear_helmet"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_leather_helmet": {

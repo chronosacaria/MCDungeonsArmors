@@ -3,7 +3,6 @@
     {
       "condition": "mcda:item_enabled",
       "values": [
-        "mcda:plate_armor_chestplate",
         "mcda:cauldron_armor_chestplate"
       ]
     }

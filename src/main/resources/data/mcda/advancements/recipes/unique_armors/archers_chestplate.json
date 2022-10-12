@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:hunters_chestplate",
+        "mcda:archers_chestplate"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_upgrade_core": {
@@ -13,12 +22,12 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_leather_chestplate": {
+    "has_hunters_chestplate": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:leather_chestplate"
+              "mcda:hunters_chestplate"
             ]
           }
         ]
@@ -35,7 +44,7 @@
   "requirements": [
     [
       "has_upgrade_core",
-      "has_leather_chestplate",
+      "has_hunters_chestplate",
       "has_the_recipe"
     ]
   ],

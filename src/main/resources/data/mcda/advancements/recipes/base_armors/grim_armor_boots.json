@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:grim_armor_boots"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_bone": {
@@ -27,7 +35,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:grim_gear_boots"
+        "recipe": "mcda:grim_armor_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +49,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:grim_gear_boots"
+      "mcda:grim_armor_boots"
     ]
   }
 }

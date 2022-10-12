@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:fox_armor_boots",
+        "mcda:arctic_fox_armor_boots"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_arctic_fox_pelt": {
@@ -27,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:fox_armor_boots"
+        "recipe": "mcda:arctic_fox_armor_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:fox_armor_boots"
+      "mcda:arctic_fox_armor_boots"
     ]
   }
 }

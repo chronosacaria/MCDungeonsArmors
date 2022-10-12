@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:grim_armor_leggings"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_bone": {
@@ -39,7 +47,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:grim_gear_leggings"
+        "recipe": "mcda:grim_armor_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -54,7 +62,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:grim_gear_leggings"
+      "mcda:grim_armor_leggings"
     ]
   }
 }
