@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:shulker_armor_leggings",
+        "mcda:sturdy_shulker_armor_leggings"
+      ]
+    }
+  ],
   "type": "minecraft:smithing",
   "base": {
     "item": "mcda:shulker_armor_leggings"

@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
-    "mcda:archers_leggings",
+    {
+    "id": "mcda:archers_leggings",
+    "required": false
+    },
     "mcda:ocelot_armor_leggings",
     "mcda:shadow_walker_armor_leggings",
     "mcda:spelunker_armor_leggings",

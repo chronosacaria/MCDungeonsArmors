@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:emerald_gear_boots",
+        "mcda:opulent_armor_boots"
+      ]
+    }
+  ],
   "type": "minecraft:smithing",
   "base": {
     "item": "mcda:emerald_gear_boots"

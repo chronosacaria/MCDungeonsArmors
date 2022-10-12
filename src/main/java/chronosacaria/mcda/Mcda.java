@@ -1,6 +1,7 @@
 package chronosacaria.mcda;
 
 import chronosacaria.mcda.config.McdaConfig;
+import chronosacaria.mcda.data.ConfigItemEnabledCondition;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.networking.McdaC2SPackets;
 import chronosacaria.mcda.registry.*;
@@ -30,6 +31,7 @@ public class Mcda implements ModInitializer {
         McdaConfig.init();
         CONFIG = AutoConfig.getConfigHolder(McdaConfig.class).getConfig();
 
+        ConfigItemEnabledCondition.init();
         ArmorsRegistry.init();
         EnchantsRegistry.init();
         ItemsRegistry.init();

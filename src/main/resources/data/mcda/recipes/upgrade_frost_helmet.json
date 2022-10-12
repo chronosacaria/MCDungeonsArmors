@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:snow_armor_helmet",
+        "mcda:frost_armor_helmet"
+      ]
+    }
+  ],
   "type": "minecraft:smithing",
   "base": {
     "item": "mcda:snow_armor_helmet"

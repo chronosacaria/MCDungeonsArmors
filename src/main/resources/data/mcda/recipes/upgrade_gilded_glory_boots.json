@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:opulent_armor_boots",
+        "mcda:gilded_glory_boots"
+      ]
+    }
+  ],
   "type": "minecraft:smithing",
   "base": {
     "item": "mcda:opulent_armor_boots"

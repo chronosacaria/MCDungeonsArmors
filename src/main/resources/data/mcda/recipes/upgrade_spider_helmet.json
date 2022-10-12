@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:thief_armor_helmet",
+        "mcda:spider_armor_helmet"
+      ]
+    }
+  ],
   "type": "minecraft:smithing",
   "base": {
     "item": "mcda:thief_armor_helmet"

@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
-    "mcda:archers_chestplate",
+    {
+      "id": "mcda:archers_chestplate",
+      "required": false
+    },
     "mcda:hunters_chestplate",
     "mcda:ocelot_armor_chestplate",
     "mcda:shadow_walker_armor_chestplate",

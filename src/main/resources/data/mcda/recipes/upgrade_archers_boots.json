@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "mcda:item_enabled",
+      "values": [
+        "mcda:archers_boots"
+      ]
+    }
+  ],
   "type": "minecraft:smithing",
   "base": {
     "item": "minecraft:leather_boots"

@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
-    "mcda:archers_helmet",
+    {
+    "id": "mcda:archers_helmet",
+    "required": false
+    },
     "mcda:ocelot_armor_helmet",
     "mcda:shadow_walker_armor_helmet",
     "mcda:spelunker_armor_helmet",

@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
-    "mcda:archers_boots",
+    {
+      "id": "mcda:archers_boots",
+      "required": false
+    },
     "mcda:ocelot_armor_boots",
     "mcda:shadow_walker_armor_boots",
     "mcda:spelunker_armor_boots",
