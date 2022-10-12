@@ -1,0 +1,138 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_netherite_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:netherite_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_red_fabric_bolt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:fabric_bolt_red"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_orange_fabric_bolt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:fabric_bolt_orange"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_yellow_fabric_bolt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:fabric_bolt_yellow"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_green_fabric_bolt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:fabric_bolt_green"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_blue_fabric_bolt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:fabric_bolt_blue"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cyan_fabric_bolt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:fabric_bolt_cyan"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_purple_fabric_bolt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:fabric_bolt_purple"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_white_fabric_bolt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:fabric_bolt_white"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mcda:upgrade_core"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_netherite_ingot",
+      "has_red_fabric_bolt",
+      "has_orange_fabric_bolt",
+      "has_yellow_fabric_bolt",
+      "has_green_fabric_bolt",
+      "has_blue_fabric_bolt",
+      "has_cyan_fabric_bolt",
+      "has_purple_fabric_bolt",
+      "has_white_fabric_bolt",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mcda:upgrade_core"
+    ]
+  }
+}
