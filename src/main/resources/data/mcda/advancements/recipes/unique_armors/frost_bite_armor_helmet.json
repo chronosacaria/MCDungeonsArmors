@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_upgrade_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:upgrade_core_frost"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_phantom_armor_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:phantom_armor_helmet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mcda:frost_bite_armor_helmet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_upgrade_core",
+      "has_phantom_armor_helmet",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mcda:frost_bite_armor_helmet"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_upgrade_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:upgrade_core_oceanic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_squid_armor_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mcda:squid_armor_chestplate"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mcda:glow_squid_armor_chestplate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_upgrade_core",
+      "has_squid_armor_chestplate",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mcda:glow_squid_armor_chestplate"
+    ]
+  }
+}
