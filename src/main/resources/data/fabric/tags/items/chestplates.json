@@ -5,83 +5,302 @@
       "id": "mcda:archers_chestplate",
       "required": false
     },
-    "mcda:hunters_chestplate",
-    "mcda:ocelot_armor_chestplate",
-    "mcda:shadow_walker_armor_chestplate",
-    "mcda:spelunker_armor_chestplate",
-    "mcda:cave_crawler_chestplate",
-    "mcda:wolf_armor_chestplate",
-    "mcda:black_wolf_armor_chestplate",
-    "mcda:fox_armor_chestplate",
-    "mcda:arctic_fox_armor_chestplate",
-    "mcda:climbing_gear_chestplate",
-    "mcda:rugged_climbing_gear_chestplate",
-    "mcda:squid_armor_chestplate",
-    "mcda:glow_squid_armor_chestplate",
-    "mcda:goat_gear_chestplate",
+    {
+      "id": "mcda:hunters_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:ocelot_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:shadow_walker_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:spelunker_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:cave_crawler_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:wolf_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:black_wolf_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:fox_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:arctic_fox_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:climbing_gear_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:rugged_climbing_gear_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:squid_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:glow_squid_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:goat_gear_chestplate",
+      "required": false
+    },
 
-    "mcda:battle_robe_chestplate",
-    "mcda:splendid_robe_chestplate",
-    "mcda:evocation_robe_chestplate",
-    "mcda:ember_robe_chestplate",
-    "mcda:verdant_robe_chestplate",
-    "mcda:thief_armor_chestplate",
-    "mcda:spider_armor_chestplate",
-    "mcda:soul_robe_chestplate",
-    "mcda:souldancer_robe_chestplate",
-    "mcda:sprout_armor_chestplate",
-    "mcda:living_vines_armor_chestplate",
-    "mcda:piglin_armor_chestplate",
-    "mcda:entertainer_garb_chestplate",
-    "mcda:troubadour_armor_chestplate",
-    "mcda:teleportation_robe_chestplate",
-    "mcda:unstable_robe_chestplate",
+    {
+      "id":  "mcda:battle_robe_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:splendid_robe_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:evocation_robe_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:ember_robe_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:verdant_robe_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:thief_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:spider_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:soul_robe_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:souldancer_robe_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:sprout_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:living_vines_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:piglin_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:entertainer_garb_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:troubadour_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:teleportation_robe_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:unstable_robe_chestplate",
+      "required": false
+    },
 
-    "mcda:phantom_armor_chestplate",
-    "mcda:frost_bite_armor_chestplate",
-    "mcda:grim_armor_chestplate",
-    "mcda:wither_armor_chestplate",
-    "mcda:turtle_armor_chestplate",
-    "mcda:nimble_turtle_armor_chestplate",
+    {
+      "id":  "mcda:phantom_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:frost_bite_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:grim_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:wither_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:turtle_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:nimble_turtle_armor_chestplate",
+      "required": false
+    },
 
-    "mcda:highland_armor_chestplate",
-    "mcda:beehive_armor_chestplate",
-    "mcda:beenest_armor_chestplate",
-    "mcda:ghostly_armor_chestplate",
-    "mcda:ghost_kindler_chestplate",
-    "mcda:golden_piglin_armor_chestplate",
-    "mcda:guards_armor_chestplate",
-    "mcda:scale_mail_chestplate",
-    "mcda:sweet_tooth_chestplate",
-    "mcda:vanguard_armor_chestplate",
+    {
+      "id":  "mcda:highland_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:beehive_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:beenest_armor_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:ghostly_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:ghost_kindler_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:golden_piglin_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:guards_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:scale_mail_chestplate",
+      "required": false
+    },
+    {
+      "id":  "mcda:sweet_tooth_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:vanguard_armor_chestplate",
+      "required": false
+    },
 
-    "mcda:reinforced_mail_chestplate",
-    "mcda:stalwart_armor_chestplate",
-    "mcda:curious_armor_chestplate",
-    "mcda:snow_armor_chestplate",
-    "mcda:frost_armor_chestplate",
-    "mcda:mercenary_armor_chestplate",
-    "mcda:renegade_armor_chestplate",
-    "mcda:hungry_horror_chestplate",
-    "mcda:emerald_gear_chestplate",
-    "mcda:opulent_armor_chestplate",
+    {
+      "id": "mcda:reinforced_mail_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:stalwart_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:curious_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:snow_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:frost_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:mercenary_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:renegade_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:hungry_horror_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:emerald_gear_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:opulent_armor_chestplate",
+      "required": false
+    },
 
-    "mcda:dark_armor_chestplate",
-    "mcda:titans_shroud_chestplate",
-    "mcda:royal_guard_armor_chestplate",
-    "mcda:plate_armor_chestplate",
-    "mcda:full_metal_armor_chestplate",
-    "mcda:white_mystery_armor_chestplate",
-    "mcda:blue_mystery_armor_chestplate",
-    "mcda:green_mystery_armor_chestplate",
-    "mcda:purple_mystery_armor_chestplate",
-    "mcda:red_mystery_armor_chestplate",
-    "mcda:champions_armor_chestplate",
-    "mcda:heros_armor_chestplate",
-    "mcda:gilded_glory_chestplate",
-    "mcda:shulker_armor_chestplate",
-    "mcda:sturdy_shulker_armor_chestplate",
-    "mcda:gourdian_armor_chestplate",
-    "mcda:cauldron_armor_chestplate"
+    {
+      "id": "mcda:dark_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:titans_shroud_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:royal_guard_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:plate_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:full_metal_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:white_mystery_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:blue_mystery_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:green_mystery_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:purple_mystery_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:red_mystery_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:champions_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:heros_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:gilded_glory_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:shulker_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:sturdy_shulker_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:gourdian_armor_chestplate",
+      "required": false
+    },
+    {
+      "id": "mcda:cauldron_armor_chestplate",
+      "required": false
+    }
   ]
 }

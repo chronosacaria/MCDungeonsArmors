@@ -5,82 +5,298 @@
     "id": "mcda:archers_leggings",
     "required": false
     },
-    "mcda:ocelot_armor_leggings",
-    "mcda:shadow_walker_armor_leggings",
-    "mcda:spelunker_armor_leggings",
-    "mcda:cave_crawler_leggings",
-    "mcda:wolf_armor_leggings",
-    "mcda:black_wolf_armor_leggings",
-    "mcda:fox_armor_leggings",
-    "mcda:arctic_fox_armor_leggings",
-    "mcda:climbing_gear_leggings",
-    "mcda:rugged_climbing_gear_leggings",
-    "mcda:squid_armor_leggings",
-    "mcda:glow_squid_armor_leggings",
-    "mcda:goat_gear_leggings",
+    {
+    "id": "mcda:ocelot_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:shadow_walker_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:spelunker_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:cave_crawler_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:wolf_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:black_wolf_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:fox_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:arctic_fox_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:climbing_gear_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:rugged_climbing_gear_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:squid_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:glow_squid_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:goat_gear_leggings",
+    "required": false
+    },
 
-    "mcda:battle_robe_leggings",
-    "mcda:splendid_robe_leggings",
-    "mcda:evocation_robe_leggings",
-    "mcda:ember_robe_leggings",
-    "mcda:verdant_robe_leggings",
-    "mcda:thief_armor_leggings",
-    "mcda:spider_armor_leggings",
-    "mcda:soul_robe_leggings",
-    "mcda:souldancer_robe_leggings",
-    "mcda:sprout_armor_leggings",
-    "mcda:living_vines_armor_leggings",
-    "mcda:piglin_armor_leggings",
-    "mcda:entertainer_garb_leggings",
-    "mcda:troubadour_armor_leggings",
-    "mcda:teleportation_robe_leggings",
-    "mcda:unstable_robe_leggings",
+    {
+    "id": "mcda:battle_robe_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:splendid_robe_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:evocation_robe_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:ember_robe_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:verdant_robe_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:thief_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:spider_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:soul_robe_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:souldancer_robe_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:sprout_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:living_vines_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:piglin_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:entertainer_garb_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:troubadour_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:teleportation_robe_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:unstable_robe_leggings",
+    "required": false
+    },
 
-    "mcda:phantom_armor_leggings",
-    "mcda:frost_bite_armor_leggings",
-    "mcda:grim_armor_leggings",
-    "mcda:wither_armor_leggings",
-    "mcda:turtle_armor_leggings",
-    "mcda:nimble_turtle_armor_leggings",
+    {
+    "id": "mcda:phantom_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:frost_bite_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:grim_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:wither_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:turtle_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:nimble_turtle_armor_leggings",
+    "required": false
+    },
 
-    "mcda:highland_armor_leggings",
-    "mcda:beehive_armor_leggings",
-    "mcda:beenest_armor_leggings",
-    "mcda:ghostly_armor_leggings",
-    "mcda:ghost_kindler_leggings",
-    "mcda:golden_piglin_armor_leggings",
-    "mcda:guards_armor_leggings",
-    "mcda:scale_mail_leggings",
-    "mcda:sweet_tooth_leggings",
-    "mcda:vanguard_armor_leggings",
+    {
+    "id": "mcda:highland_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:beehive_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:beenest_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:ghostly_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:ghost_kindler_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:golden_piglin_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:guards_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:scale_mail_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:sweet_tooth_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:vanguard_armor_leggings",
+    "required": false
+    },
 
-    "mcda:reinforced_mail_leggings",
-    "mcda:stalwart_armor_leggings",
-    "mcda:curious_armor_leggings",
-    "mcda:snow_armor_leggings",
-    "mcda:frost_armor_leggings",
-    "mcda:mercenary_armor_leggings",
-    "mcda:renegade_armor_leggings",
-    "mcda:hungry_horror_leggings",
-    "mcda:emerald_gear_leggings",
-    "mcda:opulent_armor_leggings",
+    {
+    "id": "mcda:reinforced_mail_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:stalwart_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:curious_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:snow_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:frost_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:mercenary_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:renegade_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:hungry_horror_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:emerald_gear_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:opulent_armor_leggings",
+    "required": false
+    },
 
-    "mcda:dark_armor_leggings",
-    "mcda:titans_shroud_leggings",
-    "mcda:royal_guard_armor_leggings",
-    "mcda:plate_armor_leggings",
-    "mcda:full_metal_armor_leggings",
-    "mcda:white_mystery_armor_leggings",
-    "mcda:blue_mystery_armor_leggings",
-    "mcda:green_mystery_armor_leggings",
-    "mcda:purple_mystery_armor_leggings",
-    "mcda:red_mystery_armor_leggings",
-    "mcda:champions_armor_leggings",
-    "mcda:heros_armor_leggings",
-    "mcda:gilded_glory_leggings",
-    "mcda:shulker_armor_leggings",
-    "mcda:sturdy_shulker_armor_leggings",
-    "mcda:gourdian_armor_leggings",
-    "mcda:cauldron_armor_leggings"
+    {
+    "id": "mcda:dark_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:titans_shroud_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:royal_guard_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:plate_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:full_metal_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:white_mystery_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:blue_mystery_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:green_mystery_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:purple_mystery_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:red_mystery_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:champions_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:heros_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:gilded_glory_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:shulker_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:sturdy_shulker_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:gourdian_armor_leggings",
+    "required": false
+    },
+    {
+    "id": "mcda:cauldron_armor_leggings",
+      "required": false
+    }
   ]
 }

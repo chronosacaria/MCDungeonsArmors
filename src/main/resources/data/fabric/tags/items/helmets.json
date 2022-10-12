@@ -5,79 +5,286 @@
     "id": "mcda:archers_helmet",
     "required": false
     },
-    "mcda:ocelot_armor_helmet",
-    "mcda:shadow_walker_armor_helmet",
-    "mcda:spelunker_armor_helmet",
-    "mcda:cave_crawler_helmet",
-    "mcda:wolf_armor_helmet",
-    "mcda:black_wolf_armor_helmet",
-    "mcda:fox_armor_helmet",
-    "mcda:arctic_fox_armor_helmet",
-    "mcda:climbing_gear_helmet",
-    "mcda:rugged_climbing_gear_helmet",
-    "mcda:squid_armor_helmet",
-    "mcda:glow_squid_armor_helmet",
-    "mcda:goat_gear_helmet",
+    {
+    "id": "mcda:ocelot_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:shadow_walker_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:spelunker_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:cave_crawler_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:wolf_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:black_wolf_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:fox_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:arctic_fox_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:climbing_gear_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:rugged_climbing_gear_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:squid_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:glow_squid_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:goat_gear_helmet",
+    "required": false
+    },
 
-    "mcda:evocation_robe_helmet",
-    "mcda:ember_robe_helmet",
-    "mcda:verdant_robe_helmet",
-    "mcda:thief_armor_helmet",
-    "mcda:spider_armor_helmet",
-    "mcda:soul_robe_helmet",
-    "mcda:souldancer_robe_helmet",
-    "mcda:sprout_armor_helmet",
-    "mcda:living_vines_armor_helmet",
-    "mcda:piglin_armor_helmet",
-    "mcda:entertainer_garb_helmet",
-    "mcda:troubadour_armor_helmet",
-    "mcda:teleportation_robe_helmet",
-    "mcda:unstable_robe_helmet",
+    {
+    "id": "mcda:evocation_robe_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:ember_robe_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:verdant_robe_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:thief_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:spider_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:soul_robe_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:souldancer_robe_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:sprout_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:living_vines_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:piglin_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:entertainer_garb_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:troubadour_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:teleportation_robe_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:unstable_robe_helmet",
+    "required": false
+    },
 
-    "mcda:phantom_armor_helmet",
-    "mcda:frost_bite_armor_helmet",
-    "mcda:grim_armor_helmet",
-    "mcda:wither_armor_helmet",
-    "mcda:turtle_armor_helmet",
-    "mcda:nimble_turtle_armor_helmet",
+    {
+    "id": "mcda:phantom_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:frost_bite_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:grim_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:wither_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:turtle_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:nimble_turtle_armor_helmet",
+    "required": false
+    },
 
-    "mcda:highland_armor_helmet",
-    "mcda:beehive_armor_helmet",
-    "mcda:beenest_armor_helmet",
-    "mcda:ghostly_armor_helmet",
-    "mcda:ghost_kindler_helmet",
-    "mcda:golden_piglin_armor_helmet",
-    "mcda:guards_armor_helmet",
-    "mcda:sweet_tooth_helmet",
-    "mcda:vanguard_armor_helmet",
+    {
+    "id": "mcda:highland_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:beehive_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:beenest_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:ghostly_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:ghost_kindler_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:golden_piglin_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:guards_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:sweet_tooth_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:vanguard_armor_helmet",
+    "required": false
+    },
 
-    "mcda:reinforced_mail_helmet",
-    "mcda:stalwart_armor_helmet",
-    "mcda:curious_armor_helmet",
-    "mcda:snow_armor_helmet",
-    "mcda:frost_armor_helmet",
-    "mcda:mercenary_armor_helmet",
-    "mcda:renegade_armor_helmet",
-    "mcda:hungry_horror_helmet",
-    "mcda:emerald_gear_helmet",
-    "mcda:opulent_armor_helmet",
+    {
+    "id": "mcda:reinforced_mail_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:stalwart_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:curious_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:snow_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:frost_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:mercenary_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:renegade_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:hungry_horror_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:emerald_gear_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:opulent_armor_helmet",
+    "required": false
+    },
 
-    "mcda:dark_armor_helmet",
-    "mcda:titans_shroud_helmet",
-    "mcda:royal_guard_armor_helmet",
-    "mcda:plate_armor_helmet",
-    "mcda:full_metal_armor_helmet",
-    "mcda:white_mystery_armor_helmet",
-    "mcda:blue_mystery_armor_helmet",
-    "mcda:green_mystery_armor_helmet",
-    "mcda:purple_mystery_armor_helmet",
-    "mcda:red_mystery_armor_helmet",
-    "mcda:champions_armor_helmet",
-    "mcda:heros_armor_helmet",
-    "mcda:gilded_glory_helmet",
-    "mcda:shulker_armor_helmet",
-    "mcda:sturdy_shulker_armor_helmet",
-    "mcda:gourdian_armor_helmet",
-    "mcda:cauldron_armor_helmet"
+    {
+    "id": "mcda:dark_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:titans_shroud_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:royal_guard_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:plate_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:full_metal_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:white_mystery_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:blue_mystery_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:green_mystery_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:purple_mystery_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:red_mystery_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:champions_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:heros_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:gilded_glory_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:shulker_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:sturdy_shulker_armor_helmet",
+    "required": false
+    },
+    {
+    "id": "mcda:gourdian_armor_helmet",
+    "required": false
+    },
+    {
+      "id": "mcda:cauldron_armor_helmet",
+      "required": false
+    }
   ]
 }
