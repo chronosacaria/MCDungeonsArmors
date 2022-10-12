@@ -1,5 +1,6 @@
 package chronosacaria.mcda.registry;
 
+import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.items.ItemID;
 import chronosacaria.mcda.items.itemhelpers.DropHelper;
@@ -101,8 +102,10 @@ public class LootRegistry {
                 lootPoolBuilder.conditionally(RandomChanceWithLootingLootCondition.builder(
                         CONFIG.mcdaItemDropsConfig.dropBaseChance.get(DropHelper.EVOCATION_ROBE),
                         CONFIG.mcdaItemDropsConfig.dropChancePerLootingLevel.get(DropHelper.EVOCATION_ROBE)));
-                ArmorsRegistry.armorItems.get(ArmorSets.EVOCATION).values()
-                        .forEach((item -> lootPoolBuilder.with(ItemEntry.builder(item))));
+                if (Mcda.CONFIG.mcdaEnableArmorsConfig.ARMORS_SETS_ENABLED.get(ArmorSets.EVOCATION)) {
+                    ArmorsRegistry.armorItems.get(ArmorSets.EVOCATION).values()
+                            .forEach((item -> lootPoolBuilder.with(ItemEntry.builder(item))));
+                }
                 tableBuilder.pool(lootPoolBuilder.build());
             }
             if (EntityType.GOAT.getLootTableId().equals(id) && source.isBuiltin()) {

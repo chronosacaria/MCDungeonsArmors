@@ -3,6 +3,7 @@ package chronosacaria.mcda;
 import chronosacaria.mcda.config.McdaConfig;
 import chronosacaria.mcda.data.ConfigItemEnabledCondition;
 import chronosacaria.mcda.items.ArmorSets;
+import chronosacaria.mcda.items.ItemID;
 import chronosacaria.mcda.networking.McdaC2SPackets;
 import chronosacaria.mcda.registry.*;
 import me.shedaniel.autoconfig.AutoConfig;
@@ -21,16 +22,20 @@ public class Mcda implements ModInitializer {
         return new Identifier(MOD_ID, path);
     }
 
-    public static final ItemGroup ARMORS_GROUP = FabricItemGroupBuilder.build(ID( "armor"),
-            () -> new ItemStack(ArmorsRegistry.armorItems.get(ArmorSets.SPLENDID).get(EquipmentSlot.CHEST)));
-
     public static McdaConfig CONFIG;
+
+    public static final ItemGroup ARMORS_GROUP = FabricItemGroupBuilder.build(ID( "armor"),
+            () -> {
+                if (CONFIG.mcdaEnableArmorsConfig.ARMORS_SETS_ENABLED.get(ArmorSets.CHAMPION)) {
+                            new ItemStack(ArmorsRegistry.armorItems.get(ArmorSets.SPLENDID).get(EquipmentSlot.CHEST));
+                }
+                return new ItemStack(ItemsRegistry.items.get(ItemID.UPGRADE_CORE_ARCHER));
+            });
 
     @Override
     public void onInitialize() {
         McdaConfig.init();
         CONFIG = AutoConfig.getConfigHolder(McdaConfig.class).getConfig();
-
         ConfigItemEnabledCondition.init();
         ArmorsRegistry.init();
         EnchantsRegistry.init();
