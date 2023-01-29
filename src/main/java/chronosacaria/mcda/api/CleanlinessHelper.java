@@ -61,16 +61,6 @@ public class CleanlinessHelper {
         return false;
     }
 
-    public static boolean isMysteryArmor(Item item, ArmorSets armorSets) {
-        if (Mcda.CONFIG.mcdaEnableArmorsConfig.ARMORS_SETS_ENABLED.get(armorSets)) {
-            return item.asItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.HEAD)
-                    || item.asItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.CHEST)
-                    || item.asItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.LEGS)
-                    || item.asItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.FEET);
-        }
-        return false;
-    }
-
     public static void onTotemDeathEffects(LivingEntity livingEntity) {
         livingEntity.setHealth(1.0F);
         livingEntity.clearStatusEffects();

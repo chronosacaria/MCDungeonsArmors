@@ -7,7 +7,8 @@ import chronosacaria.mcda.items.ArmorSets;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.entry.ItemEntry;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 import java.util.ArrayList;

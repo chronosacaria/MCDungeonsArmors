@@ -27,7 +27,7 @@ public class Mcda implements ModInitializer {
     public static final ItemGroup ARMORS_GROUP = FabricItemGroupBuilder.build(ID( "armor"),
             () -> {
                 if (CONFIG.mcdaEnableArmorsConfig.ARMORS_SETS_ENABLED.get(ArmorSets.SPLENDID)) {
-                            new ItemStack(ArmorsRegistry.armorItems.get(ArmorSets.SPLENDID).get(EquipmentSlot.CHEST));
+                    return new ItemStack(ArmorsRegistry.armorItems.get(ArmorSets.SPLENDID).get(EquipmentSlot.CHEST));
                 }
                 return new ItemStack(ItemsRegistry.items.get(ItemID.UPGRADE_CORE_ARCHER));
             });

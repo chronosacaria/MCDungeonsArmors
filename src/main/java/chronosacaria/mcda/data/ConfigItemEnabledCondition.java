@@ -1,7 +1,8 @@
 package chronosacaria.mcda.data;
 
 import chronosacaria.mcda.Mcda;
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
