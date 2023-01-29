@@ -23,7 +23,7 @@ public class ArmorFeatureRendererMixin {
 
     // Hide Thief Armour on Sneak
     @Inject(method = "renderArmor", at = @At("HEAD"), cancellable = true)
-    public void renderArmorOverride(MatrixStack matrices, VertexConsumerProvider vertexConsumers,
+    public void mcda$renderArmorOverride(MatrixStack matrices, VertexConsumerProvider vertexConsumers,
                                  LivingEntity livingEntity, EquipmentSlot equipmentSlot, int i, BipedEntityModel<LivingEntity> bipedEntityModel, CallbackInfo info) {
         if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(INVISIBILITY))
             return;

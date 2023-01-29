@@ -18,7 +18,7 @@ import static chronosacaria.mcda.effects.ArmorEffectID.FIRE_RESISTANCE;
 @Mixin(InGameOverlayRenderer.class)
 public class InGameOverlayRendererMixin {
     @Inject(method = "renderFireOverlay", at = @At("HEAD"), cancellable = true)
-    private static void renderFireOverlayOverride(MinecraftClient minecraftClient, MatrixStack matrixStack,
+    private static void mcda$renderFireOverlayOverride(MinecraftClient minecraftClient, MatrixStack matrixStack,
                                                  CallbackInfo ci) {
         if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(FIRE_RESISTANCE))
             return;

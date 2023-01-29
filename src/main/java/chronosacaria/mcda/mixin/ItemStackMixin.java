@@ -29,7 +29,7 @@ import java.util.Random;
 public abstract class ItemStackMixin {
 
     @Inject(method = "onCraft", at = @At("HEAD"))
-    public void applyMysteryArmorNBTDominanceApplication(World world, PlayerEntity player, int amount, CallbackInfo ci){
+    public void mcda$onCraftMysteryArmor(World world, PlayerEntity player, int amount, CallbackInfo ci){
         ItemStack stack = (ItemStack) (Object) this;
 
         if (stack.getItem() instanceof ArmorSetItem armorItem) {
