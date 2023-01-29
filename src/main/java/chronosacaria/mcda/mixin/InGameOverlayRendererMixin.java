@@ -26,8 +26,8 @@ public class InGameOverlayRendererMixin {
         PlayerEntity playerEntity = MinecraftClient.getInstance().player;
 
         if (playerEntity.isAlive()) {
-            if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.SPROUT)
-                    || CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.LIVING_VINES)
+            if (CleanlinessHelper.checkFullArmor(playerEntity, ArmorSets.SPROUT)
+                    || CleanlinessHelper.checkFullArmor(playerEntity, ArmorSets.LIVING_VINES)
                     || (ArmorEffects.ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == FIRE_RESISTANCE)
                     || (ArmorEffects.RED_ARMOR_EFFECT_ID_LIST.get(ArmorEffects.applyMysteryArmorEffect(playerEntity, ArmorSets.RED_MYSTERY)) == FIRE_RESISTANCE)) {
                 ci.cancel();

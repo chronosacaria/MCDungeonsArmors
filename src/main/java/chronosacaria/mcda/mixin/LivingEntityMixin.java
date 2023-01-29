@@ -34,7 +34,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.EnumMap;
 
-import static chronosacaria.mcda.api.CleanlinessHelper.hasArmorSet;
+import static chronosacaria.mcda.api.CleanlinessHelper.checkFullArmor;
 import static chronosacaria.mcda.effects.ArmorEffectID.*;
 import static chronosacaria.mcda.effects.ArmorEffects.*;
 import static chronosacaria.mcda.enchants.EnchantID.*;
@@ -216,7 +216,7 @@ public abstract class LivingEntityMixin extends Entity {
 
             if (playerEntity == null) return;
 
-            if (hasArmorSet(playerEntity, ArmorSets.SHADOW_WALKER)
+            if (checkFullArmor(playerEntity, ArmorSets.SHADOW_WALKER)
                     || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == NO_FALL_DAMAGE)
                     || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.GREEN_MYSTERY)) == NO_FALL_DAMAGE)) {
                 int i = this.computeFallDamage(fallDistance, damageMultiplier);
@@ -342,7 +342,7 @@ public abstract class LivingEntityMixin extends Entity {
     private double mcda$knockbackEffects(double strength){
         LivingEntity livingEntity = (LivingEntity) (Object) this;
 
-        if (this.isAlive() && this.isSneaking() && (hasArmorSet(livingEntity, ArmorSets.STALWART_MAIL)
+        if (this.isAlive() && this.isSneaking() && (checkFullArmor(livingEntity, ArmorSets.STALWART_MAIL)
                 || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.MYSTERY)) == STALWART_BULWARK)
                 || (RED_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.RED_MYSTERY)) == STALWART_BULWARK))) {
             return strength * 0;
@@ -359,7 +359,7 @@ public abstract class LivingEntityMixin extends Entity {
         if (livingEntity instanceof ServerPlayerEntity) {
             StatusEffect statusEffectType = statusEffectInstance.getEffectType();
             if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SHULKER_LIKE)) {
-                if (hasArmorSet(livingEntity, ArmorSets.STURDY_SHULKER)
+                if (checkFullArmor(livingEntity, ArmorSets.STURDY_SHULKER)
                         || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.MYSTERY)) == SHULKER_LIKE)
                         || (PURPLE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.PURPLE_MYSTERY)) == SHULKER_LIKE)) {
                     if (statusEffectType == StatusEffects.LEVITATION)
@@ -367,7 +367,7 @@ public abstract class LivingEntityMixin extends Entity {
                 }
             }
             if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(TROUBADOURS_CHARISMA)) {
-                if (CleanlinessHelper.hasArmorSet(livingEntity, ArmorSets.TROUBADOUR)) {
+                if (CleanlinessHelper.checkFullArmor(livingEntity, ArmorSets.TROUBADOUR)) {
 
                     int interceptedDuration = statusEffectInstance.getDuration();
 

@@ -20,7 +20,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-import static chronosacaria.mcda.api.CleanlinessHelper.hasArmorSet;
+import static chronosacaria.mcda.api.CleanlinessHelper.checkFullArmor;
 import static chronosacaria.mcda.api.CleanlinessHelper.random;
 
 public class ProjectileEffectHelper {
@@ -47,7 +47,7 @@ public class ProjectileEffectHelper {
     }
 
     public static void fireShulkerBulletAtNearbyEnemy(LivingEntity user) {
-        if (!hasArmorSet(user, ArmorSets.STURDY_SHULKER))
+        if (!checkFullArmor(user, ArmorSets.STURDY_SHULKER))
             return;
 
         World world = user.getEntityWorld();

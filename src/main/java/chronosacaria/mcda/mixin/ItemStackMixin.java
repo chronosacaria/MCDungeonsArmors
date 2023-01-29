@@ -52,7 +52,7 @@ public abstract class ItemStackMixin {
                                         CallbackInfoReturnable<TypedActionResult<ItemStack>> cir){
         ItemStack getMainHandStack = user.getMainHandStack();
 
-        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(ArmorEffectID.GILDED_HERO) && CleanlinessHelper.hasArmorSet(user, ArmorSets.GILDED)) {
+        if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(ArmorEffectID.GILDED_HERO) && CleanlinessHelper.checkFullArmor(user, ArmorSets.GILDED)) {
             if (getMainHandStack.getItem() == Items.EMERALD && !user.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)) {
                 int decrementAmount = 10;
                 if (getMainHandStack.getCount() >= decrementAmount) {

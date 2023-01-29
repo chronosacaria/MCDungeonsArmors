@@ -23,7 +23,7 @@ public class CompatRegistry {
                 PlayerEntity playerEntity = event.getPlayer();
 
                 if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SOULDANCER_EXPERIENCE))
-                    if (CleanlinessHelper.hasArmorSet(playerEntity, ArmorSets.SOULDANCER))
+                    if (CleanlinessHelper.checkFullArmor(playerEntity, ArmorSets.SOULDANCER))
                         amount = (int) Math.round(1.5 * amount);
 
                 if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(BAG_OF_SOULS)) {

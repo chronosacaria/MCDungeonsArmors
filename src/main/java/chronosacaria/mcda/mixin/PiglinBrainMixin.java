@@ -22,7 +22,7 @@ public abstract class PiglinBrainMixin {
         if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(PIGLIN_FOOLING))
             return;
         if (livingEntity instanceof PlayerEntity)
-            if (CleanlinessHelper.hasArmorSet(livingEntity, ArmorSets.GOLDEN_PIGLIN))
+            if (CleanlinessHelper.checkFullArmor(livingEntity, ArmorSets.GOLDEN_PIGLIN))
                 cir.setReturnValue(true);
     }
 }

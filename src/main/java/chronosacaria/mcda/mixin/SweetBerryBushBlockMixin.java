@@ -27,7 +27,7 @@ public class SweetBerryBushBlockMixin {
         if (!(entity instanceof LivingEntity livingEntity))
             return;
 
-        if (CleanlinessHelper.hasArmorSet(livingEntity, ArmorSets.FOX) || CleanlinessHelper.hasArmorSet(livingEntity, ArmorSets.ARCTIC_FOX)){
+        if (CleanlinessHelper.checkFullArmor(livingEntity, ArmorSets.FOX) || CleanlinessHelper.checkFullArmor(livingEntity, ArmorSets.ARCTIC_FOX)){
             ci.cancel();
         }
     }

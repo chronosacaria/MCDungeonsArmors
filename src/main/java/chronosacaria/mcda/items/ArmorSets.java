@@ -11,8 +11,10 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Rarity;
 
+import java.util.EnumSet;
 import java.util.function.Supplier;
 
+import static net.minecraft.entity.EquipmentSlot.*;
 import static net.minecraft.sound.SoundEvents.*;
 
 public enum ArmorSets implements ArmorMaterial {
@@ -448,5 +450,22 @@ public enum ArmorSets implements ArmorMaterial {
 
     public boolean isOf(ArmorSets armorSets) {
         return this == armorSets;
+    }
+
+    public boolean isOf(ArmorSets... armorSets) {
+        for (ArmorSets armorSet : armorSets)
+            if (this == armorSet)
+                return true;
+        return false;
+    }
+
+    public EnumSet<EquipmentSlot> getSlots() {
+        return switch (this) {
+            case BATTLE, SPLENDID -> EnumSet.of(CHEST, LEGS);
+            case EVOCATION, EMBER, VERDANT, VANGUARD -> EnumSet.of(HEAD, CHEST, LEGS);
+            case SCALE_MAIL -> EnumSet.of(CHEST, LEGS, FEET);
+            case HUNTER -> EnumSet.of(CHEST);
+            default -> EnumSet.of(HEAD, CHEST, LEGS, FEET);
+        };
     }
 }

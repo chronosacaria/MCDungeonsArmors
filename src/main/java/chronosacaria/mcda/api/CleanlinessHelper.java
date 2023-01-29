@@ -1,8 +1,7 @@
 package chronosacaria.mcda.api;
 
-import chronosacaria.mcda.Mcda;
+import chronosacaria.mcda.items.ArmorSetItem;
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.registry.ArmorsRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
@@ -21,44 +20,14 @@ import java.util.Random;
 public class CleanlinessHelper {
     static Random random = new Random();
 
-    public static boolean hasArmorSet(LivingEntity livingEntity, ArmorSets armorSets){
-        if (Mcda.CONFIG.mcdaEnableArmorsConfig.ARMORS_SETS_ENABLED.get(armorSets)) {
-            ItemStack headStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
-            ItemStack footStack = livingEntity.getEquippedStack(EquipmentSlot.FEET);
-
-            return headStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.CHEST).asItem()
-                    && legStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.LEGS).asItem()
-                    && footStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.FEET).asItem();
+    public static boolean checkFullArmor(LivingEntity livingEntity, ArmorSets armorSets) {
+        for (EquipmentSlot slot : armorSets.getSlots()) {
+            if (livingEntity.getEquippedStack(slot).getItem() instanceof ArmorSetItem armorItem) {
+                if (!armorItem.getSet().isOf(armorSets)) // If it is an armor item and is of the set, we don't return false
+                    return false;
+            } else return false;
         }
-        return false;
-    }
-
-    public static boolean hasRobeSet(LivingEntity livingEntity, ArmorSets armorSets){
-        if (Mcda.CONFIG.mcdaEnableArmorsConfig.ARMORS_SETS_ENABLED.get(armorSets)) {
-            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
-
-
-            return chestStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.CHEST).asItem()
-                    && legStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.LEGS).asItem();
-        }
-        return false;
-    }
-
-    public static boolean hasRobeWithHatSet(LivingEntity livingEntity, ArmorSets armorSets){
-        if (Mcda.CONFIG.mcdaEnableArmorsConfig.ARMORS_SETS_ENABLED.get(armorSets)) {
-            ItemStack headStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
-            ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
-            ItemStack legStack = livingEntity.getEquippedStack(EquipmentSlot.LEGS);
-
-            return headStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.HEAD).asItem()
-                    && chestStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.CHEST).asItem()
-                    && legStack.getItem() == ArmorsRegistry.armorItems.get(armorSets).get(EquipmentSlot.LEGS).asItem();
-        }
-        return false;
+        return true;
     }
 
     public static void onTotemDeathEffects(LivingEntity livingEntity) {
@@ -182,7 +151,7 @@ public class CleanlinessHelper {
     }
 
     public static boolean percentToOccur (int chance) {
-        return random.nextInt(100) <= chance;
+        return random.nextInt(100) < chance;
     }
 
     public static void playCenteredSound (LivingEntity center, SoundEvent soundEvent, float volume, float pitch) {
