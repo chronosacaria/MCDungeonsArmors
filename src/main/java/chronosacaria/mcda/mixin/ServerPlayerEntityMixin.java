@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ServerPlayerEntity.class)
 public class ServerPlayerEntityMixin {
     @Inject(method = "tick", at = @At("HEAD"))
-    public void onArmorsAbilitiesTick(CallbackInfo ci) {
+    public void mcda$onArmorsAbilitiesTick(CallbackInfo ci) {
         if(!((Object) this instanceof ServerPlayerEntity playerEntity))
             return;
         if (!playerEntity.isAlive())
@@ -46,7 +46,7 @@ public class ServerPlayerEntityMixin {
     }
 
     @Inject(method = "consumeItem", at = @At("HEAD"))
-    public void onMCDAConsumeItem(CallbackInfo ci){
+    public void mcda$consumeItem(CallbackInfo ci){
 
         ServerPlayerEntity playerEntity = (ServerPlayerEntity) (Object) this;
 

@@ -20,7 +20,7 @@ import static chronosacaria.mcda.enchants.EnchantID.DEFLECT;
 public abstract class PersistentProjectileEntityMixin {
 
     @Inject(method = "onEntityHit", at = @At("HEAD"), cancellable = true)
-    public void onDeflectHit(EntityHitResult entityHitResult, CallbackInfo ci) {
+    public void mcda$onDeflectHit(EntityHitResult entityHitResult, CallbackInfo ci) {
         if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(DEFLECT))
             return;
 

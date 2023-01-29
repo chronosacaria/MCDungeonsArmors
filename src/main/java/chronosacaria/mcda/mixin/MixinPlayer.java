@@ -29,17 +29,17 @@ public abstract class MixinPlayer
     public DataTracker getDataTracker(){ return dataTracker; }
 
     @Inject(method = "initDataTracker", at = @At("TAIL"))
-    protected void injectInitDataTracker(CallbackInfo ci) {
+    protected void mcda$injectInitDataTracker(CallbackInfo ci) {
         dataTracker.startTracking(FIRE_TRAIL, false);
     }
 
     @Inject(method = "writeCustomDataToNbt", at = @At("TAIL"))
-    public void injectWriteCustomDataToNbt(NbtCompound nbt, CallbackInfo ci) {
+    public void mcda$injectWriteCustomDataToNbt(NbtCompound nbt, CallbackInfo ci) {
         nbt.putBoolean("fire_trail_boolean", isFireTrailEnabled());
     }
 
     @Inject(method = "readCustomDataFromNbt", at = @At("RETURN"))
-    public void injectReadCustomDataFromNbt(NbtCompound nbt, CallbackInfo ci) {
+    public void mcda$injectReadCustomDataFromNbt(NbtCompound nbt, CallbackInfo ci) {
         setFireTrailEnabled(nbt.getBoolean("fire_trail_boolean"));
     }
 

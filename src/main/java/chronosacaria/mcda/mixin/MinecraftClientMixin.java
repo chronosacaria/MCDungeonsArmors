@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin {
     @Inject(method = "handleInputEvents", at = @At("HEAD"))
-    private void mcdaHandleInputEvents(CallbackInfo ci){
+    private void mcda$handleInputEvents(CallbackInfo ci){
         //McdaClient.handleInputEvent();
     }
 }

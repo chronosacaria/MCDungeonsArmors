@@ -18,7 +18,7 @@ import static chronosacaria.mcda.effects.ArmorEffectID.PIGLIN_FOOLING;
 public abstract class PiglinBrainMixin {
 
     @Inject(method = "wearsGoldArmor", at = @At(value = "RETURN"), cancellable = true)
-    private static void onPiglinSelectPlayerToAttack(LivingEntity livingEntity, CallbackInfoReturnable<Boolean> cir){
+    private static void mcda$onPiglinSelectPlayerToAttack(LivingEntity livingEntity, CallbackInfoReturnable<Boolean> cir){
         if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(PIGLIN_FOOLING))
             return;
         if (livingEntity instanceof PlayerEntity)

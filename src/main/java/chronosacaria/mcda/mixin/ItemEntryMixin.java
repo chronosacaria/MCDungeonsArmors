@@ -19,7 +19,7 @@ import java.util.Random;
 public class ItemEntryMixin {
 
     @ModifyArgs(method = "generateLoot", at = @At(value = "INVOKE", target = "Ljava/util/function/Consumer;accept(Ljava/lang/Object;)V"))
-    public void gen(Args args) {
+    public void mcda$onGenerateMysteryArmorLoot(Args args) {
         if (args.get(0) instanceof ItemStack stack) {
             if (stack.getItem() instanceof ArmorSetItem armorItem) {
 

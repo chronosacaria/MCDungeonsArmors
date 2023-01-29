@@ -20,7 +20,7 @@ import static chronosacaria.mcda.effects.ArmorEffectID.WEB_WALKING;
 @Mixin(CobwebBlock.class)
 public class CobwebBlockMixin {
     @Inject(method = "onEntityCollision", at = @At("HEAD"), cancellable = true)
-    public void canWalkThroughCobwebs(BlockState state, World world, BlockPos pos, Entity entity, CallbackInfo ci){
+    public void mcda$canWalkThroughCobwebs(BlockState state, World world, BlockPos pos, Entity entity, CallbackInfo ci){
         if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(WEB_WALKING))
             return;
 

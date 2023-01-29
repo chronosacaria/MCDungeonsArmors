@@ -30,7 +30,7 @@ public abstract class ExperienceOrbEntityMixin extends Entity {
 
     @ModifyArgs(method = "onPlayerCollision", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/entity/ExperienceOrbEntity;repairPlayerGears(Lnet/minecraft/entity/player/PlayerEntity;I)I"))
-    public void mcdaModifyExperience(Args args){
+    public void mcda$modifyExperience(Args args){
         int amount = args.get(1);
         PlayerEntity playerEntity = args.get(0);
 

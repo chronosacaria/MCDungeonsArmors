@@ -20,7 +20,7 @@ import static chronosacaria.mcda.effects.ArmorEffectID.SWEET_BERRY_BUSH_WALKING;
 public class SweetBerryBushBlockMixin {
 
     @Inject(method = "onEntityCollision", at = @At("HEAD"), cancellable = true)
-    public void canWalkThroughSweetBerryBushes(BlockState state, World world, BlockPos pos, Entity entity, CallbackInfo ci){
+    public void mcda$canWalkThroughSweetBerryBushes(BlockState state, World world, BlockPos pos, Entity entity, CallbackInfo ci){
         if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SWEET_BERRY_BUSH_WALKING))
             return;
 
