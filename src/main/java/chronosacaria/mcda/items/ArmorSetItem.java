@@ -129,4 +129,8 @@ public class ArmorSetItem extends ArmorItem {
             }
         }
     }
+
+    public ArmorSets getSet() {
+        return this.set;
+    }
 }
