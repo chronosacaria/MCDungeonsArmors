@@ -11,6 +11,7 @@ import chronosacaria.mcda.mixin.PlayerTeleportationStateAccessor;
 import chronosacaria.mcda.registry.SoundsRegistry;
 import chronosacaria.mcda.registry.StatusEffectsRegistry;
 import chronosacaria.mcda.registry.SummonedEntityRegistry;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -809,7 +810,7 @@ public class ArmorEffects {
         if (hasArmorSet(playerEntity, ArmorSets.GLOW_SQUID)
                 || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == WATER_BREATHING)
                 || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == WATER_BREATHING)) {
-            if (playerEntity.isSubmergedInWater()) {
+            if (playerEntity.isSubmergedInWater() || FabricLoader.getInstance().isModLoaded("origins")) {
                 playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 42, 0,
                         false, false));
             }
