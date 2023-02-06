@@ -97,7 +97,7 @@ public class AOEHelper {
 
     public static void causeExplosion(LivingEntity user, LivingEntity target, float damageAmount, float distance) {
         for (LivingEntity nearbyEntity : getAoeTargets(target, user, distance)) {
-            nearbyEntity.damage(DamageSource.explosion(user), damageAmount);
+            nearbyEntity.damage(DamageSource.GENERIC.setExplosive(), damageAmount);
         }
     }
 

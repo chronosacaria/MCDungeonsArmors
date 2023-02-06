@@ -8,12 +8,12 @@ import chronosacaria.mcda.networking.McdaC2SPackets;
 import chronosacaria.mcda.registry.*;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-
 
 public class Mcda implements ModInitializer {
     public static final String MOD_ID = "mcda";
@@ -24,13 +24,15 @@ public class Mcda implements ModInitializer {
 
     public static McdaConfig CONFIG;
 
-    public static final ItemGroup ARMORS_GROUP = FabricItemGroupBuilder.build(ID( "armor"),
-            () -> {
+    public static final ItemGroup ARMORS_GROUP = FabricItemGroup.builder(ID("armor"))
+            //TODO Convert to translatable
+            .displayName(Text.literal("MC Dungeons Armor"))
+            .icon( () -> {
                 if (CONFIG.mcdaEnableArmorsConfig.ARMORS_SETS_ENABLED.get(ArmorSets.SPLENDID)) {
                     return new ItemStack(ArmorsRegistry.armorItems.get(ArmorSets.SPLENDID).get(EquipmentSlot.CHEST));
                 }
                 return new ItemStack(ItemsRegistry.items.get(ItemID.UPGRADE_CORE_ARCHER));
-            });
+            }).build();
 
     @Override
     public void onInitialize() {

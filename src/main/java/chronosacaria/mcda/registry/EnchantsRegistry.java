@@ -7,7 +7,8 @@ import chronosacaria.mcda.enchants.enchantments.*;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 
 import java.util.EnumMap;
 import java.util.Locale;
@@ -70,6 +71,6 @@ public class EnchantsRegistry {
     }
 
     protected static void registerEnchant(String id, Enchantment enchant) {
-        Registry.register(Registry.ENCHANTMENT, Mcda.ID(id), enchant);
+        Registry.register(Registries.ENCHANTMENT, Mcda.ID(id), enchant);
     }
 }

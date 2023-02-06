@@ -5,9 +5,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
-import net.minecraft.util.registry.Registry;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,7 +42,7 @@ public class ConfigItemEnabledCondition {
 
             for (JsonElement jsonElement : jsonArray) {
                 if (jsonElement.isJsonPrimitive()) {
-                    return Registry.ITEM.get(new Identifier(jsonElement.getAsString())) != Items.AIR;
+                    return Registries.ITEM.get(new Identifier(jsonElement.getAsString())) != Items.AIR;
                 }
             }
             return true;

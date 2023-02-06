@@ -10,7 +10,8 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class SummonedEntityRegistry {
     }
 
     public static void registerEntity(String name, EntityType<? extends LivingEntity> entity){
-        Registry.register(Registry.ENTITY_TYPE, Mcda.ID(name), entity);
+        Registry.register(Registries.ENTITY_TYPE, Mcda.ID(name), entity);
         ATTRIBUTES.put(entity, SummonedBeeEntity.getAttributeContainer());
     }
 }

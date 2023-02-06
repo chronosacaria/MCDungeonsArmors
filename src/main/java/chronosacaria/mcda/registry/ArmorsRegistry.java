@@ -5,7 +5,8 @@ import chronosacaria.mcda.items.ArmorSetItem;
 import chronosacaria.mcda.items.ArmorSets;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 
 import java.util.EnumMap;
 import java.util.EnumSet;
@@ -32,7 +33,7 @@ public class ArmorsRegistry {
         for (EquipmentSlot slot : slots) {
             ArmorSetItem item = new ArmorSetItem(set, slot);
             slotMap.put(slot, item);
-            Registry.register(Registry.ITEM, Mcda.ID(armorID(set, slot)), item);
+            Registry.register(Registries.ITEM, Mcda.ID(armorID(set, slot)), item);
         }
 
         armorItems.put(set, slotMap);

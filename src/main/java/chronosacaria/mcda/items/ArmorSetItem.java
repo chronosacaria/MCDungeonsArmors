@@ -4,6 +4,7 @@ import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.config.ArmorStats;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.resource.language.I18n;
@@ -34,7 +35,8 @@ public class ArmorSetItem extends ArmorItem {
     protected final ArmorSets set;
 
     public ArmorSetItem(ArmorSets set, EquipmentSlot slot) {
-        super(set, slot, new Item.Settings().group(Mcda.ARMORS_GROUP));
+        super(set, slot, new Item.Settings());
+        ItemGroupEvents.modifyEntriesEvent(Mcda.ARMORS_GROUP).register(entries -> entries.add(this));
         this.set = set;
 
         int protection = set.getProtectionAmount(slot);

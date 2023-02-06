@@ -6,16 +6,17 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class FreezingStatusEffect extends StatusEffect {
     public FreezingStatusEffect(StatusEffectCategory type, int color, String id) {
         super(type, color);
-        Registry.register(Registry.STATUS_EFFECT, new Identifier(Mcda.MOD_ID, id), this);
+        Registry.register(Registries.STATUS_EFFECT, new Identifier(Mcda.MOD_ID, id), this);
     }
 
     @Override
