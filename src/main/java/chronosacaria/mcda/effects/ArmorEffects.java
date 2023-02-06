@@ -142,7 +142,7 @@ public class ArmorEffects {
                         xPos - xDiff;
                 teleportY =
                         MathHelper.clamp(yPos + (double) (livingEntity.getRandom().nextInt(16) - 8),
-                                0.0D, world.getHeight() - 1);
+                                world.getDimension().minY() + 5, world.getHeight() - 1);
                 teleportZ = livingEntity.getRandom().nextInt() % 2 == 0 ?
                         zPos + zDiff :
                         zPos - zDiff;
