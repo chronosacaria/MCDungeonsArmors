@@ -25,8 +25,7 @@ public class Mcda implements ModInitializer {
     public static McdaConfig CONFIG;
 
     public static final ItemGroup ARMORS_GROUP = FabricItemGroup.builder(ID("armor"))
-            //TODO Convert to translatable
-            .displayName(Text.literal("MC Dungeons Armor"))
+            .displayName(Text.translatable("itemGroup.mcda.armor"))
             .icon( () -> {
                 if (CONFIG.mcdaEnableArmorsConfig.ARMORS_SETS_ENABLED.get(ArmorSets.SPLENDID)) {
                     return new ItemStack(ArmorsRegistry.armorItems.get(ArmorSets.SPLENDID).get(EquipmentSlot.CHEST));

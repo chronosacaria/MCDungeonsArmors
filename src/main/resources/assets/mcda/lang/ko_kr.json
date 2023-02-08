@@ -1,5 +1,5 @@
 {
-  "itemGroup.mcda.armor":                         "MC Dungeons Armors",
+  "itemGroup.mcda.armor":                         "마인크래프트 던전스 갑옷",
 
   "item.mcda.archers_helmet":                     "궁수의 후드",
   "item.mcda.archers_chestplate":                 "궁수의 조끼",
@@ -840,5 +840,5 @@
   "activity.mcda.firetrail.disabled":             "불의 흔적이 비활성화됨.",
 
   "key.mcda.firetrail.toggle":                    "불의 흔적 토글",
-  "key.category.mcda":                            "MC Dungeons Armor"
+  "key.category.mcda":                            "마인크래프트 던전스 갑옷"
 }
