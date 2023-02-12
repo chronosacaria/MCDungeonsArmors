@@ -2,7 +2,6 @@ package chronosacaria.mcda.registry;
 
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.items.ItemID;
 import chronosacaria.mcda.items.itemhelpers.DropHelper;
 import chronosacaria.mcda.items.itemhelpers.ItemSettingsHelper;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
@@ -78,23 +77,23 @@ public class LootRegistry {
         LootTableEvents.MODIFY.register(((resourceManager, lootManager, id, tableBuilder, source) -> {
 
             if (EntityType.PHANTOM.getLootTableId().equals(id) && source.isBuiltin()) {
-                addItemLootPool(tableBuilder, ItemsRegistry.items.get(ItemID.PHANTOM_BONES), DropHelper.PHANTOM_BONES, 0.5f);
-                addItemLootPool(tableBuilder, ItemsRegistry.items.get(ItemID.PHANTOM_SKIN), DropHelper.PHANTOM_SKIN);
+                addItemLootPool(tableBuilder, ItemsRegistry.PHANTOM_BONES, DropHelper.PHANTOM_BONES, 0.5f);
+                addItemLootPool(tableBuilder, ItemsRegistry.PHANTOM_SKIN, DropHelper.PHANTOM_SKIN);
             }
             if (EntityType.OCELOT.getLootTableId().equals(id) && source.isBuiltin()) {
-                addItemLootPool(tableBuilder, ItemsRegistry.items.get(ItemID.OCELOT_PELT), DropHelper.OCELOT_PELT, 0.5f);
-                addItemLootPool(tableBuilder, ItemsRegistry.items.get(ItemID.OCELOT_PELT_BLACK), DropHelper.OCELOT_PELT_BLACK);
+                addItemLootPool(tableBuilder, ItemsRegistry.OCELOT_PELT, DropHelper.OCELOT_PELT, 0.5f);
+                addItemLootPool(tableBuilder, ItemsRegistry.OCELOT_PELT_BLACK, DropHelper.OCELOT_PELT_BLACK);
             }
             if (EntityType.SKELETON.getLootTableId().equals(id) && source.isBuiltin()) {
                 addItemLootPool(tableBuilder, Items.SKELETON_SKULL, DropHelper.SKELETON_SKULL);
             }
             if (EntityType.WOLF.getLootTableId().equals(id) && source.isBuiltin()) {
-                addItemLootPool(tableBuilder, ItemsRegistry.items.get(ItemID.WOLF_PELT), DropHelper.WOLF_PELT, 0.5f);
-                addItemLootPool(tableBuilder, ItemsRegistry.items.get(ItemID.WOLF_PELT_BLACK), DropHelper.WOLF_PELT_BLACK);
+                addItemLootPool(tableBuilder, ItemsRegistry.WOLF_PELT, DropHelper.WOLF_PELT, 0.5f);
+                addItemLootPool(tableBuilder, ItemsRegistry.WOLF_PELT_BLACK, DropHelper.WOLF_PELT_BLACK);
             }
             if (EntityType.FOX.getLootTableId().equals(id) && source.isBuiltin()) {
-                addItemLootPool(tableBuilder, ItemsRegistry.items.get(ItemID.FOX_PELT), DropHelper.FOX_PELT, 0.5f);
-                addItemLootPool(tableBuilder, ItemsRegistry.items.get(ItemID.FOX_PELT_ARCTIC), DropHelper.FOX_PELT_ARCTIC);
+                addItemLootPool(tableBuilder, ItemsRegistry.FOX_PELT, DropHelper.FOX_PELT, 0.5f);
+                addItemLootPool(tableBuilder, ItemsRegistry.FOX_PELT_ARCTIC, DropHelper.FOX_PELT_ARCTIC);
             }
             if (EntityType.EVOKER.getLootTableId().equals(id) && source.isBuiltin()) {
                 LootPool.Builder lootPoolBuilder = LootPool.builder();
@@ -109,13 +108,13 @@ public class LootRegistry {
                 tableBuilder.pool(lootPoolBuilder.build());
             }
             if (EntityType.GOAT.getLootTableId().equals(id) && source.isBuiltin()) {
-                addItemLootPool(tableBuilder, ItemsRegistry.items.get(ItemID.GOAT_PELT), DropHelper.GOAT_PELT, 0.5f);
+                addItemLootPool(tableBuilder, ItemsRegistry.GOAT_PELT, DropHelper.GOAT_PELT, 0.5f);
             }
             if (Blocks.BLUE_ICE.getLootTableId().equals(id) && source.isBuiltin()) {
                 LootPool.Builder lootPoolBuilder = LootPool.builder();
                 lootPoolBuilder.rolls(ConstantLootNumberProvider.create(CONFIG.mcdaItemDropsConfig.numberOfRollsOnLootTable.get(DropHelper.FROST_CRYSTAL)));
                 lootPoolBuilder.conditionally(RandomChanceLootCondition.builder(CONFIG.mcdaItemDropsConfig.dropBaseChance.get(DropHelper.FROST_CRYSTAL))).conditionally(WITHOUT_SILK_TOUCH);
-                lootPoolBuilder.with(ItemEntry.builder(ItemsRegistry.items.get(ItemID.FROST_CRYSTAL)));
+                lootPoolBuilder.with(ItemEntry.builder(ItemsRegistry.FROST_CRYSTAL));
                 tableBuilder.pool(lootPoolBuilder.build());
             }
 
@@ -162,10 +161,10 @@ public class LootRegistry {
                     }
                 }
                 else if (PIGLIN_TRADING_LOOT_TABLES.contains(id)) {
-                    for (ItemID itemID : List.of(ItemID.GEMSTONE_WHITE, ItemID.GEMSTONE_RED, ItemID.GEMSTONE_GREEN, ItemID.GEMSTONE_BLUE, ItemID.GEMSTONE_PURPLE)) {
+                    for (Item item : List.of(ItemsRegistry.GEMSTONE_WHITE, ItemsRegistry.GEMSTONE_RED, ItemsRegistry.GEMSTONE_GREEN, ItemsRegistry.GEMSTONE_BLUE, ItemsRegistry.GEMSTONE_PURPLE)) {
                         lootPoolBuilder.rolls(ConstantLootNumberProvider.create(CONFIG.mcdaItemDropsConfig.numberOfRollsOnLootTable.get(DropHelper.MYSTERY_GEMSTONE)));
                         lootPoolBuilder.conditionally(RandomChanceLootCondition.builder(CONFIG.mcdaItemDropsConfig.numberOfRollsOnLootTable.get(DropHelper.MYSTERY_GEMSTONE)));
-                        lootPoolBuilder.with(ItemEntry.builder(ItemsRegistry.items.get(itemID)));
+                        lootPoolBuilder.with(ItemEntry.builder(item));
                     }
                 }
                 else if (NETHER_FORTRESS_LOOT_TABLES.contains(id)) {
