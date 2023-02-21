@@ -3,8 +3,8 @@ package chronosacaria.mcda.registry;
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.factories.BasicTradeFactory;
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.items.ItemID;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.village.VillagerProfession;
 
@@ -34,18 +34,18 @@ public class TradesRegistry {
         }
         BasicTradeFactory.registerWanderingTrade(
                 Items.EMERALD, 16,
-                ItemsRegistry.items.get(ItemID.FOX_PELT), 1,
+                ItemsRegistry.FOX_PELT, 1,
                 1, 2, 0.0F);
-        for (ItemID itemID : List.of(ItemID.OCELOT_PELT, ItemID.WOLF_PELT, ItemID.GOAT_PELT)) {
+        for (Item item : List.of(ItemsRegistry.OCELOT_PELT, ItemsRegistry.WOLF_PELT, ItemsRegistry.GOAT_PELT)) {
             BasicTradeFactory.registerWanderingTrade(
                     Items.EMERALD, 16,
-                    ItemsRegistry.items.get(itemID), 1,
+                    item, 1,
                     4, 2, 0.0F);
         }
-        for (ItemID itemID : List.of(ItemID.FOX_PELT_ARCTIC, ItemID.OCELOT_PELT_BLACK, ItemID.WOLF_PELT_BLACK)) {
+        for (Item item : List.of(ItemsRegistry.FOX_PELT_ARCTIC, ItemsRegistry.OCELOT_PELT_BLACK, ItemsRegistry.WOLF_PELT_BLACK)) {
             BasicTradeFactory.registerWanderingTrade(
                     Items.EMERALD, 24,
-                    ItemsRegistry.items.get(itemID), 1,
+                    item, 1,
                     1, 2, 0.0F);
         }
     }

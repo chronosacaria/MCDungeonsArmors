@@ -3,7 +3,6 @@ package chronosacaria.mcda;
 import chronosacaria.mcda.config.McdaConfig;
 import chronosacaria.mcda.data.ConfigItemEnabledCondition;
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.items.ItemID;
 import chronosacaria.mcda.networking.McdaC2SPackets;
 import chronosacaria.mcda.registry.*;
 import me.shedaniel.autoconfig.AutoConfig;
@@ -29,7 +28,7 @@ public class Mcda implements ModInitializer {
                 if (CONFIG.mcdaEnableArmorsConfig.ARMORS_SETS_ENABLED.get(ArmorSets.SPLENDID)) {
                     return new ItemStack(ArmorsRegistry.armorItems.get(ArmorSets.SPLENDID).get(EquipmentSlot.CHEST));
                 }
-                return new ItemStack(ItemsRegistry.items.get(ItemID.UPGRADE_CORE_ARCHER));
+                return new ItemStack(ItemsRegistry.UPGRADE_CORE_ARCHER);
             });
 
     @Override

@@ -16,7 +16,7 @@
     "sources": "https://github.com/chronosacaria/MCDungeonsArmors",
     "issues": "https://github.com/chronosacaria/MCDungeonsArmors/issues"
   },
-  "license": "Timefall Development License",
+  "license": "Timefall Development License 1.1",
   "icon": "assets/mcda/icon.png",
   "environment": "*",
   "entrypoints": {
