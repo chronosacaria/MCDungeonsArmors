@@ -161,9 +161,9 @@ public class LootRegistry {
                     }
                 }
                 else if (PIGLIN_TRADING_LOOT_TABLES.contains(id)) {
+                    lootPoolBuilder.rolls(ConstantLootNumberProvider.create(CONFIG.mcdaItemDropsConfig.numberOfRollsOnLootTable.get(DropHelper.MYSTERY_GEMSTONE)));
+                    lootPoolBuilder.conditionally(RandomChanceLootCondition.builder(CONFIG.mcdaItemDropsConfig.dropBaseChance.get(DropHelper.MYSTERY_GEMSTONE)));
                     for (Item item : List.of(ItemsRegistry.GEMSTONE_WHITE, ItemsRegistry.GEMSTONE_RED, ItemsRegistry.GEMSTONE_GREEN, ItemsRegistry.GEMSTONE_BLUE, ItemsRegistry.GEMSTONE_PURPLE)) {
-                        lootPoolBuilder.rolls(ConstantLootNumberProvider.create(CONFIG.mcdaItemDropsConfig.numberOfRollsOnLootTable.get(DropHelper.MYSTERY_GEMSTONE)));
-                        lootPoolBuilder.conditionally(RandomChanceLootCondition.builder(CONFIG.mcdaItemDropsConfig.numberOfRollsOnLootTable.get(DropHelper.MYSTERY_GEMSTONE)));
                         lootPoolBuilder.with(ItemEntry.builder(item));
                     }
                 }
