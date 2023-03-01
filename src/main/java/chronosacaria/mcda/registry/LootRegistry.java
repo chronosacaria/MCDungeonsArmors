@@ -118,11 +118,12 @@ public class LootRegistry {
                 tableBuilder.pool(lootPoolBuilder.build());
             }
 
-            LootPool.Builder lootPoolBuilder = LootPool.builder();
-            lootPoolBuilder.rolls(ConstantLootNumberProvider.create(1));
-            lootPoolBuilder.conditionally(RandomChanceLootCondition.builder(CONFIG.mcdaLootTablesConfig.findArmorChance));
-            lootPoolBuilder.bonusRolls(ConstantLootNumberProvider.create(CONFIG.mcdaLootTablesConfig.bonusRollsWithLuck));
+
             if (CONFIG.mcdaLootTablesConfig.enableTieredLootTables.get(ItemSettingsHelper.ENABLE_TIERED_LOOT_TABLES)) {
+                LootPool.Builder lootPoolBuilder = LootPool.builder();
+                lootPoolBuilder.rolls(ConstantLootNumberProvider.create(1));
+                lootPoolBuilder.conditionally(RandomChanceLootCondition.builder(CONFIG.mcdaLootTablesConfig.findArmorChance));
+                lootPoolBuilder.bonusRolls(ConstantLootNumberProvider.create(CONFIG.mcdaLootTablesConfig.bonusRollsWithLuck));
                 if (COMMON_LOOT_TABLES.contains(id.toString())) {
                     for (ArmorSets armorSets : List.of(ArmorSets.BATTLE, ArmorSets.BEENEST, ArmorSets.CLIMBING_GEAR, ArmorSets.EVOCATION,
                             ArmorSets.GHOSTLY, ArmorSets.HUNTER, ArmorSets.SCALE_MAIL, ArmorSets.SNOW, ArmorSets.SOUL_ROBE, ArmorSets.SPELUNKER,
@@ -153,59 +154,58 @@ public class LootRegistry {
                         addArmorSet(lootPoolBuilder, armorSets);
                     }
                 }
+                tableBuilder.pool(lootPoolBuilder.build());
             } else {
-                if (BASTION_LOOT_TABLES.contains(id)) {
-                    for (ArmorSets armorSets : List.of(ArmorSets.MYSTERY, ArmorSets.BLUE_MYSTERY, ArmorSets.GREEN_MYSTERY, ArmorSets.PURPLE_MYSTERY, ArmorSets.RED_MYSTERY,
-                            ArmorSets.GHOSTLY, ArmorSets.GHOST_KINDLER)) {
-                        addArmorSet(lootPoolBuilder, armorSets);
-                    }
-                }
-                else if (PIGLIN_TRADING_LOOT_TABLES.contains(id)) {
+                LootPool.Builder lootPoolBuilder = LootPool.builder();
+                if (PIGLIN_TRADING_LOOT_TABLES.contains(id)) {
+                    lootPoolBuilder.rolls(ConstantLootNumberProvider.create(CONFIG.mcdaItemDropsConfig.numberOfRollsOnLootTable.get(DropHelper.MYSTERY_GEMSTONE)));
+                    lootPoolBuilder.conditionally(RandomChanceLootCondition.builder(CONFIG.mcdaItemDropsConfig.dropBaseChance.get(DropHelper.MYSTERY_GEMSTONE)));
                     for (Item item : List.of(ItemsRegistry.GEMSTONE_WHITE, ItemsRegistry.GEMSTONE_RED, ItemsRegistry.GEMSTONE_GREEN, ItemsRegistry.GEMSTONE_BLUE, ItemsRegistry.GEMSTONE_PURPLE)) {
-                        lootPoolBuilder.rolls(ConstantLootNumberProvider.create(CONFIG.mcdaItemDropsConfig.numberOfRollsOnLootTable.get(DropHelper.MYSTERY_GEMSTONE)));
-                        lootPoolBuilder.conditionally(RandomChanceLootCondition.builder(CONFIG.mcdaItemDropsConfig.numberOfRollsOnLootTable.get(DropHelper.MYSTERY_GEMSTONE)));
                         lootPoolBuilder.with(ItemEntry.builder(item));
                     }
-                }
-                else if (NETHER_FORTRESS_LOOT_TABLES.contains(id)) {
-                    for (ArmorSets armorSets : List.of(ArmorSets.MYSTERY, ArmorSets.BLUE_MYSTERY, ArmorSets.GREEN_MYSTERY, ArmorSets.PURPLE_MYSTERY, ArmorSets.RED_MYSTERY,
-                            ArmorSets.GRIM, ArmorSets.VANGUARD)) {
-                        addArmorSet(lootPoolBuilder, armorSets);
+                } else {
+                    lootPoolBuilder.rolls(ConstantLootNumberProvider.create(1));
+                    lootPoolBuilder.conditionally(RandomChanceLootCondition.builder(CONFIG.mcdaLootTablesConfig.findArmorChance));
+                    lootPoolBuilder.bonusRolls(ConstantLootNumberProvider.create(CONFIG.mcdaLootTablesConfig.bonusRollsWithLuck));
+                    if (BASTION_LOOT_TABLES.contains(id)) {
+                        for (ArmorSets armorSets : List.of(ArmorSets.MYSTERY, ArmorSets.BLUE_MYSTERY, ArmorSets.GREEN_MYSTERY, ArmorSets.PURPLE_MYSTERY, ArmorSets.RED_MYSTERY,
+                                ArmorSets.GHOSTLY, ArmorSets.GHOST_KINDLER)) {
+                            addArmorSet(lootPoolBuilder, armorSets);
+                        }
+                    } else if (NETHER_FORTRESS_LOOT_TABLES.contains(id)) {
+                        for (ArmorSets armorSets : List.of(ArmorSets.MYSTERY, ArmorSets.BLUE_MYSTERY, ArmorSets.GREEN_MYSTERY, ArmorSets.PURPLE_MYSTERY, ArmorSets.RED_MYSTERY,
+                                ArmorSets.GRIM, ArmorSets.VANGUARD)) {
+                            addArmorSet(lootPoolBuilder, armorSets);
+                        }
+                    } else if (PILLAGER_TOWER_LOOT_TABLES.contains(id)) {
+                        for (ArmorSets armorSets : List.of(ArmorSets.DARK, ArmorSets.THIEF, ArmorSets.ROYAL, ArmorSets.TITAN)) {
+                            addArmorSet(lootPoolBuilder, armorSets);
+                        }
+                    } else if (VILLAGE_SMITH_LOOT_TABLES.contains(id)) {
+                        for (ArmorSets armorSets : List.of(ArmorSets.PLATE, ArmorSets.FULL_METAL, ArmorSets.SNOW, ArmorSets.WOLF, ArmorSets.FOX, ArmorSets.REINFORCED_MAIL,
+                                ArmorSets.STALWART_MAIL)) {
+                            addArmorSet(lootPoolBuilder, armorSets);
+                        }
+                    } else if (SUNKEN_SHIP_LOOT_TABLES.contains(id)) {
+                        for (ArmorSets armorSets : List.of(ArmorSets.MYSTERY, ArmorSets.BLUE_MYSTERY, ArmorSets.GREEN_MYSTERY, ArmorSets.PURPLE_MYSTERY, ArmorSets.RED_MYSTERY,
+                                ArmorSets.SCALE_MAIL, ArmorSets.MERCENARY)) {
+                            addArmorSet(lootPoolBuilder, armorSets);
+                        }
+                    } else if (MINESHAFT_LOOT_TABLES.contains(id)) {
+                        for (ArmorSets armorSets : List.of(ArmorSets.MYSTERY, ArmorSets.BLUE_MYSTERY, ArmorSets.GREEN_MYSTERY, ArmorSets.PURPLE_MYSTERY, ArmorSets.RED_MYSTERY,
+                                ArmorSets.SPELUNKER, ArmorSets.CAVE_CRAWLER)) {
+                            addArmorSet(lootPoolBuilder, armorSets);
+                        }
+                    } else if (HERO_OF_THE_VILLAGE_LOOT_TABLES.contains(id)) {
+                        addArmorSet(lootPoolBuilder, ArmorSets.HERO);
+                        addArmorSet(lootPoolBuilder, ArmorSets.GILDED);
+                    } else if (STRONGHOLD_LOOT_TABLES.contains(id)) {
+                        addArmorSet(lootPoolBuilder, ArmorSets.TELEPORTATION);
+                        addArmorSet(lootPoolBuilder, ArmorSets.UNSTABLE);
                     }
                 }
-                else if (PILLAGER_TOWER_LOOT_TABLES.contains(id)) {
-                    for (ArmorSets armorSets : List.of(ArmorSets.DARK, ArmorSets.THIEF, ArmorSets.ROYAL, ArmorSets.TITAN)) {
-                        addArmorSet(lootPoolBuilder, armorSets);
-                    }
-                }
-                else if (VILLAGE_SMITH_LOOT_TABLES.contains(id)) {
-                    for (ArmorSets armorSets : List.of(ArmorSets.PLATE, ArmorSets.FULL_METAL, ArmorSets.SNOW, ArmorSets.WOLF, ArmorSets.FOX, ArmorSets.REINFORCED_MAIL,
-                            ArmorSets.STALWART_MAIL)) {
-                        addArmorSet(lootPoolBuilder, armorSets);
-                    }
-                }
-                else if (SUNKEN_SHIP_LOOT_TABLES.contains(id)) {
-                    for (ArmorSets armorSets : List.of(ArmorSets.MYSTERY, ArmorSets.BLUE_MYSTERY, ArmorSets.GREEN_MYSTERY, ArmorSets.PURPLE_MYSTERY, ArmorSets.RED_MYSTERY,
-                            ArmorSets.SCALE_MAIL, ArmorSets.MERCENARY)) {
-                        addArmorSet(lootPoolBuilder, armorSets);
-                    }
-                }
-                else if (MINESHAFT_LOOT_TABLES.contains(id)) {
-                    for (ArmorSets armorSets : List.of(ArmorSets.MYSTERY, ArmorSets.BLUE_MYSTERY, ArmorSets.GREEN_MYSTERY, ArmorSets.PURPLE_MYSTERY, ArmorSets.RED_MYSTERY,
-                            ArmorSets.SPELUNKER, ArmorSets.CAVE_CRAWLER)) {
-                        addArmorSet(lootPoolBuilder, armorSets);
-                    }
-                }
-                else if (HERO_OF_THE_VILLAGE_LOOT_TABLES.contains(id)) {
-                    addArmorSet(lootPoolBuilder, ArmorSets.HERO);
-                    addArmorSet(lootPoolBuilder, ArmorSets.GILDED);
-                }
-                else if (STRONGHOLD_LOOT_TABLES.contains(id)) {
-                    addArmorSet(lootPoolBuilder, ArmorSets.TELEPORTATION);
-                    addArmorSet(lootPoolBuilder, ArmorSets.UNSTABLE);
-                }
+                tableBuilder.pool(lootPoolBuilder.build());
             }
-            tableBuilder.pool(lootPoolBuilder.build());
         }));
     }
 
