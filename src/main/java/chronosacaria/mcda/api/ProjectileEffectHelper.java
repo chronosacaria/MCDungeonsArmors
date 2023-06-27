@@ -57,14 +57,14 @@ public class ProjectileEffectHelper {
         shulkerBulletEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
         setProjectileTowards(shulkerBulletEntity, d, e, g, 0);
         //
-        user.world.spawnEntity(shulkerBulletEntity);
+        user.getWorld().spawnEntity(shulkerBulletEntity);
     }
 
     public static void ricochetArrowLikeShield(PersistentProjectileEntity persistentProjectileEntity){
         persistentProjectileEntity.setVelocity(persistentProjectileEntity.getVelocity().multiply(-0.1D));
         persistentProjectileEntity.getYaw(180.0F);
         persistentProjectileEntity.prevYaw += 180.0F;
-        if (!persistentProjectileEntity.world.isClient && persistentProjectileEntity.getVelocity().lengthSquared() < 1.0E-7D){
+        if (!persistentProjectileEntity.getEntityWorld().isClient && persistentProjectileEntity.getVelocity().lengthSquared() < 1.0E-7D){
             if (persistentProjectileEntity.pickupType == PersistentProjectileEntity.PickupPermission.ALLOWED){
                 persistentProjectileEntity.dropStack(new ItemStack(Items.ARROW), 0.1F);
             }
@@ -106,6 +106,6 @@ public class ProjectileEffectHelper {
         double g = Math.sqrt(d * d + f * f);
         projectileEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
         setProjectileTowards(projectileEntity, d, e, g, 0);
-        user.world.spawnEntity(projectileEntity);
+        user.getWorld().spawnEntity(projectileEntity);
     }
 }

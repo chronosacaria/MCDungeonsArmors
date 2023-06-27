@@ -5,7 +5,7 @@ import chronosacaria.mcda.api.CleanlinessHelper;
 import chronosacaria.mcda.api.McdaEnchantmentHelper;
 import chronosacaria.mcda.enchants.EnchantID;
 import chronosacaria.mcda.items.ArmorSets;
-import chronosacaria.mcda.registry.EnchantsRegistry;
+import chronosacaria.mcda.registries.EnchantsRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;

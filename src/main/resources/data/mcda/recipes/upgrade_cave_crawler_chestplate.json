@@ -8,7 +8,7 @@
       ]
     }
   ],
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "mcda:spelunker_armor_chestplate"
   },
@@ -17,5 +17,8 @@
   },
   "result": {
     "item": "mcda:cave_crawler_chestplate"
+  },
+  "template": {
+    "item": "minecraft:blaze_powder"
   }
 }

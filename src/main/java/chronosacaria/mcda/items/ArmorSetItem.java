@@ -2,6 +2,7 @@ package chronosacaria.mcda.items;
 
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.config.ArmorStats;
+import chronosacaria.mcda.registries.ItemGroupRegistry;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -36,7 +37,7 @@ public class ArmorSetItem extends ArmorItem {
 
     public ArmorSetItem(ArmorSets set, ArmorItem.Type type) {
         super(set, type, new Item.Settings());
-        ItemGroupEvents.modifyEntriesEvent(Mcda.ARMORS_GROUP).register(entries -> entries.add(this));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroupRegistry.ARMOR).register(entries -> entries.add(this));
         this.set = set;
 
         int protection = set.getProtection(type);

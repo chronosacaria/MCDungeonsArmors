@@ -840,5 +840,6 @@
   "activity.mcda.firetrail.disabled":             "Fire Trail is disabled.",
 
   "key.mcda.firetrail.toggle":                    "Fire Trail Toggle",
-  "key.category.mcda":                            "MC Dungeons Armor"
+  "key.category.mcda":                            "MC Dungeons Armor",
+  "block.mcda.fading_obsidian":                   "Fading Obsidian"
 }

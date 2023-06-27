@@ -4,7 +4,7 @@ import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.api.BooleanHelper;
 import chronosacaria.mcda.api.CleanlinessHelper;
-import chronosacaria.mcda.registry.EnchantsRegistry;
+import chronosacaria.mcda.registries.EnchantsRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;
@@ -65,9 +65,9 @@ public class EnchantmentEffects {
         if (fireTrailLevel == 0) return;
 
         BlockPos placeFireTrail = blockPos.offset(player.getMovementDirection().getOpposite(), 2);
-        if (player.world.getBlockState(placeFireTrail).isAir() && player.isOnGround() && !player.isSneaking()
+        if (player.getWorld().getBlockState(placeFireTrail).isAir() && player.isOnGround() && !player.isSneaking()
                 && BooleanHelper.isFireTrailEnabled(player))
-            player.world.setBlockState(placeFireTrail, Blocks.FIRE.getDefaultState());
+            player.getWorld().setBlockState(placeFireTrail, Blocks.FIRE.getDefaultState());
 
     }
 
@@ -78,9 +78,9 @@ public class EnchantmentEffects {
 
         while (foodReserveLevel > 0) {
             Item foodToDrop = FOOD_RESERVE_LIST.get(playerEntity.getRandom().nextInt(FOOD_RESERVE_LIST.size()));
-            ItemEntity foodDrop = new ItemEntity(playerEntity.world, playerEntity.getX(),
+            ItemEntity foodDrop = new ItemEntity(playerEntity.getWorld(), playerEntity.getX(),
                     playerEntity.getY(), playerEntity.getZ(), new ItemStack(foodToDrop));
-            playerEntity.world.spawnEntity(foodDrop);
+            playerEntity.getWorld().spawnEntity(foodDrop);
             foodReserveLevel--;
         }
     }

@@ -8,14 +8,17 @@
       ]
     }
   ],
-  "type": "minecraft:smithing",
-  "base": {
-    "item": "mcda:fox_armor_boots"
-  },
-  "addition": {
-    "item": "mcda:fox_pelt_arctic"
-  },
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mcda:fox_armor_boots"
+    },
+    {
+      "item": "mcda:fox_pelt_arctic"
+    }
+  ],
   "result": {
-    "item": "mcda:arctic_fox_armor_boots"
+    "item": "mcda:arctic_fox_armor_boots",
+    "count": 1
   }
 }

@@ -841,5 +841,6 @@
   "activity.mcda.firetrail.disabled":             "焰尾被禁用。",
 
   "key.mcda.firetrail.toggle":                    "切换的焰尾",
-  "key.category.mcda":                            "我的世界: 地下城 盔甲"
+  "key.category.mcda":                            "我的世界: 地下城 盔甲",
+  "block.mcda.fading_obsidian":                   "消逝的黑曜石"
 }

@@ -8,7 +8,7 @@
       ]
     }
   ],
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "mcda:wolf_armor_boots"
   },
@@ -17,5 +17,8 @@
   },
   "result": {
     "item": "mcda:fox_armor_boots"
-  }
+    },
+    "template": {
+      "item": "minecraft:blaze_powder"
+    }
 }

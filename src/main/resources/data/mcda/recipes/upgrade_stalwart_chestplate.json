@@ -8,7 +8,7 @@
       ]
     }
   ],
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "mcda:reinforced_mail_chestplate"
   },
@@ -17,5 +17,8 @@
   },
   "result": {
     "item": "mcda:stalwart_armor_chestplate"
-  }
+    },
+    "template": {
+      "item": "minecraft:blaze_powder"
+    }
 }

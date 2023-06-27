@@ -1,4 +1,4 @@
-package chronosacaria.mcda.registry;
+package chronosacaria.mcda.registries;
 
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.items.ArmorSets;
@@ -73,7 +73,7 @@ public class LootRegistry {
     public static final ArrayList<String> EPIC_LOOT_TABLES =
             new ArrayList<>(List.of(CONFIG.mcdaLootTablesConfig.epicLootTables.get(ItemSettingsHelper.EPIC_LOOT_TABLES)));
 
-    public static void init() {
+    public static void register() {
         LootTableEvents.MODIFY.register(((resourceManager, lootManager, id, tableBuilder, source) -> {
 
             if (EntityType.PHANTOM.getLootTableId().equals(id) && source.isBuiltin()) {

@@ -8,14 +8,17 @@
       ]
     }
   ],
-  "type": "minecraft:smithing",
-  "base": {
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
     "item": "mcda:fox_armor_leggings"
-  },
-  "addition": {
+    },
+    {
     "item": "mcda:fox_pelt_arctic"
-  },
+    }
+  ],
   "result": {
-    "item": "mcda:arctic_fox_armor_leggings"
+    "item": "mcda:arctic_fox_armor_leggings",
+    "count": 1
   }
 }

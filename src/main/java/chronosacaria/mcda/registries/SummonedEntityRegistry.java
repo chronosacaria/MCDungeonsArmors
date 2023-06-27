@@ -1,4 +1,4 @@
-package chronosacaria.mcda.registry;
+package chronosacaria.mcda.registries;
 
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.entities.SummonedBeeEntity;

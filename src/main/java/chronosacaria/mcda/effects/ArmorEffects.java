@@ -5,12 +5,14 @@ import chronosacaria.mcda.api.AOECloudHelper;
 import chronosacaria.mcda.api.AOEHelper;
 import chronosacaria.mcda.api.AbilityHelper;
 import chronosacaria.mcda.api.CleanlinessHelper;
+import chronosacaria.mcda.blocks.FadingObsidianBlock;
 import chronosacaria.mcda.entities.SummonedBeeEntity;
 import chronosacaria.mcda.items.ArmorSets;
 import chronosacaria.mcda.mixin.PlayerTeleportationStateAccessor;
-import chronosacaria.mcda.registry.SoundsRegistry;
-import chronosacaria.mcda.registry.StatusEffectsRegistry;
-import chronosacaria.mcda.registry.SummonedEntityRegistry;
+import chronosacaria.mcda.registries.BlocksRegistry;
+import chronosacaria.mcda.registries.SoundsRegistry;
+import chronosacaria.mcda.registries.StatusEffectsRegistry;
+import chronosacaria.mcda.registries.SummonedEntityRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
@@ -27,6 +29,7 @@ import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
@@ -34,6 +37,7 @@ import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
@@ -245,34 +249,40 @@ public class ArmorEffects {
     public static void applyFluidFreezing(PlayerEntity playerEntity) {
         if (CleanlinessHelper.checkFullArmor(playerEntity, ArmorSets.FROST)
                 || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.MYSTERY)) == FLUID_FREEZING)
-                || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == FLUID_FREEZING)){
-            // From FrostWalkerEnchantment
-            if (!playerEntity.isOnGround())
-                return;
+                || (BLUE_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(playerEntity, ArmorSets.BLUE_MYSTERY)) == FLUID_FREEZING)) {
 
+            if (!playerEntity.isOnGround()) return;
+            BlockState frostedIceBlockState = Blocks.FROSTED_ICE.getDefaultState();
+            BlockState fadingObsidianBlockState = BlocksRegistry.FADING_OBSIDIAN.getDefaultState();
             int i = Math.min(16, 2 + 1);
             BlockPos.Mutable mutable = new BlockPos.Mutable();
-
             World world = playerEntity.getEntityWorld();
-            BlockPos blockPos = playerEntity.getBlockPos();
-
-            for (BlockPos blockPos2 : BlockPos.iterate(blockPos.add(-i, -1, -i), blockPos.add(i, -1, i))) {
+            BlockPos playerBlockPos = playerEntity.getBlockPos();
+            for (BlockPos blockPos2 : BlockPos.iterate(playerBlockPos.add(-i, -1, -i), playerBlockPos.add(i, -1, i))) {
                 if (blockPos2.isWithinDistance(playerEntity.getPos(), i)) {
                     mutable.set(blockPos2.getX(), blockPos2.getY() + 1, blockPos2.getZ());
                     BlockState blockState2 = world.getBlockState(mutable);
+                    // Water Transformation to Frosted Ice
                     if (blockState2.isAir()) {
                         BlockState blockState3 = world.getBlockState(blockPos2);
-                        // Transform Water
-                        BlockState blockState = Blocks.FROSTED_ICE.getDefaultState();
-                        if (blockState3.getMaterial() == Material.WATER && blockState3.get(FluidBlock.LEVEL) == 0 && blockState.canPlaceAt(world, blockPos2) && world.canPlace(blockState, blockPos2, ShapeContext.absent())) {
-                            world.setBlockState(blockPos2, blockState);
+                        if(blockState3.getBlock().getDefaultState()
+                                == FrostedIceBlock.getMeltedState()
+                                && frostedIceBlockState.canPlaceAt(world, blockPos2)
+                                && world.canPlace(frostedIceBlockState, blockPos2, ShapeContext.absent())) {
+                            world.setBlockState(blockPos2, frostedIceBlockState);
                             world.scheduleBlockTick(blockPos2, Blocks.FROSTED_ICE, MathHelper.nextInt(playerEntity.getRandom(), 60, 120));
                         }
-                        // Transform Lava
-                        blockState = Blocks.CRYING_OBSIDIAN.getDefaultState();
-                        if (blockState3.getMaterial() == Material.LAVA && blockState3.get(FluidBlock.LEVEL) == 0 && blockState.canPlaceAt(world, blockPos2) && world.canPlace(blockState, blockPos2, ShapeContext.absent())) {
-                            world.setBlockState(blockPos2, blockState);
-                            world.scheduleBlockTick(blockPos2, Blocks.CRYING_OBSIDIAN, MathHelper.nextInt(playerEntity.getRandom(), 60, 120));
+                    }
+                    // Lava Transformation to Crying Obsidian
+                    if (blockState2.isAir()) {
+                        BlockState blockState3 = world.getBlockState(blockPos2);
+                        if (blockState3.getBlock().getDefaultState()
+                                == FadingObsidianBlock.getMeltedState()
+                                && fadingObsidianBlockState.canPlaceAt(world, blockPos2)
+                                && world.canPlace(frostedIceBlockState, blockPos2, ShapeContext.absent())) {
+                            world.playSound(null, blockPos2.getX(), blockPos2.getY(), blockPos2.getZ(), SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 0.25f, 1.0f);
+                            world.setBlockState(blockPos2, fadingObsidianBlockState);
+                            world.scheduleBlockTick(blockPos2, BlocksRegistry.FADING_OBSIDIAN, MathHelper.nextInt(playerEntity.getRandom(), 60, 120));
                         }
                     }
                 }
@@ -456,7 +466,7 @@ public class ArmorEffects {
                     nearbyEntity.damage(target.getWorld().getDamageSources().generic(), damageToBeDone);
 
                     CleanlinessHelper.playCenteredSound(nearbyEntity, SoundEvents.ENTITY_VEX_CHARGE, 1f, 1f);
-                    AOEHelper.addParticlesToBlock((ServerWorld) nearbyEntity.world, nearbyEntity.getBlockPos(), ParticleTypes.ENCHANTED_HIT);
+                    AOEHelper.addParticlesToBlock((ServerWorld) nearbyEntity.getWorld(), nearbyEntity.getBlockPos(), ParticleTypes.ENCHANTED_HIT);
                 }
             }
         }
@@ -479,7 +489,7 @@ public class ArmorEffects {
     }
 
     public static float leaderOfThePackEffect(DamageSource source) {
-        if (!(source.getSource() instanceof TameableEntity petSrc) || !(petSrc.world instanceof ServerWorld serverWorld))
+        if (!(source.getSource() instanceof TameableEntity petSrc) || !(petSrc.getWorld() instanceof ServerWorld serverWorld))
             return 1f;
         if (!(petSrc.getOwner() instanceof PlayerEntity owner))
             return 1f;
@@ -518,15 +528,15 @@ public class ArmorEffects {
                 && livingEntity.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)) {
 
             int index = mcdaFindHighestDurabilityEquipment(livingEntity);
-            EquipmentSlot equipmentSlot = switch (index) {
-                case 0 -> EquipmentSlot.FEET;
-                case 1 -> EquipmentSlot.LEGS;
-                case 2 -> EquipmentSlot.CHEST;
-                case 3 -> EquipmentSlot.HEAD;
+            ArmorItem.Type equipmentSlot = switch (index) {
+                case 0 -> ArmorItem.Type.BOOTS;
+                case 1 -> ArmorItem.Type.LEGGINGS;
+                case 2 -> ArmorItem.Type.CHESTPLATE;
+                case 3 -> ArmorItem.Type.HELMET;
                 // Never reached but make Java happy
                 default -> throw new IllegalStateException("Unexpected value: " + index);
             };
-            mcdaDamageEquipment(livingEntity,equipmentSlot, 0.5f);
+            mcdaDamageEquipment(livingEntity, equipmentSlot, 0.5f);
             CleanlinessHelper.onTotemDeathEffects(livingEntity);
             return true;
         }
@@ -608,7 +618,7 @@ public class ArmorEffects {
                 if (nearbyEntity instanceof Monster){
                     if (blockPos.offset(playerEntity.getMovementDirection().getOpposite()).isWithinDistance(nearbyEntity.getPos(), 3)) {
                         nearbyEntity.setOnFireFor(5);
-                        AOEHelper.addParticlesToBlock((ServerWorld) playerEntity.world, playerEntity.getBlockPos(),
+                        AOEHelper.addParticlesToBlock((ServerWorld) playerEntity.getWorld(), playerEntity.getBlockPos(),
                                 ParticleTypes.FLAME);
                     }
                 }

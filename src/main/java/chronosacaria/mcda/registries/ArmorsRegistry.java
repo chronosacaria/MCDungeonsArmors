@@ -1,4 +1,4 @@
-package chronosacaria.mcda.registry;
+package chronosacaria.mcda.registries;
 
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.items.ArmorSetItem;
@@ -40,7 +40,7 @@ public class ArmorsRegistry {
         armorItems.put(set, slotMap);
     }
 
-    public static void init() {
+    public static void register() {
         for (ArmorSets set : ArmorSets.values())
             if (Mcda.CONFIG.mcdaEnableArmorsConfig.ARMORS_SETS_ENABLED.get(set))
                 registerArmor(set, set.getSlots());

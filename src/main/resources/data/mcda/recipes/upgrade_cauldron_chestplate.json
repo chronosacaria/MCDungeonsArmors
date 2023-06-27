@@ -7,7 +7,7 @@
       ]
     }
   ],
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "minecraft:cauldron"
   },
@@ -16,5 +16,8 @@
   },
   "result": {
     "item": "mcda:cauldron_armor_chestplate"
-  }
+    },
+    "template": {
+      "item": "minecraft:blaze_powder"
+    }
 }

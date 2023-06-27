@@ -1,4 +1,4 @@
-package chronosacaria.mcda.registry;
+package chronosacaria.mcda.registries;
 
 import chronosacaria.mcda.Mcda;
 import net.minecraft.registry.Registries;
@@ -18,7 +18,7 @@ public class SoundsRegistry {
     public static final Identifier DODGE_SOUND = new Identifier(Mcda.MOD_ID, "dodge");
     public static SoundEvent DODGE_SOUND_EVENT = SoundEvent.of(DODGE_SOUND);
 
-    public static void init(){
+    public static void register(){
         Registry.register(Registries.SOUND_EVENT, DODGE_SOUND, DODGE_SOUND_EVENT);
     }
 }

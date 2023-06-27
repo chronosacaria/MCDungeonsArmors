@@ -2,7 +2,7 @@ package chronosacaria.mcda.client;
 
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.entities.SummonedBeeRenderer;
-import chronosacaria.mcda.registry.SummonedEntityRegistry;
+import chronosacaria.mcda.registries.SummonedEntityRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

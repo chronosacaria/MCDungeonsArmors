@@ -1,7 +1,7 @@
 package chronosacaria.mcda.items;
 
 import chronosacaria.mcda.Mcda;
-import chronosacaria.mcda.registry.ItemsRegistry;
+import chronosacaria.mcda.registries.ItemsRegistry;
 import com.google.common.base.Suppliers;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;

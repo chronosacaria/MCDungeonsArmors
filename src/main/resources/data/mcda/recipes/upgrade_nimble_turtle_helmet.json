@@ -8,7 +8,7 @@
       ]
     }
   ],
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "mcda:turtle_armor_helmet"
   },
@@ -17,5 +17,8 @@
   },
   "result": {
     "item": "mcda:nimble_turtle_armor_helmet"
+  },
+  "template": {
+    "item": "minecraft:blaze_powder"
   }
 }

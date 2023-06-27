@@ -1,4 +1,4 @@
-package chronosacaria.mcda.registry;
+package chronosacaria.mcda.registries;
 
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.CleanlinessHelper;
@@ -16,7 +16,7 @@ import static chronosacaria.mcda.enchants.EnchantID.BAG_OF_SOULS;
 
 public class CompatRegistry {
 
-    public static void init() {
+    public static void register() {
         if (FabricLoader.getInstance().isModLoaded("clumps")) {
             ClumpsEvents.VALUE_EVENT.register(event -> {
                 int amount = event.getValue();

@@ -8,7 +8,7 @@
       ]
     }
   ],
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "mcda:plate_armor_leggings"
   },
@@ -17,5 +17,8 @@
   },
   "result": {
     "item": "mcda:cauldron_armor_leggings"
-  }
+    },
+    "template": {
+      "item": "minecraft:blaze_powder"
+    }
 }

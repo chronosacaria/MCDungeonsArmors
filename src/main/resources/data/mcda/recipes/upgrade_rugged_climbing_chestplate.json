@@ -8,7 +8,7 @@
       ]
     }
   ],
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "mcda:climbing_gear_chestplate"
   },
@@ -17,5 +17,8 @@
   },
   "result": {
     "item": "mcda:rugged_climbing_gear_chestplate"
-  }
+    },
+    "template": {
+      "item": "minecraft:blaze_powder"
+    }
 }

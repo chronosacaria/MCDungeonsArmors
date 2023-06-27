@@ -1,6 +1,6 @@
 package chronosacaria.mcda.api;
 
-import chronosacaria.mcda.registry.EnchantsRegistry;
+import chronosacaria.mcda.registries.EnchantsRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;

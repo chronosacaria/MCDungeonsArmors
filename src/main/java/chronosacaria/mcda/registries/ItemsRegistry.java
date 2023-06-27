@@ -1,9 +1,8 @@
-package chronosacaria.mcda.registry;
+package chronosacaria.mcda.registries;
 
 import chronosacaria.mcda.Mcda;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -81,13 +80,8 @@ public class ItemsRegistry {
     }
 
     protected static Item registerItem(String id, Item newItem) {
-        return registerItem(id, newItem, ItemGroups.INGREDIENTS);
-    }
-
-    @SuppressWarnings("SameParameterValue")
-    protected static Item registerItem(String id, Item newItem, ItemGroup group) {
         Item item = Registry.register(Registries.ITEM, Mcda.ID(id), newItem);
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> entries.add(item));
         return item;
     }
 }

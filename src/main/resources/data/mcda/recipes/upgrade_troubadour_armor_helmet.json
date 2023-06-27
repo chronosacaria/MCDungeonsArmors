@@ -8,7 +8,7 @@
       ]
     }
   ],
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "mcda:entertainer_garb_helmet"
   },
@@ -17,5 +17,8 @@
   },
   "result": {
     "item": "mcda:troubadour_armor_helmet"
-  }
+    },
+    "template": {
+      "item": "minecraft:blaze_powder"
+    }
 }

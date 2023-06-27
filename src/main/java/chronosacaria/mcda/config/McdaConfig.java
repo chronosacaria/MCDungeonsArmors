@@ -25,7 +25,7 @@ public class McdaConfig extends PartitioningSerializer.GlobalData{
     @ConfigEntry.Category("mcda_enable_armors")
     public McdaEnableArmorsConfig mcdaEnableArmorsConfig = new McdaEnableArmorsConfig();
 
-    public static void init(){
+    public static void register(){
         AutoConfig.register(McdaConfig.class,
                 PartitioningSerializer.wrap(JanksonConfigSerializer::new));
     }

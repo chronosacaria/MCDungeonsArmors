@@ -7,7 +7,7 @@
       ]
     }
   ],
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "minecraft:iron_helmet"
   },
@@ -16,5 +16,8 @@
   },
   "result": {
     "item": "mcda:highland_armor_helmet"
-  }
+    },
+    "template": {
+      "item": "minecraft:blaze_powder"
+    }
 }

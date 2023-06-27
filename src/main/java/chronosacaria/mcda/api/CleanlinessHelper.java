@@ -38,7 +38,7 @@ public class CleanlinessHelper {
         livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
         livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1));
         livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
-        livingEntity.world.sendEntityStatus(livingEntity, (byte) 35);
+        livingEntity.getWorld().sendEntityStatus(livingEntity, (byte) 35);
     }
 
     public static int mcdaIndexOfLargestElementInArray(int[] arr) {
@@ -76,18 +76,18 @@ public class CleanlinessHelper {
         if (missingBoots)
             index++;
 
-        EquipmentSlot equipment = switch (index){
-            case 0 -> EquipmentSlot.FEET;
-            case 1 -> EquipmentSlot.LEGS;
-            case 2 -> EquipmentSlot.CHEST;
-            case 3 -> EquipmentSlot.HEAD;
+        ArmorItem.Type equipment = switch (index){
+            case 0 -> ArmorItem.Type.BOOTS;
+            case 1 -> ArmorItem.Type.LEGGINGS;
+            case 2 -> ArmorItem.Type.CHESTPLATE;
+            case 3 -> ArmorItem.Type.HELMET;
             default -> throw new IllegalStateException("Unexpected value: " + index);
         };
         mcdaDamageEquipment(livingEntity, equipment, damagePercentage);
     }
 
-    public static void mcdaDamageEquipment(LivingEntity livingEntity, EquipmentSlot equipSlot, float damagePercentage) {
-        ItemStack armorStack = livingEntity.getEquippedStack(equipSlot);
+    public static void mcdaDamageEquipment(LivingEntity livingEntity, ArmorItem.Type armorItemType, float damagePercentage) {
+        ItemStack armorStack = livingEntity.getEquippedStack(armorItemType.getEquipmentSlot());
         int k = armorStack.getMaxDamage();
         int j = k - armorStack.getDamage();
         // Necessary for proper types.
@@ -96,16 +96,16 @@ public class CleanlinessHelper {
 
         if (toBreak)
             armorStack.damage(j, livingEntity,
-                    (entity) -> entity.sendEquipmentBreakStatus(equipSlot));
+                    (entity) -> entity.sendEquipmentBreakStatus(armorItemType.getEquipmentSlot()));
         else
             armorStack.damage(breakDamage, livingEntity,
-                    (entity) -> entity.sendEquipmentBreakStatus(equipSlot));
+                    (entity) -> entity.sendEquipmentBreakStatus(armorItemType.getEquipmentSlot()));
     }
 
     public static boolean mcdaCooldownCheck(LivingEntity livingEntity, int ticks){
         ItemStack chestStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
 
-        long currentTime = livingEntity.world.getTime();
+        long currentTime = livingEntity.getWorld().getTime();
 
         if (!chestStack.getOrCreateNbt().contains("time-check")) {
             chestStack.getOrCreateNbt().putLong("time-check", currentTime);
@@ -117,7 +117,7 @@ public class CleanlinessHelper {
     }
 
     public static boolean mcdaBoundingBox(PlayerEntity playerEntity, float boxSize) {
-        return playerEntity.world.getBlockCollisions(playerEntity,
+        return playerEntity.getWorld().getBlockCollisions(playerEntity,
                 playerEntity.getBoundingBox().offset(boxSize * playerEntity.getBoundingBox().getXLength(), 0,
                         boxSize * playerEntity.getBoundingBox().getZLength())).iterator().hasNext();
     }
@@ -157,7 +157,7 @@ public class CleanlinessHelper {
     }
 
     public static void playCenteredSound (LivingEntity center, SoundEvent soundEvent, float volume, float pitch) {
-        center.world.playSound(null,
+        center.getWorld().playSound(null,
                 center.getX(), center.getY(), center.getZ(),
                 soundEvent, SoundCategory.PLAYERS,
                 volume, pitch);
@@ -169,9 +169,9 @@ public class CleanlinessHelper {
 
     public static void mcda$dropItem(LivingEntity le, ItemStack itemStack) {
         ItemEntity it = new ItemEntity(
-                le.world, le.getX(), le.getY(), le.getZ(),
+                le.getWorld(), le.getX(), le.getY(), le.getZ(),
                 itemStack);
-        le.world.spawnEntity(it);
+        le.getWorld().spawnEntity(it);
     }
 
     public static void mcda$dropItem(LivingEntity le, Item item, int amount) {

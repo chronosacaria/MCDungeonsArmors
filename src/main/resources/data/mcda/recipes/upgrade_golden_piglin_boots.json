@@ -8,7 +8,7 @@
       ]
     }
   ],
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "mcda:piglin_armor_boots"
   },
@@ -17,5 +17,8 @@
   },
   "result": {
     "item": "mcda:golden_piglin_armor_boots"
+  },
+  "template": {
+    "item": "minecraft:blaze_powder"
   }
 }

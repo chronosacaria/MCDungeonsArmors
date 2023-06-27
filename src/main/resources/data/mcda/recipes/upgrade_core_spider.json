@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "mcda:upgrade_core"
   },
@@ -8,5 +8,8 @@
   },
   "result": {
     "item": "mcda:upgrade_core_spider"
-  }
+    },
+    "template": {
+      "item": "minecraft:blaze_powder"
+    }
 }

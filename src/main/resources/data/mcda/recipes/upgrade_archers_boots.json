@@ -7,7 +7,7 @@
       ]
     }
   ],
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "minecraft:leather_boots"
   },
@@ -16,5 +16,8 @@
   },
   "result": {
     "item": "mcda:archers_boots"
-  }
+    },
+    "template": {
+      "item": "minecraft:blaze_powder"
+    }
 }

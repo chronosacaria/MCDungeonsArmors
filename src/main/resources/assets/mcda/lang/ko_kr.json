@@ -840,5 +840,6 @@
   "activity.mcda.firetrail.disabled":             "불의 흔적이 비활성화됨.",
 
   "key.mcda.firetrail.toggle":                    "불의 흔적 토글",
-  "key.category.mcda":                            "마인크래프트 던전스 갑옷"
+  "key.category.mcda":                            "마인크래프트 던전스 갑옷",
+  "block.mcda.fading_obsidian":                   "퇴색하는 흑요석"
 }

@@ -3,7 +3,7 @@ package chronosacaria.mcda.mixin;
 
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.api.ProjectileEffectHelper;
-import chronosacaria.mcda.registry.EnchantsRegistry;
+import chronosacaria.mcda.registries.EnchantsRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;

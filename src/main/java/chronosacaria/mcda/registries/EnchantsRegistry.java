@@ -1,4 +1,4 @@
-package chronosacaria.mcda.registry;
+package chronosacaria.mcda.registries;
 
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.enchants.ArmorEnchantment;
@@ -16,7 +16,7 @@ import java.util.Locale;
 public class EnchantsRegistry {
     public static final EnumMap<EnchantID, Enchantment> enchants = new EnumMap<>(EnchantID.class);
 
-    public static void init() {
+    public static void register() {
         for (EnchantID enchantID : EnchantID.values()) {
 
             if (!Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(enchantID))
