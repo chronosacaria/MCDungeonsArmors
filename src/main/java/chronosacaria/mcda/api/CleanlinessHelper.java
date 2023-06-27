@@ -9,6 +9,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
@@ -20,9 +21,10 @@ import java.util.Random;
 public class CleanlinessHelper {
     static Random random = new Random();
 
+    @SuppressWarnings("ConstantConditions")
     public static boolean checkFullArmor(LivingEntity livingEntity, ArmorSets armorSets) {
-        for (EquipmentSlot slot : armorSets.getSlots()) {
-            if (livingEntity.getEquippedStack(slot).getItem() instanceof ArmorSetItem armorItem) {
+        for (ArmorItem.Type slot : armorSets.getSlots()) {
+            if (livingEntity.getEquippedStack(slot.getEquipmentSlot()).getItem() instanceof ArmorSetItem armorItem) {
                 if (!armorItem.getSet().isOf(armorSets)) // If it is an armor item and is of the set, we don't return false
                     return false;
             } else return false;

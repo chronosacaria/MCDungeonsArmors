@@ -8,6 +8,7 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
+@SuppressWarnings("unused")
 public class ItemsRegistry {
 
     // Mob Drops
@@ -83,12 +84,10 @@ public class ItemsRegistry {
         return registerItem(id, newItem, ItemGroups.INGREDIENTS);
     }
 
+    @SuppressWarnings("SameParameterValue")
     protected static Item registerItem(String id, Item newItem, ItemGroup group) {
         Item item = Registry.register(Registries.ITEM, Mcda.ID(id), newItem);
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
         return item;
-    }
-
-    public static void init() {
     }
 }

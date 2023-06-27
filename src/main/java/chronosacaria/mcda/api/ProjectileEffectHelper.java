@@ -27,23 +27,8 @@ public class ProjectileEffectHelper {
 
     public static void fireSnowballAtNearbyEnemy(LivingEntity user, int distance) {
         World world = user.getEntityWorld();
-        List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class,
-                new Box(user.getX() - distance, user.getY() - distance, user.getZ() - distance,
-                        user.getX() + distance, user.getY() + distance, user.getZ() + distance),
-                (nearbyEntity) -> nearbyEntity != user && AbilityHelper.canFireAtEnemy(user, nearbyEntity));
-        if (nearbyEntities.size() < 2) return;
-        Optional<LivingEntity> nearest = nearbyEntities.stream().min(Comparator.comparingDouble(e -> e.squaredDistanceTo(user)));
-        LivingEntity target = nearest.get();
         SnowballEntity snowballEntity = new SnowballEntity(world, user);
-        // borrowed from AbstractSkeletonEntity
-        double d = target.getX() - snowballEntity.getX();
-        double e = target.getBodyY(0.3333333333333333D) - snowballEntity.getY();
-        double f = target.getZ() - snowballEntity.getZ();
-        double g = Math.sqrt(d * d + f * f);
-        snowballEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
-        setProjectileTowards(snowballEntity, d, e, g, 0);
-        //
-        user.world.spawnEntity(snowballEntity);
+        fireProjectileAtNearbyEntities(snowballEntity, user, distance, world);
     }
 
     public static void fireShulkerBulletAtNearbyEnemy(LivingEntity user) {
@@ -101,5 +86,26 @@ public class ProjectileEffectHelper {
         projectileEntity.getPitch((float)(MathHelper.atan2(vec3d.y, f) * (180.0 / Math.PI)));
         projectileEntity.prevYaw = projectileEntity.getYaw();
         projectileEntity.prevPitch = projectileEntity.getPitch();
+    }
+
+    private static List<LivingEntity> getNearbyLivingEntities(LivingEntity user, int distance, World world){
+        return world.getEntitiesByClass(LivingEntity.class,
+                new Box(user.getX() - distance, user.getY() - distance, user.getZ() - distance,
+                        user.getX() + distance, user.getY() + distance, user.getZ() + distance),
+                (nearbyEntity) -> nearbyEntity != user && AbilityHelper.canFireAtEnemy(user, nearbyEntity));
+    }
+
+    private static void fireProjectileAtNearbyEntities(ProjectileEntity projectileEntity, LivingEntity user, int distance, World world) {
+        List<LivingEntity> nearbyEntities = getNearbyLivingEntities(user, distance, world);
+        if (nearbyEntities.size() < 2) return;
+        Optional<LivingEntity> nearest = nearbyEntities.stream().min(Comparator.comparingDouble(e -> e.squaredDistanceTo(user)));
+        LivingEntity target = nearest.get();
+        double d = target.getX() - projectileEntity.getX();
+        double e = target.getBodyY(0.3333333333333333D) - projectileEntity.getY();
+        double f = target.getZ() - projectileEntity.getZ();
+        double g = Math.sqrt(d * d + f * f);
+        projectileEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
+        setProjectileTowards(projectileEntity, d, e, g, 0);
+        user.world.spawnEntity(projectileEntity);
     }
 }

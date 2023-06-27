@@ -9,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.item.Items;
 
 public class RecyclerEnchantment extends Enchantment {
@@ -20,7 +21,7 @@ public class RecyclerEnchantment extends Enchantment {
     public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
         DamageSource damageSource = user.getRecentDamageSource();
 
-        if (damageSource != null && damageSource.isProjectile()) {
+        if (damageSource != null && damageSource.isOf(DamageTypes.ARROW)) {
             if (CleanlinessHelper.percentToOccur(10 * level)) {
                 CleanlinessHelper.mcda$dropItem(user, Items.ARROW);
             }

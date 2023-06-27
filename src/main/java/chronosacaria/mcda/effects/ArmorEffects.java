@@ -250,14 +250,14 @@ public class ArmorEffects {
             if (!playerEntity.isOnGround())
                 return;
 
-            float f = (float) Math.min(16, 2 + 1);
+            int i = Math.min(16, 2 + 1);
             BlockPos.Mutable mutable = new BlockPos.Mutable();
 
             World world = playerEntity.getEntityWorld();
             BlockPos blockPos = playerEntity.getBlockPos();
 
-            for (BlockPos blockPos2 : BlockPos.iterate(blockPos.add(-f, -1.0D, -f), blockPos.add(f, -1.0D, f))) {
-                if (blockPos2.isWithinDistance(playerEntity.getPos(), f)) {
+            for (BlockPos blockPos2 : BlockPos.iterate(blockPos.add(-i, -1, -i), blockPos.add(i, -1, i))) {
+                if (blockPos2.isWithinDistance(playerEntity.getPos(), i)) {
                     mutable.set(blockPos2.getX(), blockPos2.getY() + 1, blockPos2.getZ());
                     BlockState blockState2 = world.getBlockState(mutable);
                     if (blockState2.isAir()) {
@@ -396,11 +396,11 @@ public class ArmorEffects {
         if (CleanlinessHelper.checkFullArmor(livingEntity, ArmorSets.VERDANT)
                 || (ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.MYSTERY)) == SYLVAN_PRESENCE)
                 || (GREEN_ARMOR_EFFECT_ID_LIST.get(applyMysteryArmorEffect(livingEntity, ArmorSets.GREEN_MYSTERY)) == SYLVAN_PRESENCE)) {
-            float size = (float) Math.min(16, 2 + 1);
+            int size = Math.min(16, 2 + 1);
             BlockPos.Mutable mutablePosition = new BlockPos.Mutable();
             BlockPos blockPos = livingEntity.getBlockPos();
 
-            for (BlockPos blockPos2 : BlockPos.iterate(blockPos.add(-size, 0.0D, -size), blockPos.add(size, 0.0D, size))) {
+            for (BlockPos blockPos2 : BlockPos.iterate(blockPos.add(-size, 0, -size), blockPos.add(size, 0, size))) {
                 if (blockPos2.isWithinDistance(livingEntity.getPos(), size)) {
                     mutablePosition.set(blockPos2.getX(), blockPos2.getY() + 1, blockPos2.getZ());
                     BlockState checkstate = world.getBlockState(blockPos2);
@@ -453,7 +453,7 @@ public class ArmorEffects {
                     damageToBeDone = damageToBeDone * 1.5f;
                 }
                 if (nearbyEntity instanceof Monster && nearbyEntity != target){
-                    nearbyEntity.damage(DamageSource.GENERIC, damageToBeDone);
+                    nearbyEntity.damage(target.getWorld().getDamageSources().generic(), damageToBeDone);
 
                     CleanlinessHelper.playCenteredSound(nearbyEntity, SoundEvents.ENTITY_VEX_CHARGE, 1f, 1f);
                     AOEHelper.addParticlesToBlock((ServerWorld) nearbyEntity.world, nearbyEntity.getBlockPos(), ParticleTypes.ENCHANTED_HIT);
@@ -726,7 +726,7 @@ public class ArmorEffects {
                     playerEntity.addStatusEffect(tummyGrumbles);
                 } else {
                     //Sooner Starvation
-                    playerEntity.damage(DamageSource.STARVE, 0.5f);
+                    playerEntity.damage(playerEntity.getWorld().getDamageSources().starve(), 0.5f);
                     //apply Strength 3
                     StatusEffectInstance hungerPain = new StatusEffectInstance(StatusEffects.STRENGTH, 42, 2,
                             false, true);

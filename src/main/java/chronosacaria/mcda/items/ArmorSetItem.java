@@ -34,16 +34,16 @@ public class ArmorSetItem extends ArmorItem {
     protected final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
     protected final ArmorSets set;
 
-    public ArmorSetItem(ArmorSets set, EquipmentSlot slot) {
-        super(set, slot, new Item.Settings());
+    public ArmorSetItem(ArmorSets set, ArmorItem.Type type) {
+        super(set, type, new Item.Settings());
         ItemGroupEvents.modifyEntriesEvent(Mcda.ARMORS_GROUP).register(entries -> entries.add(this));
         this.set = set;
 
-        int protection = set.getProtectionAmount(slot);
+        int protection = set.getProtection(type);
         float toughness = set.getToughness();
 
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
-        UUID uuid = ARMOR_MODIFIERS[slot.getEntitySlotId()];
+        UUID uuid = ARMOR_MODIFIERS[type.getEquipmentSlot().getEntitySlotId()];
         builder.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uuid, "Armor modifier",
                 protection, EntityAttributeModifier.Operation.ADDITION));
         builder.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(uuid, "Armor toughness",
@@ -71,7 +71,7 @@ public class ArmorSetItem extends ArmorItem {
 
     @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot) {
-        return slot == this.slot ? this.attributeModifiers : super.getAttributeModifiers(slot);
+        return slot == this.type.getEquipmentSlot() ? this.attributeModifiers : super.getAttributeModifiers(slot);
     }
 
     @Override
@@ -119,7 +119,7 @@ public class ArmorSetItem extends ArmorItem {
             }
 
 
-            if (slot == EquipmentSlot.FEET && (set == ArmorSets.RUGGED_CLIMBING_GEAR || set == ArmorSets.SNOW || set == ArmorSets.GOAT)) {
+            if (type.getEquipmentSlot() == EquipmentSlot.FEET && (set == ArmorSets.RUGGED_CLIMBING_GEAR || set == ArmorSets.SNOW || set == ArmorSets.GOAT)) {
                 tooltip.add(Text.translatable("item.mcda.effect.lightfooted").formatted(Mcda.CONFIG.mcdaArmorStatsConfig.setBonusTooltipColors ? Formatting.AQUA : Formatting.GRAY));
             }
 

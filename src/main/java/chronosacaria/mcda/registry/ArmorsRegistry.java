@@ -3,7 +3,7 @@ package chronosacaria.mcda.registry;
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.items.ArmorSetItem;
 import chronosacaria.mcda.items.ArmorSets;
-import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -13,24 +13,25 @@ import java.util.EnumSet;
 
 public class ArmorsRegistry {
     // (set, slot) -> item
-    public static final EnumMap<ArmorSets, EnumMap<EquipmentSlot, Item>> armorItems = new EnumMap<>(ArmorSets.class);
+    public static final EnumMap<ArmorSets, EnumMap<ArmorItem.Type, Item>> armorItems = new EnumMap<>(ArmorSets.class);
 
-    protected static String armorID(ArmorSets set, EquipmentSlot slot) {
+    @SuppressWarnings("UnnecessaryDefault")
+    protected static String armorID(ArmorSets set, ArmorItem.Type slot) {
         String slotID = switch (slot) {
-            case HEAD -> "helmet";
-            case CHEST -> "chestplate";
-            case LEGS -> "leggings";
-            case FEET -> "boots";
+            case HELMET -> "helmet";
+            case CHESTPLATE -> "chestplate";
+            case LEGGINGS -> "leggings";
+            case BOOTS -> "boots";
             default -> throw new IllegalArgumentException("armor with non-armor equipment slot");
         };
 
         return set.getSetName() + "_" + slotID;
     }
 
-    protected static void registerArmor(ArmorSets set, EnumSet<EquipmentSlot> slots) {
-        EnumMap<EquipmentSlot, Item> slotMap = new EnumMap<>(EquipmentSlot.class);
+    protected static void registerArmor(ArmorSets set, EnumSet<ArmorItem.Type> slots) {
+        EnumMap<ArmorItem.Type, Item> slotMap = new EnumMap<>(ArmorItem.Type.class);
 
-        for (EquipmentSlot slot : slots) {
+        for (ArmorItem.Type slot : slots) {
             ArmorSetItem item = new ArmorSetItem(set, slot);
             slotMap.put(slot, item);
             Registry.register(Registries.ITEM, Mcda.ID(armorID(set, slot)), item);

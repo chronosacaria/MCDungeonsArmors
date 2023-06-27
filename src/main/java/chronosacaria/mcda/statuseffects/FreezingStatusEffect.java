@@ -2,7 +2,6 @@ package chronosacaria.mcda.statuseffects;
 
 import chronosacaria.mcda.Mcda;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.particle.ParticleTypes;
@@ -33,7 +32,7 @@ public class FreezingStatusEffect extends StatusEffect {
             Random random = Random.create();
 
             if (world.getTime() % 20 == 0) {
-                entity.damage(DamageSource.FREEZE, (float) freezingDamage);
+                entity.damage(entity.getWorld().getDamageSources().freeze(), (float) freezingDamage);
             }
 
             if (world.isClient()) {

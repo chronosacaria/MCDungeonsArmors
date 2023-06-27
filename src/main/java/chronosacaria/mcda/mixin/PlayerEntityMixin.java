@@ -15,14 +15,15 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerEntity.class)
-public abstract class MixinPlayer
+public abstract class PlayerEntityMixin
         extends LivingEntity
         implements IMcdaBooleans {
 
-    protected MixinPlayer(EntityType<? extends LivingEntity> entityType, World world) {
+    protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
 
+    @SuppressWarnings("WrongEntityDataParameterClass")
     private static final TrackedData<Boolean> FIRE_TRAIL = DataTracker.registerData(PlayerEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     @Override

@@ -13,6 +13,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -59,11 +60,11 @@ public abstract class LivingEntityMixin extends Entity {
 
         LivingEntity target = (LivingEntity) (Object) this;
 
-        if (source == DamageSource.ON_FIRE)
+        if (source.isOf(DamageTypes.ON_FIRE))
             if (ENCHANT_CONFIG.get(FIRE_FOCUS))
                 amount *= EnchantmentEffects.applyFireFocusDamage(target);
 
-        if (source.isMagic()){
+        if (source.isOf(DamageTypes.MAGIC)){
             if (ENCHANT_CONFIG.get(POISON_FOCUS))
                 amount *= EnchantmentEffects.applyPoisonFocusDamage(target);
         }
@@ -76,7 +77,7 @@ public abstract class LivingEntityMixin extends Entity {
             ItemStack mainHandStack = livingEntity.getMainHandStack();
             if (!mainHandStack.isEmpty()) {
 
-                if(!source.isProjectile()) {
+                if(!source.isOf(DamageTypes.ARROW)) {
                     if (ARMOR_CONFIG.get(ARCTIC_FOX_HIGH_GROUND))
                         amount *= ArmorEffects.arcticFoxesHighGround(livingEntity);
                     if (ARMOR_CONFIG.get(GILDED_HERO))
@@ -109,7 +110,7 @@ public abstract class LivingEntityMixin extends Entity {
                 if (ARMOR_CONFIG.get(GHOST_KINDLING))
                     ArmorEffects.applyGhostKindlingEffect(livingEntity, target);
 
-                if(!source.isProjectile()) {
+                if(!source.isOf(DamageTypes.ARROW)) {
                     if (ARMOR_CONFIG.get(SPLENDID_ATTACK))
                         ArmorEffects.applySplendidAoEAttackEffect(livingEntity, target);
                 }
@@ -165,7 +166,7 @@ public abstract class LivingEntityMixin extends Entity {
             }
 
             if (amount > 0) {
-                if (source.getAttacker() instanceof LivingEntity || source.isProjectile()) {
+                if (source.getAttacker() instanceof LivingEntity || source.isOf(DamageTypes.ARROW)) {
                     if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(SOULDANCER_GRACE)) {
                         if (ArmorEffects.souldancerGraceEffect(playerEntity))
                             cir.cancel();
@@ -316,7 +317,7 @@ public abstract class LivingEntityMixin extends Entity {
         if(((Object) this instanceof PlayerEntity playerEntity)) {
 
             if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableEnchantment.get(DEATH_BARTER)) {
-                if (!damageSource.isOutOfWorld()) {
+                if (!damageSource.isOf(DamageTypes.OUT_OF_WORLD)) {
                     if (EnchantmentEffects.deathBarterEffect(playerEntity)) {
                         cir.setReturnValue(true);
                     }
@@ -328,7 +329,7 @@ public abstract class LivingEntityMixin extends Entity {
         if(((Object) this instanceof LivingEntity livingEntity)) {
 
             if (Mcda.CONFIG.mcdaEnableEnchantAndEffectConfig.enableArmorEffect.get(GILDED_HERO)) {
-                if (!damageSource.isOutOfWorld()) {
+                if (!damageSource.isOf(DamageTypes.OUT_OF_WORLD)) {
                     if (ArmorEffects.gildedGloryTotemEffect(livingEntity)) {
                         cir.setReturnValue(true);
                     }

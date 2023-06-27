@@ -3,7 +3,7 @@ package chronosacaria.mcda.items;
 import chronosacaria.mcda.Mcda;
 import chronosacaria.mcda.registry.ItemsRegistry;
 import com.google.common.base.Suppliers;
-import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -14,7 +14,6 @@ import net.minecraft.util.Rarity;
 import java.util.EnumSet;
 import java.util.function.Supplier;
 
-import static net.minecraft.entity.EquipmentSlot.*;
 import static net.minecraft.sound.SoundEvents.*;
 
 public enum ArmorSets implements ArmorMaterial {
@@ -409,13 +408,13 @@ public enum ArmorSets implements ArmorMaterial {
     }
 
     @Override
-    public int getDurability(EquipmentSlot slot) {
-        return baseDurability[slot.getEntitySlotId()] * Mcda.CONFIG.mcdaArmorStatsConfig.armorStats.get(this).durabilityMultiplier;
+    public int getDurability(ArmorItem.Type type) {
+        return baseDurability[type.getEquipmentSlot().getEntitySlotId()] * Mcda.CONFIG.mcdaArmorStatsConfig.armorStats.get(this).durabilityMultiplier;
     }
 
     @Override
-    public int getProtectionAmount(EquipmentSlot slot) {
-        return Mcda.CONFIG.mcdaArmorStatsConfig.armorStats.get(this).protection.get(slot);
+    public int getProtection(ArmorItem.Type type) {
+        return Mcda.CONFIG.mcdaArmorStatsConfig.armorStats.get(this).protection.get(type.getEquipmentSlot());
     }
 
     @Override
@@ -459,13 +458,13 @@ public enum ArmorSets implements ArmorMaterial {
         return false;
     }
 
-    public EnumSet<EquipmentSlot> getSlots() {
+    public EnumSet<ArmorItem.Type> getSlots() {
         return switch (this) {
-            case BATTLE, SPLENDID -> EnumSet.of(CHEST, LEGS);
-            case EVOCATION, EMBER, VERDANT, VANGUARD -> EnumSet.of(HEAD, CHEST, LEGS);
-            case SCALE_MAIL -> EnumSet.of(CHEST, LEGS, FEET);
-            case HUNTER -> EnumSet.of(CHEST);
-            default -> EnumSet.of(HEAD, CHEST, LEGS, FEET);
+            case BATTLE, SPLENDID -> EnumSet.of(ArmorItem.Type.CHESTPLATE, ArmorItem.Type.LEGGINGS);
+            case EVOCATION, EMBER, VERDANT, VANGUARD -> EnumSet.of(ArmorItem.Type.HELMET, ArmorItem.Type.CHESTPLATE, ArmorItem.Type.LEGGINGS);
+            case SCALE_MAIL -> EnumSet.of(ArmorItem.Type.CHESTPLATE, ArmorItem.Type.LEGGINGS, ArmorItem.Type.BOOTS);
+            case HUNTER -> EnumSet.of(ArmorItem.Type.CHESTPLATE);
+            default -> EnumSet.of(ArmorItem.Type.HELMET, ArmorItem.Type.CHESTPLATE, ArmorItem.Type.LEGGINGS, ArmorItem.Type.BOOTS);
         };
     }
 }
