@@ -140,7 +140,7 @@ public enum ArmorSets implements ArmorMaterial {
     EMBER("ember", "ember_robe",
             25,
             ITEM_ARMOR_EQUIP_ELYTRA,
-            () -> Ingredient.ofItems(ItemID.FABRIC_BOLT_RED)),
+            () -> Ingredient.ofItems(Items.GOLD_INGOT)),
     VERDANT("verdant", "verdant_robe",
             25,
             ITEM_ARMOR_EQUIP_ELYTRA,
