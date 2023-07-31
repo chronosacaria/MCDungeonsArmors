@@ -70,10 +70,6 @@ public class FadingObsidianBlock extends Block {
     }
 
     protected void melt(World world, BlockPos pos) {
-        if (world.getDimension().ultrawarm()) {
-            world.removeBlock(pos, false);
-            return;
-        }
         world.setBlockState(pos, getMeltedState());
         world.updateNeighbor(pos, getMeltedState().getBlock(), pos);
     }
