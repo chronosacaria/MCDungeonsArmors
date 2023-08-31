@@ -17,6 +17,8 @@ public class ArmorStats {
 
     public int durabilityMultiplier;
 
+    public String[] repairIngredients;
+
     public ArmorStats setProtection(int head, int chest, int legs, int feet) {
         this.protection.put(HEAD, head);
         this.protection.put(CHEST, chest);
@@ -53,6 +55,11 @@ public class ArmorStats {
 
     public ArmorStats setDurabilityMultiplier(int durabilityMultiplier){
         this.durabilityMultiplier = durabilityMultiplier;
+        return this;
+    }
+
+    public ArmorStats setRepairIngredients(String[] repairIngredients) {
+        this.repairIngredients = repairIngredients;
         return this;
     }
 }
