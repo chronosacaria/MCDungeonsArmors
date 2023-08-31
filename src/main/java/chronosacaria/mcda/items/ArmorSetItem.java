@@ -14,12 +14,18 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.tag.TagKey;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -76,6 +82,26 @@ public class ArmorSetItem extends ArmorItem {
     @Override
     public Rarity getRarity(ItemStack itemStack) {
         return set.getRarity();
+    }
+
+    @Override
+    public boolean canRepair(ItemStack stack, ItemStack repairIngredientItemStack) {
+        List<String> repairItemsList = new ArrayList<>();
+        String[] repairIngredientString = Mcda.CONFIG.mcdaArmorStatsConfig.armorStats.get(set).repairIngredients;
+        List<String> repairableList = Arrays.stream(repairIngredientString).toList();
+        boolean bl = false;
+        for (String repairIngredientIterator : repairableList) {
+            if (repairIngredientIterator.startsWith("#")) {
+                TagKey<Item> tagKey = TagKey.of(Registry.ITEM_KEY, new Identifier(repairIngredientIterator.substring(1)));
+                bl = bl || repairIngredientItemStack.isIn(tagKey);
+            } else {
+                repairItemsList.add(repairIngredientIterator);
+            }
+        }
+        Ingredient stringToIngredient = Ingredient.ofStacks(repairItemsList.stream().map((str)
+                -> new ItemStack(Registry.ITEM.get(Identifier.tryParse(str))))
+        );
+        return bl || stringToIngredient.test(repairIngredientItemStack);
     }
 
     @Override

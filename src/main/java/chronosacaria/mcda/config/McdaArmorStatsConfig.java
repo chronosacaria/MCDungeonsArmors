@@ -31,13 +31,14 @@ public class McdaArmorStatsConfig implements ConfigData {
         return armorStats.get(set).setMovementSpeedBoost(value);
     }
 
+    protected ArmorStats setRepairIngredient(String[] ingredients, ArmorSets set) {
+        return armorStats.get(set).setRepairIngredients(ingredients);
+    }
+
     public boolean setBonusTooltips = true;
     public boolean setBonusTooltipColors = true;
 
     public McdaArmorStatsConfig(){
-        for (ArmorSets armorSet : ArmorSets.values())
-            armorStats.put(armorSet, new ArmorStats());
-
         for (ArmorSets armorSet : ArmorSets.values()) {
             ArmorStats s = new ArmorStats();
             s.protection = new EnumMap<>(EquipmentSlot.class);
@@ -45,6 +46,10 @@ public class McdaArmorStatsConfig implements ConfigData {
                 s.protection.put(slot, 0);
             }
             this.armorStats.put(armorSet, s);
+        }
+
+        for (ArmorSets armorSet : ArmorSets.values()) {
+            setRepairIngredient(armorSet.getDefaultRepairIngredient(), armorSet);
         }
 
         // Leather Armors
