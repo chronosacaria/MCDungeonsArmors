@@ -841,5 +841,7 @@
   "activity.mcda.firetrail.disabled":             "Вогняний слід вимкнено.",
 
   "key.mcda.firetrail.toggle":                    "Перемикання вогняного сліду",
-  "key.category.mcda":                            "MC Dungeons Броня"
+  "key.category.mcda":                            "MC Dungeons Броня",
+
+  "block.mcda.fading_obsidian":                   "Згасаючий обсидіан"
 }
