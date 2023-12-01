@@ -1,0 +1,847 @@
+{
+  "itemGroup.mcda.armor":                         "MC Dungeons - Броня",
+
+  "item.mcda.archers_helmet":                     "Капюшон лучника",
+  "item.mcda.archers_chestplate":                 "Жилет лучника",
+  "item.mcda.archers_leggings":                   "Штани лучника",
+  "item.mcda.archers_boots":                      "Пояс лучника",
+
+  "item.mcda.archers.tooltip_1":                  "Улюблена броня скромними воїнами,",
+  "item.mcda.archers.tooltip_2":                  "вона і досі зупиняє клинок.",
+
+  "item.mcda.archers.effect.tooltip_1":           "Майстерність лучника",
+
+  "item.mcda.beehive_armor_helmet":               "Шолом вулика",
+  "item.mcda.beehive_armor_chestplate":           "Нагрудник вулика",
+  "item.mcda.beehive_armor_leggings":             "Наголінники вулика",
+  "item.mcda.beehive_armor_boots":                "Пояс вулика",
+
+  "item.mcda.beehive_armor.tooltip_1":            "Вуликова броня гуде від сконцентрованої",
+  "item.mcda.beehive_armor.tooltip_2":            "сили незліченної кількості бджіл.",
+
+  "item.mcda.beehive_armor.effect.tooltip_1":     "Дзижчання вулика",
+
+  "item.mcda.beenest_armor_helmet":               "Шолом бджолиного гнізда",
+  "item.mcda.beenest_armor_chestplate":           "Нагрудник бджолиного гнізда",
+  "item.mcda.beenest_armor_leggings":             "Наголінники бджолиного гнізда",
+  "item.mcda.beenest_armor_boots":                "Пояс бджолиного гнізда",
+
+  "item.mcda.beenest_armor.tooltip_1":            "Здається, що навколо броні бджолиного",
+  "item.mcda.beenest_armor.tooltip_2":            "гнізда завжди стоїть легкий гул,",
+  "item.mcda.beenest_armor.tooltip_3":            "а може, гул іде зсередини?",
+
+  "item.mcda.beenest_armor.effect.tooltip_1":     "Дзижчання вулика",
+
+  "item.mcda.hunters_chestplate":                 "Жилет мисливця",
+
+  "item.mcda.hunters.tooltip_1":                  "Можливо, він не підійде для",
+  "item.mcda.hunters.tooltip_2":                  "лицаря, але зупинить лезо.",
+
+  "item.mcda.splendid_robe_chestplate":           "Розкішна мантія",
+  "item.mcda.splendid_robe_leggings":             "Розкішні наголінники",
+
+  "item.mcda.splendid_robe.tooltip_1":            "Цей почесний одяг носять",
+  "item.mcda.splendid_robe.tooltip_2":            "загартовані розбійники, які",
+  "item.mcda.splendid_robe.tooltip_3":            "захищають Архі-розбійника.",
+
+  "item.mcda.splendid_robe.effect.tooltip_1":     "Розкішна атака",
+
+  "item.mcda.battle_robe_chestplate":             "Бойова мантія",
+  "item.mcda.battle_robe_leggings":               "Бойові наголінники",
+
+  "item.mcda.battle_robe.tooltip_1":              "Їх носили поважні заклиначі",
+  "item.mcda.battle_robe.tooltip_2":              "при дворі Архі-розбійника.",
+
+  "item.mcda.champions_armor_helmet":             "Шолом чеппіона",
+  "item.mcda.champions_armor_chestplate":         "Нагрудник чемпіона",
+  "item.mcda.champions_armor_leggings":           "Наголінники чемпіона",
+  "item.mcda.champions_armor_boots":              "Пояс чемпіона",
+
+  "item.mcda.champions_armor.tooltip_1":          "Дарували чемпіонам потойбіччя",
+  "item.mcda.champions_armor.tooltip_2":          "вільні селяни на знак подяки",
+  "item.mcda.champions_armor.tooltip_3":          "за багаторічний професійний",
+  "item.mcda.champions_armor.tooltip_4":          "захист і необхідну допомогу.",
+  "item.mcda.champions_armor.tooltip_5":          "Знак справжнього героя.",
+
+  "item.mcda.heros_armor_helmet":                 "Шолом героя",
+  "item.mcda.heros_armor_chestplate":             "Нагрудник героя",
+  "item.mcda.heros_armor_leggings":               "Наголінники героя",
+  "item.mcda.heros_armor_boots":                  "Пояс героя",
+
+  "item.mcda.heros_armor.tooltip_1":              "Цей обладунок дарують лише героям найвищого",
+  "item.mcda.heros_armor.tooltip_2":              "ґатунку, і він є дорогоцінним подарунком",
+  "item.mcda.heros_armor.tooltip_3":              "від мешканців села.",
+
+  "item.mcda.heros_armor.effect.tooltip_1":       "Герой селища",
+
+  "item.mcda.titans_shroud_helmet":               "Шолом титана",
+  "item.mcda.titans_shroud_chestplate":           "Нагрудник титана",
+  "item.mcda.titans_shroud_leggings":             "Наголінники титана",
+  "item.mcda.titans_shroud_boots":                "Чоботи титана",
+
+  "item.mcda.titans_shroud.tooltip_1":            "Ці обладунки пройшли через руки",
+  "item.mcda.titans_shroud.tooltip_2":            "зла протягом багатьох поколінь.",
+
+  "item.mcda.titans_shroud.effect.tooltip_1":     "Плащаниця Титана",
+
+  "item.mcda.dark_armor_helmet":                  "Шолом пітьми",
+  "item.mcda.dark_armor_chestplate":              "Нагрудник пітьми",
+  "item.mcda.dark_armor_leggings":                "Наголінники пітьми",
+  "item.mcda.dark_armor_boots":                   "Чоботи пітьми",
+
+  "item.mcda.dark_armor.tooltip_1":               "Ці обладунки, виготовлені в найтемніших",
+  "item.mcda.dark_armor.tooltip_2":               "глибинах Вогняної кузні, носить королівська",
+  "item.mcda.dark_armor.tooltip_3":               "гвардія Архі-розбійника.",
+
+  "item.mcda.royal_guard_armor_helmet":           "Шолом королівської гвардії",
+  "item.mcda.royal_guard_armor_chestplate":       "Нагрудник королівської гвардії",
+  "item.mcda.royal_guard_armor_leggings":         "Наголінники королівської гвардії",
+  "item.mcda.royal_guard_armor_boots":            "Чоботи королівської гвардії",
+
+  "item.mcda.royal_guard_armor.tooltip_1":        "Ці обладунки, виготовлені в найтемніших",
+  "item.mcda.royal_guard_armor.tooltip_2":        "глибинах Вогняної кузні, носить королівська",
+  "item.mcda.royal_guard_armor.tooltip_3":        "гвардія Архі-розбійника.",
+
+  "item.mcda.evocation_robe_helmet":              "Капелюх заклинача",
+  "item.mcda.evocation_robe_chestplate":          "Роба заклинача",
+  "item.mcda.evocation_robe_leggings":            "Наголінники заклинача",
+
+  "item.mcda.evocation_robe.tooltip_1":           "Потужні магічні руни",
+  "item.mcda.evocation_robe.tooltip_2":           "вплетені в тканину цієї",
+  "item.mcda.evocation_robe.tooltip_3":           "роби, їхнє походження",
+  "item.mcda.evocation_robe.tooltip_4":           "та сила оповиті таємницею.",
+  "item.mcda.evocation_robe.tooltip_5":           "",
+
+  "item.mcda.ember_robe_helmet":                  "Капелюх янтаря",
+  "item.mcda.ember_robe_chestplate":              "Роба янтаря",
+  "item.mcda.ember_robe_leggings":                "Наголінники янтаря",
+
+  "item.mcda.ember_robe.tooltip_1":               "Роба створена заклиначем,",
+  "item.mcda.ember_robe.tooltip_2":               "щоб відрізнити себе від",
+  "item.mcda.ember_robe.tooltip_3":               "звичайної варти.",
+
+  "item.mcda.ember_robe.effect.tooltip_1":        "Янтарний стрибок",
+
+  "item.mcda.verdant_robe_helmet":                "Зелена шапка",
+  "item.mcda.verdant_robe_chestplate":            "Зелена роба",
+  "item.mcda.verdant_robe_leggings":              "Зелені наголінники",
+
+  "item.mcda.verdant_robe.tooltip_1":             "Ті, хто одягає цю мантію, незабаром виявляють,",
+  "item.mcda.verdant_robe.tooltip_2":             "що можуть спілкуватися з більшою кількістю душ,",
+  "item.mcda.verdant_robe.tooltip_3":             "ніж будь-коли раніше.",
+
+  "item.mcda.verdant_robe.effect.tooltip_1":      "Присутність Сильвану",
+
+  "item.mcda.grim_armor_helmet":                  "Шолом похмурості",
+  "item.mcda.grim_armor_chestplate":              "Нагрудник похмурості",
+  "item.mcda.grim_armor_leggings":                "Наголінники похмурості",
+  "item.mcda.grim_armor_boots":                   "Накладки похмурості",
+
+  "item.mcda.grim_armor.tooltip_1":               "Ці обладунки викликають почуття страху",
+  "item.mcda.grim_armor.tooltip_2":               "у того, хто їх носить, і у тих, хто",
+  "item.mcda.grim_armor.tooltip_3":               "стикається з ними в бою.",
+
+  "item.mcda.wither_armor_helmet":                "Шолом Візера",
+  "item.mcda.wither_armor_chestplate":            "Нагрудник Візера",
+  "item.mcda.wither_armor_leggings":              "Наголінники Візера",
+  "item.mcda.wither_armor_boots":                 "Накладки Візера",
+
+  "item.mcda.wither_armor.tooltip_1":             "Виготовлений з частин вбитих",
+  "item.mcda.wither_armor.tooltip_2":             "ворогів, він мав наводити",
+  "item.mcda.wither_armor.tooltip_3":             "жах на ворогів Візера.",
+
+  "item.mcda.wither_armor.effect.tooltip_1":      "Висушенний",
+
+  "item.mcda.guards_armor_helmet":                "Шолом вартового",
+  "item.mcda.guards_armor_chestplate":            "Нагрудник вартового",
+  "item.mcda.guards_armor_leggings":              "Наголінники вартового",
+  "item.mcda.guards_armor_boots":                 "Cuisses вартового",
+
+  "item.mcda.guards_armor.tooltip_1":             "Дешеві обладунки, масового",
+  "item.mcda.guards_armor.tooltip_2":             "виготовлення, звичні в селах",
+  "item.mcda.guards_armor.tooltip_3":             "верхнього світу.",
+
+  "item.mcda.curious_armor_helmet":               "Шолом давності",
+  "item.mcda.curious_armor_chestplate":           "Нагрудник давності",
+  "item.mcda.curious_armor_leggings":             "Наголінники давності",
+  "item.mcda.curious_armor_boots":                "Пов'язка давності",
+
+  "item.mcda.curious_armor.tooltip_1":            "Ніхто не знає, звідки взявся",
+  "item.mcda.curious_armor.tooltip_2":            "цей дивний обладунок, але він",
+  "item.mcda.curious_armor.tooltip_3":            "здається вам знайомим.",
+
+  "item.mcda.curious_armor.effect.tooltip_1":     "Давня телепортація",
+
+  "item.mcda.mercenary_armor_helmet":             "Шолом найманця",
+  "item.mcda.mercenary_armor_chestplate":         "Нагрудник найманця",
+  "item.mcda.mercenary_armor_leggings":           "Наголінники найманця",
+  "item.mcda.mercenary_armor_boots":              "Пояс найманця",
+
+  "item.mcda.mercenary_armor.tooltip_1":          "Його обирають ті, хто хоче",
+  "item.mcda.mercenary_armor.tooltip_2":          "заощадити трохи грошей. Бракує",
+  "item.mcda.mercenary_armor.tooltip_3":          "міцерсиі, але роботу виконує.",
+
+  "item.mcda.renegade_armor_helmet":              "Шолом відступника",
+  "item.mcda.renegade_armor_chestplate":          "Нагрудник відступника",
+  "item.mcda.renegade_armor_leggings":            "Наголінники відступника",
+  "item.mcda.renegade_armor_boots":               "Пояс відступника",
+
+  "item.mcda.renegade_armor.tooltip_1":           "Ці обладунки були хорошою платою за",
+  "item.mcda.renegade_armor.tooltip_2":           "найманців, яких наймали для",
+  "item.mcda.renegade_armor.tooltip_3":           "захисту сіл від розбійників.",
+
+  "item.mcda.renegade_armor.effect.tooltip_1":    "Поспіх відступника",
+
+  "item.mcda.hungry_horror_helmet":               "Шолом голодного жаху",
+  "item.mcda.hungry_horror_chestplate":           "Нагрудник голодного жаху",
+  "item.mcda.hungry_horror_leggings":             "Наголінники голодного жаху",
+  "item.mcda.hungry_horror_boots":                "Накладки голодного жаху",
+
+  "item.mcda.hungry_horror.tooltip_1":            "Коли ви вдягаєте цей обладунок,",
+  "item.mcda.hungry_horror.tooltip_2":            "звуки криків наповнюють повітря.",
+  "item.mcda.hungry_horror.tooltip_3":            "Але чи це ваші крики,",
+  "item.mcda.hungry_horror.tooltip_4":            "чи ваших ворогів?",
+
+  "item.mcda.hungry_horror.effect.tooltip_1":     "Голод",
+  "item.mcda.hungry_horror.effect.tooltip_2":     "Біль голоду",
+
+  "item.mcda.ocelot_armor_helmet":                "Шолом оцелота",
+  "item.mcda.ocelot_armor_chestplate":            "Нагрудник оцелота",
+  "item.mcda.ocelot_armor_leggings":              "Наголінники оцелота",
+  "item.mcda.ocelot_armor_boots":                 "Чоботи оцелота",
+
+  "item.mcda.ocelot_armor.tooltip_1":             "Ви відчуєте прилив чистого",
+  "item.mcda.ocelot_armor.tooltip_2":             "адреналіну в тілі, коли",
+  "item.mcda.ocelot_armor.tooltip_3":             "одягнете цю шкіру оцелота.",
+  "item.mcda.ocelot_armor.tooltip_4":             "",
+
+  "item.mcda.shadow_walker_armor_helmet":         "Шолом тіньохода",
+  "item.mcda.shadow_walker_armor_chestplate":     "Нагрудник тіньохода",
+  "item.mcda.shadow_walker_armor_leggings":       "Наголінники тіньохода",
+  "item.mcda.shadow_walker_armor_boots":          "Чоботи тіньохода",
+
+  "item.mcda.shadow_walker_armor.tooltip_1":      "Легендарний чорний оцелот був настільки",
+  "item.mcda.shadow_walker_armor.tooltip_2":      "ж граціозним, наскільки й смертоносним.",
+  "item.mcda.shadow_walker_armor.tooltip_3":      "Коли ви одягаєте його шкіру, вам здається,",
+  "item.mcda.shadow_walker_armor.tooltip_4":      " що вашим ворогам тільки й залишилися",
+  "item.mcda.shadow_walker_armor.tooltip_5":      "ганятися за вашою тінню.",
+
+  "item.mcda.shadow_walker_armor.effect.tooltip_1":   "Без шкоди від падінь",
+  "item.mcda.shadow_walker_armor.effect.tooltip_2":   "Біг",
+
+  "item.mcda.phantom_armor_helmet":               "Фантомий шолом",
+  "item.mcda.phantom_armor_chestplate":           "Фантомий нагрудник",
+  "item.mcda.phantom_armor_leggings":             "Фантомні наголінники",
+  "item.mcda.phantom_armor_boots":                "Фантомні накладки",
+
+  "item.mcda.phantom_armor.tooltip_1":            "Ці обладунки, виготовлені",
+  "item.mcda.phantom_armor.tooltip_2":            "з кісток фантомів, виглядає",
+  "item.mcda.phantom_armor.tooltip_3":            "жахливим на полі бою.",
+
+  "item.mcda.phantom_armor.effect.tooltip_1":     "Повільне падіння",
+
+  "item.mcda.frost_bite_armor_helmet":            "Шолом обмороження",
+  "item.mcda.frost_bite_armor_chestplate":        "Нагрудник обмороження",
+  "item.mcda.frost_bite_armor_leggings":          "Наголінники обмороження",
+  "item.mcda.frost_bite_armor_boots":             "Накладки обмороження",
+
+  "item.mcda.frost_bite_armor.tooltip_1":         "Обладунок обмороження пам'ятає",
+  "item.mcda.frost_bite_armor.tooltip_2":         "крижані вітри, що колись віяли",
+  "item.mcda.frost_bite_armor.tooltip_3":         "під крилами фантомів.",
+
+  "item.mcda.frost_bite_armor.effect.tooltip_1":  "Повільне падіння",
+  "item.mcda.frost_bite_armor.effect.tooltip_2":  "Обмороження",
+
+  "item.mcda.plate_armor_helmet":                 "Пластинчастий шолом",
+  "item.mcda.plate_armor_chestplate":             "Пластинчастий нагрудник",
+  "item.mcda.plate_armor_leggings":               "Пластинчасті наголінники",
+  "item.mcda.plate_armor_boots":                  "Пластинчаста пов'язка",
+
+  "item.mcda.plate_armor.tooltip_1":              "Пластинчаста броня перетворює середнього",
+  "item.mcda.plate_armor.tooltip_2":              "солдата на фортецю, але знижує його ",
+  "item.mcda.plate_armor.tooltip_3":              "мобільність.",
+
+  "item.mcda.full_metal_armor_helmet":            "Цльнометалічний шолом",
+  "item.mcda.full_metal_armor_chestplate":        "Цльнометалічний нагрудник",
+  "item.mcda.full_metal_armor_leggings":          "Цльнометалічні наголінники",
+  "item.mcda.full_metal_armor_boots":             "Цльнометалічна пов'язка",
+
+  "item.mcda.full_metal_armor.tooltip_1":         "Суцільнометалева броня призначена для",
+  "item.mcda.full_metal_armor.tooltip_2":         "великих захисників потойбічного світу.",
+
+  "item.mcda.reinforced_mail_helmet":             "Посилений шолом",
+  "item.mcda.reinforced_mail_chestplate":         "Посилений нагрудник",
+  "item.mcda.reinforced_mail_leggings":           "Посилені наголінники",
+  "item.mcda.reinforced_mail_boots":              "Посилений пояс",
+
+  "item.mcda.reinforced_mail.tooltip_1":          "Здебільшого їх носять випадкові шукачі",
+  "item.mcda.reinforced_mail.tooltip_2":          "пригод, але армовані обладунки - звичне",
+  "item.mcda.reinforced_mail.tooltip_3":          "явище по всьому світу.",
+
+  "item.mcda.stalwart_armor_helmet":              "Шолом стійкості",
+  "item.mcda.stalwart_armor_chestplate":          "Нагрудник стійкості",
+  "item.mcda.stalwart_armor_leggings":            "Наголінники стійкості",
+  "item.mcda.stalwart_armor_boots":               "Пояс стійкості",
+
+  "item.mcda.stalwart_armor.tooltip_1":           "Ці надійні обладунки досить міцні, щоб",
+  "item.mcda.stalwart_armor.tooltip_2":           "передаватися з покоління в покоління.",
+
+  "item.mcda.stalwart_armor.effect.tooltip_1":    "Непохитний оплот",
+
+  "item.mcda.ghostly_armor_helmet":               "Шолом примари",
+  "item.mcda.ghostly_armor_chestplate":           "Гамбезор примари",
+  "item.mcda.ghostly_armor_leggings":             "Наголінники примари",
+  "item.mcda.ghostly_armor_boots":                "Чоботи примари",
+
+  "item.mcda.ghostly_armor.tooltip_1":            "Ті, хто носить обладунок примари, можуть",
+  "item.mcda.ghostly_armor.tooltip_2":            "відчути, як їхні тіла ненадовго від'єднуються",
+  "item.mcda.ghostly_armor.tooltip_3":            "від фізичного світу, але швидко повертаються",
+  "item.mcda.ghostly_armor.tooltip_4":            "до реальності.",
+
+  "item.mcda.ghost_kindler_helmet":               "Шолом примарного розпалювача",
+  "item.mcda.ghost_kindler_chestplate":           "Гамбезон примарного розпалювача",
+  "item.mcda.ghost_kindler_leggings":             "Наголінники примарного розпалювача",
+  "item.mcda.ghost_kindler_boots":                "Чоботи примарного розпалювача",
+
+  "item.mcda.ghost_kindler.tooltip_1":            "Дивне полум'я слідує за мінливою",
+  "item.mcda.ghost_kindler.tooltip_2":            "формою тих, хто носить обладунки",
+  "item.mcda.ghost_kindler.tooltip_3":            "примарного розпалювача.",
+
+  "item.mcda.ghost_kindler.effect.tooltip_1":     "Примарний розпалювач",
+  "item.mcda.ghost_kindler.effect.tooltip_2":     "Слід примарного розпалювача",
+
+  "item.mcda.white_mystery_armor_helmet":         "Шолом білої таємниці",
+  "item.mcda.white_mystery_armor_chestplate":     "Нагрудник білої таємниці",
+  "item.mcda.white_mystery_armor_leggings":       "Наголінники білої таємниці",
+  "item.mcda.white_mystery_armor_boots":          "Пов'язка білої таємниці",
+
+  "item.mcda.mystery_armor.tooltip_1":            "Деякі ковалі вбачають у цій броні,",
+  "item.mcda.mystery_armor.tooltip_2":            "що вона змінює властивості, через",
+  "item.mcda.mystery_armor.tooltip_3":            "вплив залізних ґолемів..",
+
+  "item.mcda.mystery_armor.effect.tooltip_1":     "Ефект таємниці",
+
+  "item.mcda.blue_mystery_armor_helmet":          "Шолом синьої таємниці",
+  "item.mcda.blue_mystery_armor_chestplate":      "Нагрудник синьої таємниці",
+  "item.mcda.blue_mystery_armor_leggings":        "Наголінники синьої таємниці",
+  "item.mcda.blue_mystery_armor_boots":           "Пов'язка синьої таємниці",
+
+  "item.mcda.green_mystery_armor_helmet":         "Шолом зеленої таємниці",
+  "item.mcda.green_mystery_armor_chestplate":     "Нагрудник зеленої таємниці",
+  "item.mcda.green_mystery_armor_leggings":       "Наголінники зеленої таємниці",
+  "item.mcda.green_mystery_armor_boots":          "Пов'язка зеленої таємниці",
+
+  "item.mcda.purple_mystery_armor_helmet":        "Шолом фіолетової таємниці",
+  "item.mcda.purple_mystery_armor_chestplate":    "Нагрудник фіолетової таємниці",
+  "item.mcda.purple_mystery_armor_leggings":      "Наголінники фіолетової таємниці",
+  "item.mcda.purple_mystery_armor_boots":         "Пов'язка фіолетової таємниці",
+
+  "item.mcda.red_mystery_armor_helmet":           "Шолом червоної таємниці",
+  "item.mcda.red_mystery_armor_chestplate":       "Нагрудник червоної таємниці",
+  "item.mcda.red_mystery_armor_leggings":         "Наголінники червоної таємниці",
+  "item.mcda.red_mystery_armor_boots":            "Пов'язка червоної таємниці",
+
+  "item.mcda.scale_mail_chestplate":              "Лусковитий Нагрудник",
+  "item.mcda.scale_mail_leggings":                "Лусковитий Наголінники",
+  "item.mcda.scale_mail_boots":                   "Лусковитий Пояс",
+
+  "item.mcda.scale_mail.tooltip_1":               "Цей обладунок, виготовлений біля",
+  "item.mcda.scale_mail.tooltip_2":               "великого моря, був натхненний",
+  "item.mcda.scale_mail.tooltip_3":               "риб'ячою лускою.",
+
+  "item.mcda.highland_armor_helmet":              "Шолом високогірря",
+  "item.mcda.highland_armor_chestplate":          "Нагрудник високогірря",
+  "item.mcda.highland_armor_leggings":            "Наголінники високогірря",
+  "item.mcda.highland_armor_boots":               "Пояс високогірря",
+
+  "item.mcda.highland_armor.tooltip_1":           "Мудрий коваль дбайливо виготовив цей прекрасний",
+  "item.mcda.highland_armor.tooltip_2":           "обладунок, в ньому є елементи гірських селян.",
+
+  "item.mcda.highland_armor.effect.tooltip_1":    "Квапливість",
+
+  "item.mcda.snow_armor_helmet":                  "Шолом снігу",
+  "item.mcda.snow_armor_chestplate":              "Нагрудник снігу",
+  "item.mcda.snow_armor_leggings":                "Наголінники снігу",
+  "item.mcda.snow_armor_boots":                   "Чоботи снігу",
+
+  "item.mcda.snow_armor.tooltip_1":               "Обладунок, що загартовувався під час",
+  "item.mcda.snow_armor.tooltip_2":               "танення снігу, захищаючи власника від",
+  "item.mcda.snow_armor.tooltip_3":               "суворого холоду тундри.",
+
+  "item.mcda.frost_armor_helmet":                 "Шолом морозу",
+  "item.mcda.frost_armor_chestplate":             "Нагрудник морозу",
+  "item.mcda.frost_armor_leggings":               "Наголінники морозу",
+  "item.mcda.frost_armor_boots":                  "Чоботи морозу",
+
+  "item.mcda.frost_armor.tooltip_1":              "Цей легендарний обладунок, викуваний з льоду,",
+  "item.mcda.frost_armor.tooltip_2":              "який ніколи не тане, змушує власника",
+  "item.mcda.frost_armor.tooltip_3":              "відчувати себе єдиним цілим із зимою.",
+
+  "item.mcda.frost_armor.effect.tooltip_1":       "Замороження рідин",
+
+  "item.mcda.soul_robe_helmet":                   "Капюшон душі",
+  "item.mcda.soul_robe_chestplate":               "Роба душі",
+  "item.mcda.soul_robe_leggings":                 "Наголінники душі",
+  "item.mcda.soul_robe_boots":                    "Ремінь душі",
+
+  "item.mcda.soul_robe.tooltip_1":                "В особливому світлі душі, вплетені",
+  "item.mcda.soul_robe.tooltip_2":                "в тканину роби душі,",
+  "item.mcda.soul_robe.tooltip_3":                "переливаються силою.",
+
+  "item.mcda.souldancer_robe_helmet":             "Капюшон душетанцю",
+  "item.mcda.souldancer_robe_chestplate":         "Роба душетанцю",
+  "item.mcda.souldancer_robe_leggings":           "Наголінники душетанцю",
+  "item.mcda.souldancer_robe_boots":              "Ремінь душетанцю",
+
+  "item.mcda.souldancer_robe.tooltip_1":          "У світлі роби душетанцю наче",
+  "item.mcda.souldancer_robe.tooltip_2":          "оживають душі всередині неї",
+  "item.mcda.souldancer_robe.tooltip_3":          "вічний танець.",
+
+  "item.mcda.souldancer_robe.effect.tooltip_1":   "Грація душетанцю",
+  "item.mcda.souldancer_robe.effect.tooltip_2":   "Досвід душетанцю",
+
+  "item.mcda.spelunker_armor_helmet":             "Шолом спелеолога",
+  "item.mcda.spelunker_armor_chestplate":         "Желет спелеолога",
+  "item.mcda.spelunker_armor_leggings":           "Наголінники спелеолога",
+  "item.mcda.spelunker_armor_boots":              "Скоби спелеолога",
+
+  "item.mcda.spelunker_armor.tooltip_1":          "Обладунки спелеолога носять ті, хто",
+  "item.mcda.spelunker_armor.tooltip_2":          "відважно спускається в найтемніші",
+  "item.mcda.spelunker_armor.tooltip_3":          "глибини верхнього світу.",
+
+  "item.mcda.cave_crawler_helmet":                "Шолом печерного повзуна",
+  "item.mcda.cave_crawler_chestplate":            "Желет печерного повзуна",
+  "item.mcda.cave_crawler_leggings":              "Наголінники печерного повзуна",
+  "item.mcda.cave_crawler_boots":                 "Чоботи печерного повзуна",
+
+  "item.mcda.cave_crawler.tooltip_1":             "Обладунок печерного повзуна передавалася",
+  "item.mcda.cave_crawler.tooltip_2":             "з покоління в покоління відважними",
+  "item.mcda.cave_crawler.tooltip_3":             "спелеологами та шахтарями.",
+
+  "item.mcda.cave_crawler.effect.tooltip_1":      "Квапливість",
+
+  "item.mcda.thief_armor_helmet":                 "Маска злодія",
+  "item.mcda.thief_armor_chestplate":             "Желет злодія",
+  "item.mcda.thief_armor_leggings":               "Наголінники злодія",
+  "item.mcda.thief_armor_boots":                  "Ремінь злодія",
+
+  "item.mcda.thief_armor.tooltip_1":              "Ці обладунки легкі, маневрені",
+  "item.mcda.thief_armor.tooltip_2":              "і злегка пахнуть сіркою.",
+
+  "item.mcda.thief_armor.effect.tooltip_1":       "Невидимість",
+
+  "item.mcda.spider_armor_helmet":                "Маска павука",
+  "item.mcda.spider_armor_chestplate":            "Желет павука",
+  "item.mcda.spider_armor_leggings":              "Наголінники павука",
+  "item.mcda.spider_armor_boots":                 "Ремінь павука",
+
+  "item.mcda.spider_armor.tooltip_1":             "Обладунки павука, створена",
+  "item.mcda.spider_armor.tooltip_2":             "майстрами-злодіями, натхненна",
+  "item.mcda.spider_armor.tooltip_3":             "спритними здібностями павука.",
+
+  "item.mcda.spider_armor.effect.tooltip_1":      "Лазання по стінам",
+  "item.mcda.spider_armor.effect.tooltip_2":      "Ходіння по павутині",
+
+  "item.mcda.wolf_armor_helmet":                  "Капюшон вовка",
+  "item.mcda.wolf_armor_chestplate":              "Желет вовка",
+  "item.mcda.wolf_armor_leggings":                "Наголінники вовка",
+  "item.mcda.wolf_armor_boots":                   "Чоботи вовка",
+
+  "item.mcda.wolf_armor.tooltip_1":               "Багато воїнів одягають вовчі",
+  "item.mcda.wolf_armor.tooltip_2":               "голови на битву, щоб вселити",
+  "item.mcda.wolf_armor.tooltip_3":               "страх у серця ворогів.",
+
+  "item.mcda.black_wolf_armor_helmet":            "Капюшон чорного вовка",
+  "item.mcda.black_wolf_armor_chestplate":        "Желет чорного вовка",
+  "item.mcda.black_wolf_armor_leggings":          "Наголінники чорного вовка",
+  "item.mcda.black_wolf_armor_boots":             "Чоботи чорного вовка",
+
+  "item.mcda.black_wolf_armor.tooltip_1":         "Вовк, який нападає з тіні живе,",
+  "item.mcda.black_wolf_armor.tooltip_2":         "щоб розповісти історію.",
+
+  "item.mcda.black_wolf_armor.effect.tooltip_1":  "Вожак зграї",
+
+  "item.mcda.fox_armor_helmet":                   "Капюшон лисиці",
+  "item.mcda.fox_armor_chestplate":               "Желет лисиці",
+  "item.mcda.fox_armor_leggings":                 "Наголінники лисиці",
+  "item.mcda.fox_armor_boots":                    "Чоботи лисиці",
+
+  "item.mcda.fox_armor.tooltip_1":                "Давні племена селян створили цей обладунок",
+  "item.mcda.fox_armor.tooltip_2":                "на честь лиса, великого і спритного",
+  "item.mcda.fox_armor.tooltip_3":                "воїна. Цей виріб вселяє жах у серця",
+  "item.mcda.fox_armor.tooltip_4":                "багатьох ворогів, адже його",
+  "item.mcda.fox_armor.tooltip_5":                "щкіру досить важко пробити",
+  "item.mcda.fox_armor.tooltip_6":                " навіть найкращим мечем.",
+
+  "item.mcda.fox_armor.effect.tooltip_1":         "Ходьба в кущах",
+  "item.mcda.fox_armor.effect.tooltip_2":         "Лисяча атака",
+
+  "item.mcda.arctic_fox_armor_helmet":            "Капюшон песця",
+  "item.mcda.arctic_fox_armor_chestplate":        "Желет песця",
+  "item.mcda.arctic_fox_armor_leggings":          "Наголінники песця",
+  "item.mcda.arctic_fox_armor_boots":             "Чоботи песця",
+
+  "item.mcda.arctic_fox_armor.tooltip_1":         "Якщо ви хочете вижити в крижаній тундрі",
+  "item.mcda.arctic_fox_armor.tooltip_2":         "зі смаком, обладунок зі шкіри песця -",
+  "item.mcda.arctic_fox_armor.tooltip_3":         "найкращий вибір цього сезону.",
+
+  "item.mcda.arctic_fox_armor.effect.tooltip_1":  "Ходьба в кущах",
+  "item.mcda.arctic_fox_armor.effect.tooltip_2":  "Лисяча атака",
+  "item.mcda.arctic_fox_armor.effect.tooltip_3":  "Арктична височина",
+  "item.mcda.arctic_fox_armor.effect.tooltip_4":  "Швидкість солодких ягід",
+
+  "item.mcda.emerald_gear_helmet":                "Шолом смарагдової шестерні",
+  "item.mcda.emerald_gear_chestplate":            "Нагрудник смарагдової шестерні",
+  "item.mcda.emerald_gear_leggings":              "Наголінники смарагдової шестерні",
+  "item.mcda.emerald_gear_boots":                 "Чоботи смарагдової шестерні",
+
+  "item.mcda.emerald_gear.tooltip_1":             "Коли ви одягаєте смарагдові обладунки під час",
+  "item.mcda.emerald_gear.tooltip_2":             "своїх пригод, вони ніби випадково",
+  "item.mcda.emerald_gear.tooltip_3":             "притягують до себе інші смарагди.",
+
+  "item.mcda.opulent_armor_helmet":               "Пишний шолом",
+  "item.mcda.opulent_armor_chestplate":           "Пишний нагрудник",
+  "item.mcda.opulent_armor_leggings":             "Пишні наголінники",
+  "item.mcda.opulent_armor_boots":                "Пишні чоботи",
+
+  "item.mcda.opulent_armor.tooltip_1":            "Пишні обладунки, спочатку призначені",
+  "item.mcda.opulent_armor.tooltip_2":            "більше для показу, ніж для бою,",
+  "item.mcda.opulent_armor.tooltip_3":            "розквітають у присутності смарагдів.",
+
+  "item.mcda.opulent_armor.effect.tooltip_1":     "Удача",
+
+  "item.mcda.gilded_glory_helmet":                "Шолом позолоченої слави",
+  "item.mcda.gilded_glory_chestplate":            "Нагрудник позолоченої слави",
+  "item.mcda.gilded_glory_leggings":              "Наголінники позолоченої слави",
+  "item.mcda.gilded_glory_boots":                 "Чоботи позолоченої слави",
+
+  "item.mcda.gilded_glory.tooltip_1":             "Навіть сама смерть змушена зупинитися",
+  "item.mcda.gilded_glory.tooltip_2":             "і захопитися красою легендарних",
+  "item.mcda.gilded_glory.tooltip_3":             "обладунків позолоченої слави.",
+
+  "item.mcda.gilded_glory.effect.tooltip_1":      "Герой селища",
+  "item.mcda.gilded_glory.effect.tooltip_2":      "Позолочений тотем",
+  "item.mcda.gilded_glory.effect.tooltip_3":      "Позолочена шкода",
+  "item.mcda.gilded_glory.effect.tooltip_4":      "Фальшивий ідол",
+
+  "item.mcda.climbing_gear_helmet":               "Капюшон скалелаза",
+  "item.mcda.climbing_gear_chestplate":           "Куртка скалелаза",
+  "item.mcda.climbing_gear_leggings":             "Наголінники скалелаза",
+  "item.mcda.climbing_gear_boots":                "Чоботи скалелаза",
+
+  "item.mcda.climbing_gear.tooltip_1":            "Це навчальне спорядження для скелелазіння",
+  "item.mcda.climbing_gear.tooltip_2":            "ідеально підходить для того, щоб витримати",
+  "item.mcda.climbing_gear.tooltip_3":            "крижаний холод льодовитих гірських схилів.",
+
+  "item.mcda.rugged_climbing_gear_helmet":        "Міцний Капюшон скалелаза",
+  "item.mcda.rugged_climbing_gear_chestplate":    "Міцна Куртка скалелаза",
+  "item.mcda.rugged_climbing_gear_leggings":      "Міцні Наголінники скалелаза",
+  "item.mcda.rugged_climbing_gear_boots":         "Міцні Чоботи скалелаза",
+
+  "item.mcda.rugged_climbing_gear.tooltip_1":     "Ця міцна броня витримає найгірше,",
+  "item.mcda.rugged_climbing_gear.tooltip_2":     "що вам може підкинути природа.",
+
+  "item.mcda.rugged_climbing_gear.effect.tooltip_1":  "Скалелазіння",
+
+  "item.mcda.goat_gear_helmet":                   "Капюшон з кіз",
+  "item.mcda.goat_gear_chestplate":               "Куртка з кіз",
+  "item.mcda.goat_gear_leggings":                 "Наголінники з кіз",
+  "item.mcda.goat_gear_boots":                    "Чоботи з кіз",
+
+  "item.mcda.goat_gear.tooltip_1":                "Виготовлений зі шкур гірських кіз,",
+  "item.mcda.goat_gear.tooltip_2":                "цей одяг з козячого хутра допоможе",
+  "item.mcda.goat_gear.tooltip_3":                "вам стрибати з вершини на вершину.",
+
+  "item.mcda.sprout_armor_boots":                 "Чоботи паростків",
+  "item.mcda.sprout_armor_leggings":              "Наголінники паростків",
+  "item.mcda.sprout_armor_chestplate":            "Роба паростків",
+  "item.mcda.sprout_armor_helmet":                "Капюшон паростків",
+
+  "item.mcda.sprout_armor.tooltip_1":             "Темні лози обладунків паростків",
+  "item.mcda.sprout_armor.tooltip_2":             "продовжують рости, навіть у",
+  "item.mcda.sprout_armor.tooltip_3":             "повній темряві.",
+
+  "item.mcda.sprout_armor.effect.tooltip_1":      "Вогнестійкість",
+
+  "item.mcda.living_vines_armor_boots":           "Чоботи живих лоз",
+  "item.mcda.living_vines_armor_leggings":        "Наголінники живих лоз",
+  "item.mcda.living_vines_armor_chestplate":      "Роба живих лоз",
+  "item.mcda.living_vines_armor_helmet":          "Капюшон живих лоз",
+
+  "item.mcda.living_vines_armor.tooltip_1":       "Ці обладунки виготовлені з живої",
+  "item.mcda.living_vines_armor.tooltip_2":       "лози рослини, яка росте лише",
+  "item.mcda.living_vines_armor.tooltip_3":       "на полях битв.",
+
+  "item.mcda.living_vines_armor.effect.tooltip_1":   "Вогнестійкість",
+
+  "item.mcda.piglin_armor_boots":                 "Чоботи піґліна",
+  "item.mcda.piglin_armor_leggings":              "Наголінники піґліна",
+  "item.mcda.piglin_armor_chestplate":            "Нагрудник піґліна",
+  "item.mcda.piglin_armor_helmet":                "Шолом піґліна",
+
+  "item.mcda.piglin_armor.tooltip_1":             "Носіння обладунків піґліна майже",
+  "item.mcda.piglin_armor.tooltip_2":             "достатньо, щоб відчути себе в",
+  "item.mcda.piglin_armor.tooltip_3":             "Незері як вдома. Майже.",
+
+  "item.mcda.golden_piglin_armor_boots":          "Чоботи золотого піґліна",
+  "item.mcda.golden_piglin_armor_leggings":       "Наголінники золотого піґліна",
+  "item.mcda.golden_piglin_armor_chestplate":     "Нагрудник золотого піґліна",
+  "item.mcda.golden_piglin_armor_helmet":         "Шолом золотого піґліна",
+
+  "item.mcda.golden_piglin_armor.tooltip_1":      "Золотий обладунок піґліна поєднує",
+  "item.mcda.golden_piglin_armor.tooltip_2":      "в собі його дві улюблені речі: ",
+  "item.mcda.golden_piglin_armor.tooltip_3":      "не вмирати та золото.",
+
+  "item.mcda.golden_piglin_armor.effect.tooltip_1":   "Обман піґліна",
+
+  "item.mcda.squid_armor_boots":                  "Чоботи спрута",
+  "item.mcda.squid_armor_leggings":               "Наголінники спрута",
+  "item.mcda.squid_armor_chestplate":             "Нагрудник спрута",
+  "item.mcda.squid_armor_helmet":                 "Шолом спрута",
+
+  "item.mcda.squid_armor.tooltip_1":              "Зробити ці обладунки чорні, як смола,",
+  "item.mcda.squid_armor.tooltip_2":              "крутими було нескладно. Найважче було",
+  "item.mcda.squid_armor.tooltip_3":              "закріпити чорнильні мішечки.",
+
+  "item.mcda.glow_squid_armor_boots":             "Чоботи сяючого спрута",
+  "item.mcda.glow_squid_armor_leggings":          "Наголінники сяючого спрута",
+  "item.mcda.glow_squid_armor_chestplate":        "Нагрудник сяючого спрута",
+  "item.mcda.glow_squid_armor_helmet":            "Шолом сяючого спрута",
+
+  "item.mcda.glow_squid_armor.tooltip_1":         "Ті, хто полює на невловимих сяючих",
+  "item.mcda.glow_squid_armor.tooltip_2":         "спрутів, носять ці обладунки, щоб",
+  "item.mcda.glow_squid_armor.tooltip_3":         "злитися зі своєю прекрасною здобиччю.",
+
+  "item.mcda.glow_squid_armor.effect.tooltip_1":  "Водяне дихання",
+
+  "item.mcda.turtle_armor_boots":                 "Чоботи черепахи",
+  "item.mcda.turtle_armor_leggings":              "Наголінники черепахи",
+  "item.mcda.turtle_armor_chestplate":            "Нагрудник черепахи",
+  "item.mcda.turtle_armor_helmet":                "Шолом черепахи",
+
+  "item.mcda.turtle_armor.tooltip_1":             "Обладунок черепахи панцир натхненний",
+  "item.mcda.turtle_armor.tooltip_2":             "витривалим і міцним панциром",
+  "item.mcda.turtle_armor.tooltip_3":             "смиренної черепахи.",
+
+  "item.mcda.nimble_turtle_armor_boots":          "Чоботи спритної черепахи",
+  "item.mcda.nimble_turtle_armor_leggings":       "Наголінники спритної черепахи",
+  "item.mcda.nimble_turtle_armor_chestplate":     "Нагрудник спритної черепахи",
+  "item.mcda.nimble_turtle_armor_helmet":         "Шолом спритної черепахи",
+
+  "item.mcda.nimble_turtle_armor.tooltip_1":      "Ця броня зроблена з щільних, але",
+  "item.mcda.nimble_turtle_armor.tooltip_2":      "напрочуд легких панцирів черепах,",
+  "item.mcda.nimble_turtle_armor.tooltip_3":      "які жили на нищівних глибинах.",
+
+  "item.mcda.nimble_turtle_armor.effect.tooltip_1":  "Стійкість спритних черепах",
+
+  "item.mcda.entertainer_garb_helmet":            "Капелюх аніматора",
+  "item.mcda.entertainer_garb_chestplate":        "Желет аніматора",
+  "item.mcda.entertainer_garb_leggings":          "Наголінники аніматора",
+  "item.mcda.entertainer_garb_boots":             "Накладки аніматора",
+
+  "item.mcda.entertainer_garb.tooltip_1":         "Захист? Звичайно. Казково? АБСОЛЮТНО.",
+
+  "item.mcda.troubadour_armor_helmet":            "Капелюх трубадура",
+  "item.mcda.troubadour_armor_chestplate":        "Желет трубадура",
+  "item.mcda.troubadour_armor_leggings":          "Наголінники трубадура",
+  "item.mcda.troubadour_armor_boots":             "Накладки трубадура",
+
+  "item.mcda.troubadour_armor.tooltip_1":         "Навіщо залишати своїх шанувальників бажати",
+  "item.mcda.troubadour_armor.tooltip_2":         "більшого, коли ви можете вразити їх",
+  "item.mcda.troubadour_armor.tooltip_3":         "цим натхненним вбранням?",
+
+  "item.mcda.troubadour_armor.effect.tooltip_1":  "Харизма трубадура",
+
+  "item.mcda.teleportation_robe_helmet":          "Капюшон телепортації",
+  "item.mcda.teleportation_robe_chestplate":      "Роба телепортації",
+  "item.mcda.teleportation_robe_leggings":        "Накидка телепортації",
+  "item.mcda.teleportation_robe_boots":           "Взуття телепортації",
+
+  "item.mcda.teleportation_robe.tooltip_1":       "Роба телепортації була виготовлена тими,",
+  "item.mcda.teleportation_robe.tooltip_2":       "хто присвятив своє життя вивченню",
+  "item.mcda.teleportation_robe.tooltip_3":       "загадок Енду.",
+
+  "item.mcda.teleportation_robe.effect.tooltip_1":  "Телепортація",
+
+  "item.mcda.unstable_robe_helmet":               "Капюшон нестабільності",
+  "item.mcda.unstable_robe_chestplate":           "Роба нестабільності",
+  "item.mcda.unstable_robe_leggings":             "Накидка нестабільності",
+  "item.mcda.unstable_robe_boots":                "Взуття нестабільності",
+
+  "item.mcda.unstable_robe.tooltip_1":            "Цея Ендер роба іскриться статикою,",
+  "item.mcda.unstable_robe.tooltip_2":            "коли ви проноситесь по полю бою.",
+
+  "item.mcda.unstable_robe.effect.tooltip_1":     "Нестабільна телепортація",
+
+  "item.mcda.shulker_armor_helmet":               "Шолом шалкера",
+  "item.mcda.shulker_armor_chestplate":           "Нагрудник шалкера",
+  "item.mcda.shulker_armor_leggings":             "Пояс шалкера",
+  "item.mcda.shulker_armor_boots":                "Пов'язка шалкера",
+
+  "item.mcda.shulker_armor.tooltip_1":            "Обладунок шалкера не поступається навіть",
+  "item.mcda.shulker_armor.tooltip_2":            "найміцнішій сталевій пластині.",
+
+  "item.mcda.sturdy_shulker_armor_helmet":        "Міцний шолом шалкера",
+  "item.mcda.sturdy_shulker_armor_chestplate":    "Міцний нагрудник шалкера",
+  "item.mcda.sturdy_shulker_armor_leggings":      "Міцний пояс шалкера",
+  "item.mcda.sturdy_shulker_armor_boots":         "Міцна пов'язка шалкера",
+
+  "item.mcda.sturdy_shulker_armor.tooltip_1":     "Кажуть, що найкращий захист - це",
+  "item.mcda.sturdy_shulker_armor.tooltip_2":     "хороший напад, але удачі вам",
+  "item.mcda.sturdy_shulker_armor.tooltip_3":     "у прориві через цей бастіон.",
+
+  "item.mcda.sturdy_shulker_armor.effect.tooltip_1":  "Імунітет до левітації",
+  "item.mcda.sturdy_shulker_armor.effect.tooltip_2":  "Снаряд шалкера",
+
+  "item.mcda.gourdian_armor_helmet":              "Шолом Гарбузовика",
+  "item.mcda.gourdian_armor_chestplate":          "Нагрудник Гарбузовика",
+  "item.mcda.gourdian_armor_leggings":            "Наголінники Гарбузовика",
+  "item.mcda.gourdian_armor_boots":               "Чоботи Гарбузовика",
+
+  "item.mcda.gourdian_armor.tooltip_1":           "Той, хто носить мантію моторошного",
+  "item.mcda.gourdian_armor.tooltip_2":           "гарбузовика, стає легендарним",
+  "item.mcda.gourdian_armor.tooltip_3":           "жахом гарбузових пасовищ.",
+  "item.mcda.gourdian_armor.tooltip_4":           "",
+
+  "item.mcda.gourdian_armor.effect.tooltip_1":    "Ненависть гарбузовика",
+
+  "item.mcda.cauldron_armor_helmet":              "Шолом Казанового",
+  "item.mcda.cauldron_armor_chestplate":          "Нагрудник Казанового",
+  "item.mcda.cauldron_armor_leggings":            "Пояс Казанового",
+  "item.mcda.cauldron_armor_boots":               "Пов'язка Казанового",
+
+  "item.mcda.cauldron_armor.tooltip_1":           "Обладунок казанового був створений з думкою",
+  "item.mcda.cauldron_armor.tooltip_2":           "про маскування, але з капелюхом йому не",
+  "item.mcda.cauldron_armor.tooltip_3":           "вистачає непомітності, яку він",
+  "item.mcda.cauldron_armor.tooltip_4":           "компенсує бульбашковим шармом.",
+
+  "item.mcda.cauldron_armor.effect.tooltip_1":    "Переповнення казана",
+
+  "item.mcda.sweet_tooth_helmet":                 "Шолом ласуна",
+  "item.mcda.sweet_tooth_chestplate":             "Нагрудник ласуна",
+  "item.mcda.sweet_tooth_leggings":               "Наголінники ласуна",
+  "item.mcda.sweet_tooth_boots":                  "Чоботи ласуна",
+
+  "item.mcda.sweet_tooth.tooltip_1":              "Цей обладунок може виглядати для",
+  "item.mcda.sweet_tooth.tooltip_2":              "ворогів як шматок торта, але він",
+  "item.mcda.sweet_tooth.tooltip_3":              "напрочуд міцний у бою. Мабуть,",
+  "item.mcda.sweet_tooth.tooltip_4":              "через помадку.",
+
+  "item.mcda.vanguard_armor_helmet":              "Шолом авангарду",
+  "item.mcda.vanguard_armor_chestplate":          "Нагрудник авангарду",
+  "item.mcda.vanguard_armor_leggings":            "Ремінь авангарду",
+
+  "item.mcda.effect.lightfooted":                 "Легконогий",
+  "item.mcda.effect.freezing_protection":         "Захист від морозів",
+
+  "item.mcda.bone_rib_cage":                      "Кістки грудної клітки",
+  "item.mcda.phantom_bones":                      "Кістки фантома",
+  "item.mcda.phantom_skin":                       "Шкіра фантома",
+  "item.mcda.ocelot_pelt":                        "Шкіра оцелота",
+  "item.mcda.ocelot_pelt_black":                  "Чорна шкіра оцелота",
+  "item.mcda.wolf_pelt":                          "Шкіра вовка",
+  "item.mcda.wolf_pelt_black":                    "Чорна шкіра вовка",
+  "item.mcda.fox_pelt":                           "Шкіра лисиці",
+  "item.mcda.fox_pelt_arctic":                    "Чорна шкіра лисиці",
+  "item.mcda.goat_pelt":                          "Шкіра кози",
+  "item.mcda.frost_crystal":                      "Крижаний кристал",
+  "item.mcda.glut_charm":                         "Чарівність переїдання",
+  "item.mcda.iron_plate":                         "Залізна плита",
+  "item.mcda.iron_scale":                         "Залізна луска",
+
+  "item.mcda.fabric_bolt_white":                  "Біла тканина",
+  "item.mcda.fabric_bolt_orange":                 "Помаранчева тканина",
+  "item.mcda.fabric_bolt_magenta":                "Пурпурова тканина",
+  "item.mcda.fabric_bolt_light_blue":             "Блакитна тканина",
+  "item.mcda.fabric_bolt_yellow":                 "Жовта тканина",
+  "item.mcda.fabric_bolt_lime":                   "Лаймова тканина",
+  "item.mcda.fabric_bolt_pink":                   "Рожева тканина",
+  "item.mcda.fabric_bolt_gray":                   "Сіра тканина",
+  "item.mcda.fabric_bolt_light_gray":             "Світло-сіра тканина",
+  "item.mcda.fabric_bolt_cyan":                   "бірюзова тканина",
+  "item.mcda.fabric_bolt_purple":                 "Фіолетова тканина",
+  "item.mcda.fabric_bolt_blue":                   "Синя тканина",
+  "item.mcda.fabric_bolt_brown":                  "Коричнева тканина",
+  "item.mcda.fabric_bolt_green":                  "Зелена тканина",
+  "item.mcda.fabric_bolt_red":                    "Червона тканина",
+  "item.mcda.fabric_bolt_black":                  "Чорна тканина",
+
+  "item.mcda.upgrade_core":                       "Ядро поліпшення - База",
+  "item.mcda.upgrade_core_archer":                "Ядро поліпшення - Лучник",
+  "item.mcda.upgrade_core_depth":                 "Ядро поліпшення - Глибина",
+  "item.mcda.upgrade_core_ember":                 "Ядро поліпшення - Янтар",
+  "item.mcda.upgrade_core_fox":                   "Ядро поліпшення - Лис",
+  "item.mcda.upgrade_core_frost":                 "Ядро поліпшення - Мороз",
+  "item.mcda.upgrade_core_glut":                  "Ядро поліпшення - Надлишок",
+  "item.mcda.upgrade_core_golden":                "Ядро поліпшення - Золотий",
+  "item.mcda.upgrade_core_highland":              "Ядро поліпшення - Викогірря",
+  "item.mcda.upgrade_core_hive":                  "Ядро поліпшення - Вулик",
+  "item.mcda.upgrade_core_magicked":              "Ядро поліпшення - Зачарований",
+  "item.mcda.upgrade_core_metal":                 "Ядро поліпшення - Метал",
+  "item.mcda.upgrade_core_oceanic":               "Ядро поліпшення - Океан",
+  "item.mcda.upgrade_core_shadows":               "Ядро поліпшення - Тінь",
+  "item.mcda.upgrade_core_spider":                "Ядро поліпшення - Павук",
+  "item.mcda.upgrade_core_soul":                  "Ядро поліпшення - Душа",
+  "item.mcda.upgrade_core_verdant":               "Ядро поліпшення - Зелений",
+  "item.mcda.upgrade_core_void":                  "Ядро поліпшення - Порожнеча",
+  "item.mcda.upgrade_core_wither":                "Ядро поліпшення - Візер",
+  "item.mcda.upgrade_core_wolf":                  "Ядро поліпшення - Вовк",
+
+  "item.mcda.gemstone_white":                     "Кварцовий самоцвіт",
+  "item.mcda.gemstone_blue":                      "Лазуритовий самоцвіт",
+  "item.mcda.gemstone_green":                     "Смарагдовий самоцвіт",
+  "item.mcda.gemstone_purple":                    "Аметистовий самоцвіт",
+  "item.mcda.gemstone_red":                       "Редстоуновий самоцвіт",
+
+  "enchantment.mcda.bag_of_souls":                "Мішок душ",
+  "enchantment.mcda.burning":                     "Пекло",
+  "enchantment.mcda.chilling":                    "Тундра",
+  "enchantment.mcda.cowardice":                   "Боягузтво",
+  "enchantment.mcda.death_barter":                "Обмін смерті",
+  "enchantment.mcda.deflect":                     "Відхилення",
+  "enchantment.mcda.fire_focus":                  "Фокус вогню",
+  "enchantment.mcda.fire_trail":                  "Вогняний слід",
+  "enchantment.mcda.food_reserves":               "Продовольчі запаси",
+  "enchantment.mcda.frenzied":                    "Несамовитий",
+  "enchantment.mcda.heal_allies":                 "Зцілення союзників",
+  "enchantment.mcda.lucky_explorer":              "Щасливий дослідник",
+  "enchantment.mcda.poison_focus":                "Фокус отрут",
+  "enchantment.mcda.potion_barrier":              "Бар'єр отрут",
+  "enchantment.mcda.reckless":                    "Безрозсудний",
+  "enchantment.mcda.recycler":                    "Переробник",
+  "enchantment.mcda.snowball":                    "Снігова куля",
+  "enchantment.mcda.surprise_gift":               "Подарунок",
+  "enchantment.mcda.swiftfooted":                 "Прудконогий",
+
+  "effect.mcda.freezing":                         "Мороз",
+
+  "subtitles.mcda.player_dodged":                 "Гравець ухилився",
+
+  "enchantment.mcda.bag_of_souls.desc":           "Збільшує кількість досвіду, який ви отримуєте відносно рівня чарів.",
+  "enchantment.mcda.burning.desc":                "Вогняна версія шипів.",
+  "enchantment.mcda.chilling.desc":               "Уповільнює і накладає на атакуючого втому.",
+  "enchantment.mcda.cowardice.desc":              "При повному здоров'ї ви отримуєте силу.",
+  "enchantment.mcda.death_barter.desc":           "Коли ви помрете, ви зможете оплатити свій вихід зі смерті смарагдами.",
+  "enchantment.mcda.deflect.desc":                "Коли у вас стріляють стрілою, є шанс, що стріла завдасть половину шкоди і відлетіти від вас.",
+  "enchantment.mcda.fire_focus.desc":             "Збільшує кількість шкоди, що наноситься вогняними атаками, особливо сили вогню.",
+  "enchantment.mcda.fire_trail.desc":             "За гравцем тягнеться вогняний слід.",
+  "enchantment.mcda.food_reserves.desc":          "Випиваючи зілля миттєвого здоров'я, ви отримуєте певну кількість ситості.",
+  "enchantment.mcda.frenzied.desc":               "Коли ваше здоров'я падає нижче 50%, ви отримуєте поспіх",
+  "enchantment.mcda.heal_allies.desc":            "Союзники (селяни, домашні тварини, големи та інші гравці) зцілюються, коли отримують шкоду.",
+  "enchantment.mcda.lucky_explorer.desc":         "Шанс згенерувати смарагди з кожним дослідженим блоком.",
+  "enchantment.mcda.poison_focus.desc":           "Збільшує кількість шкоди від атак отрутою.",
+  "enchantment.mcda.potion_barrier.desc":         "Випиваючи зілля миттєвого здоров'я, ви отримуєте стійкість.",
+  "enchantment.mcda.reckless.desc":               "Коли ваше здоров'я падає на 60%, ви отримуєте силу відповідно до рівня чарів.",
+  "enchantment.mcda.recycler.desc":               "Шанс що при пораненні стрілою ви отримаєте стрілу, спіймавши або піднявши стрілу, якою в вас стріляли.",
+  "enchantment.mcda.snowball.desc":               "При нападі двох або більше нападників, магічний сніжок буде кинутий в одного з нападників, відкинувши його.",
+  "enchantment.mcda.surprise_gift.desc":          "Випиваючи зілля миттєвого здоров'я, ви отримуєте ще одне зілля з деякого списку.",
+  "enchantment.mcda.swiftfooted.desc":            "Під час стрибка ви отримуєте кілька секунд прискорення.",
+
+  "activity.mcda.firetrail.enabled":              "Вогняний слід увімкнено.",
+  "activity.mcda.firetrail.disabled":             "Вогняний слід вимкнено.",
+
+  "key.mcda.firetrail.toggle":                    "Перемикання вогняного сліду",
+  "key.category.mcda":                            "MC Dungeons Броня",
+
+  "block.mcda.fading_obsidian":                   "Згасаючий обсидіан"
+}
