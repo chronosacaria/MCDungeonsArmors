@@ -1,0 +1,39 @@
+{
+  "replace": false,
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:poison",
+  "providers": [
+    {
+      "item": "mcda:beehive_armor_helmet"
+    },
+	{
+      "item": "mcda:beehive_armor_chestplate"
+    },
+	{
+      "item": "mcda:beehive_armor_leggings"
+    },
+	{
+      "item": "mcda:beehive_armor_boots"
+    },
+	{
+      "item": "mcda:beenest_armor_helmet"
+    },
+	{
+      "item": "mcda:beenest_armor_chestplate"
+    },
+	{
+      "item": "mcda:beenest_armor_leggings"
+    },
+	{
+      "item": "mcda:beenest_armor_boots"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "jeed"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "replace": false,
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:wither",
+  "providers": [
+    {
+      "item": "mcda:wither_armor_helmet"
+    },
+	{
+      "item": "mcda:wither_armor_chestplate"
+    },
+	{
+      "item": "mcda:wither_armor_leggings"
+    },
+	{
+      "item": "mcda:wither_armor_boots"
+    },
+	{
+      "item": "mcda:white_mystery_armor_helmet"
+    },
+	{
+      "item": "mcda:white_mystery_armor_chestplate"
+    },
+	{
+      "item": "mcda:white_mystery_armor_leggings"
+    },
+	{
+      "item": "mcda:white_mystery_armor_boots"
+    },
+	{
+      "item": "mcda:red_mystery_armor_helmet"
+    },
+	{
+      "item": "mcda:red_mystery_armor_chestplate"
+    },
+	{
+      "item": "mcda:red_mystery_armor_leggings"
+    },
+	{
+      "item": "mcda:red_mystery_armor_boots"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "jeed"
+      ]
+    }
+  ]
+}

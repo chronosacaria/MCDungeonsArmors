@@ -1,0 +1,63 @@
+{
+  "replace": false,
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:hero_of_the_village",
+  "providers": [
+    {
+      "item": "mcda:heros_armor_helmet"
+    },
+	{
+      "item": "mcda:heros_armor_chestplate"
+    },
+	{
+      "item": "mcda:heros_armor_leggings"
+    },
+	{
+      "item": "mcda:heros_armor_boots"
+    },
+	{
+      "item": "mcda:gilded_glory_helmet"
+    },
+	{
+      "item": "mcda:gilded_glory_chestplate"
+    },
+	{
+      "item": "mcda:gilded_glory_leggings"
+    },
+	{
+      "item": "mcda:gilded_glory_boots"
+    },
+	{
+      "item": "mcda:white_mystery_armor_helmet"
+    },
+	{
+      "item": "mcda:white_mystery_armor_chestplate"
+    },
+	{
+      "item": "mcda:white_mystery_armor_leggings"
+    },
+	{
+      "item": "mcda:white_mystery_armor_boots"
+    },
+	{
+      "item": "mcda:green_mystery_armor_helmet"
+    },
+	{
+      "item": "mcda:green_mystery_armor_chestplate"
+    },
+	{
+      "item": "mcda:green_mystery_armor_leggings"
+    },
+	{
+      "item": "mcda:green_mystery_armor_boots"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "jeed"
+      ]
+    }
+  ]
+}

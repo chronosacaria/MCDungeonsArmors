@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:levitation",
+  "providers": [
+    {
+      "item": "mcda:sturdy_shulker_armor_helmet"
+    },
+	{
+      "item": "mcda:sturdy_shulker_armor_chestplate"
+    },
+	{
+      "item": "mcda:sturdy_shulker_armor_leggings"
+    },
+	{
+      "item": "mcda:sturdy_shulker_armor_boots"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "jeed"
+      ]
+    }
+  ]
+}

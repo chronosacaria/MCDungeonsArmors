@@ -1,0 +1,63 @@
+{
+  "replace": false,
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:haste",
+  "providers": [
+    {
+      "item": "mcda:cave_crawler_helmet"
+    },
+	{
+      "item": "mcda:cave_crawler_chestplate"
+    },
+	{
+      "item": "mcda:cave_crawler_leggings"
+    },
+	{
+      "item": "mcda:cave_crawler_boots"
+    },
+	{
+      "item": "mcda:highland_armor_helmet"
+    },
+	{
+      "item": "mcda:highland_armor_chestplate"
+    },
+	{
+      "item": "mcda:highland_armor_leggings"
+    },
+	{
+      "item": "mcda:highland_armor_boots"
+    },
+	{
+      "item": "mcda:white_mystery_armor_helmet"
+    },
+	{
+      "item": "mcda:white_mystery_armor_chestplate"
+    },
+	{
+      "item": "mcda:white_mystery_armor_leggings"
+    },
+	{
+      "item": "mcda:white_mystery_armor_boots"
+    },
+	{
+      "item": "mcda:green_mystery_armor_helmet"
+    },
+	{
+      "item": "mcda:green_mystery_armor_chestplate"
+    },
+	{
+      "item": "mcda:green_mystery_armor_leggings"
+    },
+	{
+      "item": "mcda:green_mystery_armor_boots"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "jeed"
+      ]
+    }
+  ]
+}

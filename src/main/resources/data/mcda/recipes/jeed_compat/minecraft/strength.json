@@ -1,0 +1,87 @@
+{
+  "replace": false,
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:strength",
+  "providers": [
+    {
+      "item": "mcda:renegade_armor_helmet"
+    },
+	{
+      "item": "mcda:renegade_armor_chestplate"
+    },
+	{
+      "item": "mcda:renegade_armor_leggings"
+    },
+	{
+      "item": "mcda:renegade_armor_boots"
+    },
+	{
+      "item": "mcda:hungry_horror_helmet"
+    },
+	{
+      "item": "mcda:hungry_horror_chestplate"
+    },
+	{
+      "item": "mcda:hungry_horror_leggings"
+    },
+	{
+      "item": "mcda:hungry_horror_boots"
+    },
+	{
+      "item": "mcda:cauldron_armor_helmet"
+    },
+	{
+      "item": "mcda:cauldron_armor_chestplate"
+    },
+	{
+      "item": "mcda:cauldron_armor_leggings"
+    },
+	{
+      "item": "mcda:cauldron_armor_boots"
+    },
+	{
+      "item": "mcda:gourdian_armor_helmet"
+    },
+	{
+      "item": "mcda:gourdian_armor_chestplate"
+    },
+	{
+      "item": "mcda:gourdian_armor_leggings"
+    },
+	{
+      "item": "mcda:gourdian_armor_boots"
+    },
+	{
+      "item": "mcda:white_mystery_armor_helmet"
+    },
+	{
+      "item": "mcda:white_mystery_armor_chestplate"
+    },
+	{
+      "item": "mcda:white_mystery_armor_leggings"
+    },
+	{
+      "item": "mcda:white_mystery_armor_boots"
+    },
+	{
+      "item": "mcda:red_mystery_armor_helmet"
+    },
+	{
+      "item": "mcda:red_mystery_armor_chestplate"
+    },
+	{
+      "item": "mcda:red_mystery_armor_leggings"
+    },
+	{
+      "item": "mcda:red_mystery_armor_boots"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "jeed"
+      ]
+    }
+  ]
+}

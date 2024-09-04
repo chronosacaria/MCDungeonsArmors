@@ -814,6 +814,8 @@
 
   "effect.mcda.freezing":                         "Freezing",
 
+  "effect.mcda.freezing.description":             "Deals lethal cold damage over time. \n\nEntities that are immune to the cold are not affected. \n\nThis effect has a chance to be inflicted when attacking with a set of armor with the Frost Bite set bonus effect."
+
   "subtitles.mcda.player_dodged":                 "Player dodged",
 
   "enchantment.mcda.bag_of_souls.desc":           "Increases the amount of experience you gain relative to the level of the enchantment.",

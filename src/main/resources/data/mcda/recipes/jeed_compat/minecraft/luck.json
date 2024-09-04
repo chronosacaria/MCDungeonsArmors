@@ -1,0 +1,51 @@
+{
+  "replace": false,
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:luck",
+  "providers": [
+    {
+      "item": "mcda:opulent_armor_helmet"
+    },
+	{
+      "item": "mcda:opulent_armor_chestplate"
+    },
+	{
+      "item": "mcda:opulent_armor_leggings"
+    },
+	{
+      "item": "mcda:opulent_armor_boots"
+    },
+	{
+      "item": "mcda:white_mystery_armor_helmet"
+    },
+	{
+      "item": "mcda:white_mystery_armor_chestplate"
+    },
+	{
+      "item": "mcda:white_mystery_armor_leggings"
+    },
+	{
+      "item": "mcda:white_mystery_armor_boots"
+    },
+	{
+      "item": "mcda:green_mystery_armor_helmet"
+    },
+	{
+      "item": "mcda:green_mystery_armor_chestplate"
+    },
+	{
+      "item": "mcda:green_mystery_armor_leggings"
+    },
+	{
+      "item": "mcda:green_mystery_armor_boots"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "jeed"
+      ]
+    }
+  ]
+}
