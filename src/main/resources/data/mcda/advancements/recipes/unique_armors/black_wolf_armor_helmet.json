@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:black_wolf_armor_helmet"
+        "recipe": "mcda:upgrade_black_wolf_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:black_wolf_armor_helmet"
+      "mcda:upgrade_black_wolf_helmet"
     ]
   }
 }

@@ -47,7 +47,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:ghostly_armor_chestplate"
+        "recipe": "mcda:ghostly_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -62,7 +62,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:ghostly_armor_chestplate"
+      "mcda:ghostly_chestplate"
     ]
   }
 }

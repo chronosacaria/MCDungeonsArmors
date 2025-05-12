@@ -35,7 +35,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:mercenary_armor_chestplate"
+        "recipe": "mcda:mercenary_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -49,7 +49,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:mercenary_armor_chestplate"
+      "mcda:mercenary_chestplate"
     ]
   }
 }

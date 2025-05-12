@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:plate_armor_chestplate"
+        "recipe": "mcda:plate_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -36,7 +36,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:plate_armor_chestplate"
+      "mcda:plate_chestplate"
     ]
   }
 }

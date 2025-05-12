@@ -59,7 +59,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:ghostly_armor_leggings"
+        "recipe": "mcda:ghostly_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -75,7 +75,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:ghostly_armor_leggings"
+      "mcda:ghostly_leggings"
     ]
   }
 }

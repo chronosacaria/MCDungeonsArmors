@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:glow_squid_armor_helmet"
+        "recipe": "mcda:upgrade_glow_squid_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:glow_squid_armor_helmet"
+      "mcda:upgrade_glow_squid_helmet"
     ]
   }
 }

@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:hungry_horror_boots"
+        "recipe": "mcda:upgrade_hungry_horror_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:hungry_horror_boots"
+      "mcda:upgrade_hungry_horror_boots"
     ]
   }
 }

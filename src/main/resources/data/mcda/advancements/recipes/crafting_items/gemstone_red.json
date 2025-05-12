@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:gemstone_red"
+        "recipe": "mcda:recipe_gemstone_red"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +41,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:gemstone_red"
+      "mcda:recipe_gemstone_red"
     ]
   }
 }

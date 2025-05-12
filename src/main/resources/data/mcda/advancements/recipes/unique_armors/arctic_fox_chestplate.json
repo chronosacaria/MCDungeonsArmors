@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:arctic_fox_armor_chestplate"
+        "recipe": "mcda:arctic_fox_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:arctic_fox_armor_chestplate"
+      "mcda:arctic_fox_chestplate"
     ]
   }
 }

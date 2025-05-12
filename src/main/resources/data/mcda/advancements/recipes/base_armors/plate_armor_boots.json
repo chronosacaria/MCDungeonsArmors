@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:plate_armor_boots"
+        "recipe": "mcda:plate_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -36,7 +36,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:plate_armor_boots"
+      "mcda:plate_boots"
     ]
   }
 }

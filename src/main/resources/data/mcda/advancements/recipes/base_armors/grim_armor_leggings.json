@@ -47,7 +47,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:grim_armor_leggings"
+        "recipe": "mcda:grim_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -62,7 +62,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:grim_armor_leggings"
+      "mcda:grim_leggings"
     ]
   }
 }

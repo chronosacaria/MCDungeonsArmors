@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:black_wolf_armor_chestplate"
+        "recipe": "mcda:upgrade_black_wolf_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:black_wolf_armor_chestplate"
+      "mcda:upgrade_black_wolf_chestplate"
     ]
   }
 }

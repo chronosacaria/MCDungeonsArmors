@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:spider_armor_leggings"
+        "recipe": "mcda:upgrade_spider_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:spider_armor_leggings"
+      "mcda:upgrade_spider_leggings"
     ]
   }
 }

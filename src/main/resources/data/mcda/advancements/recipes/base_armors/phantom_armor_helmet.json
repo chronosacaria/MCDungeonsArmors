@@ -35,7 +35,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:phantom_armor_helmet"
+        "recipe": "mcda:phantom_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -49,7 +49,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:phantom_armor_helmet"
+      "mcda:phantom_helmet"
     ]
   }
 }

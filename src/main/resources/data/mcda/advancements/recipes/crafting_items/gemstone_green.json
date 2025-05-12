@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:gemstone_green"
+        "recipe": "mcda:recipe_gemstone_green"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +41,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:gemstone_green"
+      "mcda:recipe_gemstone_green"
     ]
   }
 }

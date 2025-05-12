@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:rugged_climbing_gear_helmet"
+        "recipe": "mcda:upgrade_rugged_climbing_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:rugged_climbing_gear_helmet"
+      "mcda:upgrade_rugged_climbing_helmet"
     ]
   }
 }

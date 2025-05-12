@@ -35,7 +35,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:guards_armor_chestplate"
+        "recipe": "mcda:guards_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -49,7 +49,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:guards_armor_chestplate"
+      "mcda:guards_chestplate"
     ]
   }
 }

@@ -47,7 +47,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:living_vines_armor_helmet"
+        "recipe": "mcda:living_vines_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -62,7 +62,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:living_vines_armor_helmet"
+      "mcda:living_vines_helmet"
     ]
   }
 }
