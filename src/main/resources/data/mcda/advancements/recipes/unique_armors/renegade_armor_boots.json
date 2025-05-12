@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:renegade_armor_boots"
+        "recipe": "mcda:upgrade_renegade_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:renegade_armor_boots"
+      "mcda:upgrade_renegade_boots"
     ]
   }
 }

@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:ghost_kindler_leggings"
+        "recipe": "mcda:upgrade_ghost_kindler_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:ghost_kindler_leggings"
+      "mcda:upgrade_ghost_kindler_leggings"
     ]
   }
 }

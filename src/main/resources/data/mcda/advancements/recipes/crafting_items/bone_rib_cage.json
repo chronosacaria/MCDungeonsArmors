@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:bone_rib_cage"
+        "recipe": "mcda:bone_rib_cage_c"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +41,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:bone_rib_cage"
+      "mcda:bone_rib_cage_c"
     ]
   }
 }

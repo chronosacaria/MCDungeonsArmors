@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:sturdy_shulker_armor_leggings"
+        "recipe": "mcda:upgrade_sturdy_shulker_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:sturdy_shulker_armor_leggings"
+      "mcda:upgrade_sturdy_shulker_leggings"
     ]
   }
 }

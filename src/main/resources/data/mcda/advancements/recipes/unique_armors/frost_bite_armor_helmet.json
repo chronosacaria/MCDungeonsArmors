@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:frost_bite_armor_helmet"
+        "recipe": "mcda:upgrade_frost_bite_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:frost_bite_armor_helmet"
+      "mcda:upgrade_frost_bite_helmet"
     ]
   }
 }

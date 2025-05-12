@@ -35,7 +35,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:living_vines_armor_leggings"
+        "recipe": "mcda:living_vines_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -49,7 +49,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:living_vines_armor_leggings"
+      "mcda:living_vines_leggings"
     ]
   }
 }

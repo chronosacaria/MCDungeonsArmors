@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:souldancer_robe_chestplate"
+        "recipe": "mcda:upgrade_soul_dancer_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:souldancer_robe_chestplate"
+      "mcda:upgrade_soul_dancer_chestplate"
     ]
   }
 }

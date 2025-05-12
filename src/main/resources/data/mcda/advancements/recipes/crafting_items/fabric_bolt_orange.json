@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:fabric_bolt_orange"
+        "recipe": "mcda:fabric_bolt_orange_c"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +41,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:fabric_bolt_orange"
+      "mcda:fabric_bolt_orange_c"
     ]
   }
 }

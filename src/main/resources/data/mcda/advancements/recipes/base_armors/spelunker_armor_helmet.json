@@ -35,7 +35,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:spelunker_armor_helmet"
+        "recipe": "mcda:spelunker_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -49,7 +49,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:spelunker_armor_helmet"
+      "mcda:spelunker_helmet"
     ]
   }
 }

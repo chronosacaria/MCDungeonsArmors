@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:ghost_kindler_chestplate"
+        "recipe": "mcda:upgrade_ghost_kindler_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:ghost_kindler_chestplate"
+      "mcda:upgrade_ghost_kindler_chestplate"
     ]
   }
 }

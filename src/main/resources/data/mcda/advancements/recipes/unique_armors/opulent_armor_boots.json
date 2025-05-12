@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:opulent_armor_boots"
+        "recipe": "mcda:upgrade_opulent_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:opulent_armor_boots"
+      "mcda:upgrade_opulent_boots"
     ]
   }
 }

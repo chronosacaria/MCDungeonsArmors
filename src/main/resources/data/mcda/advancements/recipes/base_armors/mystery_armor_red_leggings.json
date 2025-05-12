@@ -47,7 +47,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:red_mystery_armor_leggings"
+        "recipe": "mcda:mystery_armor_red_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -62,7 +62,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:red_mystery_armor_leggings"
+      "mcda:mystery_armor_red_leggings"
     ]
   }
 }

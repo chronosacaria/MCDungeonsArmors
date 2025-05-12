@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:shadow_walker_armor_helmet"
+        "recipe": "mcda:upgrade_shadow_walker_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:shadow_walker_armor_helmet"
+      "mcda:upgrade_shadow_walker_helmet"
     ]
   }
 }

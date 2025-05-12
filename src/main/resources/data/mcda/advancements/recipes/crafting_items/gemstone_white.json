@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:gemstone_white"
+        "recipe": "mcda:recipe_gemstone_white"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +41,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:gemstone_white"
+      "mcda:recipe_gemstone_white"
     ]
   }
 }

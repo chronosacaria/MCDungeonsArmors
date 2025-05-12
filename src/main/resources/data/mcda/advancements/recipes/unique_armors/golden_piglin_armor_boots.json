@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:golden_piglin_armor_boots"
+        "recipe": "mcda:upgrade_golden_piglin_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:golden_piglin_armor_boots"
+      "mcda:upgrade_golden_piglin_boots"
     ]
   }
 }

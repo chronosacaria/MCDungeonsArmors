@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:ember_robe_chestplate"
+        "recipe": "mcda:upgrade_ember_robe_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:ember_robe_chestplate"
+      "mcda:upgrade_ember_robe_chestplate"
     ]
   }
 }

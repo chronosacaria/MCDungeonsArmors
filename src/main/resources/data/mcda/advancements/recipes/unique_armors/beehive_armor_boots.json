@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:beehive_armor_boots"
+        "recipe": "mcda:upgrade_beehive_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:beehive_armor_boots"
+      "mcda:upgrade_beehive_boots"
     ]
   }
 }

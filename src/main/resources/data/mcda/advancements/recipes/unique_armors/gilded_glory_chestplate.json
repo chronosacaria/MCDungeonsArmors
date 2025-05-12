@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:gilded_glory_chestplate"
+        "recipe": "mcda:upgrade_gilded_glory_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:gilded_glory_chestplate"
+      "mcda:upgrade_gilded_glory_chestplate"
     ]
   }
 }

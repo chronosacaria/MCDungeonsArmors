@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:full_metal_armor_leggings"
+        "recipe": "mcda:upgrade_full_metal_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:full_metal_armor_leggings"
+      "mcda:upgrade_full_metal_leggings"
     ]
   }
 }

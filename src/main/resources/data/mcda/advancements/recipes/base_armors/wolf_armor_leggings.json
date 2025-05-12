@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:wolf_armor_leggings"
+        "recipe": "mcda:wolf_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -36,7 +36,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:wolf_armor_leggings"
+      "mcda:wolf_leggings"
     ]
   }
 }

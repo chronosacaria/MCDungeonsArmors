@@ -35,7 +35,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:reinforced_mail_leggings"
+        "recipe": "mcda:reinforced_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -49,7 +49,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:reinforced_mail_leggings"
+      "mcda:reinforced_leggings"
     ]
   }
 }

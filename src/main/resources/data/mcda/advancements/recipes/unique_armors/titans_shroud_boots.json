@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:titans_shroud_boots"
+        "recipe": "mcda:upgrade_titan_shroud_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:titans_shroud_boots"
+      "mcda:upgrade_titan_shroud_boots"
     ]
   }
 }

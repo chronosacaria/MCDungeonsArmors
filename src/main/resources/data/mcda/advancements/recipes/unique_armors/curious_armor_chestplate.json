@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:curious_armor_chestplate"
+        "recipe": "mcda:upgrade_curious_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:curious_armor_chestplate"
+      "mcda:upgrade_curious_chestplate"
     ]
   }
 }

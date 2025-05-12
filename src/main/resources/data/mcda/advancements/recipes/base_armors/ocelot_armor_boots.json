@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:ocelot_armor_boots"
+        "recipe": "mcda:ocelot_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -36,7 +36,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:ocelot_armor_boots"
+      "mcda:ocelot_boots"
     ]
   }
 }

@@ -35,7 +35,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:purple_mystery_armor_boots"
+        "recipe": "mcda:mystery_armor_purple_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -49,7 +49,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:purple_mystery_armor_boots"
+      "mcda:mystery_armor_purple_boots"
     ]
   }
 }

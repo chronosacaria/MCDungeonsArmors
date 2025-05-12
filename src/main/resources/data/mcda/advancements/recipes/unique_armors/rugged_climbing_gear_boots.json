@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:rugged_climbing_gear_boots"
+        "recipe": "mcda:upgrade_rugged_climbing_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:rugged_climbing_gear_boots"
+      "mcda:upgrade_rugged_climbing_boots"
     ]
   }
 }

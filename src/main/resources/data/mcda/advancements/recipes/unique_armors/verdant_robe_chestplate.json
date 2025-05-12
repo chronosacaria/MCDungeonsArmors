@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:verdant_robe_chestplate"
+        "recipe": "mcda:upgrade_verdant_robe_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:verdant_robe_chestplate"
+      "mcda:upgrade_verdant_robe_chestplate"
     ]
   }
 }

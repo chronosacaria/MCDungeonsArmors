@@ -35,7 +35,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:sprout_armor_chestplate"
+        "recipe": "mcda:sprout_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -49,7 +49,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:sprout_armor_chestplate"
+      "mcda:sprout_chestplate"
     ]
   }
 }

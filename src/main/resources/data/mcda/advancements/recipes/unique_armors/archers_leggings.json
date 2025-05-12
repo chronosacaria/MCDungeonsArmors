@@ -35,7 +35,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:archers_leggings"
+        "recipe": "mcda:upgrade_archers_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -49,7 +49,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:archers_leggings"
+      "mcda:upgrade_archers_leggings"
     ]
   }
 }

@@ -36,7 +36,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:troubadour_armor_helmet"
+        "recipe": "mcda:upgrade_troubadour_armor_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -50,7 +50,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:troubadour_armor_helmet"
+      "mcda:upgrade_troubadour_armor_helmet"
     ]
   }
 }

@@ -47,7 +47,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mcda:spelunker_armor_leggings"
+        "recipe": "mcda:spelunker_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -62,7 +62,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mcda:spelunker_armor_leggings"
+      "mcda:spelunker_leggings"
     ]
   }
 }
